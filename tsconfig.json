@@ -1,0 +1,48 @@
+{
+  "compilerOptions": {
+    /* Basic Options */
+    "incremental": true,
+    "module": "commonjs",
+    "target": "esnext",
+    "lib": ["esnext", "es2020", "dom", "dom.iterable"],
+    "allowJs": false,
+    "checkJs": false, // speeds up webpack and tsc
+    "jsx": "react",
+    "declaration": true,
+    "composite": true,
+    "declarationMap": true,
+    "sourceMap": true,
+
+    /* Strict Type-Checking Options */
+    "strict": true,
+    "skipLibCheck": true, // TODO: https://transcend.height.app/T-405 - remove this
+
+    /* Additional Checks */
+    "noUnusedLocals": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+
+    /* Module Resolution Options */
+    "moduleResolution": "node",
+    "baseUrl": ".",
+    "types": ["node"],
+    "typeRoots": ["@types", "node_modules/@types"],
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "forceConsistentCasingInFileNames": true,
+
+    "downlevelIteration": false,
+    "importHelpers": false,
+    "noEmitHelpers": true,
+    
+    "outDir": "../../build/@transcend-io/consent-manager-ui",
+    "rootDir": "src",
+    "tsBuildInfoFile": "../../build/@transcend-io/consent-manager-ui.tsbuildinfo",
+    "jsxFactory": "h",
+    "jsxFragmentFactory": "Fragment",
+
+    "include": ["src", "src/**/*.json"],
+    "exclude": ["node_modules", "build"],
+    "references": []
+  }
+}
