@@ -23,7 +23,7 @@ export const build = async (deployEnv = Env.Prod, outDir = 'build') => {
     
     const modules = Object.entries({
         ui: {
-            location: `${cwd}/src/ui/index.ts`,
+            location: `${cwd}/src/index.ts`,
             tsconfig: `${cwd}/tsconfig.json`,
         },
     });
@@ -47,7 +47,7 @@ export const build = async (deployEnv = Env.Prod, outDir = 'build') => {
           format: 'cjs',
           banner: { js: '(()=>{"use strict";' },
           footer: { js: '})()' },
-          
+
           treeShaking: true,
           external: ['fs', 'stream'],
           sourcemap: dev ? 'inline' : false,
