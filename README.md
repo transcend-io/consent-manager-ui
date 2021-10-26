@@ -1,1 +1,3 @@
-# consent-manager-ui
+# logger
+
+Transcend browser logger
