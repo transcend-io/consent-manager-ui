@@ -1,1 +1,1 @@
-ignores: ["@types/node", "@main/consent-manager-ui", "*"]
+ignores: ["@types/node", "@yarnpkg/sdks", "depcheck", "prettier", "@yarnpkg/pnpify"]

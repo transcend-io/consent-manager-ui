@@ -15,7 +15,6 @@
 
     /* Strict Type-Checking Options */
     "strict": true,
-    "skipLibCheck": true, // TODO: https://transcend.height.app/T-405 - remove this
 
     /* Additional Checks */
     "noUnusedLocals": true,
@@ -34,15 +33,14 @@
     "downlevelIteration": false,
     "importHelpers": false,
     "noEmitHelpers": true,
-    
+
     "outDir": "../../build/@transcend-io/consent-manager-ui",
     "rootDir": "src",
     "tsBuildInfoFile": "../../build/@transcend-io/consent-manager-ui.tsbuildinfo",
     "jsxFactory": "h",
-    "jsxFragmentFactory": "Fragment",
-
-    "include": ["src", "src/**/*.json"],
-    "exclude": ["node_modules", "build"],
-    "references": []
-  }
+    "jsxFragmentFactory": "Fragment"
+  },
+  "include": ["src", "src/**/*.json"],
+  "exclude": ["node_modules", "build"],
+  "references": []
 }
