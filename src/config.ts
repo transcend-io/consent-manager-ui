@@ -11,8 +11,14 @@ import {
 
 // local
 import { logger } from './logger';
-import { airgapSettings, LOG_LEVELS } from './settings';
+import { settings, LOG_LEVELS } from './settings';
 import { jsonParseSafe } from './utils/safe-json-parse';
+
+const {
+  privacyCenter,
+  privacyPolicy = privacyCenter || '/privacy',
+  dismissedViewState = ViewState.Collapsed,
+} = settings;
 
 // Default configurations
 const defaultConfig: ConsentManagerConfig = {
@@ -24,9 +30,6 @@ const defaultConfig: ConsentManagerConfig = {
     tablet: '640px',
     desktop: '1024px',
   },
-  privacyPolicy:
-    airgapSettings.privacyCenter ||
-    'https://privacy.transcend.io/policies?name=privacy-policy#privacy-policy',
   initialViewStateByPrivacyRegime: {
     // California
     CPRA: ViewState.NoticeAndDoNotSell,
@@ -41,7 +44,8 @@ const defaultConfig: ConsentManagerConfig = {
     // Other
     Unknown: ViewState.Hidden,
   },
-  dismissedViewState: ViewState.Collapsed,
+  privacyPolicy,
+  dismissedViewState,
 };
 
 /**
@@ -51,9 +55,9 @@ const defaultConfig: ConsentManagerConfig = {
  */
 export function getMergedConfig(): ConsentManagerConfig {
   const settingsConfig: ConsentManagerConfigInput =
-    typeof airgapSettings.consentManagerConfig === 'string'
-      ? jsonParseSafe(airgapSettings.consentManagerConfig, () => ({}))
-      : airgapSettings.consentManagerConfig || {};
+    typeof settings.consentManagerConfig === 'string'
+      ? jsonParseSafe(settings.consentManagerConfig, () => ({}))
+      : settings.consentManagerConfig || {};
 
   // These consent manager settings can be configured through our backend or ag-bundler/config/{site}.json
   const config: ConsentManagerConfig = {

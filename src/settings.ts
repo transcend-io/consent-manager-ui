@@ -31,7 +31,7 @@ function getAirgapSettings(): AirgapSettings {
     : ({ ...dataset } as unknown as AirgapSettings);
 }
 
-export const airgapSettings: AirgapSettings = getAirgapSettings();
+export const settings: AirgapSettings = getAirgapSettings();
 
 const validLogLevels: LogLevel[] = [
   'fatal',
@@ -58,7 +58,7 @@ const inheritLogLevels = (logLevels: LogLevel[]): LogLevel[] => {
 };
 
 const wildcardLogLevels = ['all', '*'];
-const logLevelsSetting = (airgapSettings.log ?? '').toLowerCase();
+const logLevelsSetting = (settings.log ?? '').toLowerCase();
 
 /**
  * Enabled log levels

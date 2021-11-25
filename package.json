@@ -44,6 +44,7 @@
     "@transcend-io/type-utils": "^1.0.4",
     "@types/chai": "^4",
     "@types/mocha": "^9.0.0",
+    "@types/node": "^16.11.9",
     "@typescript-eslint/eslint-plugin": "^5.1.0",
     "@typescript-eslint/parser": "^5.1.0",
     "@yarnpkg/esbuild-plugin-pnp": "^1.0.0-rc.2",
