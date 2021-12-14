@@ -14,9 +14,9 @@ enum Env {
 }
 
 export const build = async (
-  deployEnv = Env.Prod,
   outDir = 'build',
 ): ReturnType<typeof esbuild.build> => {
+  const deployEnv = process.env.DEPLOY_ENV || Env.Prod;
   const cwd = `${process.cwd()}/`;
   const dev = deployEnv === Env.Local || deployEnv === Env.Dev;
   const staging = deployEnv === Env.Staging;
