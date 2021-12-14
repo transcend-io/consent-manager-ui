@@ -3,10 +3,14 @@ import { h, JSX } from 'preact';
 import { IntlProvider } from 'react-intl';
 
 // main
-import { AirgapAPI, ConsentManagerAPI, ViewState } from '@transcend-io/airgap.js-types';
+import {
+  AirgapAPI,
+  ConsentManagerAPI,
+  ViewState,
+} from '@transcend-io/airgap.js-types';
 
 // global
-import { getMergedConfig } from '@transcend-io/consent-manager-ui/src/config';
+import { getMergedConfig } from '../config';
 import {
   AirgapProvider,
   ConfigProvider,
@@ -15,15 +19,17 @@ import {
   useRegime,
   useViewState,
   viewStateIsClosed,
-} from '@transcend-io/consent-manager-ui/src/hooks';
-import { apiEventName } from '@transcend-io/consent-manager-ui/src/settings';
-import { CONSENT_MANAGER_TRANSLATIONS } from '@transcend-io/consent-manager-ui/src/translations';
+} from '../hooks';
+import { apiEventName } from '../settings';
+import { CONSENT_MANAGER_TRANSLATIONS } from '../translations';
 
 // local
 import Main from './Main';
 
 /**
  * Top layer concerned with data, not presentation
+ *
+ * @param root0
  */
 export default function App({
   airgap,

@@ -2,10 +2,12 @@
 import { h, JSX } from 'preact';
 
 // global
-import type { DisclosureMap } from '@transcend-io/consent-manager-ui/src/types';
+import type { DisclosureMap } from '../types';
 
 /**
  * Any required disclosures
+ *
+ * @param root0
  */
 export default function Disclosures({
   disclosureMap,

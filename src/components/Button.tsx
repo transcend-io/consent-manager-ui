@@ -2,10 +2,12 @@
 import { h, JSX } from 'preact';
 
 // global
-import { useConfig, useEmotion } from '@transcend-io/consent-manager-ui/src/hooks';
+import { useConfig, useEmotion } from '../hooks';
 
 /**
  * Button with click handler to match Airgap's requirement of having a UIEvent
+ *
+ * @param root0
  */
 export default function Button({
   primaryText,

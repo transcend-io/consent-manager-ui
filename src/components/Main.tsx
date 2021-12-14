@@ -6,11 +6,8 @@ import { ViewState } from '@transcend-io/airgap.js-types';
 import { LanguageKey } from '@transcend-io/internationalization';
 
 // global
-import {
-  useEmotion,
-  viewStateIsClosed,
-} from '@transcend-io/consent-manager-ui/src/hooks';
-import type { HandleSetViewState } from '@transcend-io/consent-manager-ui/src/types';
+import { useEmotion, viewStateIsClosed } from '../hooks';
+import type { HandleSetViewState } from '../types';
 
 // local
 import AcceptAll from './AcceptAll';
@@ -26,6 +23,8 @@ import QuickOptions from './QuickOptions';
 
 /**
  * Presents view states (collapsed, GDPR-mode, CCPA-mode etc)
+ *
+ * @param root0
  */
 export default function Main({
   viewState,

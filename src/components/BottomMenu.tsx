@@ -6,18 +6,17 @@ import { useIntl } from 'react-intl';
 import { ViewState } from '@transcend-io/airgap.js-types';
 
 // global
-import { useConfig, useEmotion } from '@transcend-io/consent-manager-ui/src/hooks';
-import {
-  bottomMenuMessages,
-  noticeAndDoNotSellMessages,
-} from '@transcend-io/consent-manager-ui/src/messages';
-import type { HandleSetViewState } from '@transcend-io/consent-manager-ui/src/types';
+import { useConfig, useEmotion } from '../hooks';
+import { bottomMenuMessages, noticeAndDoNotSellMessages } from '../messages';
+import type { HandleSetViewState } from '../types';
 
 // local
 import MenuItem from './MenuItem';
 
 /**
  * Renders the menu for the bottom of the banner
+ *
+ * @param root0
  */
 export default function BottomMenu({
   viewState,

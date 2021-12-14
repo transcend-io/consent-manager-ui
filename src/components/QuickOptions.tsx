@@ -3,16 +3,9 @@ import { h, JSX } from 'preact';
 import { useIntl } from 'react-intl';
 
 // global
-import {
-  useAirgap,
-  useConfig,
-  useEmotion,
-} from '@transcend-io/consent-manager-ui/src/hooks';
-import {
-  messages,
-  quickOptionsMessages,
-} from '@transcend-io/consent-manager-ui/src/messages';
-import type { HandleSetViewState } from '@transcend-io/consent-manager-ui/src/types';
+import { useAirgap, useConfig, useEmotion } from '../hooks';
+import { messages, quickOptionsMessages } from '../messages';
+import type { HandleSetViewState } from '../types';
 
 // local
 import Button from './Button';
@@ -30,6 +23,8 @@ enum QuickOption {
 
 /**
  * A set of buttons to choose a set of predefined options
+ *
+ * @param root0
  */
 export default function QuickOptions({
   handleSetViewState,

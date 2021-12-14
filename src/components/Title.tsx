@@ -2,10 +2,12 @@
 import { ComponentChild, h, JSX } from 'preact';
 
 // global
-import { useConfig, useEmotion } from '@transcend-io/consent-manager-ui/src/hooks';
+import { useConfig, useEmotion } from '../hooks';
 
 /**
  * The header title of the modal
+ *
+ * @param root0
  */
 export default function Title({
   children,

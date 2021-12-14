@@ -6,9 +6,9 @@ import { useIntl } from 'react-intl';
 import { TrackingConsent } from '@transcend-io/airgap.js-types';
 
 // global
-import { useAirgap } from '@transcend-io/consent-manager-ui/src/hooks';
-import { messages } from '@transcend-io/consent-manager-ui/src/messages';
-import type { HandleSetViewState } from '@transcend-io/consent-manager-ui/src/types';
+import { useAirgap } from '../hooks';
+import { messages } from '../messages';
+import type { HandleSetViewState } from '../types';
 
 // local
 import Button from './Button';
@@ -17,6 +17,9 @@ import Title from './Title';
 
 /**
  * Component showing "accept all" interface
+ *
+ * @param root0 - params
+ * @returns JSX element
  */
 export default function AcceptAll({
   handleSetViewState,

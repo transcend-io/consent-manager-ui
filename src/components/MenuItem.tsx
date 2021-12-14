@@ -2,7 +2,7 @@
 import { ComponentChild, Fragment, h, JSX } from 'preact';
 
 // global
-import { useConfig, useEmotion } from '@transcend-io/consent-manager-ui/src/hooks';
+import { useConfig, useEmotion } from '../hooks';
 
 /**
  * Props that are always on this element
@@ -39,6 +39,8 @@ type MenuItemProps = MenuItemAnchorProps | MenuItemButtonProps;
 
 /**
  * A set of buttons to choose a set of predefined options
+ *
+ * @param root0
  */
 export default function MenuItem({
   label,

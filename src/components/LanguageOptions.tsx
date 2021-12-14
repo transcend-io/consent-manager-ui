@@ -5,18 +5,17 @@ import { h, JSX } from 'preact';
 import { LanguageKey } from '@transcend-io/internationalization';
 
 // global
-import {
-  sortSupportedLanguagesByPreference,
-  useEmotion,
-} from '@transcend-io/consent-manager-ui/src/hooks';
-import { selectableLanguages } from '@transcend-io/consent-manager-ui/src/translations';
-import type { HandleSetViewState } from '@transcend-io/consent-manager-ui/src/types';
+import { sortSupportedLanguagesByPreference, useEmotion } from '../hooks';
+import { selectableLanguages } from '../translations';
+import type { HandleSetViewState } from '../types';
 
 // local
 import MenuItem from './MenuItem';
 
 /**
  * The view for language settings
+ *
+ * @param root0
  */
 export default function LanguageOptions({
   handleChangeLanguage,
@@ -57,6 +56,8 @@ export default function LanguageOptions({
 
   /**
    * Handler for language button click - selects language
+   *
+   * @param language
    */
   function handleClick(language: LanguageKey): void {
     handleChangeLanguage(language);

@@ -3,7 +3,7 @@
 import { h, JSX } from 'preact';
 
 // global
-import { useConfig, useEmotion } from '@transcend-io/consent-manager-ui/src/hooks';
+import { useConfig, useEmotion } from '../hooks';
 
 /**
  * The Transcend square logo

@@ -42,6 +42,7 @@
     "CDPA",
     "CPRA",
     "depcheck",
+    "esbuild",
     "Geral",
     "LGPD",
     "Optionalize",

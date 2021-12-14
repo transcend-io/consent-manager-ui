@@ -6,16 +6,13 @@ import { useIntl } from 'react-intl';
 import { AirgapAPI } from '@transcend-io/airgap.js-types';
 
 // global
-import {
-  useAirgap,
-  useConfig,
-  useEmotion,
-  useRegime,
-} from '@transcend-io/consent-manager-ui/src/hooks';
-import { completeOptionsMessages } from '@transcend-io/consent-manager-ui/src/messages';
+import { useAirgap, useConfig, useEmotion, useRegime } from '../hooks';
+import { completeOptionsMessages } from '../messages';
 
 /**
  * Helper to get the current sale of info setting
+ *
+ * @param airgap
  */
 function getSaleOfInfoIsOn(airgap: AirgapAPI): boolean {
   // Get the current consent state of Airgap from storage

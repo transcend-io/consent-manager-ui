@@ -9,11 +9,8 @@ import {
 } from '@transcend-io/airgap.js-types';
 
 // global
-import { logger } from '@transcend-io/consent-manager-ui/src/logger';
-import type {
-  HandleSetViewState,
-  RequestedViewState,
-} from '@transcend-io/consent-manager-ui/src/types';
+import { logger } from '../logger';
+import type { HandleSetViewState, RequestedViewState } from '../types';
 
 // local
 import { useStickyState } from './useStickyState';

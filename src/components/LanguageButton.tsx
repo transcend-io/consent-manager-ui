@@ -5,11 +5,13 @@ import { h, JSX } from 'preact';
 import { ViewState } from '@transcend-io/airgap.js-types';
 
 // global
-import { useConfig, useEmotion } from '@transcend-io/consent-manager-ui/src/hooks';
-import type { HandleSetViewState } from '@transcend-io/consent-manager-ui/src/types';
+import { useConfig, useEmotion } from '../hooks';
+import type { HandleSetViewState } from '../types';
 
 /**
  * The button to change languages
+ *
+ * @param root0
  */
 export default function LanguageButton({
   handleSetViewState,

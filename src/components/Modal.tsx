@@ -5,10 +5,12 @@ import { ComponentChild, h, JSX } from 'preact';
 import { ViewState } from '@transcend-io/airgap.js-types';
 
 // global
-import { useConfig, useEmotion } from '@transcend-io/consent-manager-ui/src/hooks';
+import { useConfig, useEmotion } from '../hooks';
 
 /**
  * Styling for the banner/modal container
+ *
+ * @param root0
  */
 export default function Modal({
   padding,

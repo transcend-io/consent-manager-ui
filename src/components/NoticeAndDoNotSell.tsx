@@ -3,11 +3,8 @@ import { h, JSX } from 'preact';
 import { useIntl } from 'react-intl';
 
 // global
-import {
-  messages,
-  noticeAndDoNotSellMessages,
-} from '@transcend-io/consent-manager-ui/src/messages';
-import type { HandleSetViewState } from '@transcend-io/consent-manager-ui/src/types';
+import { messages, noticeAndDoNotSellMessages } from '../messages';
+import type { HandleSetViewState } from '../types';
 
 // local
 import Button from './Button';
@@ -16,6 +13,8 @@ import Title from './Title';
 
 /**
  * Component showing "accept all" interface
+ *
+ * @param root0
  */
 export default function NoticeAndDoNotSell({
   handleSetViewState,

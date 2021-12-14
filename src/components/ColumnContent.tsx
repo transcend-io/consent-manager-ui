@@ -2,10 +2,12 @@
 import { ComponentChild, h, JSX } from 'preact';
 
 // global
-import { useConfig, useEmotion } from '@transcend-io/consent-manager-ui/src/hooks';
+import { useConfig, useEmotion } from '../hooks';
 
 /**
  * Wrapper for side-by-side content, as in the Do Not Sell and Accept All views
+ *
+ * @param root0
  */
 export default function ColumnContent({
   children,

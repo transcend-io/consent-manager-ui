@@ -4,11 +4,13 @@ import { useState } from 'preact/hooks';
 import { useIntl } from 'react-intl';
 
 // global
-import { useConfig, useEmotion } from '@transcend-io/consent-manager-ui/src/hooks';
-import { completeOptionsMessages } from '@transcend-io/consent-manager-ui/src/messages';
+import { useConfig, useEmotion } from '../hooks';
+import { completeOptionsMessages } from '../messages';
 
 /**
  * A consent toggle
+ *
+ * @param root0
  */
 export default function Toggle({
   name,

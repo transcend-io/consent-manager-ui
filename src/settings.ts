@@ -1,5 +1,5 @@
 // main
-import type { AirgapSettings, LogLevel } from '@transcend-io/airgap.js-types';
+import type { LogLevel } from '@transcend-io/airgap.js-types';
 
 // local
 import { COMMA_AND_OR_SPACE_SEPARATED_LIST } from './utils/comma-and-or-space-separated-list';
@@ -11,16 +11,20 @@ export const apiEventName = 'tcmUIApiEvent';
  *
  * @returns airgap settings
  */
-function getAirgapSettings(): AirgapSettings {
-  const airgapInit = self.airgap;
-  const transcendInit = self.transcend;
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+function getAirgapSettings(): any {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any, no-restricted-globals
+  const airgapInit = (self as any)?.airgap;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any, no-restricted-globals
+  const transcendInit = (self as any)?.transcend;
   // transcend.loadOptions is used to inject settings from our backend
-  const embeddedLoadOptions: AirgapSettings | undefined = {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const embeddedLoadOptions: any | undefined = {
     ...airgapInit?.loadOptions,
     ...transcendInit?.loadOptions,
   };
 
-  // Pull data attributes (e.g. data-telemetry) from the Airgap <script> tag
+  // Pull data attributes (e.g. data-telemetry) from the current <script> tag
   const { currentScript } = document;
   const dataset: DOMStringMap = currentScript
     ? currentScript.dataset
@@ -28,10 +32,12 @@ function getAirgapSettings(): AirgapSettings {
 
   return embeddedLoadOptions
     ? { ...dataset, ...embeddedLoadOptions }
-    : ({ ...dataset } as unknown as AirgapSettings);
+    : // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      ({ ...dataset } as unknown as any);
 }
 
-export const settings: AirgapSettings = getAirgapSettings();
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export const settings: any = getAirgapSettings();
 
 const validLogLevels: LogLevel[] = [
   'fatal',

@@ -4,19 +4,17 @@ import { useRef } from 'preact/hooks';
 import { useIntl } from 'react-intl';
 
 // global
-import {
-  useConfig,
-  useElementSize,
-  useEmotion,
-} from '@transcend-io/consent-manager-ui/src/hooks';
-import { messages } from '@transcend-io/consent-manager-ui/src/messages';
-import type { HandleSetViewState } from '@transcend-io/consent-manager-ui/src/types';
+import { useConfig, useElementSize, useEmotion } from '../hooks';
+import { messages } from '../messages';
+import type { HandleSetViewState } from '../types';
 
 // local
 import { Logomark } from './Logo';
 
 /**
  * The collapsed view, optionally displayed on close if customer does not yet have their own button
+ *
+ * @param root0
  */
 export default function Collapsed({
   handleSetViewState,

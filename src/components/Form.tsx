@@ -6,9 +6,9 @@ import { useIntl } from 'react-intl';
 import { DefinedMessage } from '@transcend-io/internationalization';
 
 // global
-import { useConfig, useEmotion } from '@transcend-io/consent-manager-ui/src/hooks';
-import { completeOptionsMessages } from '@transcend-io/consent-manager-ui/src/messages';
-import type { ConsentSelection } from '@transcend-io/consent-manager-ui/src/types';
+import { useConfig, useEmotion } from '../hooks';
+import { completeOptionsMessages } from '../messages';
+import type { ConsentSelection } from '../types';
 
 // local
 import Button from './Button';
@@ -26,6 +26,8 @@ const purposeToMessageKey: Record<string, DefinedMessage> = {
 
 /**
  * The consent form with toggles and save button
+ *
+ * @param root0
  */
 export default function Form({
   consentSelections,
