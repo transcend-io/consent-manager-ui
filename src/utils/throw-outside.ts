@@ -6,7 +6,7 @@ import { requestIdleCallback } from './idle-callback';
  *
  * @param ex - Error to throw
  */
-export const throwOutside = (ex: Error | DOMException | DOMError): void => {
+export const throwOutside = (ex: Error | DOMException | unknown): void => {
   requestIdleCallback(() => {
     throw ex;
   });
