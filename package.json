@@ -40,7 +40,7 @@
     "test": "yarn pnpify mocha './src/**/*.test.ts'"
   },
   "devDependencies": {
-    "@transcend-io/airgap.js-types": "^6.5.1",
+    "@transcend-io/airgap.js-types": "^6.8.3",
     "@transcend-io/type-utils": "^1.0.4",
     "@types/chai": "^4",
     "@types/mocha": "^9.0.0",
