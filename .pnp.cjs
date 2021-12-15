@@ -51,7 +51,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["chai", "npm:4.3.4"],
             ["depcheck", "npm:1.4.2"],
             ["esbuild", "npm:0.13.15"],
-            ["esbuild-plugin-alias", "npm:0.1.2"],
+            ["esbuild-plugin-alias", "npm:0.2.1"],
             ["eslint", "npm:7.32.0"],
             ["eslint-config-airbnb-base", "virtual:c76842a5689228a0ce1b65e064c1f5e0d5b61e442d08b6527a3b1f100ca1f2105e58f5f1435c5a59df3cce3338560737838d99dae36d25b47d20aa50c89d0539#npm:14.2.1"],
             ["eslint-import-resolver-typescript", "virtual:c76842a5689228a0ce1b65e064c1f5e0d5b61e442d08b6527a3b1f100ca1f2105e58f5f1435c5a59df3cce3338560737838d99dae36d25b47d20aa50c89d0539#npm:2.5.0"],
@@ -745,7 +745,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["chai", "npm:4.3.4"],
             ["depcheck", "npm:1.4.2"],
             ["esbuild", "npm:0.13.15"],
-            ["esbuild-plugin-alias", "npm:0.1.2"],
+            ["esbuild-plugin-alias", "npm:0.2.1"],
             ["eslint", "npm:7.32.0"],
             ["eslint-config-airbnb-base", "virtual:c76842a5689228a0ce1b65e064c1f5e0d5b61e442d08b6527a3b1f100ca1f2105e58f5f1435c5a59df3cce3338560737838d99dae36d25b47d20aa50c89d0539#npm:14.2.1"],
             ["eslint-import-resolver-typescript", "virtual:c76842a5689228a0ce1b65e064c1f5e0d5b61e442d08b6527a3b1f100ca1f2105e58f5f1435c5a59df3cce3338560737838d99dae36d25b47d20aa50c89d0539#npm:2.5.0"],
@@ -2758,10 +2758,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["esbuild-plugin-alias", [
-        ["npm:0.1.2", {
-          "packageLocation": "./.yarn/cache/esbuild-plugin-alias-npm-0.1.2-3d8c71e0b0-3a2454a180.zip/node_modules/esbuild-plugin-alias/",
+        ["npm:0.2.1", {
+          "packageLocation": "./.yarn/cache/esbuild-plugin-alias-npm-0.2.1-8906d98875-afe2d2c8b5.zip/node_modules/esbuild-plugin-alias/",
           "packageDependencies": [
-            ["esbuild-plugin-alias", "npm:0.1.2"]
+            ["esbuild-plugin-alias", "npm:0.2.1"]
           ],
           "linkType": "HARD",
         }]
