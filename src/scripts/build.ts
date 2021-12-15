@@ -14,7 +14,6 @@ enum Env {
 }
 
 export const build = async (
-  deployEnv = Env.Prod,
   outDir = 'build',
 ): Promise<esbuild.BuildResult[]> => {
   const cwd = `${process.cwd()}/`;
