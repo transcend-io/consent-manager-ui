@@ -25,7 +25,7 @@
     "moduleResolution": "node",
     "baseUrl": ".",
     "types": ["node", "chai"],
-    "typeRoots": ["src/@types", "node_modules/@types"],
+    "typeRoots": ["./src/@types", "node_modules/@types"],
     "esModuleInterop": true,
     "resolveJsonModule": true,
     "forceConsistentCasingInFileNames": true,
@@ -34,13 +34,13 @@
     "importHelpers": false,
     "noEmitHelpers": true,
 
-    "outDir": "../../build/@transcend-io/consent-manager-ui",
+    "outDir": "./build/@transcend-io/consent-manager-ui",
     "rootDir": "src",
-    "tsBuildInfoFile": "../../build/@transcend-io/consent-manager-ui.tsbuildinfo",
+    "tsBuildInfoFile": "./build/@transcend-io/consent-manager-ui.tsbuildinfo",
     "jsxFactory": "h",
     "jsxFragmentFactory": "Fragment"
   },
   "include": ["src", "src/**/*.json"],
-  "exclude": ["node_modules", "build"],
+  "exclude": ["node_modules", "build", "src/tests"],
   "references": []
 }
