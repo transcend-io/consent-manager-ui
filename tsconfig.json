@@ -20,11 +20,12 @@
     "noUnusedLocals": true,
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
+    "skipLibCheck": true,
 
     /* Module Resolution Options */
     "moduleResolution": "node",
     "baseUrl": ".",
-    "types": ["node"],
+    "types": ["node", "mocha"],
     "typeRoots": ["@types", "node_modules/@types"],
     "esModuleInterop": true,
     "resolveJsonModule": true,
