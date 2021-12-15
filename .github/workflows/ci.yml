@@ -10,6 +10,8 @@ jobs:
         uses: actions/setup-node@master
         with:
           node-version: 14.x
+      - name: 'Run tsc'
+        run: yarn tsc:build
       - name: Build the typescript code
         run: yarn build
       - uses: actions/upload-artifact@main
