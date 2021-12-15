@@ -8,6 +8,10 @@ jobs:
       - uses: actions/checkout@v2
       - name: Build the typescript code
         run: yarn build
+      - name: 'Use Node.js'
+        uses: actions/setup-node@master
+        with:
+          node-version: 14.x
       - uses: actions/upload-artifact@main
         with:
           name: build artifacts
