@@ -158,9 +158,10 @@ build/Release
 
 # Yarn (https://yarnpkg.com/getting-started/qa#which-files-should-be-gitignored)
 .yarn/*
-!.yarn/releases
 !.yarn/cache
+!.yarn/patches
 !.yarn/plugins
+!.yarn/releases
 !.yarn/sdks
 !.yarn/versions
 
