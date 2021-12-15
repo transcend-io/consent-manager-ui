@@ -10,6 +10,9 @@ jobs:
         uses: actions/setup-node@master
         with:
           node-version: 14.x
+      - name: 'Install yarn dependencies'
+        run: yarn
+      - name: Build the typescript code
       - name: 'Run tsc'
         run: yarn tsc:build
       - name: Build the typescript code
