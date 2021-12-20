@@ -14,10 +14,9 @@ enum Env {
 }
 
 export const build = async (
-  env: Env,
   outDir = 'build',
 ): Promise<esbuild.BuildResult[]> => {
-  const deployEnv = env || Env.Prod;
+  const deployEnv = process.env.DEPLOY_ENV || Env.Prod;
   const cwd = `${process.cwd()}/`;
   const dev = deployEnv === Env.Local || deployEnv === Env.Dev;
   const staging = deployEnv === Env.Staging;
@@ -85,5 +84,5 @@ export const build = async (
 };
 
 if (require.main === module) {
-  build(process.env.DEPLOY_ENV);
+  build();
 }
