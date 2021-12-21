@@ -66,10 +66,26 @@ jobs:
         with:
           fetch-depth: 100 # need the history to do a changed files check below (source, origin)
       - uses: actions/setup-python@v2
-      - name: Use Node.js 14.x
-        uses: actions/setup-node@v1
+
+      # 'Install yarn v2 dependencies'
+      - uses: actions/setup-node@v2
         with:
-          node-version: 14.x
+          node-version: '14.17.3'
+      - run: npm install -g "yarn@1.22.5"
+        shell: bash
+      - uses: actions/cache@v2
+        id: yarn-cache # use this to check for `cache-hit` (`steps.yarn-cache.outputs.cache-hit != 'true'`)
+        with:
+          path: |
+            .yarn/unplugged
+          key: ${{ runner.os }}-yarn-v2-${{ hashFiles('**/yarn.lock', '**/package.json') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-v2-
+      - run: yarn rebuild
+        if: steps.yarn-cache.outputs.cache-hit != 'true'
+        name: Install yarn deps
+        shell: bash
+
       - uses: pre-commit/action@v2.0.2
         with:
           extra_args: --source ${{ github.event.pull_request.base.sha || 'HEAD~1' }} --origin ${{ github.event.pull_request.head.sha || 'HEAD' }}
