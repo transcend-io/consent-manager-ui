@@ -10,7 +10,7 @@ enum Env {
   Local = 'local',
   Dev = 'dev',
   Staging = 'staging',
-  Prod = 'production',
+  Prod = 'prod',
 }
 
 export const build = async (
@@ -78,7 +78,7 @@ export const build = async (
   );
 
   // eslint-disable-next-line no-console
-  console.log('Consent manager UI modules built');
+  console.log(`Consent manager UI modules built. Minified: ${shouldMinify}.`);
 
   return results;
 };

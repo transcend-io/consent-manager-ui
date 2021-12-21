@@ -7,6 +7,7 @@ import type { StringKeys } from '@transcend-io/type-utils';
  * @param o - The object to get the keys from
  * @returns The string keys of the object preserving type
  */
+// eslint-disable-next-line @typescript-eslint/ban-types
 export function getStringKeys<T extends {}>(o: T): StringKeys<T>[] {
   return Object.keys(o).filter((k) => typeof k === 'string') as StringKeys<T>[];
 }
@@ -17,6 +18,7 @@ export function getStringKeys<T extends {}>(o: T): StringKeys<T>[] {
  * @param o - The object to get the keys from
  * @returns The keys of the object preserving type
  */
+// eslint-disable-next-line @typescript-eslint/ban-types
 export function getKeys<T extends {}>(o: T): (keyof T)[] {
   return Object.keys(o) as (keyof T)[];
 }

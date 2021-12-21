@@ -12,6 +12,7 @@ import { throwOutside } from './throw-outside';
 export const jsonParseSafe = (
   json: string,
   fallback: () => unknown = () => ({}),
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   reviver?: (key: string, value: any) => any,
 ): ReturnType<typeof JSON.parse> => {
   try {

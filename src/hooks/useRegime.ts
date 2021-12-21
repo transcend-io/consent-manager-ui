@@ -2,7 +2,11 @@
 import { useEffect } from 'preact/hooks';
 
 // main
-import { AirgapAPI, PrivacyRegime, PrivacyRegimeEnum } from '@transcend-io/airgap.js-types';
+import {
+  AirgapAPI,
+  PrivacyRegime,
+  PrivacyRegimeEnum,
+} from '@transcend-io/airgap.js-types';
 
 // local
 import { useStickyState } from './useStickyState';
@@ -43,6 +47,7 @@ export function useRegime(airgap: AirgapAPI): PrivacyRegime {
         .map(([regime]) => regime as PrivacyRegimeEnum);
 
       // Choose one regime based on our precedence order
+      // eslint-disable-next-line no-restricted-syntax
       for (const regime of regimePrecedenceOrder) {
         if (regimes.has(regime)) {
           setPrivacyRegime(regime);

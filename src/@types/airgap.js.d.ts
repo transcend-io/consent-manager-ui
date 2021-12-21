@@ -35,14 +35,17 @@ declare global {
      */
     cancelIdleCallback: (callbackId: number) => void;
     /** analytics.js interface */
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     analytics?: any;
     /** airgap.js interface */
     airgap?: AirgapAPI;
     /** Transcend Consent Manager interface */
     transcend?: TranscendAPI;
     /** authorizedFetch debug utility */
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     authorizedFetch?: any;
     /** authorizeMutation debug utility */
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     authorizeMutation?: any;
     /** SubmitEvent */
     SubmitEvent: typeof Event;
