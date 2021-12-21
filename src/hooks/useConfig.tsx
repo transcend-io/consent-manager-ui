@@ -8,12 +8,12 @@ import { ConsentManagerConfig } from '@transcend-io/airgap.js-types';
 /**
  * Config context
  */
-type TConfigContext = {
+interface TConfigContext {
   /** The config */
   config: Required<ConsentManagerConfig>;
   /** Set new config */
   setConfig: StateUpdater<Required<ConsentManagerConfig>>;
-};
+}
 
 /**
  * Context to pass Emotion through the app

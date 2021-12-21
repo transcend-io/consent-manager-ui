@@ -7,28 +7,29 @@ import { useConfig, useEmotion } from '../hooks';
 /**
  * Props that are always on this element
  */
-type MenuItemBaseProps = {
+interface MenuItemBaseProps
+  extends JSX.HTMLAttributes<HTMLButtonElement | HTMLAnchorElement> {
   /** Aria Label */
   label: string;
   /** Inner HTML of <a> tag */
   children: ComponentChild;
-};
+}
 
 /**
  * Props if this is a button
  */
-type MenuItemButtonProps = JSX.HTMLAttributes<HTMLButtonElement> & {
+interface MenuItemButtonProps extends MenuItemBaseProps {
   /** Whether this is a button or a tag */
   type: 'button';
-} & MenuItemBaseProps;
+}
 
 /**
  * Props if this is an anchor (a tag)
  */
-type MenuItemAnchorProps = JSX.HTMLAttributes<HTMLAnchorElement> & {
+interface MenuItemAnchorProps extends MenuItemBaseProps {
   /** Whether this is a button or a tag */
   type: 'a';
-} & MenuItemBaseProps;
+}
 
 /**
  * Props for this menu item, which may be a button or an anchor (<a>) tag
@@ -41,6 +42,7 @@ type MenuItemProps = MenuItemAnchorProps | MenuItemButtonProps;
  * A set of buttons to choose a set of predefined options
  *
  * @param root0
+ * @returns Menu item
  */
 export default function MenuItem({
   label,

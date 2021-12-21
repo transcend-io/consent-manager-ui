@@ -8,12 +8,12 @@ import { AirgapAPI } from '@transcend-io/airgap.js-types';
 /**
  * Config context
  */
-type TConfigContext = {
+interface TConfigContext {
   /** The config */
   airgap: AirgapAPI;
   /** Set new config */
   setAirgap: StateUpdater<AirgapAPI>;
-};
+}
 
 export const AirgapContext = createContext<TConfigContext>(
   {} as TConfigContext,
