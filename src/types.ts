@@ -4,12 +4,12 @@ import type { TrackingPurpose, ViewState } from '@transcend-io/airgap.js-types';
 /**
  * Disclosure of a tracking purpose
  */
-export type Disclosure = {
+export interface Disclosure {
   /** Tracking purpose name */
   name: string;
   /** Tracking purpose description (used in Consent Manager UI) */
   description: string;
-};
+}
 
 /**
  * Mapping between a disclosure and the purpose it's describing
@@ -29,12 +29,12 @@ export type ConsentSelection = {
 /**
  * The language locale
  */
-export type Language = {
+export interface Language {
   /** The first subtag, like "en" */
   primaryLanguage: string;
   /** The whole language tag, like en-US or fr-FR */
   extendedLanguage: string;
-};
+}
 
 /**
  * Possible requests for the next view state
