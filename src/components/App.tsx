@@ -1,9 +1,10 @@
 // external
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { h, JSX } from 'preact';
 import { IntlProvider } from 'react-intl';
 
 // main
-import type {
+import {
   AirgapAPI,
   ConsentManagerAPI,
   ViewState,
@@ -26,10 +27,9 @@ import { CONSENT_MANAGER_TRANSLATIONS } from '../translations';
 // local
 import Main from './Main';
 
+// eslint-disable-next-line jsdoc/require-returns, jsdoc/require-param
 /**
  * Top layer concerned with data, not presentation
- *
- * @param root0
  */
 export default function App({
   airgap,

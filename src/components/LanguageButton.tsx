@@ -1,17 +1,17 @@
 // external
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { h, JSX } from 'preact';
 
 // main
-import type { ViewState } from '@transcend-io/airgap.js-types';
+import { ViewState } from '@transcend-io/airgap.js-types';
 
 // global
 import { useConfig, useEmotion } from '../hooks';
 import type { HandleSetViewState } from '../types';
 
+// eslint-disable-next-line jsdoc/require-returns, jsdoc/require-param
 /**
  * The button to change languages
- *
- * @param root0
  */
 export default function LanguageButton({
   handleSetViewState,
