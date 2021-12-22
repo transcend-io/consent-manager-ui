@@ -1,1 +1,4 @@
-export const TEST = {};
+// local
+import { init } from './init';
+
+init();

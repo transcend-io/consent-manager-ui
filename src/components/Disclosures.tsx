@@ -1,0 +1,35 @@
+// external
+import { h, JSX } from 'preact';
+
+// global
+import type { DisclosureMap } from '../types';
+
+/**
+ * Any required disclosures
+ *
+ * @param root0
+ */
+export default function Disclosures({
+  disclosureMap,
+  requiredDisclosuresHeader,
+}: {
+  /** A mapping between purposes and their disclosures (if they have showInConsentManager=true) */
+  disclosureMap: DisclosureMap;
+  /** The heading title */
+  requiredDisclosuresHeader: string;
+}): JSX.Element {
+  return (
+    <div>
+      <p>{requiredDisclosuresHeader}</p>
+      <ul>
+        {Object.entries(disclosureMap).map(
+          ([purpose, { name, description }]) => (
+            <li key={purpose}>
+              {name} - {description}
+            </li>
+          ),
+        )}
+      </ul>
+    </div>
+  );
+}
