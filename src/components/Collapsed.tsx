@@ -1,4 +1,5 @@
 // external
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { h, JSX } from 'preact';
 import { useRef } from 'preact/hooks';
 import { useIntl } from 'react-intl';
@@ -11,10 +12,9 @@ import type { HandleSetViewState } from '../types';
 // local
 import { Logomark } from './Logo';
 
+// eslint-disable-next-line jsdoc/require-returns, jsdoc/require-param
 /**
  * The collapsed view, optionally displayed on close if customer does not yet have their own button
- *
- * @param root0
  */
 export default function Collapsed({
   handleSetViewState,

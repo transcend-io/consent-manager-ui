@@ -1,13 +1,13 @@
 // external
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { ComponentChild, h, JSX } from 'preact';
 
 // global
 import { useConfig, useEmotion } from '../hooks';
 
+// eslint-disable-next-line jsdoc/require-returns, jsdoc/require-param
 /**
  * The header title of the modal
- *
- * @param root0
  */
 export default function Title({
   children,

@@ -1,4 +1,5 @@
 // external
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { h, JSX } from 'preact';
 import { useIntl } from 'react-intl';
 
@@ -24,10 +25,9 @@ const purposeToMessageKey: Record<string, DefinedMessage> = {
   SaleOfInfo: completeOptionsMessages.saleOfInfoLabel,
 };
 
+// eslint-disable-next-line jsdoc/require-returns, jsdoc/require-param
 /**
  * The consent form with toggles and save button
- *
- * @param root0
  */
 export default function Form({
   consentSelections,

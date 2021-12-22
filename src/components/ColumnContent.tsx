@@ -1,13 +1,13 @@
 // external
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { ComponentChild, h, JSX } from 'preact';
 
 // global
 import { useConfig, useEmotion } from '../hooks';
 
+// eslint-disable-next-line jsdoc/require-returns, jsdoc/require-param
 /**
  * Wrapper for side-by-side content, as in the Do Not Sell and Accept All views
- *
- * @param root0
  */
 export default function ColumnContent({
   children,

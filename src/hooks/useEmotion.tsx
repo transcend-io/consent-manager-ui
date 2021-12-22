@@ -1,5 +1,6 @@
 // external
 import createEmotion, { Emotion } from '@emotion/css/create-instance';
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { ComponentChildren, createContext, h, JSX } from 'preact';
 import { useContext, useEffect, useRef, useState } from 'preact/hooks';
 
@@ -26,6 +27,7 @@ export const EmotionProvider = ({
   }, [mainRef, emotionCache]);
 
   return (
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     <div ref={mainRef as any}>
       {emotionCache && (
         <EmotionContext.Provider value={emotionCache}>

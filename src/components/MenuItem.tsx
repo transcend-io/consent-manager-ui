@@ -1,4 +1,5 @@
 // external
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { ComponentChild, Fragment, h, JSX } from 'preact';
 
 // global
@@ -38,11 +39,9 @@ interface MenuItemAnchorProps extends MenuItemBaseProps {
  */
 type MenuItemProps = MenuItemAnchorProps | MenuItemButtonProps;
 
+// eslint-disable-next-line jsdoc/require-returns, jsdoc/require-param
 /**
  * A set of buttons to choose a set of predefined options
- *
- * @param root0
- * @returns Menu item
  */
 export default function MenuItem({
   label,
