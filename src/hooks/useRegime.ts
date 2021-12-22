@@ -2,7 +2,7 @@
 import { useEffect } from 'preact/hooks';
 
 // main
-import {
+import type {
   AirgapAPI,
   PrivacyRegime,
   PrivacyRegimeEnum,

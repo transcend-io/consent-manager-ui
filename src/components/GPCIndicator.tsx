@@ -3,7 +3,7 @@ import { h, JSX } from 'preact';
 import { useIntl } from 'react-intl';
 
 // main
-import { AirgapAPI } from '@transcend-io/airgap.js-types';
+import type { AirgapAPI } from '@transcend-io/airgap.js-types';
 
 // global
 import { useAirgap, useConfig, useEmotion, useRegime } from '../hooks';

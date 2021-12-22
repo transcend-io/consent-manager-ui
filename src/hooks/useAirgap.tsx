@@ -3,7 +3,7 @@ import { ComponentChildren, createContext, h, JSX } from 'preact';
 import { StateUpdater, useContext, useState } from 'preact/hooks';
 
 // main
-import { AirgapAPI } from '@transcend-io/airgap.js-types';
+import type { AirgapAPI } from '@transcend-io/airgap.js-types';
 
 /**
  * Config context

@@ -3,7 +3,7 @@ import { h, JSX } from 'preact';
 import { IntlProvider } from 'react-intl';
 
 // main
-import {
+import type {
   AirgapAPI,
   ConsentManagerAPI,
   ViewState,

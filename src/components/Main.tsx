@@ -2,7 +2,7 @@
 import { h, JSX } from 'preact';
 
 // main
-import { ViewState } from '@transcend-io/airgap.js-types';
+import type { ViewState } from '@transcend-io/airgap.js-types';
 import { LanguageKey } from '@transcend-io/internationalization';
 
 // global

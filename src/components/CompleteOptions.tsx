@@ -4,7 +4,7 @@ import { useState } from 'preact/hooks';
 import { useIntl } from 'react-intl';
 
 // main
-import { AirgapAPI, PrivacyRegime } from '@transcend-io/airgap.js-types';
+import type { AirgapAPI, PrivacyRegime } from '@transcend-io/airgap.js-types';
 
 // global
 import { useAirgap, useEmotion, useRegime } from '../hooks';

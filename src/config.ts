@@ -3,7 +3,7 @@
  */
 
 // main
-import {
+import type {
   ConsentManagerConfig,
   ConsentManagerConfigInput,
   ViewState,

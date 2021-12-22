@@ -2,7 +2,7 @@
 import { useCallback } from 'preact/hooks';
 
 // main
-import {
+import type {
   DismissedViewState,
   InitialViewState,
   ViewState,
