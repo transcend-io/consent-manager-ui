@@ -41,7 +41,6 @@
   },
   "devDependencies": {
     "@transcend-io/airgap.js-types": "^6.8.3",
-    "@transcend-io/type-utils": "^1.0.4",
     "@types/chai": "^4",
     "@types/mocha": "^9.0.0",
     "@types/node": "^16.11.9",
