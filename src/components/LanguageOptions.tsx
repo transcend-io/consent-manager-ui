@@ -1,4 +1,5 @@
 // external
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { h, JSX } from 'preact';
 
 // main
@@ -12,10 +13,9 @@ import type { HandleSetViewState } from '../types';
 // local
 import MenuItem from './MenuItem';
 
+// eslint-disable-next-line jsdoc/require-returns, jsdoc/require-param
 /**
  * The view for language settings
- *
- * @param root0
  */
 export default function LanguageOptions({
   handleChangeLanguage,
@@ -57,7 +57,7 @@ export default function LanguageOptions({
   /**
    * Handler for language button click - selects language
    *
-   * @param language
+   * @param language - The language selected
    */
   function handleClick(language: LanguageKey): void {
     handleChangeLanguage(language);

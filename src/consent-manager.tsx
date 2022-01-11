@@ -1,8 +1,12 @@
 // external
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { h, render } from 'preact';
 
 // main
-import type { AirgapAPI, ConsentManagerAPI } from '@transcend-io/airgap.js-types';
+import type {
+  AirgapAPI,
+  ConsentManagerAPI,
+} from '@transcend-io/airgap.js-types';
 
 // local
 import App from './components/App';
@@ -12,6 +16,7 @@ import { createHTMLElement } from './utils/create-html-element';
 
 let interfaceInitialized = false;
 
+// eslint-disable-next-line jsdoc/require-param
 /**
  * Dispatcher for API events. API is called on globalThis.transcend and it triggers event listeners inside Preact
  */
@@ -28,6 +33,7 @@ async function dispatchConsentManagerAPIEvent(
 
 let consentManagerAPI: ConsentManagerAPI;
 
+// eslint-disable-next-line jsdoc/require-param, jsdoc/require-returns
 /**
  * Render the Preact app into a shadow DOM
  */

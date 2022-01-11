@@ -1,13 +1,13 @@
 // external
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { h, JSX } from 'preact';
 
 // global
 import type { DisclosureMap } from '../types';
 
+// eslint-disable-next-line jsdoc/require-returns, jsdoc/require-param
 /**
  * Any required disclosures
- *
- * @param root0
  */
 export default function Disclosures({
   disclosureMap,

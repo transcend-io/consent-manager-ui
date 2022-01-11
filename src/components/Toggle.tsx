@@ -1,4 +1,5 @@
 // external
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { h, JSX } from 'preact';
 import { useState } from 'preact/hooks';
 import { useIntl } from 'react-intl';
@@ -7,10 +8,9 @@ import { useIntl } from 'react-intl';
 import { useConfig, useEmotion } from '../hooks';
 import { completeOptionsMessages } from '../messages';
 
+// eslint-disable-next-line jsdoc/require-returns, jsdoc/require-param
 /**
  * A consent toggle
- *
- * @param root0
  */
 export default function Toggle({
   name,

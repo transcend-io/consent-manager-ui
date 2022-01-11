@@ -1,9 +1,10 @@
 // external
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { ComponentChildren, createContext, h, JSX } from 'preact';
 import { StateUpdater, useContext, useState } from 'preact/hooks';
 
 // main
-import { ConsentManagerConfig } from '@transcend-io/airgap.js-types';
+import type { ConsentManagerConfig } from '@transcend-io/airgap.js-types';
 
 /**
  * Config context

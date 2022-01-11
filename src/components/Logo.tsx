@@ -1,10 +1,12 @@
 /* eslint max-len: 0 */
 // external
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { h, JSX } from 'preact';
 
 // global
 import { useConfig, useEmotion } from '../hooks';
 
+// eslint-disable-next-line jsdoc/require-returns
 /**
  * The Transcend square logo
  * Not a full SVG, just the inner elements
@@ -36,6 +38,7 @@ export function Logomark(): JSX.Element {
   );
 }
 
+// eslint-disable-next-line jsdoc/require-returns
 /**
  * The Transcend logo rendered as SVG.
  * On Desktop, hovering shows wordmark. On Mobile, only square logo is visible

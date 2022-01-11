@@ -1,4 +1,5 @@
 // external
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { h, JSX } from 'preact';
 import { useIntl } from 'react-intl';
 
@@ -11,10 +12,9 @@ import Button from './Button';
 import ColumnContent from './ColumnContent';
 import Title from './Title';
 
+// eslint-disable-next-line jsdoc/require-returns, jsdoc/require-param
 /**
  * Component showing "accept all" interface
- *
- * @param root0
  */
 export default function NoticeAndDoNotSell({
   handleSetViewState,

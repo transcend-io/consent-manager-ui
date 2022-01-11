@@ -1,10 +1,11 @@
 // external
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { h, JSX } from 'preact';
 import { useState } from 'preact/hooks';
 import { useIntl } from 'react-intl';
 
 // main
-import { AirgapAPI, PrivacyRegime } from '@transcend-io/airgap.js-types';
+import type { AirgapAPI, PrivacyRegime } from '@transcend-io/airgap.js-types';
 
 // global
 import { useAirgap, useEmotion, useRegime } from '../hooks';
@@ -15,11 +16,9 @@ import type { ConsentSelection, HandleSetViewState } from '../types';
 import Form from './Form';
 import Title from './Title';
 
+// eslint-disable-next-line jsdoc/require-returns, jsdoc/require-param
 /**
  * Helper to get the tracking purposes for rendering
- *
- * @param airgap
- * @param regime
  */
 function getConsentSelections(
   airgap: AirgapAPI,
@@ -51,10 +50,9 @@ function getConsentSelections(
   return initialConsentSelections;
 }
 
+// eslint-disable-next-line jsdoc/require-returns, jsdoc/require-param
 /**
  * The model view for "More Options" showing granular checkboxes and more info
- *
- * @param root0
  */
 export default function CompleteOptions({
   handleSetViewState,

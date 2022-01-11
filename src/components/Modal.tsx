@@ -1,16 +1,16 @@
 // external
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { ComponentChild, h, JSX } from 'preact';
 
 // main
-import { ViewState } from '@transcend-io/airgap.js-types';
+import type { ViewState } from '@transcend-io/airgap.js-types';
 
 // global
 import { useConfig, useEmotion } from '../hooks';
 
+// eslint-disable-next-line jsdoc/require-returns, jsdoc/require-param
 /**
  * Styling for the banner/modal container
- *
- * @param root0
  */
 export default function Modal({
   padding,

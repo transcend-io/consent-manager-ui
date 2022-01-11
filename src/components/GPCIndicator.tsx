@@ -1,18 +1,18 @@
 // external
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { h, JSX } from 'preact';
 import { useIntl } from 'react-intl';
 
 // main
-import { AirgapAPI } from '@transcend-io/airgap.js-types';
+import type { AirgapAPI } from '@transcend-io/airgap.js-types';
 
 // global
 import { useAirgap, useConfig, useEmotion, useRegime } from '../hooks';
 import { completeOptionsMessages } from '../messages';
 
+// eslint-disable-next-line jsdoc/require-returns, jsdoc/require-param
 /**
  * Helper to get the current sale of info setting
- *
- * @param airgap
  */
 function getSaleOfInfoIsOn(airgap: AirgapAPI): boolean {
   // Get the current consent state of Airgap from storage
@@ -29,6 +29,7 @@ type NavigatorWithGPC = Navigator & {
   globalPrivacyControl: boolean;
 };
 
+// eslint-disable-next-line jsdoc/require-returns
 /**
  * Indicator that the Global Privacy Control signal is controlling this setting
  */
