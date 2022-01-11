@@ -108,6 +108,26 @@ jobs:
         run: |
           yarn config set npmAlwaysAuth true
           yarn config set npmAuthToken ${{ secrets.NPM_TOKEN }}
+
+      # 'Install yarn v2 dependencies'
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '14.17.3'
+      - run: npm install -g "yarn@1.22.5"
+        shell: bash
+      - uses: actions/cache@v2
+        id: yarn-cache # use this to check for `cache-hit` (`steps.yarn-cache.outputs.cache-hit != 'true'`)
+        with:
+          path: |
+            .yarn/unplugged
+          key: ${{ runner.os }}-yarn-v2-${{ hashFiles('**/yarn.lock', '**/package.json') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-v2-
+      - run: yarn rebuild
+        if: steps.yarn-cache.outputs.cache-hit != 'true'
+        name: Install yarn deps
+        shell: bash
+
       - name: Publish to yarn/npm
         run: yarn npm publish
 
@@ -125,6 +145,26 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: '14.x'
+
+      # 'Install yarn v2 dependencies'
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '14.17.3'
+      - run: npm install -g "yarn@1.22.5"
+        shell: bash
+      - uses: actions/cache@v2
+        id: yarn-cache # use this to check for `cache-hit` (`steps.yarn-cache.outputs.cache-hit != 'true'`)
+        with:
+          path: |
+            .yarn/unplugged
+          key: ${{ runner.os }}-yarn-v2-${{ hashFiles('**/yarn.lock', '**/package.json') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-v2-
+      - run: yarn rebuild
+        if: steps.yarn-cache.outputs.cache-hit != 'true'
+        name: Install yarn deps
+        shell: bash
+
       - name: Configure Github Packages authentication
         run: |
           yarn config set npmAlwaysAuth true
