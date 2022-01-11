@@ -14,6 +14,9 @@ type Size = {
 
 /**
  * Hook to get the referenced DOM node's size
+ *
+ * @param elementRef - The element we want to size
+ * @returns the element's size
  */
 export function useElementSize(elementRef: RefObject<HTMLElement>): Size {
   const [size, setSize] = useState<Size>({
