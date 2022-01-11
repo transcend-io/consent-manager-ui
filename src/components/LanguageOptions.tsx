@@ -57,7 +57,7 @@ export default function LanguageOptions({
   /**
    * Handler for language button click - selects language
    *
-   * @param language
+   * @param language - The language selected
    */
   function handleClick(language: LanguageKey): void {
     handleChangeLanguage(language);
