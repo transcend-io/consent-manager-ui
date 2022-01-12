@@ -563,7 +563,7 @@ __metadata:
     "@emotion/css": ^11.1.3
     "@transcend-io/airgap.js-types": ^6.8.3
     "@transcend-io/internationalization": ^1.0.0
-    "@transcend-io/logger": ^1.0.7
+    "@transcend-io/logger": ^1.0.8
     "@types/chai": ^4
     "@types/mocha": ^9.0.0
     "@types/node": ^16.11.9
@@ -600,10 +600,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@transcend-io/logger@npm:^1.0.7":
-  version: 1.0.7
-  resolution: "@transcend-io/logger@npm:1.0.7"
-  checksum: 2a4a1a3e112f9cac61370812fe05ed9d92431926a27b4b968f141e8a6de54581efb4cc91dcf93d48cc790b8c7c68b7c21708ac058f88feab67bdbe94df971802
+"@transcend-io/logger@npm:^1.0.8":
+  version: 1.0.8
+  resolution: "@transcend-io/logger@npm:1.0.8"
+  checksum: f12ab3945622aaaa5ed9bbd88f2d5c9b168d756f21b51bc59639443d523a10e9984897741a8d9081a950e69c1f67b3dd3e76854dab57f6799ba799666fb8f4b1
   languageName: node
   linkType: hard
 
