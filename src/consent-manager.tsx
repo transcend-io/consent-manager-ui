@@ -64,7 +64,7 @@ export const injectConsentManagerApp = (
       );
 
       // Append UI container to doc to activate style.sheet
-      document.documentElement.append(consentManager);
+      (document.documentElement || document).append(consentManager);
 
       // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
       style
