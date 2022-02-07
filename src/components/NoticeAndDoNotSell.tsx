@@ -6,6 +6,7 @@ import { useIntl } from 'react-intl';
 // global
 import { messages, noticeAndDoNotSellMessages } from '../messages';
 import type { HandleSetViewState } from '../types';
+import { useAirgap } from '../hooks';
 
 // local
 import Button from './Button';
@@ -14,7 +15,7 @@ import Title from './Title';
 
 // eslint-disable-next-line jsdoc/require-returns, jsdoc/require-param
 /**
- * Component showing "accept all" interface
+ * Component showing 'okay' button for "do not sell my personal information" interface
  */
 export default function NoticeAndDoNotSell({
   handleSetViewState,
@@ -22,7 +23,17 @@ export default function NoticeAndDoNotSell({
   /** Function to change viewState */
   handleSetViewState: HandleSetViewState;
 }): JSX.Element {
+  const { airgap } = useAirgap();
   const { formatMessage } = useIntl();
+
+  const handleConfirm: JSX.MouseEventHandler<HTMLButtonElement> | undefined = (
+    event: JSX.TargetedEvent<HTMLButtonElement, MouseEvent>,
+  ): void => {
+    event.preventDefault();
+    // Confirm current consent
+    airgap.setConsent(event, airgap.getConsent().purposes);
+    handleSetViewState('close');
+  };
 
   return (
     <ColumnContent>
@@ -31,7 +42,7 @@ export default function NoticeAndDoNotSell({
         primaryText={formatMessage(
           noticeAndDoNotSellMessages.confirmButtonPrimary,
         )}
-        handleClick={() => handleSetViewState('close')}
+        handleClick={handleConfirm}
       />
     </ColumnContent>
   );
