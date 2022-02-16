@@ -1,5 +1,4 @@
 // external
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { h, JSX } from 'preact';
 
 // main
@@ -22,7 +21,6 @@ import Modal from './Modal';
 import NoticeAndDoNotSell from './NoticeAndDoNotSell';
 import QuickOptions from './QuickOptions';
 
-// eslint-disable-next-line jsdoc/require-returns, jsdoc/require-param
 /**
  * Presents view states (collapsed, GDPR-mode, CCPA-mode etc)
  */

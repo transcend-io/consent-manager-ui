@@ -1,6 +1,5 @@
 // main
-import { LanguageKey } from '@transcend-io/internationalization';
-import type { Translations } from '@transcend-io/internationalization';
+import { Translations, LanguageKey } from '@transcend-io/internationalization';
 
 // local
 import AfZz_TRANSLATIONS from './af-ZA.json';

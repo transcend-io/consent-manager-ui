@@ -25,7 +25,7 @@
     /* Module Resolution Options */
     "moduleResolution": "node",
     "baseUrl": ".",
-    "types": ["node", "mocha"],
+    "types": ["node", "jest"],
     "typeRoots": ["@types", "node_modules/@types"],
     "esModuleInterop": true,
     "resolveJsonModule": true,

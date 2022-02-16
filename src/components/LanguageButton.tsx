@@ -1,5 +1,4 @@
 // external
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { h, JSX } from 'preact';
 
 // main
@@ -9,7 +8,6 @@ import { ViewState } from '@transcend-io/airgap.js-types';
 import { useConfig, useEmotion } from '../hooks';
 import type { HandleSetViewState } from '../types';
 
-// eslint-disable-next-line jsdoc/require-returns, jsdoc/require-param
 /**
  * The button to change languages
  */

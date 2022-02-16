@@ -1,5 +1,4 @@
 // external
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { h, JSX } from 'preact';
 import { useIntl } from 'react-intl';
 
@@ -14,7 +13,6 @@ import type { HandleSetViewState } from '../types';
 // local
 import MenuItem from './MenuItem';
 
-// eslint-disable-next-line jsdoc/require-returns, jsdoc/require-param
 /**
  * Renders the menu for the bottom of the banner
  */

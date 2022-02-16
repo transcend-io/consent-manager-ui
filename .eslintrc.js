@@ -33,13 +33,13 @@ module.exports = {
     'plugin:@typescript-eslint/recommended',
     'plugin:jsdoc/recommended',
     'plugin:eslint-comments/recommended',
+    'preact',
   ],
   env: {
     browser: true,
     node: true,
     jest: true,
     es6: true,
-    mocha: true,
   },
   plugins: ['import', '@typescript-eslint', 'jsdoc'],
   parserOptions: {
@@ -253,6 +253,20 @@ module.exports = {
     '@typescript-eslint/ban-types': ['error'],
     '@typescript-eslint/no-explicit-any': ['error'],
   },
+  overrides: [
+    /**
+     * TSX files are all props and state so jsdoc
+     * params and returns are often redundant
+     */
+    {
+      files: ['**/*.tsx'],
+      rules: {
+        'jsdoc/require-returns': 0,
+        'jsdoc/require-param': 0,
+        'no-empty-pattern': 0,
+      },
+    },
+  ],
   settings: {
     /** Allow for typescript alias resolution */
     'import/resolver': {

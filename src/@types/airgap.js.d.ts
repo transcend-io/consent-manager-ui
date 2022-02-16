@@ -25,7 +25,9 @@ declare global {
      * https://developer.mozilla.org/en-US/docs/Web/API/Window/requestIdleCallback
      */
     requestIdleCallback: (
+      // eslint-disable-next-line no-undef
       callback: IdleRequestCallback,
+      // eslint-disable-next-line no-undef
       options?: IdleRequestOptions,
     ) => number;
     /**
