@@ -1,11 +1,9 @@
 // external
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { h, JSX } from 'preact';
 
 // global
 import { useConfig, useEmotion } from '../hooks';
 
-// eslint-disable-next-line jsdoc/require-returns, jsdoc/require-param
 /**
  * Button with click handler to match Airgap's requirement of having a UIEvent
  */

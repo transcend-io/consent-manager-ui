@@ -1,6 +1,5 @@
 // external
 import createEmotion, { Emotion } from '@emotion/css/create-instance';
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { ComponentChildren, createContext, h, JSX } from 'preact';
 import { useContext, useEffect, useRef, useState } from 'preact/hooks';
 

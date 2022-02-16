@@ -1,5 +1,4 @@
 // external
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { h, JSX } from 'preact';
 import { useIntl } from 'react-intl';
 
@@ -10,7 +9,6 @@ import type { AirgapAPI } from '@transcend-io/airgap.js-types';
 import { useAirgap, useConfig, useEmotion, useRegime } from '../hooks';
 import { completeOptionsMessages } from '../messages';
 
-// eslint-disable-next-line jsdoc/require-returns, jsdoc/require-param
 /**
  * Helper to get the current sale of info setting
  */
@@ -29,7 +27,6 @@ type NavigatorWithGPC = Navigator & {
   globalPrivacyControl: boolean;
 };
 
-// eslint-disable-next-line jsdoc/require-returns
 /**
  * Indicator that the Global Privacy Control signal is controlling this setting
  */

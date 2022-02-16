@@ -1,1 +1,1 @@
-ignores: ["@types/node", "@yarnpkg/sdks", "depcheck", "prettier", "@yarnpkg/pnpify"]
+ignores: ["@types/node", "@yarnpkg/sdks", "depcheck", "prettier", "@yarnpkg/pnpify", "eslint-plugin-compat", "eslint-plugin-jest", "eslint-plugin-react", "eslint-plugin-react-hooks"]

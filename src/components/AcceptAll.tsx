@@ -1,5 +1,4 @@
 // external
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { h, JSX } from 'preact';
 import { useIntl } from 'react-intl';
 

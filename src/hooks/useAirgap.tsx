@@ -1,5 +1,4 @@
 // external
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { ComponentChildren, createContext, h, JSX } from 'preact';
 import { StateUpdater, useContext, useState } from 'preact/hooks';
 
