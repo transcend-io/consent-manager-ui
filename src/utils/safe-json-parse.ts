@@ -13,7 +13,7 @@ export const jsonParseSafe = (
   json: string,
   fallback: () => unknown = () => ({}),
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  reviver?: (key: string, value: any) => any,
+  reviver: ((key: string, value: any) => any) | undefined = undefined,
 ): ReturnType<typeof JSON.parse> => {
   try {
     return JSON.parse(json, reviver);
