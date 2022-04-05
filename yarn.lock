@@ -1258,7 +1258,7 @@ __metadata:
     "@emotion/css": ^11.7.1
     "@transcend-io/airgap.js-types": ^6.8.17
     "@transcend-io/internationalization": ^1.0.1
-    "@transcend-io/logger": ^1.0.12
+    "@transcend-io/logger": ^1.0.13
     "@types/node": ^17.0.21
     "@typescript-eslint/eslint-plugin": ^5.12.1
     "@typescript-eslint/parser": ^5.12.1
@@ -1297,12 +1297,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@transcend-io/logger@npm:^1.0.12":
-  version: 1.0.12
-  resolution: "@transcend-io/logger@npm:1.0.12"
+"@transcend-io/logger@npm:^1.0.13":
+  version: 1.0.13
+  resolution: "@transcend-io/logger@npm:1.0.13"
   dependencies:
     "@transcend-io/airgap.js-types": ^6.8.17
-  checksum: ac2b9bb6f35286cc8d466b56ffc1cc3e11efe73b204333866710bb92f85506312171c2d914ab6f1c8d3c499f3dded9f0183ac8057ef245f56362f6ac1608ad97
+  checksum: cee595cc28df34bdc1352e4ff13dc5ac5240376d771447084b8bff7f0fe5d98b9b02ab76036d706cdf74aa687e5b76592d2a85c17fd3a5e17fb948a0f7dfd9a4
   languageName: node
   linkType: hard
 
