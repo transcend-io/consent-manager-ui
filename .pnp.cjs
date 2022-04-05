@@ -58,7 +58,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["eslint-plugin-react", "virtual:c76842a5689228a0ce1b65e064c1f5e0d5b61e442d08b6527a3b1f100ca1f2105e58f5f1435c5a59df3cce3338560737838d99dae36d25b47d20aa50c89d0539#npm:7.29.2"],\
             ["eslint-plugin-react-hooks", "virtual:c76842a5689228a0ce1b65e064c1f5e0d5b61e442d08b6527a3b1f100ca1f2105e58f5f1435c5a59df3cce3338560737838d99dae36d25b47d20aa50c89d0539#npm:4.3.0"],\
             ["jest", "virtual:c76842a5689228a0ce1b65e064c1f5e0d5b61e442d08b6527a3b1f100ca1f2105e58f5f1435c5a59df3cce3338560737838d99dae36d25b47d20aa50c89d0539#npm:27.5.1"],\
-            ["preact", "npm:10.6.6"],\
+            ["preact", "npm:10.5.14"],\
             ["prettier", "npm:2.5.1"],\
             ["react-intl", "virtual:c76842a5689228a0ce1b65e064c1f5e0d5b61e442d08b6527a3b1f100ca1f2105e58f5f1435c5a59df3cce3338560737838d99dae36d25b47d20aa50c89d0539#npm:5.20.6"],\
             ["ts-node", "virtual:c76842a5689228a0ce1b65e064c1f5e0d5b61e442d08b6527a3b1f100ca1f2105e58f5f1435c5a59df3cce3338560737838d99dae36d25b47d20aa50c89d0539#npm:10.5.0"],\
@@ -1865,7 +1865,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["eslint-plugin-react", "virtual:c76842a5689228a0ce1b65e064c1f5e0d5b61e442d08b6527a3b1f100ca1f2105e58f5f1435c5a59df3cce3338560737838d99dae36d25b47d20aa50c89d0539#npm:7.29.2"],\
             ["eslint-plugin-react-hooks", "virtual:c76842a5689228a0ce1b65e064c1f5e0d5b61e442d08b6527a3b1f100ca1f2105e58f5f1435c5a59df3cce3338560737838d99dae36d25b47d20aa50c89d0539#npm:4.3.0"],\
             ["jest", "virtual:c76842a5689228a0ce1b65e064c1f5e0d5b61e442d08b6527a3b1f100ca1f2105e58f5f1435c5a59df3cce3338560737838d99dae36d25b47d20aa50c89d0539#npm:27.5.1"],\
-            ["preact", "npm:10.6.6"],\
+            ["preact", "npm:10.5.14"],\
             ["prettier", "npm:2.5.1"],\
             ["react-intl", "virtual:c76842a5689228a0ce1b65e064c1f5e0d5b61e442d08b6527a3b1f100ca1f2105e58f5f1435c5a59df3cce3338560737838d99dae36d25b47d20aa50c89d0539#npm:5.20.6"],\
             ["ts-node", "virtual:c76842a5689228a0ce1b65e064c1f5e0d5b61e442d08b6527a3b1f100ca1f2105e58f5f1435c5a59df3cce3338560737838d99dae36d25b47d20aa50c89d0539#npm:10.5.0"],\
@@ -7915,10 +7915,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]\
       ]],\
       ["preact", [\
-        ["npm:10.6.6", {\
-          "packageLocation": "./.yarn/cache/preact-npm-10.6.6-69f6e36f09-d6a9581b22.zip/node_modules/preact/",\
+        ["npm:10.5.14", {\
+          "packageLocation": "./.yarn/cache/preact-npm-10.5.14-8f6c592e21-d936f83a2a.zip/node_modules/preact/",\
           "packageDependencies": [\
-            ["preact", "npm:10.6.6"]\
+            ["preact", "npm:10.5.14"]\
           ],\
           "linkType": "HARD"\
         }]\
