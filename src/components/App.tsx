@@ -1,6 +1,6 @@
 // external
 import { h, JSX } from 'preact';
-import { IntlProvider } from 'react-intl';
+import { IntlProvider as _IntlProvider } from 'react-intl';
 
 // main
 import {
@@ -25,6 +25,11 @@ import { CONSENT_MANAGER_TRANSLATIONS } from '../translations';
 
 // local
 import Main from './Main';
+
+// TODO: https://transcend.height.app/T-13483
+// Fix IntlProvider JSX types
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const IntlProvider = _IntlProvider as any;
 
 /**
  * Top layer concerned with data, not presentation
