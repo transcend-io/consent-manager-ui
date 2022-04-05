@@ -36,7 +36,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@emotion/css", "virtual:c76842a5689228a0ce1b65e064c1f5e0d5b61e442d08b6527a3b1f100ca1f2105e58f5f1435c5a59df3cce3338560737838d99dae36d25b47d20aa50c89d0539#npm:11.7.1"],\
             ["@transcend-io/airgap.js-types", "npm:6.8.17"],\
             ["@transcend-io/internationalization", "npm:1.0.1"],\
-            ["@transcend-io/logger", "npm:1.0.12"],\
+            ["@transcend-io/logger", "npm:1.0.13"],\
             ["@types/node", "npm:17.0.21"],\
             ["@typescript-eslint/eslint-plugin", "virtual:c76842a5689228a0ce1b65e064c1f5e0d5b61e442d08b6527a3b1f100ca1f2105e58f5f1435c5a59df3cce3338560737838d99dae36d25b47d20aa50c89d0539#npm:5.12.1"],\
             ["@typescript-eslint/parser", "virtual:c76842a5689228a0ce1b65e064c1f5e0d5b61e442d08b6527a3b1f100ca1f2105e58f5f1435c5a59df3cce3338560737838d99dae36d25b47d20aa50c89d0539#npm:5.12.1"],\
@@ -1843,7 +1843,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@emotion/css", "virtual:c76842a5689228a0ce1b65e064c1f5e0d5b61e442d08b6527a3b1f100ca1f2105e58f5f1435c5a59df3cce3338560737838d99dae36d25b47d20aa50c89d0539#npm:11.7.1"],\
             ["@transcend-io/airgap.js-types", "npm:6.8.17"],\
             ["@transcend-io/internationalization", "npm:1.0.1"],\
-            ["@transcend-io/logger", "npm:1.0.12"],\
+            ["@transcend-io/logger", "npm:1.0.13"],\
             ["@types/node", "npm:17.0.21"],\
             ["@typescript-eslint/eslint-plugin", "virtual:c76842a5689228a0ce1b65e064c1f5e0d5b61e442d08b6527a3b1f100ca1f2105e58f5f1435c5a59df3cce3338560737838d99dae36d25b47d20aa50c89d0539#npm:5.12.1"],\
             ["@typescript-eslint/parser", "virtual:c76842a5689228a0ce1b65e064c1f5e0d5b61e442d08b6527a3b1f100ca1f2105e58f5f1435c5a59df3cce3338560737838d99dae36d25b47d20aa50c89d0539#npm:5.12.1"],\
@@ -1885,10 +1885,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]\
       ]],\
       ["@transcend-io/logger", [\
-        ["npm:1.0.12", {\
-          "packageLocation": "./.yarn/cache/@transcend-io-logger-npm-1.0.12-547f0edfd8-ac2b9bb6f3.zip/node_modules/@transcend-io/logger/",\
+        ["npm:1.0.13", {\
+          "packageLocation": "./.yarn/cache/@transcend-io-logger-npm-1.0.13-aa62a0f2d6-cee595cc28.zip/node_modules/@transcend-io/logger/",\
           "packageDependencies": [\
-            ["@transcend-io/logger", "npm:1.0.12"],\
+            ["@transcend-io/logger", "npm:1.0.13"],\
             ["@transcend-io/airgap.js-types", "npm:6.8.17"]\
           ],\
           "linkType": "HARD"\
