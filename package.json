@@ -28,8 +28,8 @@
     "@transcend-io/internationalization": "^1.0.1",
     "@transcend-io/logger": "^1.0.13",
     "esbuild-plugin-alias": "^0.2.1",
-    "preact": "^10.6.6",
-    "react-intl": "^5.24.6"
+    "preact": "10.5.14",
+    "react-intl": "5.20.6"
   },
   "scripts": {
     "update:sdks": "yarn set version from sources && yarn sdks base",
