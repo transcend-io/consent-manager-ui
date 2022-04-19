@@ -1,5 +1,5 @@
 // external
-import { useCallback } from 'preact/hooks';
+import { useCallback, useState } from 'preact/hooks';
 
 // main
 import {
@@ -11,9 +11,6 @@ import {
 // global
 import { logger } from '../logger';
 import type { HandleSetViewState, RequestedViewState } from '../types';
-
-// local
-import { useStickyState } from './useStickyState';
 
 /**
  * Helper to determine whether a view state is closed
@@ -49,24 +46,16 @@ export function useViewState({
   viewState: ViewState;
   /** A handler for the view state */
   handleSetViewState: HandleSetViewState;
-  /** A flag for whether the consent manager has been dismissed */
-  wasDismissed: boolean;
 } {
-  const [state, setState] = useStickyState<{
+  const [state, setState] = useState<{
     /** The current view state */
     current: ViewState;
     /** The previous view state - used for going back */
     previous: ViewState | null;
-    /** A flag for whether the consent manager has been dismissed (used by autoShowConsentManager) */
-    wasDismissed: boolean;
-  }>(
-    {
-      current: ViewState.Hidden,
-      previous: null,
-      wasDismissed: false,
-    },
-    'tcmViewState',
-  );
+  }>({
+    current: ViewState.Hidden,
+    previous: null,
+  });
 
   /**
    * When the viewState is set, update the view state and track previous state + whether the modal has (ever) been dismissed
@@ -82,7 +71,6 @@ export function useViewState({
             setState({
               current: state.previous,
               previous: state.current,
-              wasDismissed: state.wasDismissed,
             });
           } else {
             logger.warn('Tried to go back when there is no previous state');
@@ -94,7 +82,6 @@ export function useViewState({
           setState({
             current: initialViewState,
             previous: state.current,
-            wasDismissed: state.wasDismissed,
           });
           break;
 
@@ -103,7 +90,6 @@ export function useViewState({
           setState({
             current: dismissedViewState,
             previous: state.current,
-            wasDismissed: true,
           });
           break;
 
@@ -112,11 +98,6 @@ export function useViewState({
           setState({
             current: requestedViewState,
             previous: state.current,
-            wasDismissed:
-              state.wasDismissed ||
-              Object.values<ViewState>(DismissedViewState).includes(
-                requestedViewState,
-              ),
           });
           break;
       }
@@ -127,6 +108,5 @@ export function useViewState({
   return {
     viewState: state.current,
     handleSetViewState,
-    wasDismissed: state.wasDismissed,
   };
 }

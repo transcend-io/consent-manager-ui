@@ -52,10 +52,11 @@ export default function App({
   const { initialViewStateByPrivacyRegime, dismissedViewState } = config;
   const initialViewState: ViewState =
     initialViewStateByPrivacyRegime[privacyRegime];
-  const { viewState, handleSetViewState, wasDismissed } = useViewState({
+  const { viewState, handleSetViewState } = useViewState({
     initialViewState,
     dismissedViewState,
   });
+  const confirmed = !!window?.airgap?.getConsent?.()?.confirmed;
 
   // Set whether we're in opt-in consent mode or give-notice mode
   const mode =
@@ -69,7 +70,7 @@ export default function App({
       hideConsentManager: () => handleSetViewState('close'),
       toggleConsentManager: () =>
         handleSetViewState(viewStateIsClosed(viewState) ? 'open' : 'close'),
-      autoShowConsentManager: () => !wasDismissed && handleSetViewState('open'),
+      autoShowConsentManager: () => !confirmed && handleSetViewState('open'),
     };
 
     // Trigger event handler for this event
