@@ -56,7 +56,7 @@ export default function App({
     initialViewState,
     dismissedViewState,
   });
-  const confirmed = !!window?.airgap?.getConsent?.()?.confirmed;
+  const { confirmed } = airgap.getConsent();
 
   // Set whether we're in opt-in consent mode or give-notice mode
   const mode =
