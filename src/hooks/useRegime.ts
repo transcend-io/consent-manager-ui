@@ -1,5 +1,5 @@
 // external
-import { useEffect } from 'preact/hooks';
+import { useEffect, useState } from 'preact/hooks';
 
 // main
 import {
@@ -8,9 +8,6 @@ import {
   PrivacyRegimeEnum,
 } from '@transcend-io/airgap.js-types';
 
-// local
-import { useStickyState } from './useStickyState';
-
 /**
  * Set the privacy regime to use
  *
@@ -18,9 +15,8 @@ import { useStickyState } from './useStickyState';
  * @returns the PrivacyRegime or null if there is no applicable regime
  */
 export function useRegime(airgap: AirgapAPI): PrivacyRegime {
-  const [privacyRegime, setPrivacyRegime] = useStickyState<PrivacyRegimeEnum>(
+  const [privacyRegime, setPrivacyRegime] = useState<PrivacyRegimeEnum>(
     PrivacyRegimeEnum.Unknown,
-    'tcmPrivacyRegime',
   );
 
   useEffect(() => {
