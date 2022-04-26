@@ -39,7 +39,7 @@ export const quickOptionsMessages = defineMessages('ui.src.quickOptions', {
     defaultMessage: 'Advertising and Analytics',
   },
   advertisingButtonSecondary: {
-    defaultMessage: 'helps us earn money',
+    defaultMessage: 'helps us personalize ads',
   },
 });
 
