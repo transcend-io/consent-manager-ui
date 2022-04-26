@@ -78,7 +78,7 @@
   "ui.src.noticeAndDoNotSell.doNotSellLabel": "Opt out of the sale of your personal information",
   "ui.src.noticeAndDoNotSell.doNotSellPrimary": "Do Not Sell My Personal Information",
   "ui.src.quickOptions.advertisingButtonPrimary": "Advertising and Analytics",
-  "ui.src.quickOptions.advertisingButtonSecondary": "helps us personalize ads",
+  "ui.src.quickOptions.advertisingButtonSecondary": "personalize ads",
   "ui.src.quickOptions.analyticsButtonPrimary": "Analytics",
   "ui.src.quickOptions.analyticsButtonSecondary": "helps us improve",
   "ui.src.quickOptions.essentialsButtonPrimary": "Only Essentials",
