@@ -10,6 +10,7 @@ import type {
   AirgapAPI,
   ConsentManagerAPI,
   TranscendAPI,
+  UserPrivacySignal,
 } from '@transcend-io/airgap.js-types';
 
 // local
@@ -26,6 +27,7 @@ const view = self as any;
 export const transcendInit = view.transcend;
 /** Pre-setup reference to window.airgap */
 export const airgapInit = view.airgap;
+export const privacySignals: Set<UserPrivacySignal> = new Set();
 
 /** transcend.ready() queue */
 let readyQueue = transcendInit?.readyQueue;
@@ -66,13 +68,17 @@ export const airgapPromise = new Promise<AirgapAPI>((resolve) => {
 export const init = async (): Promise<void> => {
   try {
     if (LOG_ENABLED) {
-      logger.tag('[Transcend]', () => {
+      logger.tag('Transcend', () => {
         logger.groupCollapsed('Initializing Consent Manager UI');
       });
     }
 
     // Wait for airgap to be ready
     const airgap = await airgapPromise;
+    const signals = await airgap.getPrivacySignals();
+    signals.forEach((signal) => {
+      privacySignals.add(signal);
+    });
 
     // Inject the consent manager app and pull out the API methods
     const consentManagerAPI: ConsentManagerAPI =
@@ -107,7 +113,7 @@ export const init = async (): Promise<void> => {
     }
 
     if (LOG_ENABLED) {
-      logger.tag('[Transcend]', () => {
+      logger.tag('Transcend', () => {
         logger.log('Consent Manager UI ready');
       });
 

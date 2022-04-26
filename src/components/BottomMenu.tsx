@@ -6,7 +6,7 @@ import { useIntl } from 'react-intl';
 import { ViewState } from '@transcend-io/airgap.js-types';
 
 // global
-import { useConfig, useEmotion } from '../hooks';
+import { useConfig, useEmotion, useAirgap } from '../hooks';
 import { bottomMenuMessages, noticeAndDoNotSellMessages } from '../messages';
 import type { HandleSetViewState } from '../types';
 
@@ -28,6 +28,7 @@ export default function BottomMenu({
   /** Function to change viewState */
   handleSetViewState: HandleSetViewState;
 }): JSX.Element {
+  const { airgap } = useAirgap();
   const { config } = useConfig();
   const { formatMessage } = useIntl();
   const { css, cx } = useEmotion();
@@ -82,7 +83,10 @@ export default function BottomMenu({
           <MenuItem
             label={formatMessage(noticeAndDoNotSellMessages.doNotSellLabel)}
             type="button"
-            onClick={() => handleSetViewState(ViewState.CompleteOptions)}
+            onClick={(event) => {
+              airgap.setConsent(event, { SaleOfInfo: false });
+              handleSetViewState(ViewState.Closed);
+            }}
           >
             {formatMessage(noticeAndDoNotSellMessages.doNotSellPrimary)}
           </MenuItem>

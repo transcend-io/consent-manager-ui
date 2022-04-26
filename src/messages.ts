@@ -115,9 +115,5 @@ export const completeOptionsMessages = defineMessages(
     toggleEnable: {
       defaultMessage: 'Click to enable collection of data for this purpose',
     },
-    globalPrivacySignal: {
-      defaultMessage:
-        "Set automatically by your browser's Global Privacy Control signal.",
-    },
   },
 );
