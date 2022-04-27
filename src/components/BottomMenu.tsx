@@ -83,8 +83,8 @@ export default function BottomMenu({
           <MenuItem
             label={formatMessage(noticeAndDoNotSellMessages.doNotSellLabel)}
             type="button"
-            onClick={(event) => {
-              airgap.setConsent(event, { SaleOfInfo: false });
+            onClick={async (event) => {
+              await airgap.setConsent(event, { SaleOfInfo: false });
               handleSetViewState(ViewState.CompleteOptions);
             }}
           >
