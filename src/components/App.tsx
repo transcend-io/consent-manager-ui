@@ -16,17 +16,15 @@ import {
   ConfigProvider,
   EmotionProvider,
   useLanguage,
-  useRegime,
   useViewState,
   viewStateIsClosed,
 } from '../hooks';
-import { apiEventName, LOG_LEVELS } from '../settings';
+import { apiEventName } from '../settings';
 import { CONSENT_MANAGER_TRANSLATIONS } from '../translations';
 
 // local
 import Main from './Main';
-import { logger } from '../logger';
-import { privacySignals } from '../init';
+import { getPrimaryRegime } from '../regimes';
 
 // TODO: https://transcend.height.app/T-13483
 // Fix IntlProvider JSX types
@@ -46,7 +44,7 @@ export default function App({
   appContainer: HTMLElement;
 }): JSX.Element {
   // Hooks
-  const privacyRegime = useRegime(airgap);
+  const privacyRegime = getPrimaryRegime(airgap.getRegimes());
   const { language, handleChangeLanguage } = useLanguage();
 
   // Config loader + dependent hook
@@ -59,26 +57,6 @@ export default function App({
     dismissedViewState,
   });
   const { confirmed } = airgap.getConsent();
-  const isGPCEnabled = (): boolean => {
-    const result = privacySignals.has('GPC');
-    if (result && LOG_LEVELS.has('warn')) {
-      // Using warn here to signal our GPC support via console messages since the physical UI is gone
-      logger.warn(
-        'Consent auto-prompt suppressed as user agent has Global Privacy Control enabled',
-      );
-    }
-    return result;
-  };
-  const isDNTEnabled = (): boolean => {
-    const result = privacySignals.has('DNT');
-    if (result && LOG_LEVELS.has('warn')) {
-      // Using warn here to signal our GPC support via console messages since the physical UI is gone
-      logger.warn(
-        'Consent auto-prompt suppressed as user agent has Do-Not-Track enabled',
-      );
-    }
-    return result;
-  };
 
   // Set whether we're in opt-in consent mode or give-notice mode
   const mode =
@@ -92,11 +70,7 @@ export default function App({
       hideConsentManager: () => handleSetViewState('close'),
       toggleConsentManager: () =>
         handleSetViewState(viewStateIsClosed(viewState) ? 'open' : 'close'),
-      autoShowConsentManager: () =>
-        !confirmed &&
-        !isGPCEnabled() &&
-        !isDNTEnabled() &&
-        handleSetViewState('open'),
+      autoShowConsentManager: () => !confirmed && handleSetViewState('open'),
     };
 
     // Trigger event handler for this event

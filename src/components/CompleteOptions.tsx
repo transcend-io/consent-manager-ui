@@ -4,24 +4,22 @@ import { useState } from 'preact/hooks';
 import { useIntl } from 'react-intl';
 
 // main
-import type { AirgapAPI, PrivacyRegime } from '@transcend-io/airgap.js-types';
+import type { AirgapAPI } from '@transcend-io/airgap.js-types';
 
 // global
-import { useAirgap, useEmotion, useRegime } from '../hooks';
+import { useAirgap, useEmotion } from '../hooks';
 import { messages } from '../messages';
 import type { ConsentSelection, HandleSetViewState } from '../types';
 
 // local
 import Form from './Form';
 import Title from './Title';
+import { getPrimaryRegime } from '../regimes';
 
 /**
  * Helper to get the tracking purposes for rendering
  */
-function getConsentSelections(
-  airgap: AirgapAPI,
-  regime: PrivacyRegime,
-): ConsentSelection {
+function getConsentSelections(airgap: AirgapAPI): ConsentSelection {
   // Get the current consent state of Airgap from storage
   const consent = airgap.getConsent();
 
@@ -30,8 +28,14 @@ function getConsentSelections(
 
   // Get the purposes for processing configured for this organization.
   const purposeTypes = airgap.getPurposeTypes();
+  const primaryRegime = getPrimaryRegime(airgap.getRegimes());
 
-  if (['GDPR', 'LGPD'].includes(regime)) {
+  if (primaryRegime === 'CPRA') {
+    // Notice + SaleOfInfo-only UI for CPRA
+    const purpose = 'SaleOfInfo';
+    initialConsentSelections[purpose] = !!consent.purposes[purpose];
+  } else {
+    // By default reflect airgap.getPurposeTypes API
     Object.keys(purposeTypes).forEach((purpose) => {
       const { configurable, showInConsentManager } = purposeTypes[purpose];
 
@@ -40,9 +44,6 @@ function getConsentSelections(
         initialConsentSelections[purpose] = !!consent.purposes[purpose];
       }
     });
-  } else if (regime === 'CPRA') {
-    const purpose = 'SaleOfInfo';
-    initialConsentSelections[purpose] = !!consent.purposes[purpose];
   }
 
   return initialConsentSelections;
@@ -60,10 +61,9 @@ export default function CompleteOptions({
   const { formatMessage } = useIntl();
   const { css, cx } = useEmotion();
   const { airgap } = useAirgap();
-  const regime = useRegime(airgap);
 
   // Get the tracking purposes from Airgap for display
-  const initialConsentSelections = getConsentSelections(airgap, regime);
+  const initialConsentSelections = getConsentSelections(airgap);
 
   // Set state on the currently selected toggles
   const [consentSelections, setConsentSelections] = useState(

@@ -7,7 +7,7 @@
     "url": "https://github.com/transcend-io/consent-manager-ui.git"
   },
   "homepage": "https://github.com/transcend-io/consent-manager-ui",
-  "version": "1.0.27",
+  "version": "1.0.30",
   "license": "MIT",
   "main": "src/index",
   "files": [
@@ -24,7 +24,7 @@
   ],
   "dependencies": {
     "@emotion/css": "^11.7.1",
-    "@transcend-io/airgap.js-types": "^6.8.17",
+    "@transcend-io/airgap.js-types": "^7.0.0",
     "@transcend-io/internationalization": "^1.0.1",
     "@transcend-io/logger": "^1.0.13",
     "esbuild-plugin-alias": "^0.2.1",
