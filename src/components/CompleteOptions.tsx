@@ -14,6 +14,7 @@ import type { ConsentSelection, HandleSetViewState } from '../types';
 // local
 import Form from './Form';
 import Title from './Title';
+import { getPrimaryRegime } from '../regimes';
 
 /**
  * Helper to get the tracking purposes for rendering
@@ -27,9 +28,9 @@ function getConsentSelections(airgap: AirgapAPI): ConsentSelection {
 
   // Get the purposes for processing configured for this organization.
   const purposeTypes = airgap.getPurposeTypes();
-  const regimes = airgap.getRegimes();
+  const primaryRegime = getPrimaryRegime(airgap.getRegimes());
 
-  if (regimes.has('CPRA')) {
+  if (primaryRegime === 'CPRA') {
     // Notice + SaleOfInfo-only UI for CPRA
     const purpose = 'SaleOfInfo';
     initialConsentSelections[purpose] = !!consent.purposes[purpose];
