@@ -6,8 +6,9 @@ import { useIntl } from 'react-intl';
 import type { AirgapAPI } from '@transcend-io/airgap.js-types';
 
 // global
-import { useAirgap, useConfig, useEmotion, useRegime } from '../hooks';
+import { useAirgap, useConfig, useEmotion } from '../hooks';
 import { completeOptionsMessages } from '../messages';
+import { getPrimaryRegime } from '../regimes';
 
 /**
  * Helper to get the current sale of info setting
@@ -34,7 +35,7 @@ export default function GPCIndicator(): JSX.Element {
   const { css, cx } = useEmotion();
   const { formatMessage } = useIntl();
   const { airgap } = useAirgap();
-  const regime = useRegime(airgap);
+  const regime = getPrimaryRegime(airgap.getRegimes());
   const { config } = useConfig();
 
   const gpcSettingStyle = css`
