@@ -12,6 +12,7 @@ import type { ConsentSelection } from '../types';
 
 // local
 import Button from './Button';
+import GPCIndicator from './GPCIndicator';
 import Toggle from './Toggle';
 
 // Mapping of purposes to the message translation key
@@ -70,6 +71,7 @@ export default function Form({
 
   return (
     <form className={cx(formStyle)}>
+      <GPCIndicator />
       <div className={cx(togglesContainer)}>
         <Toggle
           key="Essential"
