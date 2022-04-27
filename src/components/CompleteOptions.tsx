@@ -31,7 +31,12 @@ function getConsentSelections(
   // Get the purposes for processing configured for this organization.
   const purposeTypes = airgap.getPurposeTypes();
 
-  if (['GDPR', 'LGPD'].includes(regime)) {
+  if (regime === 'CPRA') {
+    // SaleOfInfo-only UI for CPRA
+    const purpose = 'SaleOfInfo';
+    initialConsentSelections[purpose] = !!consent.purposes[purpose];
+  } else {
+    // By default reflect airgap.getPurposeTypes API
     Object.keys(purposeTypes).forEach((purpose) => {
       const { configurable, showInConsentManager } = purposeTypes[purpose];
 
@@ -40,9 +45,6 @@ function getConsentSelections(
         initialConsentSelections[purpose] = !!consent.purposes[purpose];
       }
     });
-  } else if (regime === 'CPRA') {
-    const purpose = 'SaleOfInfo';
-    initialConsentSelections[purpose] = !!consent.purposes[purpose];
   }
 
   return initialConsentSelections;
