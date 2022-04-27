@@ -51,18 +51,18 @@ function getConsentSelections(airgap: AirgapAPI): ConsentSelection {
 /**
  * The model view for "More Options" showing granular checkboxes and more info
  */
-export default async function CompleteOptions({
+export default function CompleteOptions({
   handleSetViewState,
 }: {
   /** Function to change viewState */
   handleSetViewState: HandleSetViewState;
-}): Promise<JSX.Element> {
+}): JSX.Element {
   const { formatMessage } = useIntl();
   const { css, cx } = useEmotion();
   const { airgap } = useAirgap();
 
   // Get the tracking purposes from Airgap for display
-  const initialConsentSelections = await getConsentSelections(airgap);
+  const initialConsentSelections = getConsentSelections(airgap);
 
   // Set state on the currently selected toggles
   const [consentSelections, setConsentSelections] = useState(
