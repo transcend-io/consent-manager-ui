@@ -4,10 +4,10 @@ import { useState } from 'preact/hooks';
 import { useIntl } from 'react-intl';
 
 // main
-import type { AirgapAPI, PrivacyRegime } from '@transcend-io/airgap.js-types';
+import type { AirgapAPI } from '@transcend-io/airgap.js-types';
 
 // global
-import { useAirgap, useEmotion, useRegime } from '../hooks';
+import { useAirgap, useEmotion } from '../hooks';
 import { messages } from '../messages';
 import type { ConsentSelection, HandleSetViewState } from '../types';
 
@@ -18,10 +18,7 @@ import Title from './Title';
 /**
  * Helper to get the tracking purposes for rendering
  */
-function getConsentSelections(
-  airgap: AirgapAPI,
-  regime: PrivacyRegime,
-): ConsentSelection {
+function getConsentSelections(airgap: AirgapAPI): ConsentSelection {
   // Get the current consent state of Airgap from storage
   const consent = airgap.getConsent();
 
@@ -30,9 +27,10 @@ function getConsentSelections(
 
   // Get the purposes for processing configured for this organization.
   const purposeTypes = airgap.getPurposeTypes();
+  const regimes = airgap.getRegimes();
 
-  if (regime === 'CPRA') {
-    // SaleOfInfo-only UI for CPRA
+  if (regimes.has('CPRA')) {
+    // Notice + SaleOfInfo-only UI for CPRA
     const purpose = 'SaleOfInfo';
     initialConsentSelections[purpose] = !!consent.purposes[purpose];
   } else {
@@ -53,19 +51,18 @@ function getConsentSelections(
 /**
  * The model view for "More Options" showing granular checkboxes and more info
  */
-export default function CompleteOptions({
+export default async function CompleteOptions({
   handleSetViewState,
 }: {
   /** Function to change viewState */
   handleSetViewState: HandleSetViewState;
-}): JSX.Element {
+}): Promise<JSX.Element> {
   const { formatMessage } = useIntl();
   const { css, cx } = useEmotion();
   const { airgap } = useAirgap();
-  const regime = useRegime(airgap);
 
   // Get the tracking purposes from Airgap for display
-  const initialConsentSelections = getConsentSelections(airgap, regime);
+  const initialConsentSelections = await getConsentSelections(airgap);
 
   // Set state on the currently selected toggles
   const [consentSelections, setConsentSelections] = useState(

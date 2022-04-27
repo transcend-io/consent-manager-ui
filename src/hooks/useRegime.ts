@@ -23,8 +23,8 @@ export function useRegime(airgap: AirgapAPI): PrivacyRegime {
     /**
      * Sets the privacy regime based on Airgap's detection. Prioritizes GDPR.
      */
-    async function setRegimes(): Promise<void> {
-      const regimes = await airgap.getRegimes();
+    function setRegimes(): void {
+      const regimes = airgap.getRegimes();
 
       // Making this an Object rather than an Array is a TypeScript hack to ensure we have all PrivacyRegimes included
       const regimePrecedence: Record<PrivacyRegime, number> = {
