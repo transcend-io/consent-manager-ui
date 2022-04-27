@@ -16,7 +16,6 @@ import {
   ConfigProvider,
   EmotionProvider,
   useLanguage,
-  useRegime,
   useViewState,
   viewStateIsClosed,
 } from '../hooks';
@@ -25,6 +24,7 @@ import { CONSENT_MANAGER_TRANSLATIONS } from '../translations';
 
 // local
 import Main from './Main';
+import { getPrimaryRegime } from '../regimes';
 
 // TODO: https://transcend.height.app/T-13483
 // Fix IntlProvider JSX types
@@ -44,7 +44,7 @@ export default function App({
   appContainer: HTMLElement;
 }): JSX.Element {
   // Hooks
-  const privacyRegime = useRegime(airgap);
+  const privacyRegime = getPrimaryRegime(airgap.getRegimes());
   const { language, handleChangeLanguage } = useLanguage();
 
   // Config loader + dependent hook

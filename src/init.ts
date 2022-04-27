@@ -66,7 +66,7 @@ export const airgapPromise = new Promise<AirgapAPI>((resolve) => {
 export const init = async (): Promise<void> => {
   try {
     if (LOG_ENABLED) {
-      logger.tag('[Transcend]', () => {
+      logger.tag('Transcend', () => {
         logger.groupCollapsed('Initializing Consent Manager UI');
       });
     }
@@ -107,7 +107,7 @@ export const init = async (): Promise<void> => {
     }
 
     if (LOG_ENABLED) {
-      logger.tag('[Transcend]', () => {
+      logger.tag('Transcend', () => {
         logger.log('Consent Manager UI ready');
       });
 
