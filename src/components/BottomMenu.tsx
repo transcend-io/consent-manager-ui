@@ -85,7 +85,7 @@ export default function BottomMenu({
             type="button"
             onClick={(event) => {
               airgap.setConsent(event, { SaleOfInfo: false });
-              handleSetViewState(ViewState.Closed);
+              handleSetViewState(ViewState.CompleteOptions);
             }}
           >
             {formatMessage(noticeAndDoNotSellMessages.doNotSellPrimary)}
