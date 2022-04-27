@@ -19,12 +19,14 @@ import {
   useViewState,
   viewStateIsClosed,
 } from '../hooks';
-import { apiEventName } from '../settings';
+import { apiEventName, LOG_LEVELS } from '../settings';
 import { CONSENT_MANAGER_TRANSLATIONS } from '../translations';
 
 // local
 import Main from './Main';
 import { getPrimaryRegime } from '../regimes';
+import { logger } from 'src/logger';
+import { PRIVACY_SIGNAL_NAME } from '../privacy-signals';
 
 // TODO: https://transcend.height.app/T-13483
 // Fix IntlProvider JSX types
@@ -70,7 +72,25 @@ export default function App({
       hideConsentManager: () => handleSetViewState('close'),
       toggleConsentManager: () =>
         handleSetViewState(viewStateIsClosed(viewState) ? 'open' : 'close'),
-      autoShowConsentManager: () => !confirmed && handleSetViewState('open'),
+      autoShowConsentManager: () => {
+        const privacySignals = airgap.getPrivacySignals();
+        const hasAnyPrivacySignals = privacySignals.size > 0;
+        const shouldShowNotice = !confirmed || hasAnyPrivacySignals;
+        if (!shouldShowNotice) {
+          if (hasAnyPrivacySignals && LOG_LEVELS.has('warn')) {
+            logger.warn(
+              'Tracking consent auto-prompt suppressed due to supported privacy signals:',
+              [...privacySignals].map((signal) =>
+                // expand supported privacy signals to their full names
+                signal in PRIVACY_SIGNAL_NAME
+                  ? PRIVACY_SIGNAL_NAME[signal]
+                  : signal,
+              ),
+            );
+          }
+          handleSetViewState('open');
+        }
+      },
     };
 
     // Trigger event handler for this event
