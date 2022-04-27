@@ -25,7 +25,7 @@ import { CONSENT_MANAGER_TRANSLATIONS } from '../translations';
 // local
 import Main from './Main';
 import { getPrimaryRegime } from '../regimes';
-import { logger } from 'src/logger';
+import { logger } from '../logger';
 import { PRIVACY_SIGNAL_NAME } from '../privacy-signals';
 
 // TODO: https://transcend.height.app/T-13483
@@ -74,10 +74,12 @@ export default function App({
         handleSetViewState(viewStateIsClosed(viewState) ? 'open' : 'close'),
       autoShowConsentManager: () => {
         const privacySignals = airgap.getPrivacySignals();
-        const hasAnyPrivacySignals = privacySignals.size > 0;
-        const shouldShowNotice = !confirmed || hasAnyPrivacySignals;
+        const applicablePrivacySignals =
+          privacySignals.has('DNT') ||
+          (privacySignals.has('GPC') && !airgap.getRegimes().has('GDPR'));
+        const shouldShowNotice = !confirmed || applicablePrivacySignals;
         if (!shouldShowNotice) {
-          if (hasAnyPrivacySignals && LOG_LEVELS.has('warn')) {
+          if (applicablePrivacySignals && LOG_LEVELS.has('warn')) {
             logger.warn(
               'Tracking consent auto-prompt suppressed due to supported privacy signals:',
               [...privacySignals].map((signal) =>
