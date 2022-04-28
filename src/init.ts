@@ -27,7 +27,7 @@ const view = self as any;
 export const transcendInit = view.transcend;
 /** Pre-setup reference to window.airgap */
 export const airgapInit = view.airgap;
-export const privacySignals: Set<UserPrivacySignal> = new Set();
+export const privacySignals = new Set<UserPrivacySignal>();
 
 /** transcend.ready() queue */
 let readyQueue = transcendInit?.readyQueue;
