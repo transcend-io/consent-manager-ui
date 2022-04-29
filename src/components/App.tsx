@@ -85,7 +85,7 @@ export default function App({
           }
         }
         const shouldShowNotice =
-          applicablePrivacySignals || !airgap.getConsent().confirmed;
+          !airgap.getConsent().confirmed && !applicablePrivacySignals;
         if (!shouldShowNotice) {
           if (applicablePrivacySignals && LOG_LEVELS.has('warn')) {
             logger.warn(
