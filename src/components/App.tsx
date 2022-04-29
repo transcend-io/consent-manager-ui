@@ -27,6 +27,7 @@ import Main from './Main';
 import { getPrimaryRegime } from '../regimes';
 import { logger } from '../logger';
 import { PRIVACY_SIGNAL_NAME } from '../privacy-signals';
+import { getConsentSelections } from 'src/consent-selections';
 
 // TODO: https://transcend.height.app/T-13483
 // Fix IntlProvider JSX types
@@ -74,9 +75,17 @@ export default function App({
         handleSetViewState(viewStateIsClosed(viewState) ? 'open' : 'close'),
       autoShowConsentManager: () => {
         const privacySignals = airgap.getPrivacySignals();
-        const applicablePrivacySignals =
-          privacySignals.has('DNT') ||
-          (privacySignals.has('GPC') && !airgap.getRegimes().has('GDPR'));
+        let applicablePrivacySignals = privacySignals.has('DNT');
+        // Only suppress auto-prompt with GPC if SaleOfInfo is the only displayed tracking purpose
+        if (!applicablePrivacySignals && privacySignals.has('GPC')) {
+          const consentSelections = Object.keys(getConsentSelections(airgap));
+          if (
+            consentSelections.length === 1 &&
+            consentSelections[0] === 'SaleOfInfo'
+          ) {
+            applicablePrivacySignals = true;
+          }
+        }
         const shouldShowNotice = !confirmed || applicablePrivacySignals;
         if (!shouldShowNotice) {
           if (applicablePrivacySignals && LOG_LEVELS.has('warn')) {
