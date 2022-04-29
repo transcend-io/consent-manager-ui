@@ -93,8 +93,8 @@ export default function App({
               'Tracking consent auto-prompt suppressed due to supported privacy signals:',
               [...privacySignals].map((signal) =>
                 // expand supported privacy signals to their full names
-                signal in PRIVACY_SIGNAL_NAME
-                  ? PRIVACY_SIGNAL_NAME[signal]
+                PRIVACY_SIGNAL_NAME.has(signal)
+                  ? PRIVACY_SIGNAL_NAME.get(signal)
                   : signal,
               ),
             );
