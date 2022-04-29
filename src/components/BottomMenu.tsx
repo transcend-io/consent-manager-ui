@@ -82,9 +82,7 @@ export default function BottomMenu({
           <MenuItem
             label={formatMessage(noticeAndDoNotSellMessages.doNotSellLabel)}
             type="button"
-            onClick={() => {
-              handleSetViewState(ViewState.CompleteOptions);
-            }}
+            onClick={() => handleSetViewState(ViewState.CompleteOptions)}
           >
             {formatMessage(noticeAndDoNotSellMessages.doNotSellPrimary)}
           </MenuItem>
