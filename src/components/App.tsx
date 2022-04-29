@@ -75,6 +75,7 @@ export default function App({
         const privacySignals = airgap.getPrivacySignals();
         let applicablePrivacySignals = privacySignals.has('DNT');
         // Only suppress auto-prompt with GPC if SaleOfInfo is the only displayed tracking purpose
+        // This applies to CPRA-like regimes
         if (!applicablePrivacySignals && privacySignals.has('GPC')) {
           const consentSelections = Object.keys(getConsentSelections(airgap));
           if (
