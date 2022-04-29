@@ -27,7 +27,7 @@ import Main from './Main';
 import { getPrimaryRegime } from '../regimes';
 import { logger } from '../logger';
 import { PRIVACY_SIGNAL_NAME } from '../privacy-signals';
-import { getConsentSelections } from 'src/consent-selections';
+import { getConsentSelections } from '../consent-selections';
 
 // TODO: https://transcend.height.app/T-13483
 // Fix IntlProvider JSX types
