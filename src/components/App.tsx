@@ -59,8 +59,6 @@ export default function App({
     initialViewState,
     dismissedViewState,
   });
-  const { confirmed } = airgap.getConsent();
-
   // Set whether we're in opt-in consent mode or give-notice mode
   const mode =
     initialViewState === ViewState.NoticeAndDoNotSell ? 'NOTICE' : 'CONSENT';
@@ -86,7 +84,8 @@ export default function App({
             applicablePrivacySignals = true;
           }
         }
-        const shouldShowNotice = !confirmed || applicablePrivacySignals;
+        const shouldShowNotice =
+          applicablePrivacySignals || !airgap.getConsent().confirmed;
         if (!shouldShowNotice) {
           if (applicablePrivacySignals && LOG_LEVELS.has('warn')) {
             logger.warn(
@@ -99,8 +98,9 @@ export default function App({
               ),
             );
           }
-          handleSetViewState('open');
+          return;
         }
+        handleSetViewState('open');
       },
     };
 
