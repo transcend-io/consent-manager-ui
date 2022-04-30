@@ -97,6 +97,8 @@ export default function App({
                   ? PRIVACY_SIGNAL_NAME.get(signal)
                   : signal,
               ),
+              // eslint-disable-next-line max-len
+              '\n\nSee https://docs.transcend.io/docs/consent/confirming-consent#user-privacy-signal-integration for more information.',
             );
           }
           return;
