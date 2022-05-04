@@ -19,12 +19,15 @@ import {
   useViewState,
   viewStateIsClosed,
 } from '../hooks';
-import { apiEventName } from '../settings';
+import { apiEventName, LOG_LEVELS } from '../settings';
 import { CONSENT_MANAGER_TRANSLATIONS } from '../translations';
 
 // local
 import Main from './Main';
 import { getPrimaryRegime } from '../regimes';
+import { logger } from '../logger';
+import { PRIVACY_SIGNAL_NAME } from '../privacy-signals';
+import { getConsentSelections } from '../consent-selections';
 
 // TODO: https://transcend.height.app/T-13483
 // Fix IntlProvider JSX types
@@ -56,8 +59,6 @@ export default function App({
     initialViewState,
     dismissedViewState,
   });
-  const { confirmed } = airgap.getConsent();
-
   // Set whether we're in opt-in consent mode or give-notice mode
   const mode =
     initialViewState === ViewState.NoticeAndDoNotSell ? 'NOTICE' : 'CONSENT';
@@ -70,7 +71,40 @@ export default function App({
       hideConsentManager: () => handleSetViewState('close'),
       toggleConsentManager: () =>
         handleSetViewState(viewStateIsClosed(viewState) ? 'open' : 'close'),
-      autoShowConsentManager: () => !confirmed && handleSetViewState('open'),
+      autoShowConsentManager: () => {
+        const privacySignals = airgap.getPrivacySignals();
+        let applicablePrivacySignals = privacySignals.has('DNT');
+        // Only suppress auto-prompt with GPC if SaleOfInfo is the only displayed tracking purpose
+        // This applies to CPRA-like regimes
+        if (!applicablePrivacySignals && privacySignals.has('GPC')) {
+          const consentSelections = Object.keys(getConsentSelections(airgap));
+          if (
+            consentSelections.length === 1 &&
+            consentSelections[0] === 'SaleOfInfo'
+          ) {
+            applicablePrivacySignals = true;
+          }
+        }
+        const shouldShowNotice =
+          !airgap.getConsent().confirmed && !applicablePrivacySignals;
+        if (!shouldShowNotice) {
+          if (applicablePrivacySignals && LOG_LEVELS.has('warn')) {
+            logger.warn(
+              'Tracking consent auto-prompt suppressed due to supported privacy signals:',
+              [...privacySignals].map((signal) =>
+                // expand supported privacy signals to their full names
+                PRIVACY_SIGNAL_NAME.has(signal)
+                  ? PRIVACY_SIGNAL_NAME.get(signal)
+                  : signal,
+              ),
+              // eslint-disable-next-line max-len
+              '\n\nSee https://docs.transcend.io/docs/consent/confirming-consent#user-privacy-signal-integration for more information.',
+            );
+          }
+          return;
+        }
+        handleSetViewState('open');
+      },
     };
 
     // Trigger event handler for this event

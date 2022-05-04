@@ -1239,18 +1239,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@transcend-io/airgap.js-types@npm:^6.8.17":
-  version: 6.8.17
-  resolution: "@transcend-io/airgap.js-types@npm:6.8.17"
-  dependencies:
-    "@transcend-io/type-utils": ^1.0.5
-    fp-ts: ^2.11.8
-    io-ts: ^2.2.16
-    tslib: ^2.3.1
-  checksum: 7b1f70faf9a629f3e7a1aa9d853bdfeb793d68496f71e66476b45eb81bd0611a30a0bab904dcae7778019e5ece0b8b73b609203aca9dee5c957edf1133cc00ac
-  languageName: node
-  linkType: hard
-
 "@transcend-io/airgap.js-types@npm:^7.0.0":
   version: 7.0.0
   resolution: "@transcend-io/airgap.js-types@npm:7.0.0"
@@ -1270,7 +1258,7 @@ __metadata:
     "@emotion/css": ^11.7.1
     "@transcend-io/airgap.js-types": ^7.0.0
     "@transcend-io/internationalization": ^1.0.1
-    "@transcend-io/logger": ^1.0.13
+    "@transcend-io/logger": ^1.0.14
     "@types/node": ^17.0.21
     "@typescript-eslint/eslint-plugin": ^5.12.1
     "@typescript-eslint/parser": ^5.12.1
@@ -1309,12 +1297,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@transcend-io/logger@npm:^1.0.13":
-  version: 1.0.13
-  resolution: "@transcend-io/logger@npm:1.0.13"
+"@transcend-io/logger@npm:^1.0.14":
+  version: 1.0.14
+  resolution: "@transcend-io/logger@npm:1.0.14"
   dependencies:
-    "@transcend-io/airgap.js-types": ^6.8.17
-  checksum: cee595cc28df34bdc1352e4ff13dc5ac5240376d771447084b8bff7f0fe5d98b9b02ab76036d706cdf74aa687e5b76592d2a85c17fd3a5e17fb948a0f7dfd9a4
+    "@transcend-io/airgap.js-types": ^7.0.0
+  checksum: 1e8c834426274d71f11d72574c91b4c1eb5f5137b95ed2e96bb2c17e913e571f37ad61e3d6f4df58e82bdf6273d4780343440b26708d9358a8815c11601b2e44
   languageName: node
   linkType: hard
 

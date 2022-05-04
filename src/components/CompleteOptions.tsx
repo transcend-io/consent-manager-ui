@@ -3,9 +3,6 @@ import { h, JSX } from 'preact';
 import { useState } from 'preact/hooks';
 import { useIntl } from 'react-intl';
 
-// main
-import type { AirgapAPI } from '@transcend-io/airgap.js-types';
-
 // global
 import { useAirgap, useEmotion } from '../hooks';
 import { messages } from '../messages';
@@ -14,40 +11,7 @@ import type { ConsentSelection, HandleSetViewState } from '../types';
 // local
 import Form from './Form';
 import Title from './Title';
-import { getPrimaryRegime } from '../regimes';
-
-/**
- * Helper to get the tracking purposes for rendering
- */
-function getConsentSelections(airgap: AirgapAPI): ConsentSelection {
-  // Get the current consent state of Airgap from storage
-  const consent = airgap.getConsent();
-
-  // Prepare a mapping between purposes and consent selections from local storage
-  const initialConsentSelections: ConsentSelection = {};
-
-  // Get the purposes for processing configured for this organization.
-  const purposeTypes = airgap.getPurposeTypes();
-  const primaryRegime = getPrimaryRegime(airgap.getRegimes());
-
-  if (primaryRegime === 'CPRA') {
-    // Notice + SaleOfInfo-only UI for CPRA
-    const purpose = 'SaleOfInfo';
-    initialConsentSelections[purpose] = !!consent.purposes[purpose];
-  } else {
-    // By default reflect airgap.getPurposeTypes API
-    Object.keys(purposeTypes).forEach((purpose) => {
-      const { configurable, showInConsentManager } = purposeTypes[purpose];
-
-      if (showInConsentManager && configurable) {
-        // For purposes that you can opt in/out of, prepare toggles
-        initialConsentSelections[purpose] = !!consent.purposes[purpose];
-      }
-    });
-  }
-
-  return initialConsentSelections;
-}
+import { getConsentSelections } from '../consent-selections';
 
 /**
  * The model view for "More Options" showing granular checkboxes and more info
