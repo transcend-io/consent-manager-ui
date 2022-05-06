@@ -34,6 +34,8 @@ import { getConsentSelections } from '../consent-selections';
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const IntlProvider = _IntlProvider as any;
 
+let promptSuppressionNoticeShown = false;
+
 /**
  * Top layer concerned with data, not presentation
  */
@@ -88,7 +90,11 @@ export default function App({
         const shouldShowNotice =
           !airgap.getConsent().confirmed && !applicablePrivacySignals;
         if (!shouldShowNotice) {
-          if (applicablePrivacySignals && LOG_LEVELS.has('warn')) {
+          if (
+            !promptSuppressionNoticeShown &&
+            applicablePrivacySignals &&
+            LOG_LEVELS.has('warn')
+          ) {
             logger.warn(
               'Tracking consent auto-prompt suppressed due to supported privacy signals:',
               [...privacySignals].map((signal) =>
@@ -98,8 +104,9 @@ export default function App({
                   : signal,
               ),
               // eslint-disable-next-line max-len
-              '\n\nSee https://docs.transcend.io/docs/consent/confirming-consent#user-privacy-signal-integration for more information.',
+              '\n\nSee https://docs.transcend.io/docs/consent/configuration/configuring-the-ui#user-privacy-signal-integration for more information.',
             );
+            promptSuppressionNoticeShown = true;
           }
           return;
         }
