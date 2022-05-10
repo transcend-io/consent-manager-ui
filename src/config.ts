@@ -111,15 +111,21 @@ function validateConfig(config: ConsentManagerConfig): boolean {
     errors.push('Consent manager UI config missing!');
   }
 
-  const { dismissedViewState, initialViewStateByPrivacyRegime } = config;
+  const dismissedViewStateParam = 'dismissedViewState';
+  const initialViewStateByPrivacyRegimeParam =
+    'initialViewStateByPrivacyRegime';
+  const {
+    [dismissedViewStateParam]: dismissedViewState,
+    [initialViewStateByPrivacyRegimeParam]: initialViewStateByPrivacyRegime,
+  } = config;
   if (dismissedViewState) {
-    validateViewState(dismissedViewState, 'dismissed view state', errors);
+    validateViewState(dismissedViewState, dismissedViewStateParam, errors);
   }
   if (initialViewStateByPrivacyRegime) {
     Object.values(initialViewStateByPrivacyRegime).forEach((viewState) => {
       validateViewState(
         viewState,
-        'privacy regime to initial view state map value',
+        `${initialViewStateByPrivacyRegimeParam} map value`,
         errors,
       );
     });
