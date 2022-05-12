@@ -123,11 +123,13 @@ function validateConfig(config: ConsentManagerConfig): boolean {
   }
   if (initialViewStateByPrivacyRegime) {
     Object.values(initialViewStateByPrivacyRegime).forEach((viewState) => {
-      validateViewState(
-        viewState,
-        `${initialViewStateByPrivacyRegimeParam} map value`,
-        errors,
-      );
+      if (viewState) {
+        validateViewState(
+          viewState,
+          `${initialViewStateByPrivacyRegimeParam} map value`,
+          errors,
+        );
+      }
     });
   }
 
