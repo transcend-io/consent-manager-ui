@@ -86,7 +86,7 @@ const validateViewState = (
   param: string,
   errors: string[],
 ): boolean => {
-  const valid = !Object.values(ViewState).some(
+  const valid = Object.values(ViewState).some(
     (knownViewState) => knownViewState === viewState,
   );
   if (!valid) {
