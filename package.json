@@ -7,7 +7,7 @@
     "url": "https://github.com/transcend-io/consent-manager-ui.git"
   },
   "homepage": "https://github.com/transcend-io/consent-manager-ui",
-  "version": "1.0.33",
+  "version": "1.0.34",
   "license": "MIT",
   "main": "src/index",
   "files": [

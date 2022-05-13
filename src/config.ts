@@ -74,6 +74,28 @@ export function getMergedConfig(): ConsentManagerConfig {
 }
 
 /**
+ * Validate recognized view states.
+ *
+ * @param viewState - the view state to validate
+ * @param param - Parameter name to use in error messages
+ * @param errors - list of errors to append to
+ * @returns whether viewState is a recognized view state
+ */
+const validateViewState = (
+  viewState: ViewState,
+  param: string,
+  errors: string[],
+): boolean => {
+  const valid = Object.values(ViewState).some(
+    (knownViewState) => knownViewState === viewState,
+  );
+  if (!valid) {
+    errors.push(`Unrecognized ${param}: ${viewState}`);
+  }
+  return valid;
+};
+
+/**
  * Validates the configuration
  *
  * @param config - the provided config to validate
@@ -87,6 +109,28 @@ function validateConfig(config: ConsentManagerConfig): boolean {
   // Check that config is not empty
   if (Object.keys(config).length === 0) {
     errors.push('Consent manager UI config missing!');
+  }
+
+  const dismissedViewStateParam = 'dismissedViewState';
+  const initialViewStateByPrivacyRegimeParam =
+    'initialViewStateByPrivacyRegime';
+  const {
+    [dismissedViewStateParam]: dismissedViewState,
+    [initialViewStateByPrivacyRegimeParam]: initialViewStateByPrivacyRegime,
+  } = config;
+  if (dismissedViewState) {
+    validateViewState(dismissedViewState, dismissedViewStateParam, errors);
+  }
+  if (initialViewStateByPrivacyRegime) {
+    Object.values(initialViewStateByPrivacyRegime).forEach((viewState) => {
+      if (viewState) {
+        validateViewState(
+          viewState,
+          `${initialViewStateByPrivacyRegimeParam} map value`,
+          errors,
+        );
+      }
+    });
   }
 
   /* Logging */
