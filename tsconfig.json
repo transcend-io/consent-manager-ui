@@ -34,6 +34,7 @@
     "downlevelIteration": false,
     "importHelpers": false,
     "noEmitHelpers": true,
+    "alwaysStrict": true,
 
     "outDir": "../../build/@transcend-io/consent-manager-ui",
     "rootDir": "src",

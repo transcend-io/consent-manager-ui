@@ -47,13 +47,7 @@ export const build = async (
           }),
           pnpPlugin(),
         ],
-
-        // IIFE composed from CJS + custom banner & footer for
-        // strict mode without leaking globals while unbundled
-        format: 'cjs',
-        banner: { js: '(()=>{"use strict";' },
-        footer: { js: '})()' },
-
+        format: 'iife',
         treeShaking: true,
         external: ['fs', 'stream'],
         sourcemap: dev ? 'inline' : false,
