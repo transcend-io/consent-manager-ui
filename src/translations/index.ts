@@ -55,6 +55,13 @@ import ViVn_TRANSLATIONS from './vi-VN.json';
 import ZhCn_TRANSLATIONS from './zh-CN.json';
 import ZhHk_TRANSLATIONS from './zh-HK.json';
 import ZuZa_TRANSLATIONS from './zu-ZA.json';
+import DeAt_TRANSLATIONS from './de-AT.json';
+import DeCh_TRANSLATIONS from './de-CH.json';
+import ItCh_TRANSLATIONS from './it-CH.json';
+import FrCh_TRANSLATIONS from './fr-CH.json';
+import NlBe_TRANSLATIONS from './nl-BE.json';
+import HeIl_TRANSLATIONS from './he-IL.json';
+import EnNz_TRANSLATIONS from './en-NZ.json';
 
 /**
  * Translations of intl messages
@@ -69,6 +76,13 @@ export const CONSENT_MANAGER_TRANSLATIONS: Translations = {
   [LanguageKey.Ja]: Ja_TRANSLATIONS,
   [LanguageKey.Ru]: Ru_TRANSLATIONS,
 
+  [LanguageKey.DeAt]: DeAt_TRANSLATIONS,
+  [LanguageKey.DeCh]: DeCh_TRANSLATIONS,
+  [LanguageKey.ItCh]: ItCh_TRANSLATIONS,
+  [LanguageKey.FrCh]: FrCh_TRANSLATIONS,
+  [LanguageKey.NlBe]: NlBe_TRANSLATIONS,
+  [LanguageKey.HeIl]: HeIl_TRANSLATIONS,
+  [LanguageKey.EnNz]: EnNz_TRANSLATIONS,
   [LanguageKey.ArAe]: ArAe_TRANSLATIONS,
   [LanguageKey.FrFr]: FrFr_TRANSLATIONS,
   [LanguageKey.DeDe]: DeDe_TRANSLATIONS,
