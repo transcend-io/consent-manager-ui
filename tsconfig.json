@@ -42,6 +42,6 @@
     "jsxFragmentFactory": "Fragment"
   },
   "include": ["src", "src/**/*.json"],
-  "exclude": ["node_modules", "build"],
+  "exclude": ["node_modules", "build", "./build.ts"],
   "references": []
 }
