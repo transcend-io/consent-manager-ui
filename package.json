@@ -38,6 +38,7 @@
     "tsc:build": "yarn pnpify tsc --build",
     "clean": "yarn pnpify tsc --build --clean",
     "lint": "yarn pnpify eslint src --ext .ts",
+    "start": "node esbuild.config.js",
     "prepublish": "yarn build",
     "test": "yarn pnpify jest -r ts-node/register './src/**/*.test.ts'"
   },
@@ -62,6 +63,7 @@
     "eslint-plugin-react": "^7.29.2",
     "eslint-plugin-react-hooks": "^4.3.0",
     "jest": "^27.5.1",
+    "live-server": "^1.2.2",
     "prettier": "^2.5.1",
     "ts-node": "^10.5.0",
     "typescript": "^4.5.5"

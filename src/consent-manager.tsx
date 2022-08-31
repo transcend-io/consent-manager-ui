@@ -2,9 +2,10 @@
 import { h, render } from 'preact';
 
 // main
-import type {
+import {
   AirgapAPI,
   ConsentManagerAPI,
+  ViewState,
 } from '@transcend-io/airgap.js-types';
 
 // local
@@ -12,6 +13,7 @@ import App from './components/App';
 import { logger } from './logger';
 import { apiEventName } from './settings';
 import { createHTMLElement } from './utils/create-html-element';
+import { RequestedViewState } from './types';
 
 let interfaceInitialized = false;
 
@@ -69,13 +71,20 @@ export const injectConsentManagerApp = (
         .insertRule(':host { all: initial }');
 
       consentManagerAPI = {
+        viewStates: Object.values(ViewState),
         autoShowConsentManager: () =>
           dispatchConsentManagerAPIEvent(
             appContainer,
             'autoShowConsentManager',
           ),
-        showConsentManager: () =>
-          dispatchConsentManagerAPIEvent(appContainer, 'showConsentManager'),
+        showConsentManager: (options: {
+          /** View state */
+          viewState?: RequestedViewState;
+        }) =>
+          dispatchConsentManagerAPIEvent(appContainer, {
+            eventType: 'showConsentManager',
+            ...options,
+          }),
         toggleConsentManager: () =>
           dispatchConsentManagerAPIEvent(appContainer, 'toggleConsentManager'),
         hideConsentManager: () =>
