@@ -16,9 +16,9 @@ import ColumnContent from './ColumnContent';
 import Title from './Title';
 
 /**
- * Component showing "accept all" interface
+ * Component showing "accept all" or "reject all"
  */
-export default function AcceptAll({
+export default function AcceptOrRejectAll({
   handleSetViewState,
 }: {
   /** Function to change viewState */
@@ -43,12 +43,32 @@ export default function AcceptAll({
     handleSetViewState('close');
   };
 
+  // Opt out of all non-essential purposes
+  const handleRejectAll:
+    | JSX.MouseEventHandler<HTMLButtonElement>
+    | undefined = (
+    event: JSX.TargetedEvent<HTMLButtonElement, MouseEvent>,
+  ): void => {
+    event.preventDefault();
+    const purposeTypes = airgap.getPurposeTypes();
+    const consent: TrackingConsent = {};
+    Object.keys(purposeTypes).forEach((purpose) => {
+      consent[purpose] = false;
+    });
+    airgap.setConsent(event, consent);
+    handleSetViewState('close');
+  };
+
   return (
     <ColumnContent>
       <Title align="left">{formatMessage(messages.consentTitle)}</Title>
       <Button
         primaryText={formatMessage(messages.acceptAllButtonPrimary)}
         handleClick={handleAcceptAll}
+      />
+      <Button
+        primaryText={formatMessage(messages.rejectAllButtonPrimary)}
+        handleClick={handleRejectAll}
       />
     </ColumnContent>
   );

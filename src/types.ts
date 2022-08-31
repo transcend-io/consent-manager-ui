@@ -61,3 +61,11 @@ export interface EmitEventOptions extends ShowConsentManagerOptions {
   /** Type of event being emitted */
   eventType: keyof ConsentManagerAPI;
 }
+
+/**
+ * Type override for new GPC standard (not in official DOM spec yet)
+ */
+export type NavigatorWithGPC = Navigator & {
+  /** see https://globalprivacycontrol.github.io/gpc-spec/ */
+  globalPrivacyControl: boolean;
+};

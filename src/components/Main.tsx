@@ -20,20 +20,19 @@ import { FullLogo } from './Logo';
 import Modal from './Modal';
 import NoticeAndDoNotSell from './NoticeAndDoNotSell';
 import QuickOptions from './QuickOptions';
+import AcceptOrRejectAll from './AcceptOrRejectAll';
+import DoNotSellAcknowledgement from './DoNotSellAcknowledgement';
 
 /**
  * Presents view states (collapsed, GDPR-mode, CCPA-mode etc)
  */
 export default function Main({
   viewState,
-  mode,
   handleSetViewState,
   handleChangeLanguage,
 }: {
   /** The current viewState of the consent manager */
   viewState: ViewState;
-  /** Whether we're in opt-in consent mode or give-notice mode */
-  mode: 'CONSENT' | 'NOTICE';
   /** Updater function for viewState */
   handleSetViewState: HandleSetViewState;
   /** Updater function for language change */
@@ -61,6 +60,14 @@ export default function Main({
           <AcceptAll handleSetViewState={handleSetViewState} />
         )}
 
+        {viewState === ViewState.AcceptOrRejectAll && (
+          <AcceptOrRejectAll handleSetViewState={handleSetViewState} />
+        )}
+
+        {viewState === ViewState.DoNotSellAcknowledgement && (
+          <DoNotSellAcknowledgement handleSetViewState={handleSetViewState} />
+        )}
+
         {viewState === ViewState.CompleteOptions && (
           <CompleteOptions handleSetViewState={handleSetViewState} />
         )}
@@ -80,7 +87,6 @@ export default function Main({
           <FullLogo />
           <BottomMenu
             viewState={viewState}
-            mode={mode}
             handleSetViewState={handleSetViewState}
           />
           <LanguageButton

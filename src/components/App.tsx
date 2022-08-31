@@ -62,9 +62,6 @@ export default function App({
     initialViewState,
     dismissedViewState,
   });
-  // Set whether we're in opt-in consent mode or give-notice mode
-  const mode =
-    initialViewState === ViewState.NoticeAndDoNotSell ? 'NOTICE' : 'CONSENT';
 
   // Event listener for the API
   appContainer.addEventListener(apiEventName, (event) => {
@@ -133,7 +130,6 @@ export default function App({
           <AirgapProvider newAirgap={airgap}>
             <Main
               viewState={viewState}
-              mode={mode}
               handleSetViewState={handleSetViewState}
               handleChangeLanguage={handleChangeLanguage}
             />
