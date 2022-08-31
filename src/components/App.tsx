@@ -28,7 +28,7 @@ import { getPrimaryRegime } from '../regimes';
 import { logger } from '../logger';
 import { PRIVACY_SIGNAL_NAME } from '../privacy-signals';
 import { getConsentSelections } from '../consent-selections';
-import { RequestedViewState } from 'src/types';
+import { EmitEventOptions } from 'src/types';
 
 // TODO: https://transcend.height.app/T-13483
 // Fix IntlProvider JSX types
@@ -68,13 +68,12 @@ export default function App({
 
   // Event listener for the API
   appContainer.addEventListener(apiEventName, (event) => {
-    const { detail } = event as CustomEvent<keyof ConsentManagerAPI>;
-    const eventOption = typeof detail === 'string' ? detail : detail.eventType;
-    const options = typeof detail === 'string' ? {} : detail;
+    const {
+      detail: { eventType, ...options },
+    } = event as CustomEvent<EmitEventOptions>;
     const eventHandlerByDetail: Record<keyof ConsentManagerAPI, () => void> = {
-      viewStates: Object.values(ViewState),
-      showConsentManager: () =>
-        handleSetViewState(options?.viewState || 'open'),
+      viewStates: () => null, // should not be called
+      showConsentManager: () => handleSetViewState(options.viewState || 'open'),
       hideConsentManager: () => handleSetViewState('close'),
       toggleConsentManager: () =>
         handleSetViewState(viewStateIsClosed(viewState) ? 'open' : 'close'),
@@ -120,7 +119,7 @@ export default function App({
     };
 
     // Trigger event handler for this event
-    eventHandlerByDetail[eventOption]();
+    eventHandlerByDetail[eventType]();
   });
 
   return (

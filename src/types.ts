@@ -1,5 +1,10 @@
 // main
-import type { TrackingPurpose, ViewState } from '@transcend-io/airgap.js-types';
+import type {
+  TrackingPurpose,
+  ViewState,
+  ShowConsentManagerOptions,
+  ConsentManagerAPI,
+} from '@transcend-io/airgap.js-types';
 
 /**
  * Disclosure of a tracking purpose
@@ -47,3 +52,12 @@ export type RequestedViewState = ViewState | 'back' | 'open' | 'close';
 export type HandleSetViewState = (
   requestedViewState: RequestedViewState,
 ) => void;
+
+/**
+ * The shape of the `detail` property when emitting events in the consent
+ * manager UI
+ */
+export interface EmitEventOptions extends ShowConsentManagerOptions {
+  /** Type of event being emitted */
+  eventType: keyof ConsentManagerAPI;
+}
