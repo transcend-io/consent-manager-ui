@@ -22,6 +22,8 @@ const {
 
 // Default configurations
 const defaultConfig: ConsentManagerConfig = {
+  css: '',
+  messages: '',
   theme: {
     primaryColor: '#3333FF',
     fontColor: '#010101',
