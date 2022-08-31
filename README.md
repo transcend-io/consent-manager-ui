@@ -19,3 +19,9 @@ git clone git@github.com:transcend-io/consent-manager-ui.git
 ```sh
 yarn
 ```
+
+3. Build the code and run the local version of the UI
+
+```sh
+yarn start
+```
