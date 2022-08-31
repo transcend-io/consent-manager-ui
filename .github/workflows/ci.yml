@@ -18,9 +18,9 @@ jobs:
         with:
           path: |
             .yarn/unplugged
-          key: ${{ runner.os }}-yarn-v2-${{ hashFiles('**/yarn.lock', '**/package.json') }}
+          key: ${{ runner.os }}-yarn-v3-${{ hashFiles('**/yarn.lock', '**/package.json') }}
           restore-keys: |
-            ${{ runner.os }}-yarn-v2-
+            ${{ runner.os }}-yarn-v3-
       - run: yarn rebuild
         if: steps.yarn-cache.outputs.cache-hit != 'true'
         name: Install yarn deps
@@ -64,9 +64,9 @@ jobs:
         with:
           path: |
             .yarn/unplugged
-          key: ${{ runner.os }}-yarn-v2-${{ hashFiles('**/yarn.lock', '**/package.json') }}
+          key: ${{ runner.os }}-yarn-v3-${{ hashFiles('**/yarn.lock', '**/package.json') }}
           restore-keys: |
-            ${{ runner.os }}-yarn-v2-
+            ${{ runner.os }}-yarn-v3-
       - run: yarn rebuild
         if: steps.yarn-cache.outputs.cache-hit != 'true'
         name: Install yarn deps
@@ -105,9 +105,9 @@ jobs:
         with:
           path: |
             .yarn/unplugged
-          key: ${{ runner.os }}-yarn-v2-${{ hashFiles('**/yarn.lock', '**/package.json') }}
+          key: ${{ runner.os }}-yarn-v3-${{ hashFiles('**/yarn.lock', '**/package.json') }}
           restore-keys: |
-            ${{ runner.os }}-yarn-v2-
+            ${{ runner.os }}-yarn-v3-
       - run: yarn rebuild
         if: steps.yarn-cache.outputs.cache-hit != 'true'
         name: Install yarn deps
@@ -141,9 +141,9 @@ jobs:
         with:
           path: |
             .yarn/unplugged
-          key: ${{ runner.os }}-yarn-v2-${{ hashFiles('**/yarn.lock', '**/package.json') }}
+          key: ${{ runner.os }}-yarn-v3-${{ hashFiles('**/yarn.lock', '**/package.json') }}
           restore-keys: |
-            ${{ runner.os }}-yarn-v2-
+            ${{ runner.os }}-yarn-v3-
       - run: yarn rebuild
         if: steps.yarn-cache.outputs.cache-hit != 'true'
         name: Install yarn deps
