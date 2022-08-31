@@ -34,12 +34,7 @@ export default function AcceptOrRejectAll({
     event: JSX.TargetedEvent<HTMLButtonElement, MouseEvent>,
   ): void => {
     event.preventDefault();
-    const purposeTypes = airgap.getPurposeTypes();
-    const consent: TrackingConsent = {};
-    Object.keys(purposeTypes).forEach((purpose) => {
-      consent[purpose] = true;
-    });
-    airgap.setConsent(event, consent);
+    airgap.optIn(event);
     handleSetViewState('close');
   };
 
