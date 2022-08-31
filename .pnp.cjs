@@ -35,7 +35,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [\
             ["@emotion/css", "virtual:c76842a5689228a0ce1b65e064c1f5e0d5b61e442d08b6527a3b1f100ca1f2105e58f5f1435c5a59df3cce3338560737838d99dae36d25b47d20aa50c89d0539#npm:11.7.1"],\
             ["@transcend-io/airgap.js-types", "npm:7.0.0"],\
-            ["@transcend-io/internationalization", "npm:1.0.1"],\
+            ["@transcend-io/internationalization", "npm:1.3.0"],\
             ["@transcend-io/logger", "npm:1.0.14"],\
             ["@types/node", "npm:17.0.21"],\
             ["@typescript-eslint/eslint-plugin", "virtual:c76842a5689228a0ce1b65e064c1f5e0d5b61e442d08b6527a3b1f100ca1f2105e58f5f1435c5a59df3cce3338560737838d99dae36d25b47d20aa50c89d0539#npm:5.12.1"],\
@@ -1842,7 +1842,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@transcend-io/consent-manager-ui", "workspace:."],\
             ["@emotion/css", "virtual:c76842a5689228a0ce1b65e064c1f5e0d5b61e442d08b6527a3b1f100ca1f2105e58f5f1435c5a59df3cce3338560737838d99dae36d25b47d20aa50c89d0539#npm:11.7.1"],\
             ["@transcend-io/airgap.js-types", "npm:7.0.0"],\
-            ["@transcend-io/internationalization", "npm:1.0.1"],\
+            ["@transcend-io/internationalization", "npm:1.3.0"],\
             ["@transcend-io/logger", "npm:1.0.14"],\
             ["@types/node", "npm:17.0.21"],\
             ["@typescript-eslint/eslint-plugin", "virtual:c76842a5689228a0ce1b65e064c1f5e0d5b61e442d08b6527a3b1f100ca1f2105e58f5f1435c5a59df3cce3338560737838d99dae36d25b47d20aa50c89d0539#npm:5.12.1"],\
@@ -1875,10 +1875,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]\
       ]],\
       ["@transcend-io/internationalization", [\
-        ["npm:1.0.1", {\
-          "packageLocation": "./.yarn/cache/@transcend-io-internationalization-npm-1.0.1-e35d395530-066c9190e6.zip/node_modules/@transcend-io/internationalization/",\
+        ["npm:1.3.0", {\
+          "packageLocation": "./.yarn/cache/@transcend-io-internationalization-npm-1.3.0-9727786c73-31f856b87b.zip/node_modules/@transcend-io/internationalization/",\
           "packageDependencies": [\
-            ["@transcend-io/internationalization", "npm:1.0.1"],\
+            ["@transcend-io/internationalization", "npm:1.3.0"],\
             ["@transcend-io/type-utils", "npm:1.0.5"]\
           ],\
           "linkType": "HARD"\
