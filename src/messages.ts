@@ -20,6 +20,10 @@ export const messages = defineMessages('ui.src.messages', {
     defaultMessage: 'Accept all',
     description: 'Button text for accepting all trackers.',
   },
+  rejectAllButtonPrimary: {
+    defaultMessage: 'Reject all',
+    description: 'Button text for rejecting all trackers.',
+  },
 });
 
 export const quickOptionsMessages = defineMessages('ui.src.quickOptions', {
@@ -82,6 +86,23 @@ export const noticeAndDoNotSellMessages = defineMessages(
       description:
         'Hover/alt text for Do Not Sell notice in footer of the Do Not Sell/Share experience.',
     },
+    doNotSellHonored: {
+      defaultMessage: 'Your opt-out request has been honored.',
+      description:
+        'Title message for acknowledging do not sell preference has ben honored through click.',
+    },
+    doNotSellHonoredDescription: {
+      defaultMessage:
+        // eslint-disable-next-line max-len
+        'We’ve received your request for this device or browser, and we will no longer sell or share your data with third parties. Learn more about our data practices in our privacy policy.',
+      description:
+        'Description message for acknowledging do not sell preference has ben honored through click.',
+    },
+    doNotSellHonoredGpc: {
+      defaultMessage: 'Opt-out preference signal honored.',
+      description:
+        'Title message for acknowledging do not sell preference has ben honored through GPC.',
+    },
   },
 );
 
@@ -103,7 +124,7 @@ export const bottomMenuMessages = defineMessages('ui.src.bottomMenu', {
     description: 'Hover/alt text for selecting simpler opt out choices.',
   },
   showPolicyButtonPrimary: {
-    defaultMessage: 'Our Privacy Policy',
+    defaultMessage: 'See Our Privacy Policy',
     description: 'Text for linking out to privacy policy.',
   },
   showPolicyButtonLabel: {
