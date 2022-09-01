@@ -5,8 +5,7 @@ import { useIntl } from 'react-intl';
 // global
 import { noticeAndDoNotSellMessages } from '../messages';
 import type { HandleSetViewState, NavigatorWithGPC } from '../types';
-import { useAirgap } from '../hooks';
-import { useConfig, useEmotion } from '../hooks';
+import { useAirgap, useConfig, useEmotion } from '../hooks';
 
 // local
 import Button from './Button';
