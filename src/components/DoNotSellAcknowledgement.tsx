@@ -17,7 +17,7 @@ import { useEffect, useState } from 'preact/hooks';
 /**
  * Component showing acknowledgement of do not sell
  */
-export default function DoNotSellAcknowledgement({
+export default function DoNotSellDisclosure({
   handleSetViewState,
   modalOpenAuth,
 }: {

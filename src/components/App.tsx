@@ -69,12 +69,12 @@ export default function App({
       detail: { eventType, auth, ...options },
     } = event as CustomEvent<EmitEventOptions>;
     if (
-      (options.viewState === ViewState.DoNotSellAcknowledgement ||
+      (options.viewState === ViewState.DoNotSellDisclosure ||
         eventType === 'doNotSell') &&
       !auth
     ) {
       throw new Error(
-        `${ViewState.DoNotSellAcknowledgement} view state can only be initialized with auth. ` +
+        `${ViewState.DoNotSellDisclosure} view state can only be initialized with auth. ` +
           `Please provide the onClick event like: onClick: (event) => transcend.doNotSell(event)`,
       );
     }
@@ -83,7 +83,7 @@ export default function App({
       viewStates: () => null, // should not be called
       doNotSell: () =>
         handleSetViewState(
-          options.viewState || ViewState.DoNotSellAcknowledgement,
+          options.viewState || ViewState.DoNotSellDisclosure,
           auth,
         ),
       showConsentManager: () => handleSetViewState(options.viewState || 'open'),

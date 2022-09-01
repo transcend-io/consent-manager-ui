@@ -21,7 +21,7 @@ import Modal from './Modal';
 import NoticeAndDoNotSell from './NoticeAndDoNotSell';
 import QuickOptions from './QuickOptions';
 import AcceptOrRejectAll from './AcceptOrRejectAll';
-import DoNotSellAcknowledgement from './DoNotSellAcknowledgement';
+import DoNotSellDisclosure from './DoNotSellDisclosure';
 
 /**
  * Presents view states (collapsed, GDPR-mode, CCPA-mode etc)
@@ -67,8 +67,8 @@ export default function Main({
           <AcceptOrRejectAll handleSetViewState={handleSetViewState} />
         )}
 
-        {viewState === ViewState.DoNotSellAcknowledgement && modalOpenAuth && (
-          <DoNotSellAcknowledgement
+        {viewState === ViewState.DoNotSellDisclosure && modalOpenAuth && (
+          <DoNotSellDisclosure
             handleSetViewState={handleSetViewState}
             modalOpenAuth={modalOpenAuth}
           />

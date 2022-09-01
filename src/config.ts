@@ -34,7 +34,7 @@ const defaultConfig: ConsentManagerConfig = {
   },
   initialViewStateByPrivacyRegime: {
     // California
-    // TODO: https://transcend.height.app/T-17251 - migrate to DoNotSellAcknowledgement
+    // TODO: https://transcend.height.app/T-17251 - migrate to DoNotSellDisclosure
     CPRA: ViewState.NoticeAndDoNotSell,
     // EU
     GDPR: ViewState.QuickOptions,
