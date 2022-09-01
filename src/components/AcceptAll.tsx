@@ -48,7 +48,6 @@ export default function AcceptAll({
 
   return (
     <ColumnContent>
-      Hello!
       <Title align="left">{formatMessage(messages.consentTitle)}</Title>
       <Button
         primaryText={formatMessage(messages.acceptAllButtonPrimary)}
