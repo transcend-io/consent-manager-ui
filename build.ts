@@ -13,6 +13,9 @@ enum Env {
   Prod = 'prod',
 }
 
+const { WATCH = 'false' } = process.env;
+
+const logger = console;
 export const build = async (
   outDir = 'build',
 ): Promise<esbuild.BuildResult[]> => {
@@ -67,6 +70,21 @@ export const build = async (
         legalComments: 'none',
         target: ['esnext', 'chrome92', 'firefox90', 'safari14.1', 'edge18'],
         tsconfig,
+        watch:
+          WATCH === 'true'
+            ? {
+                /**
+                 * Callback on re-build
+                 *
+                 * @param error - error
+                 * @param result - result
+                 */
+                onRebuild(error, result) {
+                  if (error) logger.error('watch build failed:', error);
+                  else logger.log('watch build succeeded:', result);
+                },
+              }
+            : undefined,
         define: {
           'process.env.version': JSON.stringify(
             // eslint-disable-next-line global-require, import/no-dynamic-require
@@ -77,8 +95,7 @@ export const build = async (
     ),
   );
 
-  // eslint-disable-next-line no-console
-  console.log(`Consent manager UI modules built. Minified: ${shouldMinify}.`);
+  logger.log(`Consent manager UI modules built. Minified: ${shouldMinify}.`);
 
   return results;
 };

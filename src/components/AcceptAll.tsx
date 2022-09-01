@@ -31,17 +31,20 @@ export default function AcceptAll({
   const { formatMessage } = useIntl();
 
   // Opt in to all purposes
-  const handleAcceptAll: JSX.MouseEventHandler<HTMLButtonElement> | undefined =
-    (event: JSX.TargetedEvent<HTMLButtonElement, MouseEvent>): void => {
-      event.preventDefault();
-      const purposeTypes = airgap.getPurposeTypes();
-      const consent: TrackingConsent = {};
-      Object.keys(purposeTypes).forEach((purpose) => {
-        consent[purpose] = true;
-      });
-      airgap.setConsent(event, consent);
-      handleSetViewState('close');
-    };
+  const handleAcceptAll:
+    | JSX.MouseEventHandler<HTMLButtonElement>
+    | undefined = (
+    event: JSX.TargetedEvent<HTMLButtonElement, MouseEvent>,
+  ): void => {
+    event.preventDefault();
+    const purposeTypes = airgap.getPurposeTypes();
+    const consent: TrackingConsent = {};
+    Object.keys(purposeTypes).forEach((purpose) => {
+      consent[purpose] = true;
+    });
+    airgap.setConsent(event, consent);
+    handleSetViewState('close');
+  };
 
   return (
     <ColumnContent>
