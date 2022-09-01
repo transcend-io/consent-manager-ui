@@ -2,9 +2,6 @@
 import { h, JSX } from 'preact';
 import { useIntl } from 'react-intl';
 
-// main
-import type { TrackingConsent } from '@transcend-io/airgap.js-types';
-
 // global
 import { useAirgap } from '../hooks';
 import { messages } from '../messages';

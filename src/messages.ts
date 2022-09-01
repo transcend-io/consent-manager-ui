@@ -103,13 +103,6 @@ export const noticeAndDoNotSellMessages = defineMessages(
       description:
         'Title message for acknowledging do not sell preference has ben honored through GPC.',
     },
-    doNotSellHonoredGpcDescription: {
-      defaultMessage:
-        // eslint-disable-next-line max-len
-        'We’ve received your request for this device or browser, and we will no longer sell or share your data with third parties. Learn more about our data practices in our privacy policy.',
-      description:
-        'Description message for acknowledging do not sell preference has ben honored through GPC.',
-    },
   },
 );
 

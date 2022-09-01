@@ -70,9 +70,7 @@ export default function DoNotSellAcknowledgement({
         <div>
           <p>
             {formatMessage(
-              globalPrivacyControl
-                ? noticeAndDoNotSellMessages.doNotSellHonoredGpcDescription
-                : noticeAndDoNotSellMessages.doNotSellHonoredDescription,
+              noticeAndDoNotSellMessages.doNotSellHonoredDescription,
             )}
           </p>
         </div>

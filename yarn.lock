@@ -1202,7 +1202,7 @@ __metadata:
     jest: ^27.5.1
     live-server: ^1.2.2
     preact: 10.5.14
-    prettier: ^2.5.1
+    prettier: ^2.7.1
     react-intl: 5.20.6
     ts-node: ^10.5.0
     typescript: ^4.5.5
@@ -7247,7 +7247,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prettier@npm:^2.5.1":
+"prettier@npm:^2.7.1":
   version: 2.7.1
   resolution: "prettier@npm:2.7.1"
   bin:
