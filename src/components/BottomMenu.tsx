@@ -52,7 +52,6 @@ export default function BottomMenu({
     <div className={cx(menuContainerStyle)}>
       {![
         ViewState.NoticeAndDoNotSell,
-        ViewState.DoNotSellAcknowledgement,
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
       ].includes(viewState as any) && (
         <div className={cx(menuItemContainerStyle)}>
