@@ -7,6 +7,18 @@ export const messages = defineMessages('ui.src.messages', {
     description:
       'The title displayed when asking the user for specific opt out/in preferences.',
   },
+  consentTitleAcceptAll: {
+    defaultMessage: 'We use cookies',
+    description:
+      'The title displayed when asking the user to accept all data processing.',
+  },
+  acceptAllDescription: {
+    defaultMessage:
+      // eslint-disable-next-line max-len
+      'By clicking “Accept all”, you agree to the storing of cookies on your device for functional, analytics, and advertising purposes.',
+    description:
+      'The description displayed when asking the user to accept all data processing.',
+  },
   noticeTitle: {
     defaultMessage: 'This website processes personal data',
     description: 'The Do Not Sell/Share notice title.',
