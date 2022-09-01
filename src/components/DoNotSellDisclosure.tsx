@@ -6,6 +6,7 @@ import { useIntl } from 'react-intl';
 import { noticeAndDoNotSellMessages } from '../messages';
 import type { HandleSetViewState, NavigatorWithGPC } from '../types';
 import { useAirgap } from '../hooks';
+import { useConfig, useEmotion } from '../hooks';
 
 // local
 import Button from './Button';
@@ -28,6 +29,8 @@ export default function DoNotSellDisclosure({
 }): JSX.Element {
   const { airgap } = useAirgap();
   const { formatMessage } = useIntl();
+  const { css, cx } = useEmotion();
+  const { config } = useConfig();
 
   // don't render success unless opt out occurs
   const [isOptedOut, setIsOptedOut] = useState(false);
@@ -51,6 +54,16 @@ export default function DoNotSellDisclosure({
     setIsOptedOut(true);
   }, []);
 
+  const paragraphStyle = css`
+    color: ${config.theme.fontColor};
+    font-size: 14px;
+    margin: 0 0 18px 0;
+
+    @media (min-width: ${config.breakpoints.tablet}) {
+      margin: 18px 18px 0 0;
+    }
+  `;
+
   // delay UI until opt out happens
   if (!isOptedOut) {
     return <div />;
@@ -68,7 +81,7 @@ export default function DoNotSellDisclosure({
           </Title>
         </div>
         <div>
-          <p>
+          <p className={cx(paragraphStyle)}>
             {formatMessage(
               noticeAndDoNotSellMessages.doNotSellHonoredDescription,
             )}
