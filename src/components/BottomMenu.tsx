@@ -18,13 +18,10 @@ import MenuItem from './MenuItem';
  */
 export default function BottomMenu({
   viewState,
-  mode,
   handleSetViewState,
 }: {
   /** The current viewState */
   viewState: ViewState;
-  /** Whether we're in opt-in consent mode or give-notice mode */
-  mode: 'CONSENT' | 'NOTICE';
   /** Function to change viewState */
   handleSetViewState: HandleSetViewState;
 }): JSX.Element {
@@ -53,7 +50,10 @@ export default function BottomMenu({
 
   return (
     <div className={cx(menuContainerStyle)}>
-      {mode === 'CONSENT' && (
+      {![
+        ViewState.NoticeAndDoNotSell,
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      ].includes(viewState as any) && (
         <div className={cx(menuItemContainerStyle)}>
           {viewState === ViewState.CompleteOptions ? (
             <MenuItem
@@ -77,7 +77,7 @@ export default function BottomMenu({
         </div>
       )}
 
-      {mode === 'NOTICE' && (
+      {viewState === ViewState.NoticeAndDoNotSell && (
         <div className={cx(menuItemContainerStyle)}>
           <MenuItem
             label={formatMessage(noticeAndDoNotSellMessages.doNotSellLabel)}
