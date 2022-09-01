@@ -25,3 +25,12 @@ yarn
 ```sh
 yarn start
 ```
+
+This command will run a very simple HTML file defined in [./index.html](./index.html).
+Any changes made to the [./index.html](./index.html) or [./src](./src/) will cause the page to auto-reload
+without needing to restart the server.
+
+### Playground View
+
+![Screen Shot 2022-08-31 at 7 11 30 PM](https://user-images.githubusercontent.com/10264973/187817555-8dde868f-1fc2-43df-aa6e-10d3ba992e19.jpg)
+![Screen Shot 2022-08-31 at 7 11 37 PM](https://user-images.githubusercontent.com/10264973/187817554-6ce650d5-9eb8-4f9e-9761-2f8150050228.jpg)
