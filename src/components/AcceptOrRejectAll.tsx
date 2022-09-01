@@ -3,7 +3,7 @@ import { h, JSX } from 'preact';
 import { useIntl } from 'react-intl';
 
 // global
-import { useAirgap } from '../hooks';
+import { useAirgap, useConfig, useEmotion } from '../hooks';
 import { messages } from '../messages';
 import type { HandleSetViewState } from '../types';
 
@@ -24,6 +24,8 @@ export default function AcceptOrRejectAll({
 }): JSX.Element {
   const { airgap } = useAirgap();
   const { formatMessage } = useIntl();
+  const { config } = useConfig();
+  const { css, cx } = useEmotion();
 
   // Opt in to all purposes
   const handleAcceptAll:
@@ -47,6 +49,20 @@ export default function AcceptOrRejectAll({
     handleSetViewState('close');
   };
 
+  const buttonRowStyle = css`
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+    @media (min-width: ${config.breakpoints.tablet}) {
+      flex-direction: row;
+
+      button:not(:first-of-type) {
+        margin-left: 10px;
+      }
+    }
+  `;
+
   return (
     <ColumnContent>
       <div>
@@ -59,15 +75,16 @@ export default function AcceptOrRejectAll({
           <Paragraph>{formatMessage(messages.acceptAllDescription)}</Paragraph>
         </div>
       </div>
-      <Button
-        primaryText={formatMessage(messages.acceptAllButtonPrimary)}
-        handleClick={handleAcceptAll}
-      />
-      &nbsp;
-      <Button
-        primaryText={formatMessage(messages.rejectAllButtonPrimary)}
-        handleClick={handleRejectAll}
-      />
+      <div className={cx(buttonRowStyle)}>
+        <Button
+          primaryText={formatMessage(messages.acceptAllButtonPrimary)}
+          handleClick={handleAcceptAll}
+        />
+        <Button
+          primaryText={formatMessage(messages.rejectAllButtonPrimary)}
+          handleClick={handleRejectAll}
+        />
+      </div>
     </ColumnContent>
   );
 }
