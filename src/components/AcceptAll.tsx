@@ -3,7 +3,7 @@ import { h, JSX } from 'preact';
 import { useIntl } from 'react-intl';
 
 // global
-import { useAirgap, useConfig, useEmotion } from '../hooks';
+import { useAirgap } from '../hooks';
 import { messages } from '../messages';
 import type { HandleSetViewState } from '../types';
 
@@ -11,6 +11,7 @@ import type { HandleSetViewState } from '../types';
 import Button from './Button';
 import ColumnContent from './ColumnContent';
 import Title from './Title';
+import Paragraph from './Paragraph';
 
 /**
  * Component showing "accept all" interface
@@ -23,8 +24,6 @@ export default function AcceptAll({
 }): JSX.Element {
   const { airgap } = useAirgap();
   const { formatMessage } = useIntl();
-  const { css, cx } = useEmotion();
-  const { config } = useConfig();
 
   // Opt in to all purposes
   const handleAcceptAll:
@@ -37,16 +36,6 @@ export default function AcceptAll({
     handleSetViewState('close');
   };
 
-  const paragraphStyle = css`
-    color: ${config.theme.fontColor};
-    font-size: 14px;
-    margin: 0 0 18px 0;
-
-    @media (min-width: ${config.breakpoints.tablet}) {
-      margin: 18px 18px 0 0;
-    }
-  `;
-
   return (
     <ColumnContent>
       <div>
@@ -56,9 +45,7 @@ export default function AcceptAll({
           </Title>
         </div>
         <div>
-          <p className={cx(paragraphStyle)}>
-            {formatMessage(messages.acceptAllDescription)}
-          </p>
+          <Paragraph>{formatMessage(messages.acceptAllDescription)}</Paragraph>
         </div>
       </div>
       <Button

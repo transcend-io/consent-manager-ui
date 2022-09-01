@@ -1,18 +1,19 @@
 // external
 import { h, JSX } from 'preact';
 import { useIntl } from 'react-intl';
+import { AirgapAuth, Purpose } from '@transcend-io/airgap.js-types';
+import { useEffect, useState } from 'preact/hooks';
 
 // global
 import { noticeAndDoNotSellMessages } from '../messages';
 import type { HandleSetViewState, NavigatorWithGPC } from '../types';
-import { useAirgap, useConfig, useEmotion } from '../hooks';
+import { useAirgap } from '../hooks';
 
 // local
 import Button from './Button';
 import ColumnContent from './ColumnContent';
 import Title from './Title';
-import { AirgapAuth, Purpose } from '@transcend-io/airgap.js-types';
-import { useEffect, useState } from 'preact/hooks';
+import Paragraph from './Paragraph';
 
 /**
  * Component showing acknowledgement of do not sell
@@ -28,8 +29,6 @@ export default function DoNotSellDisclosure({
 }): JSX.Element {
   const { airgap } = useAirgap();
   const { formatMessage } = useIntl();
-  const { css, cx } = useEmotion();
-  const { config } = useConfig();
 
   // don't render success unless opt out occurs
   const [isOptedOut, setIsOptedOut] = useState(false);
@@ -53,16 +52,6 @@ export default function DoNotSellDisclosure({
     setIsOptedOut(true);
   }, []);
 
-  const paragraphStyle = css`
-    color: ${config.theme.fontColor};
-    font-size: 14px;
-    margin: 0 0 18px 0;
-
-    @media (min-width: ${config.breakpoints.tablet}) {
-      margin: 18px 18px 0 0;
-    }
-  `;
-
   // delay UI until opt out happens
   if (!isOptedOut) {
     return <div />;
@@ -80,11 +69,11 @@ export default function DoNotSellDisclosure({
           </Title>
         </div>
         <div>
-          <p className={cx(paragraphStyle)}>
+          <Paragraph>
             {formatMessage(
               noticeAndDoNotSellMessages.doNotSellHonoredDescription,
             )}
-          </p>
+          </Paragraph>
         </div>
       </div>
       <Button
