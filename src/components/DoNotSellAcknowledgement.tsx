@@ -11,41 +11,50 @@ import { useAirgap } from '../hooks';
 import Button from './Button';
 import ColumnContent from './ColumnContent';
 import Title from './Title';
-import { Purpose } from '@transcend-io/airgap.js-types';
-import { useEffect } from 'preact/hooks';
+import { AirgapAuth, Purpose } from '@transcend-io/airgap.js-types';
+import { useEffect, useState } from 'preact/hooks';
 
 /**
  * Component showing acknowledgement of do not sell
  */
 export default function DoNotSellAcknowledgement({
   handleSetViewState,
+  modalOpenAuth,
 }: {
+  /** Authentication for opening the airgap modal */
+  modalOpenAuth: AirgapAuth;
   /** Function to change viewState */
   handleSetViewState: HandleSetViewState;
 }): JSX.Element {
   const { airgap } = useAirgap();
   const { formatMessage } = useIntl();
 
-  const handleOptOut: JSX.MouseEventHandler<HTMLButtonElement> | undefined = (
-    event: JSX.TargetedEvent<HTMLButtonElement, MouseEvent>,
-  ): void => {
-    event.preventDefault();
+  // don't render success unless opt out occurs
+  const [isOptedOut, setIsOptedOut] = useState(false);
+
+  const handleOptOut = (event: AirgapAuth): void => {
     // Confirm current consent
     airgap.setConsent(event, {
-      ...airgap.getConsent().purposes,
       [Purpose.SaleOfInfo]: false,
     });
-    console.log(airgap.getConsent());
+  };
+
+  const handleConfirm = (): void => {
+    handleSetViewState('close');
   };
 
   const { globalPrivacyControl } = navigator as NavigatorWithGPC;
 
+  // opt the user out on modal open
   useEffect(() => {
-    handleOptOut();
+    handleOptOut(modalOpenAuth);
+    setIsOptedOut(true);
   }, []);
 
-  // FIXME
-
+  // delay UI until opt out happens
+  if (!isOptedOut) {
+    return <div />;
+  }
   return (
     <ColumnContent>
       <div>

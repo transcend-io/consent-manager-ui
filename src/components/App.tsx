@@ -58,7 +58,7 @@ export default function App({
   const { initialViewStateByPrivacyRegime, dismissedViewState } = config;
   const initialViewState: ViewState =
     initialViewStateByPrivacyRegime[privacyRegime];
-  const { viewState, handleSetViewState } = useViewState({
+  const { viewState, handleSetViewState, auth } = useViewState({
     initialViewState,
     dismissedViewState,
   });
@@ -66,10 +66,26 @@ export default function App({
   // Event listener for the API
   appContainer.addEventListener(apiEventName, (event) => {
     const {
-      detail: { eventType, ...options },
+      detail: { eventType, auth, ...options },
     } = event as CustomEvent<EmitEventOptions>;
+    if (
+      (options.viewState === ViewState.DoNotSellAcknowledgement ||
+        eventType === 'doNotSell') &&
+      !auth
+    ) {
+      throw new Error(
+        `${ViewState.DoNotSellAcknowledgement} view state can only be initialized with auth. ` +
+          `Please provide the onClick event like: onClick: (event) => transcend.doNotSell(event)`,
+      );
+    }
+
     const eventHandlerByDetail: Record<keyof ConsentManagerAPI, () => void> = {
       viewStates: () => null, // should not be called
+      doNotSell: () =>
+        handleSetViewState(
+          options.viewState || ViewState.DoNotSellAcknowledgement,
+          auth,
+        ),
       showConsentManager: () => handleSetViewState(options.viewState || 'open'),
       hideConsentManager: () => handleSetViewState('close'),
       toggleConsentManager: () =>
@@ -129,6 +145,7 @@ export default function App({
         <ConfigProvider newConfig={config}>
           <AirgapProvider newAirgap={airgap}>
             <Main
+              modalOpenAuth={auth}
               viewState={viewState}
               handleSetViewState={handleSetViewState}
               handleChangeLanguage={handleChangeLanguage}

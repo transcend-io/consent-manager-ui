@@ -3,6 +3,7 @@ import { useCallback, useState } from 'preact/hooks';
 
 // main
 import {
+  AirgapAuth,
   DismissedViewState,
   InitialViewState,
   ViewState,
@@ -46,12 +47,16 @@ export function useViewState({
   viewState: ViewState;
   /** A handler for the view state */
   handleSetViewState: HandleSetViewState;
+  /** Airgap auth */
+  auth?: AirgapAuth;
 } {
   const [state, setState] = useState<{
     /** The current view state */
     current: ViewState;
     /** The previous view state - used for going back */
     previous: ViewState | null;
+    /** Airgap auth */
+    auth?: AirgapAuth;
   }>({
     current: ViewState.Hidden,
     previous: null,
@@ -63,7 +68,7 @@ export function useViewState({
    * @param requestedViewState - the requested next view state, 'open', 'close', or 'back'
    */
   const handleSetViewState: HandleSetViewState = useCallback(
-    (requestedViewState: RequestedViewState) => {
+    (requestedViewState: RequestedViewState, auth?: AirgapAuth) => {
       switch (requestedViewState) {
         // Request to go back to the previous page
         case 'back':
@@ -71,6 +76,7 @@ export function useViewState({
             setState({
               current: state.previous,
               previous: state.current,
+              auth,
             });
           } else {
             logger.warn('Tried to go back when there is no previous state');
@@ -82,6 +88,7 @@ export function useViewState({
           setState({
             current: initialViewState,
             previous: state.current,
+            auth,
           });
           break;
 
@@ -90,6 +97,7 @@ export function useViewState({
           setState({
             current: dismissedViewState,
             previous: state.current,
+            auth,
           });
           break;
 
@@ -98,6 +106,7 @@ export function useViewState({
           setState({
             current: requestedViewState,
             previous: state.current,
+            auth,
           });
           break;
       }
@@ -108,5 +117,6 @@ export function useViewState({
   return {
     viewState: state.current,
     handleSetViewState,
+    auth: state.auth,
   };
 }
