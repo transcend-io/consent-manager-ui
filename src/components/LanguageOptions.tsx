@@ -11,6 +11,7 @@ import type { HandleSetViewState } from '../types';
 
 // local
 import MenuItem from './MenuItem';
+import { AirgapAuth } from '@transcend-io/airgap.js-types';
 
 /**
  * The view for language settings
@@ -57,9 +58,9 @@ export default function LanguageOptions({
    *
    * @param language - The language selected
    */
-  function handleClick(language: LanguageKey): void {
+  function handleClick(language: LanguageKey, e: AirgapAuth): void {
     handleChangeLanguage(language);
-    handleSetViewState('back');
+    handleSetViewState('back', e);
   }
 
   // Selectable translations
@@ -74,7 +75,7 @@ export default function LanguageOptions({
           <MenuItem
             label={selectableLanguages[language] || ''}
             type="button"
-            onClick={() => handleClick(language)}
+            onClick={(e) => handleClick(language, e)}
           >
             {selectableLanguages[language]}
           </MenuItem>

@@ -73,22 +73,28 @@ export const injectConsentManagerApp = (
 
       consentManagerAPI = {
         viewStates: new Set(Object.values(ViewState)),
-        autoShowConsentManager: (options?: ShowConsentManagerOptions) =>
+        doNotSell: (auth, options: ShowConsentManagerOptions = {}) =>
+          dispatchConsentManagerAPIEvent(appContainer, {
+            eventType: 'doNotSell',
+            auth,
+            ...options,
+          }),
+        autoShowConsentManager: (options: ShowConsentManagerOptions = {}) =>
           dispatchConsentManagerAPIEvent(appContainer, {
             eventType: 'autoShowConsentManager',
             ...options,
           }),
-        showConsentManager: (options?: ShowConsentManagerOptions) =>
+        showConsentManager: (options: ShowConsentManagerOptions = {}) =>
           dispatchConsentManagerAPIEvent(appContainer, {
             eventType: 'showConsentManager',
             ...options,
           }),
-        toggleConsentManager: (options?: ShowConsentManagerOptions) =>
+        toggleConsentManager: (options: ShowConsentManagerOptions = {}) =>
           dispatchConsentManagerAPIEvent(appContainer, {
             eventType: 'toggleConsentManager',
             ...options,
           }),
-        hideConsentManager: (options?: ShowConsentManagerOptions) =>
+        hideConsentManager: (options: ShowConsentManagerOptions = {}) =>
           dispatchConsentManagerAPIEvent(appContainer, {
             eventType: 'hideConsentManager',
             ...options,

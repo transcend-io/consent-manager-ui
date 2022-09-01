@@ -2,7 +2,7 @@
 import { h, JSX } from 'preact';
 
 // main
-import { ViewState } from '@transcend-io/airgap.js-types';
+import { AirgapAuth, ViewState } from '@transcend-io/airgap.js-types';
 import { LanguageKey } from '@transcend-io/internationalization';
 
 // global
@@ -20,6 +20,8 @@ import { FullLogo } from './Logo';
 import Modal from './Modal';
 import NoticeAndDoNotSell from './NoticeAndDoNotSell';
 import QuickOptions from './QuickOptions';
+import AcceptOrRejectAll from './AcceptOrRejectAll';
+import DoNotSellDisclosure from './DoNotSellDisclosure';
 
 /**
  * Presents view states (collapsed, GDPR-mode, CCPA-mode etc)
@@ -28,7 +30,10 @@ export default function Main({
   viewState,
   handleSetViewState,
   handleChangeLanguage,
+  modalOpenAuth,
 }: {
+  /** The on click event passed as authentication to airgap. Needed for do-not-sell acknowledgement */
+  modalOpenAuth?: AirgapAuth;
   /** The current viewState of the consent manager */
   viewState: ViewState;
   /** Updater function for viewState */
@@ -56,6 +61,17 @@ export default function Main({
 
         {viewState === ViewState.AcceptAll && (
           <AcceptAll handleSetViewState={handleSetViewState} />
+        )}
+
+        {viewState === ViewState.AcceptOrRejectAll && (
+          <AcceptOrRejectAll handleSetViewState={handleSetViewState} />
+        )}
+
+        {viewState === ViewState.DoNotSellDisclosure && modalOpenAuth && (
+          <DoNotSellDisclosure
+            handleSetViewState={handleSetViewState}
+            modalOpenAuth={modalOpenAuth}
+          />
         )}
 
         {viewState === ViewState.CompleteOptions && (

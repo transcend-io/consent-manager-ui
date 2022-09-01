@@ -85,6 +85,7 @@ export default function Collapsed({
       font-size: 12px;
       font-weight: 500;
       white-space: nowrap;
+      color: ${config.theme.fontColor};
 
       opacity: 0;
       transition: opacity 150ms ease-in 500ms;

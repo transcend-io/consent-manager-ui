@@ -4,6 +4,7 @@ import type {
   ViewState,
   ShowConsentManagerOptions,
   ConsentManagerAPI,
+  AirgapAuth,
 } from '@transcend-io/airgap.js-types';
 
 /**
@@ -35,7 +36,7 @@ export type ConsentSelection = {
  * The language locale
  */
 export interface Language {
-  /** The first subtag, like "en" */
+  /** The first sub-tag, like "en" */
   primaryLanguage: string;
   /** The whole language tag, like en-US or fr-FR */
   extendedLanguage: string;
@@ -51,6 +52,7 @@ export type RequestedViewState = ViewState | 'back' | 'open' | 'close';
  */
 export type HandleSetViewState = (
   requestedViewState: RequestedViewState,
+  auth?: AirgapAuth,
 ) => void;
 
 /**
@@ -60,6 +62,8 @@ export type HandleSetViewState = (
 export interface EmitEventOptions extends ShowConsentManagerOptions {
   /** Type of event being emitted */
   eventType: keyof ConsentManagerAPI;
+  /** Airgap auth passed in click event */
+  auth?: AirgapAuth;
 }
 
 /**

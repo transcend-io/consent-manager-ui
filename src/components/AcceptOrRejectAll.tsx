@@ -3,7 +3,7 @@ import { h, JSX } from 'preact';
 import { useIntl } from 'react-intl';
 
 // global
-import { useAirgap } from '../hooks';
+import { useAirgap, useConfig, useEmotion } from '../hooks';
 import { messages } from '../messages';
 import type { HandleSetViewState } from '../types';
 
@@ -14,9 +14,9 @@ import Title from './Title';
 import Paragraph from './Paragraph';
 
 /**
- * Component showing "accept all" interface
+ * Component showing "accept all" or "reject all"
  */
-export default function AcceptAll({
+export default function AcceptOrRejectAll({
   handleSetViewState,
 }: {
   /** Function to change viewState */
@@ -24,6 +24,8 @@ export default function AcceptAll({
 }): JSX.Element {
   const { airgap } = useAirgap();
   const { formatMessage } = useIntl();
+  const { config } = useConfig();
+  const { css, cx } = useEmotion();
 
   // Opt in to all purposes
   const handleAcceptAll:
@@ -35,6 +37,31 @@ export default function AcceptAll({
     airgap.optIn(event);
     handleSetViewState('close');
   };
+
+  // Opt out of all non-essential purposes
+  const handleRejectAll:
+    | JSX.MouseEventHandler<HTMLButtonElement>
+    | undefined = (
+    event: JSX.TargetedEvent<HTMLButtonElement, MouseEvent>,
+  ): void => {
+    event.preventDefault();
+    airgap.optOut(event);
+    handleSetViewState('close');
+  };
+
+  const buttonRowStyle = css`
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+    @media (min-width: ${config.breakpoints.tablet}) {
+      flex-direction: row;
+
+      button:not(:first-of-type) {
+        margin-left: 10px;
+      }
+    }
+  `;
 
   return (
     <ColumnContent>
@@ -48,10 +75,16 @@ export default function AcceptAll({
           <Paragraph>{formatMessage(messages.acceptAllDescription)}</Paragraph>
         </div>
       </div>
-      <Button
-        primaryText={formatMessage(messages.acceptAllButtonPrimary)}
-        handleClick={handleAcceptAll}
-      />
+      <div className={cx(buttonRowStyle)}>
+        <Button
+          primaryText={formatMessage(messages.acceptAllButtonPrimary)}
+          handleClick={handleAcceptAll}
+        />
+        <Button
+          primaryText={formatMessage(messages.rejectAllButtonPrimary)}
+          handleClick={handleRejectAll}
+        />
+      </div>
     </ColumnContent>
   );
 }
