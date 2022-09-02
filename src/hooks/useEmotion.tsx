@@ -20,6 +20,7 @@ export const EmotionProvider = ({
       const emotionCacheWithRef = createEmotion({
         key: 'transcend-consent-manager',
         container: mainRef.current,
+        nonce: 'supersecret', // TODO: make configurable
       });
       setEmotionCache(emotionCacheWithRef);
     }

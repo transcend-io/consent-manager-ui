@@ -47,6 +47,7 @@ export const injectConsentManagerApp = (
     const consentManager = createHTMLElement('div');
     consentManager.style.position = 'fixed'; // so as not to affect position
     consentManager.style.zIndex = '83951225900329'; // high z-index to stay on top
+    consentManager.nonce = 'supersecret'; //  // TODO: make configurable
     // 83951225900329..toString(36) === 'transcend'
     consentManager.id = 'transcend-consent-manager';
 
@@ -62,6 +63,8 @@ export const injectConsentManagerApp = (
       const style = appContainer.appendChild(
         createHTMLElement<HTMLStyleElement>('style'),
       );
+
+      style.nonce = 'supersecret';
 
       // Append UI container to doc to activate style.sheet
       (document.documentElement || document).append(consentManager);
