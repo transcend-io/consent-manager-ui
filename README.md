@@ -33,3 +33,9 @@ without needing to restart the server.
 ### Playground View
 
 ![The Consent UI development playground](https://user-images.githubusercontent.com/7354176/187821040-5a4617fa-8c50-43c5-80af-5b4d18b344b4.png)
+
+## View States
+
+The default consent interface is built with flexibility to choose between different "view states". The following view states are supported:
+
+### `QuickOptions`
