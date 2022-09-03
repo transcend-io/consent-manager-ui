@@ -1,5 +1,5 @@
 /**
- * getMergedConfig() returns the final config for the UI: { ...defaultConfig, ...bundleConfig, ...scriptConfig }
+ * getMergedConfig() returns the final config for the UI: { ...baseConfig, ...bundleConfig, ...scriptConfig }
  */
 
 // main
@@ -11,7 +11,7 @@ import {
 
 // local
 import { logger } from './logger';
-import { settings, LOG_LEVELS } from './settings';
+import { settings, LOG_LEVELS, extraConfig } from './settings';
 import { jsonParseSafe } from './utils/safe-json-parse';
 
 const {
@@ -20,8 +20,12 @@ const {
   dismissedViewState = ViewState.Collapsed,
 } = settings;
 
-// Default configurations
-const defaultConfig: ConsentManagerConfig = {
+// Base configuration
+const baseConfig: Omit<
+  ConsentManagerConfig,
+  'privacyPolicy',
+  'dismissedViewState'
+> = {
   css: '',
   messages: '',
   theme: {
@@ -47,8 +51,6 @@ const defaultConfig: ConsentManagerConfig = {
     // Other
     Unknown: ViewState.Hidden,
   },
-  privacyPolicy,
-  dismissedViewState,
 };
 
 /**
@@ -64,9 +66,12 @@ export function getMergedConfig(): ConsentManagerConfig {
 
   // These consent manager settings can be configured through our backend or ag-bundler/config/{site}.json
   const config: ConsentManagerConfig = {
-    ...defaultConfig,
+    ...baseConfig,
     ...settingsConfig,
+    ...extraConfig,
   } as ConsentManagerConfig;
+  config.privacyPolicy ??= privacyPolicy;
+  config.dismissedViewState ??= dismissedViewState;
 
   const safeToContinue = validateConfig(config);
   if (!safeToContinue) {
