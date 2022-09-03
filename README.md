@@ -39,3 +39,39 @@ without needing to restart the server.
 The default consent interface is built with flexibility to choose between different "view states". The following view states are supported:
 
 ### `QuickOptions`
+
+![ViewState = QuickOptions](https://user-images.githubusercontent.com/10264973/188251089-4e1a8335-1f9a-45c0-8e15-34054a63ae3d.jpg)
+
+### `CompleteOptions`
+
+![ViewState = CompleteOptions](https://user-images.githubusercontent.com/10264973/188251095-7c7fd1b5-7748-4430-b7af-130e37db2dc5.jpg)
+
+### `AcceptOrRejectAll`
+
+![ViewState = AcceptOrRejectAll](https://user-images.githubusercontent.com/10264973/188251091-84dcb0af-0fc8-42ee-b742-466c55c61cdb.jpg)
+
+### `DoNotSellDisclosure`
+
+Unlike the other view states, this view state should be opened using `onClick={(event) => transcend.doNotSell(event)}`. This view state will opt the user out upon opening of the modal, while the other view states require an additional button to be clicked to ensure compliance.
+
+![Screen Shot 2022-09-02 at 6 41 23 PM](https://user-images.githubusercontent.com/10264973/188251093-fa0646ff-7559-4cd3-94f3-f7e47c02e360.jpg)
+
+### `NoticeAndDoNotSell`
+
+**Deprecated: Use DoNotSellDisclosure for CPRA compliance**
+
+![ViewState = DoNoNoticeAndDoNotSelltSellDisclosure](https://user-images.githubusercontent.com/10264973/188251092-0cdc45ab-82db-4c5d-918f-df41c55b3d3a.jpg)
+
+### `AcceptAll`
+
+**WARNING: This UI is a dark pattern and risks non-compliance. Use at own discretion.**
+
+![ViewState = AcceptAll](https://user-images.githubusercontent.com/10264973/188251090-3b433f57-402a-4cd3-a5ca-c28c31675ae6.jpg)
+
+### `LanguageOptions`
+
+![ViewState = LanguageOptions](https://user-images.githubusercontent.com/10264973/188251088-527c227d-0674-46f6-b544-757d8ab2a539.jpg)
+
+### `Collapsed`
+
+![View State = Collapsed](https://user-images.githubusercontent.com/10264973/188251094-44748b4e-83f5-427f-ab0d-f67e06ddfa0c.jpg)
