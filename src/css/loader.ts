@@ -1,5 +1,5 @@
 // main
-import { createHTMLElement } from 'src/utils/create-html-element';
+import { createHTMLElement } from '../utils/create-html-element';
 import { getAppContainer } from '../consent-manager';
 import { scriptLocation, settings } from '../settings';
 
