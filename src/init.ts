@@ -31,8 +31,6 @@ export const airgapInit = view.airgap;
 /** transcend.ready() queue */
 let readyQueue = transcendInit?.readyQueue;
 if (Array.isArray(readyQueue)) {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  delete (transcendInit as any).readyQueue;
   if (LOG_ENABLED) {
     logger.log('transcend.ready() queue = [', readyQueue, ']');
   }
@@ -86,7 +84,6 @@ export const init = async (): Promise<void> => {
     const transcend: TranscendAPI = Object.create(
       null,
       Object.getOwnPropertyDescriptors({
-        readyQueue: [],
         ...transcendInit,
         /**
          * Transcend Consent Manager ready listener registrar
@@ -137,4 +134,6 @@ export const init = async (): Promise<void> => {
       logger.error.styled('color: #686868', err);
     }
   }
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  delete (transcendInit as any).readyQueue;
 };
