@@ -20,7 +20,6 @@ import {
   viewStateIsClosed,
 } from '../hooks';
 import { apiEventName, LOG_LEVELS } from '../settings';
-import { CONSENT_MANAGER_TRANSLATIONS } from '../translations';
 
 // local
 import Main from './Main';
@@ -28,6 +27,7 @@ import { getPrimaryRegime } from '../regimes';
 import { logger } from '../logger';
 import { PRIVACY_SIGNAL_NAME } from '../privacy-signals';
 import { getConsentSelections } from '../consent-selections';
+import type { TranslatedMessages } from '@transcend-io/internationalization';
 
 // TODO: https://transcend.height.app/T-13483
 // Fix IntlProvider JSX types
@@ -42,11 +42,14 @@ let promptSuppressionNoticeShown = false;
 export default function App({
   airgap,
   appContainer,
+  messages,
 }: {
   /** The Airgap API */
   airgap: AirgapAPI;
   /** Reference to the shadow root */
   appContainer: HTMLElement;
+  /** UI text translations */
+  messages: TranslatedMessages;
 }): JSX.Element {
   // Hooks
   const privacyRegime = getPrimaryRegime(airgap.getRegimes());
@@ -119,11 +122,7 @@ export default function App({
   });
 
   return (
-    <IntlProvider
-      locale={language}
-      messages={CONSENT_MANAGER_TRANSLATIONS[language]}
-      defaultLocale="en"
-    >
+    <IntlProvider locale={language} messages={messages} defaultLocale="en">
       <EmotionProvider>
         <ConfigProvider newConfig={config}>
           <AirgapProvider newAirgap={airgap}>

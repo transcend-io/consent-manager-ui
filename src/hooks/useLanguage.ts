@@ -1,30 +1,28 @@
 // external
-import { useCallback } from 'preact/hooks';
+import { useCallback, useState } from 'preact/hooks';
 
 // main
 import { LanguageKey } from '@transcend-io/internationalization';
 
 // global
-import { CONSENT_MANAGER_TRANSLATIONS } from '../translations';
-
-// local
-import { useStickyState } from './useStickyState';
+import { CONSENT_MANAGER_TRANSLATIONS } from '../translations/constants';
+import { getTranslations } from '../translations/loader';
 
 /**
- * Detect the preferred language from the browser
+ * Detect user-preferred languages from the user agent
  *
  * @returns an ordered list of preferred languages in BCP47 format
  */
-export function getBrowserLanguages(): readonly string[] {
+export function getUserLanguages(): readonly string[] {
   return navigator.languages && navigator.languages.length
     ? navigator.languages
     : [navigator.language];
 }
 
 /**
- * Get all potential sub-languages from a given ISO 639-1 language code
+ * Get all potential sub-languages from a given ISO 639-1 or BCP47 language code
  *
- * @param langCode - ISO 639-1 format language code
+ * @param langCode - ISO 639-1 or BCP47 format language code
  * @returns Array of potential sub-languages, sorted by most to least specific
  */
 const getAllSubLanguages = (langCode: LanguageKey): string[] =>
@@ -81,11 +79,9 @@ export const getNearestSupportedLanguage = (
  *
  * @returns the language key of the best default language for this user
  */
-function pickDefaultLanguage(): LanguageKey {
-  const preferredLanguages = getBrowserLanguages();
-  const supportedLanguages = Object.keys(
-    CONSENT_MANAGER_TRANSLATIONS,
-  ) as LanguageKey[];
+export function pickDefaultLanguage(): LanguageKey {
+  const preferredLanguages = getUserLanguages();
+  const supportedLanguages = CONSENT_MANAGER_TRANSLATIONS;
   return (
     getNearestSupportedLanguage(preferredLanguages, supportedLanguages) ||
     LanguageKey.En
@@ -102,7 +98,7 @@ export const sortSupportedLanguagesByPreference = (
   languages: LanguageKey[],
 ): LanguageKey[] =>
   languages.sort((a, b) => {
-    const preferredLanguagesFull = getBrowserLanguages();
+    const preferredLanguagesFull = getUserLanguages();
 
     // Only use first token e.g. fr-CA => fr, and remove dupes e.g. [en-US, en] => [en], by casting to set
     const preferredLanguagesShort = [
@@ -129,13 +125,13 @@ export function useLanguage(): {
   handleChangeLanguage: (language: LanguageKey) => void;
 } {
   // Set the language
-  const [language, setLanguage] = useStickyState<LanguageKey>(
-    () => pickDefaultLanguage(),
-    'tcmLanguage',
+  const [language, setLanguage] = useState<LanguageKey>(() =>
+    pickDefaultLanguage(),
   );
 
   const handleChangeLanguage = useCallback(
-    (language: LanguageKey) => {
+    async (language: LanguageKey) => {
+      await getTranslations(language);
       setLanguage(language);
     },
     [setLanguage],

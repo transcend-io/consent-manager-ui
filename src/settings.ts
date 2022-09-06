@@ -6,6 +6,16 @@ import { COMMA_AND_OR_SPACE_SEPARATED_LIST } from './utils/comma-and-or-space-se
 
 export const apiEventName = 'tcmUIApiEvent';
 
+const { currentScript: thisScript } = document;
+
+export const scriptLocation = new URL(
+  (thisScript instanceof HTMLScriptElement
+    ? thisScript?.src
+    : thisScript instanceof SVGScriptElement
+    ? thisScript?.href?.baseVal
+    : null) ?? location.href,
+);
+
 /**
  * Get Airgap settings, merging overrides set on view.transcend and view.airgap
  *
@@ -24,10 +34,9 @@ function getAirgapSettings(): any {
     ...transcendInit?.loadOptions,
   };
 
-  // Pull data attributes (e.g. data-telemetry) from the current <script> tag
-  const { currentScript } = document;
-  const dataset: DOMStringMap = currentScript
-    ? currentScript.dataset
+  // Pull data attributes from the current <script> tag
+  const dataset: DOMStringMap = thisScript
+    ? thisScript.dataset
     : Object.create(null);
 
   return embeddedLoadOptions

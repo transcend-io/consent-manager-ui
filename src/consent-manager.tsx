@@ -12,6 +12,7 @@ import App from './components/App';
 import { logger } from './logger';
 import { apiEventName } from './settings';
 import { createHTMLElement } from './utils/create-html-element';
+import { getTranslations } from './translations/loader';
 
 let interfaceInitialized = false;
 
@@ -30,13 +31,16 @@ async function dispatchConsentManagerAPIEvent(
 }
 
 let consentManagerAPI: ConsentManagerAPI;
+let appContainer: HTMLElement;
+
+export const getAppContainer = (): HTMLElement | undefined => appContainer;
 
 /**
  * Render the Preact app into a shadow DOM
  */
-export const injectConsentManagerApp = (
+export const injectConsentManagerApp = async (
   airgap: AirgapAPI,
-): ConsentManagerAPI => {
+): Promise<ConsentManagerAPI> => {
   if (!interfaceInitialized) {
     interfaceInitialized = true;
 
@@ -52,7 +56,7 @@ export const injectConsentManagerApp = (
         consentManager?.attachShadow?.({ mode: 'closed' }) || consentManager;
 
       // Create an inner div for event listeners
-      const appContainer = createHTMLElement('div');
+      appContainer ??= createHTMLElement('div');
       shadowRoot.appendChild(appContainer);
 
       // Don't inherit global styles
@@ -83,7 +87,14 @@ export const injectConsentManagerApp = (
       };
 
       // Render preact app inside the shadow DOM component
-      render(<App airgap={airgap} appContainer={appContainer} />, shadowRoot);
+      render(
+        <App
+          messages={await getTranslations()}
+          airgap={airgap}
+          appContainer={appContainer}
+        />,
+        shadowRoot,
+      );
 
       // Return the consent manager API
       return consentManagerAPI;
