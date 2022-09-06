@@ -2,7 +2,7 @@
 import { h, JSX } from 'preact';
 
 // main
-import { ViewState } from '@transcend-io/airgap.js-types';
+import { AirgapAuth, ViewState } from '@transcend-io/airgap.js-types';
 
 // global
 import { useConfig, useEmotion } from '../hooks';
@@ -58,11 +58,11 @@ export default function LanguageButton({
     }
   `;
 
-  const handleClick = (): void => {
+  const handleClick = (e: AirgapAuth): void => {
     if (!onLanguageOptions) {
       handleSetViewState(ViewState.LanguageOptions);
     } else {
-      handleSetViewState('back');
+      handleSetViewState('back', e);
     }
   };
 

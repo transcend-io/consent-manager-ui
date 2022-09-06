@@ -9,6 +9,7 @@ import type { AirgapAPI } from '@transcend-io/airgap.js-types';
 import { useAirgap, useConfig, useEmotion } from '../hooks';
 import { completeOptionsMessages } from '../messages';
 import { getPrimaryRegime } from '../regimes';
+import { NavigatorWithGPC } from '../types';
 
 /**
  * Helper to get the current sale of info setting
@@ -19,14 +20,6 @@ function getSaleOfInfoIsOn(airgap: AirgapAPI): boolean {
   const purpose = 'SaleOfInfo';
   return !!consent.purposes[purpose];
 }
-
-/**
- * Type override for new GPC standard (not in official DOM spec yet)
- */
-type NavigatorWithGPC = Navigator & {
-  /** see https://globalprivacycontrol.github.io/gpc-spec/ */
-  globalPrivacyControl: boolean;
-};
 
 /**
  * Indicator that the Global Privacy Control signal is controlling this setting

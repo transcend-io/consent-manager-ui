@@ -28,6 +28,7 @@ import { logger } from '../logger';
 import { PRIVACY_SIGNAL_NAME } from '../privacy-signals';
 import { getConsentSelections } from '../consent-selections';
 import type { TranslatedMessages } from '@transcend-io/internationalization';
+import { EmitEventOptions } from '../types';
 
 // TODO: https://transcend.height.app/T-13483
 // Fix IntlProvider JSX types
@@ -60,19 +61,35 @@ export default function App({
   const { initialViewStateByPrivacyRegime, dismissedViewState } = config;
   const initialViewState: ViewState =
     initialViewStateByPrivacyRegime[privacyRegime];
-  const { viewState, handleSetViewState } = useViewState({
+  const { viewState, handleSetViewState, auth } = useViewState({
     initialViewState,
     dismissedViewState,
   });
-  // Set whether we're in opt-in consent mode or give-notice mode
-  const mode =
-    initialViewState === ViewState.NoticeAndDoNotSell ? 'NOTICE' : 'CONSENT';
 
   // Event listener for the API
   appContainer.addEventListener(apiEventName, (event) => {
-    const { detail } = event as CustomEvent<keyof ConsentManagerAPI>;
+    const {
+      detail: { eventType, auth, ...options },
+    } = event as CustomEvent<EmitEventOptions>;
+    if (
+      (options.viewState === ViewState.DoNotSellDisclosure ||
+        eventType === 'doNotSell') &&
+      !auth
+    ) {
+      throw new Error(
+        `${ViewState.DoNotSellDisclosure} view state can only be initialized with auth. ` +
+          `Please provide the onClick event like: onClick: (event) => transcend.doNotSell(event)`,
+      );
+    }
+
     const eventHandlerByDetail: Record<keyof ConsentManagerAPI, () => void> = {
-      showConsentManager: () => handleSetViewState('open'),
+      viewStates: () => null, // should not be called
+      doNotSell: () =>
+        handleSetViewState(
+          options.viewState || ViewState.DoNotSellDisclosure,
+          auth,
+        ),
+      showConsentManager: () => handleSetViewState(options.viewState || 'open'),
       hideConsentManager: () => handleSetViewState('close'),
       toggleConsentManager: () =>
         handleSetViewState(viewStateIsClosed(viewState) ? 'open' : 'close'),
@@ -118,7 +135,7 @@ export default function App({
     };
 
     // Trigger event handler for this event
-    eventHandlerByDetail[detail]();
+    eventHandlerByDetail[eventType]();
   });
 
   return (
@@ -127,8 +144,8 @@ export default function App({
         <ConfigProvider newConfig={config}>
           <AirgapProvider newAirgap={airgap}>
             <Main
+              modalOpenAuth={auth}
               viewState={viewState}
-              mode={mode}
               handleSetViewState={handleSetViewState}
               handleChangeLanguage={handleChangeLanguage}
             />

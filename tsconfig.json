@@ -35,9 +35,9 @@
     "importHelpers": false,
     "noEmitHelpers": true,
 
-    "outDir": "../../build/@transcend-io/consent-manager-ui",
+    "outDir": "./tsc-build",
     "rootDir": "src",
-    "tsBuildInfoFile": "../../build/@transcend-io/consent-manager-ui.tsbuildinfo",
+    "tsBuildInfoFile": "./tsc-build/.tsbuildinfo",
     "jsxFactory": "h",
     "jsxFragmentFactory": "Fragment"
   },
