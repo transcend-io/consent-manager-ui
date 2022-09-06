@@ -14,6 +14,13 @@ export const CONSENT_MANAGER_TRANSLATIONS: LanguageKey[] = [
   LanguageKey.Ja,
   LanguageKey.Ru,
 
+  LanguageKey.DeAt,
+  LanguageKey.DeCh,
+  LanguageKey.ItCh,
+  LanguageKey.FrCh,
+  LanguageKey.NlBe,
+  LanguageKey.HeIl,
+  LanguageKey.EnNz,
   LanguageKey.ArAe,
   LanguageKey.FrFr,
   LanguageKey.DeDe,
