@@ -60,7 +60,7 @@ export const DoNotSellButton: FunctionComponent = () => {
       onClick={
         // only open modal if user is currently opted out
         isSellingData
-          ? (event) => selfWithAirgap.transcend.doNotSell(event)
+          ? (event) => selfWithAirgap.transcend.doNotSell(event.nativeEvent)
           : undefined
       }
       disabled={!isSellingData}
