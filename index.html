@@ -9,42 +9,58 @@
       body {
         grid-template-columns: 1fr min(70rem, 90%) 1fr;
       }
-
-      #load-options ul,
-      #presets ul {
-        list-style: none;
-        padding-left: 0;
-        margin-top: 0;
-      }
-
-      #load-options label {
-        padding-left: 4px;
-      }
-
-      img:not([src]):not([srcset])::after,
-    img[src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"]::after
-      {
-        content: '[image blocked]';
-        color: crimson;
-        font-weight: bold;
-      }
-
-      :not(img):-moz-broken::after {
-        content: '[resource blocked]';
-        color: crimson;
-        font-weight: bold;
-      }
-
-      .innerHtmlTest {
-        color: red;
-      }
     </style>
-    <script
+    <!-- <script
       data-cfasync="false"
       data-ui="http://localhost:8080/build/ui.js"
       src="https://cdn.transcend.io/cm/443312ef-12f9-494d-85f5-969894260cc7/airgap.js"
       data-regime="GDPR"
-    ></script>
+    ></script> -->
+
+    <!-- Stub transcendInit -->
+    <script>
+      if (!self.transcend) {
+        self.transcend = {
+          readyQueue: [],
+          ready(callback) {
+            this.readyQueue.push(callback);
+          },
+          ...self.transcend,
+        };
+      }
+    </script>
+
+    <!-- Stub airgapInit -->
+    <script>
+      if (!self.airgap) {
+        self.airgap = {
+          readyQueue: [],
+          ready(callback) {
+            this.readyQueue.push(callback);
+          },
+          ...self.airgap,
+        };
+      }
+    </script>
+
+    <!-- Stub airgap API -->
+    <script src="./airgap-stub.js"></script>
+    <!-- <script>
+      self.airgap = Object.assign(
+        {
+          getRegimes: () => new Set(['GDPR']),
+          addEventListener: (...p) => console.log(p),
+          getConsent: () => ({
+            purposes: {
+              Essential: true,
+            },
+            confirmed: true,
+            timestamp: 'string',
+          }),
+        },
+        self.airgap,
+      );
+    </script> -->
   </head>
 
   <body style="height: 100%">
@@ -56,7 +72,8 @@
     <hr />
     <h2>View States</h2>
     <p id="data"></p>
-    <br />
+
+    <!-- Playground buttons -->
     <script>
       var handleDoNotSell = (event) => {
         transcend.doNotSell(event);
@@ -115,6 +132,14 @@
         // setup the do not sell button
         setupDoNotSellButton();
       });
+    </script>
+
+    <!-- Start UI -->
+    <script src="http://localhost:8080/build/ui.js"></script>
+
+    <!-- Flush readyQueue (make airgap.js ready) -->
+    <script>
+      self.airgap.readyQueue.forEach((callback) => callback(self.airgap));
     </script>
   </body>
 </html>
