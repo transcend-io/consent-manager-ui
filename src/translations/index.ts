@@ -214,8 +214,8 @@ export const selectableLanguages: { [key in LanguageKey]?: string } = {
   [LanguageKey.MsMy]: 'Bahasa Melayu',
   /* Hindi */
   [LanguageKey.HiIn]: 'हिन्दी',
-  /* Marathi */
-  [LanguageKey.MrIn]: 'मराठी',
+  // /* Marathi */
+  // [LanguageKey.MrIn]: 'मराठी',
   // /* Portuguese (Portugal) */
   // [LanguageKey.PtPt]: 'Português (Portugal)',
   /* Tamil */
@@ -228,8 +228,8 @@ export const selectableLanguages: { [key in LanguageKey]?: string } = {
   [LanguageKey.UkUa]: 'українська мова',
   /* Vietnamese */
   [LanguageKey.ViVn]: 'Tiếng Việt',
-  /* Zulu */
-  [LanguageKey.ZuZa]: 'isiZulu',
+  // /* Zulu */
+  // [LanguageKey.ZuZa]: 'isiZulu',
   // /* USA */
   // [LanguageKey.EnUS]: 'English (US)',
   // /* Australia */
