@@ -182,8 +182,8 @@ export const selectableLanguages: { [key in LanguageKey]?: string } = {
   [LanguageKey.ZhCn]: '汉语',
   /* Chinese (Traditional) */
   [LanguageKey.ZhHk]: '漢語',
-  /* Russian */
-  [LanguageKey.Ru]: 'Русский язык',
+  // /* Russian */
+  // [LanguageKey.Ru]: 'Русский язык',
   // /* Arabic UAE */
   // [LanguageKey.ArAe]: 'العربية (الإمارات العربية المتحدة)',
   // /* French */
@@ -242,4 +242,6 @@ export const selectableLanguages: { [key in LanguageKey]?: string } = {
   // [LanguageKey.EnIe]: 'English (Ireland)',
   /* Dutch */
   [LanguageKey.NlNl]: 'Nederlands',
+  /* Hebrew */
+  [LanguageKey.HeIl]: 'עברית',
 };
