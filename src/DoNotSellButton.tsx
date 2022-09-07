@@ -50,6 +50,11 @@ export const DoNotSellButton: FunctionComponent = () => {
       );
   }, [selfWithAirgap.airgap]);
 
+  // Only show the button in california
+  if (!selfWithAirgap.airgap.getRegimes().has('CPRA')) {
+    return null;
+  }
+
   return (
     <button
       onClick={
