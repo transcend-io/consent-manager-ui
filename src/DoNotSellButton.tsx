@@ -1,3 +1,5 @@
+/* eslint-disable no-restricted-globals */
+
 import { AirgapAPI, TranscendAPI } from '@transcend-io/airgap.js-types';
 import { h, FunctionComponent } from 'preact';
 import { useEffect, useState } from 'preact/hooks';
@@ -64,3 +66,4 @@ export const DoNotSellButton: FunctionComponent = () => {
     </button>
   );
 };
+/* eslint-enable no-restricted-globals */

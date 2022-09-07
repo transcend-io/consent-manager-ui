@@ -237,7 +237,7 @@ module.exports = {
     '@typescript-eslint/no-this-alias': ['error'],
 
     /** Prevent use of global variables */
-    'no-restricted-globals': 0,
+    'no-restricted-globals': ['error'],
 
     /** No unnecessary async statements on a function */
     'require-await': ['error'],

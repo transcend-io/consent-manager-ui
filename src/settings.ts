@@ -13,9 +13,9 @@ export const apiEventName = 'tcmUIApiEvent';
  */
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 function getAirgapSettings(): any {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any, no-restricted-globals
   const airgapInit = (self as any)?.airgap;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any, no-restricted-globals
   const transcendInit = (self as any)?.transcend;
   // transcend.loadOptions is used to inject settings from our backend
   // eslint-disable-next-line @typescript-eslint/no-explicit-any

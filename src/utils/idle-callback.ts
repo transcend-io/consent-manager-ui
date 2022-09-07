@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-restricted-globals
 const { setTimeout, clearTimeout } = self;
 
 /** Polyfills for requestIdleCallback and cancelIdleCallback */
@@ -14,5 +15,5 @@ export const {
   cancelIdleCallback = (callbackId: number) => {
     clearTimeout(callbackId);
   },
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  // eslint-disable-next-line no-restricted-globals, @typescript-eslint/no-explicit-any
 } = self as any;
