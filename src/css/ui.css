@@ -1,0 +1,132 @@
+.button_row {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+@media (min-width: 640px) {
+  .button_row {
+    flex-direction: row;
+  }
+  button:not(:first-of-type) {
+    margin-left: 10px;
+  }
+  .menu_container {
+    width: calc(100% - 150px);
+    justify-content: space-evenly;
+  }
+  .button {
+    width: 135px;
+  }
+  .button:not(:last-of-type) {
+    margin-bottom: 0;
+  }
+  .column_content_wrapper {
+    flex-direction: row;
+  }
+}
+
+.menu_container {
+  width: calc(100% - 60px);
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  margin: 0 auto;
+}
+
+.menu_item_container {
+  width: auto;
+}
+
+.base_text {
+  color: #3333FF;
+  display: block;
+  font-style: normal;
+  text-align: center;
+  transition: color 150ms;
+}
+
+/* combine with base_text */
+.primary_text {
+  font-size: 12px;
+  font-weight: 700;
+}
+
+/* combine with base_text */
+.secondary_text {
+  font-size: 9px;
+  font-weight: 400;
+}
+
+.button {
+  min-height: 42px;
+  border-radius: 500px;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.7);
+  opacity: 0.9;
+  border: 1px solid #3333FF;
+  box-sizing: border-box;
+  cursor: pointer;
+  filter: brightness(100%);
+  flex-shrink: 0;
+  font-family: inherit;
+  text-align: center;
+  padding: 6px;
+  transition: filter 150ms, background-color 150ms;
+}
+
+.button:not(:last-of-type) {
+  margin-bottom: 8px;
+}
+
+.button:hover {
+  background-color: #3333FF;
+}
+
+.button span {
+  color: #ffffff;
+}
+
+.button:active {
+  filter: brightness(80%);
+}
+
+/* FIXME:
+.container-collapsed {}
+.square_logo_SVG {}
+*/
+
+@keyframes columnContentWrapperFadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.column_content_wrapper {
+  min-height: 79px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  animation: columnContentWrapperFadeIn 150ms;
+}
+
+@keyframes completeOptionsFadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.complete_options_container {
+  height: inherit;
+  animation: completeOptionsFadeIn 200ms ease-in;
+}
