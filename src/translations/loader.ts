@@ -6,7 +6,7 @@ import {
 } from '@transcend-io/internationalization';
 import { pickDefaultLanguage } from '../hooks/useLanguage';
 import { settings } from '../settings';
-import { CONSENT_MANAGER_TRANSLATIONS } from './constants';
+import { CONSENT_MANAGER_TRANSLATIONS } from './index';
 
 export const loadedTranslations: Translations = Object.create(null);
 const translationsLocation = settings.messages ?? './🌐';

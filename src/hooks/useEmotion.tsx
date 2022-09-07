@@ -36,7 +36,6 @@ export const EmotionProvider = ({
           {children}
         </EmotionContext.Provider>
       )}
-      {customCSS && <style>{customCSS}</style>}
     </div>
   );
 };

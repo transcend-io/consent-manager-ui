@@ -5,7 +5,7 @@ import { useCallback, useState } from 'preact/hooks';
 import { LanguageKey } from '@transcend-io/internationalization';
 
 // global
-import { CONSENT_MANAGER_TRANSLATIONS } from '../translations/constants';
+import { CONSENT_MANAGER_TRANSLATIONS } from '../translations';
 import { getTranslations } from '../translations/loader';
 
 /**

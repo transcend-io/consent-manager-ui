@@ -6,7 +6,7 @@ import { LanguageKey } from '@transcend-io/internationalization';
 
 // global
 import { sortSupportedLanguagesByPreference, useEmotion } from '../hooks';
-import { selectableLanguages } from '../translations/constants';
+import { selectableLanguages } from '../translations';
 import type { HandleSetViewState } from '../types';
 
 // local
