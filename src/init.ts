@@ -19,7 +19,7 @@ import { logger } from './logger';
 import { LOG_ENABLED, LOG_LEVELS } from './settings';
 import { throwOutside } from './utils/throw-outside';
 
-// eslint-disable-next-line no-restricted-globals, @typescript-eslint/no-explicit-any
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const view = self as any;
 
 /** Pre-setup reference to window.transcend */
@@ -42,7 +42,7 @@ if (Array.isArray(readyQueue)) {
 // Promise which resolves when airgap.js core API is ready
 export const airgapPromise = new Promise<AirgapAPI>((resolve) => {
   // Stub self.airgap.ready() queue if it doesn't exist
-  // eslint-disable-next-line no-restricted-globals, @typescript-eslint/no-explicit-any
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   ((self as any).airgap ??= {
     readyQueue: [],
     /**
