@@ -12,6 +12,7 @@ import {
 // global
 import { logger } from '../logger';
 import type { HandleSetViewState, RequestedViewState } from '../types';
+import { getAppContainer } from 'src/consent-manager';
 
 /**
  * Helper to determine whether a view state is closed
@@ -113,6 +114,9 @@ export function useViewState({
     },
     [state, setState, initialViewState, dismissedViewState],
   );
+
+  // Expose view state to CSS
+  getAppContainer()?.classList?.add?.(`ViewState_${state.current}`);
 
   return {
     viewState: state.current,
