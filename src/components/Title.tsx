@@ -14,7 +14,7 @@ export default function Title({
   /** Component children */
   children: ComponentChild;
   /** Align left or center */
-  align?: 'left' | 'center';
+  align?: 'left' | 'center'; // FIXME remove this prop
 }): JSX.Element {
   const { config } = useConfig();
   const { css, cx } = useEmotion();
