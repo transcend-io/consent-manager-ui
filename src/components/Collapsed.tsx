@@ -26,7 +26,6 @@ export default function Collapsed({
   const paragraphRef = useRef<HTMLParagraphElement>(null);
   const { width } = useElementSize(paragraphRef);
 
-  // FIXME: port this css to ui.css
   const diameter = 32; // px
   const padding = 6; // px
   const hoverWidth = diameter + padding + (width || 94); // px, width with text on hover
