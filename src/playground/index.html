@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <title>Transcend Consent Manager Playground</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css" />
+    <style type="text/css">
+      body {
+        grid-template-columns: 1fr min(70rem, 90%) 1fr;
+      }
+    </style>
+
+    <!-- Stub transcendInit -->
+    <script>
+      if (!self.transcend) {
+        self.transcend = {
+          readyQueue: [],
+          ready(callback) {
+            this.readyQueue.push(callback);
+          },
+          ...self.transcend,
+        };
+      }
+    </script>
+
+    <!-- Stub airgapInit -->
+    <script>
+      if (!self.airgap) {
+        self.airgap = {
+          readyQueue: [],
+          ready(callback) {
+            this.readyQueue.push(callback);
+          },
+          ...self.airgap,
+        };
+      }
+    </script>
+
+    <!-- Stub airgap API -->
+    <script src="../../build/playground.js"></script>
+  </head>
+
+  <body style="height: 100%">
+    <h1>Transcend Consent Manager Playground!</h1>
+    <h2>Do Not Sell/Share</h2>
+    <br />
+    <button id="do-not-sell">Do Not Sell My Personal Information</button>
+    <button id="do-not-sell-reset">Reset</button>
+    <hr />
+    <h2>View States</h2>
+    <p id="data"></p>
+
+    <!-- Playground buttons -->
+    <script>
+      var handleDoNotSell = (event) => {
+        transcend.doNotSell(event);
+      };
+      var resetDoNotSell = (event) => {
+        airgap.setConsent(event, { SaleOfInfo: true });
+        setupDoNotSellButton();
+      };
+
+      // Setup do not sell
+      var setupDoNotSellButton = () => {
+        // get button elements
+        let doNotSellDoc = document.getElementById('do-not-sell');
+        let doNotSellDocReset = document.getElementById('do-not-sell-reset');
+
+        // reset state
+        doNotSellDocReset.addEventListener('click', resetDoNotSell);
+
+        // check if opted in or out of sale
+        let isOptedOut = !airgap.getConsent().purposes.SaleOfInfo;
+
+        // change text if opted out
+        if (isOptedOut) {
+          doNotSellDoc.innerHTML =
+            'We No Longer Sell Your Personal Information';
+          doNotSellDoc.removeEventListener('click', handleDoNotSell);
+        } else {
+          doNotSellDoc.innerHTML = 'Do Not Sell My Personal Information';
+
+          // Add on click event if user is opted in
+          doNotSellDoc.addEventListener('click', handleDoNotSell);
+        }
+      };
+
+      // Setup buttons for each view state
+      let doc = document.getElementById('data');
+
+      // callback on change of view state
+      var setViewState = (viewState) => {
+        transcend.showConsentManager(viewState);
+        setupDoNotSellButton();
+      };
+
+      // Prepare document on ready
+      transcend.ready(() => {
+        // Add buttons for view states
+        transcend.viewStates.forEach((viewState) => {
+          doc.innerHTML += `<button onClick="setViewState({ viewState: '${viewState}' })">${viewState}</button><br/><br/>`;
+        });
+
+        // re-render the button on consent change
+        airgap.addEventListener('consent-change', (...args) => {
+          setupDoNotSellButton();
+        });
+
+        // setup the do not sell button
+        setupDoNotSellButton();
+      });
+    </script>
+
+    <!-- Start UI -->
+    <script src="http://localhost:8080/build/ui.js"></script>
+
+    <!-- Flush readyQueue (make airgap.js ready) -->
+    <script>
+      self.airgap.readyQueue.forEach((callback) => callback(self.airgap));
+    </script>
+  </body>
+</html>
