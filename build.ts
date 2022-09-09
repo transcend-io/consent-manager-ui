@@ -35,6 +35,10 @@ export const build = async (
       location: `${cwd}/src/index.ts`,
       tsconfig: `${cwd}/tsconfig.json`,
     },
+    playground: {
+      location: `${cwd}/src/playground/index.tsx`,
+      tsconfig: `${cwd}/tsconfig.json`,
+    },
   });
 
   const out = `${cwd}${outDir}`;

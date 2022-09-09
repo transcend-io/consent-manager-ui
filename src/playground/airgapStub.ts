@@ -34,7 +34,14 @@ export const airgapStub: AirgapAPI = {
   /** Returns true if the user is fully-opted out to all first-order tracking purposes */
   isOptedOut: () => true,
   /** Resolve regime tracking purposes. If no regimes are provided, then the user's detected regimes are used */
-  getRegimePurposes: (regimes) => new Set(['Essential']),
+  getRegimePurposes: (regimes) =>
+    regimes?.includes('GDPR') || regimes?.includes('LGPD')
+      ? new Set(['Essential', 'Functional', 'Analytics', 'Advertising'])
+      : regimes?.includes('CPRA') ||
+        regimes?.includes('CPA') ||
+        regimes?.includes('CDPA')
+      ? new Set(['Essential', 'SaleOfInfo'])
+      : new Set(['Essential']),
   /** Get initialized tracking purposes config */
   getPurposeTypes: () => ({
     Advertising: {

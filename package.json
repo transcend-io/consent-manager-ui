@@ -36,10 +36,9 @@
     "update:deps": "yarn upgrade-interactive && yarn update:sdks",
     "build": "ts-node --transpile-only ./build.ts",
     "tsc:build": "yarn pnpify tsc --build",
-    "build:playground": "esbuild src/playground/index.ts --bundle --outfile=build/playground.js",
     "clean": "yarn pnpify tsc --build --clean",
     "lint": "yarn pnpify eslint src --ext .ts",
-    "start": "yarn build && concurrently 'WATCH=true yarn build' 'yarn build:playground --watch' 'yarn live-server --host=localhost --entry-file=./src/playground/index.html'",
+    "start": "yarn build && concurrently 'WATCH=true yarn build' 'yarn live-server --host=localhost --entry-file=./src/playground/index.html'",
     "prepublish": "yarn build",
     "test": "yarn pnpify jest -r ts-node/register './src/**/*.test.ts'"
   },
