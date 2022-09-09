@@ -49,6 +49,15 @@ export function getMergedConfig(): ConsentManagerConfig {
       ? jsonParseSafe(settings.consentManagerConfig, () => ({}))
       : settings.consentManagerConfig || {};
 
+  const settingsConfigInitialViewStateByPrivacyRegime =
+    settingsConfig?.initialViewStateByPrivacyRegime;
+  // Skip initialViewStateByPrivacyRegime config in settings if empty
+  if (
+    settingsConfigInitialViewStateByPrivacyRegime &&
+    Object.keys(settingsConfigInitialViewStateByPrivacyRegime).length === 0
+  ) {
+    delete settingsConfig?.initialViewStateByPrivacyRegime;
+  }
   // These consent manager settings can be configured through our backend or ag-bundler/config/{site}.json
   const config: ConsentManagerConfig = {
     ...defaultConfig,
