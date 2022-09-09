@@ -100,6 +100,9 @@
         setupDoNotSellButton();
       };
 
+      // Add button for default view state
+      doc.innerHTML += `<button onClick="transcend.showConsentManager()">Default</button><br/><br/>`;
+
       // Prepare document on ready
       transcend.ready(() => {
         // Add buttons for view states
