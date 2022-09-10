@@ -28,6 +28,7 @@ import DoNotSellDisclosure from './DoNotSellDisclosure';
  */
 export default function Main({
   viewState,
+  firstSelectedViewState,
   handleSetViewState,
   handleChangeLanguage,
   modalOpenAuth,
@@ -36,6 +37,8 @@ export default function Main({
   modalOpenAuth?: AirgapAuth;
   /** The current viewState of the consent manager */
   viewState: ViewState;
+  /** First view state selected when transcend.showConsentManager() is called */
+  firstSelectedViewState: ViewState | null;
   /** Updater function for viewState */
   handleSetViewState: HandleSetViewState;
   /** Updater function for language change */
@@ -92,6 +95,7 @@ export default function Main({
         <div className={cx(bottomMenuStyle)}>
           <FullLogo />
           <BottomMenu
+            firstSelectedViewState={firstSelectedViewState}
             viewState={viewState}
             handleSetViewState={handleSetViewState}
           />

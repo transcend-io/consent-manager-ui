@@ -11,7 +11,7 @@ import {
 
 // global
 import { logger } from '../logger';
-import type { HandleSetViewState, RequestedViewState } from '../types';
+import type { HandleSetViewState } from '../types';
 
 /**
  * Helper to determine whether a view state is closed
@@ -47,6 +47,8 @@ export function useViewState({
   viewState: ViewState;
   /** A handler for the view state */
   handleSetViewState: HandleSetViewState;
+  /** The first view state when opening the modal */
+  firstSelectedViewState: ViewState | null;
   /** Airgap auth */
   auth?: AirgapAuth;
 } {
@@ -55,11 +57,14 @@ export function useViewState({
     current: ViewState;
     /** The previous view state - used for going back */
     previous: ViewState | null;
+    /** The first view state when opening the modal */
+    firstSelectedViewState: ViewState | null;
     /** Airgap auth */
     auth?: AirgapAuth;
   }>({
     current: ViewState.Hidden,
     previous: null,
+    firstSelectedViewState: null,
   });
 
   /**
@@ -68,7 +73,7 @@ export function useViewState({
    * @param requestedViewState - the requested next view state, 'open', 'close', or 'back'
    */
   const handleSetViewState: HandleSetViewState = useCallback(
-    (requestedViewState: RequestedViewState, auth?: AirgapAuth) => {
+    (requestedViewState, auth, resetFirstSelectedViewState = false) => {
       switch (requestedViewState) {
         // Request to go back to the previous page
         case 'back':
@@ -77,6 +82,7 @@ export function useViewState({
               current: state.previous,
               previous: state.current,
               auth,
+              firstSelectedViewState: state.firstSelectedViewState,
             });
           } else {
             logger.warn('Tried to go back when there is no previous state');
@@ -89,6 +95,7 @@ export function useViewState({
             current: initialViewState,
             previous: state.current,
             auth,
+            firstSelectedViewState: state.firstSelectedViewState,
           });
           break;
 
@@ -98,6 +105,7 @@ export function useViewState({
             current: dismissedViewState,
             previous: state.current,
             auth,
+            firstSelectedViewState: null,
           });
           break;
 
@@ -107,6 +115,9 @@ export function useViewState({
             current: requestedViewState,
             previous: state.current,
             auth,
+            firstSelectedViewState: resetFirstSelectedViewState
+              ? requestedViewState
+              : state.firstSelectedViewState || requestedViewState,
           });
           break;
       }
@@ -118,5 +129,6 @@ export function useViewState({
     viewState: state.current,
     handleSetViewState,
     auth: state.auth,
+    firstSelectedViewState: state.firstSelectedViewState,
   };
 }
