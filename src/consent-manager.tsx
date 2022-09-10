@@ -14,7 +14,7 @@ import App from './components/App';
 import { logger } from './logger';
 import { apiEventName } from './settings';
 import { createHTMLElement } from './utils/create-html-element';
-import { getTranslations } from './translations/loader';
+import { getTranslations } from './i18n/loader';
 import { EmitEventOptions } from './types';
 
 let interfaceInitialized = false;

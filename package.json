@@ -34,7 +34,7 @@
   "scripts": {
     "update:sdks": "yarn set version from sources && yarn sdks base",
     "update:deps": "yarn upgrade-interactive && yarn update:sdks",
-    "build": "ts-node --transpile-only ./build.ts && cp -r ./src/translations/languages ./build/🌐",
+    "build": "ts-node --transpile-only ./build.ts && cp -r ./src/translations ./build/🌐",
     "tsc:build": "yarn pnpify tsc --build",
     "clean": "yarn pnpify tsc --build --clean",
     "lint": "yarn pnpify eslint src --ext .ts",
