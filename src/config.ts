@@ -24,8 +24,7 @@ const {
 // Base configuration
 const baseConfig: Omit<
   ConsentManagerConfig,
-  'privacyPolicy',
-  'dismissedViewState'
+  'privacyPolicy' | 'dismissedViewState'
 > = {
   css: '',
   messages: '',
@@ -38,8 +37,6 @@ const baseConfig: Omit<
     desktop: '1024px',
   },
   initialViewStateByPrivacyRegime: DEFAULT_VIEW_STATE_BY_PRIVACY_REGIME,
-  privacyPolicy,
-  dismissedViewState,
 };
 
 /**
