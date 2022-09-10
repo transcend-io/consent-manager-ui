@@ -19,23 +19,6 @@ declare global {
     setConsentWithoutAuth: (consent: TrackingConsent) => boolean;
     /** resetWithoutAuth utility injected for tests */
     resetWithoutAuth: (autoReload?: boolean) => boolean;
-    /**
-     * `requestIdleCallback()`
-     *
-     * https://developer.mozilla.org/en-US/docs/Web/API/Window/requestIdleCallback
-     */
-    requestIdleCallback: (
-      // eslint-disable-next-line no-undef
-      callback: IdleRequestCallback,
-      // eslint-disable-next-line no-undef
-      options?: IdleRequestOptions,
-    ) => number;
-    /**
-     * `cancelIdleCallback()`
-     *
-     * https://developer.mozilla.org/en-US/docs/Web/API/Window/cancelIdleCallback
-     */
-    cancelIdleCallback: (callbackId: number) => void;
     /** analytics.js interface */
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     analytics?: any;
