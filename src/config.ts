@@ -7,6 +7,7 @@ import {
   ConsentManagerConfig,
   ConsentManagerConfigInput,
   ViewState,
+  DEFAULT_VIEW_STATE_BY_PRIVACY_REGIME,
 } from '@transcend-io/airgap.js-types';
 
 // local
@@ -36,21 +37,9 @@ const baseConfig: Omit<
     tablet: '640px',
     desktop: '1024px',
   },
-  initialViewStateByPrivacyRegime: {
-    // California
-    // TODO: https://transcend.height.app/T-17251 - migrate to DoNotSellDisclosure
-    CPRA: ViewState.NoticeAndDoNotSell,
-    // EU
-    GDPR: ViewState.QuickOptions,
-    // Brazil
-    LGPD: ViewState.QuickOptions,
-    // Virginia (unreachable as we don't detect this regime yet)
-    CDPA: ViewState.NoticeAndDoNotSell,
-    // Colorado (unreachable as we don't detect this regime yet)
-    CPA: ViewState.NoticeAndDoNotSell,
-    // Other
-    Unknown: ViewState.Hidden,
-  },
+  initialViewStateByPrivacyRegime: DEFAULT_VIEW_STATE_BY_PRIVACY_REGIME,
+  privacyPolicy,
+  dismissedViewState,
 };
 
 /**
@@ -64,6 +53,15 @@ export function getMergedConfig(): ConsentManagerConfig {
       ? jsonParseSafe(settings.consentManagerConfig, () => ({}))
       : settings.consentManagerConfig || {};
 
+  const settingsConfigInitialViewStateByPrivacyRegime =
+    settingsConfig?.initialViewStateByPrivacyRegime;
+  // Skip initialViewStateByPrivacyRegime config in settings if empty
+  if (
+    settingsConfigInitialViewStateByPrivacyRegime &&
+    Object.keys(settingsConfigInitialViewStateByPrivacyRegime).length === 0
+  ) {
+    delete settingsConfig?.initialViewStateByPrivacyRegime;
+  }
   // These consent manager settings can be configured through our backend or ag-bundler/config/{site}.json
   const config: ConsentManagerConfig = {
     ...baseConfig,
