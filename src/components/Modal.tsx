@@ -1,23 +1,15 @@
-// external
 import { ComponentChild, h, JSX } from 'preact';
-
-// main
 import type { ViewState } from '@transcend-io/airgap.js-types';
-
-// global
 import { useConfig, useEmotion } from '../hooks';
 
 /**
  * Styling for the banner/modal container
  */
-export default function Modal({
-  padding,
+export function Modal({
   children,
 }: {
   /** The current view state */
   viewState: ViewState;
-  /** Padding for the modal */
-  padding: number; // FIXME remove this prop
   /** Inner HTML of modal */
   children: ComponentChild;
 }): JSX.Element {
@@ -53,7 +45,7 @@ export default function Modal({
     overflow: hidden;
 
     /* Content */
-    padding: ${padding}px;
+    padding: 21px;
     font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir,
       helvetica neue, helvetica, 'sans-serif';
 
@@ -81,7 +73,7 @@ export default function Modal({
     min-height: 79px;
     height: calc(100% - 38px);
     width: 100%;
-    padding-bottom: ${padding + logoHeight}px;
+    padding-bottom: ${21 + logoHeight}px;
   `;
 
   return (

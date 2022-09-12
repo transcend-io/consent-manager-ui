@@ -2,15 +2,12 @@
  * getMergedConfig() returns the final config for the UI: { ...baseConfig, ...bundleConfig, ...scriptConfig }
  */
 
-// main
 import {
   ConsentManagerConfig,
   ConsentManagerConfigInput,
   ViewState,
   DEFAULT_VIEW_STATE_BY_PRIVACY_REGIME,
 } from '@transcend-io/airgap.js-types';
-
-// local
 import { logger } from './logger';
 import { settings, LOG_LEVELS, extraConfig } from './settings';
 import { jsonParseSafe } from './utils/safe-json-parse';

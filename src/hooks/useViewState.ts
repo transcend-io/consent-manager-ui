@@ -1,18 +1,12 @@
-// external
 import { useCallback, useState } from 'preact/hooks';
-
-// main
 import {
   AirgapAuth,
   DismissedViewState,
   InitialViewState,
   ViewState,
 } from '@transcend-io/airgap.js-types';
-
-// global
 import { logger } from '../logger';
 import type { HandleSetViewState } from '../types';
-import { getAppContainer } from '../consent-manager';
 
 /**
  * Helper to determine whether a view state is closed
@@ -125,10 +119,6 @@ export function useViewState({
     },
     [state, setState, initialViewState, dismissedViewState],
   );
-
-  // Expose view state to CSS
-  // FIXME
-  getAppContainer()?.classList?.add?.(`ViewState_${state.current}`);
 
   return {
     viewState: state.current,

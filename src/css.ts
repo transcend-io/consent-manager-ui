@@ -1,6 +1,6 @@
-// main
 import { getAppContainer } from './consent-manager';
 import { logger } from './logger';
+import { createHTMLElement } from './utils/create-html-element';
 
 /**
  * Inject CSS into the application
@@ -10,13 +10,12 @@ import { logger } from './logger';
 export const injectCss = (stylesheetUrl: string): void => {
   const root = getAppContainer();
   if (root && stylesheetUrl) {
-    const link = document.createElement('link');
+    const link = createHTMLElement<HTMLLinkElement>('link');
     link.type = 'text/css';
     link.rel = 'stylesheet';
     link.id = stylesheetUrl;
     link.href = stylesheetUrl;
-
-    document.head.appendChild(link);
+    root.appendChild(link);
   } else {
     logger.error(`Failed to inject css into consent manager!`);
   }

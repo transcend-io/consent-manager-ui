@@ -1,4 +1,3 @@
-// main
 import { ConsentManagerLanguageKey } from '@transcend-io/internationalization';
 
 export const CONSENT_MANAGER_SUPPORTED_LANGUAGES = Object.values(

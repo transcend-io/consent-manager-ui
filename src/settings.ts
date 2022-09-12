@@ -1,7 +1,4 @@
-// main
 import type { LogLevel } from '@transcend-io/airgap.js-types';
-
-// local
 import { COMMA_AND_OR_SPACE_SEPARATED_LIST } from './utils/comma-and-or-space-separated-list';
 
 export const apiEventName = 'tcmUIApiEvent';

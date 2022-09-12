@@ -1,15 +1,10 @@
-// external
 import { h, JSX } from 'preact';
 import { IntlProvider as _IntlProvider } from 'react-intl';
-
-// main
 import {
   AirgapAPI,
   ConsentManagerAPI,
   ViewState,
 } from '@transcend-io/airgap.js-types';
-
-// global
 import { getMergedConfig } from '../config';
 import {
   AirgapProvider,
@@ -20,9 +15,7 @@ import {
   viewStateIsClosed,
 } from '../hooks';
 import { apiEventName, LOG_LEVELS, settings } from '../settings';
-
-// local
-import Main from './Main';
+import { Main } from './Main';
 import { getPrimaryRegime } from '../regimes';
 import { logger } from '../logger';
 import { PRIVACY_SIGNAL_NAME } from '../privacy-signals';
@@ -40,7 +33,7 @@ let promptSuppressionNoticeShown = false;
 /**
  * Top layer concerned with data, not presentation
  */
-export default function App({
+export function App({
   airgap,
   appContainer,
 }: {

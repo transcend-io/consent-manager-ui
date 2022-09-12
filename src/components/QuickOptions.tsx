@@ -1,15 +1,9 @@
-// external
 import { h, JSX } from 'preact';
 import { useIntl } from 'react-intl';
-
-// global
-import { useAirgap, useConfig, useEmotion } from '../hooks';
+import { useAirgap } from '../hooks';
 import { messages, quickOptionsMessages } from '../messages';
 import type { HandleSetViewState } from '../types';
-
-// local
-import Button from './Button';
-import Title from './Title';
+import { Button } from './Button';
 
 /**
  * The possible quick options
@@ -24,40 +18,14 @@ enum QuickOption {
 /**
  * A set of buttons to choose a set of predefined options
  */
-export default function QuickOptions({
+export function QuickOptions({
   handleSetViewState,
 }: {
   /** Function to change viewState */
   handleSetViewState: HandleSetViewState;
 }): JSX.Element {
-  const { config } = useConfig();
   const { formatMessage } = useIntl();
   const { airgap } = useAirgap();
-  const { css, cx } = useEmotion();
-
-  const buttonSetStyle = css`
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-content: center;
-
-    @media (min-width: ${config.breakpoints.tablet}) {
-      flex-direction: row;
-    }
-
-    /* Fade in */
-    animation: fadeIn 150ms;
-
-    @keyframes fadeIn {
-      0% {
-        opacity: 0;
-      }
-      100% {
-        opacity: 1;
-      }
-    }
-  `;
 
   // Opt in to all purposes
   const handleQuickOption = (
@@ -90,8 +58,10 @@ export default function QuickOptions({
 
   return (
     <div>
-      <Title>{formatMessage(messages.consentTitle)}</Title>
-      <div className={cx(buttonSetStyle)}>
+      <p className="text-title text-title-center">
+        {formatMessage(messages.consentTitle)}
+      </p>
+      <div className="column-content">
         <Button
           primaryText={formatMessage(
             quickOptionsMessages.essentialsButtonPrimary,

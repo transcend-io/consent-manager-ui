@@ -1,8 +1,5 @@
 /* eslint max-len: 0 */
-// external
 import { h, JSX } from 'preact';
-
-// global
 import { useConfig, useEmotion } from '../hooks';
 
 /**
@@ -62,7 +59,7 @@ export function FullLogo(): JSX.Element {
     height: 17px;
 
     path {
-      fill: ${config.theme.fontColor};
+      fill: #010101;
       transition: fill 150ms;
     }
 

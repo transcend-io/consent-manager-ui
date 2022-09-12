@@ -5,14 +5,11 @@
  * 4. Expose transcend API to interact with Preact App
  */
 
-// main
 import type {
   AirgapAPI,
   ConsentManagerAPI,
   TranscendAPI,
 } from '@transcend-io/airgap.js-types';
-
-// local
 import { injectConsentManagerApp } from './consent-manager';
 import { injectCss } from './css';
 import { logger } from './logger';
