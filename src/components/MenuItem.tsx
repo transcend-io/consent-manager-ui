@@ -1,5 +1,5 @@
 import { ComponentChild, Fragment, h, JSX } from 'preact';
-import { useConfig, useEmotion } from '../hooks';
+import { useConfig } from '../hooks';
 
 /**
  * Props that are always on this element
@@ -45,50 +45,12 @@ export function MenuItem({
   children,
 }: MenuItemProps): JSX.Element {
   const { config } = useConfig();
-  const { css, cx } = useEmotion();
-
-  const menuItemStyle = css`
-    background: unset;
-    border: unset;
-    width: unset;
-    padding: unset;
-    margin: unset;
-
-    margin: 0 auto;
-    display: block;
-    min-width: fit-content;
-    width: auto;
-    text-align: center;
-    line-height: 1.5em;
-    font-family: inherit;
-    font-size: 10px;
-    font-weight: 500;
-    color: #010101;
-    @media (min-width: ${config.breakpoints.tablet}) {
-      font-size: 12px;
-    }
-
-    transition: text-decoration 150ms;
-    text-decoration: underline;
-    text-decoration-color: rgba(1, 1, 1, 0);
-    text-decoration-thickness: 1px;
-    text-underline-offset: 2px;
-
-    &:hover {
-      cursor: pointer;
-      text-decoration: underline;
-      text-decoration-color: rgba(1, 1, 1, 1);
-      text-decoration-thickness: 1px;
-      text-underline-offset: 2px;
-    }
-  `;
-
   return (
     <Fragment>
       {type === 'button' && (
         <button
           onClick={onClick as JSX.MouseEventHandler<HTMLButtonElement>}
-          className={cx(menuItemStyle)}
+          className="bottom-menu-item"
           aria-label={label}
           title={label}
         >
@@ -97,7 +59,7 @@ export function MenuItem({
       )}
       {type === 'a' && (
         <a
-          className={cx(menuItemStyle)}
+          className="bottom-menu-item"
           href={config.privacyPolicy}
           target="_blank"
           rel="noopener noreferrer"

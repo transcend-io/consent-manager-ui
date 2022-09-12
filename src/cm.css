@@ -23,6 +23,39 @@
 }
 
 /*******************
+ * Modal
+ *******************/
+
+.modal-container {
+  position: fixed;
+  bottom: 10px;
+  left: 5px;
+  right: 5px;
+  margin: 0 auto;
+  width: calc(100% - 10px);
+  box-sizing: border-box;
+  border-radius: 18px;
+  border: 0.5px solid #d8d8d8;
+  background-color: rgba(255, 255, 255, 0.9);
+  overflow: hidden;
+  padding: 21px;
+  font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir,
+    helvetica neue, helvetica, 'sans-serif';
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(20px) saturate(5);
+  animation: fadeIn 150ms;
+  transition: width 150ms, height 150ms;
+}
+
+/** Inner div contents for modal contents */
+.modal-container-inner {
+  min-height: 79px;
+  height: calc(100% - 38px);
+  width: 100%;
+  padding-bottom: 38px;
+}
+
+/*******************
  * CompletionOptions
  *******************/
 
@@ -103,6 +136,44 @@
   padding: 12px;
 }
 
+/** Styles applied to the language button */
+.language-button {
+  background: unset;
+  border: unset;
+  width: unset;
+  padding: unset;
+  margin: unset;
+  width: 17px;
+  height: 17px;
+  overflow: hidden;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  cursor: pointer;
+}
+
+/** CSS to apply when language svg select button is hovered on */
+.language-button-inactive svg {
+  fill: var(--text-color);
+  transition: fill 150ms;
+}
+
+/** Styles to apply when actively labeled */
+.language-button-active svg {
+  fill: var(--primary-color);
+  transition: fill 150ms;
+}
+
+/** CSS to apply when language svg select button is hovered on */
+.language-button svg:hover {
+  fill: var(--primary-color);
+}
+
+/** CSS to apply when language svg select button is active */
+.language-button svg:active {
+  fill: var(--primary-color);
+}
+
 /*******************
  * BottomMenu
  *******************/
@@ -129,6 +200,40 @@
 /** Styles applied to each item of bottom menu */
 .bottom-menu-item-container {
   width: auto;
+}
+
+/** Menu item styles for the BottomMenu */
+.bottom-menu-item {
+  background: unset;
+  border: unset;
+  width: unset;
+  padding: unset;
+  margin: unset;
+
+  margin: 0 auto;
+  display: block;
+  min-width: fit-content;
+  width: auto;
+  text-align: center;
+  line-height: 1.5em;
+  font-family: inherit;
+  font-size: 10px;
+  font-weight: 500;
+  color: var(--text-color);
+  transition: text-decoration 150ms;
+  text-decoration: underline;
+  text-decoration-color: rgba(1, 1, 1, 0);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+}
+
+/** Hover state for items in the bottom menu */
+.bottom-menu-item:hover {
+  cursor: pointer;
+  text-decoration: underline;
+  text-decoration-color: rgba(1, 1, 1, 1);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
 }
 
 /*******************
@@ -286,9 +391,20 @@
     width: calc(100% - 150px);
     justify-content: space-evenly;
   }
+  .bottom-menu-item {
+    font-size: 12px;
+  }
 
   /** CompleteOptions */
   .toggles-container {
     flex-direction: row;
+  }
+
+  /** Modal */
+  .modal-container {
+    bottom: 5px;
+    max-width: 630px;
+    min-height: 160px;
+    bottom: 22px;
   }
 }
