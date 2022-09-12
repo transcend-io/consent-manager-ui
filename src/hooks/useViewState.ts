@@ -12,7 +12,7 @@ import {
 // global
 import { logger } from '../logger';
 import type { HandleSetViewState } from '../types';
-import { getAppContainer } from 'src/consent-manager';
+import { getAppContainer } from '../consent-manager';
 
 /**
  * Helper to determine whether a view state is closed
