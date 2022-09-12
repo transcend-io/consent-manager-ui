@@ -17,6 +17,8 @@ export const scriptLocation = new URL(
     ? thisScript?.href?.baseVal
     : // eslint-disable-next-line no-restricted-globals
       null) ?? location.href,
+  // eslint-disable-next-line no-restricted-globals
+  location.href,
 );
 
 /**
