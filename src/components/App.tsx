@@ -58,10 +58,11 @@ export default function App({
   const { initialViewStateByPrivacyRegime, dismissedViewState } = config;
   const initialViewState: ViewState =
     initialViewStateByPrivacyRegime[privacyRegime];
-  const { viewState, handleSetViewState, auth } = useViewState({
-    initialViewState,
-    dismissedViewState,
-  });
+  const { viewState, firstSelectedViewState, handleSetViewState, auth } =
+    useViewState({
+      initialViewState,
+      dismissedViewState,
+    });
 
   // Event listener for the API
   appContainer.addEventListener(apiEventName, (event) => {
@@ -86,7 +87,8 @@ export default function App({
           options.viewState || ViewState.DoNotSellDisclosure,
           auth,
         ),
-      showConsentManager: () => handleSetViewState(options.viewState || 'open'),
+      showConsentManager: () =>
+        handleSetViewState(options.viewState || 'open', undefined, true),
       hideConsentManager: () => handleSetViewState('close'),
       toggleConsentManager: () =>
         handleSetViewState(viewStateIsClosed(viewState) ? 'open' : 'close'),
@@ -147,6 +149,7 @@ export default function App({
             <Main
               modalOpenAuth={auth}
               viewState={viewState}
+              firstSelectedViewState={firstSelectedViewState}
               handleSetViewState={handleSetViewState}
               handleChangeLanguage={handleChangeLanguage}
             />
