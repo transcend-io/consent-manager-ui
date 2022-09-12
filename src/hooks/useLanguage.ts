@@ -1,33 +1,33 @@
 // external
-import { useCallback } from 'preact/hooks';
+import { useCallback, useEffect, useState } from 'preact/hooks';
 
 // main
-import { LanguageKey } from '@transcend-io/internationalization';
+import {
+  ConsentManagerLanguageKey,
+  TranslatedMessages,
+  Translations,
+} from '@transcend-io/internationalization';
 
-// global
-import { CONSENT_MANAGER_TRANSLATIONS } from '../translations';
-
-// local
-import { useStickyState } from './useStickyState';
+export const loadedTranslations: Translations = Object.create(null);
 
 /**
- * Detect the preferred language from the browser
+ * Detect user-preferred languages from the user agent
  *
  * @returns an ordered list of preferred languages in BCP47 format
  */
-export function getBrowserLanguages(): readonly string[] {
+export function getUserLanguages(): readonly string[] {
   return navigator.languages && navigator.languages.length
     ? navigator.languages
     : [navigator.language];
 }
 
 /**
- * Get all potential sub-languages from a given ISO 639-1 language code
+ * Get all potential sub-languages from a given ISO 639-1 or BCP47 language code
  *
- * @param langCode - ISO 639-1 format language code
+ * @param langCode - ISO 639-1 or BCP47 format language code
  * @returns Array of potential sub-languages, sorted by most to least specific
  */
-const getAllSubLanguages = (langCode: LanguageKey): string[] =>
+const getAllSubLanguages = (langCode: ConsentManagerLanguageKey): string[] =>
   langCode
     .toLowerCase()
     .split('-')
@@ -42,8 +42,8 @@ const getAllSubLanguages = (langCode: LanguageKey): string[] =>
  * @returns Preferred languages (including sub-language matches) that match supported languages list
  */
 export const matchLanguages = (
-  preferred: LanguageKey[],
-  supported: LanguageKey[],
+  preferred: ConsentManagerLanguageKey[],
+  supported: ConsentManagerLanguageKey[],
 ): string[] => {
   const matches = new Set<string>();
   const allSupportedLanguages = supported.flatMap(getAllSubLanguages);
@@ -68,8 +68,8 @@ export const matchLanguages = (
  */
 export const getNearestSupportedLanguage = (
   preferred: readonly string[],
-  supported: LanguageKey[],
-): LanguageKey | undefined =>
+  supported: ConsentManagerLanguageKey[],
+): ConsentManagerLanguageKey | undefined =>
   supported.find((language) =>
     getAllSubLanguages(language).some((lang) =>
       preferred.some((preferredLang) => preferredLang.toLowerCase() === lang),
@@ -79,16 +79,16 @@ export const getNearestSupportedLanguage = (
 /**
  * Picks a default language for the user
  *
+ * @param supportedLanguages - Set of supported languages
  * @returns the language key of the best default language for this user
  */
-function pickDefaultLanguage(): LanguageKey {
-  const preferredLanguages = getBrowserLanguages();
-  const supportedLanguages = Object.keys(
-    CONSENT_MANAGER_TRANSLATIONS,
-  ) as LanguageKey[];
+export function pickDefaultLanguage(
+  supportedLanguages: ConsentManagerLanguageKey[],
+): ConsentManagerLanguageKey {
+  const preferredLanguages = getUserLanguages();
   return (
     getNearestSupportedLanguage(preferredLanguages, supportedLanguages) ||
-    LanguageKey.En
+    ConsentManagerLanguageKey.En
   );
 }
 
@@ -99,10 +99,10 @@ function pickDefaultLanguage(): LanguageKey {
  * @returns a list of language keys, sorted
  */
 export const sortSupportedLanguagesByPreference = (
-  languages: LanguageKey[],
-): LanguageKey[] =>
+  languages: ConsentManagerLanguageKey[],
+): ConsentManagerLanguageKey[] =>
   languages.sort((a, b) => {
-    const preferredLanguagesFull = getBrowserLanguages();
+    const preferredLanguagesFull = getUserLanguages();
 
     // Only use first token e.g. fr-CA => fr, and remove dupes e.g. [en-US, en] => [en], by casting to set
     const preferredLanguagesShort = [
@@ -118,28 +118,73 @@ export const sortSupportedLanguagesByPreference = (
   });
 
 /**
+ * Fetch message translations
+ *
+ * @param translationsLocation - Base path to fetching messages
+ * @param language - Language to fetch
+ * @returns The translations
+ */
+export const getTranslations = async (
+  translationsLocation: string,
+  language: ConsentManagerLanguageKey,
+): Promise<TranslatedMessages> => {
+  loadedTranslations[language] ??= await (async () => {
+    const pathToFetch = `${translationsLocation}/${language}.json`;
+    const response = await fetch(pathToFetch);
+    if (!response.ok) {
+      throw new Error(`Failed to load translations for language ${language}`);
+    }
+    return response.json();
+  })();
+
+  return loadedTranslations[language];
+};
+
+/**
  * Sets the language to use in translator
  *
+ * @param options - Options
  * @returns the language and a change language callback
  */
-export function useLanguage(): {
+export function useLanguage({
+  supportedLanguages,
+  translationsLocation,
+}: {
+  /** Set of supported languages */
+  supportedLanguages: ConsentManagerLanguageKey[];
+  /** Base path to fetching messages */
+  translationsLocation: string;
+}): {
   /** The language in use */
-  language: LanguageKey;
+  language: ConsentManagerLanguageKey;
   /** A change language callback */
-  handleChangeLanguage: (language: LanguageKey) => void;
+  handleChangeLanguage: (language: ConsentManagerLanguageKey) => void;
+  /** Message translations */
+  messages: TranslatedMessages | undefined;
 } {
-  // Set the language
-  const [language, setLanguage] = useStickyState<LanguageKey>(
-    () => pickDefaultLanguage(),
-    'tcmLanguage',
+  // The current language
+  const [language, setLanguage] = useState<ConsentManagerLanguageKey>(() =>
+    // choose a default language based on the browser selected
+    pickDefaultLanguage(supportedLanguages),
   );
 
+  // Hold the translations for that language (fetched async)
+  const [messages, setMessages] = useState<TranslatedMessages | undefined>();
+
+  // Load the default translations
+  useEffect(() => {
+    getTranslations(translationsLocation, language).then((messages) =>
+      setMessages(messages),
+    );
+  }, []);
+
   const handleChangeLanguage = useCallback(
-    (language: LanguageKey) => {
+    async (language: ConsentManagerLanguageKey) => {
+      await getTranslations(translationsLocation, language);
       setLanguage(language);
     },
     [setLanguage],
   );
 
-  return { language, handleChangeLanguage };
+  return { language, handleChangeLanguage, messages };
 }

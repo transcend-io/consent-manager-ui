@@ -3,7 +3,7 @@ import { h, JSX } from 'preact';
 
 // main
 import { AirgapAuth, ViewState } from '@transcend-io/airgap.js-types';
-import { LanguageKey } from '@transcend-io/internationalization';
+import { ConsentManagerLanguageKey } from '@transcend-io/internationalization';
 
 // global
 import { useEmotion, viewStateIsClosed } from '../hooks';
@@ -31,6 +31,7 @@ export default function Main({
   firstSelectedViewState,
   handleSetViewState,
   handleChangeLanguage,
+  supportedLanguages,
   modalOpenAuth,
 }: {
   /** The on click event passed as authentication to airgap. Needed for do-not-sell acknowledgement */
@@ -42,7 +43,9 @@ export default function Main({
   /** Updater function for viewState */
   handleSetViewState: HandleSetViewState;
   /** Updater function for language change */
-  handleChangeLanguage: (language: LanguageKey) => void;
+  handleChangeLanguage: (language: ConsentManagerLanguageKey) => void;
+  /** Set of supported languages */
+  supportedLanguages: ConsentManagerLanguageKey[];
 }): JSX.Element {
   const { css, cx } = useEmotion();
 
@@ -89,6 +92,7 @@ export default function Main({
           <LanguageOptions
             handleSetViewState={handleSetViewState}
             handleChangeLanguage={handleChangeLanguage}
+            supportedLanguages={supportedLanguages}
           />
         )}
 

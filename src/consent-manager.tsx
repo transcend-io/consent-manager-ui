@@ -33,6 +33,9 @@ async function dispatchConsentManagerAPIEvent(
 }
 
 let consentManagerAPI: ConsentManagerAPI;
+let appContainer: HTMLElement;
+
+export const getAppContainer = (): HTMLElement | undefined => appContainer;
 
 /**
  * Render the Preact app into a shadow DOM
@@ -55,7 +58,7 @@ export const injectConsentManagerApp = (
         consentManager?.attachShadow?.({ mode: 'closed' }) || consentManager;
 
       // Create an inner div for event listeners
-      const appContainer = createHTMLElement('div');
+      appContainer ??= createHTMLElement('div');
       shadowRoot.appendChild(appContainer);
 
       // Don't inherit global styles
@@ -72,6 +75,11 @@ export const injectConsentManagerApp = (
         .insertRule(':host { all: initial }');
 
       consentManagerAPI = {
+        setActiveLocale: (locale) =>
+          dispatchConsentManagerAPIEvent(appContainer, {
+            eventType: 'setActiveLocale',
+            locale,
+          }),
         viewStates: new Set(Object.values(ViewState)),
         doNotSell: (auth, options: ShowConsentManagerOptions = {}) =>
           dispatchConsentManagerAPIEvent(appContainer, {
