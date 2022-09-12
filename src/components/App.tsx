@@ -26,7 +26,6 @@ import Main from './Main';
 import { getPrimaryRegime } from '../regimes';
 import { logger } from '../logger';
 import { PRIVACY_SIGNAL_NAME } from '../privacy-signals';
-import { getConsentSelections } from '../consent-selections';
 import { ConsentManagerLanguageKey } from '@transcend-io/internationalization';
 import { EmitEventOptions } from '../types';
 import { CONSENT_MANAGER_SUPPORTED_LANGUAGES } from '../i18n';
@@ -115,24 +114,16 @@ export default function App({
         handleSetViewState(viewStateIsClosed(viewState) ? 'open' : 'close'),
       autoShowConsentManager: () => {
         const privacySignals = airgap.getPrivacySignals();
-        let applicablePrivacySignals = privacySignals.has('DNT');
-        // Only suppress auto-prompt with GPC if SaleOfInfo is the only displayed tracking purpose
-        // This applies to CPRA-like regimes
-        if (!applicablePrivacySignals && privacySignals.has('GPC')) {
-          const consentSelections = Object.keys(getConsentSelections(airgap));
-          if (
-            consentSelections.length === 1 &&
-            consentSelections[0] === 'SaleOfInfo'
-          ) {
-            applicablePrivacySignals = true;
-          }
-        }
-        const shouldShowNotice =
-          !airgap.getConsent().confirmed && !applicablePrivacySignals;
+        const regimePurposes = airgap.getRegimePurposes();
+        const applicablePrivacySignals =
+          // Prompt was auto-suppressed with DNT+any regime or GPC+regimes with SaleOfInfo
+          (privacySignals.has('DNT') && regimePurposes.size > 0) ||
+          (privacySignals.has('GPC') && regimePurposes.has('SaleOfInfo'));
+        const shouldShowNotice = !airgap.getConsent().confirmed;
         if (!shouldShowNotice) {
           if (
-            !promptSuppressionNoticeShown &&
             applicablePrivacySignals &&
+            !promptSuppressionNoticeShown &&
             LOG_LEVELS.has('warn')
           ) {
             logger.warn(
