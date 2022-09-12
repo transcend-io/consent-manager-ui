@@ -7,6 +7,7 @@ import {
   TranslatedMessages,
   Translations,
 } from '@transcend-io/internationalization';
+import { settings } from '../settings';
 
 export const loadedTranslations: Translations = Object.create(null);
 
@@ -85,6 +86,10 @@ export const getNearestSupportedLanguage = (
 export function pickDefaultLanguage(
   supportedLanguages: ConsentManagerLanguageKey[],
 ): ConsentManagerLanguageKey {
+  if (settings.locale && supportedLanguages.includes(settings.locale)) {
+    return settings.locale;
+  }
+
   const preferredLanguages = getUserLanguages();
   return (
     getNearestSupportedLanguage(preferredLanguages, supportedLanguages) ||
