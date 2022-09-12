@@ -185,7 +185,8 @@ export function useLanguage({
 
   const handleChangeLanguage = useCallback(
     async (language: ConsentManagerLanguageKey) => {
-      await getTranslations(translationsLocation, language);
+      const newMessages = await getTranslations(translationsLocation, language);
+      setMessages(newMessages);
       setLanguage(language);
     },
     [setLanguage],
