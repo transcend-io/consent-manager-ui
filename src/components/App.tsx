@@ -14,7 +14,12 @@ import {
   useViewState,
   viewStateIsClosed,
 } from '../hooks';
-import { apiEventName, LOG_LEVELS, settings } from '../settings';
+import {
+  apiEventName,
+  LOG_LEVELS,
+  scriptLocation,
+  settings,
+} from '../settings';
 import { Main } from './Main';
 import { getPrimaryRegime } from '../regimes';
 import { logger } from '../logger';
@@ -51,12 +56,14 @@ export function App({
   // Language setup
   const { language, handleChangeLanguage, messages } = useLanguage({
     supportedLanguages: CONSENT_MANAGER_SUPPORTED_LANGUAGES,
-    translationsLocation:
+    translationsLocation: new URL(
       // Order of priority:
       // 1. Take airgap.js data-messages
       // 2. Take consentManagerConfig.messages
       // 3. Look for translations locally
       settings.messages || config.messages || './translations',
+      scriptLocation,
+    ).href,
   });
 
   // Active view state based on regime and config

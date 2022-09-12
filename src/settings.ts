@@ -8,6 +8,17 @@ const airgapInit = (self as any)?.airgap;
 // eslint-disable-next-line @typescript-eslint/no-explicit-any, no-restricted-globals
 const transcendInit = (self as any)?.transcend;
 
+const { currentScript: thisScript } = document;
+
+export const scriptLocation = new URL(
+  (thisScript instanceof HTMLScriptElement
+    ? thisScript?.src
+    : thisScript instanceof SVGScriptElement
+    ? thisScript?.href?.baseVal
+    : // eslint-disable-next-line no-restricted-globals
+      null) ?? location.href,
+);
+
 /**
  * Get Airgap settings, merging overrides set on view.transcend and view.airgap
  *
