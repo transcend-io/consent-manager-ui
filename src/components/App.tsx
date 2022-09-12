@@ -19,8 +19,7 @@ import {
   useViewState,
   viewStateIsClosed,
 } from '../hooks';
-import { apiEventName, LOG_LEVELS } from '../settings';
-import { CONSENT_MANAGER_TRANSLATIONS } from '../translations';
+import { apiEventName, LOG_LEVELS, settings } from '../settings';
 
 // local
 import Main from './Main';
@@ -28,7 +27,9 @@ import { getPrimaryRegime } from '../regimes';
 import { logger } from '../logger';
 import { PRIVACY_SIGNAL_NAME } from '../privacy-signals';
 import { getConsentSelections } from '../consent-selections';
+import { ConsentManagerLanguageKey } from '@transcend-io/internationalization';
 import { EmitEventOptions } from '../types';
+import { CONSENT_MANAGER_SUPPORTED_LANGUAGES } from '../i18n';
 
 // TODO: https://transcend.height.app/T-13483
 // Fix IntlProvider JSX types
@@ -49,12 +50,24 @@ export default function App({
   /** Reference to the shadow root */
   appContainer: HTMLElement;
 }): JSX.Element {
-  // Hooks
+  // Active privacy regime
   const privacyRegime = getPrimaryRegime(airgap.getRegimes());
-  const { language, handleChangeLanguage } = useLanguage();
 
-  // Config loader + dependent hook
+  // Consent manager configuration
   const config = getMergedConfig();
+
+  // Language setup
+  const { language, handleChangeLanguage, messages } = useLanguage({
+    supportedLanguages: CONSENT_MANAGER_SUPPORTED_LANGUAGES,
+    translationsLocation:
+      // Order of priority:
+      // 1. Take airgap.js data-messages
+      // 2. Take consentManagerConfig.messages
+      // 3. Look for translations locally
+      settings.messages || config.messages || './translations',
+  });
+
+  // Active view state based on regime and config
   const { initialViewStateByPrivacyRegime, dismissedViewState } = config;
   const initialViewState: ViewState =
     initialViewStateByPrivacyRegime[privacyRegime];
@@ -67,7 +80,7 @@ export default function App({
   // Event listener for the API
   appContainer.addEventListener(apiEventName, (event) => {
     const {
-      detail: { eventType, auth, ...options },
+      detail: { eventType, auth, locale, ...options },
     } = event as CustomEvent<EmitEventOptions>;
     if (
       (options.viewState === ViewState.DoNotSellDisclosure ||
@@ -80,15 +93,20 @@ export default function App({
       );
     }
 
+    // multiple events can change the language
+    if (locale) {
+      handleChangeLanguage(locale);
+    }
+
     const eventHandlerByDetail: Record<keyof ConsentManagerAPI, () => void> = {
+      setActiveLocale: () => null, // handled above
       viewStates: () => null, // should not be called
       doNotSell: () =>
         handleSetViewState(
           options.viewState || ViewState.DoNotSellDisclosure,
           auth,
         ),
-      showConsentManager: () =>
-        handleSetViewState(options.viewState || 'open', undefined, true),
+      showConsentManager: () => handleSetViewState(options.viewState || 'open'),
       hideConsentManager: () => handleSetViewState('close'),
       toggleConsentManager: () =>
         handleSetViewState(viewStateIsClosed(viewState) ? 'open' : 'close'),
@@ -140,19 +158,24 @@ export default function App({
   return (
     <IntlProvider
       locale={language}
-      messages={CONSENT_MANAGER_TRANSLATIONS[language]}
-      defaultLocale="en"
+      messages={messages || {}}
+      // messages.ts are translated in english
+      defaultLocale={ConsentManagerLanguageKey.En}
     >
       <EmotionProvider>
         <ConfigProvider newConfig={config}>
           <AirgapProvider newAirgap={airgap}>
-            <Main
-              modalOpenAuth={auth}
-              viewState={viewState}
-              firstSelectedViewState={firstSelectedViewState}
-              handleSetViewState={handleSetViewState}
-              handleChangeLanguage={handleChangeLanguage}
-            />
+            {/** Ensure messages are loaded before any UI is displayed */}
+            {messages ? (
+              <Main
+                modalOpenAuth={auth}
+                viewState={viewState}
+                supportedLanguages={CONSENT_MANAGER_SUPPORTED_LANGUAGES}
+                firstSelectedViewState={firstSelectedViewState}
+                handleSetViewState={handleSetViewState}
+                handleChangeLanguage={handleChangeLanguage}
+              />
+            ) : null}
           </AirgapProvider>
         </ConfigProvider>
       </EmotionProvider>
