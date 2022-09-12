@@ -43,14 +43,11 @@ let promptSuppressionNoticeShown = false;
 export default function App({
   airgap,
   appContainer,
-  messages,
 }: {
   /** The Airgap API */
   airgap: AirgapAPI;
   /** Reference to the shadow root */
   appContainer: HTMLElement;
-  /** UI text translations */
-  messages: TranslatedMessages;
 }): JSX.Element {
   // Active privacy regime
   const privacyRegime = getPrimaryRegime(airgap.getRegimes());
