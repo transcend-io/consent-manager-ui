@@ -14,7 +14,6 @@ import App from './components/App';
 import { logger } from './logger';
 import { apiEventName } from './settings';
 import { createHTMLElement } from './utils/create-html-element';
-import { getTranslations } from './i18n/loader';
 import { EmitEventOptions } from './types';
 
 let interfaceInitialized = false;
@@ -41,9 +40,9 @@ export const getAppContainer = (): HTMLElement | undefined => appContainer;
 /**
  * Render the Preact app into a shadow DOM
  */
-export const injectConsentManagerApp = async (
+export const injectConsentManagerApp = (
   airgap: AirgapAPI,
-): Promise<ConsentManagerAPI> => {
+): ConsentManagerAPI => {
   if (!interfaceInitialized) {
     interfaceInitialized = true;
 
@@ -111,14 +110,7 @@ export const injectConsentManagerApp = async (
       };
 
       // Render preact app inside the shadow DOM component
-      render(
-        <App
-          messages={await getTranslations()}
-          airgap={airgap}
-          appContainer={appContainer}
-        />,
-        shadowRoot,
-      );
+      render(<App airgap={airgap} appContainer={appContainer} />, shadowRoot);
 
       // Return the consent manager API
       return consentManagerAPI;
