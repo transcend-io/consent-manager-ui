@@ -14,6 +14,7 @@ import type {
 
 // local
 import { injectConsentManagerApp } from './consent-manager';
+import { loadCSS } from './css/loader';
 import { logger } from './logger';
 import { LOG_ENABLED, LOG_LEVELS } from './settings';
 import { throwOutside } from './utils/throw-outside';
@@ -76,6 +77,8 @@ export const init = async (): Promise<void> => {
     // Inject the consent manager app and pull out the API methods
     const consentManagerAPI: ConsentManagerAPI =
       injectConsentManagerApp(airgap);
+
+    await loadCSS();
 
     // Create the Transcend API
     const transcend: TranscendAPI = Object.create(

@@ -17,7 +17,7 @@ export default function Modal({
   /** The current view state */
   viewState: ViewState;
   /** Padding for the modal */
-  padding: number;
+  padding: number; // FIXME remove this prop
   /** Inner HTML of modal */
   children: ComponentChild;
 }): JSX.Element {
