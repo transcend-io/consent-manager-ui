@@ -1,4 +1,14 @@
 /*******************
+ * Variables
+ *******************/
+
+/** Variables to insert */
+* {
+  --primary-color: #3333ff;
+  --text-color: #010101;
+}
+
+/*******************
  * KeyFrames
  *******************/
 
@@ -53,7 +63,7 @@
   font-weight: 500;
   height: 16px;
   vertical-align: baseline;
-  color: #010101;
+  color: var(--text-color);
   white-space: nowrap;
   text-shadow: none;
   padding-left: 25px;
@@ -141,7 +151,7 @@
 .gpc-setting p {
   margin: 0 0 0 6px;
   font-size: 12px;
-  color: #010101;
+  color: var(--text-color);
 }
 
 /*******************
@@ -152,14 +162,14 @@
 .text-title {
   font-size: 18px;
   font-weight: 700;
-  color: #010101;
+  color: var(--text-color);
   margin: 0 0 18px 0;
   text-align: center;
 }
 
 /** Paragraph text */
 .paragraph {
-  color: #010101;
+  color: var(--text-color);
   font-size: 14px;
   margin: 0 0 18px 0;
 }
@@ -186,7 +196,7 @@
   width: 100%;
   background-color: rgba(255, 255, 255, 0.7);
   opacity: 0.9;
-  border: 1px solid #3333ff;
+  border: 1px solid var(--primary-color);
   box-sizing: border-box;
   cursor: pointer;
   filter: brightness(100%);
@@ -204,7 +214,7 @@
 
 /** On button hover */
 .button:hover {
-  background-color: #3333ff;
+  background-color: var(--primary-color);
 }
 
 /** Apply to inner spans (text) when button hovers */
@@ -214,7 +224,7 @@
 
 /* base text styles for buttons */
 .button-base-text {
-  color: #3333ff;
+  color: var(--primary-color);
   display: block;
   font-style: normal;
   text-align: center;
