@@ -11,7 +11,7 @@ import {
 
 // global
 import { logger } from '../logger';
-import type { HandleSetViewState, RequestedViewState } from '../types';
+import type { HandleSetViewState } from '../types';
 import { getAppContainer } from 'src/consent-manager';
 
 /**

@@ -7,7 +7,7 @@ export const mainCSS: string =
   settings.css ??
   `import url(${JSON.stringify(new URL('cm.css', scriptLocation).href)})`;
 
-export const loadCSS = async (css = mainCSS): Promise<void> => {
+export const loadCSS = (css = mainCSS): void => {
   const root = getAppContainer();
   if (root) {
     const style = createHTMLElement<HTMLStyleElement>('style');

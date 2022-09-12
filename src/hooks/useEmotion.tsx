@@ -2,12 +2,10 @@
 import createEmotion, { Emotion } from '@emotion/css/create-instance';
 import { ComponentChildren, createContext, h, JSX } from 'preact';
 import { useContext, useEffect, useRef, useState } from 'preact/hooks';
-import { settings } from '../settings';
 
 export const EmotionContext = createContext<Emotion>({} as Emotion);
 
-const customCSS = settings.css;
-
+// FIXME remove me
 export const EmotionProvider = ({
   children,
 }: {

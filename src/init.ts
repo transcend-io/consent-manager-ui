@@ -78,7 +78,7 @@ export const init = async (): Promise<void> => {
     const consentManagerAPI: ConsentManagerAPI =
       injectConsentManagerApp(airgap);
 
-    await loadCSS();
+    loadCSS();
 
     // Create the Transcend API
     const transcend: TranscendAPI = Object.create(
