@@ -7,7 +7,7 @@ import {
   TranslatedMessages,
   Translations,
 } from '@transcend-io/internationalization';
-import { settings } from '../settings';
+import { scriptLocation, settings } from '../settings';
 
 export const loadedTranslations: Translations = Object.create(null);
 
@@ -134,7 +134,10 @@ export const getTranslations = async (
   language: ConsentManagerLanguageKey,
 ): Promise<TranslatedMessages> => {
   loadedTranslations[language] ??= await (async () => {
-    const pathToFetch = `${translationsLocation}/${language}.json`;
+    const pathToFetch = new URL(
+      `${translationsLocation}/${language}.json`,
+      scriptLocation,
+    ).href;
     const response = await fetch(pathToFetch);
     if (!response.ok) {
       throw new Error(`Failed to load translations for language ${language}`);
