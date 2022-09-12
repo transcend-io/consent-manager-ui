@@ -21,8 +21,7 @@ export function Collapsed({
   const paragraphRef = useRef<HTMLParagraphElement>(null);
   const { width } = useElementSize(paragraphRef);
 
-  const diameter = 32; // px
-  const hoverWidth = diameter + 6 + (width || 94); // px, width with text on hover
+  const hoverWidth = 32 + 6 + (width || 94); // px, width with text on hover
 
   const containerCollapsedStyle = css`
     /* Box positioning */
@@ -31,13 +30,13 @@ export function Collapsed({
     right: 5px;
 
     /* Box sizing */
-    width: ${diameter}px;
-    height: ${diameter}px;
+    width: 32px;
+    height: 32px;
 
     /* Box styling */
     box-sizing: border-box;
     border: none;
-    border-radius: ${diameter / 2}px;
+    border-radius: ${32 / 2}px;
     background-color: rgba(255, 255, 255, 0.95);
     overflow: hidden;
     cursor: pointer;

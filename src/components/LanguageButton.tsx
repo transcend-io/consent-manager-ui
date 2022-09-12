@@ -1,6 +1,6 @@
 import { h, JSX } from 'preact';
 import { AirgapAuth, ViewState } from '@transcend-io/airgap.js-types';
-import { useConfig, useEmotion } from '../hooks';
+import { useConfig } from '../hooks';
 import type { HandleSetViewState } from '../types';
 
 /**
@@ -16,42 +16,8 @@ export function LanguageButton({
   viewState: ViewState;
 }): JSX.Element {
   const { config } = useConfig();
-  const { css, cx } = useEmotion();
 
   const onLanguageOptions = viewState === ViewState.LanguageOptions;
-
-  const languageButtonStyle = css`
-    background: unset;
-    border: unset;
-    width: unset;
-    padding: unset;
-    margin: unset;
-
-    width: 17px;
-    height: 17px;
-    overflow: hidden;
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    cursor: pointer;
-
-    svg {
-      fill: ${onLanguageOptions
-        ? config.theme.primaryColor
-        : config.theme.fontColor};
-      transition: fill 150ms;
-    }
-
-    svg {
-      &:hover {
-        fill: ${config.theme.primaryColor};
-      }
-
-      &:active {
-        fill: ${config.theme.primaryColor};
-      }
-    }
-  `;
 
   const handleClick = (e: AirgapAuth): void => {
     if (!onLanguageOptions) {
@@ -62,7 +28,14 @@ export function LanguageButton({
   };
 
   return (
-    <button className={cx(languageButtonStyle)} onClick={handleClick}>
+    <button
+      className={`language-button ${
+        onLanguageOptions
+          ? 'language-button-active'
+          : 'language-button-inactive'
+      }`}
+      onClick={handleClick}
+    >
       <svg
         fill={config.theme.fontColor}
         width="17"
