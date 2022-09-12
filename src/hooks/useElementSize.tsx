@@ -1,4 +1,3 @@
-// external
 import { RefObject } from 'preact';
 import { useCallback, useEffect, useState } from 'preact/hooks';
 

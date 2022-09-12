@@ -1,23 +1,16 @@
-// external
 import { h, JSX } from 'preact';
-
-// main
 import { ConsentManagerLanguageKey } from '@transcend-io/internationalization';
-
-// global
-import { sortSupportedLanguagesByPreference, useEmotion } from '../hooks';
+import { sortSupportedLanguagesByPreference } from '../hooks';
 import { selectableLanguages } from '../i18n';
 import type { HandleSetViewState } from '../types';
-
-// local
-import MenuItem from './MenuItem';
+import { MenuItem } from './MenuItem';
 import { AirgapAuth } from '@transcend-io/airgap.js-types';
 import { useMemo } from 'preact/hooks';
 
 /**
  * The view for language settings
  */
-export default function LanguageOptions({
+export function LanguageOptions({
   handleChangeLanguage,
   handleSetViewState,
   supportedLanguages,
@@ -29,34 +22,6 @@ export default function LanguageOptions({
   /** Supported consent manager languages */
   supportedLanguages: ConsentManagerLanguageKey[];
 }): JSX.Element {
-  const { css, cx } = useEmotion();
-
-  const containerStyle = css`
-    width: 100%;
-    height: 100%;
-    animation: fadeIn 200ms ease-in;
-
-    @keyframes fadeIn {
-      0% {
-        opacity: 0;
-      }
-      100% {
-        opacity: 1;
-      }
-    }
-
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-items: center;
-    margin: 0 auto;
-    justify-content: space-evenly;
-  `;
-
-  const languageItemContainerStyle = css`
-    padding: 12px;
-  `;
-
   /**
    * Handler for language button click - selects language
    *
@@ -77,9 +42,9 @@ export default function LanguageOptions({
   );
 
   return (
-    <div className={cx(containerStyle)}>
+    <div className="language-options-container">
       {availableTranslations.map((language) => (
-        <div key={language} className={cx(languageItemContainerStyle)}>
+        <div key={language} className="language-item-container">
           <MenuItem
             label={selectableLanguages[language] || ''}
             type="button"

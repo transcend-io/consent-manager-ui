@@ -1,12 +1,7 @@
-// external
 import { h, JSX } from 'preact';
 import { useIntl } from 'react-intl';
-
-// main
 import type { AirgapAPI } from '@transcend-io/airgap.js-types';
-
-// global
-import { useAirgap, useConfig, useEmotion } from '../hooks';
+import { useAirgap } from '../hooks';
 import { completeOptionsMessages } from '../messages';
 import { getPrimaryRegime } from '../regimes';
 import { NavigatorWithGPC } from '../types';
@@ -24,28 +19,10 @@ function getSaleOfInfoIsOn(airgap: AirgapAPI): boolean {
 /**
  * Indicator that the Global Privacy Control signal is controlling this setting
  */
-export default function GPCIndicator(): JSX.Element {
-  const { css, cx } = useEmotion();
+export function GPCIndicator(): JSX.Element {
   const { formatMessage } = useIntl();
   const { airgap } = useAirgap();
   const regime = getPrimaryRegime(airgap.getRegimes());
-  const { config } = useConfig();
-
-  const gpcSettingStyle = css`
-    display: flex;
-    align-items: center;
-    margin-bottom: 20px;
-
-    svg {
-      flex-shrink: 0;
-    }
-
-    p {
-      margin: 0 0 0 6px;
-      font-size: 12px;
-      color: ${config.theme.fontColor};
-    }
-  `;
 
   // Get whether SaleOfInfo is on right now in Airgap
   const saleOfInfoIsOn = getSaleOfInfoIsOn(airgap);
@@ -58,7 +35,7 @@ export default function GPCIndicator(): JSX.Element {
   if (!gpcSetThis || regime !== 'CPRA') return <span />;
 
   return (
-    <div className={cx(gpcSettingStyle)}>
+    <div className="gpc-setting">
       <svg height="6" width="6">
         <circle cx="3" cy="3" r="3" fill="#52c41a" />
       </svg>

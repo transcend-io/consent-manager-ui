@@ -1,7 +1,4 @@
-// external
 import { useCallback, useEffect, useState } from 'preact/hooks';
-
-// main
 import {
   ConsentManagerLanguageKey,
   TranslatedMessages,
@@ -184,6 +181,7 @@ export function useLanguage({
     getTranslations(translationsLocation, language).then((messages) =>
       setMessages(messages),
     );
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleChangeLanguage = useCallback(
@@ -192,7 +190,7 @@ export function useLanguage({
       setMessages(newMessages);
       setLanguage(language);
     },
-    [setLanguage],
+    [setLanguage, translationsLocation],
   );
 
   return { language, handleChangeLanguage, messages };

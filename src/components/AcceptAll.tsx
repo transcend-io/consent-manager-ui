@@ -1,22 +1,14 @@
-// external
 import { h, JSX } from 'preact';
 import { useIntl } from 'react-intl';
-
-// global
 import { useAirgap } from '../hooks';
 import { messages } from '../messages';
 import type { HandleSetViewState } from '../types';
-
-// local
-import Button from './Button';
-import ColumnContent from './ColumnContent';
-import Title from './Title';
-import Paragraph from './Paragraph';
+import { Button } from './Button';
 
 /**
  * Component showing "accept all" interface
  */
-export default function AcceptAll({
+export function AcceptAll({
   handleSetViewState,
 }: {
   /** Function to change viewState */
@@ -37,21 +29,23 @@ export default function AcceptAll({
   };
 
   return (
-    <ColumnContent>
+    <div className="column-content">
       <div>
         <div>
-          <Title align="left">
+          <p className="text-title text-title-left">
             {formatMessage(messages.consentTitleAcceptAll)}
-          </Title>
+          </p>
         </div>
         <div>
-          <Paragraph>{formatMessage(messages.acceptAllDescription)}</Paragraph>
+          <p className="paragraph">
+            {formatMessage(messages.acceptAllDescription)}
+          </p>
         </div>
       </div>
       <Button
         primaryText={formatMessage(messages.acceptAllButtonPrimary)}
         handleClick={handleAcceptAll}
       />
-    </ColumnContent>
+    </div>
   );
 }

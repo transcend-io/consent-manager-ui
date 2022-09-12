@@ -1,7 +1,4 @@
-// external
 import { ComponentChild, Fragment, h, JSX } from 'preact';
-
-// global
 import { useConfig, useEmotion } from '../hooks';
 
 /**
@@ -41,7 +38,7 @@ type MenuItemProps = MenuItemAnchorProps | MenuItemButtonProps;
 /**
  * A set of buttons to choose a set of predefined options
  */
-export default function MenuItem({
+export function MenuItem({
   label,
   type,
   onClick,
@@ -66,7 +63,7 @@ export default function MenuItem({
     font-family: inherit;
     font-size: 10px;
     font-weight: 500;
-    color: ${config.theme.fontColor};
+    color: #010101;
     @media (min-width: ${config.breakpoints.tablet}) {
       font-size: 12px;
     }

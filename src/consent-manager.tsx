@@ -1,16 +1,11 @@
-// external
 import { h, render } from 'preact';
-
-// main
 import {
   AirgapAPI,
   ConsentManagerAPI,
   ShowConsentManagerOptions,
   ViewState,
 } from '@transcend-io/airgap.js-types';
-
-// local
-import App from './components/App';
+import { App } from './components/App';
 import { logger } from './logger';
 import { apiEventName } from './settings';
 import { createHTMLElement } from './utils/create-html-element';
