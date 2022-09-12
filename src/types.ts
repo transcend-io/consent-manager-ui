@@ -1,4 +1,3 @@
-// main
 import type {
   TrackingPurpose,
   ViewState,

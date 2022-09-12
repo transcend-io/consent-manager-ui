@@ -5,17 +5,15 @@
  * 4. Expose transcend API to interact with Preact App
  */
 
-// main
 import type {
   AirgapAPI,
   ConsentManagerAPI,
   TranscendAPI,
 } from '@transcend-io/airgap.js-types';
-
-// local
 import { injectConsentManagerApp } from './consent-manager';
+import { injectCss } from './css';
 import { logger } from './logger';
-import { LOG_ENABLED, LOG_LEVELS } from './settings';
+import { LOG_ENABLED, LOG_LEVELS, settings } from './settings';
 import { throwOutside } from './utils/throw-outside';
 
 // eslint-disable-next-line no-restricted-globals, @typescript-eslint/no-explicit-any
@@ -76,6 +74,9 @@ export const init = async (): Promise<void> => {
     // Inject the consent manager app and pull out the API methods
     const consentManagerAPI: ConsentManagerAPI =
       injectConsentManagerApp(airgap);
+
+    // Inject CSS into the application
+    injectCss(settings.css || 'cm.css');
 
     // Create the Transcend API
     const transcend: TranscendAPI = Object.create(

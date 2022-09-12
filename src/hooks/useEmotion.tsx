@@ -1,4 +1,3 @@
-// external
 import createEmotion, { Emotion } from '@emotion/css/create-instance';
 import { ComponentChildren, createContext, h, JSX } from 'preact';
 import { useContext, useEffect, useRef, useState } from 'preact/hooks';

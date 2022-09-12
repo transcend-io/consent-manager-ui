@@ -1,24 +1,16 @@
-// external
 import { h, JSX } from 'preact';
 import { useIntl } from 'react-intl';
 import { AirgapAuth, Purpose } from '@transcend-io/airgap.js-types';
 import { useEffect, useState } from 'preact/hooks';
-
-// global
 import { noticeAndDoNotSellMessages } from '../messages';
 import type { HandleSetViewState, NavigatorWithGPC } from '../types';
 import { useAirgap } from '../hooks';
-
-// local
-import Button from './Button';
-import ColumnContent from './ColumnContent';
-import Title from './Title';
-import Paragraph from './Paragraph';
+import { Button } from './Button';
 
 /**
  * Component showing acknowledgement of do not sell
  */
-export default function DoNotSellDisclosure({
+export function DoNotSellDisclosure({
   handleSetViewState,
   modalOpenAuth,
 }: {
@@ -57,23 +49,23 @@ export default function DoNotSellDisclosure({
     return <div />;
   }
   return (
-    <ColumnContent>
+    <div className="column-content">
       <div>
         <div>
-          <Title align="left">
+          <p className="text-title text-title-left">
             {formatMessage(
               globalPrivacyControl
                 ? noticeAndDoNotSellMessages.doNotSellHonoredGpc
                 : noticeAndDoNotSellMessages.doNotSellHonored,
             )}
-          </Title>
+          </p>
         </div>
         <div>
-          <Paragraph>
+          <p className="paragraph">
             {formatMessage(
               noticeAndDoNotSellMessages.doNotSellHonoredDescription,
             )}
-          </Paragraph>
+          </p>
         </div>
       </div>
       <Button
@@ -82,6 +74,6 @@ export default function DoNotSellDisclosure({
         )}
         handleClick={handleConfirm}
       />
-    </ColumnContent>
+    </div>
   );
 }

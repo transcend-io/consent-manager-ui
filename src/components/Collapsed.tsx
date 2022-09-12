@@ -1,20 +1,15 @@
-// external
 import { h, JSX } from 'preact';
 import { useRef } from 'preact/hooks';
 import { useIntl } from 'react-intl';
-
-// global
 import { useConfig, useElementSize, useEmotion } from '../hooks';
 import { messages } from '../messages';
 import type { HandleSetViewState } from '../types';
-
-// local
 import { Logomark } from './Logo';
 
 /**
  * The collapsed view, optionally displayed on close if customer does not yet have their own button
  */
-export default function Collapsed({
+export function Collapsed({
   handleSetViewState,
 }: {
   /** Function to change viewState */
@@ -27,8 +22,7 @@ export default function Collapsed({
   const { width } = useElementSize(paragraphRef);
 
   const diameter = 32; // px
-  const padding = 6; // px
-  const hoverWidth = diameter + padding + (width || 94); // px, width with text on hover
+  const hoverWidth = diameter + 6 + (width || 94); // px, width with text on hover
 
   const containerCollapsedStyle = css`
     /* Box positioning */
@@ -85,7 +79,7 @@ export default function Collapsed({
       font-size: 12px;
       font-weight: 500;
       white-space: nowrap;
-      color: ${config.theme.fontColor};
+      color: #010101;
 
       opacity: 0;
       transition: opacity 150ms ease-in 500ms;
@@ -100,11 +94,11 @@ export default function Collapsed({
   const squareLogoSVGStyle = css`
     width: 20px;
     height: 20px;
-    padding: ${padding}px;
+    padding: 6px;
     flex-shrink: 0;
 
     path {
-      fill: ${config.theme.fontColor};
+      fill: #010101;
       transition: fill 150ms;
     }
   `;

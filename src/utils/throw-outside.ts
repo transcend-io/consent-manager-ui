@@ -1,4 +1,3 @@
-// local
 import { requestIdleCallback } from './idle-callback';
 
 /**

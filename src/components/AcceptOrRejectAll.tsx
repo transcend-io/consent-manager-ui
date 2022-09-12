@@ -1,22 +1,14 @@
-// external
 import { h, JSX } from 'preact';
 import { useIntl } from 'react-intl';
-
-// global
-import { useAirgap, useConfig, useEmotion } from '../hooks';
+import { useAirgap } from '../hooks';
 import { messages } from '../messages';
 import type { HandleSetViewState } from '../types';
-
-// local
-import Button from './Button';
-import ColumnContent from './ColumnContent';
-import Title from './Title';
-import Paragraph from './Paragraph';
+import { Button } from './Button';
 
 /**
  * Component showing "accept all" or "reject all"
  */
-export default function AcceptOrRejectAll({
+export function AcceptOrRejectAll({
   handleSetViewState,
 }: {
   /** Function to change viewState */
@@ -24,8 +16,6 @@ export default function AcceptOrRejectAll({
 }): JSX.Element {
   const { airgap } = useAirgap();
   const { formatMessage } = useIntl();
-  const { config } = useConfig();
-  const { css, cx } = useEmotion();
 
   // Opt in to all purposes
   const handleAcceptAll:
@@ -49,33 +39,21 @@ export default function AcceptOrRejectAll({
     handleSetViewState('close');
   };
 
-  const buttonRowStyle = css`
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-
-    @media (min-width: ${config.breakpoints.tablet}) {
-      flex-direction: row;
-
-      button:not(:first-of-type) {
-        margin-left: 10px;
-      }
-    }
-  `;
-
   return (
-    <ColumnContent>
+    <div className="column-content">
       <div>
         <div>
-          <Title align="left">
+          <p className="text-title text-title-left">
             {formatMessage(messages.consentTitleAcceptAll)}
-          </Title>
+          </p>
         </div>
         <div>
-          <Paragraph>{formatMessage(messages.acceptAllDescription)}</Paragraph>
+          <p className="paragraph">
+            {formatMessage(messages.acceptAllDescription)}
+          </p>
         </div>
       </div>
-      <div className={cx(buttonRowStyle)}>
+      <div className="accept-or-reject-all-button-row">
         <Button
           primaryText={formatMessage(messages.acceptAllButtonPrimary)}
           handleClick={handleAcceptAll}
@@ -85,6 +63,6 @@ export default function AcceptOrRejectAll({
           handleClick={handleRejectAll}
         />
       </div>
-    </ColumnContent>
+    </div>
   );
 }

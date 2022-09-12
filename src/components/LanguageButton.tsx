@@ -1,17 +1,12 @@
-// external
 import { h, JSX } from 'preact';
-
-// main
 import { AirgapAuth, ViewState } from '@transcend-io/airgap.js-types';
-
-// global
 import { useConfig, useEmotion } from '../hooks';
 import type { HandleSetViewState } from '../types';
 
 /**
  * The button to change languages
  */
-export default function LanguageButton({
+export function LanguageButton({
   handleSetViewState,
   viewState,
 }: {

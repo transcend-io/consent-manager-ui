@@ -1,15 +1,10 @@
-// external
 import { useCallback, useState } from 'preact/hooks';
-
-// main
 import {
   AirgapAuth,
   DismissedViewState,
   InitialViewState,
   ViewState,
 } from '@transcend-io/airgap.js-types';
-
-// global
 import { logger } from '../logger';
 import type { HandleSetViewState } from '../types';
 

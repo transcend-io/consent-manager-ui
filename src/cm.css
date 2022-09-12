@@ -1,0 +1,284 @@
+/*******************
+ * KeyFrames
+ *******************/
+
+/** Animation for fading in */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/*******************
+ * CompletionOptions
+ *******************/
+
+/** Form wrapper for  */
+.complete-options-form {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin: 0 auto;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/** Container for rendering toggles */
+.toggles-container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  flex-wrap: wrap;
+  width: 100%;
+  margin: 0 auto;
+  justify-content: center;
+}
+
+/** Container around completion options */
+.complete-options-container {
+  height: inherit;
+  animation: fadeIn 200ms ease-in;
+}
+
+/** Style around the label text for each checkbox toggle */
+.toggle-label {
+  position: relative;
+  margin: 0 10px 15px 10px;
+  font-size: 12px;
+  font-weight: 500;
+  height: 16px;
+  vertical-align: baseline;
+  color: #010101;
+  white-space: nowrap;
+  text-shadow: none;
+  padding-left: 25px;
+  white-space: nowrap;
+}
+
+/*******************
+ * AcceptOrRejectAll
+ *******************/
+
+/** Button row styles for AcceptOrRejectAll view state */
+.accept-or-reject-all-button-row {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+/*******************
+ * LanguageOptions
+ *******************/
+
+/** Styles applied around the language container */
+.language-options-container {
+  width: 100%;
+  height: 100%;
+  animation: fadeIn 200ms ease-in;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  margin: 0 auto;
+  justify-content: space-evenly;
+}
+
+/** Styles applied around each language selection */
+.language-item-container {
+  padding: 12px;
+}
+
+/*******************
+ * BottomMenu
+ *******************/
+
+/** Outer styles wrapped around entire bottom menu */
+.footer-container {
+  position: absolute;
+  bottom: 21px;
+  width: calc(100% - 21px * 2);
+  height: 17px;
+}
+
+/** Styles applied to bottom menu */
+.bottom-menu-container {
+  width: calc(100% - 60px);
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  margin: 0 auto;
+}
+
+/** Styles applied to each item of bottom menu */
+.bottom-menu-item-container {
+  width: auto;
+}
+
+/*******************
+ * GPC Indicator
+ *******************/
+
+/** GPC outer styles */
+.gpc-setting {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+/** GPC svg styles */
+.gpc-setting svg {
+  flex-shrink: 0;
+}
+
+/** GPC paragraph text */
+.gpc-setting p {
+  margin: 0 0 0 6px;
+  font-size: 12px;
+  color: #010101;
+}
+
+/*******************
+ * Text Styles
+ *******************/
+
+/** Title text */
+.text-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: #010101;
+  margin: 0 0 18px 0;
+  text-align: center;
+}
+
+/** Paragraph text */
+.paragraph {
+  color: #010101;
+  font-size: 14px;
+  margin: 0 0 18px 0;
+}
+
+/** ColumnContent */
+.column-content {
+  min-height: 79px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  animation: fadeIn 150ms;
+}
+
+/*******************
+ * Button Styles
+ *******************/
+
+/** Consent buttons */
+.button {
+  min-height: 42px;
+  border-radius: 500px;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.7);
+  opacity: 0.9;
+  border: 1px solid #3333ff;
+  box-sizing: border-box;
+  cursor: pointer;
+  filter: brightness(100%);
+  flex-shrink: 0;
+  font-family: inherit;
+  text-align: center;
+  padding: 6px;
+  transition: filter 150ms, background-color 150ms;
+}
+
+/** Non-last button */
+.button:not(:last-of-type) {
+  margin-bottom: 8px;
+}
+
+/** On button hover */
+.button:hover {
+  background-color: #3333ff;
+}
+
+/** Apply to inner spans (text) when button hovers */
+.button:hover span {
+  color: #ffffff;
+}
+
+/* base text styles for buttons */
+.button-base-text {
+  color: #3333ff;
+  display: block;
+  font-style: normal;
+  text-align: center;
+  transition: color 150ms;
+}
+
+/* combine with button-base-text */
+.button-primary-text {
+  font-size: 12px;
+  font-weight: 700;
+}
+
+/* combine with button-base-text */
+.button-secondary-text {
+  font-size: 9px;
+  font-weight: 400;
+}
+
+/*******************
+ * Media Styles
+ *******************/
+
+/** At least table */
+@media (min-width: 640px) {
+  /** Button Styles */
+  .button {
+    width: 135px;
+  }
+  .button:not(:last-of-type) {
+    margin-bottom: 0;
+  }
+
+  /** Text Styles */
+  .text-title-left {
+    margin: 0 18px 0 0;
+    text-align: left;
+  }
+  .text-title-center {
+    margin: 0 0 18px 0;
+    text-align: center;
+  }
+  .paragraph {
+    margin: 18px 18px 0 0;
+  }
+  .column-content {
+    flex-direction: row;
+  }
+
+  /** AcceptOrRejectAll */
+  .accept-or-reject-all-button-row {
+    flex-direction: row;
+  }
+  .accept-or-reject-all-button-row button:not(:first-of-type) {
+    margin-left: 10px;
+  }
+
+  /** Bottom Menu */
+  .bottom-menu-container {
+    width: calc(100% - 150px);
+    justify-content: space-evenly;
+  }
+
+  /** CompleteOptions */
+  .toggles-container {
+    flex-direction: row;
+  }
+}

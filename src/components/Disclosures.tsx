@@ -1,13 +1,10 @@
-// external
 import { h, JSX } from 'preact';
-
-// global
 import type { DisclosureMap } from '../types';
 
 /**
  * Any required disclosures
  */
-export default function Disclosures({
+export function Disclosures({
   disclosureMap,
   requiredDisclosuresHeader,
 }: {
