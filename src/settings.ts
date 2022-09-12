@@ -23,10 +23,6 @@ export const scriptLocation = new URL(
  */
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 function getAirgapSettings(): any {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any, no-restricted-globals
-  const airgapInit = (self as any)?.airgap;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any, no-restricted-globals
-  const transcendInit = (self as any)?.transcend;
   // transcend.loadOptions is used to inject settings from our backend
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const embeddedLoadOptions: any | undefined = {
@@ -40,13 +36,16 @@ function getAirgapSettings(): any {
     : Object.create(null);
 
   return embeddedLoadOptions
-    ? { ...dataset, ...embeddedLoadOptions }
+    ? { ...embeddedLoadOptions, ...dataset }
     : // eslint-disable-next-line @typescript-eslint/no-explicit-any
       ({ ...dataset } as unknown as any);
 }
 
+/** UI module settings */
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const settings: any = getAirgapSettings();
+/** Customers can manually specify self.transcend.consentManagerConfig to override our settings */
+export const extraConfig = transcendInit?.consentManagerConfig || {};
 
 const validLogLevels: LogLevel[] = [
   'fatal',

@@ -76,6 +76,11 @@ export const injectConsentManagerApp = async (
         .insertRule(':host { all: initial }');
 
       consentManagerAPI = {
+        setActiveLocale: (locale) =>
+          dispatchConsentManagerAPIEvent(appContainer, {
+            eventType: 'setActiveLocale',
+            locale,
+          }),
         viewStates: new Set(Object.values(ViewState)),
         doNotSell: (auth, options: ShowConsentManagerOptions = {}) =>
           dispatchConsentManagerAPIEvent(appContainer, {

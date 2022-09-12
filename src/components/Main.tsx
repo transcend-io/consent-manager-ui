@@ -3,7 +3,7 @@ import { h, JSX } from 'preact';
 
 // main
 import { AirgapAuth, ViewState } from '@transcend-io/airgap.js-types';
-import { LanguageKey } from '@transcend-io/internationalization';
+import { ConsentManagerLanguageKey } from '@transcend-io/internationalization';
 
 // global
 import { useEmotion, viewStateIsClosed } from '../hooks';
@@ -28,18 +28,24 @@ import DoNotSellDisclosure from './DoNotSellDisclosure';
  */
 export default function Main({
   viewState,
+  firstSelectedViewState,
   handleSetViewState,
   handleChangeLanguage,
+  supportedLanguages,
   modalOpenAuth,
 }: {
   /** The on click event passed as authentication to airgap. Needed for do-not-sell acknowledgement */
   modalOpenAuth?: AirgapAuth;
   /** The current viewState of the consent manager */
   viewState: ViewState;
+  /** First view state selected when transcend.showConsentManager() is called */
+  firstSelectedViewState: ViewState | null;
   /** Updater function for viewState */
   handleSetViewState: HandleSetViewState;
   /** Updater function for language change */
-  handleChangeLanguage: (language: LanguageKey) => void;
+  handleChangeLanguage: (language: ConsentManagerLanguageKey) => void;
+  /** Set of supported languages */
+  supportedLanguages: ConsentManagerLanguageKey[];
 }): JSX.Element {
   const { css, cx } = useEmotion();
 
@@ -86,12 +92,14 @@ export default function Main({
           <LanguageOptions
             handleSetViewState={handleSetViewState}
             handleChangeLanguage={handleChangeLanguage}
+            supportedLanguages={supportedLanguages}
           />
         )}
 
         <div className={cx(bottomMenuStyle)}>
           <FullLogo />
           <BottomMenu
+            firstSelectedViewState={firstSelectedViewState}
             viewState={viewState}
             handleSetViewState={handleSetViewState}
           />

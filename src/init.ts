@@ -13,7 +13,6 @@ import type {
 } from '@transcend-io/airgap.js-types';
 
 // local
-// import { getMergedConfig } from './config';
 import { injectConsentManagerApp } from './consent-manager';
 import { loadCSS } from './css/loader';
 import { logger } from './logger';

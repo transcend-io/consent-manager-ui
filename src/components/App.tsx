@@ -19,7 +19,7 @@ import {
   useViewState,
   viewStateIsClosed,
 } from '../hooks';
-import { apiEventName, LOG_LEVELS } from '../settings';
+import { apiEventName, LOG_LEVELS, settings } from '../settings';
 
 // local
 import Main from './Main';
@@ -27,8 +27,9 @@ import { getPrimaryRegime } from '../regimes';
 import { logger } from '../logger';
 import { PRIVACY_SIGNAL_NAME } from '../privacy-signals';
 import { getConsentSelections } from '../consent-selections';
-import type { TranslatedMessages } from '@transcend-io/internationalization';
+import { ConsentManagerLanguageKey } from '@transcend-io/internationalization';
 import { EmitEventOptions } from '../types';
+import { CONSENT_MANAGER_SUPPORTED_LANGUAGES } from '../i18n';
 
 // TODO: https://transcend.height.app/T-13483
 // Fix IntlProvider JSX types
@@ -52,24 +53,37 @@ export default function App({
   /** UI text translations */
   messages: TranslatedMessages;
 }): JSX.Element {
-  // Hooks
+  // Active privacy regime
   const privacyRegime = getPrimaryRegime(airgap.getRegimes());
-  const { language, handleChangeLanguage } = useLanguage();
 
-  // Config loader + dependent hook
+  // Consent manager configuration
   const config = getMergedConfig();
+
+  // Language setup
+  const { language, handleChangeLanguage, messages } = useLanguage({
+    supportedLanguages: CONSENT_MANAGER_SUPPORTED_LANGUAGES,
+    translationsLocation:
+      // Order of priority:
+      // 1. Take airgap.js data-messages
+      // 2. Take consentManagerConfig.messages
+      // 3. Look for translations locally
+      settings.messages || config.messages || './translations',
+  });
+
+  // Active view state based on regime and config
   const { initialViewStateByPrivacyRegime, dismissedViewState } = config;
   const initialViewState: ViewState =
     initialViewStateByPrivacyRegime[privacyRegime];
-  const { viewState, handleSetViewState, auth } = useViewState({
-    initialViewState,
-    dismissedViewState,
-  });
+  const { viewState, firstSelectedViewState, handleSetViewState, auth } =
+    useViewState({
+      initialViewState,
+      dismissedViewState,
+    });
 
   // Event listener for the API
   appContainer.addEventListener(apiEventName, (event) => {
     const {
-      detail: { eventType, auth, ...options },
+      detail: { eventType, auth, locale, ...options },
     } = event as CustomEvent<EmitEventOptions>;
     if (
       (options.viewState === ViewState.DoNotSellDisclosure ||
@@ -82,7 +96,13 @@ export default function App({
       );
     }
 
+    // multiple events can change the language
+    if (locale) {
+      handleChangeLanguage(locale);
+    }
+
     const eventHandlerByDetail: Record<keyof ConsentManagerAPI, () => void> = {
+      setActiveLocale: () => null, // handled above
       viewStates: () => null, // should not be called
       doNotSell: () =>
         handleSetViewState(
@@ -139,16 +159,26 @@ export default function App({
   });
 
   return (
-    <IntlProvider locale={language} messages={messages} defaultLocale="en">
+    <IntlProvider
+      locale={language}
+      messages={messages || {}}
+      // messages.ts are translated in english
+      defaultLocale={ConsentManagerLanguageKey.En}
+    >
       <EmotionProvider>
         <ConfigProvider newConfig={config}>
           <AirgapProvider newAirgap={airgap}>
-            <Main
-              modalOpenAuth={auth}
-              viewState={viewState}
-              handleSetViewState={handleSetViewState}
-              handleChangeLanguage={handleChangeLanguage}
-            />
+            {/** Ensure messages are loaded before any UI is displayed */}
+            {messages ? (
+              <Main
+                modalOpenAuth={auth}
+                viewState={viewState}
+                supportedLanguages={CONSENT_MANAGER_SUPPORTED_LANGUAGES}
+                firstSelectedViewState={firstSelectedViewState}
+                handleSetViewState={handleSetViewState}
+                handleChangeLanguage={handleChangeLanguage}
+              />
+            ) : null}
           </AirgapProvider>
         </ConfigProvider>
       </EmotionProvider>

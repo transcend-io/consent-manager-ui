@@ -19,7 +19,10 @@ import MenuItem from './MenuItem';
 export default function BottomMenu({
   viewState,
   handleSetViewState,
+  firstSelectedViewState,
 }: {
+  /** The first view state when opening the modal */
+  firstSelectedViewState: ViewState | null;
   /** The current viewState */
   viewState: ViewState;
   /** Function to change viewState */
@@ -62,7 +65,14 @@ export default function BottomMenu({
                 bottomMenuMessages.simplerChoicesButtonLabel,
               )}
               type="button"
-              onClick={() => handleSetViewState(ViewState.QuickOptions)}
+              onClick={() =>
+                handleSetViewState(
+                  !!firstSelectedViewState &&
+                    firstSelectedViewState !== ViewState.CompleteOptions
+                    ? firstSelectedViewState
+                    : ViewState.QuickOptions,
+                )
+              }
             >
               {formatMessage(bottomMenuMessages.simplerChoicesButtonPrimary)}
             </MenuItem>

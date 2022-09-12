@@ -53,6 +53,7 @@ export type RequestedViewState = ViewState | 'back' | 'open' | 'close';
 export type HandleSetViewState = (
   requestedViewState: RequestedViewState,
   auth?: AirgapAuth,
+  resetFirstSelectedViewState?: boolean,
 ) => void;
 
 /**
