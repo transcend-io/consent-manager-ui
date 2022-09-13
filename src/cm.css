@@ -341,7 +341,7 @@
   flex-shrink: 0;
 }
 
-/** CSS for the collapsed square logo path*/
+/** CSS for the collapsed square logo path */
 .collapsed-square-logo-svg path {
   fill: var(--text-color);
   transition: fill 150ms;
