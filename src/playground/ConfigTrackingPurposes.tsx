@@ -1,9 +1,9 @@
 /* eslint-disable no-console */
-/* eslint-disable no-alert */
-import { h, JSX } from 'preact';
+
+import { Fragment, h, JSX } from 'preact';
 import { TrackingPurposesTypes } from '@transcend-io/airgap.js-types';
 import { useState } from 'preact/hooks';
-import { isRight } from 'fp-ts/Either';
+import reporter from 'io-ts-reporters';
 
 const defaultTrackingPurposes: TrackingPurposesTypes = {
   Advertising: {
@@ -63,20 +63,33 @@ const defaultTrackingPurposes: TrackingPurposesTypes = {
 /**
  * Validate trackingPurposes input
  */
-function validate(trackingPurposes: string): TrackingPurposesTypes {
+function validate(trackingPurposes: string):
+  | {
+      /** Error message */
+      errors: string[];
+    }
+  | {
+      /** Valid object */
+      obj: TrackingPurposesTypes;
+    } {
   try {
     const newTrackingPurposes: TrackingPurposesTypes =
       JSON.parse(trackingPurposes);
     const decoded = TrackingPurposesTypes.decode(newTrackingPurposes);
-    const isValid = isRight(decoded);
-    if (!isValid) {
-      console.error('Invalid tracking purposes', decoded);
-      alert('Invalid object');
+    const errors = reporter.report(decoded);
+    if (errors.length) {
+      console.error('Invalid tracking purposes', errors);
+      return {
+        errors,
+      };
     }
-    return newTrackingPurposes as TrackingPurposesTypes;
+    return {
+      obj: newTrackingPurposes as TrackingPurposesTypes,
+    };
   } catch (error) {
-    alert(`Invalid JSON\n${JSON.stringify(error, null, 2)}`);
-    throw error;
+    return {
+      errors: [`Invalid JSON\n${JSON.stringify(error, null, 2)}`],
+    };
   }
 }
 
@@ -86,12 +99,20 @@ function validate(trackingPurposes: string): TrackingPurposesTypes {
 export function ConfigTrackingPurposes(): JSX.Element {
   const [trackingPurposes, setTrackingPurposes] =
     useState<TrackingPurposesTypes>(defaultTrackingPurposes);
+  const [validationErrorMessages, setValidationErrorMessages] = useState<
+    string[]
+  >(['']);
 
   const handleChange: JSX.GenericEventHandler<HTMLTextAreaElement> = (
     event,
   ) => {
     const newTrackingPurposes = validate(event.currentTarget.value);
-    setTrackingPurposes(newTrackingPurposes);
+    if ('errors' in newTrackingPurposes) {
+      setValidationErrorMessages(newTrackingPurposes.errors);
+    } else {
+      setTrackingPurposes(newTrackingPurposes.obj);
+      setValidationErrorMessages([]);
+    }
   };
 
   const handleSubmit: JSX.GenericEventHandler<HTMLFormElement> = (event) => {
@@ -100,25 +121,26 @@ export function ConfigTrackingPurposes(): JSX.Element {
   };
 
   return (
-    <div>
-      <form onSubmit={handleSubmit} id="config-form">
-        <label>
-          Tracking purposes
-          <code>
-            <textarea
-              style={{ height: '500px' }}
-              type="text"
-              name="trackingPurposes"
-              value={JSON.stringify(trackingPurposes, null, 2)}
-              onChange={handleChange}
-            />
-          </code>
-        </label>
+    <Fragment>
+      <form onSubmit={handleSubmit} class="in">
+        <label for="trackingPurposes">Tracking purposes</label>
+        <textarea
+          id="trackingPurposes"
+          style={{ height: '300px' }}
+          type="text"
+          name="trackingPurposes"
+          value={JSON.stringify(trackingPurposes, null, 2)}
+          onChange={handleChange}
+        />
 
         <input type="submit" />
       </form>
-    </div>
+      <ul>
+        {validationErrorMessages.map((validationErrorMessage) => (
+          <li key={validationErrorMessage}>{validationErrorMessage}</li>
+        ))}
+      </ul>
+    </Fragment>
   );
 }
 /* eslint-enable no-console */
-/* eslint-enable no-alert */

@@ -1,4 +1,4 @@
-import { h, JSX } from 'preact';
+import { Fragment, h, JSX } from 'preact';
 import {
   TrackingPurposesTypes,
   PrivacyRegimeEnum,
@@ -31,10 +31,9 @@ export function Config(): JSX.Element {
   };
 
   return (
-    <div>
+    <Fragment>
+      <ConfigTrackingPurposes />
       <form onSubmit={handleSubmit} id="config-form">
-        <ConfigTrackingPurposes />
-
         <label for="age">Age:</label>
         <input
           name="age"
@@ -54,6 +53,6 @@ export function Config(): JSX.Element {
 
         <input type="submit" />
       </form>
-    </div>
+    </Fragment>
   );
 }
