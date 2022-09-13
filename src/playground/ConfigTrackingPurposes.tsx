@@ -1,8 +1,8 @@
-import Editor, { useMonaco } from '@monaco-editor/react';
-import type { Uri } from 'monaco-editor';
+import Editor, { useMonaco, OnMount } from '@monaco-editor/react';
+import type monaco from 'monaco-editor';
 import { Fragment, h, JSX } from 'preact';
 import { TrackingPurposesTypes } from '@transcend-io/airgap.js-types';
-import { useState, useEffect } from 'preact/hooks';
+import { useState, useEffect, useRef } from 'preact/hooks';
 import { toJsonSchema } from './ioTsToJSONSchema';
 import { defaultTrackingPurposes } from './defaults';
 
@@ -11,7 +11,10 @@ import { defaultTrackingPurposes } from './defaults';
  */
 export function ConfigTrackingPurposes(): JSX.Element {
   const monaco = useMonaco();
-  const [modelUri, setModelUri] = useState<Uri | undefined>(undefined);
+  const [modelUri, setModelUri] = useState<monaco.Uri | undefined>(undefined);
+  const editorRef = useRef<monaco.editor.IStandaloneCodeEditor | null>(null);
+
+  const localStorageKey = 'getPurposeTypes';
 
   useEffect(() => {
     if (monaco) {
@@ -32,14 +35,59 @@ export function ConfigTrackingPurposes(): JSX.Element {
     }
   }, [monaco]);
 
+  /**
+   * Set the ref
+   */
+  const handleEditorDidMount: OnMount = (editor) => {
+    editorRef.current = editor;
+    save();
+  };
+
+  /**
+   * Get initial value from local storage, or if unset, the default
+   */
+  function getInitialValue(): string {
+    let trackingPurposes = localStorage.getItem(localStorageKey);
+    if (!trackingPurposes) {
+      trackingPurposes = JSON.stringify(defaultTrackingPurposes, null, 2);
+    }
+    return trackingPurposes;
+  }
+
+  /**
+   * Show the editor's text value
+   */
+  function save(): void {
+    if (!editorRef.current) {
+      throw new Error('Editor has not mounted');
+    }
+    const trackingPurposes = editorRef.current.getValue();
+    localStorage.setItem(localStorageKey, trackingPurposes);
+  }
+
+  /**
+   * Reset to default
+   */
+  function reset(): void {
+    if (!editorRef.current) {
+      throw new Error('Editor has not mounted');
+    }
+    editorRef.current.setValue(
+      JSON.stringify(defaultTrackingPurposes, null, 2),
+    );
+  }
+
   return (
     <Fragment>
       <Editor
         height="500px"
         defaultLanguage="json"
         path={modelUri?.toString()}
-        defaultValue={JSON.stringify(defaultTrackingPurposes, null, 2)}
+        defaultValue={getInitialValue()}
+        onMount={handleEditorDidMount}
       />
+      <button onClick={save}>Save</button>
+      <button onClick={reset}>Reset</button>
     </Fragment>
   );
 }
