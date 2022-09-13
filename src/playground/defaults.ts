@@ -1,4 +1,7 @@
-import type { TrackingPurposesTypes } from '@transcend-io/airgap.js-types';
+import type {
+  TrackingPurposesTypes,
+  UserPrivacySignal,
+} from '@transcend-io/airgap.js-types';
 
 export const defaultTrackingPurposes: TrackingPurposesTypes = {
   Advertising: {
@@ -54,3 +57,5 @@ export const defaultTrackingPurposes: TrackingPurposesTypes = {
     showInConsentManager: false,
   },
 };
+
+export const defaultUserPrivacySignal: UserPrivacySignal = 'GPC';

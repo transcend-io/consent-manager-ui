@@ -28,7 +28,7 @@ function JsonConfig<T>({
 
   useEffect(() => {
     if (monaco) {
-      const modelUri = monaco.Uri.parse('a://b/foo.json'); // a made up unique URI for our model
+      const modelUri = monaco.Uri.parse(`a://b/${localStorageKey}.json`); // a made up unique URI for our model
       setModelUri(modelUri);
 
       // configure the JSON language support with schemas and schema associations
@@ -57,11 +57,11 @@ function JsonConfig<T>({
    * Get initial value from local storage, or if unset, the default
    */
   function getInitialValue(): string {
-    let trackingPurposes = localStorage.getItem(localStorageKey);
-    if (!trackingPurposes) {
-      trackingPurposes = JSON.stringify(defaultValue, null, 2);
+    let initialValue = localStorage.getItem(localStorageKey);
+    if (!initialValue) {
+      initialValue = JSON.stringify(defaultValue, null, 2);
     }
-    return trackingPurposes;
+    return initialValue;
   }
 
   /**
@@ -71,8 +71,8 @@ function JsonConfig<T>({
     if (!editorRef.current) {
       throw new Error('Editor has not mounted');
     }
-    const trackingPurposes = editorRef.current.getValue();
-    localStorage.setItem(localStorageKey, trackingPurposes);
+    const value = editorRef.current.getValue();
+    localStorage.setItem(localStorageKey, value);
   }
 
   /**
@@ -93,8 +93,12 @@ function JsonConfig<T>({
         defaultValue={getInitialValue()}
         onMount={handleEditorDidMount}
       />
-      <button onClick={save}>Save</button>
-      <button onClick={reset}>Reset</button>
+      <button class="button" onClick={save}>
+        Save
+      </button>
+      <button class="button" onClick={reset}>
+        Reset
+      </button>
     </Fragment>
   );
 }
@@ -107,7 +111,7 @@ export function JsonConfigModal<T>(props: JsonConfigProps<T>): JSX.Element {
 
   return (
     <Fragment>
-      <button onClick={() => setIsOpen(true)}>
+      <button class="button" onClick={() => setIsOpen(true)}>
         Edit {props.localStorageKey}
       </button>
       <div
@@ -136,7 +140,9 @@ export function JsonConfigModal<T>(props: JsonConfigProps<T>): JSX.Element {
         >
           <h2>Editing {props.localStorageKey}</h2>
           <JsonConfig {...props} />
-          <button onClick={() => setIsOpen(false)}>Close</button>
+          <button class="button" onClick={() => setIsOpen(false)}>
+            Close
+          </button>
         </div>
       </div>
     </Fragment>

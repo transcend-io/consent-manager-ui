@@ -2,12 +2,13 @@ import { Fragment, h, JSX } from 'preact';
 import {
   TrackingPurposesTypes,
   PrivacyRegimeEnum,
+  UserPrivacySignal,
 } from '@transcend-io/airgap.js-types';
 import { useState } from 'preact/hooks';
 import { isRight } from 'fp-ts/Either';
 
 import { JsonConfigModal } from './JsonConfig';
-import { defaultTrackingPurposes } from './defaults';
+import { defaultTrackingPurposes, defaultUserPrivacySignal } from './defaults';
 /**
  * The playground entrypoint
  */
@@ -38,6 +39,11 @@ export function Config(): JSX.Element {
         localStorageKey="getPurposeTypes"
         defaultValue={defaultTrackingPurposes}
         ioTsType={TrackingPurposesTypes}
+      />
+      <JsonConfigModal
+        localStorageKey="getPrivacySignals"
+        defaultValue={defaultUserPrivacySignal}
+        ioTsType={UserPrivacySignal}
       />
       <form onSubmit={handleSubmit} id="config-form">
         <label for="age">Age:</label>
