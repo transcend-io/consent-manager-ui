@@ -1,6 +1,5 @@
 import {
   TrackingPurposesTypes,
-  UserPrivacySignal,
   ConsentManagerConfig,
   DEFAULT_VIEW_STATE_BY_PRIVACY_REGIME,
 } from '@transcend-io/airgap.js-types';
@@ -80,5 +79,3 @@ export const defaultTrackingPurposes: TrackingPurposesTypes = {
     showInConsentManager: false,
   },
 };
-
-export const defaultUserPrivacySignal: UserPrivacySignal = 'GPC';
