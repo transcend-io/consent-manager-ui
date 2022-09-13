@@ -172,7 +172,7 @@
   transform: rotate(45deg) scale(1);
 }
 
-/**Style applied to toggle input when focused */
+/** Style applied to toggle input when focused */
 .toggle-input:hover:enabled + span,
 .toggle-input:focus-visible + span {
   border-color: var(--primary-color);
