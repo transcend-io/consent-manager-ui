@@ -1,9 +1,8 @@
-/* eslint-disable no-console */
-
+import Editor, { useMonaco } from '@monaco-editor/react';
+import type { Uri } from 'monaco-editor';
 import { Fragment, h, JSX } from 'preact';
 import { TrackingPurposesTypes } from '@transcend-io/airgap.js-types';
-import { useState } from 'preact/hooks';
-import reporter from 'io-ts-reporters';
+import { useState, useEffect } from 'preact/hooks';
 
 const defaultTrackingPurposes: TrackingPurposesTypes = {
   Advertising: {
@@ -61,86 +60,88 @@ const defaultTrackingPurposes: TrackingPurposesTypes = {
 };
 
 /**
- * Validate trackingPurposes input
+ * JSON Schema representation of `TrackingPurposesTypes`
  */
-function validate(trackingPurposes: string):
-  | {
-      /** Error message */
-      errors: string[];
-    }
-  | {
-      /** Valid object */
-      obj: TrackingPurposesTypes;
-    } {
-  try {
-    const newTrackingPurposes: TrackingPurposesTypes =
-      JSON.parse(trackingPurposes);
-    const decoded = TrackingPurposesTypes.decode(newTrackingPurposes);
-    const errors = reporter.report(decoded);
-    if (errors.length) {
-      console.error('Invalid tracking purposes', errors);
-      return {
-        errors,
-      };
-    }
-    return {
-      obj: newTrackingPurposes as TrackingPurposesTypes,
-    };
-  } catch (error) {
-    return {
-      errors: [`Invalid JSON\n${JSON.stringify(error, null, 2)}`],
-    };
-  }
-}
+const trackingPurposesSchema = {
+  type: 'object',
+  patternProperties: {
+    '^.*$': {
+      type: 'object',
+      properties: {
+        name: {
+          type: 'string',
+        },
+        description: {
+          type: 'string',
+        },
+        defaultConsent: {
+          enum: [
+            true,
+            false,
+            'Auto',
+            'AutoGDPR',
+            'AutoDNT',
+            'AutoGPC',
+            'on',
+            'off',
+          ],
+        },
+        showInConsentManager: {
+          type: 'boolean',
+        },
+        configurable: {
+          type: 'boolean',
+        },
+        essential: {
+          type: 'boolean',
+        },
+      },
+      required: [
+        'defaultConsent',
+        'configurable',
+        'essential',
+        'name',
+        'description',
+        'showInConsentManager',
+      ],
+    },
+  },
+};
 
 /**
  * The playground entrypoint
  */
 export function ConfigTrackingPurposes(): JSX.Element {
-  const [trackingPurposes, setTrackingPurposes] =
-    useState<TrackingPurposesTypes>(defaultTrackingPurposes);
-  const [validationErrorMessages, setValidationErrorMessages] = useState<
-    string[]
-  >(['']);
+  const monaco = useMonaco();
+  const [modelUri, setModelUri] = useState<Uri | undefined>(undefined);
 
-  const handleChange: JSX.GenericEventHandler<HTMLTextAreaElement> = (
-    event,
-  ) => {
-    const newTrackingPurposes = validate(event.currentTarget.value);
-    if ('errors' in newTrackingPurposes) {
-      setValidationErrorMessages(newTrackingPurposes.errors);
-    } else {
-      setTrackingPurposes(newTrackingPurposes.obj);
-      setValidationErrorMessages([]);
+  useEffect(() => {
+    if (monaco) {
+      const modelUri = monaco.Uri.parse('a://b/foo.json'); // a made up unique URI for our model
+      setModelUri(modelUri);
+
+      // configure the JSON language support with schemas and schema associations
+      monaco.languages.json.jsonDefaults.setDiagnosticsOptions({
+        validate: true,
+        schemas: [
+          {
+            uri: 'http://myserver/foo-schema.json', // id of the first schema
+            fileMatch: [modelUri.toString()], // associate with our model
+            schema: trackingPurposesSchema,
+          },
+        ],
+      });
     }
-  };
-
-  const handleSubmit: JSX.GenericEventHandler<HTMLFormElement> = (event) => {
-    event.preventDefault();
-    localStorage.setItem('trackingPurposes', JSON.stringify(trackingPurposes));
-  };
+  }, [monaco]);
 
   return (
     <Fragment>
-      <form onSubmit={handleSubmit} class="in">
-        <label for="trackingPurposes">Tracking purposes</label>
-        <textarea
-          id="trackingPurposes"
-          style={{ height: '300px' }}
-          type="text"
-          name="trackingPurposes"
-          value={JSON.stringify(trackingPurposes, null, 2)}
-          onChange={handleChange}
-        />
-
-        <input type="submit" />
-      </form>
-      <ul>
-        {validationErrorMessages.map((validationErrorMessage) => (
-          <li key={validationErrorMessage}>{validationErrorMessage}</li>
-        ))}
-      </ul>
+      <Editor
+        height="500px"
+        defaultLanguage="json"
+        path={modelUri?.toString()}
+        defaultValue={JSON.stringify(defaultTrackingPurposes, null, 2)}
+      />
     </Fragment>
   );
 }
-/* eslint-enable no-console */
