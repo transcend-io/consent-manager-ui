@@ -529,7 +529,7 @@
   color: #ffffff;
 }
 
-/* base text styles for buttons */
+/** Base text styles for buttons */
 .button-base-text {
   color: var(--primary-color);
   display: block;
@@ -538,13 +538,13 @@
   transition: color 150ms;
 }
 
-/* combine with button-base-text */
+/** Combine with button-base-text */
 .button-primary-text {
   font-size: 12px;
   font-weight: 700;
 }
 
-/* combine with button-base-text */
+/** Combine with button-base-text */
 .button-secondary-text {
   font-size: 9px;
   font-weight: 400;
