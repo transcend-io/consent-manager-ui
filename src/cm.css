@@ -254,7 +254,7 @@
   transition: fill 150ms;
 }
 
-/** The wrapper around the entire collapsed consent icon */
+/** The wrapper around the entire collapsed hovering consent icon */
 .collapsed-container {
   position: fixed;
   bottom: 100px;
@@ -280,22 +280,24 @@
     box-shadow 150ms ease-in-out;
 }
 
+/** Styles applied to consent icon when actively selected */
 .collapsed-container:active {
   background-color: rgba(255, 255, 255, 0.85);
   box-shadow: 0px 0.5px 5px 1.5px rgba(0, 0, 0, 0.12);
 }
 
+/** Styles applied to consent icon on hover */
 .collapsed-container:hover {
   width: 132px;
   transition-delay: 0ms;
 }
 
-/** SVG */
+/** Styles applied to consent icon SVG contents */
 .collapsed-container:hover path {
   fill: var(--primary-color);
 }
 
-/* Paragraph */
+/** Styles applied to consent icon paragraph text */
 .collapsed-container p {
   font-size: 12px;
   font-weight: 500;
@@ -305,6 +307,7 @@
   transition: opacity 150ms ease-in 500ms;
 }
 
+/** Styles applied to consent icon paragraph text on hover */
 .collapsed-container:hover p {
   opacity: 1;
   transition-delay: 0ms;
