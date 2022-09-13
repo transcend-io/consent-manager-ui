@@ -5,7 +5,9 @@ import {
 } from '@transcend-io/airgap.js-types';
 import { useState } from 'preact/hooks';
 import { isRight } from 'fp-ts/Either';
-import { ConfigTrackingPurposes } from './ConfigTrackingPurposes';
+
+import { JsonConfig } from './JsonConfig';
+import { defaultTrackingPurposes } from './defaults';
 /**
  * The playground entrypoint
  */
@@ -32,7 +34,11 @@ export function Config(): JSX.Element {
 
   return (
     <Fragment>
-      <ConfigTrackingPurposes />
+      <JsonConfig
+        localStorageKey="getPurposeTypes"
+        defaultValue={defaultTrackingPurposes}
+        ioTsType={TrackingPurposesTypes}
+      />
       <form onSubmit={handleSubmit} id="config-form">
         <label for="age">Age:</label>
         <input

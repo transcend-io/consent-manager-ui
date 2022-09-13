@@ -1,20 +1,30 @@
+import { Fragment, h, JSX } from 'preact';
+import { useState, useEffect, useRef } from 'preact/hooks';
 import Editor, { useMonaco, OnMount } from '@monaco-editor/react';
 import type monaco from 'monaco-editor';
-import { Fragment, h, JSX } from 'preact';
-import { TrackingPurposesTypes } from '@transcend-io/airgap.js-types';
-import { useState, useEffect, useRef } from 'preact/hooks';
-import { toJsonSchema } from './ioTsToJSONSchema';
-import { defaultTrackingPurposes } from './defaults';
+import { toJsonSchema } from './helpers/ioTsToJsonSchema';
+
+interface JsonConfigProps<T> {
+  /** The unique key to store the saved value under */
+  localStorageKey: string;
+  /** The initial, default value (this is also what its set to when the reset button is hit) */
+  defaultValue: T;
+  /** The io-ts type to edit, e.g., `TrackingPurposesTypes` */
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  ioTsType: any;
+}
 
 /**
  * JSON editor with JSON schema type checking
  */
-export function ConfigTrackingPurposes(): JSX.Element {
+export function JsonConfig<T>({
+  localStorageKey,
+  defaultValue,
+  ioTsType,
+}: JsonConfigProps<T>): JSX.Element {
   const monaco = useMonaco();
   const [modelUri, setModelUri] = useState<monaco.Uri | undefined>(undefined);
   const editorRef = useRef<monaco.editor.IStandaloneCodeEditor | null>(null);
-
-  const localStorageKey = 'getPurposeTypes';
 
   useEffect(() => {
     if (monaco) {
@@ -26,14 +36,14 @@ export function ConfigTrackingPurposes(): JSX.Element {
         validate: true,
         schemas: [
           {
-            uri: 'http://myserver/foo-schema.json', // id of the first schema
+            uri: localStorageKey, // id of the first schema
             fileMatch: [modelUri.toString()], // associate with our model
-            schema: toJsonSchema(TrackingPurposesTypes),
+            schema: toJsonSchema(ioTsType),
           },
         ],
       });
     }
-  }, [monaco]);
+  }, [monaco, localStorageKey, ioTsType]);
 
   /**
    * Set the ref
@@ -49,7 +59,7 @@ export function ConfigTrackingPurposes(): JSX.Element {
   function getInitialValue(): string {
     let trackingPurposes = localStorage.getItem(localStorageKey);
     if (!trackingPurposes) {
-      trackingPurposes = JSON.stringify(defaultTrackingPurposes, null, 2);
+      trackingPurposes = JSON.stringify(defaultValue, null, 2);
     }
     return trackingPurposes;
   }
@@ -72,9 +82,7 @@ export function ConfigTrackingPurposes(): JSX.Element {
     if (!editorRef.current) {
       throw new Error('Editor has not mounted');
     }
-    editorRef.current.setValue(
-      JSON.stringify(defaultTrackingPurposes, null, 2),
-    );
+    editorRef.current.setValue(JSON.stringify(defaultValue, null, 2));
   }
 
   return (
