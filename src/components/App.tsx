@@ -9,7 +9,6 @@ import { getMergedConfig } from '../config';
 import {
   AirgapProvider,
   ConfigProvider,
-  EmotionProvider,
   useLanguage,
   useViewState,
   viewStateIsClosed,
@@ -146,23 +145,21 @@ export function App({
       // messages.ts are translated in english
       defaultLocale={ConsentManagerLanguageKey.En}
     >
-      <EmotionProvider>
-        <ConfigProvider newConfig={config}>
-          <AirgapProvider newAirgap={airgap}>
-            {/** Ensure messages are loaded before any UI is displayed */}
-            {messages ? (
-              <Main
-                modalOpenAuth={auth}
-                viewState={viewState}
-                supportedLanguages={CONSENT_MANAGER_SUPPORTED_LANGUAGES}
-                firstSelectedViewState={firstSelectedViewState}
-                handleSetViewState={handleSetViewState}
-                handleChangeLanguage={handleChangeLanguage}
-              />
-            ) : null}
-          </AirgapProvider>
-        </ConfigProvider>
-      </EmotionProvider>
+      <ConfigProvider newConfig={config}>
+        <AirgapProvider newAirgap={airgap}>
+          {/** Ensure messages are loaded before any UI is displayed */}
+          {messages ? (
+            <Main
+              modalOpenAuth={auth}
+              viewState={viewState}
+              supportedLanguages={CONSENT_MANAGER_SUPPORTED_LANGUAGES}
+              firstSelectedViewState={firstSelectedViewState}
+              handleSetViewState={handleSetViewState}
+              handleChangeLanguage={handleChangeLanguage}
+            />
+          ) : null}
+        </AirgapProvider>
+      </ConfigProvider>
     </IntlProvider>
   );
 }

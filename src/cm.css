@@ -56,7 +56,7 @@
 }
 
 /*******************
- * CompletionOptions
+ * CompleteOptions
  *******************/
 
 /** Form wrapper for  */
@@ -101,6 +101,98 @@
   text-shadow: none;
   padding-left: 25px;
   white-space: nowrap;
+}
+
+/** Style applied to create custom checkmark */
+.toggle-checkmark {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  box-sizing: border-box;
+  border-radius: 4px;
+  margin-right: 5px;
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid #d8d8d8;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: all 150ms ease, background 300ms ease;
+  cursor: pointer;
+}
+
+/** Style applied to create custom checkmark after */
+.toggle-checkmark::after {
+  opacity: 0;
+  transform-origin: bottom center;
+  transform: rotate(45deg) scale(0);
+  content: '';
+  position: absolute;
+  left: 1px;
+  top: 0;
+  width: 3px;
+  height: 8px;
+  border: solid #ffffff;
+  border-width: 0px 2px 2px 0px;
+  transition: all 150ms cubic-bezier(0.41, 0.94, 0.71, 1.41), opacity 150ms ease;
+}
+
+/** Style applied to checkbox input */
+.toggle-input {
+  position: absolute;
+  margin: 0;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+}
+
+/** Style applied to checkbox input when disabled */
+.toggle-input:disabled {
+  cursor: not-allowed;
+}
+
+/** Style applied to checkbox input span when checked */
+.toggle-input:checked + span {
+  background: var(--primary-color);
+  border-color: transparent;
+}
+
+/** Style applied to checkbox input when checked and hovering */
+.toggle-input:checked + span,
+.toggle-input:hover + span {
+  filter: brightness(0.9);
+}
+
+/** Style applied to checkbox input when checked and after */
+.toggle-input:checked + span::after {
+  opacity: 1;
+  transform: rotate(45deg) scale(1);
+}
+
+/**Style applied to toggle input when focused */
+.toggle-input:hover:enabled + span,
+.toggle-input:focus-visible + span {
+  border-color: var(--primary-color);
+}
+
+/** Style applied to checkbox input span when disabled */
+.toggle-input:disabled + span {
+  background-color: #ececec;
+  cursor: not-allowed;
+}
+
+/** Style applied to checkbox input span when disabled and hover */
+.toggle-input:disabled + span,
+.toggle-input:hover + span {
+  filter: none;
+  border-color: transparent;
+}
+
+/** Style applied to checkbox input span when disabled */
+.toggle-input:disabled + span::after {
+  border-color: #d8d8d8;
 }
 
 /*******************

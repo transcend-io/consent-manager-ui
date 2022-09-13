@@ -1,7 +1,6 @@
 import { h, JSX } from 'preact';
 import { useState } from 'preact/hooks';
 import { useIntl } from 'react-intl';
-import { useConfig, useEmotion } from '../hooks';
 import { completeOptionsMessages } from '../messages';
 
 /**
@@ -25,8 +24,6 @@ export function Toggle({
   /** An override to the default aria label */
   ariaLabel?: string;
 }): JSX.Element {
-  const { config } = useConfig();
-  const { css, cx } = useEmotion();
   const { formatMessage } = useIntl();
 
   const [toggleState, setToggleState] = useState<boolean>(initialToggleState);
@@ -36,82 +33,6 @@ export function Toggle({
     setToggleState(checked);
     handleToggle(checked);
   };
-
-  // Span elt for the custom checkmark
-  const checkmarkStyle = css`
-    display: inline-block;
-    width: 16px;
-    height: 16px;
-    box-sizing: border-box;
-    border-radius: 4px;
-    margin-right: 5px;
-    background: rgba(255, 255, 255, 0.9);
-    border: 1px solid #d8d8d8;
-    position: absolute;
-    top: 0;
-    left: 0;
-    transition: all 150ms ease, background 300ms ease;
-    cursor: pointer;
-
-    &:after {
-      opacity: 0;
-      transform-origin: bottom center;
-      transform: rotate(45deg) scale(0);
-      content: '';
-      position: absolute;
-      left: 1px;
-      top: 0;
-      width: 3px;
-      height: 8px;
-      border: solid #ffffff;
-      border-width: 0px 2px 2px 0px;
-
-      transition: all 150ms cubic-bezier(0.41, 0.94, 0.71, 1.41),
-        opacity 150ms ease;
-    }
-  `;
-
-  const inputStyle = css`
-    position: absolute;
-    margin: 0;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    opacity: 0;
-    cursor: pointer;
-
-    &:disabled {
-      cursor: not-allowed;
-    }
-
-    &:checked + span {
-      background: ${config.theme.primaryColor};
-      border-color: transparent;
-      &:hover {
-        filter: brightness(0.9);
-      }
-      &:after {
-        opacity: 1;
-        transform: rotate(45deg) scale(1);
-      }
-    }
-    &:hover:enabled + span,
-    &:focus-visible + span {
-      border-color: ${config.theme.primaryColor};
-    }
-    &:disabled + span {
-      background-color: #ececec;
-      cursor: not-allowed;
-      &:hover {
-        filter: none;
-        border-color: transparent;
-      }
-      &:after {
-        border-color: #d8d8d8;
-      }
-    }
-  `;
 
   return (
     <label
@@ -135,7 +56,7 @@ export function Toggle({
       }
     >
       <input
-        className={cx(inputStyle)}
+        className="toggle-input"
         type="checkbox"
         id={name}
         name={name}
@@ -143,7 +64,7 @@ export function Toggle({
         onChange={handleChange}
         disabled={disabled}
       />
-      <span className={cx(checkmarkStyle)} />
+      <span className="toggle-checkmark" />
       {name}
     </label>
   );
