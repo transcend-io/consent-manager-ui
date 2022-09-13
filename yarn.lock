@@ -1298,6 +1298,7 @@ __metadata:
     eslint-plugin-jsdoc: ^37.9.4
     eslint-plugin-react: ^7.29.2
     eslint-plugin-react-hooks: ^4.3.0
+    fp-ts: ^2.12.3
     jest: ^27.5.1
     live-server: ^1.2.2
     preact: 10.5.14
@@ -4653,6 +4654,13 @@ __metadata:
   version: 2.11.8
   resolution: "fp-ts@npm:2.11.8"
   checksum: 481b824797ba59f3f5549810e8f6688b27554790d11a470ccdf4fc086a1cb4993ffb9060131b054abccca703f2776993e12f649865143e178e9b7c9e5b295ea7
+  languageName: node
+  linkType: hard
+
+"fp-ts@npm:^2.12.3":
+  version: 2.12.3
+  resolution: "fp-ts@npm:2.12.3"
+  checksum: 398acad3d8c5fbd4b0ee420bbb57a45cd98f54e22d6240fc3ee88a7c9967536cba9285c858d37251f9dea137d767a0ff2354203046ba9a149c064fd8de9fe0e3
   languageName: node
   linkType: hard
 

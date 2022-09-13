@@ -63,6 +63,7 @@
     "eslint-plugin-jsdoc": "^37.9.4",
     "eslint-plugin-react": "^7.29.2",
     "eslint-plugin-react-hooks": "^4.3.0",
+    "fp-ts": "^2.12.3",
     "jest": "^27.5.1",
     "live-server": "^1.2.2",
     "prettier": "^2.7.1",
