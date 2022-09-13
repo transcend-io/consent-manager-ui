@@ -6,7 +6,7 @@ import {
 import { useState } from 'preact/hooks';
 import { isRight } from 'fp-ts/Either';
 
-import { JsonConfig } from './JsonConfig';
+import { JsonConfigModal } from './JsonConfig';
 import { defaultTrackingPurposes } from './defaults';
 /**
  * The playground entrypoint
@@ -34,7 +34,7 @@ export function Config(): JSX.Element {
 
   return (
     <Fragment>
-      <JsonConfig
+      <JsonConfigModal
         localStorageKey="getPurposeTypes"
         defaultValue={defaultTrackingPurposes}
         ioTsType={TrackingPurposesTypes}

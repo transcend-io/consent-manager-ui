@@ -17,7 +17,7 @@ interface JsonConfigProps<T> {
 /**
  * JSON editor with JSON schema type checking
  */
-export function JsonConfig<T>({
+function JsonConfig<T>({
   localStorageKey,
   defaultValue,
   ioTsType,
@@ -88,7 +88,6 @@ export function JsonConfig<T>({
   return (
     <Fragment>
       <Editor
-        height="500px"
         defaultLanguage="json"
         path={modelUri?.toString()}
         defaultValue={getInitialValue()}
@@ -96,6 +95,50 @@ export function JsonConfig<T>({
       />
       <button onClick={save}>Save</button>
       <button onClick={reset}>Reset</button>
+    </Fragment>
+  );
+}
+
+/**
+ * The modal editor
+ */
+export function JsonConfigModal<T>(props: JsonConfigProps<T>): JSX.Element {
+  const [isOpen, setIsOpen] = useState(false);
+
+  return (
+    <Fragment>
+      <button onClick={() => setIsOpen(true)}>
+        Edit {props.localStorageKey}
+      </button>
+      <div
+        style={{
+          display: isOpen ? 'initial' : 'none',
+          position: 'fixed',
+          height: '90vh',
+          width: '90vw',
+          top: '5vh',
+          left: '5vw',
+          background: '#fff',
+          borderRadius: '18px',
+          boxShadow: '0 5px 10px rgba(0, 0, 0, 0.1)',
+          backdropFilter: 'blur(20px) saturate(5)',
+        }}
+      >
+        <div
+          style={{
+            height: '100%',
+            padding: '30px',
+            boxSizing: 'border-box',
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'space-between',
+          }}
+        >
+          <h2>Editing {props.localStorageKey}</h2>
+          <JsonConfig {...props} />
+          <button onClick={() => setIsOpen(false)}>Close</button>
+        </div>
+      </div>
     </Fragment>
   );
 }
