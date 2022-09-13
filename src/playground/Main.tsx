@@ -1,14 +1,34 @@
 import { ViewState } from '@transcend-io/airgap.js-types';
 import { h, JSX } from 'preact';
+import { useEffect, useState } from 'preact/hooks';
 import { Config } from './Config';
 
 /**
  * The playground entrypoint
  */
 export default function Main(): JSX.Element {
+  // const [consentManager, setConsentManager] = useState<HTMLElement | null>(
+  //   null,
+  // );
   const setViewState = (viewState: ViewState): void => {
     window.transcend?.showConsentManager({ viewState });
   };
+
+  useEffect(() => {
+    const pollForConsentUI = setInterval(() => {
+      const elt = document.getElementById('transcend-consent-manager');
+      if (elt) {
+        clearInterval(pollForConsentUI);
+        // setConsentManager(elt);
+
+        const targetZone = document.getElementById('consent-manager-zone');
+        if (!targetZone) {
+          throw new Error('Missing Consent target zone.');
+        }
+        targetZone.appendChild(elt);
+      }
+    }, 50);
+  }, []);
 
   return (
     <div>
@@ -34,6 +54,8 @@ export default function Main(): JSX.Element {
           </button>
         ))}
       </div>
+
+      <div id="consent-manager-zone" />
     </div>
   );
 }
