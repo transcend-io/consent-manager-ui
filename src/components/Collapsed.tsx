@@ -3,7 +3,7 @@ import { useRef } from 'preact/hooks';
 import { useIntl } from 'react-intl';
 import { messages } from '../messages';
 import type { HandleSetViewState } from '../types';
-import { Logomark } from './Logo';
+import { TranscendLogoLogomark } from './TranscendLogo';
 
 /**
  * The collapsed view, optionally displayed on close if customer does not yet have their own button
@@ -29,7 +29,7 @@ export function Collapsed({
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
       >
-        <Logomark />
+        <TranscendLogoLogomark />
       </svg>
       <p ref={paragraphRef}>{formatMessage(messages.collapsedLabel)}</p>
     </button>
