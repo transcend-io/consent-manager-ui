@@ -3,7 +3,7 @@
  *******************/
 
 /** Variables to insert */
-* {
+:host {
   --primary-color: #3333ff;
   --text-color: #010101;
 }
