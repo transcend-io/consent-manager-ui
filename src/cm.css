@@ -314,6 +314,38 @@
 }
 
 /*******************
+ * TranscendLogo
+ *******************/
+
+/** Container around the Transcend logo in the bottom left hand side of the modal */
+.transcend-logo-container {
+  width: 17px;
+  height: 17px;
+  overflow: hidden;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+/** Styles applied to the Transcend svg logo in the bottom left hand side of the modal */
+.transcend-logo-svg {
+  width: 64px;
+  height: 17px;
+}
+
+/** Styles applied to the Transcend svg logo path in the bottom left hand side of the modal */
+.transcend-logo-svg path {
+  fill: var(--text-color);
+  transition: fill 150ms;
+}
+
+/** Styles applied to the Transcend svg wordmark in the bottom left hand side of the modal */
+.transcend-logo-svg .transcend-wordmark {
+  fill-opacity: 0;
+  transition: fill 150ms, fill-opacity 150ms;
+}
+
+/*******************
  * GPC Indicator
  *******************/
 
@@ -483,5 +515,17 @@
     max-width: 630px;
     min-height: 160px;
     bottom: 22px;
+  }
+
+  /** TranscendLogo */
+  .transcend-logo-container {
+    width: 64px;
+  }
+  .transcend-logo-svg:hover .transcend-wordmark,
+  .transcend-logo-svg:focus .transcend-wordmark {
+    fill-opacity: 1;
+  }
+  .transcend-logo-svg:hover path {
+    fill: var(--primary-color);
   }
 }

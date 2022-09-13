@@ -9,7 +9,7 @@ import { Collapsed } from './Collapsed';
 import { CompleteOptions } from './CompleteOptions';
 import { LanguageButton } from './LanguageButton';
 import { LanguageOptions } from './LanguageOptions';
-import { FullLogo } from './Logo';
+import { TranscendLogo } from './TranscendLogo';
 import { Modal } from './Modal';
 import { NoticeAndDoNotSell } from './NoticeAndDoNotSell';
 import { QuickOptions } from './QuickOptions';
@@ -80,7 +80,7 @@ export function Main({
         )}
 
         <div className="footer-container">
-          <FullLogo />
+          <TranscendLogo />
           <BottomMenu
             firstSelectedViewState={firstSelectedViewState}
             viewState={viewState}
