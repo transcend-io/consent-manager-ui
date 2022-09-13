@@ -31,6 +31,9 @@ function JsonConfig<T>({
       const modelUri = monaco.Uri.parse(`a://b/${localStorageKey}.json`); // a made up unique URI for our model
       setModelUri(modelUri);
 
+      // Get JSON Schema from io-ts types
+      const jsonSchema = toJsonSchema(ioTsType);
+
       // configure the JSON language support with schemas and schema associations
       monaco.languages.json.jsonDefaults.setDiagnosticsOptions({
         validate: true,
@@ -38,10 +41,12 @@ function JsonConfig<T>({
           {
             uri: localStorageKey, // id of the first schema
             fileMatch: [modelUri.toString()], // associate with our model
-            schema: toJsonSchema(ioTsType),
+            schema: jsonSchema,
           },
         ],
       });
+
+      monaco.editor.setTheme('vs-light');
     }
   }, [monaco, localStorageKey, ioTsType]);
 
@@ -122,6 +127,7 @@ export function JsonConfigModal<T>(props: JsonConfigProps<T>): JSX.Element {
           width: '90vw',
           top: '5vh',
           left: '5vw',
+          zIndex: 1,
           background: '#fff',
           borderRadius: '18px',
           boxShadow: '0 5px 10px rgba(0, 0, 0, 0.1)',
@@ -138,13 +144,27 @@ export function JsonConfigModal<T>(props: JsonConfigProps<T>): JSX.Element {
             justifyContent: 'space-between',
           }}
         >
-          <h2>Editing {props.localStorageKey}</h2>
+          <h3>Editing {props.localStorageKey}</h3>
           <JsonConfig {...props} />
           <button class="button" onClick={() => setIsOpen(false)}>
             Close
           </button>
         </div>
       </div>
+      <div
+        style={{
+          display: isOpen ? 'initial' : 'none',
+          position: 'fixed',
+          height: '100%',
+          width: '100%',
+          top: '0',
+          left: '0',
+          opacity: '0.8',
+          backdropFilter: 'blur(20px) saturate(5)',
+          zIndex: 0,
+          background: '#fff',
+        }}
+      />
     </Fragment>
   );
 }

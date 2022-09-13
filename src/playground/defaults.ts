@@ -1,7 +1,30 @@
-import type {
+import {
   TrackingPurposesTypes,
   UserPrivacySignal,
+  ConsentManagerConfig,
+  DEFAULT_VIEW_STATE_BY_PRIVACY_REGIME,
 } from '@transcend-io/airgap.js-types';
+
+export const defaultConfig: ConsentManagerConfig = {
+  css: '',
+  messages: '',
+  theme: {
+    primaryColor: '#3333FF',
+    fontColor: '',
+    styles: {
+      p: undefined,
+      primaryButton: undefined,
+      secondaryButton: undefined,
+    },
+  },
+  breakpoints: {
+    tablet: '640px',
+    desktop: '1024px',
+  },
+  initialViewStateByPrivacyRegime: DEFAULT_VIEW_STATE_BY_PRIVACY_REGIME,
+  privacyPolicy: 'https://example.com/privacy',
+  dismissedViewState: 'Collapsed',
+};
 
 export const defaultTrackingPurposes: TrackingPurposesTypes = {
   Advertising: {

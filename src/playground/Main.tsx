@@ -19,18 +19,28 @@ export default function Main(): JSX.Element {
 
   return (
     <div>
-      <h1>Consent Manager UI Playground</h1>
       <Config />
 
-      {Object.values(ViewState).map((viewState) => (
-        <button
-          class="button"
-          key={viewState}
-          onClick={() => setViewState(viewState)}
-        >
-          {viewState}
-        </button>
-      ))}
+      <div
+        style={{
+          width: '100%',
+          borderBottom: '1px solid gray',
+          padding: '10px',
+        }}
+      >
+        <p style={{ fontWeight: '600', fontSize: '12px', margin: '0 0 3px 0' }}>
+          Open a view
+        </p>
+        {Object.values(ViewState).map((viewState) => (
+          <button
+            class="button"
+            key={viewState}
+            onClick={() => setViewState(viewState)}
+          >
+            {viewState}
+          </button>
+        ))}
+      </div>
     </div>
   );
 }
