@@ -12,6 +12,8 @@ interface JsonConfigProps<T> {
   /** The io-ts type to edit, e.g., `TrackingPurposesTypes` */
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   ioTsType: any;
+  /** Optional callback on save */
+  onSave?: (value: string, userInitiated: boolean) => void;
 }
 
 /**
@@ -21,6 +23,7 @@ function JsonConfig<T>({
   localStorageKey,
   defaultValue,
   ioTsType,
+  onSave,
 }: JsonConfigProps<T>): JSX.Element {
   const monaco = useMonaco();
   const [modelUri, setModelUri] = useState<monaco.Uri | undefined>(undefined);
@@ -55,7 +58,7 @@ function JsonConfig<T>({
    */
   const handleEditorDidMount: OnMount = (editor) => {
     editorRef.current = editor;
-    save();
+    save(false);
   };
 
   /**
@@ -72,12 +75,16 @@ function JsonConfig<T>({
   /**
    * Show the editor's text value
    */
-  function save(): void {
+  function save(userInitiated: boolean): void {
     if (!editorRef.current) {
       throw new Error('Editor has not mounted');
     }
     const value = editorRef.current.getValue();
     localStorage.setItem(localStorageKey, value);
+    // Fire callback (if there is one)
+    if (onSave) {
+      onSave(value, userInitiated);
+    }
   }
 
   /**
@@ -98,7 +105,7 @@ function JsonConfig<T>({
         defaultValue={getInitialValue()}
         onMount={handleEditorDidMount}
       />
-      <button class="button" onClick={save}>
+      <button class="button" onClick={() => save(true)}>
         Save
       </button>
       <button class="button" onClick={reset}>

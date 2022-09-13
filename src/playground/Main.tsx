@@ -1,13 +1,6 @@
-import { ViewState, TranscendAPI } from '@transcend-io/airgap.js-types';
+import { ViewState } from '@transcend-io/airgap.js-types';
 import { h, JSX } from 'preact';
 import { Config } from './Config';
-
-declare global {
-  interface Window {
-    /** Transcend API */
-    transcend?: TranscendAPI;
-  }
-}
 
 /**
  * The playground entrypoint

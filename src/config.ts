@@ -45,9 +45,9 @@ const defaultConfig: ConsentManagerConfig = {
  */
 export function getMergedConfig(): ConsentManagerConfig {
   const settingsConfig: ConsentManagerConfigInput =
-    typeof settings.consentManagerConfig === 'string'
-      ? jsonParseSafe(settings.consentManagerConfig, () => ({}))
-      : settings.consentManagerConfig || {};
+    typeof settings === 'string'
+      ? jsonParseSafe(settings, () => ({}))
+      : settings || {};
 
   // These consent manager settings can be configured through our backend or ag-bundler/config/{site}.json
   const config: ConsentManagerConfig = {

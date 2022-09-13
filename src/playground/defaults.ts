@@ -9,7 +9,7 @@ export const defaultConfig: ConsentManagerConfig = {
   messages: '',
   theme: {
     primaryColor: '#3333FF',
-    fontColor: '',
+    fontColor: '#010101',
     styles: {
       p: undefined,
       primaryButton: undefined,

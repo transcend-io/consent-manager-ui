@@ -5,10 +5,22 @@ import Main from './Main';
 /**
  * Add Airgap API stub to window/self/globalThis
  */
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
-// eslint-disable-next-line no-restricted-globals
-self.airgap = Object.assign(airgapStub, self.airgap);
+window.airgap = Object.assign(airgapStub, window.airgap);
+
+/**
+ * Check for loadOptions in local storage, and inject onto transcendInit
+ */
+let loadOptions = {};
+const loadOptionsInStorage = localStorage.getItem('loadOptions');
+if (loadOptionsInStorage) {
+  try {
+    loadOptions = JSON.parse(loadOptionsInStorage);
+  } catch (err) {}
+}
+window.transcend = {
+  loadOptions,
+  ...window.transcend,
+};
 
 const divToInjectPlayground = document.getElementById('playground');
 if (!divToInjectPlayground) {

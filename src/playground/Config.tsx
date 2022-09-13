@@ -29,6 +29,13 @@ export function Config(): JSX.Element {
           localStorageKey="getConfig"
           defaultValue={defaultConfig}
           ioTsType={ConsentManagerConfig}
+          onSave={(value, userInitiated) => {
+            if (!userInitiated) return;
+            // Set load options in local storage (which are loaded in index.ts)
+            localStorage.setItem('loadOptions', value);
+            // Reload config
+            window.location.reload();
+          }}
         />
         <JsonConfigModal
           localStorageKey="getPurposeTypes"

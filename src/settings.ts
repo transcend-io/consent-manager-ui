@@ -20,7 +20,7 @@ function getAirgapSettings(): any {
   // transcend.loadOptions is used to inject settings from our backend
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const embeddedLoadOptions: any | undefined = {
-    ...airgapInit?.loadOptions,
+    ...airgapInit?.loadOptions?.consentManagerConfig,
     ...transcendInit?.loadOptions,
   };
 
