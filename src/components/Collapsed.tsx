@@ -1,7 +1,6 @@
 import { h, JSX } from 'preact';
 import { useRef } from 'preact/hooks';
 import { useIntl } from 'react-intl';
-import { useConfig, useElementSize, useEmotion } from '../hooks';
 import { messages } from '../messages';
 import type { HandleSetViewState } from '../types';
 import { Logomark } from './Logo';
@@ -15,101 +14,17 @@ export function Collapsed({
   /** Function to change viewState */
   handleSetViewState: HandleSetViewState;
 }): JSX.Element {
-  const { config } = useConfig();
-  const { css, cx } = useEmotion();
   const { formatMessage } = useIntl();
   const paragraphRef = useRef<HTMLParagraphElement>(null);
-  const { width } = useElementSize(paragraphRef);
-
-  const hoverWidth = 32 + 6 + (width || 94); // px, width with text on hover
-
-  const containerCollapsedStyle = css`
-    /* Box positioning */
-    position: fixed;
-    bottom: 100px;
-    right: 5px;
-
-    /* Box sizing */
-    width: 32px;
-    height: 32px;
-
-    /* Box styling */
-    box-sizing: border-box;
-    border: none;
-    border-radius: ${32 / 2}px;
-    background-color: rgba(255, 255, 255, 0.95);
-    overflow: hidden;
-    cursor: pointer;
-
-    /* Content */
-    padding: 0;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: flex-start;
-    font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir,
-      helvetica neue, helvetica, 'sans-serif';
-
-    /* Background interactions */
-    box-shadow: 0px 1px 5px 1px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(4px) saturate(5);
-
-    /* Transitions */
-    transition: width 150ms ease-in 500ms, background-color 150ms ease-in-out,
-      box-shadow 150ms ease-in-out;
-
-    &:active {
-      background-color: rgba(255, 255, 255, 0.85);
-      box-shadow: 0px 0.5px 5px 1.5px rgba(0, 0, 0, 0.12);
-    }
-
-    &:hover {
-      width: ${hoverWidth}px;
-      transition-delay: 0ms;
-    }
-
-    /** SVG */
-    &:hover path {
-      fill: ${config.theme.primaryColor};
-    }
-
-    /* Paragraph */
-    p {
-      font-size: 12px;
-      font-weight: 500;
-      white-space: nowrap;
-      color: #010101;
-
-      opacity: 0;
-      transition: opacity 150ms ease-in 500ms;
-    }
-
-    &:hover p {
-      opacity: 1;
-      transition-delay: 0ms;
-    }
-  `;
-
-  const squareLogoSVGStyle = css`
-    width: 20px;
-    height: 20px;
-    padding: 6px;
-    flex-shrink: 0;
-
-    path {
-      fill: #010101;
-      transition: fill 150ms;
-    }
-  `;
 
   return (
     <button
       onClick={() => handleSetViewState('open')}
-      className={cx(containerCollapsedStyle)}
+      className="collapsed-container"
       aria-label={formatMessage(messages.collapsedLabel)}
     >
       <svg
-        className={cx(squareLogoSVGStyle)}
+        className="collapsed-square-logo-svg"
         viewBox="0 0 15.25 16"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
