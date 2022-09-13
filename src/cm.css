@@ -12,7 +12,7 @@
  * KeyFrames
  *******************/
 
-/** Animation for fading in */
+/** Animation for fading in from 0 to 100 */
 @keyframes fadeIn {
   0% {
     opacity: 0;
@@ -26,6 +26,7 @@
  * Modal
  *******************/
 
+/** Container that is wrapped around the modal */
 .modal-container {
   position: fixed;
   bottom: 10px;
@@ -47,7 +48,7 @@
   transition: width 150ms, height 150ms;
 }
 
-/** Inner div contents for modal contents */
+/** Inner contents wrapper for modal content */
 .modal-container-inner {
   min-height: 79px;
   height: calc(100% - 38px);
@@ -59,7 +60,7 @@
  * CompleteOptions
  *******************/
 
-/** Form wrapper for  */
+/** Form wrapper around the `CompleteOptions` view state  */
 .complete-options-form {
   height: 100%;
   display: flex;
@@ -70,7 +71,7 @@
   align-items: center;
 }
 
-/** Container for rendering toggles */
+/** Container for rendering checkbox toggles */
 .toggles-container {
   height: 100%;
   display: flex;
@@ -82,13 +83,13 @@
   justify-content: center;
 }
 
-/** Container around completion options */
+/** Container around `CompleteOptions` view state */
 .complete-options-container {
   height: inherit;
   animation: fadeIn 200ms ease-in;
 }
 
-/** Style around the label text for each checkbox toggle */
+/** Style applied to each label text for each checkbox toggle */
 .toggle-label {
   position: relative;
   margin: 0 10px 15px 10px;
@@ -120,7 +121,7 @@
   cursor: pointer;
 }
 
-/** Style applied to create custom checkmark after */
+/** Style applied to create custom checkmark ::after */
 .toggle-checkmark::after {
   opacity: 0;
   transform-origin: bottom center;
