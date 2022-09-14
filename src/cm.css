@@ -2,58 +2,99 @@
  * Variables
  *******************/
 
-/** Variables to insert */
+/** Variables to insert into the remainder of the stylesheet */
 * {
   --primary-color: #3333ff;
   --text-color: #010101;
 }
 
 /*******************
- * KeyFrames
+ * Button Styles
  *******************/
 
-/** Animation for fading in from 0 to 100 */
-@keyframes fadeIn {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
+/** Consent buttons */
+.button {
+  min-height: 42px;
+  border-radius: 500px;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.7);
+  opacity: 0.9;
+  border: 1px solid var(--primary-color);
+  box-sizing: border-box;
+  cursor: pointer;
+  filter: brightness(100%);
+  flex-shrink: 0;
+  font-family: inherit;
+  text-align: center;
+  padding: 6px;
+  transition: filter 150ms, background-color 150ms;
+}
+
+/** Non-last button */
+.button:not(:last-of-type) {
+  margin-bottom: 8px;
+}
+
+/** On button hover */
+.button:hover {
+  background-color: var(--primary-color);
+}
+
+/** Apply to inner spans (text) when button hovers */
+.button:hover span {
+  color: #ffffff;
+}
+
+/** Base text styles for buttons */
+.button-base-text {
+  color: var(--primary-color);
+  display: block;
+  font-style: normal;
+  text-align: center;
+  transition: color 150ms;
+}
+
+/** Combine with button-base-text */
+.button-primary-text {
+  font-size: 12px;
+  font-weight: 700;
+}
+
+/** Combine with button-base-text */
+.button-secondary-text {
+  font-size: 9px;
+  font-weight: 400;
 }
 
 /*******************
- * Modal
+ * Text Styles
  *******************/
 
-/** Container that is wrapped around the modal */
-.modal-container {
-  position: fixed;
-  bottom: 10px;
-  left: 5px;
-  right: 5px;
-  margin: 0 auto;
-  width: calc(100% - 10px);
-  box-sizing: border-box;
-  border-radius: 18px;
-  border: 0.5px solid #d8d8d8;
-  background-color: rgba(255, 255, 255, 0.9);
-  overflow: hidden;
-  padding: 21px;
-  font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir,
-    helvetica neue, helvetica, 'sans-serif';
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(20px) saturate(5);
-  animation: fadeIn 150ms;
-  transition: width 150ms, height 150ms;
+/** Title text */
+.text-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text-color);
+  margin: 0 0 18px 0;
+  text-align: center;
 }
 
-/** Inner contents wrapper for modal content */
-.modal-container-inner {
+/** Paragraph text */
+.paragraph {
+  color: var(--text-color);
+  font-size: 14px;
+  margin: 0 0 18px 0;
+}
+
+/** ColumnContent */
+.column-content {
   min-height: 79px;
-  height: calc(100% - 38px);
-  width: 100%;
-  padding-bottom: 38px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  animation: fadeIn 150ms;
 }
 
 /*******************
@@ -407,6 +448,77 @@
 }
 
 /*******************
+ * Modal
+ *******************/
+
+/** Container that is wrapped around the modal */
+.modal-container {
+  position: fixed;
+  bottom: 10px;
+  left: 5px;
+  right: 5px;
+  margin: 0 auto;
+  width: calc(100% - 10px);
+  box-sizing: border-box;
+  border-radius: 18px;
+  border: 0.5px solid #d8d8d8;
+  background-color: rgba(255, 255, 255, 0.9);
+  overflow: hidden;
+  padding: 21px;
+  font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir,
+    helvetica neue, helvetica, 'sans-serif';
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(20px) saturate(5);
+  animation: fadeIn 150ms;
+  transition: width 150ms, height 150ms;
+}
+
+/** Inner contents wrapper for modal content */
+.modal-container-inner {
+  min-height: 79px;
+  height: calc(100% - 38px);
+  width: 100%;
+  padding-bottom: 38px;
+}
+
+/*******************
+ * KeyFrames
+ *******************/
+
+/** Animation for fading in, used throughout the stylesheet */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/*******************
+ * GPC Indicator
+ *******************/
+
+/** GPC outer styles */
+.gpc-setting {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+/** GPC svg styles */
+.gpc-setting svg {
+  flex-shrink: 0;
+}
+
+/** GPC paragraph text */
+.gpc-setting p {
+  margin: 0 0 0 6px;
+  font-size: 12px;
+  color: var(--text-color);
+}
+
+/*******************
  * TranscendLogo
  *******************/
 
@@ -436,118 +548,6 @@
 .transcend-logo-svg .transcend-wordmark {
   fill-opacity: 0;
   transition: fill 150ms, fill-opacity 150ms;
-}
-
-/*******************
- * GPC Indicator
- *******************/
-
-/** GPC outer styles */
-.gpc-setting {
-  display: flex;
-  align-items: center;
-  margin-bottom: 20px;
-}
-
-/** GPC svg styles */
-.gpc-setting svg {
-  flex-shrink: 0;
-}
-
-/** GPC paragraph text */
-.gpc-setting p {
-  margin: 0 0 0 6px;
-  font-size: 12px;
-  color: var(--text-color);
-}
-
-/*******************
- * Text Styles
- *******************/
-
-/** Title text */
-.text-title {
-  font-size: 18px;
-  font-weight: 700;
-  color: var(--text-color);
-  margin: 0 0 18px 0;
-  text-align: center;
-}
-
-/** Paragraph text */
-.paragraph {
-  color: var(--text-color);
-  font-size: 14px;
-  margin: 0 0 18px 0;
-}
-
-/** ColumnContent */
-.column-content {
-  min-height: 79px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  align-items: center;
-  animation: fadeIn 150ms;
-}
-
-/*******************
- * Button Styles
- *******************/
-
-/** Consent buttons */
-.button {
-  min-height: 42px;
-  border-radius: 500px;
-  width: 100%;
-  background-color: rgba(255, 255, 255, 0.7);
-  opacity: 0.9;
-  border: 1px solid var(--primary-color);
-  box-sizing: border-box;
-  cursor: pointer;
-  filter: brightness(100%);
-  flex-shrink: 0;
-  font-family: inherit;
-  text-align: center;
-  padding: 6px;
-  transition: filter 150ms, background-color 150ms;
-}
-
-/** Non-last button */
-.button:not(:last-of-type) {
-  margin-bottom: 8px;
-}
-
-/** On button hover */
-.button:hover {
-  background-color: var(--primary-color);
-}
-
-/** Apply to inner spans (text) when button hovers */
-.button:hover span {
-  color: #ffffff;
-}
-
-/** Base text styles for buttons */
-.button-base-text {
-  color: var(--primary-color);
-  display: block;
-  font-style: normal;
-  text-align: center;
-  transition: color 150ms;
-}
-
-/** Combine with button-base-text */
-.button-primary-text {
-  font-size: 12px;
-  font-weight: 700;
-}
-
-/** Combine with button-base-text */
-.button-secondary-text {
-  font-size: 9px;
-  font-weight: 400;
 }
 
 /*******************
