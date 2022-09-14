@@ -12,7 +12,7 @@
  * Button Styles
  *******************/
 
-/** Consent buttons */
+/** Buttons displayed throughout the consent UI */
 .button {
   min-height: 42px;
   border-radius: 500px;
@@ -30,7 +30,7 @@
   transition: filter 150ms, background-color 150ms;
 }
 
-/** Non-last button */
+/** Not the last button in a list of buttons */
 .button:not(:last-of-type) {
   margin-bottom: 8px;
 }
@@ -40,12 +40,12 @@
   background-color: var(--primary-color);
 }
 
-/** Apply to inner spans (text) when button hovers */
+/** Inner text on button hover */
 .button:hover span {
   color: #ffffff;
 }
 
-/** Base text styles for buttons */
+/** Base styles applied to button text */
 .button-base-text {
   color: var(--primary-color);
   display: block;
@@ -54,13 +54,13 @@
   transition: color 150ms;
 }
 
-/** Combine with button-base-text */
+/** Styles applied to "primary" button text */
 .button-primary-text {
   font-size: 12px;
   font-weight: 700;
 }
 
-/** Combine with button-base-text */
+/** Styles applied to "secondary" button text */
 .button-secondary-text {
   font-size: 9px;
   font-weight: 400;
@@ -70,7 +70,7 @@
  * Text Styles
  *******************/
 
-/** Title text */
+/** Modal title text styles */
 .text-title {
   font-size: 18px;
   font-weight: 700;
@@ -79,14 +79,14 @@
   text-align: center;
 }
 
-/** Paragraph text */
+/** Paragraph text styles */
 .paragraph {
   color: var(--text-color);
   font-size: 14px;
   margin: 0 0 18px 0;
 }
 
-/** ColumnContent */
+/** Styles applied to the main contents of the consent modal (does not include footer) */
 .column-content {
   min-height: 79px;
   margin: 0 auto;
@@ -101,7 +101,7 @@
  * CompleteOptions
  *******************/
 
-/** Form wrapper around the `CompleteOptions` view state  */
+/** Styles applied to `CompleteOptions` view state body  */
 .complete-options-form {
   height: 100%;
   display: flex;
@@ -286,7 +286,7 @@
   cursor: pointer;
 }
 
-/** CSS to apply when language svg select button is hovered on */
+/** Styles to apply when language svg select button is hovered on */
 .language-button-inactive svg {
   fill: var(--text-color);
   transition: fill 150ms;
@@ -298,12 +298,12 @@
   transition: fill 150ms;
 }
 
-/** CSS to apply when language svg select button is hovered on */
+/** Styles to apply when language svg select button is hovered on */
 .language-button svg:hover {
   fill: var(--primary-color);
 }
 
-/** CSS to apply when language svg select button is active */
+/** Styles to apply when language svg select button is active */
 .language-button svg:active {
   fill: var(--primary-color);
 }
@@ -374,7 +374,7 @@
  * Collapsed
  *******************/
 
-/** CSS for the collapsed square logo  */
+/** Styles for the collapsed square logo  */
 .collapsed-square-logo-svg {
   width: 20px;
   height: 20px;
@@ -382,7 +382,7 @@
   flex-shrink: 0;
 }
 
-/** CSS for the collapsed square logo path */
+/** Styles for the collapsed square logo path */
 .collapsed-square-logo-svg path {
   fill: var(--text-color);
   transition: fill 150ms;
