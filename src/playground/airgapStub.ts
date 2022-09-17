@@ -57,7 +57,10 @@ export const airgapStub: AirgapAPI = {
   /** Get a list of legal regimes that are potentially applicable to the user */
   getRegimes: () => new Set(['GDPR']),
   /** Get a list of detected active user agent privacy signals */
-  getPrivacySignals: () => new Set(['GPC']),
+  getPrivacySignals: () => {
+    const privacySignalsString = localStorage.getItem('getPrivacySignals');
+    return new Set(JSON.parse(privacySignalsString));
+  },
   /** airgap.js version number */
   version: '0',
   addEventListener: (type, callback, options) => null,
