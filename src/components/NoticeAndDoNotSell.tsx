@@ -1,21 +1,14 @@
-// external
 import { h, JSX } from 'preact';
 import { useIntl } from 'react-intl';
-
-// global
 import { messages, noticeAndDoNotSellMessages } from '../messages';
 import type { HandleSetViewState } from '../types';
 import { useAirgap } from '../hooks';
-
-// local
-import Button from './Button';
-import ColumnContent from './ColumnContent';
-import Title from './Title';
+import { Button } from './Button';
 
 /**
  * Component showing 'okay' button for "do not sell my personal information" interface
  */
-export default function NoticeAndDoNotSell({
+export function NoticeAndDoNotSell({
   handleSetViewState,
 }: {
   /** Function to change viewState */
@@ -34,14 +27,16 @@ export default function NoticeAndDoNotSell({
   };
 
   return (
-    <ColumnContent>
-      <Title align="left">{formatMessage(messages.noticeTitle)}</Title>
+    <div className="column-content">
+      <p className="text-title text-title-left">
+        {formatMessage(messages.noticeTitle)}
+      </p>
       <Button
         primaryText={formatMessage(
           noticeAndDoNotSellMessages.confirmButtonPrimary,
         )}
         handleClick={handleConfirm}
       />
-    </ColumnContent>
+    </div>
   );
 }

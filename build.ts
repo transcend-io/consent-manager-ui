@@ -1,4 +1,3 @@
-// external
 import { pnpPlugin } from '@yarnpkg/esbuild-plugin-pnp';
 import * as esbuild from 'esbuild';
 import alias from 'esbuild-plugin-alias';

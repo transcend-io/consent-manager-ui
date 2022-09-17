@@ -1,4 +1,3 @@
-// main
 import { defineMessages } from '@transcend-io/internationalization';
 
 export const messages = defineMessages('ui.src.messages', {

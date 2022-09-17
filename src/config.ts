@@ -1,18 +1,15 @@
 /**
- * getMergedConfig() returns the final config for the UI: { ...defaultConfig, ...bundleConfig, ...scriptConfig }
+ * getMergedConfig() returns the final config for the UI: { ...baseConfig, ...bundleConfig, ...scriptConfig }
  */
 
-// main
 import {
   ConsentManagerConfig,
   ConsentManagerConfigInput,
   ViewState,
   DEFAULT_VIEW_STATE_BY_PRIVACY_REGIME,
 } from '@transcend-io/airgap.js-types';
-
-// local
 import { logger } from './logger';
-import { settings, LOG_LEVELS } from './settings';
+import { settings, LOG_LEVELS, extraConfig } from './settings';
 import { jsonParseSafe } from './utils/safe-json-parse';
 
 const {
@@ -21,8 +18,11 @@ const {
   dismissedViewState = ViewState.Collapsed,
 } = settings;
 
-// Default configurations
-const defaultConfig: ConsentManagerConfig = {
+// Base configuration
+const baseConfig: Omit<
+  ConsentManagerConfig,
+  'privacyPolicy' | 'dismissedViewState'
+> = {
   css: '',
   messages: '',
   theme: {
@@ -34,8 +34,6 @@ const defaultConfig: ConsentManagerConfig = {
     desktop: '1024px',
   },
   initialViewStateByPrivacyRegime: DEFAULT_VIEW_STATE_BY_PRIVACY_REGIME,
-  privacyPolicy,
-  dismissedViewState,
 };
 
 /**
@@ -49,11 +47,23 @@ export function getMergedConfig(): ConsentManagerConfig {
       ? jsonParseSafe(settings, () => ({}))
       : settings || {};
 
+  const settingsConfigInitialViewStateByPrivacyRegime =
+    settingsConfig?.initialViewStateByPrivacyRegime;
+  // Skip initialViewStateByPrivacyRegime config in settings if empty
+  if (
+    settingsConfigInitialViewStateByPrivacyRegime &&
+    Object.keys(settingsConfigInitialViewStateByPrivacyRegime).length === 0
+  ) {
+    delete settingsConfig?.initialViewStateByPrivacyRegime;
+  }
   // These consent manager settings can be configured through our backend or ag-bundler/config/{site}.json
   const config: ConsentManagerConfig = {
-    ...defaultConfig,
+    ...baseConfig,
     ...settingsConfig,
+    ...extraConfig,
   } as ConsentManagerConfig;
+  config.privacyPolicy ??= privacyPolicy;
+  config.dismissedViewState ??= dismissedViewState;
 
   const safeToContinue = validateConfig(config);
   if (!safeToContinue) {

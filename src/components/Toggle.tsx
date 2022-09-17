@@ -1,16 +1,12 @@
-// external
 import { h, JSX } from 'preact';
 import { useState } from 'preact/hooks';
 import { useIntl } from 'react-intl';
-
-// global
-import { useConfig, useEmotion } from '../hooks';
 import { completeOptionsMessages } from '../messages';
 
 /**
  * A consent toggle
  */
-export default function Toggle({
+export function Toggle({
   name,
   initialToggleState,
   disabled,
@@ -28,8 +24,6 @@ export default function Toggle({
   /** An override to the default aria label */
   ariaLabel?: string;
 }): JSX.Element {
-  const { config } = useConfig();
-  const { css, cx } = useEmotion();
   const { formatMessage } = useIntl();
 
   const [toggleState, setToggleState] = useState<boolean>(initialToggleState);
@@ -40,103 +34,9 @@ export default function Toggle({
     handleToggle(checked);
   };
 
-  const checkboxSize = '16px';
-  const disabledBackground = '#ececec';
-  const disabledCheckmark = '#d8d8d8';
-
-  // Span elt for the custom checkmark
-  const checkmarkStyle = css`
-    display: inline-block;
-    width: ${checkboxSize};
-    height: ${checkboxSize};
-    box-sizing: border-box;
-    border-radius: 4px;
-    margin-right: 5px;
-    background: rgba(255, 255, 255, 0.9);
-    border: 1px solid ${disabledCheckmark};
-    position: absolute;
-    top: 0;
-    left: 0;
-    transition: all 150ms ease, background 300ms ease;
-    cursor: pointer;
-
-    &:after {
-      opacity: 0;
-      transform-origin: bottom center;
-      transform: rotate(45deg) scale(0);
-      content: '';
-      position: absolute;
-      left: 1px;
-      top: 0;
-      width: 3px;
-      height: 8px;
-      border: solid #ffffff;
-      border-width: 0px 2px 2px 0px;
-
-      transition: all 150ms cubic-bezier(0.41, 0.94, 0.71, 1.41),
-        opacity 150ms ease;
-    }
-  `;
-
-  const inputStyle = css`
-    position: absolute;
-    margin: 0;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    opacity: 0;
-    cursor: pointer;
-
-    &:disabled {
-      cursor: not-allowed;
-    }
-
-    &:checked + span {
-      background: ${config.theme.primaryColor};
-      border-color: transparent;
-      &:hover {
-        filter: brightness(0.9);
-      }
-      &:after {
-        opacity: 1;
-        transform: rotate(45deg) scale(1);
-      }
-    }
-    &:hover:enabled + span,
-    &:focus-visible + span {
-      border-color: ${config.theme.primaryColor};
-    }
-    &:disabled + span {
-      background-color: ${disabledBackground};
-      cursor: not-allowed;
-      &:hover {
-        filter: none;
-        border-color: transparent;
-      }
-      &:after {
-        border-color: ${disabledCheckmark};
-      }
-    }
-  `;
-
-  const labelStyle = css`
-    position: relative;
-    margin: 0 10px 15px 10px;
-    font-size: 12px;
-    font-weight: 500;
-    height: ${checkboxSize};
-    vertical-align: baseline;
-    color: ${config.theme.fontColor};
-    white-space: nowrap;
-    text-shadow: none;
-    padding-left: 25px;
-    white-space: nowrap;
-  `;
-
   return (
     <label
-      className={labelStyle}
+      className="toggle-label"
       htmlFor={name}
       aria-label={
         ariaLabel ||
@@ -156,7 +56,7 @@ export default function Toggle({
       }
     >
       <input
-        className={cx(inputStyle)}
+        className="toggle-input"
         type="checkbox"
         id={name}
         name={name}
@@ -164,7 +64,7 @@ export default function Toggle({
         onChange={handleChange}
         disabled={disabled}
       />
-      <span className={cx(checkmarkStyle)} />
+      <span className="toggle-checkmark" />
       {name}
     </label>
   );

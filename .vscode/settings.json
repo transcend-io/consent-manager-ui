@@ -40,17 +40,20 @@
     "airgap",
     "CCPA",
     "CDPA",
+    "checkmark",
     "CPRA",
     "depcheck",
     "esbuild",
     "Geral",
     "LGPD",
+    "Logomark",
     "Optionalize",
     "pnpify",
     "preact",
     "Proteção",
     "Stringifiable",
     "tsbuildinfo",
+    "wordmark",
     "yarnpkg"
   ]
 }

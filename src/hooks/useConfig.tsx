@@ -1,8 +1,5 @@
-// external
 import { ComponentChildren, createContext, h, JSX } from 'preact';
 import { StateUpdater, useContext, useState } from 'preact/hooks';
-
-// main
 import type { ConsentManagerConfig } from '@transcend-io/airgap.js-types';
 
 /**

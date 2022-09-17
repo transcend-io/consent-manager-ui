@@ -5,7 +5,7 @@ import {
 } from '@transcend-io/airgap.js-types';
 
 export const defaultConfig: ConsentManagerConfig = {
-  css: '',
+  css: './build/cm.css',
   messages: '',
   theme: {
     primaryColor: '#3333FF',

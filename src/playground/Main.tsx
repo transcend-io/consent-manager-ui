@@ -20,12 +20,13 @@ export default function Main(): JSX.Element {
       if (elt) {
         clearInterval(pollForConsentUI);
         // setConsentManager(elt);
+        const shadow = elt.shadowRoot;
+        const interiorContainer = shadow.children[0];
+        console.log(interiorContainer);
+        const modal = interiorContainer.querySelectorAll('.modal-container');
+        console.log(modal);
 
-        const targetZone = document.getElementById('consent-manager-zone');
-        if (!targetZone) {
-          throw new Error('Missing Consent target zone.');
-        }
-        targetZone.appendChild(elt);
+        modal.style.position = 'absolute';
       }
     }, 50);
   }, []);

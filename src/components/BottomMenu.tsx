@@ -1,25 +1,21 @@
-// external
 import { h, JSX } from 'preact';
 import { useIntl } from 'react-intl';
-
-// main
 import { ViewState } from '@transcend-io/airgap.js-types';
-
-// global
-import { useConfig, useEmotion } from '../hooks';
+import { useConfig } from '../hooks';
 import { bottomMenuMessages, noticeAndDoNotSellMessages } from '../messages';
 import type { HandleSetViewState } from '../types';
-
-// local
-import MenuItem from './MenuItem';
+import { MenuItem } from './MenuItem';
 
 /**
  * Renders the menu for the bottom of the banner
  */
-export default function BottomMenu({
+export function BottomMenu({
   viewState,
   handleSetViewState,
+  firstSelectedViewState,
 }: {
+  /** The first view state when opening the modal */
+  firstSelectedViewState: ViewState | null;
   /** The current viewState */
   viewState: ViewState;
   /** Function to change viewState */
@@ -27,42 +23,29 @@ export default function BottomMenu({
 }): JSX.Element {
   const { config } = useConfig();
   const { formatMessage } = useIntl();
-  const { css, cx } = useEmotion();
-
-  const menuContainerStyle = css`
-    width: calc(100% - 60px);
-    height: 100%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    align-items: center;
-    margin: 0 auto;
-
-    @media (min-width: ${config.breakpoints.tablet}) {
-      width: calc(100% - 150px);
-      justify-content: space-evenly;
-    }
-  `;
-
-  const menuItemContainerStyle = css`
-    width: auto;
-  `;
 
   return (
-    <div className={cx(menuContainerStyle)}>
+    <div className="bottom-menu-container">
       {![
         ViewState.NoticeAndDoNotSell,
         ViewState.DoNotSellDisclosure,
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
       ].includes(viewState as any) && (
-        <div className={cx(menuItemContainerStyle)}>
+        <div className="bottom-menu-item-container">
           {viewState === ViewState.CompleteOptions ? (
             <MenuItem
               label={formatMessage(
                 bottomMenuMessages.simplerChoicesButtonLabel,
               )}
               type="button"
-              onClick={() => handleSetViewState(ViewState.QuickOptions)}
+              onClick={() =>
+                handleSetViewState(
+                  !!firstSelectedViewState &&
+                    firstSelectedViewState !== ViewState.CompleteOptions
+                    ? firstSelectedViewState
+                    : ViewState.QuickOptions,
+                )
+              }
             >
               {formatMessage(bottomMenuMessages.simplerChoicesButtonPrimary)}
             </MenuItem>
@@ -79,7 +62,7 @@ export default function BottomMenu({
       )}
 
       {viewState === ViewState.NoticeAndDoNotSell && (
-        <div className={cx(menuItemContainerStyle)}>
+        <div className="bottom-menu-item-container">
           <MenuItem
             label={formatMessage(noticeAndDoNotSellMessages.doNotSellLabel)}
             type="button"
@@ -90,7 +73,7 @@ export default function BottomMenu({
         </div>
       )}
 
-      <div className={cx(menuItemContainerStyle)}>
+      <div className="bottom-menu-item-container">
         <MenuItem
           label={formatMessage(bottomMenuMessages.showPolicyButtonLabel)}
           type="a"
