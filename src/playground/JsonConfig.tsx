@@ -14,6 +14,8 @@ interface JsonConfigProps<T> {
   ioTsType: any;
   /** Optional callback on save */
   onSave?: (value: string, userInitiated: boolean) => void;
+  /** Callback to close the modal */
+  onClose: () => void;
 }
 
 /**
@@ -24,6 +26,7 @@ function JsonConfig<T>({
   defaultValue,
   ioTsType,
   onSave,
+  onClose,
 }: JsonConfigProps<T>): JSX.Element {
   const monaco = useMonaco();
   const [modelUri, setModelUri] = useState<monaco.Uri | undefined>(undefined);
@@ -105,12 +108,17 @@ function JsonConfig<T>({
         defaultValue={getInitialValue()}
         onMount={handleEditorDidMount}
       />
-      <button class="button primary" onClick={() => save(true)}>
-        Save
-      </button>
-      <button class="button secondary" onClick={reset}>
-        Reset
-      </button>
+      <div style={{ paddingTop: '5px' }}>
+        <button class="button secondary" onClick={onClose}>
+          Close
+        </button>
+        <button class="button secondary" onClick={reset}>
+          Reset
+        </button>
+        <button class="button primary" onClick={() => save(true)}>
+          Save
+        </button>
+      </div>
     </Fragment>
   );
 }
@@ -152,10 +160,7 @@ export function JsonConfigModal<T>(props: JsonConfigProps<T>): JSX.Element {
           }}
         >
           <h3>Editing {props.localStorageKey}</h3>
-          <JsonConfig {...props} />
-          <button class="button secondary" onClick={() => setIsOpen(false)}>
-            Close
-          </button>
+          <JsonConfig {...props} onClose={() => setIsOpen(false)} />
         </div>
       </div>
       <div
