@@ -26,7 +26,7 @@ export default function Main(): JSX.Element {
         </p>
         {Object.values(ViewState).map((viewState) => (
           <button
-            class="button"
+            class="button secondary"
             key={viewState}
             onClick={() => setViewState(viewState)}
           >

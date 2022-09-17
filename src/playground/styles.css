@@ -26,11 +26,8 @@ h3 {
   align-items: center;
   box-sizing: border-box;
   padding: 5px;
-  color: #535f6e;
   font-weight: 500;
   font-size: 14px;
-  background-color: #ffffff;
-  border-color: #e8e8e8;
   border-style: solid;
   border-width: 1px;
   border-radius: var(--borderRadius);
@@ -41,12 +38,35 @@ h3 {
   transition-property: background-color, box-shadow, border-color;
 }
 
-.button:hover {
+.button.primary {
+  color: #ffffff;
+  background-color: #2e2ee5;
+  border-color: #2e2ee5;
+}
+
+.button.primary:hover {
+  background-color: #2a2ad1;
+  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.15);
+}
+
+.button.primary:active {
+  background-color: #2a2ad1;
+  border-color: #2e2ee5;
+  box-shadow: 0px 0.5px 0.5px rgba(0, 0, 0, 0.15);
+}
+
+.button.secondary {
+  color: #535f6e;
+  background-color: #ffffff;
+  border-color: #e8e8e8;
+}
+
+.button.secondary:hover {
   background-color: #ffffff;
   box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.15);
 }
 
-.button:active {
+.button.secondary:active {
   background-color: #ffffff;
   border-color: #535f6e;
   box-shadow: 0px 0.5px 0.5px rgba(0, 0, 0, 0.15);

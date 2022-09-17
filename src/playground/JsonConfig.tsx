@@ -105,10 +105,10 @@ function JsonConfig<T>({
         defaultValue={getInitialValue()}
         onMount={handleEditorDidMount}
       />
-      <button class="button" onClick={() => save(true)}>
+      <button class="button primary" onClick={() => save(true)}>
         Save
       </button>
-      <button class="button" onClick={reset}>
+      <button class="button secondary" onClick={reset}>
         Reset
       </button>
     </Fragment>
@@ -123,7 +123,7 @@ export function JsonConfigModal<T>(props: JsonConfigProps<T>): JSX.Element {
 
   return (
     <Fragment>
-      <button class="button" onClick={() => setIsOpen(true)}>
+      <button class="button secondary" onClick={() => setIsOpen(true)}>
         Edit {props.localStorageKey}
       </button>
       <div
@@ -153,7 +153,7 @@ export function JsonConfigModal<T>(props: JsonConfigProps<T>): JSX.Element {
         >
           <h3>Editing {props.localStorageKey}</h3>
           <JsonConfig {...props} />
-          <button class="button" onClick={() => setIsOpen(false)}>
+          <button class="button secondary" onClick={() => setIsOpen(false)}>
             Close
           </button>
         </div>
