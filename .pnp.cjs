@@ -33,7 +33,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         [null, {\
           "packageLocation": "./",\
           "packageDependencies": [\
-            ["@transcend-io/airgap.js-types", "npm:8.10.1"],\
+            ["@transcend-io/airgap.js-types", "npm:8.10.4"],\
             ["@transcend-io/internationalization", "npm:1.4.1"],\
             ["@transcend-io/logger", "npm:1.1.0"],\
             ["@types/node", "npm:17.0.45"],\
@@ -1684,10 +1684,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           ],\
           "linkType": "HARD"\
         }],\
-        ["npm:8.10.1", {\
-          "packageLocation": "./.yarn/cache/@transcend-io-airgap.js-types-npm-8.10.1-a504782679-fc4720839f.zip/node_modules/@transcend-io/airgap.js-types/",\
+        ["npm:8.10.4", {\
+          "packageLocation": "./.yarn/cache/@transcend-io-airgap.js-types-npm-8.10.4-58adaec011-829849278e.zip/node_modules/@transcend-io/airgap.js-types/",\
           "packageDependencies": [\
-            ["@transcend-io/airgap.js-types", "npm:8.10.1"],\
+            ["@transcend-io/airgap.js-types", "npm:8.10.4"],\
             ["@transcend-io/type-utils", "npm:1.0.5"],\
             ["fp-ts", "npm:2.11.8"],\
             ["io-ts", "virtual:53d562f9656f9223c4532e7e2b6feefabcf4bfa2c0659bc8d6557c1f9633b17688cca8b3d2effb8a926da81d6d2f2353092c812bd38f1a03f5ff9a9a3e1b3408#npm:2.2.16"],\
@@ -1701,7 +1701,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./",\
           "packageDependencies": [\
             ["@transcend-io/consent-manager-ui", "workspace:."],\
-            ["@transcend-io/airgap.js-types", "npm:8.10.1"],\
+            ["@transcend-io/airgap.js-types", "npm:8.10.4"],\
             ["@transcend-io/internationalization", "npm:1.4.1"],\
             ["@transcend-io/logger", "npm:1.1.0"],\
             ["@types/node", "npm:17.0.45"],\
