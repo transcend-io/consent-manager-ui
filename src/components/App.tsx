@@ -97,10 +97,15 @@ export function App({
           options.viewState || ViewState.DoNotSellDisclosure,
           auth,
         ),
-      showConsentManager: () => handleSetViewState(options.viewState || 'open'),
+      showConsentManager: () =>
+        handleSetViewState(options.viewState || 'open', undefined, true),
       hideConsentManager: () => handleSetViewState('close'),
       toggleConsentManager: () =>
-        handleSetViewState(viewStateIsClosed(viewState) ? 'open' : 'close'),
+        handleSetViewState(
+          viewStateIsClosed(viewState) ? 'open' : 'close',
+          undefined,
+          true,
+        ),
       autoShowConsentManager: () => {
         const privacySignals = airgap.getPrivacySignals();
         const regimePurposes = airgap.getRegimePurposes();
@@ -130,7 +135,7 @@ export function App({
           }
           return;
         }
-        handleSetViewState('open');
+        handleSetViewState('open', undefined, true);
       },
     };
 

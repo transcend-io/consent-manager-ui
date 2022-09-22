@@ -90,7 +90,8 @@ export function useViewState({
             current: initialViewState,
             previous: state.current,
             auth,
-            firstSelectedViewState: state.firstSelectedViewState,
+            firstSelectedViewState:
+              initialViewState || state.firstSelectedViewState,
           });
           break;
 
