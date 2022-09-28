@@ -1,11 +1,10 @@
-// external
 import { StateUpdater, useEffect, useState } from 'preact/hooks';
 
 /**
- * useState hook, but initialized from and saved to localstorage
+ * useState hook, but initialized from and saved to localStorage
  *
  * @param initialState - The initial value (or a function that returns the initial value)
- * @param key - the localstorage key to store the value under
+ * @param key - the localStorage key to store the value under
  * @returns the value and setter: same as useState
  */
 export function useStickyState<T>(

@@ -1,64 +1,66 @@
-// external
 import { h, JSX } from 'preact';
-
-// main
-import { ViewState } from '@transcend-io/airgap.js-types';
-import { LanguageKey } from '@transcend-io/internationalization';
-
-// global
-import { useEmotion, viewStateIsClosed } from '../hooks';
+import { AirgapAuth, ViewState } from '@transcend-io/airgap.js-types';
+import { ConsentManagerLanguageKey } from '@transcend-io/internationalization';
+import { viewStateIsClosed } from '../hooks';
 import type { HandleSetViewState } from '../types';
-
-// local
-import AcceptAll from './AcceptAll';
-import BottomMenu from './BottomMenu';
-import Collapsed from './Collapsed';
-import CompleteOptions from './CompleteOptions';
-import LanguageButton from './LanguageButton';
-import LanguageOptions from './LanguageOptions';
-import { FullLogo } from './Logo';
-import Modal from './Modal';
-import NoticeAndDoNotSell from './NoticeAndDoNotSell';
-import QuickOptions from './QuickOptions';
+import { AcceptAll } from './AcceptAll';
+import { BottomMenu } from './BottomMenu';
+import { Collapsed } from './Collapsed';
+import { CompleteOptions } from './CompleteOptions';
+import { LanguageButton } from './LanguageButton';
+import { LanguageOptions } from './LanguageOptions';
+import { TranscendLogo } from './TranscendLogo';
+import { Modal } from './Modal';
+import { NoticeAndDoNotSell } from './NoticeAndDoNotSell';
+import { QuickOptions } from './QuickOptions';
+import { AcceptOrRejectAll } from './AcceptOrRejectAll';
+import { DoNotSellDisclosure } from './DoNotSellDisclosure';
 
 /**
  * Presents view states (collapsed, GDPR-mode, CCPA-mode etc)
  */
-export default function Main({
+export function Main({
   viewState,
-  mode,
+  firstSelectedViewState,
   handleSetViewState,
   handleChangeLanguage,
+  supportedLanguages,
+  modalOpenAuth,
 }: {
+  /** The on click event passed as authentication to airgap. Needed for do-not-sell acknowledgement */
+  modalOpenAuth?: AirgapAuth;
   /** The current viewState of the consent manager */
   viewState: ViewState;
-  /** Whether we're in opt-in consent mode or give-notice mode */
-  mode: 'CONSENT' | 'NOTICE';
+  /** First view state selected when transcend.showConsentManager() is called */
+  firstSelectedViewState: ViewState | null;
   /** Updater function for viewState */
   handleSetViewState: HandleSetViewState;
   /** Updater function for language change */
-  handleChangeLanguage: (language: LanguageKey) => void;
+  handleChangeLanguage: (language: ConsentManagerLanguageKey) => void;
+  /** Set of supported languages */
+  supportedLanguages: ConsentManagerLanguageKey[];
 }): JSX.Element {
-  const { css, cx } = useEmotion();
-
-  const padding = 21; // px
-  const bottomMenuStyle = css`
-    position: absolute;
-    bottom: ${padding}px;
-    width: calc(100% - ${padding}px * 2);
-    height: 17px;
-  `;
-
   // Modal open views
   if (!viewStateIsClosed(viewState)) {
     return (
-      <Modal viewState={viewState} padding={padding}>
+      <Modal viewState={viewState}>
         {viewState === ViewState.QuickOptions && (
           <QuickOptions handleSetViewState={handleSetViewState} />
         )}
 
         {viewState === ViewState.AcceptAll && (
           <AcceptAll handleSetViewState={handleSetViewState} />
+        )}
+
+        {viewState === ViewState.AcceptOrRejectAll && (
+          <AcceptOrRejectAll handleSetViewState={handleSetViewState} />
+        )}
+
+        {viewState === ViewState.DoNotSellDisclosure && modalOpenAuth && (
+          <DoNotSellDisclosure
+            handleSetViewState={handleSetViewState}
+            modalOpenAuth={modalOpenAuth}
+          />
         )}
 
         {viewState === ViewState.CompleteOptions && (
@@ -73,14 +75,15 @@ export default function Main({
           <LanguageOptions
             handleSetViewState={handleSetViewState}
             handleChangeLanguage={handleChangeLanguage}
+            supportedLanguages={supportedLanguages}
           />
         )}
 
-        <div className={cx(bottomMenuStyle)}>
-          <FullLogo />
+        <div className="footer-container">
+          <TranscendLogo />
           <BottomMenu
+            firstSelectedViewState={firstSelectedViewState}
             viewState={viewState}
-            mode={mode}
             handleSetViewState={handleSetViewState}
           />
           <LanguageButton

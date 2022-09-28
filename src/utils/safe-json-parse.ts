@@ -1,4 +1,3 @@
-// local
 import { throwOutside } from './throw-outside';
 
 /**

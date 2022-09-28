@@ -1,17 +1,15 @@
-// external
 import { h, render } from 'preact';
-
-// main
-import type {
+import {
   AirgapAPI,
   ConsentManagerAPI,
+  ShowConsentManagerOptions,
+  ViewState,
 } from '@transcend-io/airgap.js-types';
-
-// local
-import App from './components/App';
+import { App } from './components/App';
 import { logger } from './logger';
 import { apiEventName } from './settings';
 import { createHTMLElement } from './utils/create-html-element';
+import { EmitEventOptions } from './types';
 
 let interfaceInitialized = false;
 
@@ -21,15 +19,18 @@ let interfaceInitialized = false;
 // eslint-disable-next-line require-await
 async function dispatchConsentManagerAPIEvent(
   element: HTMLElement,
-  detail: keyof ConsentManagerAPI,
+  detail: EmitEventOptions,
 ): Promise<void> {
-  const event = new CustomEvent<keyof ConsentManagerAPI>(apiEventName, {
+  const event = new CustomEvent<EmitEventOptions>(apiEventName, {
     detail,
   });
   element.dispatchEvent(event);
 }
 
 let consentManagerAPI: ConsentManagerAPI;
+let appContainer: HTMLElement;
+
+export const getAppContainer = (): HTMLElement | undefined => appContainer;
 
 /**
  * Render the Preact app into a shadow DOM
@@ -52,7 +53,7 @@ export const injectConsentManagerApp = (
         consentManager?.attachShadow?.({ mode: 'closed' }) || consentManager;
 
       // Create an inner div for event listeners
-      const appContainer = createHTMLElement('div');
+      appContainer ??= createHTMLElement('div');
       shadowRoot.appendChild(appContainer);
 
       // Don't inherit global styles
@@ -69,17 +70,38 @@ export const injectConsentManagerApp = (
         .insertRule(':host { all: initial }');
 
       consentManagerAPI = {
-        autoShowConsentManager: () =>
-          dispatchConsentManagerAPIEvent(
-            appContainer,
-            'autoShowConsentManager',
-          ),
-        showConsentManager: () =>
-          dispatchConsentManagerAPIEvent(appContainer, 'showConsentManager'),
-        toggleConsentManager: () =>
-          dispatchConsentManagerAPIEvent(appContainer, 'toggleConsentManager'),
-        hideConsentManager: () =>
-          dispatchConsentManagerAPIEvent(appContainer, 'hideConsentManager'),
+        setActiveLocale: (locale) =>
+          dispatchConsentManagerAPIEvent(appContainer, {
+            eventType: 'setActiveLocale',
+            locale,
+          }),
+        viewStates: new Set(Object.values(ViewState)),
+        doNotSell: (auth, options: ShowConsentManagerOptions = {}) =>
+          dispatchConsentManagerAPIEvent(appContainer, {
+            eventType: 'doNotSell',
+            auth,
+            ...options,
+          }),
+        autoShowConsentManager: (options: ShowConsentManagerOptions = {}) =>
+          dispatchConsentManagerAPIEvent(appContainer, {
+            eventType: 'autoShowConsentManager',
+            ...options,
+          }),
+        showConsentManager: (options: ShowConsentManagerOptions = {}) =>
+          dispatchConsentManagerAPIEvent(appContainer, {
+            eventType: 'showConsentManager',
+            ...options,
+          }),
+        toggleConsentManager: (options: ShowConsentManagerOptions = {}) =>
+          dispatchConsentManagerAPIEvent(appContainer, {
+            eventType: 'toggleConsentManager',
+            ...options,
+          }),
+        hideConsentManager: (options: ShowConsentManagerOptions = {}) =>
+          dispatchConsentManagerAPIEvent(appContainer, {
+            eventType: 'hideConsentManager',
+            ...options,
+          }),
       };
 
       // Render preact app inside the shadow DOM component

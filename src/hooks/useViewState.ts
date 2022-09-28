@@ -1,16 +1,12 @@
-// external
 import { useCallback, useState } from 'preact/hooks';
-
-// main
 import {
+  AirgapAuth,
   DismissedViewState,
   InitialViewState,
   ViewState,
 } from '@transcend-io/airgap.js-types';
-
-// global
 import { logger } from '../logger';
-import type { HandleSetViewState, RequestedViewState } from '../types';
+import type { HandleSetViewState } from '../types';
 
 /**
  * Helper to determine whether a view state is closed
@@ -46,15 +42,24 @@ export function useViewState({
   viewState: ViewState;
   /** A handler for the view state */
   handleSetViewState: HandleSetViewState;
+  /** The first view state when opening the modal */
+  firstSelectedViewState: ViewState | null;
+  /** Airgap auth */
+  auth?: AirgapAuth;
 } {
   const [state, setState] = useState<{
     /** The current view state */
     current: ViewState;
     /** The previous view state - used for going back */
     previous: ViewState | null;
+    /** The first view state when opening the modal */
+    firstSelectedViewState: ViewState | null;
+    /** Airgap auth */
+    auth?: AirgapAuth;
   }>({
     current: ViewState.Hidden,
     previous: null,
+    firstSelectedViewState: null,
   });
 
   /**
@@ -63,7 +68,7 @@ export function useViewState({
    * @param requestedViewState - the requested next view state, 'open', 'close', or 'back'
    */
   const handleSetViewState: HandleSetViewState = useCallback(
-    (requestedViewState: RequestedViewState) => {
+    (requestedViewState, auth, resetFirstSelectedViewState = false) => {
       switch (requestedViewState) {
         // Request to go back to the previous page
         case 'back':
@@ -71,6 +76,8 @@ export function useViewState({
             setState({
               current: state.previous,
               previous: state.current,
+              auth,
+              firstSelectedViewState: state.firstSelectedViewState,
             });
           } else {
             logger.warn('Tried to go back when there is no previous state');
@@ -82,6 +89,9 @@ export function useViewState({
           setState({
             current: initialViewState,
             previous: state.current,
+            auth,
+            firstSelectedViewState:
+              initialViewState || state.firstSelectedViewState,
           });
           break;
 
@@ -90,6 +100,8 @@ export function useViewState({
           setState({
             current: dismissedViewState,
             previous: state.current,
+            auth,
+            firstSelectedViewState: null,
           });
           break;
 
@@ -98,6 +110,10 @@ export function useViewState({
           setState({
             current: requestedViewState,
             previous: state.current,
+            auth,
+            firstSelectedViewState: resetFirstSelectedViewState
+              ? requestedViewState
+              : state.firstSelectedViewState || requestedViewState,
           });
           break;
       }
@@ -108,5 +124,7 @@ export function useViewState({
   return {
     viewState: state.current,
     handleSetViewState,
+    auth: state.auth,
+    firstSelectedViewState: state.firstSelectedViewState,
   };
 }

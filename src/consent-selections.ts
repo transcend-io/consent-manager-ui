@@ -1,5 +1,4 @@
 import { AirgapAPI } from '@transcend-io/airgap.js-types';
-import { getPrimaryRegime } from './regimes';
 import { ConsentSelection } from './types';
 
 /**
@@ -18,23 +17,16 @@ export function getConsentSelections(airgap: AirgapAPI): ConsentSelection {
 
   // Get the purposes for processing configured for this organization.
   const purposeTypes = airgap.getPurposeTypes();
-  const primaryRegime = getPrimaryRegime(airgap.getRegimes());
 
-  if (primaryRegime === 'CPRA') {
-    // Notice + SaleOfInfo-only UI for CPRA
-    const purpose = 'SaleOfInfo';
-    initialConsentSelections[purpose] = !!consent.purposes[purpose];
-  } else {
-    // By default reflect airgap.getPurposeTypes API
-    Object.keys(purposeTypes).forEach((purpose) => {
-      const { configurable, showInConsentManager } = purposeTypes[purpose];
+  // By default reflect airgap.getPurposeTypes API
+  Object.keys(purposeTypes).forEach((purpose) => {
+    const { configurable, showInConsentManager } = purposeTypes[purpose];
 
-      if (showInConsentManager && configurable) {
-        // For purposes that you can opt in/out of, prepare toggles
-        initialConsentSelections[purpose] = !!consent.purposes[purpose];
-      }
-    });
-  }
+    if (showInConsentManager && configurable) {
+      // For purposes that you can opt in/out of, prepare toggles
+      initialConsentSelections[purpose] = !!consent.purposes[purpose];
+    }
+  });
 
   return initialConsentSelections;
 }

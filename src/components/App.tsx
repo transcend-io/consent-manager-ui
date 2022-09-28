@@ -1,33 +1,26 @@
-// external
 import { h, JSX } from 'preact';
 import { IntlProvider as _IntlProvider } from 'react-intl';
-
-// main
 import {
   AirgapAPI,
   ConsentManagerAPI,
   ViewState,
 } from '@transcend-io/airgap.js-types';
-
-// global
 import { getMergedConfig } from '../config';
 import {
   AirgapProvider,
   ConfigProvider,
-  EmotionProvider,
   useLanguage,
   useViewState,
   viewStateIsClosed,
 } from '../hooks';
-import { apiEventName, LOG_LEVELS } from '../settings';
-import { CONSENT_MANAGER_TRANSLATIONS } from '../translations';
-
-// local
-import Main from './Main';
+import { apiEventName, LOG_LEVELS, settings } from '../settings';
+import { Main } from './Main';
 import { getPrimaryRegime } from '../regimes';
 import { logger } from '../logger';
 import { PRIVACY_SIGNAL_NAME } from '../privacy-signals';
-import { getConsentSelections } from '../consent-selections';
+import { ConsentManagerLanguageKey } from '@transcend-io/internationalization';
+import { EmitEventOptions } from '../types';
+import { CONSENT_MANAGER_SUPPORTED_LANGUAGES } from '../i18n';
 
 // TODO: https://transcend.height.app/T-13483
 // Fix IntlProvider JSX types
@@ -39,7 +32,7 @@ let promptSuppressionNoticeShown = false;
 /**
  * Top layer concerned with data, not presentation
  */
-export default function App({
+export function App({
   airgap,
   appContainer,
 }: {
@@ -48,51 +41,83 @@ export default function App({
   /** Reference to the shadow root */
   appContainer: HTMLElement;
 }): JSX.Element {
-  // Hooks
+  // Active privacy regime
   const privacyRegime = getPrimaryRegime(airgap.getRegimes());
-  const { language, handleChangeLanguage } = useLanguage();
 
-  // Config loader + dependent hook
+  // Consent manager configuration
   const config = getMergedConfig();
+
+  // Language setup
+  const { language, handleChangeLanguage, messages } = useLanguage({
+    supportedLanguages: CONSENT_MANAGER_SUPPORTED_LANGUAGES,
+    translationsLocation:
+      // Order of priority:
+      // 1. Take airgap.js data-messages
+      // 2. Take consentManagerConfig.messages
+      // 3. Look for translations locally
+      settings.messages || config.messages || './translations',
+  });
+
+  // Active view state based on regime and config
   const { initialViewStateByPrivacyRegime, dismissedViewState } = config;
   const initialViewState: ViewState =
     initialViewStateByPrivacyRegime[privacyRegime];
-  const { viewState, handleSetViewState } = useViewState({
-    initialViewState,
-    dismissedViewState,
-  });
-  // Set whether we're in opt-in consent mode or give-notice mode
-  const mode =
-    initialViewState === ViewState.NoticeAndDoNotSell ? 'NOTICE' : 'CONSENT';
+  const { viewState, firstSelectedViewState, handleSetViewState, auth } =
+    useViewState({
+      initialViewState,
+      dismissedViewState,
+    });
 
   // Event listener for the API
   appContainer.addEventListener(apiEventName, (event) => {
-    const { detail } = event as CustomEvent<keyof ConsentManagerAPI>;
+    const {
+      detail: { eventType, auth, locale, ...options },
+    } = event as CustomEvent<EmitEventOptions>;
+    if (
+      (options.viewState === ViewState.DoNotSellDisclosure ||
+        eventType === 'doNotSell') &&
+      !auth
+    ) {
+      throw new Error(
+        `${ViewState.DoNotSellDisclosure} view state can only be initialized with auth. ` +
+          `Please provide the onClick event like: onClick: (event) => transcend.doNotSell(event)`,
+      );
+    }
+
+    // multiple events can change the language
+    if (locale) {
+      handleChangeLanguage(locale);
+    }
+
     const eventHandlerByDetail: Record<keyof ConsentManagerAPI, () => void> = {
-      showConsentManager: () => handleSetViewState('open'),
+      setActiveLocale: () => null, // handled above
+      viewStates: () => null, // should not be called
+      doNotSell: () =>
+        handleSetViewState(
+          options.viewState || ViewState.DoNotSellDisclosure,
+          auth,
+        ),
+      showConsentManager: () =>
+        handleSetViewState(options.viewState || 'open', undefined, true),
       hideConsentManager: () => handleSetViewState('close'),
       toggleConsentManager: () =>
-        handleSetViewState(viewStateIsClosed(viewState) ? 'open' : 'close'),
+        handleSetViewState(
+          viewStateIsClosed(viewState) ? 'open' : 'close',
+          undefined,
+          true,
+        ),
       autoShowConsentManager: () => {
         const privacySignals = airgap.getPrivacySignals();
-        let applicablePrivacySignals = privacySignals.has('DNT');
-        // Only suppress auto-prompt with GPC if SaleOfInfo is the only displayed tracking purpose
-        // This applies to CPRA-like regimes
-        if (!applicablePrivacySignals && privacySignals.has('GPC')) {
-          const consentSelections = Object.keys(getConsentSelections(airgap));
-          if (
-            consentSelections.length === 1 &&
-            consentSelections[0] === 'SaleOfInfo'
-          ) {
-            applicablePrivacySignals = true;
-          }
-        }
-        const shouldShowNotice =
-          !airgap.getConsent().confirmed && !applicablePrivacySignals;
+        const regimePurposes = airgap.getRegimePurposes();
+        const applicablePrivacySignals =
+          // Prompt was auto-suppressed with DNT+any regime or GPC+regimes with SaleOfInfo
+          (privacySignals.has('DNT') && regimePurposes.size > 0) ||
+          (privacySignals.has('GPC') && regimePurposes.has('SaleOfInfo'));
+        const shouldShowNotice = !airgap.getConsent().confirmed;
         if (!shouldShowNotice) {
           if (
-            !promptSuppressionNoticeShown &&
             applicablePrivacySignals &&
+            !promptSuppressionNoticeShown &&
             LOG_LEVELS.has('warn')
           ) {
             logger.warn(
@@ -110,32 +135,36 @@ export default function App({
           }
           return;
         }
-        handleSetViewState('open');
+        handleSetViewState('open', undefined, true);
       },
     };
 
     // Trigger event handler for this event
-    eventHandlerByDetail[detail]();
+    eventHandlerByDetail[eventType]();
   });
 
   return (
     <IntlProvider
       locale={language}
-      messages={CONSENT_MANAGER_TRANSLATIONS[language]}
-      defaultLocale="en"
+      messages={messages || {}}
+      // messages.ts are translated in english
+      defaultLocale={ConsentManagerLanguageKey.En}
     >
-      <EmotionProvider>
-        <ConfigProvider newConfig={config}>
-          <AirgapProvider newAirgap={airgap}>
+      <ConfigProvider newConfig={config}>
+        <AirgapProvider newAirgap={airgap}>
+          {/** Ensure messages are loaded before any UI is displayed */}
+          {messages ? (
             <Main
+              modalOpenAuth={auth}
               viewState={viewState}
-              mode={mode}
+              supportedLanguages={CONSENT_MANAGER_SUPPORTED_LANGUAGES}
+              firstSelectedViewState={firstSelectedViewState}
               handleSetViewState={handleSetViewState}
               handleChangeLanguage={handleChangeLanguage}
             />
-          </AirgapProvider>
-        </ConfigProvider>
-      </EmotionProvider>
+          ) : null}
+        </AirgapProvider>
+      </ConfigProvider>
     </IntlProvider>
   );
 }

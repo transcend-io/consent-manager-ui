@@ -1,5 +1,10 @@
-// main
-import type { TrackingPurpose, ViewState } from '@transcend-io/airgap.js-types';
+import type {
+  TrackingPurpose,
+  ViewState,
+  ShowConsentManagerOptions,
+  ConsentManagerAPI,
+  AirgapAuth,
+} from '@transcend-io/airgap.js-types';
 
 /**
  * Disclosure of a tracking purpose
@@ -30,7 +35,7 @@ export type ConsentSelection = {
  * The language locale
  */
 export interface Language {
-  /** The first subtag, like "en" */
+  /** The first sub-tag, like "en" */
   primaryLanguage: string;
   /** The whole language tag, like en-US or fr-FR */
   extendedLanguage: string;
@@ -46,4 +51,25 @@ export type RequestedViewState = ViewState | 'back' | 'open' | 'close';
  */
 export type HandleSetViewState = (
   requestedViewState: RequestedViewState,
+  auth?: AirgapAuth,
+  resetFirstSelectedViewState?: boolean,
 ) => void;
+
+/**
+ * The shape of the `detail` property when emitting events in the consent
+ * manager UI
+ */
+export interface EmitEventOptions extends ShowConsentManagerOptions {
+  /** Type of event being emitted */
+  eventType: keyof ConsentManagerAPI;
+  /** Airgap auth passed in click event */
+  auth?: AirgapAuth;
+}
+
+/**
+ * Type override for new GPC standard (not in official DOM spec yet)
+ */
+export type NavigatorWithGPC = Navigator & {
+  /** see https://globalprivacycontrol.github.io/gpc-spec/ */
+  globalPrivacyControl: boolean;
+};
