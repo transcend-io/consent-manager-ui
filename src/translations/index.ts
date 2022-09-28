@@ -135,7 +135,7 @@ export const selectableLanguages: { [key in LanguageKey]?: string } = {
   /* Spanish (Latin America & Caribbean) */
   [LanguageKey.Es419]: 'Español',
   /* Spanish (Castilian) */
-  [LanguageKey.EsEs]: 'Español (Castillano)',
+  [LanguageKey.EsEs]: 'Español (Castellano)',
   /* Czech */
   [LanguageKey.CsCz]: 'Čeština',
   /* Danish */
