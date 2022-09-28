@@ -24,7 +24,7 @@ export const selectableLanguages: {
   /* Spanish (Latin America & Caribbean) */
   [ConsentManagerLanguageKey.Es419]: 'Español',
   /* Spanish (Castilian) */
-  [ConsentManagerLanguageKey.EsEs]: 'Español (Castillano)',
+  [ConsentManagerLanguageKey.EsEs]: 'Español (Castellano)',
   /* Czech */
   [ConsentManagerLanguageKey.CsCz]: 'Čeština',
   /* Danish */
