@@ -5,7 +5,7 @@ import { COMMA_AND_OR_SPACE_SEPARATED_LIST } from './utils/comma-and-or-space-se
 const { regimePrecedence = 'GDPR LGPD CPRA CDPA CPA Unknown' } = settings;
 
 // Making this an Object rather than an Array is a TypeScript hack to ensure we have all PrivacyRegimes included
-const orderedRegimes: Array<PrivacyRegime> = regimePrecedence.split(
+const orderedRegimes: PrivacyRegime[] = regimePrecedence.split(
   COMMA_AND_OR_SPACE_SEPARATED_LIST,
 );
 
