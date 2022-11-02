@@ -1,13 +1,10 @@
 import { PrivacyRegime } from '@transcend-io/airgap.js-types';
 import { settings } from './settings';
-import { COMMA_AND_OR_SPACE_SEPARATED_LIST } from './utils/comma-and-or-space-separated-list';
 
-const { regimePrecedence = 'GDPR LGPD CPRA CDPA CPA Unknown' } = settings;
+const { regimePrecedence = 'GDPR;LGPD;CPRA;CDPA;CPA;Unknown' } = settings;
 
 // Making this an Object rather than an Array is a TypeScript hack to ensure we have all PrivacyRegimes included
-const orderedRegimes: PrivacyRegime[] = regimePrecedence.split(
-  COMMA_AND_OR_SPACE_SEPARATED_LIST,
-);
+const orderedRegimes: PrivacyRegime[] = regimePrecedence.split(/\s*;\s*/);
 
 /**
  * Returns the PrivacyRegime with the highest precedence
