@@ -30,26 +30,24 @@ export function BottomMenu({
         ViewState.NoticeAndDoNotSell,
         ViewState.DoNotSellDisclosure,
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      ].includes(viewState as any) && (
-        <div className="bottom-menu-item-container">
-          {viewState === ViewState.CompleteOptions ? (
-            <MenuItem
-              label={formatMessage(
-                bottomMenuMessages.simplerChoicesButtonLabel,
-              )}
-              type="button"
-              onClick={() =>
-                handleSetViewState(
-                  !!firstSelectedViewState &&
-                    firstSelectedViewState !== ViewState.CompleteOptions
-                    ? firstSelectedViewState
-                    : ViewState.QuickOptions,
-                )
-              }
-            >
-              {formatMessage(bottomMenuMessages.simplerChoicesButtonPrimary)}
-            </MenuItem>
-          ) : (
+      ].includes(viewState as any) &&
+        (viewState === ViewState.CompleteOptions ? (
+          !firstSelectedViewState ||
+          firstSelectedViewState === ViewState.CompleteOptions ? null : (
+            <div className="bottom-menu-item-container">
+              <MenuItem
+                label={formatMessage(
+                  bottomMenuMessages.simplerChoicesButtonLabel,
+                )}
+                type="button"
+                onClick={() => handleSetViewState(firstSelectedViewState)}
+              >
+                {formatMessage(bottomMenuMessages.simplerChoicesButtonPrimary)}
+              </MenuItem>
+            </div>
+          )
+        ) : (
+          <div className="bottom-menu-item-container">
             <MenuItem
               label={formatMessage(bottomMenuMessages.moreChoicesButtonLabel)}
               type="button"
@@ -57,9 +55,8 @@ export function BottomMenu({
             >
               {formatMessage(bottomMenuMessages.moreChoicesButtonPrimary)}
             </MenuItem>
-          )}
-        </div>
-      )}
+          </div>
+        ))}
 
       {viewState === ViewState.NoticeAndDoNotSell && (
         <div className="bottom-menu-item-container">
