@@ -1172,15 +1172,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@transcend-io/airgap.js-types@npm:^8.10.1":
-  version: 8.10.1
-  resolution: "@transcend-io/airgap.js-types@npm:8.10.1"
+"@transcend-io/airgap.js-types@npm:^8.10.4":
+  version: 8.10.4
+  resolution: "@transcend-io/airgap.js-types@npm:8.10.4"
   dependencies:
     "@transcend-io/type-utils": ^1.0.5
     fp-ts: ^2.11.8
     io-ts: ^2.2.16
     tslib: ^2.3.1
-  checksum: fc4720839f673b0ffe605cbd38276ed1573aa1bd03c1ff3df88ea28b5b0f29165f5a58a89369d23c38715312f59b69d5c237565086192f7d0442b23ffdad082e
+  checksum: 829849278eece425b8fe94af8257f70a93946990531ee62eb51251c20ac60125eeda4b53ce4db99c236b1b2204e2cccd3bb2e5324fc6504fc31673879b8e6a7f
   languageName: node
   linkType: hard
 
@@ -1189,7 +1189,7 @@ __metadata:
   resolution: "@transcend-io/consent-manager-ui@workspace:."
   dependencies:
     "@monaco-editor/react": ^4.4.5
-    "@transcend-io/airgap.js-types": ^8.10.1
+    "@transcend-io/airgap.js-types": ^8.10.4
     "@transcend-io/internationalization": ^1.4.1
     "@transcend-io/logger": ^1.0.14
     "@types/json-schema": ^7.0.11

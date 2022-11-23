@@ -1,17 +1,10 @@
-import {
-  PrivacyRegime,
-  PrivacyRegimeEnum,
-} from '@transcend-io/airgap.js-types';
+import { PrivacyRegime } from '@transcend-io/airgap.js-types';
+import { settings } from './settings';
+
+const { regimePrecedence = 'GDPR;LGPD;CPRA;CDPA;CPA;Unknown' } = settings;
 
 // Making this an Object rather than an Array is a TypeScript hack to ensure we have all PrivacyRegimes included
-const regimePrecedence: Record<PrivacyRegime, number> = {
-  GDPR: 0,
-  LGPD: 1,
-  CPRA: 2,
-  CDPA: 3,
-  CPA: 4,
-  Unknown: 5,
-};
+const orderedRegimes: PrivacyRegime[] = regimePrecedence.split(/\s*;\s*/);
 
 /**
  * Returns the PrivacyRegime with the highest precedence
@@ -20,7 +13,4 @@ const regimePrecedence: Record<PrivacyRegime, number> = {
  * @returns Highest precedence PrivacyRegime (or Unknown if no PrivacyRegimes match)
  */
 export const getPrimaryRegime = (regimes: Set<PrivacyRegime>): PrivacyRegime =>
-  Object.entries(regimePrecedence)
-    .sort((a, b) => a[1] - b[1])
-    .map(([regime]) => regime as PrivacyRegimeEnum)
-    .find((regime) => regimes.has(regime)) || 'Unknown';
+  orderedRegimes.find((regime) => regimes.has(regime)) || 'Unknown';
