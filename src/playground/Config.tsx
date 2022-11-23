@@ -15,7 +15,6 @@ export function Config(): JSX.Element {
   return (
     <div
       style={{
-        width: '100%',
         borderBottom: '1px solid gray',
         padding: '10px',
         display: 'flex',

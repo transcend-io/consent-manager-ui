@@ -16,7 +16,6 @@ export default function Main(): JSX.Element {
 
       <div
         style={{
-          width: '100%',
           borderBottom: '1px solid gray',
           padding: '10px',
         }}

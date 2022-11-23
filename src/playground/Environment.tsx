@@ -1,5 +1,5 @@
 import { h, JSX } from 'preact';
-import { useState, useEffect } from 'preact/hooks';
+import { useState } from 'preact/hooks';
 /**
  * Browser environment
  */
@@ -48,6 +48,9 @@ export function Environment(): JSX.Element {
         />
         <label for="DNT">DNT</label>
       </div>
+      <button class="button secondary" style={{ marginLeft: '5px' }}>
+        Implement me (submit check)
+      </button>
     </form>
   );
 }

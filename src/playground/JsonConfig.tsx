@@ -126,7 +126,9 @@ function JsonConfig<T>({
 /**
  * The modal editor
  */
-export function JsonConfigModal<T>(props: JsonConfigProps<T>): JSX.Element {
+export function JsonConfigModal<T>(
+  props: Omit<JsonConfigProps<T>, 'onClose'>,
+): JSX.Element {
   const [isOpen, setIsOpen] = useState(false);
 
   return (

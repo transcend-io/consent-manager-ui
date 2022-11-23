@@ -14,7 +14,7 @@ export const airgapStub: AirgapAPI = {
   /** Enqueue cross-domain data sync across all airgap bundle domains */
   sync: () => Promise.resolve(),
   /** Resolve airgap request overrides for a URL */
-  resolve: () => 'Stub',
+  resolve: (value) => value,
   /** Get tracking consent */
   getConsent: () => ({
     purposes: {
@@ -59,6 +59,9 @@ export const airgapStub: AirgapAPI = {
   /** Get a list of detected active user agent privacy signals */
   getPrivacySignals: () => {
     const privacySignalsString = localStorage.getItem('getPrivacySignals');
+    if (!privacySignalsString) {
+      throw new Error('Missing `getPrivacySignals` in localStorage!');
+    }
     return new Set(JSON.parse(privacySignalsString));
   },
   /** airgap.js version number */
