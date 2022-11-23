@@ -1,11 +1,28 @@
+import { UserPrivacySignal } from '@transcend-io/airgap.js-types';
 import { h, JSX } from 'preact';
 import { useState } from 'preact/hooks';
+
+/**
+ * Get current privacy signals
+ */
+export function getPrivacySignalsFromLocalStorage(): Set<UserPrivacySignal> {
+  const privacySignalsString = localStorage.getItem('getPrivacySignals');
+  if (!privacySignalsString) {
+    throw new Error('Missing `getPrivacySignals` in localStorage!');
+  }
+  return new Set(JSON.parse(privacySignalsString));
+}
+
 /**
  * Browser environment
  */
 export function Environment(): JSX.Element {
-  const [gpcChecked, setGpcChecked] = useState<boolean>(false);
-  const [dntChecked, setDntChecked] = useState<boolean>(false);
+  const [gpcChecked, setGpcChecked] = useState<boolean>(
+    getPrivacySignalsFromLocalStorage().has('GPC'),
+  );
+  const [dntChecked, setDntChecked] = useState<boolean>(
+    getPrivacySignalsFromLocalStorage().has('DNT'),
+  );
 
   const handleGpcChecked = (): void => {
     setGpcChecked(!gpcChecked);
@@ -48,9 +65,6 @@ export function Environment(): JSX.Element {
         />
         <label for="DNT">DNT</label>
       </div>
-      <button class="button secondary" style={{ marginLeft: '5px' }}>
-        Implement me (submit check)
-      </button>
     </form>
   );
 }

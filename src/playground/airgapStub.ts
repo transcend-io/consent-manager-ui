@@ -4,6 +4,7 @@
 /* eslint-disable jsdoc/require-returns */
 
 import { AirgapAPI } from '@transcend-io/airgap.js-types';
+import { getPrivacySignalsFromLocalStorage } from './Environment';
 
 export const airgapStub: AirgapAPI = {
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -57,13 +58,7 @@ export const airgapStub: AirgapAPI = {
   /** Get a list of legal regimes that are potentially applicable to the user */
   getRegimes: () => new Set(['GDPR']),
   /** Get a list of detected active user agent privacy signals */
-  getPrivacySignals: () => {
-    const privacySignalsString = localStorage.getItem('getPrivacySignals');
-    if (!privacySignalsString) {
-      throw new Error('Missing `getPrivacySignals` in localStorage!');
-    }
-    return new Set(JSON.parse(privacySignalsString));
-  },
+  getPrivacySignals: () => getPrivacySignalsFromLocalStorage(),
   /** airgap.js version number */
   version: '0',
   addEventListener: (type, callback, options) => null,

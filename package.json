@@ -67,7 +67,6 @@
     "eslint-plugin-react-hooks": "^4.3.0",
     "fp-ts": "^2.12.3",
     "io-ts": "^2.2.18",
-    "io-ts-reporters": "^2.0.1",
     "jest": "^27.5.1",
     "live-server": "^1.2.2",
     "monaco-editor": "^0.34.0",

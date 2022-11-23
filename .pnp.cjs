@@ -61,7 +61,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["eslint-plugin-react-hooks", "virtual:c76842a5689228a0ce1b65e064c1f5e0d5b61e442d08b6527a3b1f100ca1f2105e58f5f1435c5a59df3cce3338560737838d99dae36d25b47d20aa50c89d0539#npm:4.6.0"],\
             ["fp-ts", "npm:2.12.3"],\
             ["io-ts", "virtual:c76842a5689228a0ce1b65e064c1f5e0d5b61e442d08b6527a3b1f100ca1f2105e58f5f1435c5a59df3cce3338560737838d99dae36d25b47d20aa50c89d0539#npm:2.2.18"],\
-            ["io-ts-reporters", "virtual:c76842a5689228a0ce1b65e064c1f5e0d5b61e442d08b6527a3b1f100ca1f2105e58f5f1435c5a59df3cce3338560737838d99dae36d25b47d20aa50c89d0539#npm:2.0.1"],\
             ["jest", "virtual:c76842a5689228a0ce1b65e064c1f5e0d5b61e442d08b6527a3b1f100ca1f2105e58f5f1435c5a59df3cce3338560737838d99dae36d25b47d20aa50c89d0539#npm:27.5.1"],\
             ["live-server", "npm:1.2.2"],\
             ["monaco-editor", "npm:0.34.0"],\
@@ -1685,15 +1684,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
-      ["@scarf/scarf", [\
-        ["npm:1.1.1", {\
-          "packageLocation": "./.yarn/unplugged/@scarf-scarf-npm-1.1.1-8b5daabd9d/node_modules/@scarf/scarf/",\
-          "packageDependencies": [\
-            ["@scarf/scarf", "npm:1.1.1"]\
-          ],\
-          "linkType": "HARD"\
-        }]\
-      ]],\
       ["@sindresorhus/is", [\
         ["npm:4.2.0", {\
           "packageLocation": "./.yarn/cache/@sindresorhus-is-npm-4.2.0-87ea1e5c27-59040dfb75.zip/node_modules/@sindresorhus/is/",\
@@ -1799,7 +1789,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["eslint-plugin-react-hooks", "virtual:c76842a5689228a0ce1b65e064c1f5e0d5b61e442d08b6527a3b1f100ca1f2105e58f5f1435c5a59df3cce3338560737838d99dae36d25b47d20aa50c89d0539#npm:4.6.0"],\
             ["fp-ts", "npm:2.12.3"],\
             ["io-ts", "virtual:c76842a5689228a0ce1b65e064c1f5e0d5b61e442d08b6527a3b1f100ca1f2105e58f5f1435c5a59df3cce3338560737838d99dae36d25b47d20aa50c89d0539#npm:2.2.18"],\
-            ["io-ts-reporters", "virtual:c76842a5689228a0ce1b65e064c1f5e0d5b61e442d08b6527a3b1f100ca1f2105e58f5f1435c5a59df3cce3338560737838d99dae36d25b47d20aa50c89d0539#npm:2.0.1"],\
             ["jest", "virtual:c76842a5689228a0ce1b65e064c1f5e0d5b61e442d08b6527a3b1f100ca1f2105e58f5f1435c5a59df3cce3338560737838d99dae36d25b47d20aa50c89d0539#npm:27.5.1"],\
             ["live-server", "npm:1.2.2"],\
             ["monaco-editor", "npm:0.34.0"],\
@@ -6686,33 +6675,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packagePeers": [\
             "@types/fp-ts",\
             "fp-ts"\
-          ],\
-          "linkType": "HARD"\
-        }]\
-      ]],\
-      ["io-ts-reporters", [\
-        ["npm:2.0.1", {\
-          "packageLocation": "./.yarn/cache/io-ts-reporters-npm-2.0.1-05d40ba6c3-d3ffd60324.zip/node_modules/io-ts-reporters/",\
-          "packageDependencies": [\
-            ["io-ts-reporters", "npm:2.0.1"]\
-          ],\
-          "linkType": "SOFT"\
-        }],\
-        ["virtual:c76842a5689228a0ce1b65e064c1f5e0d5b61e442d08b6527a3b1f100ca1f2105e58f5f1435c5a59df3cce3338560737838d99dae36d25b47d20aa50c89d0539#npm:2.0.1", {\
-          "packageLocation": "./.yarn/__virtual__/io-ts-reporters-virtual-ac58c42a95/0/cache/io-ts-reporters-npm-2.0.1-05d40ba6c3-d3ffd60324.zip/node_modules/io-ts-reporters/",\
-          "packageDependencies": [\
-            ["io-ts-reporters", "virtual:c76842a5689228a0ce1b65e064c1f5e0d5b61e442d08b6527a3b1f100ca1f2105e58f5f1435c5a59df3cce3338560737838d99dae36d25b47d20aa50c89d0539#npm:2.0.1"],\
-            ["@scarf/scarf", "npm:1.1.1"],\
-            ["@types/fp-ts", null],\
-            ["@types/io-ts", null],\
-            ["fp-ts", "npm:2.12.3"],\
-            ["io-ts", "virtual:c76842a5689228a0ce1b65e064c1f5e0d5b61e442d08b6527a3b1f100ca1f2105e58f5f1435c5a59df3cce3338560737838d99dae36d25b47d20aa50c89d0539#npm:2.2.18"]\
-          ],\
-          "packagePeers": [\
-            "@types/fp-ts",\
-            "@types/io-ts",\
-            "fp-ts",\
-            "io-ts"\
           ],\
           "linkType": "HARD"\
         }]\

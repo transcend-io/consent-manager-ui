@@ -5,6 +5,8 @@ import type monaco from 'monaco-editor';
 import { toJsonSchema } from './helpers/ioTsToJsonSchema';
 
 interface JsonConfigProps<T> {
+  /** The name of this value */
+  name: string;
   /** The unique key to store the saved value under */
   localStorageKey: string;
   /** The initial, default value (this is also what its set to when the reset button is hit) */
@@ -88,6 +90,7 @@ function JsonConfig<T>({
     if (onSave) {
       onSave(value, userInitiated);
     }
+    onClose();
   }
 
   /**
@@ -134,7 +137,7 @@ export function JsonConfigModal<T>(
   return (
     <Fragment>
       <button class="button secondary" onClick={() => setIsOpen(true)}>
-        Edit {props.localStorageKey}
+        Edit `{props.name}`
       </button>
       <div
         style={{
@@ -161,7 +164,9 @@ export function JsonConfigModal<T>(
             justifyContent: 'space-between',
           }}
         >
-          <h3>Editing {props.localStorageKey}</h3>
+          <h3>
+            Editing <code>{props.name}</code>
+          </h3>
           <JsonConfig {...props} onClose={() => setIsOpen(false)} />
         </div>
       </div>

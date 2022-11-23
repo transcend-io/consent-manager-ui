@@ -25,7 +25,8 @@ export function Config(): JSX.Element {
           Config
         </p>
         <JsonConfigModal
-          localStorageKey="getConfig"
+          name="loadOptions"
+          localStorageKey="loadOptionsEditor"
           defaultValue={defaultConfig}
           ioTsType={ConsentManagerConfig}
           onSave={(value, userInitiated) => {
@@ -37,6 +38,7 @@ export function Config(): JSX.Element {
           }}
         />
         <JsonConfigModal
+          name="airgap.getPurposeTypes()"
           localStorageKey="getPurposeTypes"
           defaultValue={defaultTrackingPurposes}
           ioTsType={TrackingPurposesTypes}
