@@ -105,7 +105,7 @@ export const injectConsentManagerApp = (
       };
 
       // Render preact app inside the shadow DOM component
-      render(<App airgap={airgap} appContainer={appContainer} />, shadowRoot);
+      render(<App airgap={airgap} appContainer={appContainer} />, appContainer);
 
       // Return the consent manager API
       return consentManagerAPI;
