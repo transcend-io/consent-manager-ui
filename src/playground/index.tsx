@@ -18,6 +18,8 @@ if (loadOptionsInStorage) {
   } catch (err) {}
 }
 window.transcend = {
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
   loadOptions,
   ...window.transcend,
 };

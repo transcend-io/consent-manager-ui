@@ -10,11 +10,6 @@ export const defaultConfig: ConsentManagerConfig = {
   theme: {
     primaryColor: '#3333FF',
     fontColor: '#010101',
-    styles: {
-      p: undefined,
-      primaryButton: undefined,
-      secondaryButton: undefined,
-    },
   },
   breakpoints: {
     tablet: '640px',
