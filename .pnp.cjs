@@ -28,9 +28,11 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         [null, {\
           "packageLocation": "./",\
           "packageDependencies": [\
+            ["@monaco-editor/react", "virtual:c76842a5689228a0ce1b65e064c1f5e0d5b61e442d08b6527a3b1f100ca1f2105e58f5f1435c5a59df3cce3338560737838d99dae36d25b47d20aa50c89d0539#npm:4.4.5"],\
             ["@transcend-io/airgap.js-types", "npm:8.10.4"],\
             ["@transcend-io/internationalization", "npm:1.4.1"],\
             ["@transcend-io/logger", "npm:1.1.0"],\
+            ["@types/json-schema", "npm:7.0.11"],\
             ["@types/node", "npm:17.0.45"],\
             ["@typescript-eslint/eslint-plugin", "virtual:c76842a5689228a0ce1b65e064c1f5e0d5b61e442d08b6527a3b1f100ca1f2105e58f5f1435c5a59df3cce3338560737838d99dae36d25b47d20aa50c89d0539#npm:5.12.1"],\
             ["@typescript-eslint/parser", "virtual:c76842a5689228a0ce1b65e064c1f5e0d5b61e442d08b6527a3b1f100ca1f2105e58f5f1435c5a59df3cce3338560737838d99dae36d25b47d20aa50c89d0539#npm:5.12.1"],\
@@ -52,8 +54,11 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["eslint-plugin-jsdoc", "virtual:c76842a5689228a0ce1b65e064c1f5e0d5b61e442d08b6527a3b1f100ca1f2105e58f5f1435c5a59df3cce3338560737838d99dae36d25b47d20aa50c89d0539#npm:37.9.4"],\
             ["eslint-plugin-react", "virtual:c76842a5689228a0ce1b65e064c1f5e0d5b61e442d08b6527a3b1f100ca1f2105e58f5f1435c5a59df3cce3338560737838d99dae36d25b47d20aa50c89d0539#npm:7.31.1"],\
             ["eslint-plugin-react-hooks", "virtual:c76842a5689228a0ce1b65e064c1f5e0d5b61e442d08b6527a3b1f100ca1f2105e58f5f1435c5a59df3cce3338560737838d99dae36d25b47d20aa50c89d0539#npm:4.6.0"],\
+            ["fp-ts", "npm:2.12.3"],\
+            ["io-ts", "virtual:c76842a5689228a0ce1b65e064c1f5e0d5b61e442d08b6527a3b1f100ca1f2105e58f5f1435c5a59df3cce3338560737838d99dae36d25b47d20aa50c89d0539#npm:2.2.18"],\
             ["jest", "virtual:c76842a5689228a0ce1b65e064c1f5e0d5b61e442d08b6527a3b1f100ca1f2105e58f5f1435c5a59df3cce3338560737838d99dae36d25b47d20aa50c89d0539#npm:27.5.1"],\
             ["live-server", "npm:1.2.2"],\
+            ["monaco-editor", "npm:0.34.0"],\
             ["preact", "npm:10.5.14"],\
             ["prettier", "npm:2.7.1"],\
             ["react-intl", "virtual:c76842a5689228a0ce1b65e064c1f5e0d5b61e442d08b6527a3b1f100ca1f2105e58f5f1435c5a59df3cce3338560737838d99dae36d25b47d20aa50c89d0539#npm:5.20.6"],\
@@ -1566,6 +1571,61 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
+      ["@monaco-editor/loader", [\
+        ["npm:1.3.2", {\
+          "packageLocation": "./.yarn/cache/@monaco-editor-loader-npm-1.3.2-a1ecf5411f-7a1b65052b.zip/node_modules/@monaco-editor/loader/",\
+          "packageDependencies": [\
+            ["@monaco-editor/loader", "npm:1.3.2"]\
+          ],\
+          "linkType": "SOFT"\
+        }],\
+        ["virtual:961a32393f733c2d870b60865645c9cd9d29c25484c48db37030218bdc64bce0f3defea10cc36cf3591bd36b11fabf59c806cb2e73de2f634ab45c3075e945a5#npm:1.3.2", {\
+          "packageLocation": "./.yarn/__virtual__/@monaco-editor-loader-virtual-22bde68395/0/cache/@monaco-editor-loader-npm-1.3.2-a1ecf5411f-7a1b65052b.zip/node_modules/@monaco-editor/loader/",\
+          "packageDependencies": [\
+            ["@monaco-editor/loader", "virtual:961a32393f733c2d870b60865645c9cd9d29c25484c48db37030218bdc64bce0f3defea10cc36cf3591bd36b11fabf59c806cb2e73de2f634ab45c3075e945a5#npm:1.3.2"],\
+            ["@types/monaco-editor", null],\
+            ["monaco-editor", "npm:0.34.0"],\
+            ["state-local", "npm:1.0.7"]\
+          ],\
+          "packagePeers": [\
+            "@types/monaco-editor",\
+            "monaco-editor"\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["@monaco-editor/react", [\
+        ["npm:4.4.5", {\
+          "packageLocation": "./.yarn/cache/@monaco-editor-react-npm-4.4.5-7f5d04fc43-7a9568e3c6.zip/node_modules/@monaco-editor/react/",\
+          "packageDependencies": [\
+            ["@monaco-editor/react", "npm:4.4.5"]\
+          ],\
+          "linkType": "SOFT"\
+        }],\
+        ["virtual:c76842a5689228a0ce1b65e064c1f5e0d5b61e442d08b6527a3b1f100ca1f2105e58f5f1435c5a59df3cce3338560737838d99dae36d25b47d20aa50c89d0539#npm:4.4.5", {\
+          "packageLocation": "./.yarn/__virtual__/@monaco-editor-react-virtual-961a32393f/0/cache/@monaco-editor-react-npm-4.4.5-7f5d04fc43-7a9568e3c6.zip/node_modules/@monaco-editor/react/",\
+          "packageDependencies": [\
+            ["@monaco-editor/react", "virtual:c76842a5689228a0ce1b65e064c1f5e0d5b61e442d08b6527a3b1f100ca1f2105e58f5f1435c5a59df3cce3338560737838d99dae36d25b47d20aa50c89d0539#npm:4.4.5"],\
+            ["@monaco-editor/loader", "virtual:961a32393f733c2d870b60865645c9cd9d29c25484c48db37030218bdc64bce0f3defea10cc36cf3591bd36b11fabf59c806cb2e73de2f634ab45c3075e945a5#npm:1.3.2"],\
+            ["@types/monaco-editor", null],\
+            ["@types/react", null],\
+            ["@types/react-dom", null],\
+            ["monaco-editor", "npm:0.34.0"],\
+            ["prop-types", "npm:15.8.1"],\
+            ["react", null],\
+            ["react-dom", null]\
+          ],\
+          "packagePeers": [\
+            "@types/monaco-editor",\
+            "@types/react-dom",\
+            "@types/react",\
+            "monaco-editor",\
+            "react-dom",\
+            "react"\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
       ["@nodelib/fs.scandir", [\
         ["npm:2.1.5", {\
           "packageLocation": "./.yarn/cache/@nodelib-fs.scandir-npm-2.1.5-89c67370dd-a970d595bd.zip/node_modules/@nodelib/fs.scandir/",\
@@ -1696,9 +1756,11 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./",\
           "packageDependencies": [\
             ["@transcend-io/consent-manager-ui", "workspace:."],\
+            ["@monaco-editor/react", "virtual:c76842a5689228a0ce1b65e064c1f5e0d5b61e442d08b6527a3b1f100ca1f2105e58f5f1435c5a59df3cce3338560737838d99dae36d25b47d20aa50c89d0539#npm:4.4.5"],\
             ["@transcend-io/airgap.js-types", "npm:8.10.4"],\
             ["@transcend-io/internationalization", "npm:1.4.1"],\
             ["@transcend-io/logger", "npm:1.1.0"],\
+            ["@types/json-schema", "npm:7.0.11"],\
             ["@types/node", "npm:17.0.45"],\
             ["@typescript-eslint/eslint-plugin", "virtual:c76842a5689228a0ce1b65e064c1f5e0d5b61e442d08b6527a3b1f100ca1f2105e58f5f1435c5a59df3cce3338560737838d99dae36d25b47d20aa50c89d0539#npm:5.12.1"],\
             ["@typescript-eslint/parser", "virtual:c76842a5689228a0ce1b65e064c1f5e0d5b61e442d08b6527a3b1f100ca1f2105e58f5f1435c5a59df3cce3338560737838d99dae36d25b47d20aa50c89d0539#npm:5.12.1"],\
@@ -1720,8 +1782,11 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["eslint-plugin-jsdoc", "virtual:c76842a5689228a0ce1b65e064c1f5e0d5b61e442d08b6527a3b1f100ca1f2105e58f5f1435c5a59df3cce3338560737838d99dae36d25b47d20aa50c89d0539#npm:37.9.4"],\
             ["eslint-plugin-react", "virtual:c76842a5689228a0ce1b65e064c1f5e0d5b61e442d08b6527a3b1f100ca1f2105e58f5f1435c5a59df3cce3338560737838d99dae36d25b47d20aa50c89d0539#npm:7.31.1"],\
             ["eslint-plugin-react-hooks", "virtual:c76842a5689228a0ce1b65e064c1f5e0d5b61e442d08b6527a3b1f100ca1f2105e58f5f1435c5a59df3cce3338560737838d99dae36d25b47d20aa50c89d0539#npm:4.6.0"],\
+            ["fp-ts", "npm:2.12.3"],\
+            ["io-ts", "virtual:c76842a5689228a0ce1b65e064c1f5e0d5b61e442d08b6527a3b1f100ca1f2105e58f5f1435c5a59df3cce3338560737838d99dae36d25b47d20aa50c89d0539#npm:2.2.18"],\
             ["jest", "virtual:c76842a5689228a0ce1b65e064c1f5e0d5b61e442d08b6527a3b1f100ca1f2105e58f5f1435c5a59df3cce3338560737838d99dae36d25b47d20aa50c89d0539#npm:27.5.1"],\
             ["live-server", "npm:1.2.2"],\
+            ["monaco-editor", "npm:0.34.0"],\
             ["preact", "npm:10.5.14"],\
             ["prettier", "npm:2.7.1"],\
             ["react-intl", "virtual:c76842a5689228a0ce1b65e064c1f5e0d5b61e442d08b6527a3b1f100ca1f2105e58f5f1435c5a59df3cce3338560737838d99dae36d25b47d20aa50c89d0539#npm:5.20.6"],\
@@ -1925,6 +1990,13 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]\
       ]],\
       ["@types/json-schema", [\
+        ["npm:7.0.11", {\
+          "packageLocation": "./.yarn/cache/@types-json-schema-npm-7.0.11-79462ae5ca-527bddfe62.zip/node_modules/@types/json-schema/",\
+          "packageDependencies": [\
+            ["@types/json-schema", "npm:7.0.11"]\
+          ],\
+          "linkType": "HARD"\
+        }],\
         ["npm:7.0.9", {\
           "packageLocation": "./.yarn/cache/@types-json-schema-npm-7.0.9-361918cff3-259d0e25f1.zip/node_modules/@types/json-schema/",\
           "packageDependencies": [\
@@ -5782,6 +5854,13 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["fp-ts", "npm:2.11.8"]\
           ],\
           "linkType": "HARD"\
+        }],\
+        ["npm:2.12.3", {\
+          "packageLocation": "./.yarn/cache/fp-ts-npm-2.12.3-d126f7fb51-398acad3d8.zip/node_modules/fp-ts/",\
+          "packageDependencies": [\
+            ["fp-ts", "npm:2.12.3"]\
+          ],\
+          "linkType": "HARD"\
         }]\
       ]],\
       ["fragment-cache", [\
@@ -6561,12 +6640,32 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           ],\
           "linkType": "SOFT"\
         }],\
+        ["npm:2.2.18", {\
+          "packageLocation": "./.yarn/cache/io-ts-npm-2.2.18-f566ee3cf2-8b5a22b0cc.zip/node_modules/io-ts/",\
+          "packageDependencies": [\
+            ["io-ts", "npm:2.2.18"]\
+          ],\
+          "linkType": "SOFT"\
+        }],\
         ["virtual:53d562f9656f9223c4532e7e2b6feefabcf4bfa2c0659bc8d6557c1f9633b17688cca8b3d2effb8a926da81d6d2f2353092c812bd38f1a03f5ff9a9a3e1b3408#npm:2.2.16", {\
           "packageLocation": "./.yarn/__virtual__/io-ts-virtual-981fdbc7ba/0/cache/io-ts-npm-2.2.16-b76df10271-1b5855682e.zip/node_modules/io-ts/",\
           "packageDependencies": [\
             ["io-ts", "virtual:53d562f9656f9223c4532e7e2b6feefabcf4bfa2c0659bc8d6557c1f9633b17688cca8b3d2effb8a926da81d6d2f2353092c812bd38f1a03f5ff9a9a3e1b3408#npm:2.2.16"],\
             ["@types/fp-ts", null],\
             ["fp-ts", "npm:2.11.8"]\
+          ],\
+          "packagePeers": [\
+            "@types/fp-ts",\
+            "fp-ts"\
+          ],\
+          "linkType": "HARD"\
+        }],\
+        ["virtual:c76842a5689228a0ce1b65e064c1f5e0d5b61e442d08b6527a3b1f100ca1f2105e58f5f1435c5a59df3cce3338560737838d99dae36d25b47d20aa50c89d0539#npm:2.2.18", {\
+          "packageLocation": "./.yarn/__virtual__/io-ts-virtual-b2111f318d/0/cache/io-ts-npm-2.2.18-f566ee3cf2-8b5a22b0cc.zip/node_modules/io-ts/",\
+          "packageDependencies": [\
+            ["io-ts", "virtual:c76842a5689228a0ce1b65e064c1f5e0d5b61e442d08b6527a3b1f100ca1f2105e58f5f1435c5a59df3cce3338560737838d99dae36d25b47d20aa50c89d0539#npm:2.2.18"],\
+            ["@types/fp-ts", null],\
+            ["fp-ts", "npm:2.12.3"]\
           ],\
           "packagePeers": [\
             "@types/fp-ts",\
@@ -8329,6 +8428,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/mkdirp-npm-1.0.4-37f6ef56b9-a96865108c.zip/node_modules/mkdirp/",\
           "packageDependencies": [\
             ["mkdirp", "npm:1.0.4"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["monaco-editor", [\
+        ["npm:0.34.0", {\
+          "packageLocation": "./.yarn/cache/monaco-editor-npm-0.34.0-2a8aa5269e-10a28c1fe0.zip/node_modules/monaco-editor/",\
+          "packageDependencies": [\
+            ["monaco-editor", "npm:0.34.0"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -10135,6 +10243,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [\
             ["stack-utils", "npm:2.0.5"],\
             ["escape-string-regexp", "npm:2.0.0"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["state-local", [\
+        ["npm:1.0.7", {\
+          "packageLocation": "./.yarn/cache/state-local-npm-1.0.7-9005e49ea6-d1afcf1429.zip/node_modules/state-local/",\
+          "packageDependencies": [\
+            ["state-local", "npm:1.0.7"]\
           ],\
           "linkType": "HARD"\
         }]\

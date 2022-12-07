@@ -34,6 +34,10 @@ export const build = async (
       location: `${cwd}/src/index.ts`,
       tsconfig: `${cwd}/tsconfig.json`,
     },
+    playground: {
+      location: `${cwd}/src/playground/index.tsx`,
+      tsconfig: `${cwd}/tsconfig.json`,
+    },
   });
 
   const out = `${cwd}${outDir}`;
@@ -44,8 +48,9 @@ export const build = async (
         plugins: [
           alias({
             react: require.resolve('preact/compat'),
-            // 'react-dom/test-utils': require.resolve('preact/test-utils'),
-            // 'react-dom': require.resolve('preact/compat'),
+            'react-dom/test-utils': require.resolve('preact/test-utils'),
+            'react-dom': require.resolve('preact/compat'),
+            'react/jsx-runtime': require.resolve('preact/jsx-runtime'),
           }),
           pnpPlugin(),
         ],

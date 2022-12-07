@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <title>Transcend Consent Manager Playground</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css" /> -->
+    <link rel="stylesheet" href="./styles.css" />
+
+    <!-- Stub transcendInit -->
+    <script>
+      if (!self.transcend) {
+        self.transcend = {
+          readyQueue: [],
+          ready(callback) {
+            this.readyQueue.push(callback);
+          },
+          ...self.transcend,
+        };
+      }
+    </script>
+
+    <!-- Stub airgapInit -->
+    <script>
+      if (!self.airgap) {
+        self.airgap = {
+          readyQueue: [],
+          ready(callback) {
+            this.readyQueue.push(callback);
+          },
+          ...self.airgap,
+        };
+      }
+    </script>
+  </head>
+
+  <body style="height: 100%">
+    <!-- App injection div -->
+    <main>
+      <div id="playground"></div>
+    </main>
+
+    <!-- Start Consent Manager UI -->
+    <script src="http://localhost:8080/build/ui.js"></script>
+
+    <!-- Set up playground, stub airgap API -->
+    <script src="../../build/playground.js"></script>
+
+    <!-- Flush readyQueue (make airgap.js ready) -->
+    <script>
+      self.airgap.readyQueue.forEach((callback) => callback(self.airgap));
+    </script>
+  </body>
+</html>

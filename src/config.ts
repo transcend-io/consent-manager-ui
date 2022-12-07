@@ -43,9 +43,9 @@ const baseConfig: Omit<
  */
 export function getMergedConfig(): ConsentManagerConfig {
   const settingsConfig: ConsentManagerConfigInput =
-    typeof settings.consentManagerConfig === 'string'
-      ? jsonParseSafe(settings.consentManagerConfig, () => ({}))
-      : settings.consentManagerConfig || {};
+    typeof settings === 'string'
+      ? jsonParseSafe(settings, () => ({}))
+      : settings || {};
 
   const settingsConfigInitialViewStateByPrivacyRegime =
     settingsConfig?.initialViewStateByPrivacyRegime;
