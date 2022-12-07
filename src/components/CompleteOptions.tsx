@@ -19,6 +19,8 @@ const purposeToMessageKey: Record<string, DefinedMessage> = {
   SaleOfInfo: completeOptionsMessages.saleOfInfoLabel,
 };
 
+const ORDER_OF_PURPOSES = Object.keys(purposeToMessageKey);
+
 /**
  * The model view for "More Options" showing granular checkboxes and more info
  */
@@ -62,6 +64,17 @@ export function CompleteOptions({
     handleSetViewState('close');
   };
 
+  // sort ordering of options
+  const orderedSelections = Object.entries(consentSelections).sort(([a], [b]) =>
+    // sort custom purposes to the end
+    ORDER_OF_PURPOSES.indexOf(a) < 0 && ORDER_OF_PURPOSES.indexOf(b) > 0
+      ? 1
+      : ORDER_OF_PURPOSES.indexOf(b) < 0 && ORDER_OF_PURPOSES.indexOf(a) > 0
+      ? -1
+      : // order purposes based on order defined above
+        ORDER_OF_PURPOSES.indexOf(a) - ORDER_OF_PURPOSES.indexOf(b),
+  );
+
   return (
     <div className="complete-options-container">
       <p className="text-title text-title-center">
@@ -82,7 +95,7 @@ export function CompleteOptions({
               completeOptionsMessages.essentialAriaLabel,
             )}
           />
-          {Object.entries(consentSelections).map(([purpose, isChecked]) => (
+          {orderedSelections.map(([purpose, isChecked]) => (
             <Toggle
               key={purpose}
               name={
