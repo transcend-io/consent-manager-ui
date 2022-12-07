@@ -103,7 +103,3 @@ export const build = async (
 
   return results;
 };
-
-if (require.main === module) {
-  build();
-}
