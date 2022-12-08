@@ -114,6 +114,12 @@ export function App({
           (privacySignals.has('DNT') && regimePurposes.size > 0) ||
           (privacySignals.has('GPC') && regimePurposes.has('SaleOfInfo'));
         const shouldShowNotice = !airgap.getConsent().confirmed;
+        logger.error('autoShowConsentManager called', {
+          consent: airgap.getConsent(),
+          shouldShowNotice,
+          applicablePrivacySignals,
+          promptSuppressionNoticeShown,
+        });
         if (!shouldShowNotice) {
           if (
             applicablePrivacySignals &&

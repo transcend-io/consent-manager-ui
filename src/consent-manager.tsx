@@ -41,28 +41,26 @@ export const injectConsentManagerApp = (
   if (!interfaceInitialized) {
     interfaceInitialized = true;
 
-    // The outer div to wrap the shadow root
-    const consentManager = createHTMLElement('div');
-    consentManager.style.position = 'fixed'; // so as not to affect position
-    consentManager.style.zIndex = '83951225900329'; // high z-index to stay on top
-    // 83951225900329..toString(36) === 'transcend'
-    consentManager.id = 'transcend-consent-manager';
+    // The outer element that contains the shadow root
+    const root = document.documentElement || createHTMLElement('div');
 
     try {
-      const shadowRoot =
-        consentManager?.attachShadow?.({ mode: 'closed' }) || consentManager;
+      const shadowRoot = root?.attachShadow?.({ mode: 'closed' });
 
       // Create an inner div for event listeners
       appContainer ??= createHTMLElement('div');
-      shadowRoot.appendChild(appContainer);
+      appContainer.style.position = 'fixed'; // so as not to affect position
+      appContainer.style.zIndex = '83951225900329'; // high z-index to stay on top
+      // 83951225900329..toString(36) === 'transcend'
+      appContainer.id = 'transcend-consent-manager';
 
       // Don't inherit global styles
       const style = appContainer.appendChild(
         createHTMLElement<HTMLStyleElement>('style'),
       );
 
-      // Append UI container to doc to activate style.sheet
-      (document.documentElement || document).append(consentManager);
+      // Append app container to shadow root to activate style.sheet
+      shadowRoot.appendChild(appContainer);
 
       // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
       style
@@ -111,7 +109,7 @@ export const injectConsentManagerApp = (
       return consentManagerAPI;
     } catch (error) {
       // Clean up
-      consentManager.remove();
+      appContainer?.remove();
       interfaceInitialized = false;
       logger.error('Failed to initialize UI');
       throw error;
