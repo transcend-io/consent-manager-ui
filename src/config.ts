@@ -15,7 +15,7 @@ import { jsonParseSafe } from './utils/safe-json-parse';
 const {
   privacyCenter,
   privacyPolicy = privacyCenter || '/privacy',
-  dismissedViewState = ViewState.Collapsed,
+  dismissedViewState = ViewState.Hidden,
 } = settings;
 
 // Base configuration
