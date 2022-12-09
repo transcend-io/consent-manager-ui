@@ -98,8 +98,7 @@ export function Main({
   // Modal collapsed view
   if (
     viewState === ViewState.Collapsed &&
-    firstSelectedViewState &&
-    !viewStateIsClosed(firstSelectedViewState)
+    (!firstSelectedViewState || !viewStateIsClosed(firstSelectedViewState))
   ) {
     return <Collapsed handleSetViewState={handleSetViewState} />;
   }
