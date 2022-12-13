@@ -23,12 +23,12 @@
     "privacy"
   ],
   "dependencies": {
-    "@transcend-io/airgap.js-types": "^8.10.4",
+    "@transcend-io/airgap.js-types": "^8.19.0",
     "@transcend-io/internationalization": "^1.4.1",
     "@transcend-io/logger": "^1.0.14",
     "esbuild-plugin-alias": "^0.2.1",
     "preact": "10.5.14",
-    "react-intl": "5.20.6"
+    "react-intl": "^6.2.5"
   },
   "scripts": {
     "update:sdks": "yarn set version from sources && yarn sdks base",

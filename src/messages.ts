@@ -18,6 +18,43 @@ export const messages = defineMessages('ui.src.messages', {
     description:
       'The description displayed when asking the user to accept all data processing.',
   },
+  consentTitlePrivacyPolicyNotice: {
+    defaultMessage: 'Our Privacy Policy Has Changed',
+    description: 'The title displayed for the PrivacyPolicyNotice banner.',
+  },
+  privacyPolicyNoticeDescription: {
+    defaultMessage:
+      "We've updated your privacy policy. Click the link below to learn more about how we use your personal information.",
+    description: 'The title displayed for the PrivacyPolicyNotice banner.',
+  },
+  consentTitleDoNotSellNotice: {
+    defaultMessage: 'Do Not Sell or Share My Personal Information',
+    description: 'The title displayed for the DoNotSellNotice banner.',
+  },
+  privacyPolicyNoticeButton: {
+    defaultMessage: 'Okay',
+    description: 'Button to dismiss privacy policy notice.',
+  },
+  doNotSellOptedOut: {
+    defaultMessage: `Currently opted out.`,
+    description:
+      'Explainer text in DoNotSellNotice banner when opted out of sale of data.',
+  },
+  doNotSellOptedIn: {
+    defaultMessage: `Currently opted in.`,
+    description:
+      'Explainer text in DoNotSellNotice banner when opted in to sale of data.',
+  },
+  doNotSellDescription: {
+    /* eslint-disable max-len */
+    defaultMessage: `<p>We do not disclose your personal information to third parties in exchange for monetary consideration. In some instances, however, we may disclose your personal information to third parties in exchange for other valuable consideration, such as to enhance our product offerings, offer display advertisements, and in other ways which you can read about in our <a href="/policy">Privacy Statement</a>.</p>
+    <p>By opting out below, we will not disclose your personal information to third parties in exchange for valuable consideration.</p>
+    <p>Please note that by opting out of these types of disclosures, you may limit our ability to customize your experience with content that may be of interest to you.</p>
+    <p>If you have an account with us, <a href="/sign-in">sign in</a> to persist your opt-out.</p>
+    <p>If you do not have an account, you may opt-out of the disclosure of your personal information to third parties for valuable consideration (e.g., information stored in cookies) from this web browser below.</p>`,
+    /* eslint-enable max-len */
+    description: 'The description text for the the DoNotSellNotice banner.',
+  },
   noticeTitle: {
     defaultMessage: 'This website processes personal data',
     description: 'The Do Not Sell/Share notice title.',
@@ -58,6 +95,16 @@ export const quickOptionsMessages = defineMessages('ui.src.quickOptions', {
     description:
       'Secondary button text for selecting functional and essential data flows/cookies.',
   },
+  functionalAnalyticsButtonPrimary: {
+    defaultMessage: 'Analytics',
+    description:
+      'Primary button text for selecting functional, analytics, and essential data flows/cookies.',
+  },
+  functionalAnalyticsButtonSecondary: {
+    defaultMessage: 'extra site features',
+    description:
+      'Secondary button text for selecting functional, analytics, and essential data flows/cookies.',
+  },
   analyticsButtonPrimary: {
     defaultMessage: 'Analytics',
     description:
@@ -76,7 +123,7 @@ export const quickOptionsMessages = defineMessages('ui.src.quickOptions', {
   advertisingButtonSecondary: {
     defaultMessage: 'helps us personalize ads',
     description:
-      'Seconary button text for selecting functional, essential, analytics and advertising data flows/cookies.',
+      'Secondary button text for selecting functional, essential, analytics and advertising data flows/cookies.',
   },
 });
 
@@ -105,7 +152,7 @@ export const noticeAndDoNotSellMessages = defineMessages(
     doNotSellHonoredDescription: {
       defaultMessage:
         // eslint-disable-next-line max-len
-        'We’ve received your request for this device or browser, and we will no longer sell or share your data with third parties. Learn more about our data practices in our privacy policy.',
+        "We've received your request for this device or browser, and we will no longer sell or share your data with third parties. Learn more about our data practices in our privacy policy.",
       description:
         'Description message for acknowledging do not sell preference has ben honored through click.',
     },

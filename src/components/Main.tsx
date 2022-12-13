@@ -15,6 +15,9 @@ import { NoticeAndDoNotSell } from './NoticeAndDoNotSell';
 import { QuickOptions } from './QuickOptions';
 import { AcceptOrRejectAll } from './AcceptOrRejectAll';
 import { DoNotSellDisclosure } from './DoNotSellDisclosure';
+import { DoNotSellNotice } from './DoNotSellNotice';
+import { QuickOptions3 } from './QuickOptions3';
+import { PrivacyPolicyNotice } from './PrivacyPolicyNotice';
 
 /**
  * Presents view states (collapsed, GDPR-mode, CCPA-mode etc)
@@ -50,6 +53,18 @@ export function Main({
 
         {viewState === ViewState.AcceptAll && (
           <AcceptAll handleSetViewState={handleSetViewState} />
+        )}
+
+        {viewState === ViewState.DoNotSellNotice && (
+          <DoNotSellNotice handleSetViewState={handleSetViewState} />
+        )}
+
+        {viewState === ViewState.QuickOptions3 && (
+          <QuickOptions3 handleSetViewState={handleSetViewState} />
+        )}
+
+        {viewState === ViewState.PrivacyPolicyNotice && (
+          <PrivacyPolicyNotice handleSetViewState={handleSetViewState} />
         )}
 
         {viewState === ViewState.AcceptOrRejectAll && (

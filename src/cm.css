@@ -519,6 +519,60 @@
 }
 
 /*******************
+ * Switch
+ *******************/
+
+/** Removes checkbox for the switch since checkbox is basis for switch */
+.switch-checkbox {
+  height: 0;
+  width: 0;
+  visibility: hidden;
+}
+
+/** Switch label */
+.switch-label {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  width: 48px;
+  height: 25px;
+  background: #7e8793;
+  border-radius: 50px;
+  position: relative;
+  transition: background-color 0.2s;
+}
+
+/** Button for switch */
+.switch-label .switch-button {
+  content: '';
+  position: absolute;
+  top: 1px;
+  left: 1px;
+  width: 22.5px;
+  height: 22.5px;
+  border-radius: 22.5px;
+  transition: 0.2s;
+  background: #fff;
+}
+
+/** When switch is checked */
+.switch-checkbox:checked + .switch-label .switch-button {
+  left: calc(100% - 2px);
+  transform: translateX(-100%);
+}
+
+/** When switch background is checked */
+.switch-checkbox:checked + .switch-label {
+  background-color: var(--primary-color);
+}
+
+/** Switch button when active */
+.switch-label:active .switch-button {
+  width: 30px;
+}
+
+/*******************
  * TranscendLogo
  *******************/
 

@@ -29,6 +29,8 @@ export function BottomMenu({
       {![
         ViewState.NoticeAndDoNotSell,
         ViewState.DoNotSellDisclosure,
+        ViewState.PrivacyPolicyNotice,
+        ViewState.DoNotSellNotice,
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
       ].includes(viewState as any) &&
         (viewState === ViewState.CompleteOptions ? (
