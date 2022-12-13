@@ -6,10 +6,8 @@ import { useState } from 'preact/hooks';
  * Get current privacy signals
  */
 export function getPrivacySignalsFromLocalStorage(): Set<UserPrivacySignal> {
-  const privacySignalsString = localStorage.getItem('getPrivacySignals');
-  if (!privacySignalsString) {
-    throw new Error('Missing `getPrivacySignals` in localStorage!');
-  }
+  const privacySignalsString =
+    localStorage.getItem('getPrivacySignals') || '[]';
   return new Set(JSON.parse(privacySignalsString));
 }
 

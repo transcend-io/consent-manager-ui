@@ -7,7 +7,7 @@
     "url": "https://github.com/transcend-io/consent-manager-ui.git"
   },
   "homepage": "https://github.com/transcend-io/consent-manager-ui",
-  "version": "2.7.1",
+  "version": "2.7.2",
   "license": "MIT",
   "main": "build/ui",
   "files": [
@@ -38,7 +38,8 @@
     "clean": "yarn pnpify tsc --build --clean",
     "lint": "yarn pnpify eslint src --ext .ts",
     "start": "rm -rf build/ &&  yarn build && concurrently 'WATCH=true yarn build' 'yarn live-server --host=localhost --entry-file=./index.html'",
-    "playground": "rm -rf build/ && yarn build && concurrently 'WATCH=true yarn build' 'yarn live-server --host=localhost --open=./src/playground/index.html --mount=/src/playground/:./src/'",
+    "build:playground": "rm -rf build/ && yarn build && cp ./src/playground/playground.css ./build/",
+    "playground": "yarn build:playground && concurrently 'WATCH=true yarn build' 'yarn live-server --host=localhost --open=./src/playground/index.html --mount=/src/playground/:./src/'",
     "prepublish": "yarn build",
     "test": "yarn pnpify jest -r ts-node/register './src/**/*.test.ts'"
   },
