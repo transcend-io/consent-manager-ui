@@ -4,7 +4,7 @@ See [creating your own UI](https://transcend.notion.site/Creating-your-own-UI-8a
 
 ## Prerequisites
 
-This package is distributed through npm and github package registries and assumes an installation of [npm and node](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm).
+This package is distributed through [npm](https://www.npmjs.com/package/@transcend-io/consent-manager-ui) and GitHub package registries and assumes an installation of [npm and node](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm).
 
 ## Developing against this repository
 
@@ -26,13 +26,19 @@ yarn
 yarn start
 ```
 
-This command will run a very simple HTML file defined in [./index.html](./index.html).
-Any changes made to the [./index.html](./index.html) or [./src](./src/) will cause the page to auto-reload
-without needing to restart the server.
+This command will run a very simple HTML file defined in ./index.html. Any changes made to the ./index.html or ./src will cause the page to auto-reload without needing to restart the server.
 
-### Playground View
+## Playground
 
-![The Consent UI development playground](https://user-images.githubusercontent.com/7354176/187821040-5a4617fa-8c50-43c5-80af-5b4d18b344b4.png)
+The default consent interface is built with flexibility to choose between different "view states". These can be viewed in the [Consent Manager UI playground here](https://consent-manager-ui.vercel.app/src/playground).
+
+<img width="1468" alt="Screen Shot 2022-12-14 at 2 38 05 AM" src="https://user-images.githubusercontent.com/7354176/207547449-3519436f-2f2d-487f-b9d6-af8f803ff71f.png">
+
+You can also run the playground locally with
+
+```sh
+yarn playground`
+```
 
 ## View States
 
