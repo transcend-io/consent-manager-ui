@@ -73,6 +73,7 @@ export function App({
     const {
       detail: { eventType, auth, locale, ...options },
     } = event as CustomEvent<EmitEventOptions>;
+    // Special case: instant do not sell view (user clicks footer and the banner is just a confirmation of their choice)
     if (
       (options.viewState === ViewState.DoNotSellDisclosure ||
         eventType === 'doNotSell') &&
