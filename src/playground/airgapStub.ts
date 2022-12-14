@@ -40,7 +40,9 @@ export const airgapStub: AirgapAPI = {
   },
   /** Set tracking consent */
   setConsent: (auth, consent) => {
-    appendConsentLog(`airgap.setConsent(auth, ${consent})`);
+    appendConsentLog(
+      `airgap.setConsent(auth, ${JSON.stringify(consent, null, 2)})`,
+    );
     return true;
   },
   /** Consents the user to all tracking purposes (requires recent UI interaction) */

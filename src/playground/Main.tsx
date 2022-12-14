@@ -1,6 +1,7 @@
 import { ViewState } from '@transcend-io/airgap.js-types';
 import { h, JSX } from 'preact';
 import { Config } from './Config';
+import { ConsentLog } from './ConsentLog';
 
 /**
  * The playground entrypoint
@@ -41,6 +42,8 @@ export default function Main(): JSX.Element {
           Do Not Sell or Share My Personal Information
         </button>
       </div>
+
+      <ConsentLog />
 
       <div id="consent-manager-zone" />
     </div>
