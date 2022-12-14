@@ -3,7 +3,7 @@ import { useIntl } from 'react-intl';
 import { AirgapAuth, Purpose } from '@transcend-io/airgap.js-types';
 import { useEffect, useState } from 'preact/hooks';
 import { noticeAndDoNotSellMessages } from '../messages';
-import type { HandleSetViewState, NavigatorWithGPC } from '../types';
+import type { HandleSetViewState } from '../types';
 import { useAirgap } from '../hooks';
 import { Button } from './Button';
 
@@ -36,7 +36,9 @@ export function DoNotSellDisclosure({
     handleSetViewState('close');
   };
 
-  const { globalPrivacyControl } = navigator as NavigatorWithGPC;
+  // Check for GPC
+  const privacySignals = airgap.getPrivacySignals();
+  const globalPrivacyControl = privacySignals.has('GPC');
 
   // opt the user out on modal open
   useEffect(() => {

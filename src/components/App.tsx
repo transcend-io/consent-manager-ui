@@ -60,8 +60,10 @@ export function App({
 
   // Active view state based on regime and config
   const { initialViewStateByPrivacyRegime, dismissedViewState } = config;
-  const initialViewState: ViewState =
-    initialViewStateByPrivacyRegime[privacyRegime];
+  const initialViewState =
+    initialViewStateByPrivacyRegime[
+      privacyRegime as keyof typeof initialViewStateByPrivacyRegime
+    ] || ViewState.Hidden;
   const { viewState, firstSelectedViewState, handleSetViewState, auth } =
     useViewState({
       initialViewState,
