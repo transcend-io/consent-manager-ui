@@ -130,7 +130,7 @@
   animation: fadeIn 200ms ease-in;
 }
 
-/** Style applied to each label text for each checkbox toggle */
+/** Style applied to each label text for each checkbox toggle and switch */
 .toggle-label {
   position: relative;
   margin: 0 10px 15px 10px;
@@ -523,9 +523,22 @@
  *******************/
 
 .switch {
-  --switchHeight: 25px;
+  --switchHeight: 20px;
   --switchGutter: 2px;
   --switchButtonDiameter: calc(var(--switchHeight) - var(--switchGutter) * 2);
+}
+
+/* The label that wraps the switch */
+.switch.label {
+  display: flex;
+  align-items: center;
+  font-weight: 500;
+  font-size: 14px;
+  height: 16px;
+  vertical-align: baseline;
+  text-shadow: none;
+  white-space: nowrap;
+  margin: 1.5em 0 0.5em 0;
 }
 
 /** Removes checkbox for the switch since checkbox is basis for switch */
@@ -536,10 +549,11 @@
 }
 
 /** Switch label */
-.switch.switch-label {
+.switch.switch-background {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  margin-right: 0.8em;
   cursor: pointer;
   width: calc(var(--switchHeight) * 2 - 2px);
   height: var(--switchHeight);
@@ -550,7 +564,7 @@
 }
 
 /** Button for switch */
-.switch.switch-label .switch.switch-button {
+.switch.switch-background .switch.switch-button {
   content: '';
   position: absolute;
   top: var(--switchGutter);
@@ -563,18 +577,20 @@
 }
 
 /** When switch is checked */
-.switch.switch-checkbox:checked + .switch.switch-label .switch.switch-button {
+.switch.switch-checkbox:checked
+  + .switch.switch-background
+  .switch.switch-button {
   left: calc(100% - var(--switchGutter));
   transform: translateX(-100%);
 }
 
 /** When switch background is checked */
-.switch.switch-checkbox:checked + .switch.switch-label {
+.switch.switch-checkbox:checked + .switch.switch-background {
   background-color: var(--primary-color);
 }
 
 /** Switch button when active */
-.switch.switch-label:active .switch.switch-button {
+.switch.switch-background:active .switch.switch-button {
   width: calc(var(--switchButtonDiameter) * 1.2);
 }
 

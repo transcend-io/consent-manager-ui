@@ -7,6 +7,7 @@ export function Switch({
   id,
   checked,
   handleSwitch,
+  label,
 }: {
   /** Based opt in status */
   checked: boolean;
@@ -17,21 +18,26 @@ export function Switch({
   ) => void;
   /** The ID of the switch */
   id: string;
+  /** The label for the switch */
+  label: string;
 }): JSX.Element {
   return (
     <Fragment>
-      <input
-        key={id}
-        className="switch switch-checkbox"
-        id={`switch-${id}`}
-        type="checkbox"
-        checked={checked}
-        onClick={(e) => {
-          handleSwitch(!checked, e);
-        }}
-      />
-      <label className="switch switch-label" htmlFor={`switch-${id}`}>
-        <span className={`switch switch-button`} />
+      <label className="switch label">
+        <input
+          key={id}
+          className="switch switch-checkbox"
+          id={`switch-${id}`}
+          type="checkbox"
+          checked={checked}
+          onClick={(e) => {
+            handleSwitch(!checked, e);
+          }}
+        />
+        <span className="switch switch-background">
+          <span className={`switch switch-button`} />
+        </span>
+        {label}
       </label>
     </Fragment>
   );

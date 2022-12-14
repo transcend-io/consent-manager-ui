@@ -19,19 +19,21 @@ export function DoNotSellNotice({
 }): JSX.Element {
   const { airgap } = useAirgap();
   const { formatMessage } = useIntl();
-  const [consentLocale, setConsentLocal] = useState(
+  const [consentLocal, setConsentLocal] = useState(
     !!airgap.getConsent().purposes.SaleOfInfo,
   );
 
   // Opt in to all purposes
   const handleDoNotSellNotice = (
-    value: boolean,
-    event: h.JSX.TargetedEvent<HTMLInputElement, Event>,
+    checked: boolean,
+    event: JSX.TargetedEvent,
   ): void => {
     event.preventDefault();
-    airgap.setConsent(event, { SaleOfInfo: value });
-    setConsentLocal(value);
+    airgap.setConsent(event, { SaleOfInfo: checked });
+    setConsentLocal(checked);
   };
+
+  const switchId = `sale-of-info-${consentLocal}`;
 
   return (
     <div className="column-content">
@@ -49,28 +51,20 @@ export function DoNotSellNotice({
                 __html: formatMessage(messages.doNotSellDescription),
               }}
             />
-            {/* {formatMessage(messages.doNotSellDescription, {
-              a: (chunks) => <a href="/test">{chunks}</a>,
-              p: (chunks) => <p>{chunks}</p>,
-              b: (chunks) => <b>{chunks}</b>,
-              i: (chunks) => <i>{chunks}</i>,
-            })} */}
           </p>
         </div>
         <div>
+          <GPCIndicator />
           <Switch
-            id={`sale-of-info-${consentLocale}`}
-            checked={consentLocale}
+            id={switchId}
+            checked={consentLocal}
             handleSwitch={handleDoNotSellNotice}
-          />
-          <p className="paragraph">
-            {formatMessage(
-              consentLocale
+            label={formatMessage(
+              consentLocal
                 ? messages.doNotSellOptedIn
                 : messages.doNotSellOptedOut,
             )}
-            <GPCIndicator />
-          </p>
+          />
         </div>
       </div>
     </div>
