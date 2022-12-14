@@ -22,7 +22,7 @@ const purposeToMessageKey: Record<string, DefinedMessage> = {
 const ORDER_OF_PURPOSES = Object.keys(purposeToMessageKey);
 
 /**
- * The model view for "More Options" showing granular checkboxes and more info
+ * The model view for "More Choices" showing granular checkboxes and more info
  */
 export function CompleteOptions({
   handleSetViewState,

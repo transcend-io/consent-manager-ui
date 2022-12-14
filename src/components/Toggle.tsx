@@ -34,10 +34,12 @@ export function Toggle({
     handleToggle(checked);
   };
 
+  const id = name.replace(/\s/g, '-').toLowerCase();
+
   return (
     <label
       className="toggle-label"
-      htmlFor={name}
+      htmlFor={id}
       aria-label={
         ariaLabel ||
         `${
@@ -58,7 +60,7 @@ export function Toggle({
       <input
         className="toggle-input"
         type="checkbox"
-        id={name}
+        id={id}
         name={name}
         checked={toggleState}
         onChange={handleChange}

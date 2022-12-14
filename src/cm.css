@@ -116,11 +116,11 @@
 .toggles-container {
   height: 100%;
   display: flex;
+  margin: 20px;
   flex-direction: column;
   align-content: center;
   flex-wrap: wrap;
   width: 100%;
-  margin: 0 auto;
   justify-content: center;
 }
 
@@ -130,7 +130,7 @@
   animation: fadeIn 200ms ease-in;
 }
 
-/** Style applied to each label text for each checkbox toggle */
+/** Style applied to each label text for each checkbox toggle and switch */
 .toggle-label {
   position: relative;
   margin: 0 10px 15px 10px;
@@ -246,6 +246,15 @@
   display: flex;
   flex-direction: column;
   width: 100%;
+}
+
+/*******************
+ * DoNotSellExplainer
+ *******************/
+
+/** Do not sell switch interface */
+.margin-tops > * {
+  margin-top: 2em;
 }
 
 /*******************
@@ -503,7 +512,6 @@
 .gpc-setting {
   display: flex;
   align-items: center;
-  margin-bottom: 20px;
 }
 
 /** GPC svg styles */
@@ -514,8 +522,83 @@
 /** GPC paragraph text */
 .gpc-setting p {
   margin: 0 0 0 6px;
-  font-size: 12px;
+  font-size: 14px;
   color: var(--text-color);
+}
+
+/*******************
+ * Switch
+ *******************/
+
+.switch {
+  --switchHeight: 20px;
+  --switchGutter: 2px;
+  --switchButtonDiameter: calc(var(--switchHeight) - var(--switchGutter) * 2);
+}
+
+/* The label that wraps the switch */
+.switch.label {
+  display: flex;
+  align-items: center;
+  font-weight: 500;
+  font-size: 14px;
+  height: 16px;
+  vertical-align: baseline;
+  text-shadow: none;
+  white-space: nowrap;
+}
+
+/** Removes checkbox for the switch since checkbox is basis for switch */
+.switch.switch-checkbox {
+  height: 0;
+  width: 0;
+  display: none;
+}
+
+/** Switch label */
+.switch.switch-background {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-right: 0.8em;
+  cursor: pointer;
+  width: calc(var(--switchHeight) * 2 - 2px);
+  height: var(--switchHeight);
+  background: #7e8793;
+  border-radius: var(--switchHeight);
+  position: relative;
+  transition: background-color 150ms;
+}
+
+/** Button for switch */
+.switch.switch-background .switch.switch-button {
+  content: '';
+  position: absolute;
+  top: var(--switchGutter);
+  left: var(--switchGutter);
+  width: var(--switchButtonDiameter);
+  height: var(--switchButtonDiameter);
+  border-radius: var(--switchButtonDiameter);
+  transition: 150ms;
+  background: #fff;
+}
+
+/** When switch is checked */
+.switch.switch-checkbox:checked
+  + .switch.switch-background
+  .switch.switch-button {
+  left: calc(100% - var(--switchGutter));
+  transform: translateX(-100%);
+}
+
+/** When switch background is checked */
+.switch.switch-checkbox:checked + .switch.switch-background {
+  background-color: var(--primary-color);
+}
+
+/** Switch button when active */
+.switch.switch-background:active .switch.switch-button {
+  width: calc(var(--switchButtonDiameter) * 1.2);
 }
 
 /*******************

@@ -65,11 +65,3 @@ export interface EmitEventOptions extends ShowConsentManagerOptions {
   /** Airgap auth passed in click event */
   auth?: AirgapAuth;
 }
-
-/**
- * Type override for new GPC standard (not in official DOM spec yet)
- */
-export type NavigatorWithGPC = Navigator & {
-  /** see https://globalprivacycontrol.github.io/gpc-spec/ */
-  globalPrivacyControl: boolean;
-};

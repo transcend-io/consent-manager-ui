@@ -3,8 +3,6 @@ import { useIntl } from 'react-intl';
 import type { AirgapAPI } from '@transcend-io/airgap.js-types';
 import { useAirgap } from '../hooks';
 import { completeOptionsMessages } from '../messages';
-import { getPrimaryRegime } from '../regimes';
-import { NavigatorWithGPC } from '../types';
 
 /**
  * Helper to get the current sale of info setting
@@ -22,17 +20,17 @@ function getSaleOfInfoIsOn(airgap: AirgapAPI): boolean {
 export function GPCIndicator(): JSX.Element {
   const { formatMessage } = useIntl();
   const { airgap } = useAirgap();
-  const regime = getPrimaryRegime(airgap.getRegimes());
 
   // Get whether SaleOfInfo is on right now in Airgap
   const saleOfInfoIsOn = getSaleOfInfoIsOn(airgap);
 
   // Is Global Privacy Control setting the SaleOfInfo toggle?
-  const { globalPrivacyControl } = navigator as NavigatorWithGPC;
+  const privacySignals = airgap.getPrivacySignals();
+  const globalPrivacyControl = privacySignals.has('GPC');
   const gpcSetThis = globalPrivacyControl && !saleOfInfoIsOn;
 
   // Don't render if GPC is not setting this, or we're not in a relevant territory
-  if (!gpcSetThis || regime !== 'CPRA') return <span />;
+  if (!gpcSetThis) return <span style={{ display: 'none' }} />;
 
   return (
     <div className="gpc-setting">
