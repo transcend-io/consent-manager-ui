@@ -40,6 +40,10 @@ export const messages = defineMessages('ui.src.messages', {
     description:
       'Explainer text in DoNotSellNotice banner when opted out of sale of data.',
   },
+  close: {
+    defaultMessage: 'Dismiss',
+    description: 'A button to close the modal',
+  },
   doNotSellOptedIn: {
     defaultMessage: `Currently opted in.`,
     description:

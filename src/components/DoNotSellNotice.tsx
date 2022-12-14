@@ -4,6 +4,7 @@ import { useIntl } from 'react-intl';
 import { useAirgap } from '../hooks';
 import { messages } from '../messages';
 import type { HandleSetViewState } from '../types';
+import { Button } from './Button';
 import { GPCIndicator } from './GPCIndicator';
 import { Switch } from './Switch';
 
@@ -53,7 +54,7 @@ export function DoNotSellNotice({
             />
           </p>
         </div>
-        <div>
+        <div className="margin-tops">
           <GPCIndicator />
           <Switch
             id={switchId}
@@ -64,6 +65,10 @@ export function DoNotSellNotice({
                 ? messages.doNotSellOptedIn
                 : messages.doNotSellOptedOut,
             )}
+          />
+          <Button
+            primaryText={formatMessage(messages.close)}
+            handleClick={() => handleSetViewState('Closed')}
           />
         </div>
       </div>

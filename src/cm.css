@@ -116,11 +116,11 @@
 .toggles-container {
   height: 100%;
   display: flex;
+  margin: 20px;
   flex-direction: column;
   align-content: center;
   flex-wrap: wrap;
   width: 100%;
-  margin: 0 auto;
   justify-content: center;
 }
 
@@ -246,6 +246,15 @@
   display: flex;
   flex-direction: column;
   width: 100%;
+}
+
+/*******************
+ * DoNotSellNotice
+ *******************/
+
+/** Do not sell switch interface */
+.margin-tops > * {
+  margin-top: 2em;
 }
 
 /*******************
@@ -503,7 +512,6 @@
 .gpc-setting {
   display: flex;
   align-items: center;
-  margin-bottom: 20px;
 }
 
 /** GPC svg styles */
@@ -514,7 +522,7 @@
 /** GPC paragraph text */
 .gpc-setting p {
   margin: 0 0 0 6px;
-  font-size: 12px;
+  font-size: 14px;
   color: var(--text-color);
 }
 
@@ -538,7 +546,6 @@
   vertical-align: baseline;
   text-shadow: none;
   white-space: nowrap;
-  margin: 1.5em 0 0.5em 0;
 }
 
 /** Removes checkbox for the switch since checkbox is basis for switch */
