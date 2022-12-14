@@ -536,7 +536,7 @@
   --switchButtonDiameter: calc(var(--switchHeight) - var(--switchGutter) * 2);
 }
 
-/* The label that wraps the switch */
+/** The label that wraps the switch */
 .switch.label {
   display: flex;
   align-items: center;
