@@ -54,13 +54,13 @@ Standard GDPR style banner for opting in or out of all purposes. Selecting "More
 
 This banner is recommended for GDPR-like regimes where customers can opt in or out of multiple purposes with 1 click. Each button includes the purposes for all options to the left of that button. For example, "Analytics" button includes "Essential", "Functional" and "Analytics".
 
-![ViewState = QuickOptions](https://user-images.githubusercontent.com/10264973/207575262-298e9ba1-84ba-4443-8d54-bc30f11c47af.jpg)
+![ViewState = QuickOptions](https://user-images.githubusercontent.com/10264973/188251095-7c7fd1b5-7748-4430-b7af-130e37db2dc5.jpg)
 
 ### `QuickOptions3`
 
 This banner is the same as `QuickOptions` but the Functional & Analytics buttons are combined into 1.
 
-![ViewState = QuickOptions3](https://user-images.githubusercontent.com/10264973/207263158-79e340aa-cbc2-465b-a485-ab3c639b182d.jpg)
+![ViewState = QuickOptions3](https://user-images.githubusercontent.com/10264973/207575262-298e9ba1-84ba-4443-8d54-bc30f11c47af.jpg)
 
 ### `CompleteOptions`
 
