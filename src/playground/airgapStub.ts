@@ -25,11 +25,20 @@ export const airgapStub: AirgapAPI = {
     timestamp: 'string',
   }),
   /** Set tracking consent */
-  setConsent: (auth, consent) => true,
+  setConsent: (auth, consent) => {
+    console.log(consent);
+    return true;
+  },
   /** Consents the user to all tracking purposes (requires recent UI interaction) */
-  optIn: (auth) => true,
+  optIn: (auth) => {
+    console.log('optIn');
+    return true;
+  },
   /** Revokes consent for all tracking purposes (requires recent UI interaction) */
-  optOut: (auth) => true,
+  optOut: (auth) => {
+    console.log('optOut');
+    return true;
+  },
   /** Returns true if the user is fully-opted in to all first-order tracking purposes */
   isOptedIn: () => true,
   /** Returns true if the user is fully-opted out to all first-order tracking purposes */
