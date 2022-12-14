@@ -1,11 +1,26 @@
 import { h, JSX } from 'preact';
-import { getConsentLog } from './helpers/consentLog';
+import { useEffect, useState } from 'preact/hooks';
+import { CONSENT_LOG_EVENT_TYPE, getConsentLog } from './helpers/consentLog';
 
 /**
  * Consent Log component
  */
 export function ConsentLog(): JSX.Element {
-  const consentLog = getConsentLog();
+  const [consentLog, setConsentLog] = useState<string[]>(getConsentLog());
+
+  // Keep consent log up to date
+  useEffect(() => {
+    /**
+     * Update the consent log from local storage
+     */
+    function updateConsentLog(): void {
+      setConsentLog(getConsentLog());
+    }
+    window.addEventListener(CONSENT_LOG_EVENT_TYPE, updateConsentLog);
+    return () => {
+      window.removeEventListener(CONSENT_LOG_EVENT_TYPE, updateConsentLog);
+    };
+  }, []);
 
   return (
     <div style={{ padding: '10px' }}>
