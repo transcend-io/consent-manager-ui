@@ -27,9 +27,9 @@ export const messages = defineMessages('ui.src.messages', {
       "We've updated your privacy policy. Click the link below to learn more about how we use your personal information.",
     description: 'The title displayed for the PrivacyPolicyNotice banner.',
   },
-  consentTitleDoNotSellNotice: {
+  consentTitleDoNotSellExplainer: {
     defaultMessage: 'Do Not Sell or Share My Personal Information',
-    description: 'The title displayed for the DoNotSellNotice banner.',
+    description: 'The title displayed for the DoNotSellExplainer banner.',
   },
   privacyPolicyNoticeButton: {
     defaultMessage: 'Okay',
@@ -38,7 +38,7 @@ export const messages = defineMessages('ui.src.messages', {
   doNotSellOptedOut: {
     defaultMessage: `Currently opted out.`,
     description:
-      'Explainer text in DoNotSellNotice banner when opted out of sale of data.',
+      'Explainer text in DoNotSellExplainer banner when opted out of sale of data.',
   },
   close: {
     defaultMessage: 'Dismiss',
@@ -47,7 +47,7 @@ export const messages = defineMessages('ui.src.messages', {
   doNotSellOptedIn: {
     defaultMessage: `Currently opted in.`,
     description:
-      'Explainer text in DoNotSellNotice banner when opted in to sale of data.',
+      'Explainer text in DoNotSellExplainer banner when opted in to sale of data.',
   },
   doNotSellDescription: {
     /* eslint-disable max-len */
@@ -57,7 +57,7 @@ export const messages = defineMessages('ui.src.messages', {
     <p>If you have an account with us, <a href="/sign-in">sign in</a> to persist your opt-out.</p>
     <p>If you do not have an account, you may opt-out of the disclosure of your personal information to third parties for valuable consideration (e.g., information stored in cookies) from this web browser below.</p>`,
     /* eslint-enable max-len */
-    description: 'The description text for the the DoNotSellNotice banner.',
+    description: 'The description text for the the DoNotSellExplainer banner.',
   },
   noticeTitle: {
     defaultMessage: 'This website processes personal data',

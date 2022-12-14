@@ -12,7 +12,7 @@ import { Switch } from './Switch';
  * Component showing explanatory text before offering a way
  * to opt out of the sale or share of data
  */
-export function DoNotSellNotice({
+export function DoNotSellExplainer({
   handleSetViewState,
 }: {
   /** Function to change viewState */
@@ -25,7 +25,7 @@ export function DoNotSellNotice({
   );
 
   // Opt in to all purposes
-  const handleDoNotSellNotice = (
+  const handleDoNotSellExplainer = (
     checked: boolean,
     event: JSX.TargetedEvent,
   ): void => {
@@ -41,7 +41,7 @@ export function DoNotSellNotice({
       <div>
         <div>
           <p className="text-title text-title-left">
-            {formatMessage(messages.consentTitleDoNotSellNotice)}
+            {formatMessage(messages.consentTitleDoNotSellExplainer)}
           </p>
         </div>
         <div>
@@ -59,7 +59,7 @@ export function DoNotSellNotice({
           <Switch
             id={switchId}
             checked={consentLocal}
-            handleSwitch={handleDoNotSellNotice}
+            handleSwitch={handleDoNotSellExplainer}
             label={formatMessage(
               consentLocal
                 ? messages.doNotSellOptedIn

@@ -15,7 +15,7 @@ import { NoticeAndDoNotSell } from './NoticeAndDoNotSell';
 import { QuickOptions } from './QuickOptions';
 import { AcceptOrRejectAll } from './AcceptOrRejectAll';
 import { DoNotSellDisclosure } from './DoNotSellDisclosure';
-import { DoNotSellNotice } from './DoNotSellNotice';
+import { DoNotSellExplainer } from './DoNotSellExplainer';
 import { QuickOptions3 } from './QuickOptions3';
 import { PrivacyPolicyNotice } from './PrivacyPolicyNotice';
 
@@ -55,8 +55,8 @@ export function Main({
           <AcceptAll handleSetViewState={handleSetViewState} />
         )}
 
-        {viewState === ViewState.DoNotSellNotice && (
-          <DoNotSellNotice handleSetViewState={handleSetViewState} />
+        {viewState === ViewState.DoNotSellExplainer && (
+          <DoNotSellExplainer handleSetViewState={handleSetViewState} />
         )}
 
         {viewState === ViewState.QuickOptions3 && (
