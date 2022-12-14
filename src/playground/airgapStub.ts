@@ -5,6 +5,7 @@
 
 import { AirgapAPI } from '@transcend-io/airgap.js-types';
 import { getPrivacySignalsFromLocalStorage } from './Environment';
+import { appendConsentLog } from './helpers/consentLog';
 
 const getPurposeTypes: AirgapAPI['getPurposeTypes'] = () => {
   const purposeTypes = localStorage.getItem('getPurposeTypes');
@@ -39,17 +40,17 @@ export const airgapStub: AirgapAPI = {
   },
   /** Set tracking consent */
   setConsent: (auth, consent) => {
-    console.log(consent);
+    appendConsentLog(`airgap.setConsent(auth, ${consent})`);
     return true;
   },
   /** Consents the user to all tracking purposes (requires recent UI interaction) */
   optIn: (auth) => {
-    console.log('optIn');
+    appendConsentLog(`airgap.optIn(auth)`);
     return true;
   },
   /** Revokes consent for all tracking purposes (requires recent UI interaction) */
   optOut: (auth) => {
-    console.log('optOut');
+    appendConsentLog(`airgap.optOut(auth)`);
     return true;
   },
   /** Returns true if the user is fully-opted in to all first-order tracking purposes */
