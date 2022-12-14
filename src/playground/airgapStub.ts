@@ -27,6 +27,11 @@ export const airgapStub: AirgapAPI = {
   resolve: (value) => value,
   /** Get tracking consent */
   getConsent: () => {
+    const currentConsent = localStorage.getItem('currentConsent');
+    if (currentConsent) {
+      return JSON.parse(currentConsent);
+    }
+
     const purposeTypes = getPurposeTypes();
     const purposes: Record<string, boolean> = {};
     Object.keys(purposeTypes).forEach((purpose) => {

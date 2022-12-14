@@ -1,6 +1,6 @@
 import { TrackingConsentDetails } from '@transcend-io/airgap.js-types';
 import { h, JSX } from 'preact';
-import { useState } from 'preact/hooks';
+import { useEffect, useState } from 'preact/hooks';
 import { airgapStub } from './airgapStub';
 
 /**
@@ -8,25 +8,12 @@ import { airgapStub } from './airgapStub';
  */
 export function CurrentConsent(): JSX.Element {
   const [currentConsent, setCurrentConsent] = useState<TrackingConsentDetails>(
-    getDefaultConsent(),
+    airgapStub.getConsent(),
   );
 
-  /**
-   * Check purpose types and set them all to true for default
-   * Return type same as `airgap.getConsent()`
-   */
-  function getDefaultConsent(): TrackingConsentDetails {
-    const purposeTypes = airgapStub.getPurposeTypes();
-    const purposes: Record<string, boolean> = {};
-    Object.keys(purposeTypes).forEach((purpose) => {
-      purposes[purpose] = true;
-    });
-    return {
-      purposes,
-      confirmed: true,
-      timestamp: new Date().toISOString(),
-    };
-  }
+  useEffect(() => {
+    localStorage.setItem('currentConsent', JSON.stringify(currentConsent));
+  }, [currentConsent]);
 
   const handleChange = (purpose: string, value: boolean): void => {
     const newConsent = {
@@ -35,8 +22,6 @@ export function CurrentConsent(): JSX.Element {
     };
     setCurrentConsent(newConsent);
   };
-
-  // localStorage.setItem('currentConsent', JSON.stringify(privacySignals));
 
   return (
     <form
