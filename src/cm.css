@@ -522,54 +522,60 @@
  * Switch
  *******************/
 
+.switch {
+  --switchHeight: 25px;
+  --switchGutter: 2px;
+  --switchButtonDiameter: calc(var(--switchHeight) - var(--switchGutter) * 2);
+}
+
 /** Removes checkbox for the switch since checkbox is basis for switch */
-.switch-checkbox {
+.switch.switch-checkbox {
   height: 0;
   width: 0;
-  visibility: hidden;
+  display: none;
 }
 
 /** Switch label */
-.switch-label {
+.switch.switch-label {
   display: flex;
   align-items: center;
   justify-content: space-between;
   cursor: pointer;
-  width: 48px;
-  height: 25px;
+  width: calc(var(--switchHeight) * 2 - 2px);
+  height: var(--switchHeight);
   background: #7e8793;
-  border-radius: 50px;
+  border-radius: var(--switchHeight);
   position: relative;
-  transition: background-color 0.2s;
+  transition: background-color 150ms;
 }
 
 /** Button for switch */
-.switch-label .switch-button {
+.switch.switch-label .switch.switch-button {
   content: '';
   position: absolute;
-  top: 1px;
-  left: 1px;
-  width: 22.5px;
-  height: 22.5px;
-  border-radius: 22.5px;
-  transition: 0.2s;
+  top: var(--switchGutter);
+  left: var(--switchGutter);
+  width: var(--switchButtonDiameter);
+  height: var(--switchButtonDiameter);
+  border-radius: var(--switchButtonDiameter);
+  transition: 150ms;
   background: #fff;
 }
 
 /** When switch is checked */
-.switch-checkbox:checked + .switch-label .switch-button {
-  left: calc(100% - 2px);
+.switch.switch-checkbox:checked + .switch.switch-label .switch.switch-button {
+  left: calc(100% - var(--switchGutter));
   transform: translateX(-100%);
 }
 
 /** When switch background is checked */
-.switch-checkbox:checked + .switch-label {
+.switch.switch-checkbox:checked + .switch.switch-label {
   background-color: var(--primary-color);
 }
 
 /** Switch button when active */
-.switch-label:active .switch-button {
-  width: 30px;
+.switch.switch-label:active .switch.switch-button {
+  width: calc(var(--switchButtonDiameter) * 1.2);
 }
 
 /*******************

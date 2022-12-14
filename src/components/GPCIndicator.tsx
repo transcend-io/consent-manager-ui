@@ -28,7 +28,8 @@ export function GPCIndicator(): JSX.Element {
   const saleOfInfoIsOn = getSaleOfInfoIsOn(airgap);
 
   // Is Global Privacy Control setting the SaleOfInfo toggle?
-  const { globalPrivacyControl } = navigator as NavigatorWithGPC;
+  const privacySignals = airgap.getPrivacySignals();
+  const globalPrivacyControl = privacySignals.has('GPC');
   const gpcSetThis = globalPrivacyControl && !saleOfInfoIsOn;
 
   // Don't render if GPC is not setting this, or we're not in a relevant territory

@@ -44,6 +44,7 @@ export function DoNotSellNotice({
         <div>
           <p className="paragraph">
             <div
+              // eslint-disable-next-line react/no-danger
               dangerouslySetInnerHTML={{
                 __html: formatMessage(messages.doNotSellDescription),
               }}
@@ -57,23 +58,19 @@ export function DoNotSellNotice({
           </p>
         </div>
         <div>
-          <div className="column-content">
-            <p>
-              {formatMessage(
-                consentLocale
-                  ? messages.doNotSellOptedIn
-                  : messages.doNotSellOptedOut,
-              )}
-              <GPCIndicator />
-            </p>
-            <p className="paragraph">
-              <Switch
-                id={`sale-of-info-${consentLocale}`}
-                checked={consentLocale}
-                handleSwitch={handleDoNotSellNotice}
-              />
-            </p>
-          </div>
+          <Switch
+            id={`sale-of-info-${consentLocale}`}
+            checked={consentLocale}
+            handleSwitch={handleDoNotSellNotice}
+          />
+          <p className="paragraph">
+            {formatMessage(
+              consentLocale
+                ? messages.doNotSellOptedIn
+                : messages.doNotSellOptedOut,
+            )}
+            <GPCIndicator />
+          </p>
         </div>
       </div>
     </div>

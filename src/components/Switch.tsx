@@ -22,7 +22,7 @@ export function Switch({
     <Fragment>
       <input
         key={id}
-        className="switch-checkbox"
+        className="switch switch-checkbox"
         id={`switch-${id}`}
         type="checkbox"
         checked={checked}
@@ -30,8 +30,8 @@ export function Switch({
           handleSwitch(!checked, e);
         }}
       />
-      <label className="switch-label" htmlFor={`switch-${id}`}>
-        <span className={`switch-button`} />
+      <label className="switch switch-label" htmlFor={`switch-${id}`}>
+        <span className={`switch switch-button`} />
       </label>
     </Fragment>
   );
