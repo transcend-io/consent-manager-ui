@@ -51,10 +51,10 @@ export const messages = defineMessages('ui.src.messages', {
   },
   doNotSellDescription: {
     /* eslint-disable max-len */
-    defaultMessage: `<p>We do not disclose your personal information to third parties in exchange for monetary consideration. In some instances, however, we may disclose your personal information to third parties in exchange for other valuable consideration, such as to enhance our product offerings, offer display advertisements, and in other ways which you can read about in our <a href="/policy">Privacy Statement</a>.</p>
+    defaultMessage: `<p>We do not disclose your personal information to third parties in exchange for monetary consideration. In some instances, however, we may disclose your personal information to third parties in exchange for other valuable consideration, such as to enhance our product offerings, offer display advertisements, and in other ways which you can read about in our Privacy Statement.</p>
     <p>By opting out below, we will not disclose your personal information to third parties in exchange for valuable consideration.</p>
     <p>Please note that by opting out of these types of disclosures, you may limit our ability to customize your experience with content that may be of interest to you.</p>
-    <p>If you have an account with us, <a href="/sign-in">sign in</a> to persist your opt-out.</p>
+    <p>If you have an account with us, sign in to persist your opt-out.</p>
     <p>If you do not have an account, you may opt-out of the disclosure of your personal information to third parties for valuable consideration (e.g., information stored in cookies) from this web browser below.</p>`,
     /* eslint-enable max-len */
     description: 'The description text for the the DoNotSellExplainer banner.',
