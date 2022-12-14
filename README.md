@@ -46,7 +46,7 @@ The default consent interface is built with flexibility to choose between differ
 
 ### `AcceptOrRejectAll`
 
-Standard GDPR style banner for opting in or out of all purposes. Selecting "More Options" gives the ability to opt in or out of specific purposes.
+Standard GDPR style banner for opting in or out of all purposes. Selecting "More Choices" gives the ability to opt in or out of specific purposes.
 
 ![ViewState = AcceptOrRejectAll](https://user-images.githubusercontent.com/10264973/188251091-84dcb0af-0fc8-42ee-b742-466c55c61cdb.jpg)
 
@@ -64,7 +64,7 @@ This banner is the same as `QuickOptions` but the Functional & Analytics buttons
 
 ### `CompleteOptions`
 
-This option is linked to in most other banners under the "More Options" footer. This allows for explicit opting in or out of each purpose. If a user begins fully opted out, this UI requires clicking each checkbox to fully opt in.
+This option is linked to in most other banners under the "More Choices" footer. This allows for explicit opting in or out of each purpose. If a user begins fully opted out, this UI requires clicking each checkbox to fully opt in.
 
 ![ViewState = CompleteOptions](https://user-images.githubusercontent.com/10264973/188251095-7c7fd1b5-7748-4430-b7af-130e37db2dc5.jpg)
 
