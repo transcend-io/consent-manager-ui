@@ -53,7 +53,7 @@ export default function Main(): JSX.Element {
         }}
       >
         <p style={{ fontWeight: '600', fontSize: '12px', margin: '0 0 3px 0' }}>
-          Current consent (in the playground, this will not change from
+          Current consent (in the playground, this will not change based on
           selections in the UI)
         </p>
         <CurrentConsent />
