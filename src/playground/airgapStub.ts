@@ -6,6 +6,14 @@
 import { AirgapAPI } from '@transcend-io/airgap.js-types';
 import { getPrivacySignalsFromLocalStorage } from './Environment';
 
+const getPurposeTypes: AirgapAPI['getPurposeTypes'] = () => {
+  const purposeTypes = localStorage.getItem('getPurposeTypes');
+  if (!purposeTypes) {
+    throw new Error('Missing purpose types!');
+  }
+  return JSON.parse(purposeTypes);
+};
+
 export const airgapStub: AirgapAPI = {
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
@@ -17,13 +25,18 @@ export const airgapStub: AirgapAPI = {
   /** Resolve airgap request overrides for a URL */
   resolve: (value) => value,
   /** Get tracking consent */
-  getConsent: () => ({
-    purposes: {
-      Essential: true,
-    },
-    confirmed: true,
-    timestamp: 'string',
-  }),
+  getConsent: () => {
+    const purposeTypes = getPurposeTypes();
+    const purposes: Record<string, boolean> = {};
+    Object.keys(purposeTypes).forEach((purpose) => {
+      purposes[purpose] = true;
+    });
+    return {
+      purposes,
+      confirmed: true,
+      timestamp: new Date().toISOString(),
+    };
+  },
   /** Set tracking consent */
   setConsent: (auth, consent) => {
     console.log(consent);
@@ -53,13 +66,7 @@ export const airgapStub: AirgapAPI = {
       ? new Set(['Essential', 'SaleOfInfo'])
       : new Set(['Essential']),
   /** Get initialized tracking purposes config */
-  getPurposeTypes: () => {
-    const purposeTypes = localStorage.getItem('getPurposeTypes');
-    if (!purposeTypes) {
-      throw new Error('Missing purpose types!');
-    }
-    return JSON.parse(purposeTypes);
-  },
+  getPurposeTypes,
   /** Clear airgap queue & caches. Returns `true` on success. */
   clear: (auth) => true,
   /** Reset airgap queue and consent. Returns `true` on success. */
