@@ -54,7 +54,7 @@ Standard GDPR style banner for opting in or out of all purposes. Selecting "More
 
 This banner is recommended for GDPR-like regimes where customers can opt in or out of multiple purposes with 1 click. Each button includes the purposes for all options to the left of that button. For example, "Analytics" button includes "Essential", "Functional" and "Analytics".
 
-![ViewState = QuickOptions](https://user-images.githubusercontent.com/10264973/188251089-4e1a8335-1f9a-45c0-8e15-34054a63ae3d.jpg)
+![ViewState = QuickOptions](https://user-images.githubusercontent.com/10264973/207575262-298e9ba1-84ba-4443-8d54-bc30f11c47af.jpg)
 
 ### `QuickOptions3`
 
@@ -80,13 +80,13 @@ This is the recommended flow for US state laws with a do not sell requirement, a
 
 This is a 2 click opt out for do not sell or share. This option is useful for companies that need to provide more context about what the opt-out means, and how the opt-out changes when the user is logged in or out.
 
-![ViewState = DoNotSellExplainer](https://user-images.githubusercontent.com/10264973/207572478-81f3062f-c503-4928-918c-0b3ed73b6407.jpg)
+![ViewState = DoNotSellExplainer](https://user-images.githubusercontent.com/10264973/207575258-892081eb-4dd5-4436-b926-517e6e74715f.jpg)
 
 ## `PrivacyPolicyNotice`
 
 This banner can be used to notify users of privacy policy changes. This banner does not collect consent preferences, however, it will save a consent timestamp for whenever the user acknowledges the policy change, and closes the modal.
 
-![ViewState = PrivacyPolicyNotice](https://user-images.githubusercontent.com/10264973/207263121-f0cdcf9c-f355-4467-a8e2-c348617a0baa.jpg)
+![ViewState = PrivacyPolicyNotice](https://user-images.githubusercontent.com/10264973/207575261-63a33c6e-6df0-4997-943c-806e48271cf8.jpg)
 
 ### `NoticeAndDoNotSell`
 
