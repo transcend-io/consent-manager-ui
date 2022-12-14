@@ -1,6 +1,6 @@
 const LOCAL_STORAGE_KEY = 'consent-log';
 export const CONSENT_LOG_EVENT_TYPE = 'consent-log-changed';
-const MAX_LENGTH = 6;
+export const CONSENT_LOG_MAX_LENGTH = 6;
 
 /**
  * Appended list of set consent calls
@@ -21,9 +21,9 @@ export function appendConsentLog(logItem: string): void {
   let consentLog = getConsentLog();
   // Append to consent log
   consentLog.push(logItem);
-  if (consentLog.length > MAX_LENGTH) {
+  if (consentLog.length > CONSENT_LOG_MAX_LENGTH) {
     // Drop earlier elements
-    consentLog = consentLog.slice(consentLog.length - MAX_LENGTH);
+    consentLog = consentLog.slice(consentLog.length - CONSENT_LOG_MAX_LENGTH);
   }
   // Set in local storage
   localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(consentLog));

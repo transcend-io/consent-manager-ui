@@ -1,6 +1,10 @@
 import { h, JSX } from 'preact';
 import { useEffect, useState } from 'preact/hooks';
-import { CONSENT_LOG_EVENT_TYPE, getConsentLog } from './helpers/consentLog';
+import {
+  CONSENT_LOG_EVENT_TYPE,
+  CONSENT_LOG_MAX_LENGTH,
+  getConsentLog,
+} from './helpers/consentLog';
 
 /**
  * Consent Log component
@@ -27,8 +31,11 @@ export function ConsentLog(): JSX.Element {
       <p style={{ fontWeight: '600', fontSize: '12px', margin: '0 0 3px 0' }}>
         Consent change events
       </p>
-      {consentLog.reverse().map((logItem) => (
-        <code key={logItem}>
+      {consentLog.reverse().map((logItem, i) => (
+        <code
+          key={logItem}
+          style={{ opacity: `${1 - i * (1 / (CONSENT_LOG_MAX_LENGTH - 1))}` }}
+        >
           <pre>{logItem}</pre>
         </code>
       ))}
