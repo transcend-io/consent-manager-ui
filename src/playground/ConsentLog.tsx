@@ -32,11 +32,10 @@ export function ConsentLog(): JSX.Element {
         Consent change events
       </p>
       {consentLog.reverse().map((logItem, i) => (
-        <code
-          key={logItem}
-          style={{ opacity: `${1 - i * (1 / (CONSENT_LOG_MAX_LENGTH - 1))}` }}
-        >
-          <pre>{logItem}</pre>
+        <code key={logItem}>
+          <pre style={{ opacity: `${1 - i * (1 / CONSENT_LOG_MAX_LENGTH)}` }}>
+            {logItem}
+          </pre>
         </code>
       ))}
     </div>
