@@ -28,11 +28,15 @@ export function CurrentConsent(): JSX.Element {
     };
   }
 
-  const handleChange = (): void => {
-    setCurrentConsent(currentConsent); // TODO
+  const handleChange = (purpose: string, value: boolean): void => {
+    const newConsent = {
+      ...currentConsent,
+      purposes: { ...currentConsent.purposes, [purpose]: value },
+    };
+    setCurrentConsent(newConsent);
   };
 
-  // localStorage.setItem('getPrivacySignals', JSON.stringify(privacySignals));
+  // localStorage.setItem('currentConsent', JSON.stringify(privacySignals));
 
   return (
     <form
@@ -42,9 +46,9 @@ export function CurrentConsent(): JSX.Element {
         height: '28px',
       }}
     >
-      {Object.entries(currentConsent.purposes).map(([key, value], i) => (
+      {Object.entries(currentConsent.purposes).map(([purpose, value], i) => (
         <div
-          key={key}
+          key={purpose}
           style={{
             display: 'flex',
             alignItems: 'center',
@@ -53,12 +57,12 @@ export function CurrentConsent(): JSX.Element {
         >
           <input
             type="checkbox"
-            id={key}
-            name={key}
-            checked={!!value} // TODO
-            onClick={handleChange}
+            id={purpose}
+            name={purpose}
+            checked={!!value}
+            onClick={() => handleChange(purpose, !value)}
           />
-          <label for={key}>{key}</label>
+          <label for={purpose}>{purpose}</label>
         </div>
       ))}
     </form>
