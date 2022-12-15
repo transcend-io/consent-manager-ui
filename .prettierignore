@@ -4,6 +4,7 @@ node_modules
 .yarnrc.yml
 .yarn/
 *.tsx.snap
+src/cm.css
 *.hbs
 *.hcl
 *.svg

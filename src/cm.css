@@ -530,6 +530,7 @@
  * Switch
  *******************/
 
+/** Styles for the switch */
 .switch {
   --switchHeight: 20px;
   --switchGutter: 2px;
@@ -584,9 +585,7 @@
 }
 
 /** When switch is checked */
-.switch.switch-checkbox:checked
-  + .switch.switch-background
-  .switch.switch-button {
+.switch.switch-checkbox:checked + .switch.switch-background .switch.switch-button {
   left: calc(100% - var(--switchGutter));
   transform: translateX(-100%);
 }
