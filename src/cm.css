@@ -530,6 +530,7 @@
  * Switch
  *******************/
 
+/** Styles for the switch */
 .switch {
   --switchHeight: 20px;
   --switchGutter: 2px;
