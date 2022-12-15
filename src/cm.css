@@ -585,9 +585,7 @@
 }
 
 /** When switch is checked */
-.switch.switch-checkbox:checked
-  + .switch.switch-background
-  .switch.switch-button {
+.switch.switch-checkbox:checked + .switch.switch-background .switch.switch-button {
   left: calc(100% - var(--switchGutter));
   transform: translateX(-100%);
 }
