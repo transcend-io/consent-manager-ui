@@ -70,7 +70,7 @@ This option is linked to in most other banners under the "More Choices" footer. 
 
 ### `DoNotSellDisclosure`
 
-Unlike the other view states, this view state should be opened using `onClick={(event) => transcend.doNotSell(event)}`. This view state will opt the user out upon opening of the modal, while the other view states require an additional button to be clicked to ensure compliance.
+Unlike the other view states, this view state should be opened using `onClick={(event) => transcend.doNotSell(event)}`. Note: for React development, please use: `onClick={(event) => transcend.doNotSell(event.nativeEvent)}`. This view state will opt the user out upon opening of the modal, while the other view states require an additional button to be clicked to ensure compliance.
 
 This is the recommended flow for US state laws with a do not sell requirement, as it allows for minimal friction in the opt-out process through a single click opt out.
 
