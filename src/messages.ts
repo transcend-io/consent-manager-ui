@@ -11,6 +11,11 @@ export const messages = defineMessages('ui.src.messages', {
     description:
       'The title displayed when asking the user to accept all data processing.',
   },
+  completeOptionsInvertedTitle: {
+    defaultMessage: 'Your Privacy Choices',
+    description:
+      'The title displayed in the CompleteOptionsInverted view state.',
+  },
   acceptAllDescription: {
     defaultMessage:
       // eslint-disable-next-line max-len
@@ -31,21 +36,45 @@ export const messages = defineMessages('ui.src.messages', {
     defaultMessage: 'Do Not Sell or Share My Personal Information',
     description: 'The title displayed for the DoNotSellExplainer banner.',
   },
+  consentTitleAcceptOrRejectAnalytics: {
+    defaultMessage: 'This website uses analytics',
+    description: 'The title displayed for the AcceptOrRejectAnalytics banner.',
+  },
+  acceptAnalytics: {
+    defaultMessage: 'Okay',
+    description:
+      'The affirmative response for opting into analytics in the "AcceptOrRejectAnalytics" view state.',
+  },
+  rejectAnalytics: {
+    defaultMessage: `Do not track`,
+    description:
+      'The negative response for opting out of analytics in the "AcceptOrRejectAnalytics" view state.',
+  },
+  acceptOrRejectAnalyticsDescription: {
+    defaultMessage:
+      'By clicking "Okay", you agree to the usage of your sensitive information for analytics purposes.',
+    description:
+      'The description displayed for the AcceptOrRejectAnalytics banner.',
+  },
   privacyPolicyNoticeButton: {
     defaultMessage: 'Okay',
     description: 'Button to dismiss privacy policy notice.',
   },
   doNotSellOptedOut: {
-    defaultMessage: `Currently opted out.`,
+    defaultMessage: `You have been successfully opted out.`,
     description:
       'Explainer text in DoNotSellExplainer banner when opted out of sale of data.',
   },
   close: {
-    defaultMessage: 'Dismiss',
-    description: 'A button to close the modal',
+    defaultMessage: 'Close consent manager',
+    description: 'An accessible label for the button to close the modal',
+  },
+  switchLanguage: {
+    defaultMessage: 'Switch language',
+    description: 'An accessible label for the button to switch language',
   },
   doNotSellOptedIn: {
-    defaultMessage: `Currently opted in.`,
+    defaultMessage: `Switch the toggle to opt out.`,
     description:
       'Explainer text in DoNotSellExplainer banner when opted in to sale of data.',
   },
@@ -62,6 +91,14 @@ export const messages = defineMessages('ui.src.messages', {
   noticeTitle: {
     defaultMessage: 'This website processes personal data',
     description: 'The Do Not Sell/Share notice title.',
+  },
+  saving: {
+    defaultMessage: 'Saving...',
+    description: 'The callback when preferences are being persisted.',
+  },
+  preferencesSaved: {
+    defaultMessage: 'Preferences Saved!',
+    description: 'Confirmation that preferences are saved.',
   },
   collapsedLabel: {
     defaultMessage: 'Privacy Settings',
@@ -193,6 +230,14 @@ export const bottomMenuMessages = defineMessages('ui.src.bottomMenu', {
     defaultMessage: 'Visit our privacy policy',
     description: 'Hover/alt for linking out to privacy policy.',
   },
+  showSecondaryPolicyButton: {
+    defaultMessage: 'Read more',
+    description: 'Text for linking out to secondary policy.',
+  },
+  showSecondaryPolicyButtonLabel: {
+    defaultMessage: 'Read more about your privacy choices',
+    description: 'Hover/alt for linking out to secondary policy.',
+  },
 });
 
 export const completeOptionsMessages = defineMessages(
@@ -200,47 +245,77 @@ export const completeOptionsMessages = defineMessages(
   {
     essentialLabel: {
       defaultMessage: 'Essential purposes',
-      description: 'Text for essential purposes.',
+      description: 'Text for essential purposes in CompleteOptions view state.',
     },
     functionalLabel: {
       defaultMessage: 'Functionality',
-      description: 'Text for functional purposes.',
+      description:
+        'Text for functional purposes in CompleteOptions view state.',
     },
     analyticsLabel: {
       defaultMessage: 'Analytics',
-      description: 'Text for analytics purposes.',
+      description: 'Text for analytics purposes in CompleteOptions view state.',
     },
     advertisingLabel: {
       defaultMessage: 'Advertising',
-      description: 'Text for advertising purposes.',
+      description:
+        'Text for advertising purposes in CompleteOptions view state.',
     },
     saleOfInfoLabel: {
       defaultMessage: 'Sale of personal information',
-      description: 'Text for sale of information purposes.',
+      description:
+        'Text for sale of information purposes in CompleteOptions view state.',
     },
     saveButtonPrimary: {
       defaultMessage: 'Confirm',
-      description: 'Confirm button text.',
+      description: 'Confirm button text in CompleteOptions view state.',
     },
     essentialAriaLabel: {
       defaultMessage: 'Essential data collection cannot be turned off.',
-      description: 'Hover/alt text for disabled essential purposes.',
+      description:
+        'Hover/alt text for disabled essential purposes in CompleteOptions view state.',
     },
     toggleDisable: {
       defaultMessage: 'Click to disable collection of data for this purpose',
       description:
-        'Hover/alt text for disabled opt in/opt out checkboxes when user is opted in.',
+        'Hover/alt text for disabled opt in/opt out checkboxes when user is opted in in CompleteOptions view state.',
     },
     toggleEnable: {
       defaultMessage: 'Click to enable collection of data for this purpose',
       description:
-        'Hover/alt text for disabled opt in/opt out checkboxes when user is opted out.',
+        'Hover/alt text for disabled opt in/opt out checkboxes when user is opted out in CompleteOptions view state.',
     },
     globalPrivacySignal: {
       defaultMessage:
         "Set automatically by your browser's Global Privacy Control signal.",
       description:
         'Text to display when Global Privacy Control (GPC) is respected.',
+    },
+  },
+);
+
+export const completeOptionsInvertedMessages = defineMessages(
+  'ui.src.completeOptionsInverted',
+  {
+    functionalLabel: {
+      defaultMessage: 'Opt out of Functional',
+      description:
+        'Text for functional purposes in CompleteOptionsInverted view state.',
+    },
+    analyticsLabel: {
+      defaultMessage: 'Opt out of Analytics',
+      description:
+        'Text for analytics purposes in CompleteOptionsInverted view state.',
+    },
+    advertisingLabel: {
+      defaultMessage: 'Opt out of Advertising',
+      description:
+        'Text for advertising purposes in CompleteOptionsInverted view state.',
+    },
+    saleOfInfoLabel: {
+      defaultMessage: 'Do Not Sell/Share My Personal Information.',
+      description:
+        'Text for sale of information purposes in CompleteOptionsInverted view state.',
     },
   },
 );

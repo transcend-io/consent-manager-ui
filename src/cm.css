@@ -6,6 +6,8 @@
 * {
   --primary-color: #3333ff;
   --text-color: #010101;
+  --modal-padding: 21px;
+  --content-padding: 38px;
 }
 
 /*******************
@@ -324,8 +326,8 @@
 /** Outer styles wrapped around entire bottom menu */
 .footer-container {
   position: absolute;
-  bottom: 21px;
-  width: calc(100% - 21px * 2);
+  bottom: var(--modal-padding);
+  width: calc(100% - var(--modal-padding) * 2);
   height: 17px;
 }
 
@@ -473,7 +475,7 @@
   border: 0.5px solid #d8d8d8;
   background-color: rgba(255, 255, 255, 0.9);
   overflow: hidden;
-  padding: 21px;
+  padding: var(--modal-padding);
   font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir,
     helvetica neue, helvetica, 'sans-serif';
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
@@ -485,9 +487,9 @@
 /** Inner contents wrapper for modal content */
 .modal-container-inner {
   min-height: 79px;
-  height: calc(100% - 38px);
+  height: calc(100% - var(--content-padding));
   width: 100%;
-  padding-bottom: 38px;
+  padding-bottom: var(--content-padding);
 }
 
 /*******************
@@ -502,6 +504,39 @@
   100% {
     opacity: 1;
   }
+}
+
+
+/*******************
+ * DoNotSellExplainer
+ *******************/
+
+/** Styles for button of X marker in top right corner */
+.do-not-sell-explainer-close {
+  --squareDimension: 25px;
+  padding: 4px;
+  position: absolute;
+  top: var(--modal-padding);
+  right: var(--modal-padding);
+  border: none;
+  cursor: pointer;
+  background-color: #ededed;
+  border-radius: 5px;
+  height: var(--squareDimension);
+  width: var(--squareDimension);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 150ms;
+}
+
+/** Styles for button of X marker in top right corner on hover */
+.do-not-sell-explainer-close:hover {
+  background-color: #e2e2e2;
+}
+
+.do-not-sell-explainer-interface {
+  margin-top: 2em;
 }
 
 /*******************
@@ -703,4 +738,20 @@
   .transcend-logo-svg:hover path {
     fill: var(--primary-color);
   }
+}
+
+/***********************************
+ * Accessibility - non-visual label
+ ***********************************/
+
+.screen-reader {
+	border: 0;
+	clip: rect(0 0 0 0);
+	height: 1px;
+	margin: -1px;
+	overflow: hidden;
+	padding: 0;
+	position: absolute;
+	white-space: nowrap;
+	width: 1px;
 }

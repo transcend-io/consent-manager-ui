@@ -15,13 +15,14 @@ import { jsonParseSafe } from './utils/safe-json-parse';
 const {
   privacyCenter,
   privacyPolicy = privacyCenter || '/privacy',
+  secondaryPolicy,
   dismissedViewState = ViewState.Hidden,
 } = settings;
 
 // Base configuration
 const baseConfig: Omit<
   ConsentManagerConfig,
-  'privacyPolicy' | 'dismissedViewState'
+  'privacyPolicy' | 'dismissedViewState' | 'secondaryPolicy'
 > = {
   css: '',
   messages: '',
@@ -63,6 +64,7 @@ export function getMergedConfig(): ConsentManagerConfig {
     ...extraConfig,
   } as ConsentManagerConfig;
   config.privacyPolicy ??= privacyPolicy;
+  config.secondaryPolicy ??= secondaryPolicy;
   config.dismissedViewState ??= dismissedViewState;
 
   const safeToContinue = validateConfig(config);
