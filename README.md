@@ -158,6 +158,20 @@ This banner can be used to notify users of privacy policy changes. This banner d
 | Toggle Switch          | Opts the user in or out of the `SaleOfInfo` purpose.                                                                                                                                                                                                                                                             |
 | See our Privacy Policy | Redirects to the privacy policy link specified in [Consent Display Settings](https://app.transcend.io/consent-manager/display-settings) or the [`data-privacy-policy`](https://docs.transcend.io/docs/consent/faq#how-can-i-customize-the-privacy-policy-link-when-hosting-on-multiple-domains?) data attribute. |
 
+### `AcceptOrRejectAnalytics`
+
+A banner that handles opting in or out of the `Analytics` tag.
+
+![ViewState = AcceptOrRejectAnalytics](https://user-images.githubusercontent.com/10264973/209070374-6a35ae9d-8d98-4042-88e0-4b6bc1eb7d1a.jpg)
+
+#### Button Mapping
+
+| Button Title           | Callback Description                                                                                                                                                                                                                                                                                             |
+| ---------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Okay                   | Opts the user into `Analytics`.                                                                                                                                                                                                                                                                                  |
+| Do not track           | Opts the user out of `Analytics`.                                                                                                                                                                                                                                                                                |
+| See our Privacy Policy | Redirects to the privacy policy link specified in [Consent Display Settings](https://app.transcend.io/consent-manager/display-settings) or the [`data-privacy-policy`](https://docs.transcend.io/docs/consent/faq#how-can-i-customize-the-privacy-policy-link-when-hosting-on-multiple-domains?) data attribute. |
+
 ### `AcceptAll`
 
 **WARNING: This UI is a dark pattern and risks non-compliance. Use at own discretion.**

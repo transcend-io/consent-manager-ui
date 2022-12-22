@@ -1,5 +1,4 @@
 import { ComponentChild, Fragment, h, JSX } from 'preact';
-import { useConfig } from '../hooks';
 
 /**
  * Props that are always on this element
@@ -42,9 +41,9 @@ export function MenuItem({
   label,
   type,
   onClick,
+  href,
   children,
 }: MenuItemProps): JSX.Element {
-  const { config } = useConfig();
   return (
     <Fragment>
       {type === 'button' && (
@@ -60,7 +59,7 @@ export function MenuItem({
       {type === 'a' && (
         <a
           className="bottom-menu-item"
-          href={config.privacyPolicy}
+          href={href}
           target="_blank"
           rel="noopener noreferrer"
           aria-label={label}

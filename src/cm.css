@@ -504,6 +504,25 @@
   }
 }
 
+
+/*******************
+ * DoNotSellExplainer
+ *******************/
+
+/** Styles for button of X marker in top right corner */
+.do-not-sell-explainer-close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  border: none;
+  cursor: pointer;
+}
+
+/** Styles for button of X marker in top right corner on hover */
+.do-not-sell-explainer-close:hover {
+  filter: brightness(0.95);
+}
+
 /*******************
  * GPC Indicator
  *******************/

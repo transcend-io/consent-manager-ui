@@ -31,6 +31,7 @@ export function BottomMenu({
         ViewState.DoNotSellDisclosure,
         ViewState.PrivacyPolicyNotice,
         ViewState.AcceptOrRejectAnalytics,
+        ViewState.CompleteOptionsInverted,
         ViewState.DoNotSellExplainer,
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
       ].includes(viewState as any) &&
@@ -72,6 +73,23 @@ export function BottomMenu({
           </MenuItem>
         </div>
       )}
+
+      {config.secondaryPolicy &&
+        viewState === ViewState.CompleteOptionsInverted && (
+          <div className="bottom-menu-item-container">
+            <MenuItem
+              label={formatMessage(
+                bottomMenuMessages.showSecondaryPolicyButtonLabel,
+              )}
+              type="a"
+              href={config.secondaryPolicy}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {formatMessage(bottomMenuMessages.showSecondaryPolicyButton)}
+            </MenuItem>
+          </div>
+        )}
 
       <div className="bottom-menu-item-container">
         <MenuItem

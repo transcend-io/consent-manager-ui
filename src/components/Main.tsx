@@ -3,14 +3,14 @@ import { AirgapAuth, ViewState } from '@transcend-io/airgap.js-types';
 import { ConsentManagerLanguageKey } from '@transcend-io/internationalization';
 import { viewStateIsClosed } from '../hooks';
 import type { HandleSetViewState } from '../types';
+import { Collapsed } from './Collapsed';
 import { AcceptAll } from './AcceptAll';
 import { BottomMenu } from './BottomMenu';
-import { Collapsed } from './Collapsed';
 import { CompleteOptions } from './CompleteOptions';
 import { LanguageButton } from './LanguageButton';
 import { LanguageOptions } from './LanguageOptions';
+import { CompleteOptionsInverted } from './CompleteOptionsInverted';
 import { TranscendLogo } from './TranscendLogo';
-import { Modal } from './Modal';
 import { NoticeAndDoNotSell } from './NoticeAndDoNotSell';
 import { QuickOptions } from './QuickOptions';
 import { AcceptOrRejectAll } from './AcceptOrRejectAll';
@@ -47,71 +47,77 @@ export function Main({
   // Modal open views
   if (!viewStateIsClosed(viewState)) {
     return (
-      <Modal viewState={viewState}>
-        {viewState === ViewState.QuickOptions && (
-          <QuickOptions handleSetViewState={handleSetViewState} />
-        )}
+      <div role="dialog" className="modal-container">
+        <div role="document" className="modal-container-inner">
+          {viewState === ViewState.QuickOptions && (
+            <QuickOptions handleSetViewState={handleSetViewState} />
+          )}
 
-        {viewState === ViewState.AcceptAll && (
-          <AcceptAll handleSetViewState={handleSetViewState} />
-        )}
+          {viewState === ViewState.AcceptAll && (
+            <AcceptAll handleSetViewState={handleSetViewState} />
+          )}
 
-        {viewState === ViewState.AcceptOrRejectAnalytics && (
-          <AcceptOrRejectAnalytics handleSetViewState={handleSetViewState} />
-        )}
+          {viewState === ViewState.AcceptOrRejectAnalytics && (
+            <AcceptOrRejectAnalytics handleSetViewState={handleSetViewState} />
+          )}
 
-        {viewState === ViewState.DoNotSellExplainer && (
-          <DoNotSellExplainer handleSetViewState={handleSetViewState} />
-        )}
+          {viewState === ViewState.DoNotSellExplainer && (
+            <DoNotSellExplainer handleSetViewState={handleSetViewState} />
+          )}
 
-        {viewState === ViewState.QuickOptions3 && (
-          <QuickOptions3 handleSetViewState={handleSetViewState} />
-        )}
+          {viewState === ViewState.QuickOptions3 && (
+            <QuickOptions3 handleSetViewState={handleSetViewState} />
+          )}
 
-        {viewState === ViewState.PrivacyPolicyNotice && (
-          <PrivacyPolicyNotice handleSetViewState={handleSetViewState} />
-        )}
+          {viewState === ViewState.PrivacyPolicyNotice && (
+            <PrivacyPolicyNotice handleSetViewState={handleSetViewState} />
+          )}
 
-        {viewState === ViewState.AcceptOrRejectAll && (
-          <AcceptOrRejectAll handleSetViewState={handleSetViewState} />
-        )}
+          {viewState === ViewState.AcceptOrRejectAll && (
+            <AcceptOrRejectAll handleSetViewState={handleSetViewState} />
+          )}
 
-        {viewState === ViewState.DoNotSellDisclosure && modalOpenAuth && (
-          <DoNotSellDisclosure
-            handleSetViewState={handleSetViewState}
-            modalOpenAuth={modalOpenAuth}
-          />
-        )}
+          {viewState === ViewState.DoNotSellDisclosure && modalOpenAuth && (
+            <DoNotSellDisclosure
+              handleSetViewState={handleSetViewState}
+              modalOpenAuth={modalOpenAuth}
+            />
+          )}
 
-        {viewState === ViewState.CompleteOptions && (
-          <CompleteOptions handleSetViewState={handleSetViewState} />
-        )}
+          {viewState === ViewState.CompleteOptions && (
+            <CompleteOptions handleSetViewState={handleSetViewState} />
+          )}
 
-        {viewState === ViewState.NoticeAndDoNotSell && (
-          <NoticeAndDoNotSell handleSetViewState={handleSetViewState} />
-        )}
+          {viewState === ViewState.CompleteOptionsInverted && (
+            <CompleteOptionsInverted handleSetViewState={handleSetViewState} />
+          )}
 
-        {viewState === ViewState.LanguageOptions && (
-          <LanguageOptions
-            handleSetViewState={handleSetViewState}
-            handleChangeLanguage={handleChangeLanguage}
-            supportedLanguages={supportedLanguages}
-          />
-        )}
+          {viewState === ViewState.NoticeAndDoNotSell && (
+            <NoticeAndDoNotSell handleSetViewState={handleSetViewState} />
+          )}
 
-        <div className="footer-container">
-          <TranscendLogo />
-          <BottomMenu
-            firstSelectedViewState={firstSelectedViewState}
-            viewState={viewState}
-            handleSetViewState={handleSetViewState}
-          />
-          <LanguageButton
-            handleSetViewState={handleSetViewState}
-            viewState={viewState}
-          />
+          {viewState === ViewState.LanguageOptions && (
+            <LanguageOptions
+              handleSetViewState={handleSetViewState}
+              handleChangeLanguage={handleChangeLanguage}
+              supportedLanguages={supportedLanguages}
+            />
+          )}
+
+          <div className="footer-container">
+            <TranscendLogo />
+            <BottomMenu
+              firstSelectedViewState={firstSelectedViewState}
+              viewState={viewState}
+              handleSetViewState={handleSetViewState}
+            />
+            <LanguageButton
+              handleSetViewState={handleSetViewState}
+              viewState={viewState}
+            />
+          </div>
         </div>
-      </Modal>
+      </div>
     );
   }
 

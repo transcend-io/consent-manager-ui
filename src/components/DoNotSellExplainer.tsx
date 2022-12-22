@@ -4,7 +4,6 @@ import { useIntl } from 'react-intl';
 import { useAirgap } from '../hooks';
 import { messages } from '../messages';
 import type { HandleSetViewState } from '../types';
-import { Button } from './Button';
 import { GPCIndicator } from './GPCIndicator';
 import { Switch } from './Switch';
 
@@ -20,6 +19,7 @@ export function DoNotSellExplainer({
 }): JSX.Element {
   const { airgap } = useAirgap();
   const { formatMessage } = useIntl();
+  const [saving, setSaving] = useState<boolean | undefined>();
   const [consentLocal, setConsentLocal] = useState(
     !!airgap.getConsent().purposes.SaleOfInfo,
   );
@@ -32,12 +32,42 @@ export function DoNotSellExplainer({
     event.preventDefault();
     airgap.setConsent(event, { SaleOfInfo: checked });
     setConsentLocal(checked);
+    setSaving(true);
+    setTimeout(() => {
+      setSaving(false);
+      setTimeout(() => {
+        setSaving(undefined);
+      }, 2000);
+    }, 1000);
   };
 
   const switchId = `sale-of-info-${consentLocal}`;
 
   return (
     <div className="column-content">
+      <button
+        style={{
+          position: 'absolute',
+          top: '12px',
+          right: '12px',
+          border: 'none',
+        }}
+        type="button"
+        aria-label="Close"
+        className="do-not-sell-explainer-close"
+      >
+        <svg
+          width="24"
+          height="24"
+          viewBox="0 0 32 32"
+          onClick={() => {
+            handleSetViewState('close');
+          }}
+        >
+          {/* eslint-disable-next-line max-len */}
+          <path d="M25.71 24.29a.996.996 0 1 1-1.41 1.41L16 17.41 7.71 25.7a.996.996 0 1 1-1.41-1.41L14.59 16l-8.3-8.29A.996.996 0 1 1 7.7 6.3l8.3 8.29 8.29-8.29a.996.996 0 1 1 1.41 1.41L17.41 16l8.3 8.29z" />
+        </svg>
+      </button>
       <div>
         <div>
           <p className="text-title text-title-left">
@@ -52,6 +82,13 @@ export function DoNotSellExplainer({
                 __html: formatMessage(messages.doNotSellDescription),
               }}
             />
+            {typeof saving === 'boolean' && (
+              <div>
+                {formatMessage(
+                  saving ? messages.saving : messages.preferencesSaved,
+                )}
+              </div>
+            )}
           </p>
         </div>
         <div className="margin-tops">
@@ -65,10 +102,6 @@ export function DoNotSellExplainer({
                 ? messages.doNotSellOptedIn
                 : messages.doNotSellOptedOut,
             )}
-          />
-          <Button
-            primaryText={formatMessage(messages.close)}
-            handleClick={() => handleSetViewState('Closed')}
           />
         </div>
       </div>
