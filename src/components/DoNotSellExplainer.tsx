@@ -20,12 +20,13 @@ export function DoNotSellExplainer({
   const { airgap } = useAirgap();
   const { formatMessage } = useIntl();
   const { config } = useConfig();
-  const [saving, setSaving] = useState<boolean | undefined>();
+  const [saving, setSaving] = useState<boolean | null>(null);
   const [consentLocal, setConsentLocal] = useState(
     !!airgap.getConsent().purposes.SaleOfInfo,
   );
 
   // Opt in to all purposes
+  let displayTimeout: ReturnType<typeof setTimeout>;
   const handleDoNotSellExplainer = (
     checked: boolean,
     event: JSX.TargetedEvent,
@@ -33,13 +34,12 @@ export function DoNotSellExplainer({
     event.preventDefault();
     airgap.setConsent(event, { SaleOfInfo: checked });
     setConsentLocal(checked);
+
+    clearTimeout(displayTimeout);
     setSaving(true);
-    setTimeout(() => {
+    displayTimeout = setTimeout(() => {
       setSaving(false);
-      setTimeout(() => {
-        setSaving(undefined);
-      }, 2000);
-    }, 1000);
+    }, 500);
   };
 
   const switchId = `sale-of-info-${consentLocal}`;
@@ -78,16 +78,9 @@ export function DoNotSellExplainer({
                 __html: formatMessage(messages.doNotSellDescription),
               }}
             />
-            {typeof saving === 'boolean' && (
-              <div>
-                {formatMessage(
-                  saving ? messages.saving : messages.preferencesSaved,
-                )}
-              </div>
-            )}
           </p>
         </div>
-        <div className="margin-tops">
+        <div className="margin-tops do-not-sell-explainer-interface">
           <GPCIndicator />
           <Switch
             id={switchId}
@@ -99,6 +92,13 @@ export function DoNotSellExplainer({
                 : messages.doNotSellOptedOut,
             )}
           />
+          <p className="paragraph save-state">
+            {typeof saving === 'boolean'
+              ? formatMessage(
+                  saving ? messages.saving : messages.preferencesSaved,
+                )
+              : '\u200b'}
+          </p>
         </div>
       </div>
     </div>

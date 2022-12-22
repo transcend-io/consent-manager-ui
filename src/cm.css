@@ -7,6 +7,7 @@
   --primary-color: #3333ff;
   --text-color: #010101;
   --modal-padding: 21px;
+  --content-padding: 38px;
 }
 
 /*******************
@@ -486,9 +487,9 @@
 /** Inner contents wrapper for modal content */
 .modal-container-inner {
   min-height: 79px;
-  height: calc(100% - 38px);
+  height: calc(100% - var(--content-padding));
   width: 100%;
-  padding-bottom: 38px;
+  padding-bottom: var(--content-padding);
 }
 
 /*******************
@@ -532,6 +533,14 @@
 /** Styles for button of X marker in top right corner on hover */
 .do-not-sell-explainer-close:hover {
   background-color: #e2e2e2;
+}
+
+.do-not-sell-explainer-interface {
+  margin-top: 2em;
+}
+
+.save-state {
+  display: inline-block;
 }
 
 /*******************
