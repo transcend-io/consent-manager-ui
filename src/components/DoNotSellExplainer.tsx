@@ -46,12 +46,6 @@ export function DoNotSellExplainer({
   return (
     <div className="column-content">
       <button
-        style={{
-          position: 'absolute',
-          top: '12px',
-          right: '12px',
-          border: 'none',
-        }}
         type="button"
         aria-label="Close"
         className="do-not-sell-explainer-close"

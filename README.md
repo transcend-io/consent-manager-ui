@@ -2,32 +2,6 @@
 
 See [creating your own UI](https://transcend.notion.site/Creating-your-own-UI-8ae5151b74134f52b0ddd10b5ff077ba).
 
-## Prerequisites
-
-This package is distributed through [npm](https://www.npmjs.com/package/@transcend-io/consent-manager-ui) and GitHub package registries and assumes an installation of [npm and node](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm).
-
-## Developing against this repository
-
-1. Clone the repo
-
-```sh
-git clone git@github.com:transcend-io/consent-manager-ui.git
-```
-
-2. Install dependencies
-
-```sh
-yarn
-```
-
-3. Build the code and run the local version of the UI
-
-```sh
-yarn start
-```
-
-This command will run a very simple HTML file defined in ./index.html. Any changes made to the ./index.html or ./src will cause the page to auto-reload without needing to restart the server.
-
 ## Playground
 
 The default consent interface is built with flexibility to choose between different "view states". These can be viewed in the [Consent Manager UI playground here](https://consent-manager-ui.vercel.app/src/playground).
@@ -94,6 +68,14 @@ This option is linked to in most other banners under the "More Choices" footer. 
 
 ![ViewState = CompleteOptions](https://user-images.githubusercontent.com/10264973/188251095-7c7fd1b5-7748-4430-b7af-130e37db2dc5.jpg)
 
+#### Button Mapping
+
+| Button Title           | Callback Description                                                                                                                                                                                                                                                                                             |
+| ---------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Toggle Checkbox        | Checking the box opts the user in to a purpose, unchecking the box opts a user out of a purpose. Opt out changes are not applied until "Confirm" is clicked.                                                                                                                                                     |
+| Confirm                | Applies the consent change event for any modified checkboxes.                                                                                                                                                                                                                                                    |
+| See our Privacy Policy | Redirects to the privacy policy link specified in [Consent Display Settings](https://app.transcend.io/consent-manager/display-settings) or the [`data-privacy-policy`](https://docs.transcend.io/docs/consent/faq#how-can-i-customize-the-privacy-policy-link-when-hosting-on-multiple-domains?) data attribute. |
+
 ### `CompleteOptionsInverted`
 
 This option is similar to `CompleteOptions` but the checkboxes are inverted -- checking each box opts the user out of a purpose.
@@ -122,6 +104,7 @@ This is the recommended flow for US state laws with a do not sell requirement, a
 | Button Title           | Callback Description                                                                                                                                                                                                                                                                                             |
 | ---------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | On Modal Open          | Opts the user out of the `SaleOfInfo` purpose.                                                                                                                                                                                                                                                                   |
+| Okay                   | Closes the modal with no changes to purposes and no changes to consent confirmation.                                                                                                                                                                                                                             |
 | See our Privacy Policy | Redirects to the privacy policy link specified in [Consent Display Settings](https://app.transcend.io/consent-manager/display-settings) or the [`data-privacy-policy`](https://docs.transcend.io/docs/consent/faq#how-can-i-customize-the-privacy-policy-link-when-hosting-on-multiple-domains?) data attribute. |
 
 ### `DoNotSellExplainer`
@@ -135,6 +118,7 @@ This is a 2 click opt out for do not sell or share. This option is useful for co
 | Button Title           | Callback Description                                                                                                                                                                                                                                                                                             |
 | ---------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Toggle Switch          | Opts the user in or out of the `SaleOfInfo` purpose.                                                                                                                                                                                                                                                             |
+| X - Icon               | Closes the modal with no changes to purposes and no changes to consent confirmation.                                                                                                                                                                                                                             |
 | See our Privacy Policy | Redirects to the privacy policy link specified in [Consent Display Settings](https://app.transcend.io/consent-manager/display-settings) or the [`data-privacy-policy`](https://docs.transcend.io/docs/consent/faq#how-can-i-customize-the-privacy-policy-link-when-hosting-on-multiple-domains?) data attribute. |
 
 ## `PrivacyPolicyNotice`
@@ -145,11 +129,10 @@ This banner can be used to notify users of privacy policy changes. This banner d
 
 #### Button Mapping
 
-| Button Title                        | Callback Description                                                                                                                                                                                                                                                                                             |
-| ----------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Okay                                | Closes the modal with no changes to purposes, however, airgap.getConsent().confirmed is set to true to prevent the modal from re-showing.                                                                                                                                                                        |
-| Do Not Sell My Personal Information | Redirects to the `CompleteOptions` view state. No purposes change. Does not change SaleOfInfo.                                                                                                                                                                                                                   |
-| See our Privacy Policy              | Redirects to the privacy policy link specified in [Consent Display Settings](https://app.transcend.io/consent-manager/display-settings) or the [`data-privacy-policy`](https://docs.transcend.io/docs/consent/faq#how-can-i-customize-the-privacy-policy-link-when-hosting-on-multiple-domains?) data attribute. |
+| Button Title           | Callback Description                                                                                                                                                                                                                                                                                             |
+| ---------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Okay                   | Closes the modal with no changes to purposes, however, airgap.getConsent().confirmed is set to true to prevent the modal from re-showing.                                                                                                                                                                        |
+| See our Privacy Policy | Redirects to the privacy policy link specified in [Consent Display Settings](https://app.transcend.io/consent-manager/display-settings) or the [`data-privacy-policy`](https://docs.transcend.io/docs/consent/faq#how-can-i-customize-the-privacy-policy-link-when-hosting-on-multiple-domains?) data attribute. |
 
 ### `NoticeAndDoNotSell`
 
@@ -159,11 +142,11 @@ This banner can be used to notify users of privacy policy changes. This banner d
 
 #### Button Mapping
 
-| Button Title           | Callback Description                                                                                                                                                                                                                                                                                             |
-| ---------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Okay                   | Closes the modal with no changes to purposes and no changes to consent confirmation.                                                                                                                                                                                                                             |
-| Toggle Switch          | Opts the user in or out of the `SaleOfInfo` purpose.                                                                                                                                                                                                                                                             |
-| See our Privacy Policy | Redirects to the privacy policy link specified in [Consent Display Settings](https://app.transcend.io/consent-manager/display-settings) or the [`data-privacy-policy`](https://docs.transcend.io/docs/consent/faq#how-can-i-customize-the-privacy-policy-link-when-hosting-on-multiple-domains?) data attribute. |
+| Button Title                        | Callback Description                                                                                                                                                                                                                                                                                             |
+| ----------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Okay                                | Closes the modal with no changes to purposes and no changes to consent confirmation.                                                                                                                                                                                                                             |
+| Do Not Sell My Personal Information | Redirects to the `CompleteOptions` view state. No purposes change. Does not change SaleOfInfo.                                                                                                                                                                                                                   |
+| See our Privacy Policy              | Redirects to the privacy policy link specified in [Consent Display Settings](https://app.transcend.io/consent-manager/display-settings) or the [`data-privacy-policy`](https://docs.transcend.io/docs/consent/faq#how-can-i-customize-the-privacy-policy-link-when-hosting-on-multiple-domains?) data attribute. |
 
 ### `AcceptOrRejectAnalytics`
 
@@ -203,7 +186,7 @@ This is the view state that allows the user to select their language.
 
 | Button Title           | Callback Description                                                                                                                                                                                                                                                                                             |
 | ---------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| <locale>               | Each option changes the selected language for the modal, no purposes change.                                                                                                                                                                                                                                     |
+| Each Language          | Each option changes the selected language for the modal, no purposes change.                                                                                                                                                                                                                                     |
 | More choices           | Redirects to the `CompleteOptions` view state. No purposes change.                                                                                                                                                                                                                                               |
 | See our Privacy Policy | Redirects to the privacy policy link specified in [Consent Display Settings](https://app.transcend.io/consent-manager/display-settings) or the [`data-privacy-policy`](https://docs.transcend.io/docs/consent/faq#how-can-i-customize-the-privacy-policy-link-when-hosting-on-multiple-domains?) data attribute. |
 
@@ -216,3 +199,29 @@ This is the view state that allows the user to select their language.
 | Button Title   | Callback Description                        |
 | -------------- | ------------------------------------------- |
 | Transcend Icon | Open's Transcend modal, no purposes change. |
+
+## Prerequisites
+
+This package is distributed through [npm](https://www.npmjs.com/package/@transcend-io/consent-manager-ui) and GitHub package registries and assumes an installation of [npm and node](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm).
+
+## Developing against this repository
+
+1. Clone the repo
+
+```sh
+git clone git@github.com:transcend-io/consent-manager-ui.git
+```
+
+2. Install dependencies
+
+```sh
+yarn
+```
+
+3. Build the code and run the local version of the UI
+
+```sh
+yarn start
+```
+
+This command will run a very simple HTML file defined in ./index.html. Any changes made to the ./index.html or ./src will cause the page to auto-reload without needing to restart the server.

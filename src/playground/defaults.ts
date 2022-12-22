@@ -18,6 +18,7 @@ export const defaultConfig: ConsentManagerConfig = {
   initialViewStateByPrivacyRegime: DEFAULT_VIEW_STATE_BY_PRIVACY_REGIME,
   privacyPolicy: 'https://example.com/privacy',
   dismissedViewState: 'Collapsed',
+  secondaryPolicy: '',
 };
 
 export const defaultTrackingPurposes: TrackingPurposesTypes = {
