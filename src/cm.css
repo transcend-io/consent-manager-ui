@@ -68,6 +68,25 @@
   font-weight: 400;
 }
 
+
+/***********************************
+ * Accessibility - non-visual label
+ ***********************************/
+
+ /** Screen reader styles */
+ .screen-reader {
+	border: 0;
+	clip: rect(0 0 0 0);
+	height: 1px;
+	margin: -1px;
+	overflow: hidden;
+	padding: 0;
+	position: absolute;
+	white-space: nowrap;
+	width: 1px;
+}
+
+
 /*******************
  * Text Styles
  *******************/
@@ -739,21 +758,4 @@
   .transcend-logo-svg:hover path {
     fill: var(--primary-color);
   }
-}
-
-/***********************************
- * Accessibility - non-visual label
- ***********************************/
-
- /** Screen reader styles */
-.screen-reader {
-	border: 0;
-	clip: rect(0 0 0 0);
-	height: 1px;
-	margin: -1px;
-	overflow: hidden;
-	padding: 0;
-	position: absolute;
-	white-space: nowrap;
-	width: 1px;
 }
