@@ -94,13 +94,20 @@ This option is linked to in most other banners under the "More Choices" footer. 
 
 ![ViewState = CompleteOptions](https://user-images.githubusercontent.com/10264973/188251095-7c7fd1b5-7748-4430-b7af-130e37db2dc5.jpg)
 
+### `CompleteOptionsInverted`
+
+This option is similar to `CompleteOptions` but the checkboxes are inverted -- checking each box opts the user out of a purpose.
+
+![ViewState = CompleteOptionsInverted](https://user-images.githubusercontent.com/10264973/209087837-f1b4dc82-dd22-4279-aff0-15a239452b9c.jpg)
+
 #### Button Mapping
 
 | Button Title           | Callback Description                                                                                                                                                                                                                                                                                             |
 | ---------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Toggle Checkbox        | Checking the box opts the user into a purpose, unchecking the box opts a user opt out of a purpose. Opt out changes are not applied until "Confirm" is clicked.                                                                                                                                                  |
+| Toggle Checkbox        | Checking the box opts the user out of a purpose, unchecking the box opts a user in to a purpose. Opt out changes are not applied until "Confirm" is clicked.                                                                                                                                                     |
 | Confirm                | Applies the consent change event for any modified checkboxes.                                                                                                                                                                                                                                                    |
 | See our Privacy Policy | Redirects to the privacy policy link specified in [Consent Display Settings](https://app.transcend.io/consent-manager/display-settings) or the [`data-privacy-policy`](https://docs.transcend.io/docs/consent/faq#how-can-i-customize-the-privacy-policy-link-when-hosting-on-multiple-domains?) data attribute. |
+| Read more              | Redirects to the secondary policy specified using the `data-secondary-policy` data attribute.                                                                                                                                                                                                                    |
 
 ### `DoNotSellDisclosure`
 
@@ -121,7 +128,7 @@ This is the recommended flow for US state laws with a do not sell requirement, a
 
 This is a 2 click opt out for do not sell or share. This option is useful for companies that need to provide more context about what the opt-out means, and how the opt-out changes when the user is logged in or out.
 
-![ViewState = DoNotSellExplainer](https://user-images.githubusercontent.com/10264973/207575258-892081eb-4dd5-4436-b926-517e6e74715f.jpg)
+![ViewState = DoNotSellExplainer](https://user-images.githubusercontent.com/10264973/209087742-cda43114-5502-4116-9b49-2e34fb0d28c3.jpg)
 
 #### Button Mapping
 
