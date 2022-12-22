@@ -7,6 +7,9 @@ import type { HandleSetViewState } from '../types';
 import { GPCIndicator } from './GPCIndicator';
 import { Switch } from './Switch';
 
+// Timer for save state
+let savingTimeout: ReturnType<typeof setTimeout>;
+
 /**
  * Component showing explanatory text before offering a way
  * to opt out of the sale or share of data
@@ -26,7 +29,6 @@ export function DoNotSellExplainer({
   );
 
   // Opt in to all purposes
-  let displayTimeout: ReturnType<typeof setTimeout>;
   const handleDoNotSellExplainer = (
     checked: boolean,
     event: JSX.TargetedEvent,
@@ -34,10 +36,13 @@ export function DoNotSellExplainer({
     event.preventDefault();
     airgap.setConsent(event, { SaleOfInfo: checked });
     setConsentLocal(checked);
-
-    clearTimeout(displayTimeout);
     setSaving(true);
-    displayTimeout = setTimeout(() => {
+
+    // Clear any existing timeouts still running
+    if (savingTimeout) {
+      clearTimeout(savingTimeout);
+    }
+    savingTimeout = setTimeout(() => {
       setSaving(false);
     }, 500);
   };
