@@ -1,7 +1,7 @@
 import { h, JSX } from 'preact';
 import { useState } from 'preact/hooks';
 import { useIntl } from 'react-intl';
-import { useAirgap } from '../hooks';
+import { useAirgap, useConfig } from '../hooks';
 import { messages } from '../messages';
 import type { HandleSetViewState } from '../types';
 import { GPCIndicator } from './GPCIndicator';
@@ -19,6 +19,7 @@ export function DoNotSellExplainer({
 }): JSX.Element {
   const { airgap } = useAirgap();
   const { formatMessage } = useIntl();
+  const { config } = useConfig();
   const [saving, setSaving] = useState<boolean | undefined>();
   const [consentLocal, setConsentLocal] = useState(
     !!airgap.getConsent().purposes.SaleOfInfo,
@@ -54,8 +55,12 @@ export function DoNotSellExplainer({
         }}
       >
         <svg width="24" height="24" viewBox="0 0 32 32" aria-hidden="true">
-          {/* eslint-disable-next-line max-len */}
-          <path d="M25.71 24.29a.996.996 0 1 1-1.41 1.41L16 17.41 7.71 25.7a.996.996 0 1 1-1.41-1.41L14.59 16l-8.3-8.29A.996.996 0 1 1 7.7 6.3l8.3 8.29 8.29-8.29a.996.996 0 1 1 1.41 1.41L17.41 16l8.3 8.29z" />
+          {}
+          <path
+            fill={config.theme.fontColor}
+            // eslint-disable-next-line max-len
+            d="M25.71 24.29a.996.996 0 1 1-1.41 1.41L16 17.41 7.71 25.7a.996.996 0 1 1-1.41-1.41L14.59 16l-8.3-8.29A.996.996 0 1 1 7.7 6.3l8.3 8.29 8.29-8.29a.996.996 0 1 1 1.41 1.41L17.41 16l8.3 8.29z"
+          />
         </svg>
         <span className="screen-reader">{formatMessage(messages.close)}</span>
       </button>
