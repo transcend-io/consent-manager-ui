@@ -15,6 +15,7 @@ import { NoticeAndDoNotSell } from './NoticeAndDoNotSell';
 import { QuickOptions } from './QuickOptions';
 import { AcceptOrRejectAll } from './AcceptOrRejectAll';
 import { DoNotSellDisclosure } from './DoNotSellDisclosure';
+import { AcceptOrRejectAnalytics } from './AcceptOrRejectAnalytics';
 import { DoNotSellExplainer } from './DoNotSellExplainer';
 import { QuickOptions3 } from './QuickOptions3';
 import { PrivacyPolicyNotice } from './PrivacyPolicyNotice';
@@ -53,6 +54,10 @@ export function Main({
 
         {viewState === ViewState.AcceptAll && (
           <AcceptAll handleSetViewState={handleSetViewState} />
+        )}
+
+        {viewState === ViewState.AcceptOrRejectAnalytics && (
+          <AcceptOrRejectAnalytics handleSetViewState={handleSetViewState} />
         )}
 
         {viewState === ViewState.DoNotSellExplainer && (

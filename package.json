@@ -23,7 +23,7 @@
     "privacy"
   ],
   "dependencies": {
-    "@transcend-io/airgap.js-types": "^8.19.1",
+    "@transcend-io/airgap.js-types": "^8.20.0",
     "@transcend-io/internationalization": "^1.4.1",
     "@transcend-io/logger": "^1.0.14",
     "esbuild-plugin-alias": "^0.2.1",

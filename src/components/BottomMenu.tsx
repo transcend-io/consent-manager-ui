@@ -30,6 +30,7 @@ export function BottomMenu({
         ViewState.NoticeAndDoNotSell,
         ViewState.DoNotSellDisclosure,
         ViewState.PrivacyPolicyNotice,
+        ViewState.AcceptOrRejectAnalytics,
         ViewState.DoNotSellExplainer,
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
       ].includes(viewState as any) &&

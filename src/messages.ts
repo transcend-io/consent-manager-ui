@@ -31,6 +31,26 @@ export const messages = defineMessages('ui.src.messages', {
     defaultMessage: 'Do Not Sell or Share My Personal Information',
     description: 'The title displayed for the DoNotSellExplainer banner.',
   },
+  consentTitleAcceptOrRejectAnalytics: {
+    defaultMessage: 'This website uses analytics',
+    description: 'The title displayed for the AcceptOrRejectAnalytics banner.',
+  },
+  acceptAnalytics: {
+    defaultMessage: 'Okay',
+    description:
+      'The affirmative response for opting into analytics in the "AcceptOrRejectAnalytics" view state.',
+  },
+  rejectAnalytics: {
+    defaultMessage: `Do not track`,
+    description:
+      'The negative response for opting out of analytics in the "AcceptOrRejectAnalytics" view state.',
+  },
+  acceptOrRejectAnalyticsDescription: {
+    defaultMessage:
+      'By clicking "Okay", you agree to the usage of your sensitive information for analytics purposes.',
+    description:
+      'The description displayed for the AcceptOrRejectAnalytics banner.',
+  },
   privacyPolicyNoticeButton: {
     defaultMessage: 'Okay',
     description: 'Button to dismiss privacy policy notice.',
