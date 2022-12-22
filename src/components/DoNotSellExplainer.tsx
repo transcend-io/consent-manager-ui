@@ -60,7 +60,6 @@ export function DoNotSellExplainer({
         }}
       >
         <svg width="24" height="24" viewBox="0 0 32 32" aria-hidden="true">
-          {}
           <path
             fill={config.theme.fontColor}
             // eslint-disable-next-line max-len
@@ -97,7 +96,7 @@ export function DoNotSellExplainer({
                 : messages.doNotSellOptedOut,
             )}
           />
-          <p className="paragraph save-state">
+          <p className="paragraph">
             {typeof saving === 'boolean'
               ? formatMessage(
                   saving ? messages.saving : messages.preferencesSaved,
