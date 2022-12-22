@@ -6,6 +6,7 @@
 * {
   --primary-color: #3333ff;
   --text-color: #010101;
+  --modal-padding: 21px;
 }
 
 /*******************
@@ -324,8 +325,8 @@
 /** Outer styles wrapped around entire bottom menu */
 .footer-container {
   position: absolute;
-  bottom: 21px;
-  width: calc(100% - 21px * 2);
+  bottom: var(--modal-padding);
+  width: calc(100% - var(--modal-padding) * 2);
   height: 17px;
 }
 
@@ -473,7 +474,7 @@
   border: 0.5px solid #d8d8d8;
   background-color: rgba(255, 255, 255, 0.9);
   overflow: hidden;
-  padding: 21px;
+  padding: var(--modal-padding);
   font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir,
     helvetica neue, helvetica, 'sans-serif';
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
@@ -511,16 +512,26 @@
 
 /** Styles for button of X marker in top right corner */
 .do-not-sell-explainer-close {
+  --squareDimension: 25px;
+  padding: 4px;
   position: absolute;
-  top: 12px;
-  right: 12px;
+  top: var(--modal-padding);
+  right: var(--modal-padding);
   border: none;
   cursor: pointer;
+  background-color: #ededed;
+  border-radius: 5px;
+  height: var(--squareDimension);
+  width: var(--squareDimension);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 150ms;
 }
 
 /** Styles for button of X marker in top right corner on hover */
 .do-not-sell-explainer-close:hover {
-  filter: brightness(0.95);
+  background-color: #e2e2e2;
 }
 
 /*******************
