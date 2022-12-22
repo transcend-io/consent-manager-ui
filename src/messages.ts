@@ -66,8 +66,12 @@ export const messages = defineMessages('ui.src.messages', {
       'Explainer text in DoNotSellExplainer banner when opted out of sale of data.',
   },
   close: {
-    defaultMessage: 'Dismiss',
-    description: 'A button to close the modal',
+    defaultMessage: 'Close consent manager',
+    description: 'An accessible label for the button to close the modal',
+  },
+  switchLanguage: {
+    defaultMessage: 'Switch language',
+    description: 'An accessible label for the button to switch language',
   },
   doNotSellOptedIn: {
     defaultMessage: `Switch the toggle to opt out.`,
