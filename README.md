@@ -11,7 +11,7 @@ The default consent interface is built with flexibility to choose between differ
 You can also run the playground locally with
 
 ```sh
-yarn playground`
+yarn playground
 ```
 
 ## View States

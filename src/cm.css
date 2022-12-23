@@ -539,7 +539,7 @@
   right: var(--modal-padding);
   border: none;
   cursor: pointer;
-  background-color: #ededed;
+  background-color: #f2f2f2;
   border-radius: 5px;
   height: var(--squareDimension);
   width: var(--squareDimension);
@@ -550,7 +550,7 @@
 }
 
 /** Styles for button of X marker in top right corner on hover */
-.do-not-sell-explainer-close:hover {
+.do-not-sell-explainer-close:hover, .do-not-sell-explainer-close:focus {
   background-color: #e2e2e2;
 }
 
@@ -752,10 +752,10 @@
     width: 64px;
   }
   .transcend-logo-svg:hover .transcend-wordmark,
-  .transcend-logo-svg:focus .transcend-wordmark {
+  .transcend-logo-container:focus .transcend-wordmark {
     fill-opacity: 1;
   }
-  .transcend-logo-svg:hover path {
+  .transcend-logo-svg:hover path, .transcend-logo-container:focus path {
     fill: var(--primary-color);
   }
 }
