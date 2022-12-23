@@ -14,28 +14,33 @@ export function Switch({
   /** Parent's event handler */
   handleSwitch: (
     checked: boolean,
-    event: h.JSX.TargetedEvent<HTMLInputElement, Event>,
+    event: JSX.TargetedEvent<HTMLInputElement, Event>,
   ) => void;
   /** The ID of the switch */
   id: string;
   /** The label for the switch */
   label: string;
 }): JSX.Element {
+  const handleClick = (
+    event: JSX.TargetedEvent<HTMLInputElement, Event>,
+  ): void => {
+    event.preventDefault();
+    handleSwitch(!checked, event);
+  };
+
   return (
     <Fragment>
       <label className="switch label">
         <input
           key={id}
-          className="switch switch-checkbox"
+          className="switch switch-checkbox screen-reader"
           id={`switch-${id}`}
           type="checkbox"
           checked={checked}
-          onClick={(e) => {
-            handleSwitch(!checked, e);
-          }}
+          onClick={handleClick}
         />
         <span className="switch switch-background">
-          <span className={`switch switch-button`} />
+          <span className="switch switch-button" />
         </span>
         {label}
       </label>

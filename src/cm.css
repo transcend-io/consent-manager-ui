@@ -8,6 +8,7 @@
   --text-color: #010101;
   --modal-padding: 21px;
   --content-padding: 38px;
+  --outlineStyle: 2px solid rgba(51, 157, 255, 0.7);
 }
 
 /*******************
@@ -68,6 +69,15 @@
   font-weight: 400;
 }
 
+/** Button focus */
+button:focus {
+  outline: var(--outlineStyle);
+}
+
+/** Anchor focus */
+a:focus {
+  outline: var(--outlineStyle);
+}
 
 /***********************************
  * Accessibility - non-visual label
@@ -85,7 +95,6 @@
 	white-space: nowrap;
 	width: 1px;
 }
-
 
 /*******************
  * Text Styles
@@ -605,11 +614,6 @@
 }
 
 /** Removes checkbox for the switch since checkbox is basis for switch */
-.switch.switch-checkbox {
-  height: 0;
-  width: 0;
-  display: none;
-}
 
 /** Switch label */
 .switch.switch-background {
@@ -648,6 +652,13 @@
 /** When switch background is checked */
 .switch.switch-checkbox:checked + .switch.switch-background {
   background-color: var(--primary-color);
+}
+
+/** When switch is focused */
+.switch.switch-checkbox:focus + .switch.switch-background .switch.switch-button {
+  outline: var(--outlineStyle);
+  outline-offset: 1px;
+  outline-width: 5px;
 }
 
 /** Switch button when active */

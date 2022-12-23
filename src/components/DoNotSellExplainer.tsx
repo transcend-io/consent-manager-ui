@@ -6,6 +6,7 @@ import { messages } from '../messages';
 import type { HandleSetViewState } from '../types';
 import { GPCIndicator } from './GPCIndicator';
 import { Switch } from './Switch';
+// import Toggle from 'react-toggle';
 
 // Timer for save state
 let savingTimeout: ReturnType<typeof setTimeout>;
@@ -27,13 +28,13 @@ export function DoNotSellExplainer({
   const [consentLocal, setConsentLocal] = useState(
     !!airgap.getConsent().purposes.SaleOfInfo,
   );
+  const switchId = `sale-of-info-${consentLocal}`;
 
-  // Opt in to all purposes
-  const handleDoNotSellExplainer = (
+  const handleSwitch = (
     checked: boolean,
-    event: JSX.TargetedEvent,
+    event: JSX.TargetedEvent<HTMLInputElement, Event>,
   ): void => {
-    event.preventDefault();
+    // const { checked } = event.target as HTMLInputElement; // preact typing bug https://github.com/preactjs/preact/issues/1930
     airgap.setConsent(event, { SaleOfInfo: checked });
     setConsentLocal(checked);
     setSaving(true);
@@ -46,8 +47,6 @@ export function DoNotSellExplainer({
       setSaving(false);
     }, 500);
   };
-
-  const switchId = `sale-of-info-${consentLocal}`;
 
   return (
     <div className="column-content">
@@ -86,16 +85,35 @@ export function DoNotSellExplainer({
         </div>
         <div className="margin-tops do-not-sell-explainer-interface">
           <GPCIndicator />
+
+          {/* <Toggle
+            id={switchId}
+            checked={consentLocal}
+            onChange={(e) =>
+              handleToggle(
+                e as unknown as JSX.TargetedEvent<HTMLInputElement, Event>,
+              )
+            }
+          />
+          <label htmlFor={switchId}>
+            {formatMessage(
+              consentLocal
+                ? messages.doNotSellOptedIn
+                : messages.doNotSellOptedOut,
+            )}
+          </label> */}
+
           <Switch
             id={switchId}
             checked={consentLocal}
-            handleSwitch={handleDoNotSellExplainer}
+            handleSwitch={handleSwitch}
             label={formatMessage(
               consentLocal
                 ? messages.doNotSellOptedIn
                 : messages.doNotSellOptedOut,
             )}
           />
+
           <p className="paragraph">
             {typeof saving === 'boolean'
               ? formatMessage(
