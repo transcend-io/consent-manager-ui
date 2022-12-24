@@ -6,7 +6,6 @@ import { messages } from '../messages';
 import type { HandleSetViewState } from '../types';
 import { GPCIndicator } from './GPCIndicator';
 import { Switch } from './Switch';
-// import Toggle from 'react-toggle';
 
 // Timer for save state
 let savingTimeout: ReturnType<typeof setTimeout>;
@@ -34,7 +33,6 @@ export function DoNotSellExplainer({
     checked: boolean,
     event: JSX.TargetedEvent<HTMLInputElement, Event>,
   ): void => {
-    // const { checked } = event.target as HTMLInputElement; // preact typing bug https://github.com/preactjs/preact/issues/1930
     airgap.setConsent(event, { SaleOfInfo: checked });
     setConsentLocal(checked);
     setSaving(true);
@@ -85,24 +83,6 @@ export function DoNotSellExplainer({
         </div>
         <div className="margin-tops do-not-sell-explainer-interface">
           <GPCIndicator />
-
-          {/* <Toggle
-            id={switchId}
-            checked={consentLocal}
-            onChange={(e) =>
-              handleToggle(
-                e as unknown as JSX.TargetedEvent<HTMLInputElement, Event>,
-              )
-            }
-          />
-          <label htmlFor={switchId}>
-            {formatMessage(
-              consentLocal
-                ? messages.doNotSellOptedIn
-                : messages.doNotSellOptedOut,
-            )}
-          </label> */}
-
           <Switch
             id={switchId}
             checked={consentLocal}
