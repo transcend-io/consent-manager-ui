@@ -6,8 +6,6 @@
 * {
   --primary-color: #3333ff;
   --text-color: #010101;
-  --modal-padding: 21px;
-  --content-padding: 38px;
 }
 
 /*******************
@@ -345,8 +343,8 @@
 /** Outer styles wrapped around entire bottom menu */
 .footer-container {
   position: absolute;
-  bottom: var(--modal-padding);
-  width: calc(100% - var(--modal-padding) * 2);
+  bottom: 21px;
+  width: calc(100% - 21px * 2);
   height: 17px;
 }
 
@@ -494,7 +492,7 @@
   border: 0.5px solid #d8d8d8;
   background-color: rgba(255, 255, 255, 0.9);
   overflow: hidden;
-  padding: var(--modal-padding);
+  padding: 21px;
   font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir,
     helvetica neue, helvetica, 'sans-serif';
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
@@ -506,9 +504,9 @@
 /** Inner contents wrapper for modal content */
 .modal-container-inner {
   min-height: 79px;
-  height: calc(100% - var(--content-padding));
+  height: calc(100% - 38px);
   width: 100%;
-  padding-bottom: var(--content-padding);
+  padding-bottom: 38px;
 }
 
 /*******************
@@ -535,8 +533,8 @@
   --squareDimension: 25px;
   padding: 4px;
   position: absolute;
-  top: var(--modal-padding);
-  right: var(--modal-padding);
+  top: 21px;
+  right: 21px;
   border: none;
   cursor: pointer;
   background-color: #ededed;
