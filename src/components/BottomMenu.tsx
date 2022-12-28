@@ -99,7 +99,11 @@ export function BottomMenu({
           target="_blank"
           rel="noopener noreferrer"
         >
-          {formatMessage(bottomMenuMessages.showPolicyButtonPrimary)}
+          {formatMessage(
+            viewState === ViewState.CompleteOptionsInverted
+              ? bottomMenuMessages.showPolicyButtonCompleteOptionsInverted
+              : bottomMenuMessages.showPolicyButtonPrimary,
+          )}
         </MenuItem>
       </div>
     </div>

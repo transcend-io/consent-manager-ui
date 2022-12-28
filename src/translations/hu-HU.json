@@ -1,6 +1,7 @@
 {
   "ui.src.bottomMenu.moreChoicesButtonLabel": "Kattintson a további lehetőségek megjelenítéséhez",
   "ui.src.bottomMenu.moreChoicesButtonPrimary": "Több választási lehetőség",
+  "ui.src.bottomMenu.showPolicyButtonCompleteOptionsInverted": "Tekintse meg adatvédelmi irányelveinket",
   "ui.src.bottomMenu.showPolicyButtonLabel": "Látogassa meg adatvédelmi irányelveinket",
   "ui.src.bottomMenu.showPolicyButtonPrimary": "Tekintse meg adatvédelmi irányelveinket",
   "ui.src.bottomMenu.showSecondaryPolicyButton": "Olvass tovább",

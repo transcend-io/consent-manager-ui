@@ -1,6 +1,7 @@
 {
   "ui.src.bottomMenu.moreChoicesButtonLabel": "Κάντε κλικ για να εμφανίσετε περισσότερες επιλογές",
   "ui.src.bottomMenu.moreChoicesButtonPrimary": "Περισσότερες επιλογές",
+  "ui.src.bottomMenu.showPolicyButtonCompleteOptionsInverted": "Δείτε την Πολιτική Απορρήτου μας",
   "ui.src.bottomMenu.showPolicyButtonLabel": "Επισκεφθείτε την πολιτική απορρήτου μας",
   "ui.src.bottomMenu.showPolicyButtonPrimary": "Δείτε την Πολιτική Προστασίας Προσωπικών Δεδομένων",
   "ui.src.bottomMenu.showSecondaryPolicyButton": "Διαβάστε περισσότερα",

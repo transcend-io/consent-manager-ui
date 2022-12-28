@@ -1,6 +1,7 @@
 {
   "ui.src.bottomMenu.moreChoicesButtonLabel": "クリックするとさらに選択肢が表示されます",
   "ui.src.bottomMenu.moreChoicesButtonPrimary": "その他の選択肢",
+  "ui.src.bottomMenu.showPolicyButtonCompleteOptionsInverted": "当社のプライバシーポリシーをご覧ください",
   "ui.src.bottomMenu.showPolicyButtonLabel": "当社のプライバシーポリシーをご覧ください",
   "ui.src.bottomMenu.showPolicyButtonPrimary": "プライバシー・ポリシーを見る",
   "ui.src.bottomMenu.showSecondaryPolicyButton": "もっと読む",

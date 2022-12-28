@@ -1,6 +1,7 @@
 {
   "ui.src.bottomMenu.moreChoicesButtonLabel": "Klik untuk menampilkan lebih banyak pilihan",
   "ui.src.bottomMenu.moreChoicesButtonPrimary": "Lebih banyak pilihan",
+  "ui.src.bottomMenu.showPolicyButtonCompleteOptionsInverted": "Lihat Kebijakan Privasi Kami",
   "ui.src.bottomMenu.showPolicyButtonLabel": "Kunjungi kebijakan privasi kami",
   "ui.src.bottomMenu.showPolicyButtonPrimary": "Lihat Kebijakan Privasi Kami",
   "ui.src.bottomMenu.showSecondaryPolicyButton": "Baca lebih lanjut",
