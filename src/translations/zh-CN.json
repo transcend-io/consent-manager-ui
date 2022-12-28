@@ -1,6 +1,7 @@
 {
   "ui.src.bottomMenu.moreChoicesButtonLabel": "点击以显示更多选择",
   "ui.src.bottomMenu.moreChoicesButtonPrimary": "更多选择",
+  "ui.src.bottomMenu.showPolicyButtonCompleteOptionsInverted": "请参阅我们的隐私政策",
   "ui.src.bottomMenu.showPolicyButtonLabel": "访问我们的隐私政策",
   "ui.src.bottomMenu.showPolicyButtonPrimary": "查看我们的隐私政策",
   "ui.src.bottomMenu.showSecondaryPolicyButton": "阅读更多",

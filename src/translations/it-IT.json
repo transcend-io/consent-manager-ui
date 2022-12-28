@@ -1,6 +1,7 @@
 {
   "ui.src.bottomMenu.moreChoicesButtonLabel": "Fai clic per visualizzare altre scelte",
   "ui.src.bottomMenu.moreChoicesButtonPrimary": "Altre scelte",
+  "ui.src.bottomMenu.showPolicyButtonCompleteOptionsInverted": "Consulta la nostra politica sulla privacy",
   "ui.src.bottomMenu.showPolicyButtonLabel": "Consulta la nostra politica sulla privacy",
   "ui.src.bottomMenu.showPolicyButtonPrimary": "Consulta la nostra Informativa sulla privacy",
   "ui.src.bottomMenu.showSecondaryPolicyButton": "Leggi di più",

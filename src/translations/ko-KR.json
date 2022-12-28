@@ -1,6 +1,7 @@
 {
   "ui.src.bottomMenu.moreChoicesButtonLabel": "더 많은 선택 사항을 보려면 클릭하십시오.",
   "ui.src.bottomMenu.moreChoicesButtonPrimary": "더 많은 선택",
+  "ui.src.bottomMenu.showPolicyButtonCompleteOptionsInverted": "개인 정보 보호 정책 보기",
   "ui.src.bottomMenu.showPolicyButtonLabel": "개인 정보 보호 정책 방문하기",
   "ui.src.bottomMenu.showPolicyButtonPrimary": "개인정보처리방침 보기",
   "ui.src.bottomMenu.showSecondaryPolicyButton": "더 읽어보기",

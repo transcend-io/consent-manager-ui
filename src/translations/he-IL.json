@@ -1,6 +1,7 @@
 {
   "ui.src.bottomMenu.moreChoicesButtonLabel": "לחץ כדי להציג אפשרויות נוספות",
   "ui.src.bottomMenu.moreChoicesButtonPrimary": "אפשרויות נוספות",
+  "ui.src.bottomMenu.showPolicyButtonCompleteOptionsInverted": "עיין במדיניות הפרטיות שלנו",
   "ui.src.bottomMenu.showPolicyButtonLabel": "בקר במדיניות הפרטיות שלנו",
   "ui.src.bottomMenu.showPolicyButtonPrimary": "עיין במדיניות הפרטיות שלנו",
   "ui.src.bottomMenu.showSecondaryPolicyButton": "קרא עוד",

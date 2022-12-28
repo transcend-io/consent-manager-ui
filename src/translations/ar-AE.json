@@ -1,6 +1,7 @@
 {
   "ui.src.bottomMenu.moreChoicesButtonLabel": "انقر لإظهار المزيد من الخيارات",
   "ui.src.bottomMenu.moreChoicesButtonPrimary": "المزيد من الخيارات",
+  "ui.src.bottomMenu.showPolicyButtonCompleteOptionsInverted": "راجع سياسة الخصوصية الخاصة بنا",
   "ui.src.bottomMenu.showPolicyButtonLabel": "قم بزيارة سياسة الخصوصية",
   "ui.src.bottomMenu.showPolicyButtonPrimary": "راجع سياسة الخصوصية الخاصة بنا",
   "ui.src.bottomMenu.showSecondaryPolicyButton": "اقرأ المزيد",

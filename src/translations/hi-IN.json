@@ -1,6 +1,7 @@
 {
   "ui.src.bottomMenu.moreChoicesButtonLabel": "और विकल्प दिखाने के लिए क्लिक करें",
   "ui.src.bottomMenu.moreChoicesButtonPrimary": "और विकल्प",
+  "ui.src.bottomMenu.showPolicyButtonCompleteOptionsInverted": "हमारी गोपनीयता नीति देखें",
   "ui.src.bottomMenu.showPolicyButtonLabel": "हमारी गोपनीयता नीति पर जाएं",
   "ui.src.bottomMenu.showPolicyButtonPrimary": "हमारी गोपनीयता नीति देखें",
   "ui.src.bottomMenu.showSecondaryPolicyButton": "और पढ़ें",

@@ -1,6 +1,7 @@
 {
   "ui.src.bottomMenu.moreChoicesButtonLabel": "Hover/alt text for selecting specific privacy choices.",
   "ui.src.bottomMenu.moreChoicesButtonPrimary": "Text for selecting specific more opt out choices.",
+  "ui.src.bottomMenu.showPolicyButtonCompleteOptionsInverted": "Text for linking out to privacy policy in CompleteOptionsInverted UI.",
   "ui.src.bottomMenu.showPolicyButtonLabel": "Hover/alt for linking out to privacy policy.",
   "ui.src.bottomMenu.showPolicyButtonPrimary": "Text for linking out to privacy policy.",
   "ui.src.bottomMenu.showSecondaryPolicyButton": "Text for linking out to secondary policy.",
