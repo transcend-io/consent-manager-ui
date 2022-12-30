@@ -26,7 +26,8 @@
     "@transcend-io/internationalization": "^1.5.1",
     "@transcend-io/logger": "^1.0.14",
     "preact": "10.5.14",
-    "react-intl": "^6.2.5"
+    "react-intl": "=4.7.6",
+    "tslib": "^2.4.1"
   },
   "scripts": {
     "update:sdks": "yarn set version from sources && yarn sdks base",
@@ -46,6 +47,7 @@
     "@transcend-io/airgap.js-types": "^8.21.1",
     "@types/json-schema": "^7.0.11",
     "@types/node": "^17.0.21",
+    "@types/requirejs": "^2",
     "@typescript-eslint/eslint-plugin": "^5.12.1",
     "@typescript-eslint/parser": "^5.12.1",
     "@yarnpkg/esbuild-plugin-pnp": "^2.0.1",

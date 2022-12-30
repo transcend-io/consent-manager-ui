@@ -31,9 +31,9 @@
     "resolveJsonModule": true,
     "forceConsistentCasingInFileNames": true,
 
-    "downlevelIteration": false,
-    "importHelpers": false,
-    "noEmitHelpers": true,
+    "downlevelIteration": true,
+    "importHelpers": true,
+    "noEmitHelpers": false,
 
     "outDir": "./tsc-build",
     "rootDir": "src",
