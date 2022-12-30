@@ -1,6 +1,6 @@
 import { h, JSX } from 'preact';
 import { useIntl } from 'react-intl';
-import { ViewState } from '@transcend-io/airgap.js-types';
+import type { ViewState } from '@transcend-io/airgap.js-types';
 import { useConfig } from '../hooks';
 import { bottomMenuMessages, noticeAndDoNotSellMessages } from '../messages';
 import type { HandleSetViewState } from '../types';
@@ -27,17 +27,17 @@ export function BottomMenu({
   return (
     <div className="bottom-menu-container">
       {![
-        ViewState.NoticeAndDoNotSell,
-        ViewState.DoNotSellDisclosure,
-        ViewState.PrivacyPolicyNotice,
-        ViewState.AcceptOrRejectAnalytics,
-        ViewState.CompleteOptionsInverted,
-        ViewState.DoNotSellExplainer,
+        'NoticeAndDoNotSell',
+        'DoNotSellDisclosure',
+        'PrivacyPolicyNotice',
+        'AcceptOrRejectAnalytics',
+        'CompleteOptionsInverted',
+        'DoNotSellExplainer',
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
       ].includes(viewState as any) &&
-        (viewState === ViewState.CompleteOptions ? (
+        (viewState === 'CompleteOptions' ? (
           !firstSelectedViewState ||
-          firstSelectedViewState === ViewState.CompleteOptions ? null : (
+          firstSelectedViewState === 'CompleteOptions' ? null : (
             <div className="bottom-menu-item-container">
               <MenuItem
                 label={formatMessage(
@@ -55,41 +55,40 @@ export function BottomMenu({
             <MenuItem
               label={formatMessage(bottomMenuMessages.moreChoicesButtonLabel)}
               type="button"
-              onClick={() => handleSetViewState(ViewState.CompleteOptions)}
+              onClick={() => handleSetViewState('CompleteOptions')}
             >
               {formatMessage(bottomMenuMessages.moreChoicesButtonPrimary)}
             </MenuItem>
           </div>
         ))}
 
-      {viewState === ViewState.NoticeAndDoNotSell && (
+      {viewState === 'NoticeAndDoNotSell' && (
         <div className="bottom-menu-item-container">
           <MenuItem
             label={formatMessage(noticeAndDoNotSellMessages.doNotSellLabel)}
             type="button"
-            onClick={() => handleSetViewState(ViewState.CompleteOptions)}
+            onClick={() => handleSetViewState('CompleteOptions')}
           >
             {formatMessage(noticeAndDoNotSellMessages.doNotSellPrimary)}
           </MenuItem>
         </div>
       )}
 
-      {config.secondaryPolicy &&
-        viewState === ViewState.CompleteOptionsInverted && (
-          <div className="bottom-menu-item-container">
-            <MenuItem
-              label={formatMessage(
-                bottomMenuMessages.showSecondaryPolicyButtonLabel,
-              )}
-              type="a"
-              href={config.secondaryPolicy}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              {formatMessage(bottomMenuMessages.showSecondaryPolicyButton)}
-            </MenuItem>
-          </div>
-        )}
+      {config.secondaryPolicy && viewState === 'CompleteOptionsInverted' && (
+        <div className="bottom-menu-item-container">
+          <MenuItem
+            label={formatMessage(
+              bottomMenuMessages.showSecondaryPolicyButtonLabel,
+            )}
+            type="a"
+            href={config.secondaryPolicy}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {formatMessage(bottomMenuMessages.showSecondaryPolicyButton)}
+          </MenuItem>
+        </div>
+      )}
 
       <div className="bottom-menu-item-container">
         <MenuItem
@@ -99,7 +98,11 @@ export function BottomMenu({
           target="_blank"
           rel="noopener noreferrer"
         >
-          {formatMessage(bottomMenuMessages.showPolicyButtonPrimary)}
+          {formatMessage(
+            viewState === 'CompleteOptionsInverted'
+              ? bottomMenuMessages.showPolicyButtonCompleteOptionsInverted
+              : bottomMenuMessages.showPolicyButtonPrimary,
+          )}
         </MenuItem>
       </div>
     </div>

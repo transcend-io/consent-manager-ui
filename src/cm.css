@@ -6,9 +6,6 @@
 * {
   --primary-color: #3333ff;
   --text-color: #010101;
-  --modal-padding: 21px;
-  --content-padding: 38px;
-  --outlineStyle: 2px solid rgba(51, 157, 255, 0.7);
 }
 
 /*******************
@@ -71,12 +68,12 @@
 
 /** Button focus */
 button:focus {
-  outline: var(--outlineStyle);
+  outline: 2px solid rgba(51, 157, 255, 0.7);
 }
 
 /** Anchor focus */
 a:focus {
-  outline: var(--outlineStyle);
+  outline: 2px solid rgba(51, 157, 255, 0.7);
 }
 
 /***********************************
@@ -354,8 +351,8 @@ a:focus {
 /** Outer styles wrapped around entire bottom menu */
 .footer-container {
   position: absolute;
-  bottom: var(--modal-padding);
-  width: calc(100% - var(--modal-padding) * 2);
+  bottom: 21px;
+  width: calc(100% - 21px * 2);
   height: 17px;
 }
 
@@ -503,21 +500,27 @@ a:focus {
   border: 0.5px solid #d8d8d8;
   background-color: rgba(255, 255, 255, 0.9);
   overflow: hidden;
-  padding: var(--modal-padding);
+  padding: 21px;
   font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir,
     helvetica neue, helvetica, 'sans-serif';
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(20px) saturate(5);
   animation: fadeIn 150ms;
+  max-height: 90%;
   transition: width 150ms, height 150ms;
 }
 
 /** Inner contents wrapper for modal content */
 .modal-container-inner {
   min-height: 79px;
-  height: calc(100% - var(--content-padding));
+  height: calc(100% - 38px);
   width: 100%;
-  padding-bottom: var(--content-padding);
+  padding-bottom: 38px;
+}
+
+/** Styles that wrap the text container of the modal content. Excludes footer */
+.inner-container {
+  overflow-y: scroll;
 }
 
 /*******************
@@ -544,8 +547,8 @@ a:focus {
   --squareDimension: 25px;
   padding: 4px;
   position: absolute;
-  top: var(--modal-padding);
-  right: var(--modal-padding);
+  top: 21px;
+  right: 21px;
   border: none;
   cursor: pointer;
   background-color: #f2f2f2;
@@ -656,7 +659,7 @@ a:focus {
 
 /** When switch is focused */
 .switch.switch-checkbox:focus + .switch.switch-background .switch.switch-button {
-  outline: var(--outlineStyle);
+  outline: 2px solid rgba(51, 157, 255, 0.7);
   outline-offset: 1px;
   outline-width: 5px;
 }

@@ -1,4 +1,4 @@
-import { UserPrivacySignal } from '@transcend-io/airgap.js-types';
+import type { UserPrivacySignal } from '@transcend-io/airgap.js-types';
 import { h, JSX } from 'preact';
 import { useState } from 'preact/hooks';
 

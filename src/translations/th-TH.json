@@ -1,6 +1,7 @@
 {
   "ui.src.bottomMenu.moreChoicesButtonLabel": "คลิกเพื่อแสดงตัวเลือกเพิ่มเติม",
   "ui.src.bottomMenu.moreChoicesButtonPrimary": "ตัวเลือกอื่นๆ",
+  "ui.src.bottomMenu.showPolicyButtonCompleteOptionsInverted": "ดูนโยบายความเป็นส่วนตัวของเรา",
   "ui.src.bottomMenu.showPolicyButtonLabel": "เยี่ยมชมนโยบายความเป็นส่วนตัวของเรา",
   "ui.src.bottomMenu.showPolicyButtonPrimary": "ดูนโยบายความเป็นส่วนตัวของเรา",
   "ui.src.bottomMenu.showSecondaryPolicyButton": "อ่านเพิ่มเติม",

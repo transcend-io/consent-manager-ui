@@ -1,4 +1,4 @@
-import { AirgapAPI } from '@transcend-io/airgap.js-types';
+import type { AirgapAPI } from '@transcend-io/airgap.js-types';
 import { ConsentSelection } from './types';
 
 /**

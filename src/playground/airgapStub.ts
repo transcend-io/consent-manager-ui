@@ -3,7 +3,7 @@
 /* eslint-disable jsdoc/require-param */
 /* eslint-disable jsdoc/require-returns */
 
-import { AirgapAPI } from '@transcend-io/airgap.js-types';
+import type { AirgapAPI } from '@transcend-io/airgap.js-types';
 import { getPrivacySignalsFromLocalStorage } from './Environment';
 import { appendConsentLog } from './helpers/consentLog';
 

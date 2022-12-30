@@ -1,6 +1,7 @@
 {
   "ui.src.bottomMenu.moreChoicesButtonLabel": "Klik om meer keuzes weer te geven",
   "ui.src.bottomMenu.moreChoicesButtonPrimary": "Meer keuzes",
+  "ui.src.bottomMenu.showPolicyButtonCompleteOptionsInverted": "Bekijk ons privacybeleid",
   "ui.src.bottomMenu.showPolicyButtonLabel": "Bezoek ons privacybeleid",
   "ui.src.bottomMenu.showPolicyButtonPrimary": "Zie ons privacybeleid",
   "ui.src.bottomMenu.showSecondaryPolicyButton": "Lees meer",

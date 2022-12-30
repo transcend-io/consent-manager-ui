@@ -1,6 +1,7 @@
 {
   "ui.src.bottomMenu.moreChoicesButtonLabel": "Klikk for å vise flere valg",
   "ui.src.bottomMenu.moreChoicesButtonPrimary": "Flere valg",
+  "ui.src.bottomMenu.showPolicyButtonCompleteOptionsInverted": "Se våre retningslinjer for personvern",
   "ui.src.bottomMenu.showPolicyButtonLabel": "Besøk vår personvernpolicy",
   "ui.src.bottomMenu.showPolicyButtonPrimary": "Se våre retningslinjer for personvern",
   "ui.src.bottomMenu.showSecondaryPolicyButton": "Les mer",

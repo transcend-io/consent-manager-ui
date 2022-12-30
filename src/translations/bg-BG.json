@@ -1,6 +1,7 @@
 {
   "ui.src.bottomMenu.moreChoicesButtonLabel": "Кликнете, за да покажете повече възможности за избор",
   "ui.src.bottomMenu.moreChoicesButtonPrimary": "Повече възможности за избор",
+  "ui.src.bottomMenu.showPolicyButtonCompleteOptionsInverted": "Вижте нашата Политика за поверителност",
   "ui.src.bottomMenu.showPolicyButtonLabel": "Посетете нашата политика за поверителност",
   "ui.src.bottomMenu.showPolicyButtonPrimary": "Вижте нашата Политика за поверителност",
   "ui.src.bottomMenu.showSecondaryPolicyButton": "Прочети повече",

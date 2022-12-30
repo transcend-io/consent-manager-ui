@@ -1,6 +1,7 @@
 {
   "ui.src.bottomMenu.moreChoicesButtonLabel": "Nhấn vào đây để hiển thị thêm các lựa chọn",
   "ui.src.bottomMenu.moreChoicesButtonPrimary": "Thêm nhiều lựa chọn",
+  "ui.src.bottomMenu.showPolicyButtonCompleteOptionsInverted": "Xem Chính sách bảo mật của chúng tôi",
   "ui.src.bottomMenu.showPolicyButtonLabel": "Truy cập chính sách bảo mật của chúng tôi",
   "ui.src.bottomMenu.showPolicyButtonPrimary": "Xem Chính sách bảo mật của chúng tôi",
   "ui.src.bottomMenu.showSecondaryPolicyButton": "Đọc thêm",

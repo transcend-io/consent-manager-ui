@@ -2,11 +2,11 @@
  * getMergedConfig() returns the final config for the UI: { ...baseConfig, ...bundleConfig, ...scriptConfig }
  */
 
-import {
+import type {
   ConsentManagerConfig,
   ConsentManagerConfigInput,
   ViewState,
-  DEFAULT_VIEW_STATE_BY_PRIVACY_REGIME,
+  PrivacyRegimeToInitialViewState,
 } from '@transcend-io/airgap.js-types';
 import { logger } from './logger';
 import { settings, LOG_LEVELS, extraConfig } from './settings';
@@ -16,8 +16,32 @@ const {
   privacyCenter,
   privacyPolicy = privacyCenter || '/privacy',
   secondaryPolicy,
-  dismissedViewState = ViewState.Hidden,
+  dismissedViewState = 'Hidden',
 } = settings;
+
+/**
+ * This enum is copied to avoid airgap.js-types
+ * being a production dependency for this package.
+ * TODO: https://transcend.height.app/T-20982 - consider
+ * a simpler option, such as a dedicated package for constants
+ */
+export const DEFAULT_VIEW_STATE_BY_PRIVACY_REGIME_COPIED: PrivacyRegimeToInitialViewState =
+  {
+    // EU
+    GDPR: 'QuickOptions',
+    // Brazil
+    LGPD: 'QuickOptions',
+    // US: California
+    CPRA: 'Hidden',
+    // US: Virginia
+    CDPA: 'Hidden',
+    // US: Colorado
+    CPA: 'Hidden',
+    // US: Nevada
+    NEVADA_SB220: 'Hidden',
+    // Other
+    Unknown: 'Hidden',
+  };
 
 // Base configuration
 const baseConfig: Omit<
@@ -34,7 +58,31 @@ const baseConfig: Omit<
     tablet: '640px',
     desktop: '1024px',
   },
-  initialViewStateByPrivacyRegime: DEFAULT_VIEW_STATE_BY_PRIVACY_REGIME,
+  initialViewStateByPrivacyRegime: DEFAULT_VIEW_STATE_BY_PRIVACY_REGIME_COPIED,
+};
+
+/**
+ * This enum is copied to avoid airgap.js-types
+ * being a production dependency for this package.
+ * TODO: https://transcend.height.app/T-20982 - consider
+ * a simpler option, such as a dedicated package for constants
+ */
+export const CopiedViewStates: { [k in ViewState]: ViewState } = {
+  Collapsed: 'Collapsed',
+  Closed: 'Closed',
+  LanguageOptions: 'LanguageOptions',
+  QuickOptions: 'QuickOptions',
+  QuickOptions3: 'QuickOptions3',
+  AcceptAll: 'AcceptAll',
+  AcceptOrRejectAll: 'AcceptOrRejectAll',
+  AcceptOrRejectAnalytics: 'AcceptOrRejectAnalytics',
+  NoticeAndDoNotSell: 'NoticeAndDoNotSell',
+  DoNotSellExplainer: 'DoNotSellExplainer',
+  DoNotSellDisclosure: 'DoNotSellDisclosure',
+  PrivacyPolicyNotice: 'PrivacyPolicyNotice',
+  CompleteOptions: 'CompleteOptions',
+  CompleteOptionsInverted: 'CompleteOptionsInverted',
+  Hidden: 'Hidden',
 };
 
 /**
@@ -88,7 +136,7 @@ const validateViewState = (
   param: string,
   errors: string[],
 ): boolean => {
-  const valid = Object.values(ViewState).some(
+  const valid = Object.values(CopiedViewStates).some(
     (knownViewState) => knownViewState === viewState,
   );
   if (!valid) {

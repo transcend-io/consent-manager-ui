@@ -1,6 +1,7 @@
 {
   "ui.src.bottomMenu.moreChoicesButtonLabel": "Нажмите, чтобы показать больше вариантов",
   "ui.src.bottomMenu.moreChoicesButtonPrimary": "Больше вариантов",
+  "ui.src.bottomMenu.showPolicyButtonCompleteOptionsInverted": "Ознакомьтесь с нашей политикой конфиденциальности",
   "ui.src.bottomMenu.showPolicyButtonLabel": "Ознакомьтесь с нашей политикой конфиденциальности",
   "ui.src.bottomMenu.showPolicyButtonPrimary": "Ознакомьтесь с нашей Политикой конфиденциальности",
   "ui.src.bottomMenu.showSecondaryPolicyButton": "Подробнее",

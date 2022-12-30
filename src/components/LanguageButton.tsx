@@ -1,5 +1,5 @@
 import { h, JSX } from 'preact';
-import { AirgapAuth, ViewState } from '@transcend-io/airgap.js-types';
+import type { AirgapAuth, ViewState } from '@transcend-io/airgap.js-types';
 import { useIntl } from 'react-intl';
 import { useConfig } from '../hooks';
 import type { HandleSetViewState } from '../types';
@@ -19,11 +19,11 @@ export function LanguageButton({
 }): JSX.Element {
   const { config } = useConfig();
   const { formatMessage } = useIntl();
-  const onLanguageOptions = viewState === ViewState.LanguageOptions;
+  const onLanguageOptions = viewState === 'LanguageOptions';
 
   const handleClick = (e: AirgapAuth): void => {
     if (!onLanguageOptions) {
-      handleSetViewState(ViewState.LanguageOptions);
+      handleSetViewState('LanguageOptions');
     } else {
       handleSetViewState('back', e);
     }

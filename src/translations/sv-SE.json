@@ -1,6 +1,7 @@
 {
   "ui.src.bottomMenu.moreChoicesButtonLabel": "Klicka för att visa fler val",
   "ui.src.bottomMenu.moreChoicesButtonPrimary": "Fler val",
+  "ui.src.bottomMenu.showPolicyButtonCompleteOptionsInverted": "Se vår integritetspolicy",
   "ui.src.bottomMenu.showPolicyButtonLabel": "Besök vår integritetspolicy",
   "ui.src.bottomMenu.showPolicyButtonPrimary": "Se vår integritetspolicy",
   "ui.src.bottomMenu.showSecondaryPolicyButton": "Läs mer",
