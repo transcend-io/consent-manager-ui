@@ -27,13 +27,12 @@ export function DoNotSellExplainer({
   const [consentLocal, setConsentLocal] = useState(
     !!airgap.getConsent().purposes.SaleOfInfo,
   );
+  const switchId = `sale-of-info-${consentLocal}`;
 
-  // Opt in to all purposes
-  const handleDoNotSellExplainer = (
+  const handleSwitch = (
     checked: boolean,
-    event: JSX.TargetedEvent,
+    event: JSX.TargetedEvent<HTMLInputElement, Event>,
   ): void => {
-    event.preventDefault();
     airgap.setConsent(event, { SaleOfInfo: checked });
     setConsentLocal(checked);
     setSaving(true);
@@ -46,8 +45,6 @@ export function DoNotSellExplainer({
       setSaving(false);
     }, 500);
   };
-
-  const switchId = `sale-of-info-${consentLocal}`;
 
   return (
     <div className="column-content">
@@ -89,13 +86,14 @@ export function DoNotSellExplainer({
           <Switch
             id={switchId}
             checked={consentLocal}
-            handleSwitch={handleDoNotSellExplainer}
+            handleSwitch={handleSwitch}
             label={formatMessage(
               consentLocal
                 ? messages.doNotSellOptedIn
                 : messages.doNotSellOptedOut,
             )}
           />
+
           <p className="paragraph">
             {typeof saving === 'boolean'
               ? formatMessage(

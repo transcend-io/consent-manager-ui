@@ -66,6 +66,15 @@
   font-weight: 400;
 }
 
+/** Button focus */
+button:focus {
+  outline: 2px solid rgba(51, 157, 255, 0.7);
+}
+
+/** Anchor focus */
+a:focus {
+  outline: 2px solid rgba(51, 157, 255, 0.7);
+}
 
 /***********************************
  * Accessibility - non-visual label
@@ -83,7 +92,6 @@
 	white-space: nowrap;
 	width: 1px;
 }
-
 
 /*******************
  * Text Styles
@@ -543,7 +551,7 @@
   right: 21px;
   border: none;
   cursor: pointer;
-  background-color: #ededed;
+  background-color: #f2f2f2;
   border-radius: 5px;
   height: var(--squareDimension);
   width: var(--squareDimension);
@@ -554,7 +562,7 @@
 }
 
 /** Styles for button of X marker in top right corner on hover */
-.do-not-sell-explainer-close:hover {
+.do-not-sell-explainer-close:hover, .do-not-sell-explainer-close:focus {
   background-color: #e2e2e2;
 }
 
@@ -609,11 +617,6 @@
 }
 
 /** Removes checkbox for the switch since checkbox is basis for switch */
-.switch.switch-checkbox {
-  height: 0;
-  width: 0;
-  display: none;
-}
 
 /** Switch label */
 .switch.switch-background {
@@ -652,6 +655,13 @@
 /** When switch background is checked */
 .switch.switch-checkbox:checked + .switch.switch-background {
   background-color: var(--primary-color);
+}
+
+/** When switch is focused */
+.switch.switch-checkbox:focus + .switch.switch-background .switch.switch-button {
+  outline: 2px solid rgba(51, 157, 255, 0.7);
+  outline-offset: 1px;
+  outline-width: 5px;
 }
 
 /** Switch button when active */
@@ -756,10 +766,10 @@
     width: 64px;
   }
   .transcend-logo-svg:hover .transcend-wordmark,
-  .transcend-logo-svg:focus .transcend-wordmark {
+  .transcend-logo-container:focus .transcend-wordmark {
     fill-opacity: 1;
   }
-  .transcend-logo-svg:hover path {
+  .transcend-logo-svg:hover path, .transcend-logo-container:focus path {
     fill: var(--primary-color);
   }
 }

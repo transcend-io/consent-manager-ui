@@ -1,5 +1,6 @@
 :root {
-  font-family: -apple-system, BlinkMacSystemFont, neue-haas-grotesk-display;
+  font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir,
+    helvetica neue, helvetica, 'sans-serif';
 
   --borderRadius: 4px;
   --transition-duration: 150ms;
