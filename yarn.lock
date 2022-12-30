@@ -1180,7 +1180,6 @@ __metadata:
     "@transcend-io/logger": ^1.0.14
     "@types/json-schema": ^7.0.11
     "@types/node": ^17.0.21
-    "@types/requirejs": ^2
     "@typescript-eslint/eslint-plugin": ^5.12.1
     "@typescript-eslint/parser": ^5.12.1
     "@yarnpkg/esbuild-plugin-pnp": ^2.0.1
@@ -1474,13 +1473,6 @@ __metadata:
     "@types/scheduler": "*"
     csstype: ^3.0.2
   checksum: 6d72d35ab3eecf382a5e0f225923f5a2c753045fce02e4e29713f36c99a24f0f770666a49dde96167f37c86271f93339d1b7e2b8969d011b137a9ebd24ee6806
-  languageName: node
-  linkType: hard
-
-"@types/requirejs@npm:^2":
-  version: 2.1.34
-  resolution: "@types/requirejs@npm:2.1.34"
-  checksum: be6c2aaf425a39849a24438bcc4fc865d8608230a2ebd7536f0a9bdc44c6cd7d881b9e91188b2cf7c1899ddf1dfb303fc12a806164b05db8d589ddd5e3e32aa1
   languageName: node
   linkType: hard
 

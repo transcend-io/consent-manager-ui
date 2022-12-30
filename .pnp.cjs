@@ -34,7 +34,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@transcend-io/logger", "npm:1.1.0"],\
             ["@types/json-schema", "npm:7.0.11"],\
             ["@types/node", "npm:17.0.45"],\
-            ["@types/requirejs", "npm:2.1.34"],\
             ["@typescript-eslint/eslint-plugin", "virtual:c76842a5689228a0ce1b65e064c1f5e0d5b61e442d08b6527a3b1f100ca1f2105e58f5f1435c5a59df3cce3338560737838d99dae36d25b47d20aa50c89d0539#npm:5.12.1"],\
             ["@typescript-eslint/parser", "virtual:c76842a5689228a0ce1b65e064c1f5e0d5b61e442d08b6527a3b1f100ca1f2105e58f5f1435c5a59df3cce3338560737838d99dae36d25b47d20aa50c89d0539#npm:5.12.1"],\
             ["@yarnpkg/esbuild-plugin-pnp", "virtual:c76842a5689228a0ce1b65e064c1f5e0d5b61e442d08b6527a3b1f100ca1f2105e58f5f1435c5a59df3cce3338560737838d99dae36d25b47d20aa50c89d0539#npm:2.0.3"],\
@@ -1747,7 +1746,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@transcend-io/logger", "npm:1.1.0"],\
             ["@types/json-schema", "npm:7.0.11"],\
             ["@types/node", "npm:17.0.45"],\
-            ["@types/requirejs", "npm:2.1.34"],\
             ["@typescript-eslint/eslint-plugin", "virtual:c76842a5689228a0ce1b65e064c1f5e0d5b61e442d08b6527a3b1f100ca1f2105e58f5f1435c5a59df3cce3338560737838d99dae36d25b47d20aa50c89d0539#npm:5.12.1"],\
             ["@typescript-eslint/parser", "virtual:c76842a5689228a0ce1b65e064c1f5e0d5b61e442d08b6527a3b1f100ca1f2105e58f5f1435c5a59df3cce3338560737838d99dae36d25b47d20aa50c89d0539#npm:5.12.1"],\
             ["@yarnpkg/esbuild-plugin-pnp", "virtual:c76842a5689228a0ce1b65e064c1f5e0d5b61e442d08b6527a3b1f100ca1f2105e58f5f1435c5a59df3cce3338560737838d99dae36d25b47d20aa50c89d0539#npm:2.0.3"],\
@@ -2086,15 +2084,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/prop-types", "npm:15.7.5"],\
             ["@types/scheduler", "npm:0.16.2"],\
             ["csstype", "npm:3.1.0"]\
-          ],\
-          "linkType": "HARD"\
-        }]\
-      ]],\
-      ["@types/requirejs", [\
-        ["npm:2.1.34", {\
-          "packageLocation": "./.yarn/cache/@types-requirejs-npm-2.1.34-b3c6707c88-be6c2aaf42.zip/node_modules/@types/requirejs/",\
-          "packageDependencies": [\
-            ["@types/requirejs", "npm:2.1.34"]\
           ],\
           "linkType": "HARD"\
         }]\
