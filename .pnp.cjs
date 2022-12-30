@@ -63,6 +63,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["prettier", "npm:2.7.1"],\
             ["react-intl", "virtual:c76842a5689228a0ce1b65e064c1f5e0d5b61e442d08b6527a3b1f100ca1f2105e58f5f1435c5a59df3cce3338560737838d99dae36d25b47d20aa50c89d0539#npm:6.2.5"],\
             ["ts-node", "virtual:c76842a5689228a0ce1b65e064c1f5e0d5b61e442d08b6527a3b1f100ca1f2105e58f5f1435c5a59df3cce3338560737838d99dae36d25b47d20aa50c89d0539#npm:10.5.0"],\
+            ["tslib", "npm:2.4.1"],\
             ["typescript", "patch:typescript@npm%3A4.5.5#~builtin<compat/typescript>::version=4.5.5&hash=bcec9a"]\
           ],\
           "linkType": "SOFT"\
@@ -1791,6 +1792,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["prettier", "npm:2.7.1"],\
             ["react-intl", "virtual:c76842a5689228a0ce1b65e064c1f5e0d5b61e442d08b6527a3b1f100ca1f2105e58f5f1435c5a59df3cce3338560737838d99dae36d25b47d20aa50c89d0539#npm:6.2.5"],\
             ["ts-node", "virtual:c76842a5689228a0ce1b65e064c1f5e0d5b61e442d08b6527a3b1f100ca1f2105e58f5f1435c5a59df3cce3338560737838d99dae36d25b47d20aa50c89d0539#npm:10.5.0"],\
+            ["tslib", "npm:2.4.1"],\
             ["typescript", "patch:typescript@npm%3A4.5.5#~builtin<compat/typescript>::version=4.5.5&hash=bcec9a"]\
           ],\
           "linkType": "SOFT"\

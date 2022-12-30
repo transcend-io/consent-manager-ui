@@ -48,6 +48,7 @@ export const build = async (
         plugins: [
           alias({
             react: require.resolve('preact/compat'),
+            tslib: require.resolve('tslib/tslib.es6'),
             'react-dom/test-utils': require.resolve('preact/test-utils'),
             'react-dom': require.resolve('preact/compat'),
             'react/jsx-runtime': require.resolve('preact/jsx-runtime'),
