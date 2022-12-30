@@ -1,6 +1,6 @@
 import { h, JSX } from 'preact';
 import { useIntl } from 'react-intl';
-import { AirgapAuth, Purpose } from '@transcend-io/airgap.js-types';
+import type { AirgapAuth } from '@transcend-io/airgap.js-types';
 import { useEffect, useState } from 'preact/hooks';
 import { noticeAndDoNotSellMessages } from '../messages';
 import type { HandleSetViewState } from '../types';
@@ -28,7 +28,7 @@ export function DoNotSellDisclosure({
   const handleOptOut = (event: AirgapAuth): void => {
     // Confirm current consent
     airgap.setConsent(event, {
-      [Purpose.SaleOfInfo]: false,
+      SaleOfInfo: false,
     });
   };
 

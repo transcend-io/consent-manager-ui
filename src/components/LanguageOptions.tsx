@@ -4,7 +4,7 @@ import { sortSupportedLanguagesByPreference } from '../hooks';
 import { selectableLanguages } from '../i18n';
 import type { HandleSetViewState } from '../types';
 import { MenuItem } from './MenuItem';
-import { AirgapAuth } from '@transcend-io/airgap.js-types';
+import type { AirgapAuth } from '@transcend-io/airgap.js-types';
 import { useMemo } from 'preact/hooks';
 
 /**

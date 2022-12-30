@@ -498,6 +498,7 @@
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(20px) saturate(5);
   animation: fadeIn 150ms;
+  max-height: 90%;
   transition: width 150ms, height 150ms;
 }
 
@@ -507,6 +508,11 @@
   height: calc(100% - 38px);
   width: 100%;
   padding-bottom: 38px;
+}
+
+/** Styles that wrap the text container of the modal content. Excludes footer */
+.inner-container {
+  overflow-y: scroll;
 }
 
 /*******************

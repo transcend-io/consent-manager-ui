@@ -1,15 +1,15 @@
 import { h, render } from 'preact';
-import {
+import type {
   AirgapAPI,
   ConsentManagerAPI,
   ShowConsentManagerOptions,
-  ViewState,
 } from '@transcend-io/airgap.js-types';
 import { App } from './components/App';
 import { logger } from './logger';
 import { apiEventName } from './settings';
 import { createHTMLElement } from './utils/create-html-element';
 import { EmitEventOptions } from './types';
+import { CopiedViewStates } from './config';
 
 let interfaceInitialized = false;
 
@@ -75,7 +75,7 @@ export const injectConsentManagerApp = (
             eventType: 'setActiveLocale',
             locale,
           }),
-        viewStates: new Set(Object.values(ViewState)),
+        viewStates: new Set(Object.values(CopiedViewStates)),
         doNotSell: (auth, options: ShowConsentManagerOptions = {}) =>
           dispatchConsentManagerAPIEvent(appContainer, {
             eventType: 'doNotSell',
