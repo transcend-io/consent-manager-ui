@@ -1,5 +1,5 @@
 import { useCallback, useState } from 'preact/hooks';
-import {
+import type {
   AirgapAuth,
   DismissedViewState,
   InitialViewState,
@@ -15,11 +15,7 @@ import type { HandleSetViewState } from '../types';
  * @returns a boolean whether this is closed
  */
 export function viewStateIsClosed(viewState: ViewState): boolean {
-  const closedViewStates: ViewState[] = [
-    ViewState.Hidden,
-    ViewState.Closed,
-    ViewState.Collapsed,
-  ];
+  const closedViewStates: ViewState[] = ['Hidden', 'Closed', 'Collapsed'];
   return closedViewStates.includes(viewState);
 }
 
@@ -57,7 +53,7 @@ export function useViewState({
     /** Airgap auth */
     auth?: AirgapAuth;
   }>({
-    current: ViewState.Hidden,
+    current: 'Hidden',
     previous: null,
     firstSelectedViewState: null,
   });

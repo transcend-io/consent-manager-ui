@@ -1,4 +1,4 @@
-import { PrivacyRegime } from '@transcend-io/airgap.js-types';
+import type { PrivacyRegime } from '@transcend-io/airgap.js-types';
 import { settings } from './settings';
 
 const { regimePrecedence = 'GDPR;LGPD;CPRA;CDPA;CPA;Unknown' } = settings;

@@ -1,5 +1,5 @@
 import { h, JSX } from 'preact';
-import { AirgapAuth, ViewState } from '@transcend-io/airgap.js-types';
+import type { AirgapAuth, ViewState } from '@transcend-io/airgap.js-types';
 import { ConsentManagerLanguageKey } from '@transcend-io/internationalization';
 import { viewStateIsClosed } from '../hooks';
 import type { HandleSetViewState } from '../types';
@@ -50,58 +50,58 @@ export function Main({
       <div role="dialog" aria-model="true" className="modal-container">
         <div role="document" className="modal-container-inner">
           <div role="document" className="inner-container">
-            {viewState === ViewState.QuickOptions && (
+            {viewState === 'QuickOptions' && (
               <QuickOptions handleSetViewState={handleSetViewState} />
             )}
 
-            {viewState === ViewState.AcceptAll && (
+            {viewState === 'AcceptAll' && (
               <AcceptAll handleSetViewState={handleSetViewState} />
             )}
 
-            {viewState === ViewState.AcceptOrRejectAnalytics && (
+            {viewState === 'AcceptOrRejectAnalytics' && (
               <AcceptOrRejectAnalytics
                 handleSetViewState={handleSetViewState}
               />
             )}
 
-            {viewState === ViewState.DoNotSellExplainer && (
+            {viewState === 'DoNotSellExplainer' && (
               <DoNotSellExplainer handleSetViewState={handleSetViewState} />
             )}
 
-            {viewState === ViewState.QuickOptions3 && (
+            {viewState === 'QuickOptions3' && (
               <QuickOptions3 handleSetViewState={handleSetViewState} />
             )}
 
-            {viewState === ViewState.PrivacyPolicyNotice && (
+            {viewState === 'PrivacyPolicyNotice' && (
               <PrivacyPolicyNotice handleSetViewState={handleSetViewState} />
             )}
 
-            {viewState === ViewState.AcceptOrRejectAll && (
+            {viewState === 'AcceptOrRejectAll' && (
               <AcceptOrRejectAll handleSetViewState={handleSetViewState} />
             )}
 
-            {viewState === ViewState.DoNotSellDisclosure && modalOpenAuth && (
+            {viewState === 'DoNotSellDisclosure' && modalOpenAuth && (
               <DoNotSellDisclosure
                 handleSetViewState={handleSetViewState}
                 modalOpenAuth={modalOpenAuth}
               />
             )}
 
-            {viewState === ViewState.CompleteOptions && (
+            {viewState === 'CompleteOptions' && (
               <CompleteOptions handleSetViewState={handleSetViewState} />
             )}
 
-            {viewState === ViewState.CompleteOptionsInverted && (
+            {viewState === 'CompleteOptionsInverted' && (
               <CompleteOptionsInverted
                 handleSetViewState={handleSetViewState}
               />
             )}
 
-            {viewState === ViewState.NoticeAndDoNotSell && (
+            {viewState === 'NoticeAndDoNotSell' && (
               <NoticeAndDoNotSell handleSetViewState={handleSetViewState} />
             )}
 
-            {viewState === ViewState.LanguageOptions && (
+            {viewState === 'LanguageOptions' && (
               <LanguageOptions
                 handleSetViewState={handleSetViewState}
                 handleChangeLanguage={handleChangeLanguage}
@@ -128,7 +128,7 @@ export function Main({
 
   // Modal collapsed view
   if (
-    viewState === ViewState.Collapsed &&
+    viewState === 'Collapsed' &&
     (!firstSelectedViewState || !viewStateIsClosed(firstSelectedViewState))
   ) {
     return <Collapsed handleSetViewState={handleSetViewState} />;

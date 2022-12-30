@@ -1,4 +1,4 @@
-import { TrackingConsentDetails } from '@transcend-io/airgap.js-types';
+import type { TrackingConsentDetails } from '@transcend-io/airgap.js-types';
 import { h, JSX } from 'preact';
 import { useEffect, useState } from 'preact/hooks';
 import { airgapStub } from './airgapStub';

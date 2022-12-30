@@ -513,7 +513,6 @@
 /** Styles that wrap the text container of the modal content. Excludes footer */
 .inner-container {
   overflow-y: scroll;
-  max-height: 100px; /** FIXME */
 }
 
 /*******************

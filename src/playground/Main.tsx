@@ -1,4 +1,4 @@
-import { ViewState } from '@transcend-io/airgap.js-types';
+import { ViewState } from '@transcend-io/airgap.js-types/build/enums/viewState';
 import { h, JSX } from 'preact';
 import { Config } from './Config';
 import { ConsentLog } from './ConsentLog';

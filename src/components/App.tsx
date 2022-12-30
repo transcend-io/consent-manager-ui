@@ -1,9 +1,8 @@
 import { h, JSX } from 'preact';
 import { IntlProvider as _IntlProvider } from 'react-intl';
-import {
+import type {
   AirgapAPI,
   ConsentManagerAPI,
-  ViewState,
 } from '@transcend-io/airgap.js-types';
 import { getMergedConfig } from '../config';
 import {
@@ -63,7 +62,7 @@ export function App({
   const initialViewState =
     initialViewStateByPrivacyRegime[
       privacyRegime as keyof typeof initialViewStateByPrivacyRegime
-    ] || ViewState.Hidden;
+    ] || 'Hidden';
   const { viewState, firstSelectedViewState, handleSetViewState, auth } =
     useViewState({
       initialViewState,
@@ -77,12 +76,12 @@ export function App({
     } = event as CustomEvent<EmitEventOptions>;
     // Special case: instant do not sell view (user clicks footer and the banner is just a confirmation of their choice)
     if (
-      (options.viewState === ViewState.DoNotSellDisclosure ||
+      (options.viewState === 'DoNotSellDisclosure' ||
         eventType === 'doNotSell') &&
       !auth
     ) {
       throw new Error(
-        `${ViewState.DoNotSellDisclosure} view state can only be initialized with auth. ` +
+        `DoNotSellDisclosure view state can only be initialized with auth. ` +
           `Please provide the onClick event like: onClick: (event) => transcend.doNotSell(event)`,
       );
     }
@@ -96,10 +95,7 @@ export function App({
       setActiveLocale: () => null, // handled above
       viewStates: () => null, // should not be called
       doNotSell: () =>
-        handleSetViewState(
-          options.viewState || ViewState.DoNotSellDisclosure,
-          auth,
-        ),
+        handleSetViewState(options.viewState || 'DoNotSellDisclosure', auth),
       showConsentManager: () =>
         handleSetViewState(options.viewState || 'open', undefined, true),
       hideConsentManager: () => handleSetViewState('close'),
