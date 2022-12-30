@@ -1,8 +1,8 @@
-import {
+import type {
   TrackingPurposesTypes,
   ConsentManagerConfig,
-  DEFAULT_VIEW_STATE_BY_PRIVACY_REGIME,
 } from '@transcend-io/airgap.js-types';
+import { DEFAULT_VIEW_STATE_BY_PRIVACY_REGIME_COPIED } from '../config';
 
 export const defaultConfig: ConsentManagerConfig = {
   css: './build/cm.css',
@@ -15,7 +15,7 @@ export const defaultConfig: ConsentManagerConfig = {
     tablet: '640px',
     desktop: '1024px',
   },
-  initialViewStateByPrivacyRegime: DEFAULT_VIEW_STATE_BY_PRIVACY_REGIME,
+  initialViewStateByPrivacyRegime: DEFAULT_VIEW_STATE_BY_PRIVACY_REGIME_COPIED,
   privacyPolicy: 'https://example.com/privacy',
   dismissedViewState: 'Collapsed',
   secondaryPolicy: '',

@@ -3,39 +3,15 @@ import type {
   AirgapAPI,
   ConsentManagerAPI,
   ShowConsentManagerOptions,
-  ViewState,
 } from '@transcend-io/airgap.js-types';
 import { App } from './components/App';
 import { logger } from './logger';
 import { apiEventName } from './settings';
 import { createHTMLElement } from './utils/create-html-element';
 import { EmitEventOptions } from './types';
+import { CopiedViewStates } from './config';
 
 let interfaceInitialized = false;
-
-/**
- * This enum is copied to avoid airgap.js-types
- * being a production dependency for this package.
- * TODO: https://transcend.height.app/T-20982 - consider
- * a simpler option, such as a dedicated package for constants
- */
-const CopiedViewStates: { [k in ViewState]: ViewState } = {
-  Collapsed: 'Collapsed',
-  Closed: 'Closed',
-  LanguageOptions: 'LanguageOptions',
-  QuickOptions: 'QuickOptions',
-  QuickOptions3: 'QuickOptions3',
-  AcceptAll: 'AcceptAll',
-  AcceptOrRejectAll: 'AcceptOrRejectAll',
-  AcceptOrRejectAnalytics: 'AcceptOrRejectAnalytics',
-  NoticeAndDoNotSell: 'NoticeAndDoNotSell',
-  DoNotSellExplainer: 'DoNotSellExplainer',
-  DoNotSellDisclosure: 'DoNotSellDisclosure',
-  PrivacyPolicyNotice: 'PrivacyPolicyNotice',
-  CompleteOptions: 'CompleteOptions',
-  CompleteOptionsInverted: 'CompleteOptionsInverted',
-  Hidden: 'Hidden',
-};
 
 /**
  * Dispatcher for API events. API is called on globalThis.transcend and it triggers event listeners inside Preact
