@@ -26,7 +26,8 @@
     "@transcend-io/internationalization": "^1.5.1",
     "@transcend-io/logger": "^1.0.14",
     "preact": "10.5.14",
-    "react-intl": "^6.2.5"
+    "react-intl": "^6.2.5",
+    "tslib": "^2.4.1"
   },
   "scripts": {
     "update:sdks": "yarn set version from sources && yarn sdks base",

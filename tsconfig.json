@@ -32,8 +32,8 @@
     "forceConsistentCasingInFileNames": true,
 
     "downlevelIteration": false,
-    "importHelpers": false,
-    "noEmitHelpers": true,
+    "importHelpers": true,
+    "noEmitHelpers": false,
 
     "outDir": "./tsc-build",
     "rootDir": "src",
