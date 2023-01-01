@@ -14,6 +14,11 @@ enum Env {
 
 const { WATCH = 'false' } = process.env;
 
+console.log(
+  require.resolve('preact/compat'),
+  require.resolve('tslib/tslib.es6'),
+);
+
 const logger = console;
 export const build = async (
   outDir = 'build',
