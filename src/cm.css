@@ -13,6 +13,7 @@
   --modal-margin: 10px;
   --modal-padding: 21px;
   --content-padding: 38px;
+  --icon-button-width: 17px;
 }
 
 /*******************
@@ -325,12 +326,13 @@ a:focus-visible {
   width: unset;
   padding: unset;
   margin: unset;
-  width: 17px;
+
   height: 17px;
+  width: 17px;
+  margin-left: calc(var(--icon-button-width) - 17px);
+  display: flex;
+  justify-content: end;
   overflow: hidden;
-  position: absolute;
-  bottom: 0;
-  right: 0;
   cursor: pointer;
 }
 
@@ -362,10 +364,10 @@ a:focus-visible {
 
 /** Outer styles wrapped around entire bottom menu */
 .footer-container {
-  position: absolute;
-  bottom: var(--modal-padding);
-  width: calc(100% - var(--modal-padding) * 2);
+  width: 100%;
   height: 17px;
+  display: flex;
+  justify-content: space-between;
 }
 
 /** Styles applied to bottom menu */
@@ -376,7 +378,6 @@ a:focus-visible {
   flex-direction: row;
   justify-content: space-evenly;
   align-items: center;
-  margin: 0 auto;
 }
 
 /** Styles applied to each item of bottom menu */
@@ -682,12 +683,9 @@ a:focus-visible {
 
 /** Container around the Transcend logo in the bottom left hand side of the modal */
 .transcend-logo-container {
-  width: 17px;
+  width: var(--icon-button-width);
   height: 17px;
   overflow: hidden;
-  position: absolute;
-  bottom: 0;
-  left: 0;
 }
 
 /** Styles applied to the Transcend svg logo in the bottom left hand side of the modal */
@@ -717,6 +715,7 @@ a:focus-visible {
   /** Global constants */
   .root, .root > * {
     --modal-margin: 22px;
+    --icon-button-width: 64px;
   }
 
   /** Button Styles */
@@ -774,9 +773,6 @@ a:focus-visible {
   }
 
   /** TranscendLogo */
-  .transcend-logo-container {
-    width: 64px;
-  }
   .transcend-logo-svg:hover .transcend-wordmark,
   .transcend-logo-container:focus-visible .transcend-wordmark {
     fill-opacity: 1;
