@@ -42,7 +42,7 @@ export function LanguageOptions({
   );
 
   return (
-    <div className="language-options-container multi-paragraph">
+    <div className="language-options-container scroller">
       {availableTranslations.map((language) => (
         <div key={language} className="language-item-container">
           <MenuItem

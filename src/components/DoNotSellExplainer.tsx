@@ -69,7 +69,7 @@ export function DoNotSellExplainer({
         {formatMessage(messages.consentTitleDoNotSellExplainer)}
       </p>
       <div
-        className="paragraph multi-paragraph"
+        className="paragraph multi-paragraph scroller"
         // eslint-disable-next-line react/no-danger
         dangerouslySetInnerHTML={{
           __html: formatMessage(messages.doNotSellDescription),

@@ -120,11 +120,6 @@ a:focus-visible {
   margin: 0 0 1em 0;
 }
 
-/* Multiple paragraph styles */
-.multi-paragraph {
-  overflow-y: scroll;
-}
-
 /* Multiple paragraph interior styles */
 .multi-paragraph p:first-of-type {
   margin: 0;
@@ -562,7 +557,7 @@ a:focus-visible {
   right: var(--modal-padding);
   border: none;
   cursor: pointer;
-  background-color: #f2f2f2;
+  background-color: rgba(0, 0, 0, 0.05);
   border-radius: 5px;
   height: var(--squareDimension);
   width: var(--squareDimension);
@@ -574,7 +569,7 @@ a:focus-visible {
 
 /** Styles for button of X marker in top right corner on hover */
 .do-not-sell-explainer-close:hover, .do-not-sell-explainer-close:focus-visible {
-  background-color: #e2e2e2;
+  background-color: rgba(0, 0, 0, 0.11);
 }
 
 /* Content wrapper for Do Not Sell explainer */
@@ -591,6 +586,7 @@ a:focus-visible {
 .gpc-setting {
   display: flex;
   align-items: center;
+  margin-top: 1em;
 }
 
 /** GPC svg styles */
@@ -680,6 +676,43 @@ a:focus-visible {
 /** Switch button when active */
 .switch.switch-background:active .switch.switch-button {
   width: calc(var(--switchButtonDiameter) * 1.2);
+}
+
+/*******************
+ * Scrollbar
+ *******************/
+.scroller {
+  overflow-x: hidden;
+  overflow-y: scroll;
+  border-color: rgba(0, 0, 0, 0);
+  transition-timing-function: ease-in-out;
+  transition-duration: 200ms;
+  transition-property: border-color;
+  border-color: rgba(0, 0, 0, 0.075);
+}
+
+.scroller:hover {
+  border-color: rgba(0, 0, 0, 0.15);
+}
+
+.scroller::-webkit-scrollbar,
+.scroller::-webkit-scrollbar-thumb,
+.scroller::-webkit-scrollbar-corner {
+  border-color: inherit;
+  border-right-width: calc(100vw + 100vh);
+  border-right-style: inset;
+}
+
+.scroller::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+  border-color: rgba(0, 0, 0, 0);
+}
+
+.scroller::-webkit-scrollbar-thumb {
+  border-color: rgba(0, 0, 0, 0.1);
+  border-color: inherit;
+  border-radius: 100px;
 }
 
 /*******************
