@@ -12,7 +12,6 @@
 .root, .root > * {
   --modal-margin: 10px;
   --modal-padding: 21px;
-  --content-padding: 38px;
   --icon-button-width: 17px;
 }
 
@@ -526,9 +525,9 @@ a:focus-visible {
 /** Inner contents wrapper for modal content */
 .modal-container-inner {
   min-height: 79px;
-  height: calc(100% - var(--content-padding));
+  height: calc(100% - var(--modal-padding));
   width: 100%;
-  padding-bottom: var(--content-padding);
+  padding-bottom: var(--modal-padding);
 }
 
 /*******************
