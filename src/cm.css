@@ -8,6 +8,11 @@
   --text-color: #010101;
 }
 
+/** Global constants */
+.root, .root > * {
+  --gutter: 10px;
+}
+
 /*******************
  * Button Styles
  *******************/
@@ -490,12 +495,12 @@ a:focus {
 /** Container that is wrapped around the modal */
 .modal-container {
   position: fixed;
-  bottom: 10px;
-  max-height: calc(100vh - 20px);
-  left: 5px;
-  right: 5px;
+  bottom: var(--gutter);
+  max-height: calc(100vh - var(--gutter) * 2);
+  left: var(--gutter);
+  right: var(--gutter);
   margin: 0 auto;
-  width: calc(100% - 10px);
+  width: calc(100% - var(--gutter) * 2);
   box-sizing: border-box;
   border-radius: 18px;
   border: 0.5px solid #d8d8d8;
@@ -700,8 +705,13 @@ a:focus {
  * Media Styles
  *******************/
 
-/** At least table */
+/** At least tablet */
 @media (min-width: 640px) {
+  /** Global constants */
+  .root, .root > * {
+    --gutter: 22px;
+  }
+
   /** Button Styles */
   .button {
     width: 135px;
@@ -720,10 +730,11 @@ a:focus {
     text-align: center;
   }
   .paragraph {
-    margin: 18px 18px 0 0;
+    margin: 18px 0 0 0;
   }
   .column-content {
     flex-direction: row;
+    justify-content: space-between;
   }
 
   /** AcceptOrRejectAll */
@@ -752,8 +763,7 @@ a:focus {
   .modal-container {
     max-width: 630px;
     min-height: 160px;
-    bottom: 22px;
-    max-height: calc(100vh - 44px);
+    bottom: var(--gutter);
   }
 
   /** TranscendLogo */

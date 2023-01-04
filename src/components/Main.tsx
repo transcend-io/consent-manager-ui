@@ -47,7 +47,7 @@ export function Main({
   // Modal open views
   if (!viewStateIsClosed(viewState)) {
     return (
-      <div role="dialog" aria-model="true" className="modal-container">
+      <div role="dialog" aria-model="true" className="modal-container root">
         <div role="document" className="modal-container-inner">
           {viewState === 'QuickOptions' && (
             <QuickOptions handleSetViewState={handleSetViewState} />
