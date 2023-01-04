@@ -120,7 +120,7 @@ a:focus-visible {
   margin: 0 0 1em 0;
 }
 
-/* Multiple paragraph interior styles */
+/** Multiple paragraph interior styles */
 .multi-paragraph p:first-of-type {
   margin: 0;
 }
@@ -572,7 +572,7 @@ a:focus-visible {
   background-color: rgba(0, 0, 0, 0.11);
 }
 
-/* Content wrapper for Do Not Sell explainer */
+/** Content wrapper for Do Not Sell explainer */
 .do-not-sell-explainer-content {
   display: flex;
   flex-direction: column;
