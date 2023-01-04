@@ -681,6 +681,8 @@ a:focus-visible {
 /*******************
  * Scrollbar
  *******************/
+
+/** Scrollbar style override */
 .scroller {
   overflow-x: hidden;
   overflow-y: scroll;
@@ -691,10 +693,12 @@ a:focus-visible {
   border-color: rgba(0, 0, 0, 0.075);
 }
 
+/** Scrollbar hover */
 .scroller:hover {
   border-color: rgba(0, 0, 0, 0.15);
 }
 
+/** Scrollbar border */
 .scroller::-webkit-scrollbar,
 .scroller::-webkit-scrollbar-thumb,
 .scroller::-webkit-scrollbar-corner {
@@ -703,12 +707,14 @@ a:focus-visible {
   border-right-style: inset;
 }
 
+/** Scrollbar track */
 .scroller::-webkit-scrollbar {
   width: 7px;
   height: 7px;
   border-color: rgba(0, 0, 0, 0);
 }
 
+/** Scrollbar thumb */
 .scroller::-webkit-scrollbar-thumb {
   border-color: rgba(0, 0, 0, 0.1);
   border-color: inherit;
