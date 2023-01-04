@@ -74,12 +74,12 @@
 }
 
 /** Button focus */
-button:focus {
+button:focus-visible {
   outline: 2px solid rgba(51, 157, 255, 0.7);
 }
 
 /** Anchor focus */
-a:focus {
+a:focus-visible {
   outline: 2px solid rgba(51, 157, 255, 0.7);
 }
 
@@ -247,10 +247,15 @@ a:focus {
   transform: rotate(45deg) scale(1);
 }
 
-/** Style applied to toggle input when focused */
-.toggle-input:hover:enabled + span,
-.toggle-input:focus-visible + span {
+/** Style applied to toggle input when hovered */
+.toggle-input:hover:enabled + span {
   border-color: var(--primary-color);
+}
+
+/** Style applied to toggle input when focused */
+.toggle-input:focus-visible + span {
+  outline: 2px solid rgba(51, 157, 255, 0.7);
+  outline-offset: 1px;
 }
 
 /** Style applied to checkbox input span when disabled */
@@ -564,7 +569,7 @@ a:focus {
 }
 
 /** Styles for button of X marker in top right corner on hover */
-.do-not-sell-explainer-close:hover, .do-not-sell-explainer-close:focus {
+.do-not-sell-explainer-close:hover, .do-not-sell-explainer-close:focus-visible {
   background-color: #e2e2e2;
 }
 
@@ -660,7 +665,7 @@ a:focus {
 }
 
 /** When switch is focused */
-.switch.switch-checkbox:focus + .switch.switch-background .switch.switch-button {
+.switch.switch-checkbox:focus-visible + .switch.switch-background .switch.switch-button {
   outline: 2px solid rgba(51, 157, 255, 0.7);
   outline-offset: 1px;
   outline-width: 5px;
@@ -736,7 +741,7 @@ a:focus {
   }
   .column-content {
     flex-direction: row;
-    justify-content: space-between;
+    gap: 16px;
   }
 
   /** AcceptOrRejectAll */
@@ -773,10 +778,10 @@ a:focus {
     width: 64px;
   }
   .transcend-logo-svg:hover .transcend-wordmark,
-  .transcend-logo-container:focus .transcend-wordmark {
+  .transcend-logo-container:focus-visible .transcend-wordmark {
     fill-opacity: 1;
   }
-  .transcend-logo-svg:hover path, .transcend-logo-container:focus path {
+  .transcend-logo-svg:hover path, .transcend-logo-container:focus-visible path {
     fill: var(--primary-color);
   }
 }
