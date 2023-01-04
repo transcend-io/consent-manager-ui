@@ -10,7 +10,9 @@
 
 /** Global constants */
 .root, .root > * {
-  --gutter: 10px;
+  --modal-margin: 10px;
+  --modal-padding: 21px;
+  --content-padding: 38px;
 }
 
 /*******************
@@ -356,8 +358,8 @@ a:focus {
 /** Outer styles wrapped around entire bottom menu */
 .footer-container {
   position: absolute;
-  bottom: 21px;
-  width: calc(100% - 21px * 2);
+  bottom: var(--modal-padding);
+  width: calc(100% - var(--modal-padding) * 2);
   height: 17px;
 }
 
@@ -495,18 +497,18 @@ a:focus {
 /** Container that is wrapped around the modal */
 .modal-container {
   position: fixed;
-  bottom: var(--gutter);
-  max-height: calc(100vh - var(--gutter) * 2);
-  left: var(--gutter);
-  right: var(--gutter);
+  bottom: var(--modal-margin);
+  max-height: calc(100vh - var(--modal-margin) * 2);
+  left: var(--modal-margin);
+  right: var(--modal-margin);
   margin: 0 auto;
-  width: calc(100% - var(--gutter) * 2);
+  width: calc(100% - var(--modal-margin) * 2);
   box-sizing: border-box;
   border-radius: 18px;
   border: 0.5px solid #d8d8d8;
   background-color: rgba(255, 255, 255, 0.9);
   overflow: hidden;
-  padding: 21px;
+  padding: var(--modal-padding);
   font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir,
     helvetica neue, helvetica, 'sans-serif';
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
@@ -518,9 +520,9 @@ a:focus {
 /** Inner contents wrapper for modal content */
 .modal-container-inner {
   min-height: 79px;
-  height: calc(100% - 38px);
+  height: calc(100% - var(--content-padding));
   width: 100%;
-  padding-bottom: 38px;
+  padding-bottom: var(--content-padding);
 }
 
 /*******************
@@ -547,8 +549,8 @@ a:focus {
   --squareDimension: 25px;
   padding: 4px;
   position: absolute;
-  top: 21px;
-  right: 21px;
+  top: var(--modal-padding);
+  right: var(--modal-padding);
   border: none;
   cursor: pointer;
   background-color: #f2f2f2;
@@ -709,7 +711,7 @@ a:focus {
 @media (min-width: 640px) {
   /** Global constants */
   .root, .root > * {
-    --gutter: 22px;
+    --modal-margin: 22px;
   }
 
   /** Button Styles */
@@ -763,7 +765,7 @@ a:focus {
   .modal-container {
     max-width: 630px;
     min-height: 160px;
-    bottom: var(--gutter);
+    bottom: var(--modal-margin);
   }
 
   /** TranscendLogo */
