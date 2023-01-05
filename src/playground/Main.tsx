@@ -1,5 +1,4 @@
-import { CopiedViewStates } from '../config';
-import type { ViewState } from '@transcend-io/airgap.js-types';
+import { ViewState } from '@transcend-io/airgap.js-types/build/enums/viewState';
 import { h, JSX } from 'preact';
 import { Config } from './Config';
 import { ConsentLog } from './ConsentLog';
@@ -27,7 +26,7 @@ export default function Main(): JSX.Element {
         <p style={{ fontWeight: '600', fontSize: '12px', margin: '0 0 3px 0' }}>
           Open a view
         </p>
-        {Object.values(CopiedViewStates)
+        {Object.values(ViewState)
           .filter((viewState) => viewState !== 'DoNotSellDisclosure')
           .map((viewState) => (
             <button
