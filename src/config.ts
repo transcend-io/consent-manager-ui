@@ -5,9 +5,9 @@
 import type {
   ConsentManagerConfig,
   ConsentManagerConfigInput,
-  ViewState,
   PrivacyRegimeToInitialViewState,
 } from '@transcend-io/airgap.js-types';
+import { ViewState } from '@transcend-io/airgap.js-types/build/enums/viewState';
 import { logger } from './logger';
 import { settings, LOG_LEVELS, extraConfig } from './settings';
 import { jsonParseSafe } from './utils/safe-json-parse';
@@ -60,31 +60,6 @@ const baseConfig: Omit<
   },
   initialViewStateByPrivacyRegime: DEFAULT_VIEW_STATE_BY_PRIVACY_REGIME_COPIED,
 };
-
-/**
- * This enum is copied to avoid airgap.js-types
- * being a production dependency for this package.
- * TODO: https://transcend.height.app/T-20982 - consider
- * a simpler option, such as a dedicated package for constants
- */
-export const CopiedViewStates: { [k in ViewState]: ViewState } = {
-  Collapsed: 'Collapsed',
-  Closed: 'Closed',
-  LanguageOptions: 'LanguageOptions',
-  QuickOptions: 'QuickOptions',
-  QuickOptions3: 'QuickOptions3',
-  AcceptAll: 'AcceptAll',
-  AcceptOrRejectAll: 'AcceptOrRejectAll',
-  AcceptOrRejectAnalytics: 'AcceptOrRejectAnalytics',
-  NoticeAndDoNotSell: 'NoticeAndDoNotSell',
-  DoNotSellExplainer: 'DoNotSellExplainer',
-  DoNotSellDisclosure: 'DoNotSellDisclosure',
-  PrivacyPolicyNotice: 'PrivacyPolicyNotice',
-  CompleteOptions: 'CompleteOptions',
-  CompleteOptionsInverted: 'CompleteOptionsInverted',
-  Hidden: 'Hidden',
-};
-
 /**
  * Merges config from defaults and settings. JSON is automatically decoded.
  *
@@ -136,7 +111,7 @@ const validateViewState = (
   param: string,
   errors: string[],
 ): boolean => {
-  const valid = Object.values(CopiedViewStates).some(
+  const valid = Object.values(ViewState).some(
     (knownViewState) => knownViewState === viewState,
   );
   if (!valid) {

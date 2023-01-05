@@ -31,16 +31,12 @@ export function AcceptAll({
   return (
     <div className="column-content">
       <div>
-        <div>
-          <p className="text-title text-title-left">
-            {formatMessage(messages.consentTitleAcceptAll)}
-          </p>
-        </div>
-        <div>
-          <p className="paragraph">
-            {formatMessage(messages.acceptAllDescription)}
-          </p>
-        </div>
+        <p className="text-title text-title-left">
+          {formatMessage(messages.consentTitleAcceptAll)}
+        </p>
+        <p className="paragraph">
+          {formatMessage(messages.acceptAllDescription)}
+        </p>
       </div>
       <Button
         primaryText={formatMessage(messages.acceptAllButtonPrimary)}

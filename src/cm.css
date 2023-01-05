@@ -8,6 +8,13 @@
   --text-color: #010101;
 }
 
+/** Global constants */
+.root, .root > * {
+  --modal-margin: 10px;
+  --modal-padding: 21px;
+  --icon-button-width: 17px;
+}
+
 /*******************
  * Button Styles
  *******************/
@@ -67,12 +74,12 @@
 }
 
 /** Button focus */
-button:focus {
+button:focus-visible {
   outline: 2px solid rgba(51, 157, 255, 0.7);
 }
 
 /** Anchor focus */
-a:focus {
+a:focus-visible {
   outline: 2px solid rgba(51, 157, 255, 0.7);
 }
 
@@ -110,7 +117,12 @@ a:focus {
 .paragraph {
   color: var(--text-color);
   font-size: 14px;
-  margin: 0 0 18px 0;
+  margin: 0 0 1em 0;
+}
+
+/** Multiple paragraph interior styles */
+.multi-paragraph p:first-of-type {
+  margin: 0;
 }
 
 /** Styles applied to the main contents of the consent modal (does not include footer) */
@@ -240,10 +252,15 @@ a:focus {
   transform: rotate(45deg) scale(1);
 }
 
-/** Style applied to toggle input when focused */
-.toggle-input:hover:enabled + span,
-.toggle-input:focus-visible + span {
+/** Style applied to toggle input when hovered */
+.toggle-input:hover:enabled + span {
   border-color: var(--primary-color);
+}
+
+/** Style applied to toggle input when focused */
+.toggle-input:focus-visible + span {
+  outline: 2px solid rgba(51, 157, 255, 0.7);
+  outline-offset: 1px;
 }
 
 /** Style applied to checkbox input span when disabled */
@@ -276,22 +293,12 @@ a:focus {
 }
 
 /*******************
- * DoNotSellExplainer
- *******************/
-
-/** Do not sell switch interface */
-.margin-tops > * {
-  margin-top: 2em;
-}
-
-/*******************
  * LanguageOptions
  *******************/
 
 /** Styles applied around the language container */
 .language-options-container {
   width: 100%;
-  height: 100%;
   animation: fadeIn 200ms ease-in;
   display: flex;
   flex-direction: row;
@@ -313,12 +320,13 @@ a:focus {
   width: unset;
   padding: unset;
   margin: unset;
-  width: 17px;
+
   height: 17px;
+  width: 17px;
+  margin-left: calc(var(--icon-button-width) - 17px);
+  display: flex;
+  justify-content: end;
   overflow: hidden;
-  position: absolute;
-  bottom: 0;
-  right: 0;
   cursor: pointer;
 }
 
@@ -350,10 +358,11 @@ a:focus {
 
 /** Outer styles wrapped around entire bottom menu */
 .footer-container {
-  position: absolute;
-  bottom: 21px;
-  width: calc(100% - 21px * 2);
+  width: 100%;
   height: 17px;
+  display: flex;
+  justify-content: space-between;
+  padding-top: var(--modal-padding);
 }
 
 /** Styles applied to bottom menu */
@@ -364,7 +373,6 @@ a:focus {
   flex-direction: row;
   justify-content: space-evenly;
   align-items: center;
-  margin: 0 auto;
 }
 
 /** Styles applied to each item of bottom menu */
@@ -490,37 +498,35 @@ a:focus {
 /** Container that is wrapped around the modal */
 .modal-container {
   position: fixed;
-  bottom: 10px;
-  left: 5px;
-  right: 5px;
+  bottom: var(--modal-margin);
+  max-height: calc(100vh - var(--modal-margin) * 2);
+  left: var(--modal-margin);
+  right: var(--modal-margin);
   margin: 0 auto;
-  width: calc(100% - 10px);
+  width: calc(100% - var(--modal-margin) * 2);
   box-sizing: border-box;
   border-radius: 18px;
   border: 0.5px solid #d8d8d8;
   background-color: rgba(255, 255, 255, 0.9);
   overflow: hidden;
-  padding: 21px;
+  padding: var(--modal-padding);
+  display: flex;
+  flex-direction: column;
   font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir,
     helvetica neue, helvetica, 'sans-serif';
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(20px) saturate(5);
   animation: fadeIn 150ms;
-  max-height: 90%;
   transition: width 150ms, height 150ms;
 }
 
 /** Inner contents wrapper for modal content */
 .modal-container-inner {
   min-height: 79px;
-  height: calc(100% - 38px);
+  display: flex;
   width: 100%;
-  padding-bottom: 38px;
-}
-
-/** Styles that wrap the text container of the modal content. Excludes footer */
-.inner-container {
-  overflow-y: scroll;
+  height: 100%;
+  justify-content: center;
 }
 
 /*******************
@@ -547,11 +553,11 @@ a:focus {
   --squareDimension: 25px;
   padding: 4px;
   position: absolute;
-  top: 21px;
-  right: 21px;
+  top: var(--modal-padding);
+  right: var(--modal-padding);
   border: none;
   cursor: pointer;
-  background-color: #f2f2f2;
+  background-color: rgba(0, 0, 0, 0.05);
   border-radius: 5px;
   height: var(--squareDimension);
   width: var(--squareDimension);
@@ -562,13 +568,14 @@ a:focus {
 }
 
 /** Styles for button of X marker in top right corner on hover */
-.do-not-sell-explainer-close:hover, .do-not-sell-explainer-close:focus {
-  background-color: #e2e2e2;
+.do-not-sell-explainer-close:hover, .do-not-sell-explainer-close:focus-visible {
+  background-color: rgba(0, 0, 0, 0.11);
 }
 
-/** Outline for do not sell explainer */
-.do-not-sell-explainer-interface {
-  margin-top: 2em;
+/** Content wrapper for Do Not Sell explainer */
+.do-not-sell-explainer-content {
+  display: flex;
+  flex-direction: column;
 }
 
 /*******************
@@ -579,6 +586,7 @@ a:focus {
 .gpc-setting {
   display: flex;
   align-items: center;
+  margin-top: 1em;
 }
 
 /** GPC svg styles */
@@ -610,7 +618,8 @@ a:focus {
   align-items: center;
   font-weight: 500;
   font-size: 14px;
-  height: 16px;
+  height: var(--switchHeight);
+  margin-top: 1em;
   vertical-align: baseline;
   text-shadow: none;
   white-space: nowrap;
@@ -658,7 +667,7 @@ a:focus {
 }
 
 /** When switch is focused */
-.switch.switch-checkbox:focus + .switch.switch-background .switch.switch-button {
+.switch.switch-checkbox:focus-visible + .switch.switch-background .switch.switch-button {
   outline: 2px solid rgba(51, 157, 255, 0.7);
   outline-offset: 1px;
   outline-width: 5px;
@@ -670,17 +679,57 @@ a:focus {
 }
 
 /*******************
+ * Scrollbar
+ *******************/
+
+/** Scrollbar style override */
+.scroller {
+  overflow-x: hidden;
+  overflow-y: scroll;
+  border-color: rgba(0, 0, 0, 0);
+  transition-timing-function: ease-in-out;
+  transition-duration: 200ms;
+  transition-property: border-color;
+  border-color: rgba(0, 0, 0, 0.075);
+}
+
+/** Scrollbar hover */
+.scroller:hover {
+  border-color: rgba(0, 0, 0, 0.15);
+}
+
+/** Scrollbar border */
+.scroller::-webkit-scrollbar,
+.scroller::-webkit-scrollbar-thumb,
+.scroller::-webkit-scrollbar-corner {
+  border-color: inherit;
+  border-right-width: calc(100vw + 100vh);
+  border-right-style: inset;
+}
+
+/** Scrollbar track */
+.scroller::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+  border-color: rgba(0, 0, 0, 0);
+}
+
+/** Scrollbar thumb */
+.scroller::-webkit-scrollbar-thumb {
+  border-color: rgba(0, 0, 0, 0.1);
+  border-color: inherit;
+  border-radius: 100px;
+}
+
+/*******************
  * TranscendLogo
  *******************/
 
 /** Container around the Transcend logo in the bottom left hand side of the modal */
 .transcend-logo-container {
-  width: 17px;
+  width: var(--icon-button-width);
   height: 17px;
   overflow: hidden;
-  position: absolute;
-  bottom: 0;
-  left: 0;
 }
 
 /** Styles applied to the Transcend svg logo in the bottom left hand side of the modal */
@@ -705,8 +754,14 @@ a:focus {
  * Media Styles
  *******************/
 
-/** At least table */
+/** At least tablet */
 @media (min-width: 640px) {
+  /** Global constants */
+  .root, .root > * {
+    --modal-margin: 22px;
+    --icon-button-width: 64px;
+  }
+
   /** Button Styles */
   .button {
     width: 135px;
@@ -725,10 +780,11 @@ a:focus {
     text-align: center;
   }
   .paragraph {
-    margin: 18px 18px 0 0;
+    margin: 1em 0 0 0;
   }
   .column-content {
     flex-direction: row;
+    gap: 16px;
   }
 
   /** AcceptOrRejectAll */
@@ -755,21 +811,17 @@ a:focus {
 
   /** Modal */
   .modal-container {
-    bottom: 5px;
     max-width: 630px;
     min-height: 160px;
-    bottom: 22px;
+    bottom: var(--modal-margin);
   }
 
   /** TranscendLogo */
-  .transcend-logo-container {
-    width: 64px;
-  }
   .transcend-logo-svg:hover .transcend-wordmark,
-  .transcend-logo-container:focus .transcend-wordmark {
+  .transcend-logo-container:focus-visible .transcend-wordmark {
     fill-opacity: 1;
   }
-  .transcend-logo-svg:hover path, .transcend-logo-container:focus path {
+  .transcend-logo-svg:hover path, .transcend-logo-container:focus-visible path {
     fill: var(--primary-color);
   }
 }
