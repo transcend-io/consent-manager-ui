@@ -20,16 +20,12 @@ export function AcceptOrRejectAnalytics({
   return (
     <div className="column-content">
       <div>
-        <div>
-          <p className="text-title text-title-left">
-            {formatMessage(messages.consentTitleAcceptOrRejectAnalytics)}
-          </p>
-        </div>
-        <div>
-          <p className="paragraph">
-            {formatMessage(messages.acceptOrRejectAnalyticsDescription)}
-          </p>
-        </div>
+        <p className="text-title text-title-left">
+          {formatMessage(messages.consentTitleAcceptOrRejectAnalytics)}
+        </p>
+        <p className="paragraph">
+          {formatMessage(messages.acceptOrRejectAnalyticsDescription)}
+        </p>
       </div>
       <div className="accept-or-reject-all-button-row">
         <Button
