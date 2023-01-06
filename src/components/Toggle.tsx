@@ -12,6 +12,7 @@ export function Toggle({
   disabled,
   handleToggle,
   ariaLabel,
+  invertLabels,
 }: {
   /** The name for this consent toggle */
   name: string;
@@ -23,6 +24,8 @@ export function Toggle({
   handleToggle: (checked: boolean) => void;
   /** An override to the default aria label */
   ariaLabel?: string;
+  /** When true, invert the labels for the alt text */
+  invertLabels?: boolean;
 }): JSX.Element {
   const { formatMessage } = useIntl();
 
@@ -36,6 +39,7 @@ export function Toggle({
 
   const id = name.replace(/\s/g, '-').toLowerCase();
 
+  const useToggleDisable = invertLabels ? !toggleState : !!toggleState;
   return (
     <label
       className="toggle-label"
@@ -43,7 +47,7 @@ export function Toggle({
       aria-label={
         ariaLabel ||
         `${
-          toggleState
+          useToggleDisable
             ? formatMessage(completeOptionsMessages.toggleDisable)
             : formatMessage(completeOptionsMessages.toggleEnable)
         } – ${name.toLocaleLowerCase()}`
@@ -51,7 +55,7 @@ export function Toggle({
       title={
         ariaLabel ||
         `${
-          toggleState
+          useToggleDisable
             ? formatMessage(completeOptionsMessages.toggleDisable)
             : formatMessage(completeOptionsMessages.toggleEnable)
         } – ${name.toLocaleLowerCase()}`
