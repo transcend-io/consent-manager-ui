@@ -9,7 +9,7 @@ import { logger } from './logger';
 import { apiEventName } from './settings';
 import { createHTMLElement } from './utils/create-html-element';
 import { EmitEventOptions } from './types';
-import { ViewState } from '@transcend-io/airgap.js-types/build/enums/viewState';
+import { CopiedViewStates } from './config';
 
 let interfaceInitialized = false;
 
@@ -75,7 +75,7 @@ export const injectConsentManagerApp = (
             eventType: 'setActiveLocale',
             locale,
           }),
-        viewStates: new Set(Object.values(ViewState)),
+        viewStates: new Set(Object.values(CopiedViewStates)),
         doNotSell: (auth, options: ShowConsentManagerOptions = {}) =>
           dispatchConsentManagerAPIEvent(appContainer, {
             eventType: 'doNotSell',
