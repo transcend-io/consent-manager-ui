@@ -699,7 +699,8 @@ a:focus-visible {
 }
 
 /** Scrollbar border */
-.scroller::-webkit-scrollbar, .scroller::-webkit-scrollbar-thumb,
+.scroller::-webkit-scrollbar,
+.scroller::-webkit-scrollbar-thumb,
 .scroller::-webkit-scrollbar-corner {
   border-color: inherit;
   border-right-width: calc(100vw + 100vh);

@@ -89,7 +89,6 @@ export function CompleteOptionsInverted({
           {orderedSelections.map(([purpose, isChecked]) => (
             <Toggle
               key={purpose}
-              invertLabels
               name={
                 Object.hasOwnProperty.call(purposeToMessageKey, purpose)
                   ? formatMessage(purposeToMessageKey[purpose])
