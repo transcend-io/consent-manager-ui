@@ -8,13 +8,6 @@
   --text-color: #010101;
 }
 
-/** Global constants */
-.root, .root > * {
-  --modal-margin: 10px;
-  --modal-padding: 21px;
-  --icon-button-width: 17px;
-}
-
 /*******************
  * Button Styles
  *******************/
@@ -74,12 +67,12 @@
 }
 
 /** Button focus */
-button:focus-visible {
+button:focus {
   outline: 2px solid rgba(51, 157, 255, 0.7);
 }
 
 /** Anchor focus */
-a:focus-visible {
+a:focus {
   outline: 2px solid rgba(51, 157, 255, 0.7);
 }
 
@@ -117,12 +110,7 @@ a:focus-visible {
 .paragraph {
   color: var(--text-color);
   font-size: 14px;
-  margin: 0 0 1em 0;
-}
-
-/** Multiple paragraph interior styles */
-.multi-paragraph p:first-of-type {
-  margin: 0;
+  margin: 0 0 18px 0;
 }
 
 /** Styles applied to the main contents of the consent modal (does not include footer) */
@@ -252,15 +240,10 @@ a:focus-visible {
   transform: rotate(45deg) scale(1);
 }
 
-/** Style applied to toggle input when hovered */
-.toggle-input:hover:enabled + span {
-  border-color: var(--primary-color);
-}
-
 /** Style applied to toggle input when focused */
+.toggle-input:hover:enabled + span,
 .toggle-input:focus-visible + span {
-  outline: 2px solid rgba(51, 157, 255, 0.7);
-  outline-offset: 1px;
+  border-color: var(--primary-color);
 }
 
 /** Style applied to checkbox input span when disabled */
@@ -293,12 +276,22 @@ a:focus-visible {
 }
 
 /*******************
+ * DoNotSellExplainer
+ *******************/
+
+/** Do not sell switch interface */
+.margin-tops > * {
+  margin-top: 2em;
+}
+
+/*******************
  * LanguageOptions
  *******************/
 
 /** Styles applied around the language container */
 .language-options-container {
   width: 100%;
+  height: 100%;
   animation: fadeIn 200ms ease-in;
   display: flex;
   flex-direction: row;
@@ -320,13 +313,12 @@ a:focus-visible {
   width: unset;
   padding: unset;
   margin: unset;
-
-  height: 17px;
   width: 17px;
-  margin-left: calc(var(--icon-button-width) - 17px);
-  display: flex;
-  justify-content: end;
+  height: 17px;
   overflow: hidden;
+  position: absolute;
+  bottom: 0;
+  right: 0;
   cursor: pointer;
 }
 
@@ -358,11 +350,10 @@ a:focus-visible {
 
 /** Outer styles wrapped around entire bottom menu */
 .footer-container {
-  width: 100%;
+  position: absolute;
+  bottom: 21px;
+  width: calc(100% - 21px * 2);
   height: 17px;
-  display: flex;
-  justify-content: space-between;
-  padding-top: var(--modal-padding);
 }
 
 /** Styles applied to bottom menu */
@@ -373,6 +364,7 @@ a:focus-visible {
   flex-direction: row;
   justify-content: space-evenly;
   align-items: center;
+  margin: 0 auto;
 }
 
 /** Styles applied to each item of bottom menu */
@@ -498,35 +490,37 @@ a:focus-visible {
 /** Container that is wrapped around the modal */
 .modal-container {
   position: fixed;
-  bottom: var(--modal-margin);
-  max-height: calc(100vh - var(--modal-margin) * 2);
-  left: var(--modal-margin);
-  right: var(--modal-margin);
+  bottom: 10px;
+  left: 5px;
+  right: 5px;
   margin: 0 auto;
-  width: calc(100% - var(--modal-margin) * 2);
+  width: calc(100% - 10px);
   box-sizing: border-box;
   border-radius: 18px;
   border: 0.5px solid #d8d8d8;
   background-color: rgba(255, 255, 255, 0.9);
   overflow: hidden;
-  padding: var(--modal-padding);
-  display: flex;
-  flex-direction: column;
+  padding: 21px;
   font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir,
     helvetica neue, helvetica, 'sans-serif';
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(20px) saturate(5);
   animation: fadeIn 150ms;
+  max-height: 90%;
   transition: width 150ms, height 150ms;
 }
 
 /** Inner contents wrapper for modal content */
 .modal-container-inner {
   min-height: 79px;
-  display: flex;
+  height: calc(100% - 38px);
   width: 100%;
-  height: 100%;
-  justify-content: center;
+  padding-bottom: 38px;
+}
+
+/** Styles that wrap the text container of the modal content. Excludes footer */
+.inner-container {
+  overflow-y: scroll;
 }
 
 /*******************
@@ -553,11 +547,11 @@ a:focus-visible {
   --squareDimension: 25px;
   padding: 4px;
   position: absolute;
-  top: var(--modal-padding);
-  right: var(--modal-padding);
+  top: 21px;
+  right: 21px;
   border: none;
   cursor: pointer;
-  background-color: rgba(0, 0, 0, 0.05);
+  background-color: #f2f2f2;
   border-radius: 5px;
   height: var(--squareDimension);
   width: var(--squareDimension);
@@ -568,14 +562,13 @@ a:focus-visible {
 }
 
 /** Styles for button of X marker in top right corner on hover */
-.do-not-sell-explainer-close:hover, .do-not-sell-explainer-close:focus-visible {
-  background-color: rgba(0, 0, 0, 0.11);
+.do-not-sell-explainer-close:hover, .do-not-sell-explainer-close:focus {
+  background-color: #e2e2e2;
 }
 
-/** Content wrapper for Do Not Sell explainer */
-.do-not-sell-explainer-content {
-  display: flex;
-  flex-direction: column;
+/** Outline for do not sell explainer */
+.do-not-sell-explainer-interface {
+  margin-top: 2em;
 }
 
 /*******************
@@ -586,7 +579,6 @@ a:focus-visible {
 .gpc-setting {
   display: flex;
   align-items: center;
-  margin-top: 1em;
 }
 
 /** GPC svg styles */
@@ -618,8 +610,7 @@ a:focus-visible {
   align-items: center;
   font-weight: 500;
   font-size: 14px;
-  height: var(--switchHeight);
-  margin-top: 1em;
+  height: 16px;
   vertical-align: baseline;
   text-shadow: none;
   white-space: nowrap;
@@ -667,7 +658,7 @@ a:focus-visible {
 }
 
 /** When switch is focused */
-.switch.switch-checkbox:focus-visible + .switch.switch-background .switch.switch-button {
+.switch.switch-checkbox:focus + .switch.switch-background .switch.switch-button {
   outline: 2px solid rgba(51, 157, 255, 0.7);
   outline-offset: 1px;
   outline-width: 5px;
@@ -679,57 +670,17 @@ a:focus-visible {
 }
 
 /*******************
- * Scrollbar
- *******************/
-
-/** Scrollbar style override */
-.scroller {
-  overflow-x: hidden;
-  overflow-y: scroll;
-  border-color: rgba(0, 0, 0, 0);
-  transition-timing-function: ease-in-out;
-  transition-duration: 200ms;
-  transition-property: border-color;
-  border-color: rgba(0, 0, 0, 0.075);
-}
-
-/** Scrollbar hover */
-.scroller:hover {
-  border-color: rgba(0, 0, 0, 0.15);
-}
-
-/** Scrollbar border */
-.scroller::-webkit-scrollbar,
-.scroller::-webkit-scrollbar-thumb,
-.scroller::-webkit-scrollbar-corner {
-  border-color: inherit;
-  border-right-width: calc(100vw + 100vh);
-  border-right-style: inset;
-}
-
-/** Scrollbar track */
-.scroller::-webkit-scrollbar {
-  width: 7px;
-  height: 7px;
-  border-color: rgba(0, 0, 0, 0);
-}
-
-/** Scrollbar thumb */
-.scroller::-webkit-scrollbar-thumb {
-  border-color: rgba(0, 0, 0, 0.1);
-  border-color: inherit;
-  border-radius: 100px;
-}
-
-/*******************
  * TranscendLogo
  *******************/
 
 /** Container around the Transcend logo in the bottom left hand side of the modal */
 .transcend-logo-container {
-  width: var(--icon-button-width);
+  width: 17px;
   height: 17px;
   overflow: hidden;
+  position: absolute;
+  bottom: 0;
+  left: 0;
 }
 
 /** Styles applied to the Transcend svg logo in the bottom left hand side of the modal */
@@ -754,14 +705,8 @@ a:focus-visible {
  * Media Styles
  *******************/
 
-/** At least tablet */
+/** At least table */
 @media (min-width: 640px) {
-  /** Global constants */
-  .root, .root > * {
-    --modal-margin: 22px;
-    --icon-button-width: 64px;
-  }
-
   /** Button Styles */
   .button {
     width: 135px;
@@ -780,11 +725,10 @@ a:focus-visible {
     text-align: center;
   }
   .paragraph {
-    margin: 1em 0 0 0;
+    margin: 18px 18px 0 0;
   }
   .column-content {
     flex-direction: row;
-    gap: 16px;
   }
 
   /** AcceptOrRejectAll */
@@ -811,17 +755,21 @@ a:focus-visible {
 
   /** Modal */
   .modal-container {
+    bottom: 5px;
     max-width: 630px;
     min-height: 160px;
-    bottom: var(--modal-margin);
+    bottom: 22px;
   }
 
   /** TranscendLogo */
+  .transcend-logo-container {
+    width: 64px;
+  }
   .transcend-logo-svg:hover .transcend-wordmark,
-  .transcend-logo-container:focus-visible .transcend-wordmark {
+  .transcend-logo-container:focus .transcend-wordmark {
     fill-opacity: 1;
   }
-  .transcend-logo-svg:hover path, .transcend-logo-container:focus-visible path {
+  .transcend-logo-svg:hover path, .transcend-logo-container:focus path {
     fill: var(--primary-color);
   }
 }
