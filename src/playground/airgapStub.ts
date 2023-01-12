@@ -86,6 +86,7 @@ export const airgapStub: AirgapAPI = {
   addEventListener: (type, callback, options) => null,
   dispatchEvent: (event) => true,
   removeEventListener: () => null,
+  setPrompted: (state) => Promise.resolve(),
 };
 
 /* eslint-enable jsdoc/require-returns */
