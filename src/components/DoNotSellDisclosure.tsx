@@ -53,18 +53,22 @@ export function DoNotSellDisclosure({
   return (
     <div className="column-content">
       <div>
-        <p className="text-title text-title-left">
-          {formatMessage(
-            globalPrivacyControl
-              ? noticeAndDoNotSellMessages.doNotSellHonoredGpc
-              : noticeAndDoNotSellMessages.doNotSellHonored,
-          )}
-        </p>
-        <p className="paragraph">
-          {formatMessage(
-            noticeAndDoNotSellMessages.doNotSellHonoredDescription,
-          )}
-        </p>
+        <div>
+          <p className="text-title text-title-left">
+            {formatMessage(
+              globalPrivacyControl
+                ? noticeAndDoNotSellMessages.doNotSellHonoredGpc
+                : noticeAndDoNotSellMessages.doNotSellHonored,
+            )}
+          </p>
+        </div>
+        <div>
+          <p className="paragraph">
+            {formatMessage(
+              noticeAndDoNotSellMessages.doNotSellHonoredDescription,
+            )}
+          </p>
+        </div>
       </div>
       <Button
         primaryText={formatMessage(

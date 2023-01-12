@@ -31,12 +31,16 @@ export function PrivacyPolicyNotice({
   return (
     <div className="column-content">
       <div>
-        <p className="text-title text-title-left">
-          {formatMessage(messages.consentTitlePrivacyPolicyNotice)}
-        </p>
-        <p className="paragraph">
-          {formatMessage(messages.privacyPolicyNoticeDescription)}
-        </p>
+        <div>
+          <p className="text-title text-title-left">
+            {formatMessage(messages.consentTitlePrivacyPolicyNotice)}
+          </p>
+        </div>
+        <div>
+          <p className="paragraph">
+            {formatMessage(messages.privacyPolicyNoticeDescription)}
+          </p>
+        </div>
       </div>
       <Button
         primaryText={formatMessage(messages.privacyPolicyNoticeButton)}

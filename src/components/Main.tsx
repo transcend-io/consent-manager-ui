@@ -47,74 +47,80 @@ export function Main({
   // Modal open views
   if (!viewStateIsClosed(viewState)) {
     return (
-      <div role="dialog" aria-model="true" className="modal-container root">
+      <div role="dialog" aria-model="true" className="modal-container">
         <div role="document" className="modal-container-inner">
-          {viewState === 'QuickOptions' && (
-            <QuickOptions handleSetViewState={handleSetViewState} />
-          )}
+          <div role="document" className="inner-container">
+            {viewState === 'QuickOptions' && (
+              <QuickOptions handleSetViewState={handleSetViewState} />
+            )}
 
-          {viewState === 'AcceptAll' && (
-            <AcceptAll handleSetViewState={handleSetViewState} />
-          )}
+            {viewState === 'AcceptAll' && (
+              <AcceptAll handleSetViewState={handleSetViewState} />
+            )}
 
-          {viewState === 'AcceptOrRejectAnalytics' && (
-            <AcceptOrRejectAnalytics handleSetViewState={handleSetViewState} />
-          )}
+            {viewState === 'AcceptOrRejectAnalytics' && (
+              <AcceptOrRejectAnalytics
+                handleSetViewState={handleSetViewState}
+              />
+            )}
 
-          {viewState === 'DoNotSellExplainer' && (
-            <DoNotSellExplainer handleSetViewState={handleSetViewState} />
-          )}
+            {viewState === 'DoNotSellExplainer' && (
+              <DoNotSellExplainer handleSetViewState={handleSetViewState} />
+            )}
 
-          {viewState === 'QuickOptions3' && (
-            <QuickOptions3 handleSetViewState={handleSetViewState} />
-          )}
+            {viewState === 'QuickOptions3' && (
+              <QuickOptions3 handleSetViewState={handleSetViewState} />
+            )}
 
-          {viewState === 'PrivacyPolicyNotice' && (
-            <PrivacyPolicyNotice handleSetViewState={handleSetViewState} />
-          )}
+            {viewState === 'PrivacyPolicyNotice' && (
+              <PrivacyPolicyNotice handleSetViewState={handleSetViewState} />
+            )}
 
-          {viewState === 'AcceptOrRejectAll' && (
-            <AcceptOrRejectAll handleSetViewState={handleSetViewState} />
-          )}
+            {viewState === 'AcceptOrRejectAll' && (
+              <AcceptOrRejectAll handleSetViewState={handleSetViewState} />
+            )}
 
-          {viewState === 'DoNotSellDisclosure' && modalOpenAuth && (
-            <DoNotSellDisclosure
+            {viewState === 'DoNotSellDisclosure' && modalOpenAuth && (
+              <DoNotSellDisclosure
+                handleSetViewState={handleSetViewState}
+                modalOpenAuth={modalOpenAuth}
+              />
+            )}
+
+            {viewState === 'CompleteOptions' && (
+              <CompleteOptions handleSetViewState={handleSetViewState} />
+            )}
+
+            {viewState === 'CompleteOptionsInverted' && (
+              <CompleteOptionsInverted
+                handleSetViewState={handleSetViewState}
+              />
+            )}
+
+            {viewState === 'NoticeAndDoNotSell' && (
+              <NoticeAndDoNotSell handleSetViewState={handleSetViewState} />
+            )}
+
+            {viewState === 'LanguageOptions' && (
+              <LanguageOptions
+                handleSetViewState={handleSetViewState}
+                handleChangeLanguage={handleChangeLanguage}
+                supportedLanguages={supportedLanguages}
+              />
+            )}
+          </div>
+          <div className="footer-container">
+            <TranscendLogo />
+            <BottomMenu
+              firstSelectedViewState={firstSelectedViewState}
+              viewState={viewState}
               handleSetViewState={handleSetViewState}
-              modalOpenAuth={modalOpenAuth}
             />
-          )}
-
-          {viewState === 'CompleteOptions' && (
-            <CompleteOptions handleSetViewState={handleSetViewState} />
-          )}
-
-          {viewState === 'CompleteOptionsInverted' && (
-            <CompleteOptionsInverted handleSetViewState={handleSetViewState} />
-          )}
-
-          {viewState === 'NoticeAndDoNotSell' && (
-            <NoticeAndDoNotSell handleSetViewState={handleSetViewState} />
-          )}
-
-          {viewState === 'LanguageOptions' && (
-            <LanguageOptions
+            <LanguageButton
               handleSetViewState={handleSetViewState}
-              handleChangeLanguage={handleChangeLanguage}
-              supportedLanguages={supportedLanguages}
+              viewState={viewState}
             />
-          )}
-        </div>
-        <div className="footer-container">
-          <TranscendLogo />
-          <BottomMenu
-            firstSelectedViewState={firstSelectedViewState}
-            viewState={viewState}
-            handleSetViewState={handleSetViewState}
-          />
-          <LanguageButton
-            handleSetViewState={handleSetViewState}
-            viewState={viewState}
-          />
+          </div>
         </div>
       </div>
     );

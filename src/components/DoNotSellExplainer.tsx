@@ -47,7 +47,7 @@ export function DoNotSellExplainer({
   };
 
   return (
-    <div className="do-not-sell-explainer-content">
+    <div className="column-content">
       <button
         type="button"
         aria-label={formatMessage(messages.close)}
@@ -65,32 +65,44 @@ export function DoNotSellExplainer({
         </svg>
         <span className="screen-reader">{formatMessage(messages.close)}</span>
       </button>
-      <p className="text-title text-title-left">
-        {formatMessage(messages.consentTitleDoNotSellExplainer)}
-      </p>
-      <div
-        className="paragraph multi-paragraph scroller"
-        // eslint-disable-next-line react/no-danger
-        dangerouslySetInnerHTML={{
-          __html: formatMessage(messages.doNotSellDescription),
-        }}
-      />
+      <div>
+        <div>
+          <p className="text-title text-title-left">
+            {formatMessage(messages.consentTitleDoNotSellExplainer)}
+          </p>
+        </div>
+        <div>
+          <p className="paragraph">
+            <div
+              // eslint-disable-next-line react/no-danger
+              dangerouslySetInnerHTML={{
+                __html: formatMessage(messages.doNotSellDescription),
+              }}
+            />
+          </p>
+        </div>
+        <div className="margin-tops do-not-sell-explainer-interface">
+          <GPCIndicator />
+          <Switch
+            id={switchId}
+            checked={consentLocal}
+            handleSwitch={handleSwitch}
+            label={formatMessage(
+              consentLocal
+                ? messages.doNotSellOptedIn
+                : messages.doNotSellOptedOut,
+            )}
+          />
 
-      <GPCIndicator />
-      <Switch
-        id={switchId}
-        checked={consentLocal}
-        handleSwitch={handleSwitch}
-        label={formatMessage(
-          consentLocal ? messages.doNotSellOptedIn : messages.doNotSellOptedOut,
-        )}
-      />
-
-      <p className="paragraph">
-        {typeof saving === 'boolean'
-          ? formatMessage(saving ? messages.saving : messages.preferencesSaved)
-          : '\u200b'}
-      </p>
+          <p className="paragraph">
+            {typeof saving === 'boolean'
+              ? formatMessage(
+                  saving ? messages.saving : messages.preferencesSaved,
+                )
+              : '\u200b'}
+          </p>
+        </div>
+      </div>
     </div>
   );
 }
