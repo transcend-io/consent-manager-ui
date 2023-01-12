@@ -154,6 +154,7 @@ export function App({
           {/** Ensure messages are loaded before any UI is displayed */}
           {messages ? (
             <Main
+              airgap={airgap}
               modalOpenAuth={auth}
               viewState={viewState}
               supportedLanguages={CONSENT_MANAGER_SUPPORTED_LANGUAGES}
