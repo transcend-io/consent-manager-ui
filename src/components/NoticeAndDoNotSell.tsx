@@ -4,6 +4,7 @@ import { messages, noticeAndDoNotSellMessages } from '../messages';
 import type { HandleSetViewState } from '../types';
 import { useAirgap } from '../hooks';
 import { Button } from './Button';
+import { CONSENT_OPTIONS } from '../constants';
 
 /**
  * Component showing 'okay' button for "do not sell my personal information" interface
@@ -22,7 +23,7 @@ export function NoticeAndDoNotSell({
   ): void => {
     event.preventDefault();
     // Confirm current consent
-    airgap.setConsent(event, airgap.getConsent().purposes);
+    airgap.setConsent(event, airgap.getConsent().purposes, CONSENT_OPTIONS);
     handleSetViewState('close');
   };
 

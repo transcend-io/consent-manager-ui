@@ -9,6 +9,7 @@ import { DefinedMessage } from '@transcend-io/internationalization';
 import { Button } from './Button';
 import { GPCIndicator } from './GPCIndicator';
 import { Toggle } from './Toggle';
+import { CONSENT_OPTIONS } from '../constants';
 
 // Mapping of purposes to the message translation key
 const purposeToMessageKey: Record<string, DefinedMessage> = {
@@ -60,7 +61,7 @@ export function CompleteOptions({
     Object.entries(consentSelections).forEach(([purpose, isChecked]) => {
       newConsent.purposes[purpose] = isChecked;
     });
-    airgap.setConsent(event, newConsent.purposes);
+    airgap.setConsent(event, newConsent.purposes, CONSENT_OPTIONS);
     handleSetViewState('close');
   };
 

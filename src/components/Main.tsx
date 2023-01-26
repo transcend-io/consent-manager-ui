@@ -1,9 +1,5 @@
 import { h, JSX } from 'preact';
-import type {
-  AirgapAPI,
-  AirgapAuth,
-  ViewState,
-} from '@transcend-io/airgap.js-types';
+import type { AirgapAuth, ViewState } from '@transcend-io/airgap.js-types';
 import { ConsentManagerLanguageKey } from '@transcend-io/internationalization';
 import { viewStateIsClosed } from '../hooks';
 import type { HandleSetViewState } from '../types';
@@ -28,7 +24,6 @@ import { PrivacyPolicyNotice } from './PrivacyPolicyNotice';
  * Presents view states (collapsed, GDPR-mode, CCPA-mode etc)
  */
 export function Main({
-  airgap,
   viewState,
   firstSelectedViewState,
   handleSetViewState,
@@ -36,8 +31,6 @@ export function Main({
   supportedLanguages,
   modalOpenAuth,
 }: {
-  /** The Airgap API */
-  airgap: AirgapAPI;
   /** The on click event passed as authentication to airgap. Needed for do-not-sell acknowledgement */
   modalOpenAuth?: AirgapAuth;
   /** The current viewState of the consent manager */
@@ -53,7 +46,6 @@ export function Main({
 }): JSX.Element {
   // Modal open views
   if (!viewStateIsClosed(viewState)) {
-    airgap.setPrompted(true);
     return (
       <div role="dialog" aria-model="true" className="modal-container">
         <div role="document" className="modal-container-inner">

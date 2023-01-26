@@ -1,5 +1,6 @@
 import { h, JSX } from 'preact';
 import { useIntl } from 'react-intl';
+import { CONSENT_OPTIONS } from '../constants';
 import { useAirgap } from '../hooks';
 import { messages } from '../messages';
 import type { HandleSetViewState } from '../types';
@@ -36,7 +37,7 @@ export function AcceptOrRejectAnalytics({
           primaryText={formatMessage(messages.acceptAnalytics)}
           handleClick={(event) => {
             event.preventDefault();
-            airgap.setConsent(event, { Analytics: true });
+            airgap.setConsent(event, { Analytics: true }, CONSENT_OPTIONS);
             handleSetViewState('close');
           }}
         />
@@ -44,7 +45,7 @@ export function AcceptOrRejectAnalytics({
           primaryText={formatMessage(messages.rejectAnalytics)}
           handleClick={(event) => {
             event.preventDefault();
-            airgap.setConsent(event, { Analytics: false });
+            airgap.setConsent(event, { Analytics: false }, CONSENT_OPTIONS);
             handleSetViewState('close');
           }}
         />
