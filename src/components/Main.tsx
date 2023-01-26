@@ -1,9 +1,5 @@
 import { h, JSX } from 'preact';
-import type {
-  AirgapAPI,
-  AirgapAuth,
-  ViewState,
-} from '@transcend-io/airgap.js-types';
+import type { AirgapAuth, ViewState } from '@transcend-io/airgap.js-types';
 import { ConsentManagerLanguageKey } from '@transcend-io/internationalization';
 import { viewStateIsClosed } from '../hooks';
 import type { HandleSetViewState } from '../types';
