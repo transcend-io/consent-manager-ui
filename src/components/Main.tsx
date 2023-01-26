@@ -28,7 +28,6 @@ import { PrivacyPolicyNotice } from './PrivacyPolicyNotice';
  * Presents view states (collapsed, GDPR-mode, CCPA-mode etc)
  */
 export function Main({
-  airgap,
   viewState,
   firstSelectedViewState,
   handleSetViewState,
@@ -36,8 +35,6 @@ export function Main({
   supportedLanguages,
   modalOpenAuth,
 }: {
-  /** The Airgap API */
-  airgap: AirgapAPI;
   /** The on click event passed as authentication to airgap. Needed for do-not-sell acknowledgement */
   modalOpenAuth?: AirgapAuth;
   /** The current viewState of the consent manager */
