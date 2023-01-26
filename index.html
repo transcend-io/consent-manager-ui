@@ -65,7 +65,11 @@
         transcend.doNotSell(event);
       };
       var resetDoNotSell = (event) => {
-        airgap.setConsent(event, { SaleOfInfo: true });
+        airgap.setConsent(
+          event,
+          { SaleOfInfo: true },
+          { confirmed: true, prompted: true },
+        );
         setupDoNotSellButton();
       };
 

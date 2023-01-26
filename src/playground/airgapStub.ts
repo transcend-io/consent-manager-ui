@@ -44,9 +44,13 @@ export const airgapStub: AirgapAPI = {
     };
   },
   /** Set tracking consent */
-  setConsent: (auth, consent) => {
+  setConsent: (auth, consent = {}, options = {}) => {
     appendConsentLog(
-      `airgap.setConsent(auth, ${JSON.stringify(consent, null, 2)})`,
+      `airgap.setConsent(auth, ${JSON.stringify(
+        consent,
+        null,
+        2,
+      )}, ${JSON.stringify(options, null, 2)})`,
     );
     return true;
   },

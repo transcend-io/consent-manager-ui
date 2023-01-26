@@ -1,5 +1,6 @@
 import { h, JSX } from 'preact';
 import { useIntl } from 'react-intl';
+import { CONSENT_OPTIONS } from '../constants';
 import { useAirgap } from '../hooks';
 import { messages, quickOptionsMessages } from '../messages';
 import type { HandleSetViewState } from '../types';
@@ -54,7 +55,7 @@ export function QuickOptions3({
         consentsBySelectedQuickOption[selectedQuickOption].includes(purpose);
     });
 
-    airgap.setConsent(event, newConsent.purposes);
+    airgap.setConsent(event, newConsent.purposes, CONSENT_OPTIONS);
     handleSetViewState('close');
   };
 

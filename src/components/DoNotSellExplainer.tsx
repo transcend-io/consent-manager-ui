@@ -1,6 +1,7 @@
 import { h, JSX } from 'preact';
 import { useState } from 'preact/hooks';
 import { useIntl } from 'react-intl';
+import { CONSENT_OPTIONS } from '../constants';
 import { useAirgap, useConfig } from '../hooks';
 import { messages } from '../messages';
 import type { HandleSetViewState } from '../types';
@@ -33,7 +34,7 @@ export function DoNotSellExplainer({
     checked: boolean,
     event: JSX.TargetedEvent<HTMLInputElement, Event>,
   ): void => {
-    airgap.setConsent(event, { SaleOfInfo: checked });
+    airgap.setConsent(event, { SaleOfInfo: checked }, CONSENT_OPTIONS);
     setConsentLocal(checked);
     setSaving(true);
 

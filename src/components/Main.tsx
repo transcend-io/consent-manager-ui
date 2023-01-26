@@ -53,7 +53,6 @@ export function Main({
 }): JSX.Element {
   // Modal open views
   if (!viewStateIsClosed(viewState)) {
-    airgap.setPrompted(true);
     return (
       <div role="dialog" aria-model="true" className="modal-container">
         <div role="document" className="modal-container-inner">

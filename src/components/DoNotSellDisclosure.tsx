@@ -6,6 +6,7 @@ import { noticeAndDoNotSellMessages } from '../messages';
 import type { HandleSetViewState } from '../types';
 import { useAirgap } from '../hooks';
 import { Button } from './Button';
+import { CONSENT_OPTIONS } from '../constants';
 
 /**
  * Component showing acknowledgement of do not sell
@@ -27,9 +28,7 @@ export function DoNotSellDisclosure({
 
   const handleOptOut = (event: AirgapAuth): void => {
     // Confirm current consent
-    airgap.setConsent(event, {
-      SaleOfInfo: false,
-    });
+    airgap.setConsent(event, { SaleOfInfo: false }, CONSENT_OPTIONS);
   };
 
   const handleConfirm = (): void => {
