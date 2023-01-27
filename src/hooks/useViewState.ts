@@ -2,6 +2,7 @@ import { useCallback, useState } from 'preact/hooks';
 import type {
   AirgapAuth,
   DismissedViewState,
+  ResponseViewState,
   InitialViewState,
   ViewState,
 } from '@transcend-io/airgap.js-types';
@@ -14,9 +15,24 @@ import type { HandleSetViewState } from '../types';
  * @param viewState - the current view state
  * @returns a boolean whether this is closed
  */
-export function viewStateIsClosed(viewState: ViewState): boolean {
+export function isViewStateClosed(
+  viewState: ViewState,
+): viewState is DismissedViewState {
   const closedViewStates: ViewState[] = ['Hidden', 'Closed', 'Collapsed'];
   return closedViewStates.includes(viewState);
+}
+
+/**
+ * Helper to determine whether a view state is a ResponseViewState
+ *
+ * @param viewState - the current view state
+ * @returns a boolean whether this is a ResponseViewState
+ */
+export function isResponseViewState(
+  viewState: ViewState,
+): viewState is ResponseViewState {
+  const responseViewStates: ViewState[] = ['DoNotSellDisclosure'];
+  return responseViewStates.includes(viewState);
 }
 
 /**
