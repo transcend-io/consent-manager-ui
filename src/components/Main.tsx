@@ -37,7 +37,7 @@ export function Main({
   modalOpenAuth,
 }: {
   /** airgap.js API */
-  airgap?: AirgapAPI;
+  airgap: AirgapAPI;
   /** The on click event passed as authentication to airgap. Needed for do-not-sell acknowledgement */
   modalOpenAuth?: AirgapAuth;
   /** The current viewState of the consent manager */
