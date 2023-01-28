@@ -10,7 +10,7 @@ import {
   ConfigProvider,
   useLanguage,
   useViewState,
-  viewStateIsClosed,
+  isViewStateClosed,
 } from '../hooks';
 import { apiEventName, LOG_LEVELS, settings } from '../settings';
 import { Main } from './Main';
@@ -101,7 +101,7 @@ export function App({
       hideConsentManager: () => handleSetViewState('close'),
       toggleConsentManager: () =>
         handleSetViewState(
-          viewStateIsClosed(viewState) ? 'open' : 'close',
+          isViewStateClosed(viewState) ? 'open' : 'close',
           undefined,
           true,
         ),
@@ -154,6 +154,7 @@ export function App({
           {/** Ensure messages are loaded before any UI is displayed */}
           {messages ? (
             <Main
+              airgap={airgap}
               modalOpenAuth={auth}
               viewState={viewState}
               supportedLanguages={CONSENT_MANAGER_SUPPORTED_LANGUAGES}
