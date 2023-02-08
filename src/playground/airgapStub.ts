@@ -4,13 +4,14 @@
 /* eslint-disable jsdoc/require-returns */
 
 import type { AirgapAPI } from '@transcend-io/airgap.js-types';
+import { defaultTrackingPurposes } from './defaults';
 import { getPrivacySignalsFromLocalStorage } from './Environment';
 import { appendConsentLog } from './helpers/consentLog';
 
 const getPurposeTypes: AirgapAPI['getPurposeTypes'] = () => {
   const purposeTypes = localStorage.getItem('getPurposeTypes');
   if (!purposeTypes) {
-    throw new Error('Missing purpose types!');
+    return defaultTrackingPurposes;
   }
   return JSON.parse(purposeTypes);
 };
