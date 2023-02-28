@@ -37,6 +37,7 @@
   "ui.src.messages.doNotSellDescription": "<p>Não divulgamos suas informações pessoais a terceiros em troca de contraprestação monetária. Em alguns casos, no entanto, podemos divulgar suas informações pessoais a terceiros em troca de outras considerações valiosas, como aprimorar nossas ofertas de produtos, oferecer anúncios gráficos e de outras formas que você possa ler em nossa Declaração de Privacidade. </p>\n <p>Ao optar pela exclusão abaixo, não divulgaremos suas informações pessoais a terceiros em troca de considerações valiosas. </p>\n <p>Observe que, ao optar por não receber esses tipos de divulgação, você pode limitar nossa capacidade de personalizar sua experiência com conteúdo que possa ser do seu interesse. </p>\n <p>Se você tiver uma conta conosco, faça login para manter sua exclusão. </p>\n <p>Se você não tiver uma conta, você pode optar por não divulgar suas informações pessoais a terceiros para fins de consideração valiosa (por exemplo, informações armazenadas em cookies) a partir deste navegador da web abaixo. </p>",
   "ui.src.messages.doNotSellOptedIn": "Mude o botão para cancelar a inscrição.",
   "ui.src.messages.doNotSellOptedOut": "Você foi excluído com sucesso.",
+  "ui.src.messages.moreChoicesButtonPrimary": "Mais opções",
   "ui.src.messages.noticeTitle": "Este site processa dados pessoais",
   "ui.src.messages.preferencesSaved": "Preferências salvas!",
   "ui.src.messages.privacyPolicyNoticeButton": "OK",

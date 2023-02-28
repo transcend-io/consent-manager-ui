@@ -37,6 +37,8 @@ export const DEFAULT_VIEW_STATE_BY_PRIVACY_REGIME_COPIED: PrivacyRegimeToInitial
     CDPA: 'Hidden',
     // US: Colorado
     CPA: 'Hidden',
+    // US
+    nFADP: 'Hidden',
     // US: Nevada
     NEVADA_SB220: 'Hidden',
     // Other

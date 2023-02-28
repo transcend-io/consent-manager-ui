@@ -37,6 +37,7 @@
   "ui.src.messages.doNotSellDescription": "<p>Személyes adatait nem adjuk ki harmadik félnek pénzbeli ellenérték fejében. Bizonyos esetekben azonban átadhatjuk az Ön személyes adatait harmadik feleknek, cserébe más értékes megfontolásokért, például termékkínálatunk javítása érdekében, vizuális hirdetéseket kínálhatunk, és más módon, amelyekről Ön az Adatvédelmi nyilatkozatunkban olvashat. </p>\n <p>Az alábbiakban való lemondással, nem adjuk ki személyes adatait harmadik feleknek értékes megfontolásért cserébe. </p>\n <p>Felhívjuk figyelmét, hogy az ilyen típusú közzétételek leiratkozásával, korlátozhatja képességünket arra, hogy személyre szabhassuk tapasztalatait olyan tartalommal, amely érdekes lehet az Ön számára. </p>\n <p>Ha van fiókja nálunk, jelentkezzen be, hogy továbbra is fennmaradjon a leiratkozás. </p>\n <p>Ha nincs fiókja, akkor az alábbi webböngészőből leiratkozhat személyes adatainak harmadik felek számára történő közzétételéről (pl. a sütikben tárolt információk). </p>",
   "ui.src.messages.doNotSellOptedIn": "Kapcsolja be a kapcsolót a leiratkozáshoz.",
   "ui.src.messages.doNotSellOptedOut": "Sikeresen lemondtak.",
+  "ui.src.messages.moreChoicesButtonPrimary": "Több választási lehetőség",
   "ui.src.messages.noticeTitle": "Ez a weboldal személyes adatokat dolgoz fel",
   "ui.src.messages.preferencesSaved": "Beállítások mentve!",
   "ui.src.messages.privacyPolicyNoticeButton": "oké",

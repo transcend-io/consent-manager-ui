@@ -37,6 +37,7 @@
   "ui.src.messages.doNotSellDescription": "<p>We verstrekken uw persoonlijke informatie niet aan derden in ruil voor een geldelijke vergoeding. In sommige gevallen kunnen we uw persoonlijke informatie echter aan derden verstrekken in ruil voor andere waardevolle vergoedingen, zoals om ons productaanbod te verbeteren, display-advertenties aan te bieden en op andere manieren waarover u meer kunt lezen in onze privacyverklaring. </p>\n Als <p>u zich hieronder afmeldt, zullen we uw persoonlijke informatie niet aan derden verstrekken in ruil voor een waardevolle vergoeding. </p>\n <p>Houd er rekening mee dat als u zich afmeldt voor dit soort openbaarmakingen, u mogelijk onze mogelijkheden beperkt om uw ervaring aan te passen met inhoud die voor u interessant kan zijn. </p>\n <p>Als je een account bij ons hebt, log dan in om je afmelding te handhaven. </p>\n <p>Als u geen account hebt, kunt u zich via deze webbrowser hieronder afmelden voor het verstrekken van uw persoonlijke informatie aan derden voor waardevolle overwegingen (bijvoorbeeld informatie opgeslagen in cookies). </p>",
   "ui.src.messages.doNotSellOptedIn": "Schakel de schakelaar om u af te melden.",
   "ui.src.messages.doNotSellOptedOut": "Je bent succesvol afgemeld.",
+  "ui.src.messages.moreChoicesButtonPrimary": "Meer keuzes",
   "ui.src.messages.noticeTitle": "Deze website verwerkt persoonsgegevens",
   "ui.src.messages.preferencesSaved": "Voorkeuren opgeslagen!",
   "ui.src.messages.privacyPolicyNoticeButton": "oké",

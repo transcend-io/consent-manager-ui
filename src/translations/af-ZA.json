@@ -37,6 +37,7 @@
   "ui.src.messages.doNotSellDescription": "<p>Ons openbaar nie jou persoonlike inligting aan derde partye in ruil vir monetêre oorweging nie. In sommige gevalle kan ons egter u persoonlike inligting aan derde partye openbaar in ruil vir ander waardevolle oorweging, soos om ons produkaanbiedinge te verbeter, vertoningsadvertensies aan te bied, en op ander maniere waaroor u in ons privaatheidsverklaring kan lees. </p>\n <p>Deur hieronder uit te kies, sal ons nie jou persoonlike inligting aan derde partye openbaar in ruil vir waardevolle oorweging nie. </p>\n <p>Let asseblief daarop dat deur hierdie tipe openbaarmakings uit te skakel, u ons vermoë kan beperk om u ervaring met inhoud wat vir u van belang kan wees, aan te pas. </p>\n <p>As jy 'n rekening by ons het, teken in om jou opsie voort te sit. </p>\n <p>As jy nie 'n rekening het nie, kan jy kies uit die bekendmaking van jou persoonlike inligting aan derde partye vir waardevolle oorweging (bv, inligting gestoor in koekies) van hierdie webblaaier hieronder. </p>",
   "ui.src.messages.doNotSellOptedIn": "Skakel die skakel om af te skakel.",
   "ui.src.messages.doNotSellOptedOut": "Jy is suksesvol uitgekies.",
+  "ui.src.messages.moreChoicesButtonPrimary": "Meer keuses",
   "ui.src.messages.noticeTitle": "Hierdie webwerf verwerk persoonlike data",
   "ui.src.messages.preferencesSaved": "Voorkeure Gestoor!",
   "ui.src.messages.privacyPolicyNoticeButton": "Goed",

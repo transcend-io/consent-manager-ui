@@ -37,6 +37,7 @@
   "ui.src.messages.doNotSellDescription": "<p>Vi lämnar inte ut din personliga information till tredje part i utbyte mot monetär ersättning. I vissa fall kan vi dock lämna ut din personliga information till tredje part i utbyte mot andra värdefulla överväganden, till exempel för att förbättra våra produkterbjudanden, erbjuda displayannonser och på andra sätt som du kan läsa om i vår integritetspolicy. </p>\n <p>Genom att välja bort nedan kommer vi inte att lämna ut din personliga information till tredje part i utbyte mot värdefullt övervägande. </p>\n <p>Observera att genom att välja bort dessa typer av upplysningar, du kan begränsa vår förmåga att anpassa din upplevelse med innehåll som kan vara av intresse för dig. </p>\n <p>Om du har ett konto hos oss, logga in för att fortsätta din opt-out. </p>\n <p>Om du inte har ett konto kan du välja bort utlämnande av din personliga information till tredje part för värdefullt övervägande (t.ex. information som lagras i cookies) från denna webbläsare nedan. </p>",
   "ui.src.messages.doNotSellOptedIn": "Byt omkopplaren för att välja bort.",
   "ui.src.messages.doNotSellOptedOut": "Du har framgångsrikt valt bort.",
+  "ui.src.messages.moreChoicesButtonPrimary": "Fler val",
   "ui.src.messages.noticeTitle": "Denna webbplats behandlar personuppgifter",
   "ui.src.messages.preferencesSaved": "Inställningar sparade!",
   "ui.src.messages.privacyPolicyNoticeButton": "Okej",

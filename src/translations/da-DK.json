@@ -37,6 +37,7 @@
   "ui.src.messages.doNotSellDescription": "<p>Vi videregiver ikke dine personlige oplysninger til tredjepart i bytte for monetære vederlag. I nogle tilfælde kan vi dog videregive dine personlige oplysninger til tredjeparter i bytte for andre værdifulde overvejelser, såsom for at forbedre vores produkttilbud, tilbyde displayannoncer, og på andre måder, som du kan læse om i vores fortrolighedserklæring. </p>\n <p>Ved at fravælge nedenfor, vi videregiver ikke dine personlige oplysninger til tredjepart i bytte for værdifuld overvejelse. </p>\n <p>Bemærk, at ved at fravælge disse typer oplysninger, du kan begrænse vores mulighed for at tilpasse din oplevelse med indhold, der kan være af interesse for dig. </p>\n <p>Hvis du har en konto hos os, skal du logge ind for at fortsætte din fravalg. </p>\n <p>Hvis du ikke har en konto, kan du fravælge videregivelse af dine personlige oplysninger til tredjeparter til værdifuld overvejelse (f.eks. oplysninger gemt i cookies) fra denne webbrowser nedenfor. </p>",
   "ui.src.messages.doNotSellOptedIn": "Skift vippekontakten for at fravælge det.",
   "ui.src.messages.doNotSellOptedOut": "Du er blevet fravalgt.",
+  "ui.src.messages.moreChoicesButtonPrimary": "Flere valgmuligheder",
   "ui.src.messages.noticeTitle": "Dette websted behandler personoplysninger",
   "ui.src.messages.preferencesSaved": "Præferencer gemt!",
   "ui.src.messages.privacyPolicyNoticeButton": "Okay",

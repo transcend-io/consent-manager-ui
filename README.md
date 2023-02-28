@@ -33,6 +33,21 @@ Standard GDPR style banner for opting in or out of all purposes. Selecting "More
 | More choices           | Redirects to the `CompleteOptions` view state. No purposes change.                                                                                                                                                                                                                                               |
 | See our Privacy Policy | Redirects to the privacy policy link specified in [Consent Display Settings](https://app.transcend.io/consent-manager/display-settings) or the [`data-privacy-policy`](https://docs.transcend.io/docs/consent/faq#how-can-i-customize-the-privacy-policy-link-when-hosting-on-multiple-domains?) data attribute. |
 
+### `AcceptOrRejectAllOrMoreChoices`
+
+Similar to `AcceptOrRejectAll`, but the "More Choices" button is a primary button.
+
+![ViewState = AcceptOrRejectAllOrMoreChoices](https://user-images.githubusercontent.com/10264973/188251091-84dcb0af-0fc8-42ee-b742-466c55c61cdb.jpg)
+
+#### Button Mapping
+
+| Button Title           | Callback Description                                                                                                                                                                                                                                                                                             |
+| ---------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Accept All             | Opts the user into all allowed purposes in current consent experience.                                                                                                                                                                                                                                           |
+| Reject All             | Opts the user out of all allowed purposes in current consent experience. Essential is never opted out.                                                                                                                                                                                                           |
+| More choices           | Redirects to the `CompleteOptions` view state. No purposes change.                                                                                                                                                                                                                                               |
+| See our Privacy Policy | Redirects to the privacy policy link specified in [Consent Display Settings](https://app.transcend.io/consent-manager/display-settings) or the [`data-privacy-policy`](https://docs.transcend.io/docs/consent/faq#how-can-i-customize-the-privacy-policy-link-when-hosting-on-multiple-domains?) data attribute. |
+
 ### `QuickOptions`
 
 This banner is recommended for GDPR-like regimes where customers can opt in or out of multiple purposes with 1 click. Each button includes the purposes for all options to the left of that button. For example, "Analytics" button includes "Essential", "Functional" and "Analytics".
@@ -167,6 +182,20 @@ A banner that handles opting in or out of the `Analytics` tag.
 **WARNING: This UI is a dark pattern and risks non-compliance. Use at own discretion.**
 
 ![ViewState = AcceptAll](https://user-images.githubusercontent.com/10264973/188251090-3b433f57-402a-4cd3-a5ca-c28c31675ae6.jpg)
+
+#### Button Mapping
+
+| Button Title           | Callback Description                                                                                                                                                                                                                                                                                             |
+| ---------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Accept All             | Opts the user into all allowed purposes in current consent experience.                                                                                                                                                                                                                                           |
+| More choices           | Redirects to the `CompleteOptions` view state. No purposes change.                                                                                                                                                                                                                                               |
+| See our Privacy Policy | Redirects to the privacy policy link specified in [Consent Display Settings](https://app.transcend.io/consent-manager/display-settings) or the [`data-privacy-policy`](https://docs.transcend.io/docs/consent/faq#how-can-i-customize-the-privacy-policy-link-when-hosting-on-multiple-domains?) data attribute. |
+
+### `AcceptAllOrMoreChoices`
+
+**WARNING: This UI is a dark pattern and risks non-compliance. Use at own discretion.**
+
+![ViewState = AcceptAllOrMoreChoices](https://user-images.githubusercontent.com/10264973/221736031-2526a3a0-153b-484d-9067-c1072017d974.png)
 
 #### Button Mapping
 

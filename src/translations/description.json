@@ -37,6 +37,7 @@
   "ui.src.messages.doNotSellDescription": "The description text for the the DoNotSellExplainer banner.",
   "ui.src.messages.doNotSellOptedIn": "Explainer text in DoNotSellExplainer banner when opted in to sale of data.",
   "ui.src.messages.doNotSellOptedOut": "Explainer text in DoNotSellExplainer banner when opted out of sale of data.",
+  "ui.src.messages.moreChoicesButtonPrimary": "Button text for redirecting the user to more granular consent choices.",
   "ui.src.messages.noticeTitle": "The Do Not Sell/Share notice title.",
   "ui.src.messages.preferencesSaved": "Confirmation that preferences are saved.",
   "ui.src.messages.privacyPolicyNoticeButton": "Button to dismiss privacy policy notice.",

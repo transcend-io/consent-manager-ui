@@ -37,6 +37,7 @@
   "ui.src.messages.doNotSellDescription": "<p>Nie ujawniamy Twoich danych osobowych stronom trzecim w zamian za wynagrodzenie pieniężne. W niektórych przypadkach możemy jednak ujawnić Twoje dane osobowe stronom trzecim w zamian za inne cenne uwagi, takie jak ulepszenie naszej oferty produktów, oferowanie reklam displayowych oraz w inny sposób, o którym można przeczytać w naszym Oświadczeniu o ochronie prywatności. </p>\n <p>Wyłączając poniższą rezygnację, nie ujawnimy Twoich danych osobowych stronom trzecim w zamian za cenne rozważenie. </p>\n <p>Pamiętaj, że rezygnując z tego rodzaju ujawnień, możesz ograniczyć naszą możliwość dostosowywania swoich doświadczeń za pomocą treści, które mogą Cię zainteresować. </p>\n <p>Jeśli masz u nas konto, zaloguj się, aby kontynuować rezygnację. </p>\n <p>Jeśli nie masz konta, możesz zrezygnować z ujawniania swoich danych osobowych stronom trzecim w celu cennego rozważenia (np. informacji przechowywanych w plikach cookie) z poniższej przeglądarki internetowej. </p>",
   "ui.src.messages.doNotSellOptedIn": "Przełącz przełącznik, aby zrezygnować.",
   "ui.src.messages.doNotSellOptedOut": "Zostałeś pomyślnie zrezygnowany.",
+  "ui.src.messages.moreChoicesButtonPrimary": "Więcej możliwości wyboru",
   "ui.src.messages.noticeTitle": "Ta strona internetowa przetwarza dane osobowe",
   "ui.src.messages.preferencesSaved": "Preferencje zapisane!",
   "ui.src.messages.privacyPolicyNoticeButton": "Dobrze",

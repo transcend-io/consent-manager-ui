@@ -37,6 +37,7 @@
   "ui.src.messages.doNotSellDescription": "<p>Vi utleverer ikke personopplysningene dine til tredjeparter i bytte mot monetære hensyn. I noen tilfeller kan vi imidlertid utlevere din personlige informasjon til tredjeparter i bytte mot andre verdifulle hensyn, for eksempel for å forbedre produkttilbudene våre, tilby visningsannonser, og på andre måter som du kan lese om i vår personvernerklæring. </p>\n <p>Ved å velge bort nedenfor, vil vi ikke utlevere din personlige informasjon til tredjepart i bytte mot verdifull vurdering. </p>\n <p>Vær oppmerksom på at ved å velge bort denne typen avsløringer, kan du begrense vår evne til å tilpasse opplevelsen din med innhold som kan være av interesse for deg. </p>\n <p>Hvis du har en konto hos oss, logg på for å fortsette din bortmelding. </p>\n <p>Hvis du ikke har en konto, kan du velge bort utlevering av dine personlige opplysninger til tredjeparter for verdifull vurdering (f.eks. informasjon lagret i informasjonskapsler) fra denne nettleseren nedenfor. </p>",
   "ui.src.messages.doNotSellOptedIn": "Bytt bryteren for å velge bort.",
   "ui.src.messages.doNotSellOptedOut": "Du har blitt valgt bort.",
+  "ui.src.messages.moreChoicesButtonPrimary": "Flere valg",
   "ui.src.messages.noticeTitle": "Dette nettstedet behandler personopplysninger",
   "ui.src.messages.preferencesSaved": "Innstillinger lagret!",
   "ui.src.messages.privacyPolicyNoticeButton": "Greit",

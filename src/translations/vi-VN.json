@@ -37,6 +37,7 @@
   "ui.src.messages.doNotSellDescription": "<p>Chúng tôi không tiết lộ thông tin cá nhân của bạn cho bên thứ ba để đổi lấy sự cân nhắc tiền tệ. Tuy nhiên, trong một số trường hợp, chúng tôi có thể tiết lộ thông tin cá nhân của bạn cho bên thứ ba để đổi lấy sự cân nhắc có giá trị khác, chẳng hạn như để nâng cao sản phẩm của chúng tôi, cung cấp quảng cáo hiển thị và theo những cách khác mà bạn có thể đọc trong Tuyên bố về Quyền riêng tư của chúng tôi. </p>\n <p>Bằng cách chọn không tham gia bên dưới, chúng tôi sẽ không tiết lộ thông tin cá nhân của bạn cho bên thứ ba để đổi lấy sự cân nhắc có giá trị. </p>\n <p>Xin lưu ý rằng bằng cách chọn không tham gia các loại tiết lộ này, bạn có thể giới hạn khả năng của chúng tôi để tùy chỉnh trải nghiệm của bạn với nội dung mà bạn có thể quan tâm. </p>\n <p>Nếu bạn có tài khoản với chúng tôi, hãy đăng nhập để tiếp tục lựa chọn không tham gia của bạn. </p>\n <p>Nếu bạn không có tài khoản, bạn có thể chọn không cho phép tiết lộ thông tin cá nhân của bạn cho bên thứ ba để xem xét có giá trị (ví dụ: thông tin được lưu trữ trong cookie) từ trình duyệt web này bên dưới. </p>",
   "ui.src.messages.doNotSellOptedIn": "Chuyển nút bật/tắt để chọn không tham gia.",
   "ui.src.messages.doNotSellOptedOut": "Bạn đã được chọn không tham gia thành công.",
+  "ui.src.messages.moreChoicesButtonPrimary": "Thêm nhiều lựa chọn",
   "ui.src.messages.noticeTitle": "Trang web này xử lý dữ liệu cá nhân",
   "ui.src.messages.preferencesSaved": "Tùy chọn đã lưu!",
   "ui.src.messages.privacyPolicyNoticeButton": "đuợc",

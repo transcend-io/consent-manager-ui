@@ -37,6 +37,7 @@
   "ui.src.messages.doNotSellDescription": "<p>Emme luovuta henkilötietojasi kolmansille osapuolille vastineeksi rahallisesta vastikkeesta. Joissakin tapauksissa, kuitenkin, saatamme luovuttaa henkilökohtaisia tietojasi kolmansille osapuolille vastineeksi muusta arvokkaasta huomiosta, kuten parantaa tuotetarjontaamme, tarjota näyttömainoksia, ja muilla tavoilla, joista voit lukea tietosuojalausunnossamme. </p>\n <p>Poistamalla alla, emme paljasta henkilökohtaisia tietojasi kolmansille osapuolille vastineeksi arvokkaasta harkinnasta. </p>\n <p>Huomaa, että kieltäytymällä tämäntyyppisistä ilmoituksista, voit rajoittaa kykyämme mukauttaa kokemustasi sisällöllä, joka saattaa kiinnostaa sinua. </p>\n <p>Jos sinulla on tili kanssamme, kirjaudu sisään jatkaaksesi kieltäytymistäsi. </p>\n <p>Jos sinulla ei ole tiliä, voit kieltäytyä luovuttamasta henkilökohtaisia tietojasi kolmansille osapuolille arvokasta harkintaa varten (esim. evästeisiin tallennetut tiedot) tästä alla olevasta verkkoselaimesta. </p>",
   "ui.src.messages.doNotSellOptedIn": "Vaihda kytkin kieltäytyäksesi.",
   "ui.src.messages.doNotSellOptedOut": "Sinut on onnistuneesti poistettu.",
+  "ui.src.messages.moreChoicesButtonPrimary": "Lisää valintoja",
   "ui.src.messages.noticeTitle": "Tämä verkkosivusto käsittelee henkilötietoja",
   "ui.src.messages.preferencesSaved": "Asetukset tallennettu!",
   "ui.src.messages.privacyPolicyNoticeButton": "Okei",
