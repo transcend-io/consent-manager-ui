@@ -31,6 +31,8 @@ export function BottomMenu({
         'DoNotSellDisclosure',
         'PrivacyPolicyNotice',
         'AcceptOrRejectAnalytics',
+        'AcceptAllOrMoreChoices',
+        'AcceptOrRejectAllOrMoreChoices',
         'CompleteOptionsInverted',
         'DoNotSellExplainer',
         // eslint-disable-next-line @typescript-eslint/no-explicit-any

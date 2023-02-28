@@ -113,6 +113,11 @@ export const messages = defineMessages('ui.src.messages', {
     defaultMessage: 'Reject all',
     description: 'Button text for rejecting all trackers.',
   },
+  moreChoicesButtonPrimary: {
+    defaultMessage: 'More choices',
+    description:
+      'Button text for redirecting the user to more granular consent choices.',
+  },
 });
 
 export const quickOptionsMessages = defineMessages('ui.src.quickOptions', {

@@ -23,6 +23,8 @@ import { AcceptOrRejectAnalytics } from './AcceptOrRejectAnalytics';
 import { DoNotSellExplainer } from './DoNotSellExplainer';
 import { QuickOptions3 } from './QuickOptions3';
 import { PrivacyPolicyNotice } from './PrivacyPolicyNotice';
+import { AcceptAllOrMoreChoices } from './AcceptAllOrMoreChoices';
+import { AcceptOrRejectAllOrMoreChoices } from './AcceptOrRejectAllOrMoreChoices';
 
 /**
  * Presents view states (collapsed, GDPR-mode, CCPA-mode etc)
@@ -88,6 +90,16 @@ export function Main({
 
             {viewState === 'AcceptOrRejectAll' && (
               <AcceptOrRejectAll handleSetViewState={handleSetViewState} />
+            )}
+
+            {viewState === 'AcceptAllOrMoreChoices' && (
+              <AcceptAllOrMoreChoices handleSetViewState={handleSetViewState} />
+            )}
+
+            {viewState === 'AcceptOrRejectAllOrMoreChoices' && (
+              <AcceptOrRejectAllOrMoreChoices
+                handleSetViewState={handleSetViewState}
+              />
             )}
 
             {viewState === 'DoNotSellDisclosure' && modalOpenAuth && (
