@@ -37,6 +37,7 @@
   "ui.src.messages.doNotSellDescription": "<p>Ne otkrivamo vaše lične podatke trećim licima u zamenu za novčanu naknadu. U nekim slučajevima, međutim, možemo otkriti vaše lične podatke trećim licima u zamenu za drugo dragoceno razmatranje, kao što je poboljšanje naše ponude proizvoda, ponuda reklama za prikazivanje i na druge načine o kojima možete pročitati u našoj Izjavi o privatnosti. </p>\n <p>Ako se odlučite u nastavku, nećemo otkriti vaše lične podatke trećim licima u zamenu za dragoceno razmatranje. </p>\n <p>Imajte na umu da isključivanjem ovih vrsta otkrivanja možete ograničiti našu mogućnost prilagođavanja vašeg iskustva sa sadržajem koji bi vas mogao zanimati. </p>\n <p>Ako imate nalog kod nas, prijavite se da biste nastavili sa isključenjem. </p>\n <p>Ako nemate nalog, možete odustati od otkrivanja vaših ličnih podataka trećim licima radi dragocenog razmatranja (npr. Informacije uskladištene u kolačićima) iz ovog veb pregledača ispod. </p>",
   "ui.src.messages.doNotSellOptedIn": "Prebacite prekidač da biste se isključili.",
   "ui.src.messages.doNotSellOptedOut": "Uspešno ste isključeni.",
+  "ui.src.messages.moreChoicesButtonPrimary": "Više izbora",
   "ui.src.messages.noticeTitle": "Ova veb lokacija obrađuje lične podatke",
   "ui.src.messages.preferencesSaved": "Preferences Sačuvane!",
   "ui.src.messages.privacyPolicyNoticeButton": "U redu",

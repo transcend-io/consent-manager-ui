@@ -37,6 +37,7 @@
   "ui.src.messages.doNotSellDescription": "<p>Vaše osobní údaje nezveřejňujeme třetím stranám výměnou za peněžní protiplnění. V některých případech však můžeme sdělit vaše osobní údaje třetím stranám výměnou za další cenné úvahy, například za účelem zlepšení naší nabídky produktů, nabízení zobrazovacích reklam a jinými způsoby, o kterých si můžete přečíst v našem Prohlášení o ochraně osobních údajů. </p>\n <p>Odhlášení níže, nebudeme zveřejňovat vaše osobní údaje třetím stranám výměnou za cenné protiplnění. </p>\n <p>Vezměte prosím na vědomí, že odhlášení z těchto typů zveřejnění, můžete omezit naši schopnost přizpůsobit své zkušenosti s obsahem, který by vás mohl zajímat. </p>\n <p>Pokud u nás máte účet, přihlaste se, abyste své odhlášení přetrvali. </p>\n <p>Pokud nemáte účet, můžete se odhlásit ze zveřejnění vašich osobních údajů třetím stranám za účelem cenného posouzení (např. informací uložených v cookies) z tohoto webového prohlížeče níže. </p>",
   "ui.src.messages.doNotSellOptedIn": "Přepnutím přepínače se odhlásíte.",
   "ui.src.messages.doNotSellOptedOut": "Byli jste úspěšně odhlášení.",
+  "ui.src.messages.moreChoicesButtonPrimary": "Více možností",
   "ui.src.messages.noticeTitle": "Tato webová stránka zpracovává osobní údaje",
   "ui.src.messages.preferencesSaved": "Předvolby uloženy!",
   "ui.src.messages.privacyPolicyNoticeButton": "Dobře",

@@ -37,6 +37,7 @@
   "ui.src.messages.doNotSellDescription": "<p>Parasal değerlendirme karşılığında kişisel bilgilerinizi üçüncü şahıslara ifşa etmeyiz. Bununla birlikte, bazı durumlarda, ürün tekliflerimizi geliştirmek, görüntülü reklamlar sunmak ve Gizlilik Bildirimimizde okuyabileceğiniz başka şekillerde kişisel bilgilerinizi diğer değerli değerlendirmeler karşılığında üçüncü taraflara ifşa edebiliriz. </p>\n <p>Aşağıdan vazgeçerek, kişisel bilgilerinizi değerli değerlendirme karşılığında üçüncü şahıslara ifşa etmeyeceğiz. </p>\n <p>Lütfen bu tür açıklamalardan vazgeçerek, ilginizi çekebilecek içerikle deneyiminizi özelleştirme yeteneğimizi sınırlandırabilirsiniz. </p>\n <p>Bizimle bir hesabınız varsa, devre dışı bırakmaya devam etmek için oturum açın. </p>\n <p>Hesabınız yoksa, kişisel bilgilerinizin üçüncü taraflara ifşa edilmesini aşağıdaki web tarayıcısından değerli bir değerlendirme için (ör. çerezlerde saklanan bilgiler) devre dışı bırakabilirsiniz. </p>",
   "ui.src.messages.doNotSellOptedIn": "Devre dışı bırakmak için geçişi değiştirin.",
   "ui.src.messages.doNotSellOptedOut": "Başarıyla devre dışı bırakıldınız.",
+  "ui.src.messages.moreChoicesButtonPrimary": "Daha fazla seçenek",
   "ui.src.messages.noticeTitle": "Bu web sitesi kişisel verileri işler",
   "ui.src.messages.preferencesSaved": "Tercihler kaydedildi!",
   "ui.src.messages.privacyPolicyNoticeButton": "Tamam",
