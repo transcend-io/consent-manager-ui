@@ -37,7 +37,7 @@ Standard GDPR style banner for opting in or out of all purposes. Selecting "More
 
 Similar to `AcceptOrRejectAll`, but the "More Choices" button is a primary button.
 
-![ViewState = AcceptOrRejectAllOrMoreChoices](https://user-images.githubusercontent.com/10264973/188251091-84dcb0af-0fc8-42ee-b742-466c55c61cdb.jpg)
+![ViewState = AcceptOrRejectAllOrMoreChoices](https://user-images.githubusercontent.com/10264973/221736879-13ebbca0-34d6-4424-b358-7c6a56a97737.png)
 
 #### Button Mapping
 
