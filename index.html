@@ -40,6 +40,10 @@
       }
     </style>
     <script
+      src="data:application/ecmascript,"
+      onload="window.airgapScriptLoadEvent=event"
+    ></script>
+    <script
       data-cfasync="false"
       data-ui="http://localhost:8080/build/ui.js"
       data-messages="http://localhost:8080/build/translations"
@@ -47,7 +51,6 @@
       data-secondary-policy="http://transcend.io/test"
       src="https://cdn.transcend.io/cm/443312ef-12f9-494d-85f5-969894260cc7/airgap.js"
       data-regime="GDPR"
-      onload="window.airgapScriptLoadEvent=event;"
     ></script>
   </head>
 
