@@ -47,6 +47,7 @@
       data-secondary-policy="http://transcend.io/test"
       src="https://cdn.transcend.io/cm/443312ef-12f9-494d-85f5-969894260cc7/airgap.js"
       data-regime="GDPR"
+      onload="window.airgapScriptLoadEvent=event;"
     ></script>
   </head>
 
@@ -110,6 +111,14 @@
       // Add button for default view state
       doc.innerHTML += `<button onClick="transcend.showConsentManager()">Default</button><br/><br/>`;
 
+      // callback on change of view state
+      var fetchBackendConsent = (userId) => {
+        console.log(`Mocking call to backend to fetch user ID ${userId}`);
+        return Promise.resolve({
+          SaleOfInfo: true,
+        });
+      };
+
       // Prepare document on ready
       transcend.ready(() => {
         // Add buttons for view states
@@ -124,6 +133,11 @@
 
         // setup the do not sell button
         setupDoNotSellButton();
+
+        // resolve consent from backend
+        fetchBackendConsent(1234).then((consent) =>
+          airgap.setConsent(window.airgapScriptLoadEvent, consent),
+        );
       });
     </script>
   </body>
