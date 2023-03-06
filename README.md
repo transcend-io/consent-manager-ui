@@ -181,7 +181,7 @@ A banner that handles opting in or out of the `Analytics` tag.
 
 **WARNING: In some jurisdictions this UI may be considered a dark pattern. Use at your own risk.** To learn more, head over to our blog post: [Demystifying dark patterns: A practical primer for CPRA compliance](https://transcend.io/blog/dark-patterns-cpra/).
 
-![ViewState = AcceptAll](https://user-images.githubusercontent.com/10264973/221736031-2526a3a0-153b-484d-9067-c1072017d974.png)
+![ViewState = AcceptAll](https://user-images.githubusercontent.com/10264973/223242491-7bb813f4-86de-40b4-8283-08f8048b3444.png)
 
 #### Button Mapping
 
