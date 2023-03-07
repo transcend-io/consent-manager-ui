@@ -115,7 +115,7 @@
       var fetchBackendConsent = (userId) => {
         console.log(`Mocking call to backend to fetch user ID ${userId}`);
         return Promise.resolve({
-          SaleOfInfo: true,
+          SaleOfInfo: false,
         });
       };
 
@@ -135,9 +135,9 @@
         setupDoNotSellButton();
 
         // resolve consent from backend
-        fetchBackendConsent(1234).then((consent) =>
-          airgap.setConsent(window.airgapScriptLoadEvent, consent),
-        );
+        // fetchBackendConsent(1234).then((consent) =>
+        //   airgap.setConsent(window.airgapScriptLoadEvent, consent),
+        // );
       });
     </script>
   </body>
