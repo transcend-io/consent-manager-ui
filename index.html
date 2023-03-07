@@ -120,7 +120,7 @@
       };
 
       // Prepare document on ready
-      transcend.ready(() => {
+      airgap.ready(() => {
         // Add buttons for view states
         transcend.viewStates.forEach((viewState) => {
           doc.innerHTML += `<button onClick="setViewState({ viewState: '${viewState}' })">${viewState}</button><br/><br/>`;
@@ -135,6 +135,7 @@
         setupDoNotSellButton();
 
         // resolve consent from backend
+        // uncomment to test backend consent mocked integration
         // fetchBackendConsent(1234).then((consent) =>
         //   airgap.setConsent(window.airgapScriptLoadEvent, consent),
         // );
