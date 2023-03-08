@@ -1186,7 +1186,7 @@ __metadata:
     "@transcend-io/airgap.js-types": ^8.27.1
     "@transcend-io/internationalization": ^1.5.1
     "@transcend-io/logger": ^1.0.14
-    "@types/json-schema": ^7.0.11
+    "@transcend-io/type-utils": ^1.0.7
     "@types/node": ^17.0.21
     "@typescript-eslint/eslint-plugin": ^5.12.1
     "@typescript-eslint/parser": ^5.12.1
@@ -1208,8 +1208,6 @@ __metadata:
     eslint-plugin-jsdoc: ^37.9.4
     eslint-plugin-react: ^7.29.2
     eslint-plugin-react-hooks: ^4.3.0
-    fp-ts: ^2.12.3
-    io-ts: ^2.2.18
     jest: ^27.5.1
     live-server: ^1.2.2
     monaco-editor: ^0.34.0
@@ -1245,6 +1243,16 @@ __metadata:
     fp-ts: ^2.11.8
     io-ts: ^2.2.16
   checksum: 4d1bb9751852f36120872bcd7fde25e18454f0ebb0c655dd4d8c228dd9b49b1da75f11b323e65eb359f504df2fe0084e1ecffdbeadc52e6a1a05163a3cd2fd2b
+  languageName: node
+  linkType: hard
+
+"@transcend-io/type-utils@npm:^1.0.7":
+  version: 1.0.7
+  resolution: "@transcend-io/type-utils@npm:1.0.7"
+  dependencies:
+    fp-ts: ^2.11.8
+    io-ts: ^2.2.16
+  checksum: 488d2456d3b470a79e64505e9f383cd9bc9d9a55906e10a921b8580e7ac66a5f427659c4f72204ea9f18c205b3d4918d49bf29f7d48bcf2e7730d9b8268c5e20
   languageName: node
   linkType: hard
 
@@ -1384,13 +1392,6 @@ __metadata:
   dependencies:
     "@types/istanbul-lib-report": "*"
   checksum: f1ad54bc68f37f60b30c7915886b92f86b847033e597f9b34f2415acdbe5ed742fa559a0a40050d74cdba3b6a63c342cac1f3a64dba5b68b66a6941f4abd7903
-  languageName: node
-  linkType: hard
-
-"@types/json-schema@npm:^7.0.11":
-  version: 7.0.11
-  resolution: "@types/json-schema@npm:7.0.11"
-  checksum: 527bddfe62db9012fccd7627794bd4c71beb77601861055d87e3ee464f2217c85fca7a4b56ae677478367bbd248dbde13553312b7d4dbc702a2f2bbf60c4018d
   languageName: node
   linkType: hard
 
@@ -4568,13 +4569,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"fp-ts@npm:^2.12.3":
-  version: 2.12.3
-  resolution: "fp-ts@npm:2.12.3"
-  checksum: 398acad3d8c5fbd4b0ee420bbb57a45cd98f54e22d6240fc3ee88a7c9967536cba9285c858d37251f9dea137d767a0ff2354203046ba9a149c064fd8de9fe0e3
-  languageName: node
-  linkType: hard
-
 "fragment-cache@npm:^0.2.1":
   version: 0.2.1
   resolution: "fragment-cache@npm:0.2.1"
@@ -5297,15 +5291,6 @@ __metadata:
   peerDependencies:
     fp-ts: ^2.5.0
   checksum: 1b5855682e413cc92cfb5c51d0bdb24c99e407ab4e67821a53078f5d8dedbc387840c5b240cb19dd5d542bbdd2e2317ece17674a674f3de561ca0f00ae765bba
-  languageName: node
-  linkType: hard
-
-"io-ts@npm:^2.2.18":
-  version: 2.2.18
-  resolution: "io-ts@npm:2.2.18"
-  peerDependencies:
-    fp-ts: ^2.5.0
-  checksum: 8b5a22b0ccc0dd24a2520d9dc27095e144b86426c7cc5ce7a406d1f9cbbde2aa450632e6f3fb435817b6b56ecebea434b049feb2c6752fce0b810787295bf15f
   languageName: node
   linkType: hard
 
