@@ -2,7 +2,7 @@ import { Fragment, h, JSX } from 'preact';
 import { useState, useEffect, useRef } from 'preact/hooks';
 import Editor, { useMonaco, OnMount } from '@monaco-editor/react';
 import type monaco from 'monaco-editor';
-import { toJsonSchema } from './helpers/ioTsToJsonSchema';
+import { toJsonSchema } from '@transcend-io/type-utils';
 
 interface JsonConfigProps<T> {
   /** The name of this value */
