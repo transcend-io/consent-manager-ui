@@ -56,6 +56,7 @@
     <h2>Do Not Sell/Share</h2>
     <br />
     <button id="do-not-sell">Do Not Sell My Personal Information</button>
+    <button id="opt-out-all">Opt Out of All Purposes</button>
     <button id="do-not-sell-reset">Reset</button>
     <hr />
     <h2>View States</h2>
@@ -64,6 +65,9 @@
     <script>
       var handleDoNotSell = (event) => {
         transcend.doNotSell(event);
+      };
+      var handleOptOutOfAll = (event) => {
+        transcend.optOutNotice(event);
       };
       var resetDoNotSell = (event) => {
         airgap.setConsent(
@@ -78,7 +82,11 @@
       var setupDoNotSellButton = () => {
         // get button elements
         let doNotSellDoc = document.getElementById('do-not-sell');
+        let optOutDoc = document.getElementById('opt-out-all');
         let doNotSellDocReset = document.getElementById('do-not-sell-reset');
+
+        // handle opt out of all
+        optOutDoc.addEventListener('click', handleOptOutOfAll);
 
         // reset state
         doNotSellDocReset.addEventListener('click', resetDoNotSell);
@@ -120,7 +128,7 @@
       };
 
       // Prepare document on ready
-      airgap.ready(() => {
+      transcend.ready(() => {
         // Add buttons for view states
         transcend.viewStates.forEach((viewState) => {
           doc.innerHTML += `<button onClick="setViewState({ viewState: '${viewState}' })">${viewState}</button><br/><br/>`;

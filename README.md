@@ -122,6 +122,20 @@ This is the recommended flow for US state laws with a do not sell requirement, a
 | Okay                   | Closes the modal with no changes to purposes and no changes to consent confirmation.                                                                                                                                                                                                                             |
 | See our Privacy Policy | Redirects to the privacy policy link specified in [Consent Display Settings](https://app.transcend.io/consent-manager/display-settings) or the [`data-privacy-policy`](https://docs.transcend.io/docs/consent/faq#how-can-i-customize-the-privacy-policy-link-when-hosting-on-multiple-domains?) data attribute. |
 
+### `OptOutDisclosure`
+
+Unlike the other view states, this view state should be opened using `onClick={(event) => transcend.optOutNotice(event)}`. Note: for React development, please use: `onClick={(event) => transcend.optOutNotice(event.nativeEvent)}`. This view state will opt the user out of all purposes as soon as the modal opens, while the other view states require an additional button to be clicked to ensure compliance.
+
+![ViewState = OptOutDisclosure](https://user-images.githubusercontent.com/10264973/224595781-1015e106-7e1b-4943-8d05-56007fc663ba.png)
+
+#### Button Mapping
+
+| Button Title           | Callback Description                                                                                                                                                                                                                                                                                             |
+| ---------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| On Modal Open          | Opts the user out of all purposes.                                                                                                                                                                                                                                                                               |
+| Okay                   | Closes the modal with no changes to purposes and no changes to consent confirmation.                                                                                                                                                                                                                             |
+| See our Privacy Policy | Redirects to the privacy policy link specified in [Consent Display Settings](https://app.transcend.io/consent-manager/display-settings) or the [`data-privacy-policy`](https://docs.transcend.io/docs/consent/faq#how-can-i-customize-the-privacy-policy-link-when-hosting-on-multiple-domains?) data attribute. |
+
 ### `DoNotSellExplainer`
 
 This is a 2 click opt out for do not sell or share. This option is useful for companies that need to provide more context about what the opt-out means, and how the opt-out changes when the user is logged in or out.

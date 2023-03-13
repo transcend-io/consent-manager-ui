@@ -77,11 +77,13 @@ export function App({
     // Special case: instant do not sell view (user clicks footer and the banner is just a confirmation of their choice)
     if (
       (options.viewState === 'DoNotSellDisclosure' ||
-        eventType === 'doNotSell') &&
+        options.viewState === 'OptOutDisclosure' ||
+        eventType === 'doNotSell' ||
+        eventType === 'optOutNotice') &&
       !auth
     ) {
       throw new Error(
-        `DoNotSellDisclosure view state can only be initialized with auth. ` +
+        `DoNotSellDisclosure and OptOutDisclosure view state can only be initialized with auth. ` +
           `Please provide the onClick event like: onClick: (event) => transcend.doNotSell(event)`,
       );
     }
@@ -96,6 +98,8 @@ export function App({
       viewStates: () => null, // should not be called
       doNotSell: () =>
         handleSetViewState(options.viewState || 'DoNotSellDisclosure', auth),
+      optOutNotice: () =>
+        handleSetViewState(options.viewState || 'OptOutDisclosure', auth),
       showConsentManager: () =>
         handleSetViewState(options.viewState || 'open', undefined, true),
       hideConsentManager: () => handleSetViewState('close'),

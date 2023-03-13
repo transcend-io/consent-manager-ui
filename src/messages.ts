@@ -210,6 +210,29 @@ export const noticeAndDoNotSellMessages = defineMessages(
   },
 );
 
+export const optOutDisclosureMessages = defineMessages(
+  'ui.src.optOutDisclosure',
+  {
+    optOutHonored: {
+      defaultMessage: 'Your opt-out request has been honored.',
+      description:
+        'Title message for acknowledging opt out preference has ben honored through 1-click option.',
+    },
+    optOutHonoredDescription: {
+      defaultMessage:
+        // eslint-disable-next-line max-len
+        "We've received your request for this device or browser, and you have been opted out. Learn more about our data practices in our privacy policy.",
+      description:
+        'Description message for acknowledging opt out preference has ben honored through 1-click option.',
+    },
+    optOutHonoredGpc: {
+      defaultMessage: 'Opt-out preference signal honored.',
+      description:
+        'Title message for acknowledging do not sell preference has ben honored through GPC.',
+    },
+  },
+);
+
 export const bottomMenuMessages = defineMessages('ui.src.bottomMenu', {
   moreChoicesButtonPrimary: {
     defaultMessage: 'More choices',

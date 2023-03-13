@@ -17,6 +17,7 @@ import { CompleteOptionsInverted } from './CompleteOptionsInverted';
 import { TranscendLogo } from './TranscendLogo';
 import { NoticeAndDoNotSell } from './NoticeAndDoNotSell';
 import { QuickOptions } from './QuickOptions';
+import { OptOutDisclosure } from './OptOutDisclosure';
 import { AcceptOrRejectAll } from './AcceptOrRejectAll';
 import { DoNotSellDisclosure } from './DoNotSellDisclosure';
 import { AcceptOrRejectAnalytics } from './AcceptOrRejectAnalytics';
@@ -104,6 +105,13 @@ export function Main({
 
             {viewState === 'DoNotSellDisclosure' && modalOpenAuth && (
               <DoNotSellDisclosure
+                handleSetViewState={handleSetViewState}
+                modalOpenAuth={modalOpenAuth}
+              />
+            )}
+
+            {viewState === 'OptOutDisclosure' && modalOpenAuth && (
+              <OptOutDisclosure
                 handleSetViewState={handleSetViewState}
                 modalOpenAuth={modalOpenAuth}
               />
