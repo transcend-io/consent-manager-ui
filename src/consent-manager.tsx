@@ -82,6 +82,12 @@ export const injectConsentManagerApp = (
             auth,
             ...options,
           }),
+        optOutNotice: (auth, options: ShowConsentManagerOptions = {}) =>
+          dispatchConsentManagerAPIEvent(appContainer, {
+            eventType: 'optOutNotice',
+            auth,
+            ...options,
+          }),
         autoShowConsentManager: (options: ShowConsentManagerOptions = {}) =>
           dispatchConsentManagerAPIEvent(appContainer, {
             eventType: 'autoShowConsentManager',

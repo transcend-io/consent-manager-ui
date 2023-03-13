@@ -29,6 +29,7 @@ export function BottomMenu({
       {![
         'NoticeAndDoNotSell',
         'DoNotSellDisclosure',
+        'OptOutDisclosure',
         'PrivacyPolicyNotice',
         'AcceptOrRejectAnalytics',
         'AcceptAllOrMoreChoices',
