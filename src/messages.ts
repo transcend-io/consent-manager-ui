@@ -1,3 +1,4 @@
+/* eslint-disable max-lines */
 import { defineMessages } from '@transcend-io/internationalization';
 
 export const messages = defineMessages('ui.src.messages', {
@@ -352,3 +353,4 @@ export const completeOptionsInvertedMessages = defineMessages(
     },
   },
 );
+/* eslint-enable max-lines */
