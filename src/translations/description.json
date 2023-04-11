@@ -10,6 +10,7 @@
   "ui.src.bottomMenu.simplerChoicesButtonPrimary": "Text for selecting simpler opt out choices.",
   "ui.src.completeOptions.advertisingLabel": "Text for advertising purposes in CompleteOptions view state.",
   "ui.src.completeOptions.analyticsLabel": "Text for analytics purposes in CompleteOptions view state.",
+  "ui.src.completeOptions.description": "Freeform description text for the CompleteOptions consent banner.",
   "ui.src.completeOptions.essentialAriaLabel": "Hover/alt text for disabled essential purposes in CompleteOptions view state.",
   "ui.src.completeOptions.essentialLabel": "Text for essential purposes in CompleteOptions view state.",
   "ui.src.completeOptions.functionalLabel": "Text for functional purposes in CompleteOptions view state.",

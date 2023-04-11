@@ -10,6 +10,7 @@
   "ui.src.bottomMenu.simplerChoicesButtonPrimary": "Более простой выбор",
   "ui.src.completeOptions.advertisingLabel": "Реклама",
   "ui.src.completeOptions.analyticsLabel": "аналитика",
+  "ui.src.completeOptions.description": "-",
   "ui.src.completeOptions.essentialAriaLabel": "Сбор важных данных нельзя отключить.",
   "ui.src.completeOptions.essentialLabel": "Основные цели",
   "ui.src.completeOptions.functionalLabel": "функциональность",

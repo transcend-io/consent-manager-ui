@@ -10,6 +10,7 @@
   "ui.src.bottomMenu.simplerChoicesButtonPrimary": "Jednodušší volby",
   "ui.src.completeOptions.advertisingLabel": "Reklamní",
   "ui.src.completeOptions.analyticsLabel": "Analytika",
+  "ui.src.completeOptions.description": "-",
   "ui.src.completeOptions.essentialAriaLabel": "Základní sběr dat nelze vypnout.",
   "ui.src.completeOptions.essentialLabel": "Základní účely",
   "ui.src.completeOptions.functionalLabel": "Funkčnost",

@@ -10,6 +10,7 @@
   "ui.src.bottomMenu.simplerChoicesButtonPrimary": "Daha basit seçimler",
   "ui.src.completeOptions.advertisingLabel": "Reklam",
   "ui.src.completeOptions.analyticsLabel": "Analitik",
+  "ui.src.completeOptions.description": "-",
   "ui.src.completeOptions.essentialAriaLabel": "Temel veri toplama kapatılamaz.",
   "ui.src.completeOptions.essentialLabel": "Temel amaçlar",
   "ui.src.completeOptions.functionalLabel": "Fonksiyonellik",

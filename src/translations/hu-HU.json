@@ -10,6 +10,7 @@
   "ui.src.bottomMenu.simplerChoicesButtonPrimary": "Egyszerűbb választás",
   "ui.src.completeOptions.advertisingLabel": "Reklám",
   "ui.src.completeOptions.analyticsLabel": "Analitika",
+  "ui.src.completeOptions.description": "-",
   "ui.src.completeOptions.essentialAriaLabel": "Az alapvető adatgyűjtést nem lehet kikapcsolni.",
   "ui.src.completeOptions.essentialLabel": "Alapvető célok",
   "ui.src.completeOptions.functionalLabel": "funkcionalitás",

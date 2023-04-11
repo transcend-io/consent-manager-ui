@@ -10,6 +10,7 @@
   "ui.src.bottomMenu.simplerChoicesButtonPrimary": "Eenvoudiger keuses",
   "ui.src.completeOptions.advertisingLabel": "Advertising",
   "ui.src.completeOptions.analyticsLabel": "analise",
+  "ui.src.completeOptions.description": "-",
   "ui.src.completeOptions.essentialAriaLabel": "Essensiële data-insameling kan nie afgeskakel word nie.",
   "ui.src.completeOptions.essentialLabel": "Essensiële doeleindes",
   "ui.src.completeOptions.functionalLabel": "Funksionaliteit",

@@ -10,6 +10,7 @@
   "ui.src.bottomMenu.simplerChoicesButtonPrimary": "よりシンプルな選択肢",
   "ui.src.completeOptions.advertisingLabel": "広告",
   "ui.src.completeOptions.analyticsLabel": "分析",
+  "ui.src.completeOptions.description": "-",
   "ui.src.completeOptions.essentialAriaLabel": "重要なデータ収集はオフにできません。",
   "ui.src.completeOptions.essentialLabel": "本質的な目的",
   "ui.src.completeOptions.functionalLabel": "機能性",

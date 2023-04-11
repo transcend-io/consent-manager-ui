@@ -10,6 +10,7 @@
   "ui.src.bottomMenu.simplerChoicesButtonPrimary": "Jednostavniji izbori",
   "ui.src.completeOptions.advertisingLabel": "Reklamiranje",
   "ui.src.completeOptions.analyticsLabel": "Analitika",
+  "ui.src.completeOptions.description": "-",
   "ui.src.completeOptions.essentialAriaLabel": "Prikupljanje osnovnih podataka ne može se isključiti.",
   "ui.src.completeOptions.essentialLabel": "Osnovne svrhe",
   "ui.src.completeOptions.functionalLabel": "Funkcionalnost",

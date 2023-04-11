@@ -83,6 +83,10 @@ This option is linked to in most other banners under the "More Choices" footer. 
 
 ![ViewState = CompleteOptions](https://user-images.githubusercontent.com/10264973/188251095-7c7fd1b5-7748-4430-b7af-130e37db2dc5.jpg)
 
+With optional description text:
+
+![ViewState = CompleteOptions with description](https://user-images.githubusercontent.com/10264973/231072703-7cc9e7c7-a02e-4598-ad08-b5dc6d029165.png)
+
 #### Button Mapping
 
 | Button Title           | Callback Description                                                                                                                                                                                                                                                                                             |

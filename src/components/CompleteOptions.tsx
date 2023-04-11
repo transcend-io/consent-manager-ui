@@ -76,6 +76,9 @@ export function CompleteOptions({
         ORDER_OF_PURPOSES.indexOf(a) - ORDER_OF_PURPOSES.indexOf(b),
   );
 
+  // Render description
+  const description = formatMessage(completeOptionsMessages.description);
+
   return (
     <div className="complete-options-container">
       <p className="text-title text-title-center">
@@ -83,6 +86,17 @@ export function CompleteOptions({
       </p>
       <form className="complete-options-form">
         <GPCIndicator />
+        {description && description !== '-' ? (
+          <p className="paragraph">
+            <div
+              // eslint-disable-next-line react/no-danger
+              dangerouslySetInnerHTML={{
+                __html: description,
+              }}
+            />
+          </p>
+        ) : undefined}
+
         <div className="toggles-container">
           <Toggle
             key="Essential"

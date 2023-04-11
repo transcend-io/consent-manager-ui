@@ -10,6 +10,7 @@
   "ui.src.bottomMenu.simplerChoicesButtonPrimary": "Απλότερες επιλογές",
   "ui.src.completeOptions.advertisingLabel": "Διαφήμιση",
   "ui.src.completeOptions.analyticsLabel": "Analytics",
+  "ui.src.completeOptions.description": "-",
   "ui.src.completeOptions.essentialAriaLabel": "Η συλλογή βασικών δεδομένων δεν μπορεί να απενεργοποιηθεί.",
   "ui.src.completeOptions.essentialLabel": "Βασικοί σκοποί",
   "ui.src.completeOptions.functionalLabel": "Λειτουργικότητα",

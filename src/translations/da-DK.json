@@ -10,6 +10,7 @@
   "ui.src.bottomMenu.simplerChoicesButtonPrimary": "Enklere valg",
   "ui.src.completeOptions.advertisingLabel": "Annoncering",
   "ui.src.completeOptions.analyticsLabel": "Analyse-værktøj",
+  "ui.src.completeOptions.description": "-",
   "ui.src.completeOptions.essentialAriaLabel": "Vigtig dataindsamling kan ikke slås fra.",
   "ui.src.completeOptions.essentialLabel": "Væsentlige formål",
   "ui.src.completeOptions.functionalLabel": "funktionalitet",

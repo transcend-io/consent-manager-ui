@@ -10,6 +10,7 @@
   "ui.src.bottomMenu.simplerChoicesButtonPrimary": "Paprastesnis pasirinkimas",
   "ui.src.completeOptions.advertisingLabel": "Skelbimai",
   "ui.src.completeOptions.analyticsLabel": "„Analytics“",
+  "ui.src.completeOptions.description": "-",
   "ui.src.completeOptions.essentialAriaLabel": "Esminių duomenų rinkimas negali būti išjungtas.",
   "ui.src.completeOptions.essentialLabel": "Esminiai tikslai",
   "ui.src.completeOptions.functionalLabel": "funkcionalumas",

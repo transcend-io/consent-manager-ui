@@ -10,6 +10,7 @@
   "ui.src.bottomMenu.simplerChoicesButtonPrimary": "ตัวเลือกที่ง่ายกว่า",
   "ui.src.completeOptions.advertisingLabel": "การโฆษณา",
   "ui.src.completeOptions.analyticsLabel": "วิิเคราะห์วิทยา",
+  "ui.src.completeOptions.description": "-",
   "ui.src.completeOptions.essentialAriaLabel": "การเก็บรวบรวมข้อมูลสำคัญไม่สามารถปิดได้",
   "ui.src.completeOptions.essentialLabel": "วัตถุประสงค์ที่สำคัญ",
   "ui.src.completeOptions.functionalLabel": "ฟังก์ชันการทำงาน",

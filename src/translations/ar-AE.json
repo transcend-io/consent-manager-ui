@@ -10,6 +10,7 @@
   "ui.src.bottomMenu.simplerChoicesButtonPrimary": "اختيارات أبسط",
   "ui.src.completeOptions.advertisingLabel": "الإعلان",
   "ui.src.completeOptions.analyticsLabel": "تحليلات",
+  "ui.src.completeOptions.description": "-",
   "ui.src.completeOptions.essentialAriaLabel": "لا يمكن إيقاف تشغيل جمع البيانات الأساسية.",
   "ui.src.completeOptions.essentialLabel": "أغراض أساسية",
   "ui.src.completeOptions.functionalLabel": "الوظائف",
