@@ -10,6 +10,7 @@
   "ui.src.bottomMenu.simplerChoicesButtonPrimary": "更简单的选择",
   "ui.src.completeOptions.advertisingLabel": "广告",
   "ui.src.completeOptions.analyticsLabel": "分析",
+  "ui.src.completeOptions.description": "-",
   "ui.src.completeOptions.essentialAriaLabel": "无法关闭基本数据收集。",
   "ui.src.completeOptions.essentialLabel": "基本用途",
   "ui.src.completeOptions.functionalLabel": "功能性",

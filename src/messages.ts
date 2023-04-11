@@ -325,6 +325,11 @@ export const completeOptionsMessages = defineMessages(
       description:
         'Text to display when Global Privacy Control (GPC) is respected.',
     },
+    description: {
+      defaultMessage: '-',
+      description:
+        'Freeform description text for the CompleteOptions consent banner.',
+    },
   },
 );
 

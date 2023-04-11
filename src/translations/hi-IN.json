@@ -10,6 +10,7 @@
   "ui.src.bottomMenu.simplerChoicesButtonPrimary": "आसान विकल्प",
   "ui.src.completeOptions.advertisingLabel": "विज्ञापन",
   "ui.src.completeOptions.analyticsLabel": "एनालिटिक्स",
+  "ui.src.completeOptions.description": "-",
   "ui.src.completeOptions.essentialAriaLabel": "आवश्यक डेटा संग्रह को बंद नहीं किया जा सकता है।",
   "ui.src.completeOptions.essentialLabel": "आवश्यक उद्देश्य",
   "ui.src.completeOptions.functionalLabel": "कार्यात्मकता",

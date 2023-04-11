@@ -10,6 +10,7 @@
   "ui.src.bottomMenu.simplerChoicesButtonPrimary": "Yksinkertaisempia valintoja",
   "ui.src.completeOptions.advertisingLabel": "Mainonta",
   "ui.src.completeOptions.analyticsLabel": "Analytiikka",
+  "ui.src.completeOptions.description": "-",
   "ui.src.completeOptions.essentialAriaLabel": "Oleellista tiedonkeruuta ei voi poistaa käytöstä.",
   "ui.src.completeOptions.essentialLabel": "Olennaiset tavoitteet",
   "ui.src.completeOptions.functionalLabel": "toiminnallisuus",

@@ -10,6 +10,7 @@
   "ui.src.bottomMenu.simplerChoicesButtonPrimary": "더 간단한 선택",
   "ui.src.completeOptions.advertisingLabel": "광고",
   "ui.src.completeOptions.analyticsLabel": "해석학",
+  "ui.src.completeOptions.description": "-",
   "ui.src.completeOptions.essentialAriaLabel": "필수 데이터 수집은 끌 수 없습니다.",
   "ui.src.completeOptions.essentialLabel": "필수 목적",
   "ui.src.completeOptions.functionalLabel": "기능성",

@@ -10,6 +10,7 @@
   "ui.src.bottomMenu.simplerChoicesButtonPrimary": "По-опростен избор",
   "ui.src.completeOptions.advertisingLabel": "Реклама",
   "ui.src.completeOptions.analyticsLabel": "Анализ",
+  "ui.src.completeOptions.description": "-",
   "ui.src.completeOptions.essentialAriaLabel": "Събирането на съществени данни не може да бъде изключено.",
   "ui.src.completeOptions.essentialLabel": "Основни цели",
   "ui.src.completeOptions.functionalLabel": "Функционалност",

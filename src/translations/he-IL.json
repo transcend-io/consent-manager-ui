@@ -10,6 +10,7 @@
   "ui.src.bottomMenu.simplerChoicesButtonPrimary": "אפשרויות פשוטות יותר",
   "ui.src.completeOptions.advertisingLabel": "פרסום",
   "ui.src.completeOptions.analyticsLabel": "ניתוח",
+  "ui.src.completeOptions.description": "-",
   "ui.src.completeOptions.essentialAriaLabel": "לא ניתן לכבות את איסוף הנתונים החיוניים.",
   "ui.src.completeOptions.essentialLabel": "מטרות חיוניות",
   "ui.src.completeOptions.functionalLabel": "פונקציונליות",

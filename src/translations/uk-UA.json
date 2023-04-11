@@ -10,6 +10,7 @@
   "ui.src.bottomMenu.simplerChoicesButtonPrimary": "Простіший вибір",
   "ui.src.completeOptions.advertisingLabel": "Реклама",
   "ui.src.completeOptions.analyticsLabel": "Аналітика",
+  "ui.src.completeOptions.description": "-",
   "ui.src.completeOptions.essentialAriaLabel": "Збір основних даних не може бути вимкнений.",
   "ui.src.completeOptions.essentialLabel": "Істотні цілі",
   "ui.src.completeOptions.functionalLabel": "Функціональність",

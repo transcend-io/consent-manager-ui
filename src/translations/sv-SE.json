@@ -10,6 +10,7 @@
   "ui.src.bottomMenu.simplerChoicesButtonPrimary": "Enklare val",
   "ui.src.completeOptions.advertisingLabel": "Annonsering",
   "ui.src.completeOptions.analyticsLabel": "Analyser",
+  "ui.src.completeOptions.description": "-",
   "ui.src.completeOptions.essentialAriaLabel": "Viktig datainsamling kan inte stängas av.",
   "ui.src.completeOptions.essentialLabel": "Viktiga syften",
   "ui.src.completeOptions.functionalLabel": "Funktion",

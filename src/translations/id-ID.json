@@ -10,6 +10,7 @@
   "ui.src.bottomMenu.simplerChoicesButtonPrimary": "Pilihan yang lebih sederhana",
   "ui.src.completeOptions.advertisingLabel": "Periklanan",
   "ui.src.completeOptions.analyticsLabel": "Analitik",
+  "ui.src.completeOptions.description": "-",
   "ui.src.completeOptions.essentialAriaLabel": "Pengumpulan data penting tidak dapat dimatikan.",
   "ui.src.completeOptions.essentialLabel": "Tujuan penting",
   "ui.src.completeOptions.functionalLabel": "Fungsionalitas",

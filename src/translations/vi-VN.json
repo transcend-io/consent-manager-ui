@@ -10,6 +10,7 @@
   "ui.src.bottomMenu.simplerChoicesButtonPrimary": "Lựa chọn đơn giản hơn",
   "ui.src.completeOptions.advertisingLabel": "Quảng cáo",
   "ui.src.completeOptions.analyticsLabel": "phân tích",
+  "ui.src.completeOptions.description": "-",
   "ui.src.completeOptions.essentialAriaLabel": "Không thể tắt thu thập dữ liệu thiết yếu.",
   "ui.src.completeOptions.essentialLabel": "Mục đích thiết yếu",
   "ui.src.completeOptions.functionalLabel": "Chức năng",

@@ -10,6 +10,7 @@
   "ui.src.bottomMenu.simplerChoicesButtonPrimary": "Scelte più semplici",
   "ui.src.completeOptions.advertisingLabel": "Pubblicità",
   "ui.src.completeOptions.analyticsLabel": "analitica",
+  "ui.src.completeOptions.description": "-",
   "ui.src.completeOptions.essentialAriaLabel": "La raccolta dei dati essenziali non può essere disattivata.",
   "ui.src.completeOptions.essentialLabel": "Scopi essenziali",
   "ui.src.completeOptions.functionalLabel": "Funzionalità",

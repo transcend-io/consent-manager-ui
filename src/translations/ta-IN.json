@@ -10,6 +10,7 @@
   "ui.src.bottomMenu.simplerChoicesButtonPrimary": "எளிமையான தேர்வுகள்",
   "ui.src.completeOptions.advertisingLabel": "விளம்பரம்",
   "ui.src.completeOptions.analyticsLabel": "பகுப்பாராய்ச்சிகள்",
+  "ui.src.completeOptions.description": "-",
   "ui.src.completeOptions.essentialAriaLabel": "அத்தியாவசிய தரவு சேகரிப்பு அணைக்க முடியாது.",
   "ui.src.completeOptions.essentialLabel": "அத்தியாவசிய நோக்கங்கள்",
   "ui.src.completeOptions.functionalLabel": "செயற்பாடுகள்",

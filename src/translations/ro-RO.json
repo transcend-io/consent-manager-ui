@@ -10,6 +10,7 @@
   "ui.src.bottomMenu.simplerChoicesButtonPrimary": "Alegeri mai simple",
   "ui.src.completeOptions.advertisingLabel": "Publicitate",
   "ui.src.completeOptions.analyticsLabel": "Analiză",
+  "ui.src.completeOptions.description": "-",
   "ui.src.completeOptions.essentialAriaLabel": "Colectarea datelor esențiale nu poate fi dezactivată.",
   "ui.src.completeOptions.essentialLabel": "Scopuri esențiale",
   "ui.src.completeOptions.functionalLabel": "Funcționalitate",

@@ -10,6 +10,7 @@
   "ui.src.bottomMenu.simplerChoicesButtonPrimary": "Simpler choices",
   "ui.src.completeOptions.advertisingLabel": "Advertising",
   "ui.src.completeOptions.analyticsLabel": "Analytics",
+  "ui.src.completeOptions.description": "-",
   "ui.src.completeOptions.essentialAriaLabel": "Essential data collection cannot be turned off.",
   "ui.src.completeOptions.essentialLabel": "Essential purposes",
   "ui.src.completeOptions.functionalLabel": "Functionality",
