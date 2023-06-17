@@ -199,7 +199,7 @@ A banner that handles opting in or out of the `Analytics` tag.
 
 A banner that handles opting in or out of the `Advertising` tag.
 
-![ViewState = AcceptOrRejectAdvertising](https://user-images.githubusercontent.com/10264973/FIXME.jpg)
+![ViewState = AcceptOrRejectAdvertising](https://github.com/transcend-io/consent-manager-ui/assets/10264973/7e36df8c-4752-4a2d-8616-c68d91ea1250)
 
 #### Button Mapping
 
