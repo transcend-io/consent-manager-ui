@@ -18,6 +18,7 @@ import { TranscendLogo } from './TranscendLogo';
 import { NoticeAndDoNotSell } from './NoticeAndDoNotSell';
 import { QuickOptions } from './QuickOptions';
 import { OptOutDisclosure } from './OptOutDisclosure';
+import { AcceptOrRejectAdvertising } from './AcceptOrRejectAdvertising';
 import { AcceptOrRejectAll } from './AcceptOrRejectAll';
 import { DoNotSellDisclosure } from './DoNotSellDisclosure';
 import { AcceptOrRejectAnalytics } from './AcceptOrRejectAnalytics';
@@ -73,6 +74,11 @@ export function Main({
 
             {viewState === 'AcceptOrRejectAnalytics' && (
               <AcceptOrRejectAnalytics
+                handleSetViewState={handleSetViewState}
+              />
+            )}
+            {viewState === 'AcceptOrRejectAdvertising' && (
+              <AcceptOrRejectAdvertising
                 handleSetViewState={handleSetViewState}
               />
             )}

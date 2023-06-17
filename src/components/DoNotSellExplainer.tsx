@@ -98,7 +98,11 @@ export function DoNotSellExplainer({
           <p className="paragraph">
             {typeof saving === 'boolean'
               ? formatMessage(
-                  saving ? messages.saving : messages.preferencesSaved,
+                  saving
+                    ? messages.saving
+                    : consentLocal
+                    ? messages.preferencesSavedOptedIn
+                    : messages.preferencesSaved,
                 )
               : '\u200b'}
           </p>
