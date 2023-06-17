@@ -44,7 +44,7 @@
   "ui.src.messages.moreChoicesButtonPrimary": "Daha fazla seçenek",
   "ui.src.messages.noticeTitle": "Bu web sitesi kişisel verileri işler",
   "ui.src.messages.preferencesSaved": "Tercihler kaydedildi!",
-  "ui.src.messages.preferencesSavedOpedIn": "Tercihler kaydedildi!",
+  "ui.src.messages.preferencesSavedOptedIn": "Tercihler kaydedildi!",
   "ui.src.messages.privacyPolicyNoticeButton": "Tamam",
   "ui.src.messages.privacyPolicyNoticeDescription": "Gizlilik politikanızı güncelledik. Kişisel bilgilerinizi nasıl kullandığımız hakkında daha fazla bilgi edinmek için aşağıdaki bağlantıyı tıklayın.",
   "ui.src.messages.rejectAdvertising": "Reklamları devre dışı bırakma",

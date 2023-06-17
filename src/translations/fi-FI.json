@@ -44,7 +44,7 @@
   "ui.src.messages.moreChoicesButtonPrimary": "Lisää valintoja",
   "ui.src.messages.noticeTitle": "Tämä verkkosivusto käsittelee henkilötietoja",
   "ui.src.messages.preferencesSaved": "Asetukset tallennettu!",
-  "ui.src.messages.preferencesSavedOpedIn": "Asetukset tallennettu!",
+  "ui.src.messages.preferencesSavedOptedIn": "Asetukset tallennettu!",
   "ui.src.messages.privacyPolicyNoticeButton": "Okei",
   "ui.src.messages.privacyPolicyNoticeDescription": "Olemme päivittäneet tietosuojakäytäntösi. Napsauta alla olevaa linkkiä saadaksesi lisätietoja siitä, miten käytämme henkilötietojasi.",
   "ui.src.messages.rejectAdvertising": "Poistu mainonnasta",

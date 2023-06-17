@@ -44,7 +44,7 @@
   "ui.src.messages.moreChoicesButtonPrimary": "Повече възможности за избор",
   "ui.src.messages.noticeTitle": "Този уебсайт обработва лични данни",
   "ui.src.messages.preferencesSaved": "Предпочитания Запазени!",
-  "ui.src.messages.preferencesSavedOpedIn": "Предпочитания Запазени!",
+  "ui.src.messages.preferencesSavedOptedIn": "Предпочитания Запазени!",
   "ui.src.messages.privacyPolicyNoticeButton": "Добре.",
   "ui.src.messages.privacyPolicyNoticeDescription": "Актуализирахме вашата политика за поверителност. Кликнете върху линка по-долу, за да научите повече за това как използваме вашата лична информация.",
   "ui.src.messages.rejectAdvertising": "Излезте от рекламата",

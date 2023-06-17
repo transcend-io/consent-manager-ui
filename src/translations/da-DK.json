@@ -44,7 +44,7 @@
   "ui.src.messages.moreChoicesButtonPrimary": "Flere valgmuligheder",
   "ui.src.messages.noticeTitle": "Dette websted behandler personoplysninger",
   "ui.src.messages.preferencesSaved": "Præferencer gemt!",
-  "ui.src.messages.preferencesSavedOpedIn": "Præferencer gemt!",
+  "ui.src.messages.preferencesSavedOptedIn": "Præferencer gemt!",
   "ui.src.messages.privacyPolicyNoticeButton": "Okay",
   "ui.src.messages.privacyPolicyNoticeDescription": "Vi har opdateret din fortrolighedspolitik. Klik på nedenstående link for at lære mere om, hvordan vi bruger dine personlige oplysninger.",
   "ui.src.messages.rejectAdvertising": "Fravælg annoncering",

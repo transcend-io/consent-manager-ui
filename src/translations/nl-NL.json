@@ -44,7 +44,7 @@
   "ui.src.messages.moreChoicesButtonPrimary": "Meer keuzes",
   "ui.src.messages.noticeTitle": "Deze website verwerkt persoonsgegevens",
   "ui.src.messages.preferencesSaved": "Voorkeuren opgeslagen!",
-  "ui.src.messages.preferencesSavedOpedIn": "Voorkeuren opgeslagen!",
+  "ui.src.messages.preferencesSavedOptedIn": "Voorkeuren opgeslagen!",
   "ui.src.messages.privacyPolicyNoticeButton": "oké",
   "ui.src.messages.privacyPolicyNoticeDescription": "We hebben je privacybeleid bijgewerkt. Klik op de link hieronder voor meer informatie over hoe we uw persoonlijke informatie gebruiken.",
   "ui.src.messages.rejectAdvertising": "Afmelden voor advertenties",

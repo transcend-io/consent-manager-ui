@@ -44,7 +44,7 @@
   "ui.src.messages.moreChoicesButtonPrimary": "Fler val",
   "ui.src.messages.noticeTitle": "Denna webbplats behandlar personuppgifter",
   "ui.src.messages.preferencesSaved": "Inställningar sparade!",
-  "ui.src.messages.preferencesSavedOpedIn": "Inställningar sparade!",
+  "ui.src.messages.preferencesSavedOptedIn": "Inställningar sparade!",
   "ui.src.messages.privacyPolicyNoticeButton": "Okej",
   "ui.src.messages.privacyPolicyNoticeDescription": "Vi har uppdaterat din integritetspolicy. Klicka på länken nedan för att lära dig mer om hur vi använder din personliga information.",
   "ui.src.messages.rejectAdvertising": "Välj bort reklam",

@@ -44,7 +44,7 @@
   "ui.src.messages.moreChoicesButtonPrimary": "Lebih banyak pilihan",
   "ui.src.messages.noticeTitle": "Situs web ini memproses data pribadi",
   "ui.src.messages.preferencesSaved": "Preferensi Disimpan!",
-  "ui.src.messages.preferencesSavedOpedIn": "Preferensi Disimpan!",
+  "ui.src.messages.preferencesSavedOptedIn": "Preferensi Disimpan!",
   "ui.src.messages.privacyPolicyNoticeButton": "baik",
   "ui.src.messages.privacyPolicyNoticeDescription": "Kami telah memperbarui kebijakan privasi Anda. Klik tautan di bawah ini untuk mempelajari lebih lanjut tentang cara kami menggunakan informasi pribadi Anda.",
   "ui.src.messages.rejectAdvertising": "Menyisih dari iklan",

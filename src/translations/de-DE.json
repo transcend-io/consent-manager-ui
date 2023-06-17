@@ -44,7 +44,7 @@
   "ui.src.messages.moreChoicesButtonPrimary": "Mehr Auswahlmöglichkeiten",
   "ui.src.messages.noticeTitle": "Diese Website verarbeitet personenbezogene Daten",
   "ui.src.messages.preferencesSaved": "Einstellungen gespeichert!",
-  "ui.src.messages.preferencesSavedOpedIn": "Einstellungen gespeichert!",
+  "ui.src.messages.preferencesSavedOptedIn": "Einstellungen gespeichert!",
   "ui.src.messages.privacyPolicyNoticeButton": "Okay",
   "ui.src.messages.privacyPolicyNoticeDescription": "Wir haben Ihre Datenschutzrichtlinie aktualisiert. Klicken Sie auf den Link unten, um mehr darüber zu erfahren, wie wir Ihre personenbezogenen Daten verwenden.",
   "ui.src.messages.rejectAdvertising": "Werbung abbestellen",

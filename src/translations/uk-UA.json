@@ -44,7 +44,7 @@
   "ui.src.messages.moreChoicesButtonPrimary": "Більше варіантів",
   "ui.src.messages.noticeTitle": "Цей веб-сайт обробляє персональні дані",
   "ui.src.messages.preferencesSaved": "Налаштування Збережено!",
-  "ui.src.messages.preferencesSavedOpedIn": "Налаштування Збережено!",
+  "ui.src.messages.preferencesSavedOptedIn": "Налаштування Збережено!",
   "ui.src.messages.privacyPolicyNoticeButton": "Гаразд",
   "ui.src.messages.privacyPolicyNoticeDescription": "Ми оновили вашу політику конфіденційності. Клацніть на посилання нижче, щоб дізнатися більше про те, як ми використовуємо вашу особисту інформацію.",
   "ui.src.messages.rejectAdvertising": "Відмова від реклами",

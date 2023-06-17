@@ -44,7 +44,7 @@
   "ui.src.messages.moreChoicesButtonPrimary": "Más opciones",
   "ui.src.messages.noticeTitle": "Este sitio web procesa datos personales",
   "ui.src.messages.preferencesSaved": "¡Preferencias guardadas!",
-  "ui.src.messages.preferencesSavedOpedIn": "¡Preferencias guardadas!",
+  "ui.src.messages.preferencesSavedOptedIn": "¡Preferencias guardadas!",
   "ui.src.messages.privacyPolicyNoticeButton": "Bien",
   "ui.src.messages.privacyPolicyNoticeDescription": "Hemos actualizado su política de privacidad. Haga clic en el siguiente enlace para obtener más información sobre cómo usamos su información personal.",
   "ui.src.messages.rejectAdvertising": "Optar por no recibir publicidad",

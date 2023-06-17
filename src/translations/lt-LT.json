@@ -44,7 +44,7 @@
   "ui.src.messages.moreChoicesButtonPrimary": "Daugiau pasirinkimų",
   "ui.src.messages.noticeTitle": "Ši svetainė tvarko asmens duomenis",
   "ui.src.messages.preferencesSaved": "Nuostatos Išsaugotos!",
-  "ui.src.messages.preferencesSavedOpedIn": "Nuostatos Išsaugotos!",
+  "ui.src.messages.preferencesSavedOptedIn": "Nuostatos Išsaugotos!",
   "ui.src.messages.privacyPolicyNoticeButton": "Gerai",
   "ui.src.messages.privacyPolicyNoticeDescription": "Atnaujinome jūsų privatumo politiką. Spustelėkite žemiau esančią nuorodą, kad sužinotumėte daugiau apie tai, kaip naudojame jūsų asmeninę informaciją.",
   "ui.src.messages.rejectAdvertising": "Reklamos atsisakymas",

@@ -44,7 +44,7 @@
   "ui.src.messages.moreChoicesButtonPrimary": "Button text for redirecting the user to more granular consent choices.",
   "ui.src.messages.noticeTitle": "The Do Not Sell/Share notice title.",
   "ui.src.messages.preferencesSaved": "Confirmation that preferences are saved to an opted out state.",
-  "ui.src.messages.preferencesSavedOpedIn": "Confirmation that preferences are saved to an opted in state.",
+  "ui.src.messages.preferencesSavedOptedIn": "Confirmation that preferences are saved to an opted in state.",
   "ui.src.messages.privacyPolicyNoticeButton": "Button to dismiss privacy policy notice.",
   "ui.src.messages.privacyPolicyNoticeDescription": "The title displayed for the PrivacyPolicyNotice banner.",
   "ui.src.messages.rejectAdvertising": "The negative response for opting out of advertising in the \"AcceptOrRejectAdvertising\" view state.",

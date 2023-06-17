@@ -44,7 +44,7 @@
   "ui.src.messages.moreChoicesButtonPrimary": "Plus de choix",
   "ui.src.messages.noticeTitle": "Ce site Web traite les données personnelles",
   "ui.src.messages.preferencesSaved": "Préférences enregistrées !",
-  "ui.src.messages.preferencesSavedOpedIn": "Préférences enregistrées !",
+  "ui.src.messages.preferencesSavedOptedIn": "Préférences enregistrées !",
   "ui.src.messages.privacyPolicyNoticeButton": "OK",
   "ui.src.messages.privacyPolicyNoticeDescription": "Nous avons mis à jour votre politique de confidentialité. Cliquez sur le lien ci-dessous pour en savoir plus sur la façon dont nous utilisons vos informations personnelles.",
   "ui.src.messages.rejectAdvertising": "Se désinscrire de la publicité",

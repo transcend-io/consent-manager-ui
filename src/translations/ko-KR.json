@@ -44,7 +44,7 @@
   "ui.src.messages.moreChoicesButtonPrimary": "더 많은 선택",
   "ui.src.messages.noticeTitle": "이 웹사이트는 개인 데이터를 처리합니다",
   "ui.src.messages.preferencesSaved": "기본 설정이 저장되었습니다!",
-  "ui.src.messages.preferencesSavedOpedIn": "기본 설정이 저장되었습니다!",
+  "ui.src.messages.preferencesSavedOptedIn": "기본 설정이 저장되었습니다!",
   "ui.src.messages.privacyPolicyNoticeButton": "괜찮아",
   "ui.src.messages.privacyPolicyNoticeDescription": "개인정보 보호정책이 업데이트되었습니다.당사가 귀하의 개인 정보를 사용하는 방식에 대해 자세히 알아보려면 아래 링크를 클릭하십시오.",
   "ui.src.messages.rejectAdvertising": "광고 수신 거부",

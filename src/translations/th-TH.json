@@ -44,7 +44,7 @@
   "ui.src.messages.moreChoicesButtonPrimary": "ตัวเลือกอื่นๆ",
   "ui.src.messages.noticeTitle": "เว็บไซต์นี้ประมวลผลข้อมูลส่วนบุคคล",
   "ui.src.messages.preferencesSaved": "การตั้งค่าที่บันทึกไว้!",
-  "ui.src.messages.preferencesSavedOpedIn": "การตั้งค่าที่บันทึกไว้!",
+  "ui.src.messages.preferencesSavedOptedIn": "การตั้งค่าที่บันทึกไว้!",
   "ui.src.messages.privacyPolicyNoticeButton": "โอเค",
   "ui.src.messages.privacyPolicyNoticeDescription": "เราได้อัปเดตนโยบายความเป็นส่วนตัวของคุณคลิกลิงก์ด้านล่างเพื่อเรียนรู้เพิ่มเติมเกี่ยวกับวิธีที่เราใช้ข้อมูลส่วนบุคคลของคุณ",
   "ui.src.messages.rejectAdvertising": "เลือกไม่รับโฆษณา",

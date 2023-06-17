@@ -44,7 +44,7 @@
   "ui.src.messages.moreChoicesButtonPrimary": "Больше вариантов",
   "ui.src.messages.noticeTitle": "Этот веб-сайт обрабатывает личные данные",
   "ui.src.messages.preferencesSaved": "Настройки сохранены!",
-  "ui.src.messages.preferencesSavedOpedIn": "Настройки сохранены!",
+  "ui.src.messages.preferencesSavedOptedIn": "Настройки сохранены!",
   "ui.src.messages.privacyPolicyNoticeButton": "Хорошо",
   "ui.src.messages.privacyPolicyNoticeDescription": "Мы обновили вашу политику конфиденциальности. Нажмите на ссылку ниже, чтобы узнать больше о том, как мы используем вашу личную информацию.",
   "ui.src.messages.rejectAdvertising": "Отказаться от рекламы",

@@ -44,7 +44,7 @@
   "ui.src.messages.moreChoicesButtonPrimary": "Flere valg",
   "ui.src.messages.noticeTitle": "Dette nettstedet behandler personopplysninger",
   "ui.src.messages.preferencesSaved": "Innstillinger lagret!",
-  "ui.src.messages.preferencesSavedOpedIn": "Innstillinger lagret!",
+  "ui.src.messages.preferencesSavedOptedIn": "Innstillinger lagret!",
   "ui.src.messages.privacyPolicyNoticeButton": "Greit",
   "ui.src.messages.privacyPolicyNoticeDescription": "Vi har oppdatert personvernreglene dine. Klikk på lenken nedenfor for å lære mer om hvordan vi bruker din personlige informasjon.",
   "ui.src.messages.rejectAdvertising": "Velg bort reklame",

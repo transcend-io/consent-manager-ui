@@ -44,7 +44,7 @@
   "ui.src.messages.moreChoicesButtonPrimary": "Több választási lehetőség",
   "ui.src.messages.noticeTitle": "Ez a weboldal személyes adatokat dolgoz fel",
   "ui.src.messages.preferencesSaved": "Beállítások mentve!",
-  "ui.src.messages.preferencesSavedOpedIn": "Beállítások mentve!",
+  "ui.src.messages.preferencesSavedOptedIn": "Beállítások mentve!",
   "ui.src.messages.privacyPolicyNoticeButton": "oké",
   "ui.src.messages.privacyPolicyNoticeDescription": "Frissítettük adatvédelmi irányelveit. Kattintson az alábbi linkre, ha többet szeretne megtudni arról, hogyan használjuk fel személyes adatait.",
   "ui.src.messages.rejectAdvertising": "Leiratkozás a reklámozásról",

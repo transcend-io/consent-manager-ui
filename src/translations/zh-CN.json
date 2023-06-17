@@ -44,7 +44,7 @@
   "ui.src.messages.moreChoicesButtonPrimary": "更多选择",
   "ui.src.messages.noticeTitle": "本网站处理个人数据",
   "ui.src.messages.preferencesSaved": "首选项已保存！",
-  "ui.src.messages.preferencesSavedOpedIn": "首选项已保存！",
+  "ui.src.messages.preferencesSavedOptedIn": "首选项已保存！",
   "ui.src.messages.privacyPolicyNoticeButton": "好的",
   "ui.src.messages.privacyPolicyNoticeDescription": "我们已经更新了您的隐私政策。点击下面的链接，详细了解我们如何使用您的个人信息。",
   "ui.src.messages.rejectAdvertising": "选择退出广告",

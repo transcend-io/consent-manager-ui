@@ -44,7 +44,7 @@
   "ui.src.messages.moreChoicesButtonPrimary": "المزيد من الخيارات",
   "ui.src.messages.noticeTitle": "يعالج هذا الموقع البيانات الشخصية",
   "ui.src.messages.preferencesSaved": "تم حفظ التفضيلات!",
-  "ui.src.messages.preferencesSavedOpedIn": "تم حفظ التفضيلات!",
+  "ui.src.messages.preferencesSavedOptedIn": "تم حفظ التفضيلات!",
   "ui.src.messages.privacyPolicyNoticeButton": "حسنا",
   "ui.src.messages.privacyPolicyNoticeDescription": "لقد قمنا بتحديث سياسة الخصوصية الخاصة بك. انقر فوق الارتباط أدناه لمعرفة المزيد حول كيفية استخدامنا لمعلوماتك الشخصية.",
   "ui.src.messages.rejectAdvertising": "إلغاء الاشتراك في الإعلانات",

@@ -123,7 +123,7 @@ export const messages = defineMessages('ui.src.messages', {
     description:
       'Confirmation that preferences are saved to an opted out state.',
   },
-  preferencesSavedOpedIn: {
+  preferencesSavedOptedIn: {
     defaultMessage: 'Preferences Saved!',
     description:
       'Confirmation that preferences are saved to an opted in state.',
