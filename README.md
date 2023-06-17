@@ -195,6 +195,20 @@ A banner that handles opting in or out of the `Analytics` tag.
 | Do not track           | Opts the user out of `Analytics`.                                                                                                                                                                                                                                                                                |
 | See our Privacy Policy | Redirects to the privacy policy link specified in [Consent Display Settings](https://app.transcend.io/consent-manager/display-settings) or the [`data-privacy-policy`](https://docs.transcend.io/docs/consent/faq#how-can-i-customize-the-privacy-policy-link-when-hosting-on-multiple-domains?) data attribute. |
 
+### `AcceptOrRejectAdvertising`
+
+A banner that handles opting in or out of the `Advertising` tag.
+
+![ViewState = AcceptOrRejectAdvertising](https://user-images.githubusercontent.com/10264973/FIXME.jpg)
+
+#### Button Mapping
+
+| Button Title           | Callback Description                                                                                                                                                                                                                                                                                             |
+| ---------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Okay                   | Opts the user into `Advertising`.                                                                                                                                                                                                                                                                                |
+| Opt out of advertising | Opts the user out of `Advertising`.                                                                                                                                                                                                                                                                              |
+| See our Privacy Policy | Redirects to the privacy policy link specified in [Consent Display Settings](https://app.transcend.io/consent-manager/display-settings) or the [`data-privacy-policy`](https://docs.transcend.io/docs/consent/faq#how-can-i-customize-the-privacy-policy-link-when-hosting-on-multiple-domains?) data attribute. |
+
 ### `AcceptAll`
 
 **WARNING: In some jurisdictions this UI may be considered a dark pattern. Use at your own risk.** To learn more, head over to our blog post: [Demystifying dark patterns: A practical primer for CPRA compliance](https://transcend.io/blog/dark-patterns-cpra/).

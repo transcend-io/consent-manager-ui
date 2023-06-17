@@ -7,9 +7,9 @@ import type { HandleSetViewState } from '../types';
 import { Button } from './Button';
 
 /**
- * Component showing "accept" or "reject" for Analytics purpose
+ * Component showing "accept" or "reject" for Advertising purpose
  */
-export function AcceptOrRejectAnalytics({
+export function AcceptOrRejectAdvertising({
   handleSetViewState,
 }: {
   /** Function to change viewState */
@@ -23,29 +23,29 @@ export function AcceptOrRejectAnalytics({
       <div>
         <div>
           <p className="text-title text-title-left">
-            {formatMessage(messages.consentTitleAcceptOrRejectAnalytics)}
+            {formatMessage(messages.consentTitleAcceptOrRejectAdvertising)}
           </p>
         </div>
         <div>
           <p className="paragraph">
-            {formatMessage(messages.acceptOrRejectAnalyticsDescription)}
+            {formatMessage(messages.acceptOrRejectAdvertisingDescription)}
           </p>
         </div>
       </div>
       <div className="accept-or-reject-all-button-row">
         <Button
-          primaryText={formatMessage(messages.acceptAnalytics)}
+          primaryText={formatMessage(messages.acceptAdvertising)}
           handleClick={(event) => {
             event.preventDefault();
-            airgap.setConsent(event, { Analytics: true }, CONSENT_OPTIONS);
+            airgap.setConsent(event, { Advertising: true }, CONSENT_OPTIONS);
             handleSetViewState('close');
           }}
         />
         <Button
-          primaryText={formatMessage(messages.rejectAnalytics)}
+          primaryText={formatMessage(messages.rejectAdvertising)}
           handleClick={(event) => {
             event.preventDefault();
-            airgap.setConsent(event, { Analytics: false }, CONSENT_OPTIONS);
+            airgap.setConsent(event, { Advertising: false }, CONSENT_OPTIONS);
             handleSetViewState('close');
           }}
         />
