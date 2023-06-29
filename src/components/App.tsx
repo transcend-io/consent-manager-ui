@@ -102,8 +102,8 @@ export function App({
 
     const eventHandlerByDetail: Record<keyof ConsentManagerAPI, () => void> = {
       setActiveLocale: () => null, // handled above
-      getViewState: () => null, // handled above
-      viewStates: () => null, // should not be called
+      getViewState: () => null, // should not be triggered - handled by external API (consent-manager.tsx)
+      viewStates: () => null, // should not be triggered - handled by external API (consent-manager.tsx)
       doNotSell: () =>
         handleSetViewState(options.viewState || 'DoNotSellDisclosure', auth),
       optOutNotice: () =>
