@@ -109,7 +109,7 @@ export const injectConsentManagerApp = (
             ...options,
           }),
         // eslint-disable-next-line no-underscore-dangle
-        getViewState: () => window._tcm_viewState,
+        getViewState: () => window._tcm_viewState || 'Hidden',
       };
 
       // Render preact app inside the shadow DOM component
