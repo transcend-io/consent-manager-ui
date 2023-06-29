@@ -1,4 +1,5 @@
 import { h, JSX } from 'preact';
+import { useEffect } from 'preact/hooks';
 import { IntlProvider as _IntlProvider } from 'react-intl';
 import type {
   AirgapAPI,
@@ -69,6 +70,12 @@ export function App({
       dismissedViewState,
     });
 
+  // Set viewState on `window` for `transcend.getViewState()`
+  useEffect(() => {
+    // eslint-disable-next-line no-underscore-dangle
+    window._tcm_viewState = viewState;
+  }, [viewState]);
+
   // Event listener for the API
   appContainer.addEventListener(apiEventName, (event) => {
     const {
@@ -95,6 +102,7 @@ export function App({
 
     const eventHandlerByDetail: Record<keyof ConsentManagerAPI, () => void> = {
       setActiveLocale: () => null, // handled above
+      getViewState: () => null, // handled above
       viewStates: () => null, // should not be called
       doNotSell: () =>
         handleSetViewState(options.viewState || 'DoNotSellDisclosure', auth),
