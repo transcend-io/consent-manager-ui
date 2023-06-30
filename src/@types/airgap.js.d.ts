@@ -2,6 +2,7 @@ import type {
   AirgapAPI,
   TrackingConsent,
   TranscendAPI,
+  ViewState,
 } from '@transcend-io/airgap.js-types';
 
 declare global {
@@ -43,6 +44,8 @@ declare global {
     airgap?: AirgapAPI;
     /** Transcend Consent Manager interface */
     transcend?: TranscendAPI;
+    /** Private variable for exposing viewState, accessed via the getter `transcend.getViewState()` */
+    _tcm_viewState?: ViewState;
     /** authorizedFetch debug utility */
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     authorizedFetch?: any;
