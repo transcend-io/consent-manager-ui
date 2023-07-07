@@ -9,7 +9,7 @@ import { createHTMLElement } from './utils/create-html-element';
 
 let interfaceInitialized = false;
 
-// The `transcend` API: methods which we'll overwrite from inside Preact
+// The `transcend` API: methods which we'll create inside Preact and pass back out here via callback
 let consentManagerAPI: ConsentManagerAPI;
 // The Preact app container, inside the shadow DOM
 let appContainer: HTMLElement;
@@ -76,6 +76,6 @@ export const injectConsentManagerApp = (
     }
   } else {
     // Already instantiated; return the API again
-    return consentManagerAPI as unknown as ConsentManagerAPI;
+    return consentManagerAPI;
   }
 };

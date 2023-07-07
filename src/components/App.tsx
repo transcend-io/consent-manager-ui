@@ -34,7 +34,7 @@ export function App({
 }: {
   /** The Airgap API */
   airgap: AirgapAPI;
-  /** The Transcend API, which will be overwritten here in Preact before being exposed */
+  /** A callback which passes the consent manager API out of Preact to be exposed on `window.transcend` */
   callback: (finalizedConsentManagerAPI: ConsentManagerAPI) => void;
 }): JSX.Element {
   // Consent manager configuration

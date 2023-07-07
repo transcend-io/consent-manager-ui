@@ -55,6 +55,6 @@ export type HandleSetViewState = (
 ) => void;
 
 /**
- * Handler for setting next view state
+ * Handler for setting user language
  */
 export type HandleSetLanguage = (language: ConsentManagerLanguageKey) => void;
