@@ -2,32 +2,16 @@ import { h, render } from 'preact';
 import type {
   AirgapAPI,
   ConsentManagerAPI,
-  ShowConsentManagerOptions,
 } from '@transcend-io/airgap.js-types';
 import { App } from './components/App';
 import { logger } from './logger';
-import { apiEventName } from './settings';
 import { createHTMLElement } from './utils/create-html-element';
-import { EmitEventOptions } from './types';
-import { ViewState } from '@transcend-io/airgap.js-types/build/enums/viewState';
 
 let interfaceInitialized = false;
 
-/**
- * Dispatcher for API events. API is called on globalThis.transcend and it triggers event listeners inside Preact
- */
-// eslint-disable-next-line require-await
-async function dispatchConsentManagerAPIEvent(
-  element: HTMLElement,
-  detail: EmitEventOptions,
-): Promise<void> {
-  const event = new CustomEvent<EmitEventOptions>(apiEventName, {
-    detail,
-  });
-  element.dispatchEvent(event);
-}
-
+// The `transcend` API: methods which we'll overwrite from inside Preact
 let consentManagerAPI: ConsentManagerAPI;
+// The Preact app container, inside the shadow DOM
 let appContainer: HTMLElement;
 
 export const getAppContainer = (): HTMLElement | undefined => appContainer;
@@ -69,53 +53,19 @@ export const injectConsentManagerApp = (
         .sheet! // 1st rule so subsequent properties are reset
         .insertRule(':host { all: initial }');
 
-      consentManagerAPI = {
-        setActiveLocale: (locale) =>
-          dispatchConsentManagerAPIEvent(appContainer, {
-            eventType: 'setActiveLocale',
-            locale,
-          }),
-        viewStates: new Set(Object.values(ViewState)),
-        doNotSell: (auth, options: ShowConsentManagerOptions = {}) =>
-          dispatchConsentManagerAPIEvent(appContainer, {
-            eventType: 'doNotSell',
-            auth,
-            ...options,
-          }),
-        optOutNotice: (auth, options: ShowConsentManagerOptions = {}) =>
-          dispatchConsentManagerAPIEvent(appContainer, {
-            eventType: 'optOutNotice',
-            auth,
-            ...options,
-          }),
-        autoShowConsentManager: (options: ShowConsentManagerOptions = {}) =>
-          dispatchConsentManagerAPIEvent(appContainer, {
-            eventType: 'autoShowConsentManager',
-            ...options,
-          }),
-        showConsentManager: (options: ShowConsentManagerOptions = {}) =>
-          dispatchConsentManagerAPIEvent(appContainer, {
-            eventType: 'showConsentManager',
-            ...options,
-          }),
-        toggleConsentManager: (options: ShowConsentManagerOptions = {}) =>
-          dispatchConsentManagerAPIEvent(appContainer, {
-            eventType: 'toggleConsentManager',
-            ...options,
-          }),
-        hideConsentManager: (options: ShowConsentManagerOptions = {}) =>
-          dispatchConsentManagerAPIEvent(appContainer, {
-            eventType: 'hideConsentManager',
-            ...options,
-          }),
-        // eslint-disable-next-line no-underscore-dangle
-        getViewState: () => window._tcm_viewState || 'Hidden',
-      };
+      // Render Preact app inside the shadow DOM component
+      render(
+        <App
+          airgap={airgap}
+          callback={(finalizedConsentManagerAPI: ConsentManagerAPI): void => {
+            // Set the consentManagerAPI on load
+            consentManagerAPI = finalizedConsentManagerAPI;
+          }}
+        />,
+        appContainer,
+      );
 
-      // Render preact app inside the shadow DOM component
-      render(<App airgap={airgap} appContainer={appContainer} />, appContainer);
-
-      // Return the consent manager API
+      // Return the consent manager API, now that it's been created in Preact and set in the App render callback
       return consentManagerAPI;
     } catch (error) {
       // Clean up
@@ -126,6 +76,6 @@ export const injectConsentManagerApp = (
     }
   } else {
     // Already instantiated; return the API again
-    return consentManagerAPI;
+    return consentManagerAPI as unknown as ConsentManagerAPI;
   }
 };
