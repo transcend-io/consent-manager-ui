@@ -7,24 +7,21 @@ import { App } from './components/App';
 import { logger } from './logger';
 import { createHTMLElement } from './utils/create-html-element';
 
-let interfaceInitialized = false;
-
 // The `transcend` API: methods which we'll create inside Preact and pass back out here via callback
-let consentManagerAPI: ConsentManagerAPI;
+let consentManagerAPI: ConsentManagerAPI | null = null;
+
 // The Preact app container, inside the shadow DOM
 let appContainer: HTMLElement;
-
 export const getAppContainer = (): HTMLElement | undefined => appContainer;
 
 /**
  * Render the Preact app into a shadow DOM
  */
-export const injectConsentManagerApp = (
+export const injectConsentManagerApp = async (
   airgap: AirgapAPI,
-): ConsentManagerAPI => {
-  if (!interfaceInitialized) {
-    interfaceInitialized = true;
-
+): Promise<ConsentManagerAPI> => {
+  // The interface hasn't initialized yet
+  if (consentManagerAPI === null) {
     // The outer div to wrap the shadow root
     const consentManager = createHTMLElement('div');
     consentManager.style.position = 'fixed'; // so as not to affect position
@@ -53,24 +50,29 @@ export const injectConsentManagerApp = (
         .sheet! // 1st rule so subsequent properties are reset
         .insertRule(':host { all: initial }');
 
-      // Render Preact app inside the shadow DOM component
-      render(
-        <App
-          airgap={airgap}
-          callback={(finalizedConsentManagerAPI: ConsentManagerAPI): void => {
-            // Set the consentManagerAPI on load
-            consentManagerAPI = finalizedConsentManagerAPI;
-          }}
-        />,
-        appContainer,
-      );
+      // Wait for the instantiated Consent Manager API from Preact
+      consentManagerAPI = await new Promise<ConsentManagerAPI>((resolve) => {
+        // Render Preact app inside the shadow DOM component
+        render(
+          <App
+            airgap={airgap}
+            callback={(finalizedConsentManagerAPI: ConsentManagerAPI): void => {
+              resolve(finalizedConsentManagerAPI);
+            }}
+          />,
+          appContainer,
+        );
+      });
+
+      if (consentManagerAPI === null) {
+        throw new Error('Expected Consent Manager API to have initialized.');
+      }
 
       // Return the consent manager API, now that it's been created in Preact and set in the App render callback
       return consentManagerAPI;
     } catch (error) {
       // Clean up
       consentManager.remove();
-      interfaceInitialized = false;
       logger.error('Failed to initialize UI');
       throw error;
     }
