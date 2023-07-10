@@ -5,6 +5,8 @@ import type {
   ResponseViewState,
   InitialViewState,
   ViewState,
+  ViewStateEventDetails,
+  TranscendEventType,
 } from '@transcend-io/airgap.js-types';
 import { logger } from '../logger';
 import type { HandleSetViewState } from '../types';
@@ -137,9 +139,14 @@ export function useViewState({
   );
 
   // Now that the viewState has updated, dispatch an event on the `transcend` API / event target
+  const eventDetails: ViewStateEventDetails = {
+    viewState: state.current,
+    previousViewState: state.previous,
+  };
+  const eventType: TranscendEventType = 'view-state-change';
   eventTarget.dispatchEvent(
-    new CustomEvent('view-state-change', {
-      detail: { viewState: state.current, previousViewState: state.previous },
+    new CustomEvent(eventType, {
+      detail: eventDetails,
     }),
   );
 

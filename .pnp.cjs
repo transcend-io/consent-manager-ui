@@ -29,7 +29,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./",\
           "packageDependencies": [\
             ["@monaco-editor/react", "virtual:c76842a5689228a0ce1b65e064c1f5e0d5b61e442d08b6527a3b1f100ca1f2105e58f5f1435c5a59df3cce3338560737838d99dae36d25b47d20aa50c89d0539#npm:4.4.5"],\
-            ["@transcend-io/airgap.js-types", "npm:10.0.0-alpha.0"],\
+            ["@transcend-io/airgap.js-types", "npm:10.0.0-alpha.2"],\
             ["@transcend-io/internationalization", "npm:1.5.1"],\
             ["@transcend-io/logger", "npm:1.1.0"],\
             ["@transcend-io/type-utils", "npm:1.0.7"],\
@@ -1728,10 +1728,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]\
       ]],\
       ["@transcend-io/airgap.js-types", [\
-        ["npm:10.0.0-alpha.0", {\
-          "packageLocation": "./.yarn/cache/@transcend-io-airgap.js-types-npm-10.0.0-alpha.0-0cf63fbdb5-9c99d43672.zip/node_modules/@transcend-io/airgap.js-types/",\
+        ["npm:10.0.0-alpha.2", {\
+          "packageLocation": "./.yarn/cache/@transcend-io-airgap.js-types-npm-10.0.0-alpha.2-54611d9baa-f35921a0c0.zip/node_modules/@transcend-io/airgap.js-types/",\
           "packageDependencies": [\
-            ["@transcend-io/airgap.js-types", "npm:10.0.0-alpha.0"],\
+            ["@transcend-io/airgap.js-types", "npm:10.0.0-alpha.2"],\
             ["@transcend-io/type-utils", "npm:1.0.5"],\
             ["fp-ts", "npm:2.11.8"],\
             ["io-ts", "virtual:53d562f9656f9223c4532e7e2b6feefabcf4bfa2c0659bc8d6557c1f9633b17688cca8b3d2effb8a926da81d6d2f2353092c812bd38f1a03f5ff9a9a3e1b3408#npm:2.2.16"]\
@@ -1756,7 +1756,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [\
             ["@transcend-io/consent-manager-ui", "workspace:."],\
             ["@monaco-editor/react", "virtual:c76842a5689228a0ce1b65e064c1f5e0d5b61e442d08b6527a3b1f100ca1f2105e58f5f1435c5a59df3cce3338560737838d99dae36d25b47d20aa50c89d0539#npm:4.4.5"],\
-            ["@transcend-io/airgap.js-types", "npm:10.0.0-alpha.0"],\
+            ["@transcend-io/airgap.js-types", "npm:10.0.0-alpha.2"],\
             ["@transcend-io/internationalization", "npm:1.5.1"],\
             ["@transcend-io/logger", "npm:1.1.0"],\
             ["@transcend-io/type-utils", "npm:1.0.7"],\
