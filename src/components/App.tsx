@@ -19,6 +19,7 @@ import { ConsentManagerLanguageKey } from '@transcend-io/internationalization';
 
 import { CONSENT_MANAGER_SUPPORTED_LANGUAGES } from '../i18n';
 import { makeConsentManagerAPI } from '../api';
+import { useEffect } from 'preact/hooks';
 
 // TODO: https://transcend.height.app/T-13483
 // Fix IntlProvider JSX types
@@ -66,13 +67,27 @@ export function App({
       settings.messages || config.messages || './translations',
   });
 
-  // API setup. To pass this API out of Preact, we overwrite the prop.
-  const consentManagerAPI = makeConsentManagerAPI({
+  // API setup
+  const eventTarget = new EventTarget();
+  useEffect(() => {
+    eventTarget.dispatchEvent(
+      new CustomEvent('view-state-change', { detail: { viewState } }),
+    );
+  }, [viewState]);
+
+  const consentManagerMethods = makeConsentManagerAPI({
     viewState,
     handleChangeLanguage,
     handleSetViewState,
     airgap,
   });
+
+  const consentManagerAPI: ConsentManagerAPI = {
+    ...eventTarget,
+    ...consentManagerMethods,
+  };
+
+  console.log(eventTarget, consentManagerAPI);
 
   // Send the API up and out of Preact via this callback
   callback(consentManagerAPI);

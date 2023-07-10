@@ -1155,6 +1155,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@transcend-io/airgap.js-types@npm:^10.0.0-alpha.0":
+  version: 10.0.0-alpha.0
+  resolution: "@transcend-io/airgap.js-types@npm:10.0.0-alpha.0"
+  dependencies:
+    "@transcend-io/type-utils": ^1.0.5
+    fp-ts: ^2.11.8
+    io-ts: ^2.2.16
+  checksum: 9c99d436727263b3820da9cd6a859a400fc3688775bf46a46814f865e8cfbbc1ca220bd53d5c7fe6014e4805febf0bb84113342d521fc0c7679c9f4bdb0368f1
+  languageName: node
+  linkType: hard
+
 "@transcend-io/airgap.js-types@npm:^7.0.0":
   version: 7.0.0
   resolution: "@transcend-io/airgap.js-types@npm:7.0.0"
@@ -1167,23 +1178,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@transcend-io/airgap.js-types@npm:^9.6.0":
-  version: 9.6.0
-  resolution: "@transcend-io/airgap.js-types@npm:9.6.0"
-  dependencies:
-    "@transcend-io/type-utils": ^1.0.5
-    fp-ts: ^2.11.8
-    io-ts: ^2.2.16
-  checksum: 3e337e33fa34b0f9bd1b1abdd31e1bac0042b4a3c054e2fcbd21c5f67c4df1c0f4ce27757cfcb7e10fd263aa55773279bfed064620cd8f2cebf82fca80683ab7
-  languageName: node
-  linkType: hard
-
 "@transcend-io/consent-manager-ui@workspace:.":
   version: 0.0.0-use.local
   resolution: "@transcend-io/consent-manager-ui@workspace:."
   dependencies:
     "@monaco-editor/react": ^4.4.5
-    "@transcend-io/airgap.js-types": ^9.6.0
+    "@transcend-io/airgap.js-types": ^10.0.0-alpha.0
     "@transcend-io/internationalization": ^1.5.1
     "@transcend-io/logger": ^1.0.14
     "@transcend-io/type-utils": ^1.0.7
