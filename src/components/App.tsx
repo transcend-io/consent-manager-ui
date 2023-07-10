@@ -1,5 +1,4 @@
 import { h, JSX } from 'preact';
-import { useEffect } from 'preact/hooks';
 import { IntlProvider as _IntlProvider } from 'react-intl';
 import type {
   AirgapAPI,
@@ -11,41 +10,50 @@ import {
   ConfigProvider,
   useLanguage,
   useViewState,
-  isViewStateClosed,
 } from '../hooks';
-import { apiEventName, LOG_LEVELS, settings } from '../settings';
+import { settings } from '../settings';
 import { Main } from './Main';
 import { getPrimaryRegime } from '../regimes';
-import { logger } from '../logger';
-import { PRIVACY_SIGNAL_NAME } from '../privacy-signals';
+
 import { ConsentManagerLanguageKey } from '@transcend-io/internationalization';
-import { EmitEventOptions } from '../types';
+
 import { CONSENT_MANAGER_SUPPORTED_LANGUAGES } from '../i18n';
+import { makeConsentManagerAPI } from '../api';
 
 // TODO: https://transcend.height.app/T-13483
 // Fix IntlProvider JSX types
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const IntlProvider = _IntlProvider as any;
 
-let promptSuppressionNoticeShown = false;
-
 /**
  * Top layer concerned with data, not presentation
  */
 export function App({
   airgap,
-  appContainer,
+  callback,
 }: {
   /** The Airgap API */
   airgap: AirgapAPI;
-  /** Reference to the shadow root */
-  appContainer: HTMLElement;
+  /** A callback which passes the consent manager API out of Preact to be exposed on `window.transcend` */
+  callback: (finalizedConsentManagerAPI: ConsentManagerAPI) => void;
 }): JSX.Element {
-  // Active privacy regime
-  const privacyRegime = getPrimaryRegime(airgap.getRegimes());
-
   // Consent manager configuration
   const config = getMergedConfig();
+
+  // Get the active privacy regime
+  const privacyRegime = getPrimaryRegime(airgap.getRegimes());
+
+  // View state controller. Defaults based on regime and config.
+  const { initialViewStateByPrivacyRegime, dismissedViewState } = config;
+  const initialViewState =
+    initialViewStateByPrivacyRegime[
+      privacyRegime as keyof typeof initialViewStateByPrivacyRegime
+    ] || 'Hidden';
+  const { viewState, firstSelectedViewState, handleSetViewState, auth } =
+    useViewState({
+      initialViewState,
+      dismissedViewState,
+    });
 
   // Language setup
   const { language, handleChangeLanguage, messages } = useLanguage({
@@ -58,101 +66,16 @@ export function App({
       settings.messages || config.messages || './translations',
   });
 
-  // Active view state based on regime and config
-  const { initialViewStateByPrivacyRegime, dismissedViewState } = config;
-  const initialViewState =
-    initialViewStateByPrivacyRegime[
-      privacyRegime as keyof typeof initialViewStateByPrivacyRegime
-    ] || 'Hidden';
-  const { viewState, firstSelectedViewState, handleSetViewState, auth } =
-    useViewState({
-      initialViewState,
-      dismissedViewState,
-    });
-
-  // Set viewState on `window` for `transcend.getViewState()`
-  useEffect(() => {
-    // eslint-disable-next-line no-underscore-dangle
-    window._tcm_viewState = viewState;
-  }, [viewState]);
-
-  // Event listener for the API
-  appContainer.addEventListener(apiEventName, (event) => {
-    const {
-      detail: { eventType, auth, locale, ...options },
-    } = event as CustomEvent<EmitEventOptions>;
-    // Special case: instant do not sell view (user clicks footer and the banner is just a confirmation of their choice)
-    if (
-      (options.viewState === 'DoNotSellDisclosure' ||
-        options.viewState === 'OptOutDisclosure' ||
-        eventType === 'doNotSell' ||
-        eventType === 'optOutNotice') &&
-      !auth
-    ) {
-      throw new Error(
-        `DoNotSellDisclosure and OptOutDisclosure view state can only be initialized with auth. ` +
-          `Please provide the onClick event like: onClick: (event) => transcend.doNotSell(event)`,
-      );
-    }
-
-    // multiple events can change the language
-    if (locale) {
-      handleChangeLanguage(locale);
-    }
-
-    const eventHandlerByDetail: Record<keyof ConsentManagerAPI, () => void> = {
-      setActiveLocale: () => null, // handled above
-      getViewState: () => null, // should not be triggered - handled by external API (consent-manager.tsx)
-      viewStates: () => null, // should not be triggered - handled by external API (consent-manager.tsx)
-      doNotSell: () =>
-        handleSetViewState(options.viewState || 'DoNotSellDisclosure', auth),
-      optOutNotice: () =>
-        handleSetViewState(options.viewState || 'OptOutDisclosure', auth),
-      showConsentManager: () =>
-        handleSetViewState(options.viewState || 'open', undefined, true),
-      hideConsentManager: () => handleSetViewState('close'),
-      toggleConsentManager: () =>
-        handleSetViewState(
-          isViewStateClosed(viewState) ? 'open' : 'close',
-          undefined,
-          true,
-        ),
-      autoShowConsentManager: () => {
-        const privacySignals = airgap.getPrivacySignals();
-        const regimePurposes = airgap.getRegimePurposes();
-        const applicablePrivacySignals =
-          // Prompt was auto-suppressed with DNT+any regime or GPC+regimes with SaleOfInfo
-          (privacySignals.has('DNT') && regimePurposes.size > 0) ||
-          (privacySignals.has('GPC') && regimePurposes.has('SaleOfInfo'));
-        const shouldShowNotice = !airgap.getConsent().confirmed;
-        if (!shouldShowNotice) {
-          if (
-            applicablePrivacySignals &&
-            !promptSuppressionNoticeShown &&
-            LOG_LEVELS.has('warn')
-          ) {
-            logger.warn(
-              'Tracking consent auto-prompt suppressed due to supported privacy signals:',
-              [...privacySignals].map((signal) =>
-                // expand supported privacy signals to their full names
-                PRIVACY_SIGNAL_NAME.has(signal)
-                  ? PRIVACY_SIGNAL_NAME.get(signal)
-                  : signal,
-              ),
-              // eslint-disable-next-line max-len
-              '\n\nSee https://docs.transcend.io/docs/consent/configuration/configuring-the-ui#user-privacy-signal-integration for more information.',
-            );
-            promptSuppressionNoticeShown = true;
-          }
-          return;
-        }
-        handleSetViewState('open', undefined, true);
-      },
-    };
-
-    // Trigger event handler for this event
-    eventHandlerByDetail[eventType]();
+  // API setup. To pass this API out of Preact, we overwrite the prop.
+  const consentManagerAPI = makeConsentManagerAPI({
+    viewState,
+    handleChangeLanguage,
+    handleSetViewState,
+    airgap,
   });
+
+  // Send the API up and out of Preact via this callback
+  callback(consentManagerAPI);
 
   return (
     <IntlProvider

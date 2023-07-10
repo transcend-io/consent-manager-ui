@@ -72,8 +72,9 @@ export const init = async (): Promise<void> => {
     const airgap = await airgapPromise;
 
     // Inject the consent manager app and pull out the API methods
-    const consentManagerAPI: ConsentManagerAPI =
-      injectConsentManagerApp(airgap);
+    const consentManagerAPI: ConsentManagerAPI = await injectConsentManagerApp(
+      airgap,
+    );
 
     // Inject CSS into the application
     injectCss(settings.css || 'cm.css');
