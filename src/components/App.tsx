@@ -19,6 +19,7 @@ import { ConsentManagerLanguageKey } from '@transcend-io/internationalization';
 
 import { CONSENT_MANAGER_SUPPORTED_LANGUAGES } from '../i18n';
 import { makeConsentManagerAPI } from '../api';
+import { TranscendEventTarget } from '../event-target';
 
 // TODO: https://transcend.height.app/T-13483
 // Fix IntlProvider JSX types
@@ -26,7 +27,7 @@ import { makeConsentManagerAPI } from '../api';
 const IntlProvider = _IntlProvider as any;
 
 // Create `transcend` eventTarget on the global scope so this isn't derefenced on the next render of App
-const eventTarget = new EventTarget();
+const eventTarget = new TranscendEventTarget();
 
 /**
  * Top layer concerned with data, not presentation
