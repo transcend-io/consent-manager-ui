@@ -26,6 +26,9 @@ import { useEffect } from 'preact/hooks';
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const IntlProvider = _IntlProvider as any;
 
+// Create `transcend` eventTarget on the global scope so this isn't derefenced on the next render of App
+const eventTarget = new EventTarget();
+
 /**
  * Top layer concerned with data, not presentation
  */
@@ -44,12 +47,14 @@ export function App({
   // Get the active privacy regime
   const privacyRegime = getPrimaryRegime(airgap.getRegimes());
 
-  // View state controller. Defaults based on regime and config.
+  // Get default view states
   const { initialViewStateByPrivacyRegime, dismissedViewState } = config;
   const initialViewState =
     initialViewStateByPrivacyRegime[
       privacyRegime as keyof typeof initialViewStateByPrivacyRegime
     ] || 'Hidden';
+
+  // View state controller. Defaults based on regime and config.
   const { viewState, firstSelectedViewState, handleSetViewState, auth } =
     useViewState({
       initialViewState,
@@ -68,28 +73,21 @@ export function App({
   });
 
   // API setup
-  const eventTarget = new EventTarget();
   useEffect(() => {
     eventTarget.dispatchEvent(
       new CustomEvent('view-state-change', { detail: { viewState } }),
     );
   }, [viewState]);
 
-  const consentManagerMethods = makeConsentManagerAPI({
+  // Send the API up and out of Preact via this callback
+  const consentManagerAPI = makeConsentManagerAPI({
+    eventTarget,
     viewState,
     handleChangeLanguage,
     handleSetViewState,
     airgap,
   });
 
-  const consentManagerAPI: ConsentManagerAPI = {
-    ...eventTarget,
-    ...consentManagerMethods,
-  };
-
-  console.log(eventTarget, consentManagerAPI);
-
-  // Send the API up and out of Preact via this callback
   callback(consentManagerAPI);
 
   return (
