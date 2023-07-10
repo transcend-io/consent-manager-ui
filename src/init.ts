@@ -94,8 +94,6 @@ export const init = async (): Promise<void> => {
       },
     });
 
-    transcend.addEventListener('view-state-change', console.log);
-
     // Export the initialized API for use by customer
     view.transcend = transcend;
 

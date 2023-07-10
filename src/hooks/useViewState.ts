@@ -44,11 +44,14 @@ export function isResponseViewState(
 export function useViewState({
   initialViewState,
   dismissedViewState,
+  eventTarget,
 }: {
   /** Which state this consent manager should go to when opened */
   initialViewState: InitialViewState;
   /** Which state this consent manager should go to when closed */
   dismissedViewState: DismissedViewState;
+  /** The event target on the `transcend` API, where we will dispatch view state change events */
+  eventTarget: EventTarget;
 }): {
   /** The current view state */
   viewState: ViewState;
@@ -131,6 +134,13 @@ export function useViewState({
       }
     },
     [state, setState, initialViewState, dismissedViewState],
+  );
+
+  // Now that the viewState has updated, dispatch an event on the `transcend` API / event target
+  eventTarget.dispatchEvent(
+    new CustomEvent('view-state-change', {
+      detail: { viewState: state.current, previousViewState: state.previous },
+    }),
   );
 
   return {
