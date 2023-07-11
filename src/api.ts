@@ -10,6 +10,8 @@ import { LOG_LEVELS } from './settings';
 import { HandleSetLanguage, HandleSetViewState } from './types';
 
 interface MakeConsentManagerAPIInput {
+  /** The event target, where events as dispatched */
+  eventTarget: EventTarget;
   /** Property for the current view state of the consent manager UI */
   viewState: ViewState;
   /** Method to change language */
@@ -29,12 +31,13 @@ let promptSuppressionNoticeShown = false;
  * @returns the Consent Manager API
  */
 export function makeConsentManagerAPI({
+  eventTarget,
   viewState,
   handleChangeLanguage,
   handleSetViewState,
   airgap,
 }: MakeConsentManagerAPIInput): ConsentManagerAPI {
-  const api: ConsentManagerAPI = {
+  const consentManagerMethods: Omit<ConsentManagerAPI, keyof EventTarget> = {
     setActiveLocale: (locale) => Promise.resolve(handleChangeLanguage(locale)),
     getViewState: () => viewState,
     viewStates: new Set(Object.values(ViewState)),
@@ -93,5 +96,10 @@ export function makeConsentManagerAPI({
     },
   };
 
-  return api;
+  const consentManagerAPI: ConsentManagerAPI = Object.assign(
+    eventTarget,
+    consentManagerMethods,
+  );
+
+  return consentManagerAPI;
 }

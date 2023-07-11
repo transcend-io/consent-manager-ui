@@ -19,11 +19,15 @@ import { ConsentManagerLanguageKey } from '@transcend-io/internationalization';
 
 import { CONSENT_MANAGER_SUPPORTED_LANGUAGES } from '../i18n';
 import { makeConsentManagerAPI } from '../api';
+import { TranscendEventTarget } from '../event-target';
 
 // TODO: https://transcend.height.app/T-13483
 // Fix IntlProvider JSX types
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const IntlProvider = _IntlProvider as any;
+
+// Create `transcend` eventTarget on the global scope so this isn't derefenced on the next render of App
+const eventTarget = new TranscendEventTarget();
 
 /**
  * Top layer concerned with data, not presentation
@@ -43,16 +47,19 @@ export function App({
   // Get the active privacy regime
   const privacyRegime = getPrimaryRegime(airgap.getRegimes());
 
-  // View state controller. Defaults based on regime and config.
+  // Get default view states
   const { initialViewStateByPrivacyRegime, dismissedViewState } = config;
   const initialViewState =
     initialViewStateByPrivacyRegime[
       privacyRegime as keyof typeof initialViewStateByPrivacyRegime
     ] || 'Hidden';
+
+  // View state controller. Defaults based on regime and config.
   const { viewState, firstSelectedViewState, handleSetViewState, auth } =
     useViewState({
       initialViewState,
       dismissedViewState,
+      eventTarget,
     });
 
   // Language setup
@@ -66,15 +73,16 @@ export function App({
       settings.messages || config.messages || './translations',
   });
 
-  // API setup. To pass this API out of Preact, we overwrite the prop.
+  // Create the `transcend` API
   const consentManagerAPI = makeConsentManagerAPI({
+    eventTarget,
     viewState,
     handleChangeLanguage,
     handleSetViewState,
     airgap,
   });
 
-  // Send the API up and out of Preact via this callback
+  // Send this API up and out of Preact via this callback
   callback(consentManagerAPI);
 
   return (

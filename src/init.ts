@@ -80,23 +80,19 @@ export const init = async (): Promise<void> => {
     injectCss(settings.css || 'cm.css');
 
     // Create the Transcend API
-    const transcend: TranscendAPI = Object.create(
-      null,
-      Object.getOwnPropertyDescriptors({
-        readyQueue: [],
-        ...transcendInit,
-        /**
-         * Transcend Consent Manager ready listener registrar
-         *
-         * @param callback - Callback with Transcend Consent Manager
-         *                   API passed as its first argument
-         */
-        ready(callback: (api: TranscendAPI) => void) {
-          callback(transcend);
-        },
-        ...consentManagerAPI,
-      }),
-    );
+    const transcend: TranscendAPI = Object.assign(consentManagerAPI, {
+      readyQueue: [],
+      ...transcendInit,
+      /**
+       * Transcend Consent Manager ready listener registrar
+       *
+       * @param callback - Callback with Transcend Consent Manager
+       *                   API passed as its first argument
+       */
+      ready(callback: (api: TranscendAPI) => void) {
+        callback(transcend);
+      },
+    });
 
     // Export the initialized API for use by customer
     view.transcend = transcend;
