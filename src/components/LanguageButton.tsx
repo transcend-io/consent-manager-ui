@@ -1,7 +1,6 @@
 import { h, JSX } from 'preact';
 import type { AirgapAuth, ViewState } from '@transcend-io/airgap.js-types';
 import { useIntl } from 'react-intl';
-import { useConfig } from '../hooks';
 import type { HandleSetViewState } from '../types';
 import { messages } from '../messages';
 
@@ -11,13 +10,15 @@ import { messages } from '../messages';
 export function LanguageButton({
   handleSetViewState,
   viewState,
+  fontColor,
 }: {
   /** Function to change viewState */
   handleSetViewState: HandleSetViewState;
   /** Current viewState */
   viewState: ViewState;
+  /** Font color */
+  fontColor: string;
 }): JSX.Element {
-  const { config } = useConfig();
   const { formatMessage } = useIntl();
   const onLanguageOptions = viewState === 'LanguageOptions';
 
@@ -41,7 +42,7 @@ export function LanguageButton({
       aria-label={formatMessage(messages.switchLanguage)}
     >
       <svg
-        fill={config.theme.fontColor}
+        fill={fontColor}
         width="17"
         height="17"
         viewBox="0 0 17 17"

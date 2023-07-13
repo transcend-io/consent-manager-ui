@@ -58,3 +58,8 @@ export type HandleSetViewState = (
  * Handler for setting user language
  */
 export type HandleSetLanguage = (language: ConsentManagerLanguageKey) => void;
+
+/**
+ * Handler for changing the privacy policy link
+ */
+export type HandleChangePrivacyPolicy = (privacyPolicyLink: string) => void;

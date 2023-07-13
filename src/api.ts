@@ -7,7 +7,11 @@ import { isViewStateClosed } from './hooks';
 import { logger } from './logger';
 import { PRIVACY_SIGNAL_NAME } from './privacy-signals';
 import { LOG_LEVELS } from './settings';
-import { HandleSetLanguage, HandleSetViewState } from './types';
+import {
+  HandleSetLanguage,
+  HandleChangePrivacyPolicy,
+  HandleSetViewState,
+} from './types';
 
 interface MakeConsentManagerAPIInput {
   /** The event target, where events as dispatched */
@@ -18,6 +22,10 @@ interface MakeConsentManagerAPIInput {
   handleChangeLanguage: HandleSetLanguage;
   /** Method to change view state */
   handleSetViewState: HandleSetViewState;
+  /** Method to change the current privacy policy URL */
+  handleChangePrivacyPolicy: HandleChangePrivacyPolicy;
+  /** Method to change the current secondary policy URL */
+  handleChangeSecondaryPolicy: HandleChangePrivacyPolicy;
   /** Airgap.js */
   airgap: AirgapAPI;
 }
@@ -34,10 +42,16 @@ export function makeConsentManagerAPI({
   eventTarget,
   viewState,
   handleChangeLanguage,
+  handleChangePrivacyPolicy,
+  handleChangeSecondaryPolicy,
   handleSetViewState,
   airgap,
 }: MakeConsentManagerAPIInput): ConsentManagerAPI {
   const consentManagerMethods: Omit<ConsentManagerAPI, keyof EventTarget> = {
+    setPrivacyPolicy: (privacyPolicyLink) =>
+      Promise.resolve(handleChangePrivacyPolicy(privacyPolicyLink)),
+    setSecondaryPolicy: (privacyPolicyLink) =>
+      Promise.resolve(handleChangeSecondaryPolicy(privacyPolicyLink)),
     setActiveLocale: (locale) => Promise.resolve(handleChangeLanguage(locale)),
     getViewState: () => viewState,
     viewStates: new Set(Object.values(ViewState)),

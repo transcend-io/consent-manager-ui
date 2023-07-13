@@ -5,12 +5,7 @@ import type {
   ConsentManagerAPI,
 } from '@transcend-io/airgap.js-types';
 import { getMergedConfig } from '../config';
-import {
-  AirgapProvider,
-  ConfigProvider,
-  useLanguage,
-  useViewState,
-} from '../hooks';
+import { AirgapProvider, useLanguage, useViewState } from '../hooks';
 import { settings } from '../settings';
 import { Main } from './Main';
 import { getPrimaryRegime } from '../regimes';
@@ -20,13 +15,14 @@ import { ConsentManagerLanguageKey } from '@transcend-io/internationalization';
 import { CONSENT_MANAGER_SUPPORTED_LANGUAGES } from '../i18n';
 import { makeConsentManagerAPI } from '../api';
 import { TranscendEventTarget } from '../event-target';
+import { useState } from 'preact/hooks';
 
 // TODO: https://transcend.height.app/T-13483
 // Fix IntlProvider JSX types
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const IntlProvider = _IntlProvider as any;
 
-// Create `transcend` eventTarget on the global scope so this isn't derefenced on the next render of App
+// Create `transcend` eventTarget on the global scope so this isn't dereferenced on the next render of App
 const eventTarget = new TranscendEventTarget();
 
 /**
@@ -42,7 +38,8 @@ export function App({
   callback: (finalizedConsentManagerAPI: ConsentManagerAPI) => void;
 }): JSX.Element {
   // Consent manager configuration
-  const config = getMergedConfig();
+  const defaultConfig = getMergedConfig();
+  const [config, setConfig] = useState(defaultConfig);
 
   // Get the active privacy regime
   const privacyRegime = getPrimaryRegime(airgap.getRegimes());
@@ -79,6 +76,16 @@ export function App({
     viewState,
     handleChangeLanguage,
     handleSetViewState,
+    handleChangePrivacyPolicy: (privacyPolicyUrl) =>
+      setConfig({
+        ...config,
+        privacyPolicy: privacyPolicyUrl,
+      }),
+    handleChangeSecondaryPolicy: (privacyPolicyUrl) =>
+      setConfig({
+        ...config,
+        secondaryPolicy: privacyPolicyUrl,
+      }),
     airgap,
   });
 
@@ -92,22 +99,21 @@ export function App({
       // messages.ts are translated in english
       defaultLocale={ConsentManagerLanguageKey.En}
     >
-      <ConfigProvider newConfig={config}>
-        <AirgapProvider newAirgap={airgap}>
-          {/** Ensure messages are loaded before any UI is displayed */}
-          {messages ? (
-            <Main
-              airgap={airgap}
-              modalOpenAuth={auth}
-              viewState={viewState}
-              supportedLanguages={CONSENT_MANAGER_SUPPORTED_LANGUAGES}
-              firstSelectedViewState={firstSelectedViewState}
-              handleSetViewState={handleSetViewState}
-              handleChangeLanguage={handleChangeLanguage}
-            />
-          ) : null}
-        </AirgapProvider>
-      </ConfigProvider>
+      <AirgapProvider newAirgap={airgap}>
+        {/** Ensure messages are loaded before any UI is displayed */}
+        {messages ? (
+          <Main
+            airgap={airgap}
+            modalOpenAuth={auth}
+            viewState={viewState}
+            config={config}
+            supportedLanguages={CONSENT_MANAGER_SUPPORTED_LANGUAGES}
+            firstSelectedViewState={firstSelectedViewState}
+            handleSetViewState={handleSetViewState}
+            handleChangeLanguage={handleChangeLanguage}
+          />
+        ) : null}
+      </AirgapProvider>
     </IntlProvider>
   );
 }
