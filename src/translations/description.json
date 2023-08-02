@@ -46,7 +46,7 @@
   "ui.src.messages.preferencesSaved": "Confirmation that preferences are saved to an opted out state.",
   "ui.src.messages.preferencesSavedOptedIn": "Confirmation that preferences are saved to an opted in state.",
   "ui.src.messages.privacyPolicyNoticeButton": "Button to dismiss privacy policy notice.",
-  "ui.src.messages.privacyPolicyNoticeDescription": "The title displayed for the PrivacyPolicyNotice banner.",
+  "ui.src.messages.privacyPolicyNoticeDescription": "The description displayed for the PrivacyPolicyNotice banner.",
   "ui.src.messages.rejectAdvertising": "The negative response for opting out of advertising in the \"AcceptOrRejectAdvertising\" view state.",
   "ui.src.messages.rejectAllButtonPrimary": "Button text for rejecting all trackers.",
   "ui.src.messages.rejectAnalytics": "The negative response for opting out of analytics in the \"AcceptOrRejectAnalytics\" view state.",
