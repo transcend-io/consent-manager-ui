@@ -31,7 +31,8 @@ export const messages = defineMessages('ui.src.messages', {
   privacyPolicyNoticeDescription: {
     defaultMessage:
       "We've updated your privacy policy. Click the link below to learn more about how we use your personal information.",
-    description: 'The title displayed for the PrivacyPolicyNotice banner.',
+    description:
+      'The description displayed for the PrivacyPolicyNotice banner.',
   },
   consentTitleDoNotSellExplainer: {
     defaultMessage: 'Do Not Sell or Share My Personal Information',
