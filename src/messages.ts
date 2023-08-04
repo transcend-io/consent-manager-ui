@@ -153,11 +153,12 @@ export const messages = defineMessages('ui.src.messages', {
       'The title displayed in the AcceptAllRejectAllToggle view state.',
   },
   acceptAllRejectAllToggleDescription: {
-    defaultMessage: 'Your Privacy Choices',
-    description:
+    defaultMessage:
       /* eslint-disable max-len */
       'By opting in below, you agree to the storing of cookies on your device for functional, analytics, and advertising purposes.',
     /* eslint-enable max-len */
+    description:
+      'The description text for the AcceptAllRejectAllToggle view state.',
   },
 });
 

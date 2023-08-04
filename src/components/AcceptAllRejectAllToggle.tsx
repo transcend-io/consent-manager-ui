@@ -15,7 +15,7 @@ let savingTimeout: ReturnType<typeof setTimeout>;
  * Component showing explanatory text before offering a way
  * to opt out of the sale or share of data
  */
-export function DoNotSellExplainer({
+export function AcceptAllRejectAllToggle({
   handleSetViewState,
   fontColor,
 }: {
