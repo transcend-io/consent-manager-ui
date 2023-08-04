@@ -1,10 +1,9 @@
 import type {
   TrackingPurpose,
   ViewState,
-  ShowConsentManagerOptions,
-  ConsentManagerAPI,
   AirgapAuth,
 } from '@transcend-io/airgap.js-types';
+import { ConsentManagerLanguageKey } from '@transcend-io/internationalization';
 
 /**
  * Disclosure of a tracking purpose
@@ -56,12 +55,11 @@ export type HandleSetViewState = (
 ) => void;
 
 /**
- * The shape of the `detail` property when emitting events in the consent
- * manager UI
+ * Handler for setting user language
  */
-export interface EmitEventOptions extends ShowConsentManagerOptions {
-  /** Type of event being emitted */
-  eventType: keyof ConsentManagerAPI;
-  /** Airgap auth passed in click event */
-  auth?: AirgapAuth;
-}
+export type HandleSetLanguage = (language: ConsentManagerLanguageKey) => void;
+
+/**
+ * Handler for changing the privacy policy link
+ */
+export type HandleChangePrivacyPolicy = (privacyPolicyLink: string) => void;

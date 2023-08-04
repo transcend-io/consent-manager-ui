@@ -7,7 +7,7 @@ import type { HandleSetViewState } from '../types';
 import { Button } from './Button';
 
 /**
- * Component showing "accept" or "reject"
+ * Component showing "accept" or "reject" for Analytics purpose
  */
 export function AcceptOrRejectAnalytics({
   handleSetViewState,

@@ -5,6 +5,8 @@ import type {
   ResponseViewState,
   InitialViewState,
   ViewState,
+  ViewStateEventDetails,
+  TranscendEventType,
 } from '@transcend-io/airgap.js-types';
 import { logger } from '../logger';
 import type { HandleSetViewState } from '../types';
@@ -44,11 +46,14 @@ export function isResponseViewState(
 export function useViewState({
   initialViewState,
   dismissedViewState,
+  eventTarget,
 }: {
   /** Which state this consent manager should go to when opened */
   initialViewState: InitialViewState;
   /** Which state this consent manager should go to when closed */
   dismissedViewState: DismissedViewState;
+  /** The event target on the `transcend` API, where we will dispatch view state change events */
+  eventTarget: EventTarget;
 }): {
   /** The current view state */
   viewState: ViewState;
@@ -131,6 +136,18 @@ export function useViewState({
       }
     },
     [state, setState, initialViewState, dismissedViewState],
+  );
+
+  // Now that the viewState has updated, dispatch an event on the `transcend` API / event target
+  const eventDetails: ViewStateEventDetails = {
+    viewState: state.current,
+    previousViewState: state.previous,
+  };
+  const eventType: TranscendEventType = 'view-state-change';
+  eventTarget.dispatchEvent(
+    new CustomEvent(eventType, {
+      detail: eventDetails,
+    }),
   );
 
   return {

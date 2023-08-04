@@ -36,7 +36,8 @@ export const messages = defineMessages('ui.src.messages', {
   privacyPolicyNoticeDescription: {
     defaultMessage:
       "We've updated your privacy policy. Click the link below to learn more about how we use your personal information.",
-    description: 'The title displayed for the PrivacyPolicyNotice banner.',
+    description:
+      'The description displayed for the PrivacyPolicyNotice banner.',
   },
   consentTitleDoNotSellExplainer: {
     defaultMessage: 'Do Not Sell or Share My Personal Information',
@@ -61,6 +62,27 @@ export const messages = defineMessages('ui.src.messages', {
       'By clicking "Okay", you agree to the usage of your sensitive information for analytics purposes.',
     description:
       'The description displayed for the AcceptOrRejectAnalytics banner.',
+  },
+  consentTitleAcceptOrRejectAdvertising: {
+    defaultMessage: 'This website uses advertising',
+    description:
+      'The title displayed for the AcceptOrRejectAdvertising banner.',
+  },
+  acceptAdvertising: {
+    defaultMessage: 'Okay',
+    description:
+      'The affirmative response for opting into advertising in the "AcceptOrRejectAdvertising" view state.',
+  },
+  rejectAdvertising: {
+    defaultMessage: `Opt out of advertising`,
+    description:
+      'The negative response for opting out of advertising in the "AcceptOrRejectAdvertising" view state.',
+  },
+  acceptOrRejectAdvertisingDescription: {
+    defaultMessage:
+      'By clicking "Okay", you agree to the usage of your personal information for advertising purposes.',
+    description:
+      'The description displayed for the AcceptOrRejectAdvertising banner.',
   },
   privacyPolicyNoticeButton: {
     defaultMessage: 'Okay',
@@ -104,7 +126,13 @@ export const messages = defineMessages('ui.src.messages', {
   },
   preferencesSaved: {
     defaultMessage: 'Preferences Saved!',
-    description: 'Confirmation that preferences are saved.',
+    description:
+      'Confirmation that preferences are saved to an opted out state.',
+  },
+  preferencesSavedOptedIn: {
+    defaultMessage: 'Preferences Saved!',
+    description:
+      'Confirmation that preferences are saved to an opted in state.',
   },
   collapsedLabel: {
     defaultMessage: 'Privacy Settings',

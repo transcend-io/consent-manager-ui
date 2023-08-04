@@ -2,7 +2,7 @@ import { h, JSX } from 'preact';
 import { useState } from 'preact/hooks';
 import { useIntl } from 'react-intl';
 import { CONSENT_OPTIONS } from '../constants';
-import { useAirgap, useConfig } from '../hooks';
+import { useAirgap } from '../hooks';
 import { messages } from '../messages';
 import type { HandleSetViewState } from '../types';
 import { GPCIndicator } from './GPCIndicator';
@@ -17,13 +17,15 @@ let savingTimeout: ReturnType<typeof setTimeout>;
  */
 export function DoNotSellExplainer({
   handleSetViewState,
+  fontColor,
 }: {
   /** Function to change viewState */
   handleSetViewState: HandleSetViewState;
+  /** Font color */
+  fontColor: string;
 }): JSX.Element {
   const { airgap } = useAirgap();
   const { formatMessage } = useIntl();
-  const { config } = useConfig();
   const [saving, setSaving] = useState<boolean | null>(null);
   const [consentLocal, setConsentLocal] = useState(
     !!airgap.getConsent().purposes.SaleOfInfo,
@@ -59,7 +61,7 @@ export function DoNotSellExplainer({
       >
         <svg width="24" height="24" viewBox="0 0 32 32" aria-hidden="true">
           <path
-            fill={config.theme.fontColor}
+            fill={fontColor}
             // eslint-disable-next-line max-len
             d="M25.71 24.29a.996.996 0 1 1-1.41 1.41L16 17.41 7.71 25.7a.996.996 0 1 1-1.41-1.41L14.59 16l-8.3-8.29A.996.996 0 1 1 7.7 6.3l8.3 8.29 8.29-8.29a.996.996 0 1 1 1.41 1.41L17.41 16l8.3 8.29z"
           />
@@ -98,7 +100,11 @@ export function DoNotSellExplainer({
           <p className="paragraph">
             {typeof saving === 'boolean'
               ? formatMessage(
-                  saving ? messages.saving : messages.preferencesSaved,
+                  saving
+                    ? messages.saving
+                    : consentLocal
+                    ? messages.preferencesSavedOptedIn
+                    : messages.preferencesSaved,
                 )
               : '\u200b'}
           </p>

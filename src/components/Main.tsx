@@ -2,6 +2,7 @@ import { h, JSX } from 'preact';
 import type {
   AirgapAPI,
   AirgapAuth,
+  ConsentManagerConfig,
   ViewState,
 } from '@transcend-io/airgap.js-types';
 import { ConsentManagerLanguageKey } from '@transcend-io/internationalization';
@@ -18,6 +19,7 @@ import { TranscendLogo } from './TranscendLogo';
 import { NoticeAndDoNotSell } from './NoticeAndDoNotSell';
 import { QuickOptions } from './QuickOptions';
 import { OptOutDisclosure } from './OptOutDisclosure';
+import { AcceptOrRejectAdvertising } from './AcceptOrRejectAdvertising';
 import { AcceptOrRejectAll } from './AcceptOrRejectAll';
 import { DoNotSellDisclosure } from './DoNotSellDisclosure';
 import { AcceptOrRejectAnalytics } from './AcceptOrRejectAnalytics';
@@ -33,6 +35,7 @@ import { AcceptOrRejectAllOrMoreChoices } from './AcceptOrRejectAllOrMoreChoices
 export function Main({
   airgap,
   viewState,
+  config,
   firstSelectedViewState,
   handleSetViewState,
   handleChangeLanguage,
@@ -41,6 +44,8 @@ export function Main({
 }: {
   /** airgap.js API */
   airgap: AirgapAPI;
+  /** Configuration for consent UI */
+  config: ConsentManagerConfig;
   /** The on click event passed as authentication to airgap. Needed for do-not-sell acknowledgement */
   modalOpenAuth?: AirgapAuth;
   /** The current viewState of the consent manager */
@@ -76,9 +81,17 @@ export function Main({
                 handleSetViewState={handleSetViewState}
               />
             )}
+            {viewState === 'AcceptOrRejectAdvertising' && (
+              <AcceptOrRejectAdvertising
+                handleSetViewState={handleSetViewState}
+              />
+            )}
 
             {viewState === 'DoNotSellExplainer' && (
-              <DoNotSellExplainer handleSetViewState={handleSetViewState} />
+              <DoNotSellExplainer
+                handleSetViewState={handleSetViewState}
+                fontColor={config.theme.fontColor}
+              />
             )}
 
             {viewState === 'QuickOptions3' && (
@@ -140,15 +153,18 @@ export function Main({
             )}
           </div>
           <div className="footer-container">
-            <TranscendLogo />
+            <TranscendLogo fontColor={config.theme.fontColor} />
             <BottomMenu
               firstSelectedViewState={firstSelectedViewState}
               viewState={viewState}
               handleSetViewState={handleSetViewState}
+              privacyPolicy={config.privacyPolicy}
+              secondaryPolicy={config.secondaryPolicy}
             />
             <LanguageButton
               handleSetViewState={handleSetViewState}
               viewState={viewState}
+              fontColor={config.theme.fontColor}
             />
           </div>
         </div>

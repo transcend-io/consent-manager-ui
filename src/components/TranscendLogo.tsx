@@ -1,6 +1,5 @@
 /* eslint max-len: 0 */
 import { h, JSX } from 'preact';
-import { useConfig } from '../hooks';
 
 /**
  * The Transcend square logo
@@ -37,8 +36,12 @@ export function TranscendLogoLogomark(): JSX.Element {
  * The Transcend logo rendered as SVG.
  * On Desktop, hovering shows wordmark. On Mobile, only square logo is visible
  */
-export function TranscendLogo(): JSX.Element {
-  const { config } = useConfig();
+export function TranscendLogo({
+  fontColor,
+}: {
+  /** Font color */
+  fontColor: string;
+}): JSX.Element {
   return (
     <a
       className="transcend-logo-container"
@@ -55,7 +58,7 @@ export function TranscendLogo(): JSX.Element {
         xmlns="http://www.w3.org/2000/svg"
       >
         <TranscendLogoLogomark />
-        <g className="transcend-wordmark" fill={config.theme.fontColor}>
+        <g className="transcend-wordmark" fill={fontColor}>
           <path d="M17.3591 4.46346H23.1514V5.6923H20.9856V11.6658H19.5284V5.6923H17.3591V4.46346Z" />
           <path d="M24.0778 7.32484H24.1084C24.4203 6.73632 24.7734 6.43852 25.3772 6.43852C25.4863 6.43201 25.5956 6.44557 25.6997 6.47854V7.67678H25.6691C24.7734 7.58615 24.1284 8.05933 24.1284 9.1481V11.6658H22.7583V6.49855H24.0778V7.32484Z" />
           <path d="M29.3862 11.0914H29.365C29.1025 11.4846 28.7306 11.7871 27.8443 11.7871C26.7849 11.7871 26.041 11.2327 26.041 10.2051C26.041 9.06689 26.9674 8.70436 28.1162 8.5431C28.9719 8.4254 29.365 8.35242 29.365 7.95458C29.365 7.58145 29.0731 7.34016 28.4987 7.34016C27.8537 7.34016 27.5418 7.57557 27.5017 8.06522H26.2835C26.3235 7.15889 26.9991 6.3632 28.5093 6.3632C30.0606 6.3632 30.6857 7.05767 30.6857 8.2665V10.9019C30.6857 11.2939 30.7457 11.5258 30.8669 11.6164V11.667H29.5474C29.4662 11.5646 29.4156 11.3233 29.3862 11.0914ZM29.3956 9.84257V9.06689C29.1543 9.20814 28.7812 9.28818 28.4387 9.36939C27.7242 9.53065 27.3711 9.69191 27.3711 10.1757C27.3711 10.6594 27.6936 10.8301 28.1774 10.8301C28.9625 10.8301 29.3956 10.3463 29.3956 9.84257Z" />

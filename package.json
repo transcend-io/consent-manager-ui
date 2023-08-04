@@ -7,7 +7,7 @@
     "url": "https://github.com/transcend-io/consent-manager-ui.git"
   },
   "homepage": "https://github.com/transcend-io/consent-manager-ui",
-  "version": "2.17.0",
+  "version": "4.1.2",
   "license": "MIT",
   "main": "build/ui",
   "files": [
@@ -44,7 +44,7 @@
   },
   "devDependencies": {
     "@monaco-editor/react": "^4.4.5",
-    "@transcend-io/airgap.js-types": "^8.29.0",
+    "@transcend-io/airgap.js-types": "^10.2.0",
     "@transcend-io/type-utils": "^1.0.7",
     "@types/node": "^17.0.21",
     "@typescript-eslint/eslint-plugin": "^5.12.1",
@@ -74,5 +74,5 @@
     "ts-node": "^10.5.0",
     "typescript": "^4.7.4"
   },
-  "packageManager": "yarn@3.3.0"
+  "packageManager": "yarn@3.4.1"
 }

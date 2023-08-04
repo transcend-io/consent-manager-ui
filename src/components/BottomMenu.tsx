@@ -1,7 +1,6 @@
 import { h, JSX } from 'preact';
 import { useIntl } from 'react-intl';
 import type { ViewState } from '@transcend-io/airgap.js-types';
-import { useConfig } from '../hooks';
 import { bottomMenuMessages, noticeAndDoNotSellMessages } from '../messages';
 import type { HandleSetViewState } from '../types';
 import { MenuItem } from './MenuItem';
@@ -13,6 +12,8 @@ export function BottomMenu({
   viewState,
   handleSetViewState,
   firstSelectedViewState,
+  secondaryPolicy,
+  privacyPolicy,
 }: {
   /** The first view state when opening the modal */
   firstSelectedViewState: ViewState | null;
@@ -20,8 +21,11 @@ export function BottomMenu({
   viewState: ViewState;
   /** Function to change viewState */
   handleSetViewState: HandleSetViewState;
+  /** Privacy policy */
+  privacyPolicy: string;
+  /** Secondary policy */
+  secondaryPolicy: string;
 }): JSX.Element {
-  const { config } = useConfig();
   const { formatMessage } = useIntl();
 
   return (
@@ -90,14 +94,14 @@ export function BottomMenu({
         </div>
       )}
 
-      {config.secondaryPolicy && viewState === 'CompleteOptionsInverted' && (
+      {secondaryPolicy && viewState === 'CompleteOptionsInverted' && (
         <div className="bottom-menu-item-container">
           <MenuItem
             label={formatMessage(
               bottomMenuMessages.showSecondaryPolicyButtonLabel,
             )}
             type="a"
-            href={config.secondaryPolicy}
+            href={secondaryPolicy}
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -110,7 +114,7 @@ export function BottomMenu({
         <MenuItem
           label={formatMessage(bottomMenuMessages.showPolicyButtonLabel)}
           type="a"
-          href={config.privacyPolicy}
+          href={privacyPolicy}
           target="_blank"
           rel="noopener noreferrer"
         >
