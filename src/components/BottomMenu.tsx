@@ -33,11 +33,11 @@ export function BottomMenu({
       {viewState === 'LanguageOptions' ? (
         <div className="bottom-menu-item-container">
           <MenuItem
-            label={formatMessage(messages.backButtonLabel)}
+            label={formatMessage(bottomMenuMessages.backButtonTooltip)}
             type="button"
-            onClick={() => handleSetViewState(firstSelectedViewState)}
+            onClick={(e) => handleSetViewState('back', e)}
           >
-            {formatMessage(bottomMenuMessages.simplerChoicesButtonPrimary)}
+            {formatMessage(bottomMenuMessages.backButtonText)}
           </MenuItem>
         </div>
       ) : (
