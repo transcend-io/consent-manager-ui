@@ -2,6 +2,11 @@
 import { defineMessages } from '@transcend-io/internationalization';
 
 export const messages = defineMessages('ui.src.messages', {
+  backButtonLabel: {
+    defaultMessage: 'Go back',
+    description:
+      'Label for the back button in the footer of the consent banner language options.',
+  },
   consentTitle: {
     defaultMessage: 'What can we use data for?',
     description:
@@ -20,7 +25,7 @@ export const messages = defineMessages('ui.src.messages', {
   acceptAllDescription: {
     defaultMessage:
       // eslint-disable-next-line max-len
-      'By clicking “Accept all”, you agree to the storing of cookies on your device for functional, analytics, and advertising purposes.',
+      'BY clicking “Accept all”, you agree to the storing of cookies on your device for functional, analytics, and advertising purposes.<a href="www.google.com">google</a>',
     description:
       'The description displayed when asking the user to accept all data processing.',
   },

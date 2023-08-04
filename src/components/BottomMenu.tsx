@@ -26,18 +26,30 @@ export function BottomMenu({
 
   return (
     <div className="bottom-menu-container">
-      {![
-        'NoticeAndDoNotSell',
-        'DoNotSellDisclosure',
-        'OptOutDisclosure',
-        'PrivacyPolicyNotice',
-        'AcceptOrRejectAnalytics',
-        'AcceptAllOrMoreChoices',
-        'AcceptOrRejectAllOrMoreChoices',
-        'CompleteOptionsInverted',
-        'DoNotSellExplainer',
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      ].includes(viewState as any) &&
+      {viewState === 'LanguageOptions' ? (
+        <div className="bottom-menu-item-container">
+          <MenuItem
+            label={formatMessage(messages.backButtonLabel)}
+            type="button"
+            onClick={() => handleSetViewState(firstSelectedViewState)}
+          >
+            {formatMessage(bottomMenuMessages.simplerChoicesButtonPrimary)}
+          </MenuItem>
+        </div>
+      ) : (
+        ![
+          'NoticeAndDoNotSell',
+          'DoNotSellDisclosure',
+          'OptOutDisclosure',
+          'PrivacyPolicyNotice',
+          'AcceptOrRejectAnalytics',
+          'AcceptAllOrMoreChoices',
+          'AcceptOrRejectAllOrMoreChoices',
+          'CompleteOptionsInverted',
+          'DoNotSellExplainer',
+          'LanguageOptions',
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        ].includes(viewState as any) &&
         (viewState === 'CompleteOptions' ? (
           !firstSelectedViewState ||
           firstSelectedViewState === 'CompleteOptions' ? null : (
@@ -63,7 +75,8 @@ export function BottomMenu({
               {formatMessage(bottomMenuMessages.moreChoicesButtonPrimary)}
             </MenuItem>
           </div>
-        ))}
+        ))
+      )}
 
       {viewState === 'NoticeAndDoNotSell' && (
         <div className="bottom-menu-item-container">
