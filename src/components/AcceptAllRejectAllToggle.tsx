@@ -1,7 +1,6 @@
 import { h, JSX } from 'preact';
 import { useState } from 'preact/hooks';
 import { useIntl } from 'react-intl';
-import { CONSENT_OPTIONS } from '../constants';
 import { useAirgap } from '../hooks';
 import { messages } from '../messages';
 import type { HandleSetViewState } from '../types';
