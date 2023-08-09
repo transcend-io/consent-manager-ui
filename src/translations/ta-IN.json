@@ -1,4 +1,6 @@
 {
+  "ui.src.bottomMenu.backButtonText": "திரும்பி செல்லுங்கள்",
+  "ui.src.bottomMenu.backButtonTooltip": "திரும்பி செல்லுங்கள்",
   "ui.src.bottomMenu.moreChoicesButtonLabel": "மேலும் தேர்வுகள் காட்ட கிளிக் செய்யவும்",
   "ui.src.bottomMenu.moreChoicesButtonPrimary": "மேலும் தேர்வுகள்",
   "ui.src.bottomMenu.showPolicyButtonCompleteOptionsInverted": "எங்கள் தனியுரிமைக் கொள்கையைப் பார்க்கவும்",
@@ -26,6 +28,7 @@
   "ui.src.messages.acceptAdvertising": "சரி",
   "ui.src.messages.acceptAllButtonPrimary": "அனைத்தையும் ஏற்கவும்",
   "ui.src.messages.acceptAllDescription": "“அனைத்தையும் ஏற்கவும்” என்பதைக் கிளிக் செய்வதன் மூலம், செயல்பாட்டு, பகுப்பாய்வு மற்றும் விளம்பர நோக்கங்களுக்காக உங்கள் சாதனத்தில் குக்கீகளை சேமிப்பதை நீங்கள் ஒப்புக்கொள்கிறீர்கள்.",
+  "ui.src.messages.acceptAllRejectAllToggleDescription": "கீழே தெரிவு செய்வதன் மூலம், செயல்பாட்டு, பகுப்பாய்வு மற்றும் விளம்பர நோக்கங்களுக்காக உங்கள் சாதனத்தில் குக்கீகளை சேமிப்பதை நீங்கள் ஒப்புக்கொள்கிறீர்கள்.",
   "ui.src.messages.acceptAnalytics": "சரி",
   "ui.src.messages.acceptOrRejectAdvertisingDescription": "“சரி” என்பதைக் கிளிக் செய்வதன் மூலம், விளம்பர நோக்கங்களுக்காக உங்கள் தனிப்பட்ட தகவலின் பயன்பாட்டை நீங்கள் ஒப்புக்கொள்கிறீர்கள்.",
   "ui.src.messages.acceptOrRejectAnalyticsDescription": "“சரி” என்பதைக் கிளிக் செய்வதன் மூலம், பகுப்பாய்வு நோக்கங்களுக்காக உங்கள் முக்கியமான தகவல்களைப் பயன்படுத்துவதற்கு ஒப்புக்கொள்கிறீர்கள்.",
@@ -34,6 +37,7 @@
   "ui.src.messages.completeOptionsInvertedTitle": "உங்கள் தனியுரிமைத் தேர்வுகள்",
   "ui.src.messages.consentTitle": "நாம் தரவு என்ன பயன்படுத்த முடியும்?",
   "ui.src.messages.consentTitleAcceptAll": "குக்கீகளைப் பயன்படுத்துகிறோம்",
+  "ui.src.messages.consentTitleAcceptAllRejectAllToggle": "உங்கள் தனியுரிமைத் தேர்வுகள்",
   "ui.src.messages.consentTitleAcceptOrRejectAdvertising": "இந்த வலைத்தளம் விளம்பரங்களைப் பயன்படுத்துகிறது",
   "ui.src.messages.consentTitleAcceptOrRejectAnalytics": "இந்த வலைத்தளம் பகுப்பாய்வுகளைப் பயன்படுத்துகிறது",
   "ui.src.messages.consentTitleDoNotSellExplainer": "எனது தனிப்பட்ட தகவல்களை விற்க அல்லது பகிர்ந்து கொள்ளாதீர்கள்",

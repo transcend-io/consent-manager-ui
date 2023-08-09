@@ -1,4 +1,6 @@
 {
+  "ui.src.bottomMenu.backButtonText": "Menj vissza",
+  "ui.src.bottomMenu.backButtonTooltip": "Menj vissza",
   "ui.src.bottomMenu.moreChoicesButtonLabel": "Kattintson a további lehetőségek megjelenítéséhez",
   "ui.src.bottomMenu.moreChoicesButtonPrimary": "Több választási lehetőség",
   "ui.src.bottomMenu.showPolicyButtonCompleteOptionsInverted": "Tekintse meg adatvédelmi irányelveinket",
@@ -26,6 +28,7 @@
   "ui.src.messages.acceptAdvertising": "oké",
   "ui.src.messages.acceptAllButtonPrimary": "Fogadjon el mindent",
   "ui.src.messages.acceptAllDescription": "Az „Összes elfogadása” gombra kattintva, beleegyezik abba, hogy a cookie-kat az eszközén funkcionális, analitikai és hirdetési célokra tárolja.",
+  "ui.src.messages.acceptAllRejectAllToggleDescription": "Az alábbiakban történő választással, elfogadja a sütik tárolását eszközén funkcionális célokra, elemzési, és hirdetési célokra.",
   "ui.src.messages.acceptAnalytics": "oké",
   "ui.src.messages.acceptOrRejectAdvertisingDescription": "Az „Oké” gombra kattintva elfogadja személyes adatainak hirdetési célú felhasználását.",
   "ui.src.messages.acceptOrRejectAnalyticsDescription": "Az „Oké” gombra kattintva, Ön elfogadja érzékeny információinak elemzési célokra történő felhasználását.",
@@ -34,6 +37,7 @@
   "ui.src.messages.completeOptionsInvertedTitle": "Az Ön adatvédelmi döntései",
   "ui.src.messages.consentTitle": "Mire használhatjuk fel az adatokat?",
   "ui.src.messages.consentTitleAcceptAll": "Cookie-kat használunk",
+  "ui.src.messages.consentTitleAcceptAllRejectAllToggle": "Az Ön adatvédelmi döntései",
   "ui.src.messages.consentTitleAcceptOrRejectAdvertising": "Ez a weboldal reklámot használ",
   "ui.src.messages.consentTitleAcceptOrRejectAnalytics": "Ez a weboldal elemzéseket használ",
   "ui.src.messages.consentTitleDoNotSellExplainer": "Ne adja el vagy ossza meg személyes adataimat",

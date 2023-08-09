@@ -1,4 +1,6 @@
 {
+  "ui.src.bottomMenu.backButtonText": "Hover text the back button in the footer of the consent banner language options.",
+  "ui.src.bottomMenu.backButtonTooltip": "Main text for the back button in the footer of the consent banner language options.",
   "ui.src.bottomMenu.moreChoicesButtonLabel": "Hover/alt text for selecting specific privacy choices.",
   "ui.src.bottomMenu.moreChoicesButtonPrimary": "Text for selecting specific more opt out choices.",
   "ui.src.bottomMenu.showPolicyButtonCompleteOptionsInverted": "Text for linking out to privacy policy in CompleteOptionsInverted UI.",
@@ -26,6 +28,7 @@
   "ui.src.messages.acceptAdvertising": "The affirmative response for opting into advertising in the \"AcceptOrRejectAdvertising\" view state.",
   "ui.src.messages.acceptAllButtonPrimary": "Button text for accepting all trackers.",
   "ui.src.messages.acceptAllDescription": "The description displayed when asking the user to accept all data processing.",
+  "ui.src.messages.acceptAllRejectAllToggleDescription": "The description text for the AcceptAllRejectAllToggle view state.",
   "ui.src.messages.acceptAnalytics": "The affirmative response for opting into analytics in the \"AcceptOrRejectAnalytics\" view state.",
   "ui.src.messages.acceptOrRejectAdvertisingDescription": "The description displayed for the AcceptOrRejectAdvertising banner.",
   "ui.src.messages.acceptOrRejectAnalyticsDescription": "The description displayed for the AcceptOrRejectAnalytics banner.",
@@ -34,6 +37,7 @@
   "ui.src.messages.completeOptionsInvertedTitle": "The title displayed in the CompleteOptionsInverted view state.",
   "ui.src.messages.consentTitle": "The title displayed when asking the user for specific opt out/in preferences.",
   "ui.src.messages.consentTitleAcceptAll": "The title displayed when asking the user to accept all data processing.",
+  "ui.src.messages.consentTitleAcceptAllRejectAllToggle": "The title displayed in the AcceptAllRejectAllToggle view state.",
   "ui.src.messages.consentTitleAcceptOrRejectAdvertising": "The title displayed for the AcceptOrRejectAdvertising banner.",
   "ui.src.messages.consentTitleAcceptOrRejectAnalytics": "The title displayed for the AcceptOrRejectAnalytics banner.",
   "ui.src.messages.consentTitleDoNotSellExplainer": "The title displayed for the DoNotSellExplainer banner.",

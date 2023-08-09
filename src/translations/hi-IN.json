@@ -1,4 +1,6 @@
 {
+  "ui.src.bottomMenu.backButtonText": "वापस जाएं",
+  "ui.src.bottomMenu.backButtonTooltip": "वापस जाएं",
   "ui.src.bottomMenu.moreChoicesButtonLabel": "और विकल्प दिखाने के लिए क्लिक करें",
   "ui.src.bottomMenu.moreChoicesButtonPrimary": "और विकल्प",
   "ui.src.bottomMenu.showPolicyButtonCompleteOptionsInverted": "हमारी गोपनीयता नीति देखें",
@@ -26,6 +28,7 @@
   "ui.src.messages.acceptAdvertising": "ठीक है",
   "ui.src.messages.acceptAllButtonPrimary": "सभी स्वीकार करें",
   "ui.src.messages.acceptAllDescription": "“सभी स्वीकार करें” पर क्लिक करके, आप कार्यात्मक, विश्लेषण और विज्ञापन उद्देश्यों के लिए अपने डिवाइस पर कुकीज़ के भंडारण के लिए सहमत होते हैं।",
+  "ui.src.messages.acceptAllRejectAllToggleDescription": "नीचे दिए गए विकल्प को चुनकर, आप फ़ंक्शनल, एनालिटिक्स और विज्ञापन उद्देश्यों के लिए अपने डिवाइस पर कुकीज़ को स्टोर करने के लिए सहमत होते हैं।",
   "ui.src.messages.acceptAnalytics": "ठीक है",
   "ui.src.messages.acceptOrRejectAdvertisingDescription": "“ओके” पर क्लिक करके, आप विज्ञापन उद्देश्यों के लिए अपनी व्यक्तिगत जानकारी के उपयोग के लिए सहमत होते हैं।",
   "ui.src.messages.acceptOrRejectAnalyticsDescription": "“ओके” पर क्लिक करके, आप एनालिटिक्स उद्देश्यों के लिए अपनी संवेदनशील जानकारी के उपयोग के लिए सहमत होते हैं।",
@@ -34,6 +37,7 @@
   "ui.src.messages.completeOptionsInvertedTitle": "आपकी गोपनीयता के विकल्प",
   "ui.src.messages.consentTitle": "हम डेटा का उपयोग किस लिए कर सकते हैं?",
   "ui.src.messages.consentTitleAcceptAll": "हम कुकीज़ का उपयोग करते हैं",
+  "ui.src.messages.consentTitleAcceptAllRejectAllToggle": "आपकी गोपनीयता के विकल्प",
   "ui.src.messages.consentTitleAcceptOrRejectAdvertising": "यह वेबसाइट विज्ञापन का उपयोग करती है",
   "ui.src.messages.consentTitleAcceptOrRejectAnalytics": "यह वेबसाइट एनालिटिक्स का उपयोग करती है",
   "ui.src.messages.consentTitleDoNotSellExplainer": "मेरी व्यक्तिगत जानकारी न बेचें या साझा न करें",

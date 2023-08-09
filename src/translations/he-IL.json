@@ -1,4 +1,6 @@
 {
+  "ui.src.bottomMenu.backButtonText": "חזור אחורה",
+  "ui.src.bottomMenu.backButtonTooltip": "חזור אחורה",
   "ui.src.bottomMenu.moreChoicesButtonLabel": "לחץ כדי להציג אפשרויות נוספות",
   "ui.src.bottomMenu.moreChoicesButtonPrimary": "אפשרויות נוספות",
   "ui.src.bottomMenu.showPolicyButtonCompleteOptionsInverted": "עיין במדיניות הפרטיות שלנו",
@@ -26,6 +28,7 @@
   "ui.src.messages.acceptAdvertising": "בסדר",
   "ui.src.messages.acceptAllButtonPrimary": "קבל את כל",
   "ui.src.messages.acceptAllDescription": "בלחיצה על \"קבל הכל\", אתה מסכים לאחסון קובצי Cookie במכשיר שלך למטרות פונקציונליות, ניתוח ופרסום.",
+  "ui.src.messages.acceptAllRejectAllToggleDescription": "על ידי הצטרפות להלן, אתה מסכים לאחסון קובצי Cookie במכשיר שלך למטרות פונקציונליות, אנליטיות ופרסום.",
   "ui.src.messages.acceptAnalytics": "בסדר",
   "ui.src.messages.acceptOrRejectAdvertisingDescription": "בלחיצה על \"אוקיי\", אתה מסכים לשימוש במידע האישי שלך למטרות פרסום.",
   "ui.src.messages.acceptOrRejectAnalyticsDescription": "בלחיצה על \"אוקיי\", אתה מסכים לשימוש במידע הרגיש שלך למטרות ניתוח.",
@@ -34,6 +37,7 @@
   "ui.src.messages.completeOptionsInvertedTitle": "אפשרויות הפרטיות שלך",
   "ui.src.messages.consentTitle": "לשם מה אנו יכולים להשתמש בנתונים?",
   "ui.src.messages.consentTitleAcceptAll": "אנו משתמשים בעוגיות",
+  "ui.src.messages.consentTitleAcceptAllRejectAllToggle": "אפשרויות הפרטיות שלך",
   "ui.src.messages.consentTitleAcceptOrRejectAdvertising": "אתר זה משתמש בפרסום",
   "ui.src.messages.consentTitleAcceptOrRejectAnalytics": "אתר זה משתמש בניתוח",
   "ui.src.messages.consentTitleDoNotSellExplainer": "אל תמכור או תשתף את המידע האישי שלי",

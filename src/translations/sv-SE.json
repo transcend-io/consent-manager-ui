@@ -1,4 +1,6 @@
 {
+  "ui.src.bottomMenu.backButtonText": "Gå tillbaka",
+  "ui.src.bottomMenu.backButtonTooltip": "Gå tillbaka",
   "ui.src.bottomMenu.moreChoicesButtonLabel": "Klicka för att visa fler val",
   "ui.src.bottomMenu.moreChoicesButtonPrimary": "Fler val",
   "ui.src.bottomMenu.showPolicyButtonCompleteOptionsInverted": "Se vår integritetspolicy",
@@ -26,6 +28,7 @@
   "ui.src.messages.acceptAdvertising": "Okej",
   "ui.src.messages.acceptAllButtonPrimary": "Acceptera alla",
   "ui.src.messages.acceptAllDescription": "Genom att klicka på ”Acceptera alla”, du godkänner lagring av cookies på din enhet för funktionalitet, analys, och reklamändamål.",
+  "ui.src.messages.acceptAllRejectAllToggleDescription": "Genom att välja nedan godkänner du lagring av cookies på din enhet för funktionella, analytiska och reklamändamål.",
   "ui.src.messages.acceptAnalytics": "Okej",
   "ui.src.messages.acceptOrRejectAdvertisingDescription": "Genom att klicka på ”Okej”, du godkänner användningen av din personliga information för reklamändamål.",
   "ui.src.messages.acceptOrRejectAnalyticsDescription": "Genom att klicka på ”Okej”, du godkänner användningen av din känsliga information för analysändamål.",
@@ -34,6 +37,7 @@
   "ui.src.messages.completeOptionsInvertedTitle": "Dina sekretessval",
   "ui.src.messages.consentTitle": "Vad kan vi använda data till?",
   "ui.src.messages.consentTitleAcceptAll": "Vi använder cookies",
+  "ui.src.messages.consentTitleAcceptAllRejectAllToggle": "Dina sekretessval",
   "ui.src.messages.consentTitleAcceptOrRejectAdvertising": "Denna webbplats använder reklam",
   "ui.src.messages.consentTitleAcceptOrRejectAnalytics": "Denna webbplats använder analyser",
   "ui.src.messages.consentTitleDoNotSellExplainer": "Sälj inte eller dela min personliga information",

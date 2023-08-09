@@ -1,4 +1,6 @@
 {
+  "ui.src.bottomMenu.backButtonText": "ارجع",
+  "ui.src.bottomMenu.backButtonTooltip": "ارجع",
   "ui.src.bottomMenu.moreChoicesButtonLabel": "انقر لإظهار المزيد من الخيارات",
   "ui.src.bottomMenu.moreChoicesButtonPrimary": "المزيد من الخيارات",
   "ui.src.bottomMenu.showPolicyButtonCompleteOptionsInverted": "راجع سياسة الخصوصية الخاصة بنا",
@@ -26,6 +28,7 @@
   "ui.src.messages.acceptAdvertising": "حسنا",
   "ui.src.messages.acceptAllButtonPrimary": "اقبل الكل",
   "ui.src.messages.acceptAllDescription": "بالنقر فوق «قبول الكل»، فإنك توافق على تخزين ملفات تعريف الارتباط على جهازك لأغراض وظيفية وتحليلية وإعلانية.",
+  "ui.src.messages.acceptAllRejectAllToggleDescription": "من خلال الاشتراك أدناه، فإنك توافق على تخزين ملفات تعريف الارتباط على جهازك لأغراض وظيفية وتحليلية وإعلانية.",
   "ui.src.messages.acceptAnalytics": "حسنا",
   "ui.src.messages.acceptOrRejectAdvertisingDescription": "بالنقر فوق «حسنًا»، فإنك توافق على استخدام معلوماتك الشخصية لأغراض الدعاية.",
   "ui.src.messages.acceptOrRejectAnalyticsDescription": "بالنقر فوق «حسنًا»، فإنك توافق على استخدام معلوماتك الحساسة لأغراض التحليلات.",
@@ -34,6 +37,7 @@
   "ui.src.messages.completeOptionsInvertedTitle": "خيارات الخصوصية الخاصة بك",
   "ui.src.messages.consentTitle": "ما الذي يمكننا استخدام البيانات من أجله؟",
   "ui.src.messages.consentTitleAcceptAll": "نحن نستخدم ملفات تعريف الارتباط",
+  "ui.src.messages.consentTitleAcceptAllRejectAllToggle": "خيارات الخصوصية الخاصة بك",
   "ui.src.messages.consentTitleAcceptOrRejectAdvertising": "يستخدم هذا الموقع الإعلانات",
   "ui.src.messages.consentTitleAcceptOrRejectAnalytics": "يستخدم موقع الويب هذا التحليلات",
   "ui.src.messages.consentTitleDoNotSellExplainer": "لا تبيع أو تشارك معلوماتي الشخصية",

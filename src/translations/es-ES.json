@@ -1,4 +1,6 @@
 {
+  "ui.src.bottomMenu.backButtonText": "Regresar",
+  "ui.src.bottomMenu.backButtonTooltip": "Regresar",
   "ui.src.bottomMenu.moreChoicesButtonLabel": "Haga clic para mostrar más opciones",
   "ui.src.bottomMenu.moreChoicesButtonPrimary": "Más opciones",
   "ui.src.bottomMenu.showPolicyButtonCompleteOptionsInverted": "Consulte nuestra política de privacidad",
@@ -26,6 +28,7 @@
   "ui.src.messages.acceptAdvertising": "Ok",
   "ui.src.messages.acceptAllButtonPrimary": "Aceptar todos",
   "ui.src.messages.acceptAllDescription": "Al hacer clic en «Aceptar todo», aceptas el almacenamiento de cookies en tu dispositivo con fines funcionales, analíticos y publicitarios.",
+  "ui.src.messages.acceptAllRejectAllToggleDescription": "Al optar por participar a continuación, acepta el almacenamiento de cookies en su dispositivo con fines funcionales, analíticos y publicitarios.",
   "ui.src.messages.acceptAnalytics": "Ok",
   "ui.src.messages.acceptOrRejectAdvertisingDescription": "Al hacer clic en «Aceptar», aceptas el uso de tu información personal con fines publicitarios.",
   "ui.src.messages.acceptOrRejectAnalyticsDescription": "Al hacer clic en «Aceptar», aceptas el uso de tu información confidencial con fines de análisis.",
@@ -34,6 +37,7 @@
   "ui.src.messages.completeOptionsInvertedTitle": "Sus opciones de privacidad",
   "ui.src.messages.consentTitle": "¿Para qué podemos usar los datos?",
   "ui.src.messages.consentTitleAcceptAll": "Usamos cookies",
+  "ui.src.messages.consentTitleAcceptAllRejectAllToggle": "Sus opciones de privacidad",
   "ui.src.messages.consentTitleAcceptOrRejectAdvertising": "Este sitio web utiliza publicidad",
   "ui.src.messages.consentTitleAcceptOrRejectAnalytics": "Este sitio web utiliza análisis",
   "ui.src.messages.consentTitleDoNotSellExplainer": "No venda ni comparta mi información personal",

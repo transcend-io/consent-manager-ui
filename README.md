@@ -241,7 +241,7 @@ A banner that handles opting in or out of the `Advertising` tag.
 
 **WARNING: In some jurisdictions this UI may be considered a dark pattern. Use at your own risk.** To learn more, head over to our blog post: [Demystifying dark patterns: A practical primer for CPRA compliance](https://transcend.io/blog/dark-patterns-cpra/).
 
-![ViewState = AcceptAllRejectAllToggle](https://user-images.githubusercontent.com/10264973/221736031-2526a3a0-153b-484d-9067-c1072017d974.png)
+![ViewState = AcceptAllRejectAllToggle](https://github.com/transcend-io/consent-manager-ui/assets/10264973/a8a74188-5464-48fc-9720-d84e7f23c300)
 
 #### Button Mapping
 

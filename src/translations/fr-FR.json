@@ -1,4 +1,6 @@
 {
+  "ui.src.bottomMenu.backButtonText": "Revenez en arrière",
+  "ui.src.bottomMenu.backButtonTooltip": "Revenez en arrière",
   "ui.src.bottomMenu.moreChoicesButtonLabel": "Cliquez pour afficher plus de choix",
   "ui.src.bottomMenu.moreChoicesButtonPrimary": "Plus de choix",
   "ui.src.bottomMenu.showPolicyButtonCompleteOptionsInverted": "Consultez notre politique de confidentialité",
@@ -26,6 +28,7 @@
   "ui.src.messages.acceptAdvertising": "OK",
   "ui.src.messages.acceptAllButtonPrimary": "Tout accepter",
   "ui.src.messages.acceptAllDescription": "En cliquant sur « Tout accepter », vous acceptez le stockage de cookies sur votre appareil à des fins fonctionnelles, analytiques et publicitaires.",
+  "ui.src.messages.acceptAllRejectAllToggleDescription": "En vous inscrivant ci-dessous, vous acceptez le stockage de cookies sur votre appareil à des fins fonctionnelles, analytiques et publicitaires.",
   "ui.src.messages.acceptAnalytics": "OK",
   "ui.src.messages.acceptOrRejectAdvertisingDescription": "En cliquant sur « OK », vous acceptez que vos informations personnelles soient utilisées à des fins publicitaires.",
   "ui.src.messages.acceptOrRejectAnalyticsDescription": "En cliquant sur « OK », vous acceptez l'utilisation de vos informations sensibles à des fins d'analyse.",
@@ -34,6 +37,7 @@
   "ui.src.messages.completeOptionsInvertedTitle": "Vos choix en matière de confidentialité",
   "ui.src.messages.consentTitle": "À quelles fins pouvons-nous utiliser les données ?",
   "ui.src.messages.consentTitleAcceptAll": "Nous utilisons des cookies",
+  "ui.src.messages.consentTitleAcceptAllRejectAllToggle": "Vos choix en matière de confidentialité",
   "ui.src.messages.consentTitleAcceptOrRejectAdvertising": "Ce site Web utilise de la publicité",
   "ui.src.messages.consentTitleAcceptOrRejectAnalytics": "Ce site Web utilise des outils d'analyse",
   "ui.src.messages.consentTitleDoNotSellExplainer": "Ne pas vendre ni partager mes informations personnelles",

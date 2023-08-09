@@ -1,4 +1,6 @@
 {
+  "ui.src.bottomMenu.backButtonText": "Palaa takaisin",
+  "ui.src.bottomMenu.backButtonTooltip": "Palaa takaisin",
   "ui.src.bottomMenu.moreChoicesButtonLabel": "Napsauta näyttääksesi lisää valintoja",
   "ui.src.bottomMenu.moreChoicesButtonPrimary": "Lisää valintoja",
   "ui.src.bottomMenu.showPolicyButtonCompleteOptionsInverted": "Katso tietosuojakäytäntömme",
@@ -26,6 +28,7 @@
   "ui.src.messages.acceptAdvertising": "Okei",
   "ui.src.messages.acceptAllButtonPrimary": "Hyväksy kaikki",
   "ui.src.messages.acceptAllDescription": "Napsauttamalla Hyväksy kaikki, hyväksyt evästeiden tallentamisen laitteellesi toiminnallisuutta varten, analytiikka, ja mainostarkoituksiin.",
+  "ui.src.messages.acceptAllRejectAllToggleDescription": "Valitsemalla alla, hyväksyt evästeiden tallentamisen laitteellesi toiminnallisia, analytiikka- ja mainostarkoituksia varten.",
   "ui.src.messages.acceptAnalytics": "Okei",
   "ui.src.messages.acceptOrRejectAdvertisingDescription": "Klikkaamalla ”Okei”, hyväksyt henkilötietojesi käytön mainostarkoituksiin.",
   "ui.src.messages.acceptOrRejectAnalyticsDescription": "Klikkaamalla ”Okei”, hyväksyt arkaluonteisten tietojesi käytön analyysitarkoituksiin.",
@@ -34,6 +37,7 @@
   "ui.src.messages.completeOptionsInvertedTitle": "Tietosuojavalintasi",
   "ui.src.messages.consentTitle": "Mihin voimme käyttää tietoja?",
   "ui.src.messages.consentTitleAcceptAll": "Käytämme evästeitä",
+  "ui.src.messages.consentTitleAcceptAllRejectAllToggle": "Tietosuojavalintasi",
   "ui.src.messages.consentTitleAcceptOrRejectAdvertising": "Tämä verkkosivusto käyttää mainontaa",
   "ui.src.messages.consentTitleAcceptOrRejectAnalytics": "Tämä verkkosivusto käyttää analytiikkaa",
   "ui.src.messages.consentTitleDoNotSellExplainer": "Älä myy tai jaa henkilökohtaisia tietojani",
