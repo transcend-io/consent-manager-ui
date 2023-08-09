@@ -122,6 +122,8 @@ export function BottomMenu({
           {formatMessage(
             viewState === 'CompleteOptionsInverted'
               ? bottomMenuMessages.showPolicyButtonCompleteOptionsInverted
+              : viewState === 'AcceptAllOrMoreChoices'
+              ? bottomMenuMessages.showPolicyButtonsAcceptAllOrMoreChoices
               : bottomMenuMessages.showPolicyButtonPrimary,
           )}
         </MenuItem>

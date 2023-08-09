@@ -311,6 +311,11 @@ export const bottomMenuMessages = defineMessages('ui.src.bottomMenu', {
     description:
       'Text for linking out to privacy policy in CompleteOptionsInverted UI.',
   },
+  showPolicyButtonsAcceptAllOrMoreChoices: {
+    defaultMessage: 'See our privacy policy',
+    description:
+      'Text for linking out to privacy policy in AcceptAllOrMoreChoices UI.',
+  },
   showPolicyButtonLabel: {
     defaultMessage: 'Visit our privacy policy',
     description: 'Hover/alt for linking out to privacy policy.',
