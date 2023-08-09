@@ -28,7 +28,14 @@ export function AcceptOrRejectAdvertising({
         </div>
         <div>
           <p className="paragraph">
-            {formatMessage(messages.acceptOrRejectAdvertisingDescription)}
+            <div
+              // eslint-disable-next-line react/no-danger
+              dangerouslySetInnerHTML={{
+                __html: formatMessage(
+                  messages.acceptOrRejectAdvertisingDescription,
+                ),
+              }}
+            />
           </p>
         </div>
       </div>

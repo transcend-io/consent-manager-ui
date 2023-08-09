@@ -28,7 +28,14 @@ export function AcceptOrRejectAnalytics({
         </div>
         <div>
           <p className="paragraph">
-            {formatMessage(messages.acceptOrRejectAnalyticsDescription)}
+            <div
+              // eslint-disable-next-line react/no-danger
+              dangerouslySetInnerHTML={{
+                __html: formatMessage(
+                  messages.acceptOrRejectAnalyticsDescription,
+                ),
+              }}
+            />
           </p>
         </div>
       </div>

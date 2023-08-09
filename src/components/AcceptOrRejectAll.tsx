@@ -49,7 +49,12 @@ export function AcceptOrRejectAll({
         </div>
         <div>
           <p className="paragraph">
-            {formatMessage(messages.acceptAllDescription)}
+            <div
+              // eslint-disable-next-line react/no-danger
+              dangerouslySetInnerHTML={{
+                __html: formatMessage(messages.acceptAllDescription),
+              }}
+            />
           </p>
         </div>
       </div>
