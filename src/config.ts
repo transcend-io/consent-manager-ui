@@ -8,6 +8,8 @@ import type {
   PrivacyRegimeToInitialViewState,
 } from '@transcend-io/airgap.js-types';
 import { ViewState } from '@transcend-io/airgap.js-types/build/enums/viewState';
+import { ConsentManagerLanguageKey } from '@transcend-io/internationalization';
+import { CONSENT_MANAGER_SUPPORTED_LANGUAGES } from './i18n';
 import { logger } from './logger';
 import { settings, LOG_LEVELS, extraConfig } from './settings';
 import { jsonParseSafe } from './utils/safe-json-parse';
@@ -16,6 +18,7 @@ const {
   privacyCenter,
   privacyPolicy = privacyCenter || '/privacy',
   secondaryPolicy,
+  languages,
   dismissedViewState = 'Hidden',
 } = settings;
 
@@ -62,12 +65,18 @@ const baseConfig: Omit<
   },
   initialViewStateByPrivacyRegime: DEFAULT_VIEW_STATE_BY_PRIVACY_REGIME_COPIED,
 };
+
 /**
  * Merges config from defaults and settings. JSON is automatically decoded.
  *
  * @returns the consent manager config to use in the UI
  */
-export function getMergedConfig(): ConsentManagerConfig {
+export function getMergedConfig(): {
+  /** Merged config */
+  config: ConsentManagerConfig;
+  /** Languages split out separately for type-safety and preserving raw value */
+  supportedLanguages: ConsentManagerLanguageKey[];
+} {
   const settingsConfig: ConsentManagerConfigInput =
     typeof settings === 'string'
       ? jsonParseSafe(settings, () => ({}))
@@ -91,13 +100,24 @@ export function getMergedConfig(): ConsentManagerConfig {
   config.privacyPolicy ??= privacyPolicy;
   config.secondaryPolicy ??= secondaryPolicy;
   config.dismissedViewState ??= dismissedViewState;
+  config.languages ??= languages;
+
+  // Determine the language settings to use
+  const existingLanguages = config.languages
+    ? config.languages.trim().split(/\s*,\s*/)
+    : [];
+  const supportedLanguages = !config.languages
+    ? CONSENT_MANAGER_SUPPORTED_LANGUAGES
+    : CONSENT_MANAGER_SUPPORTED_LANGUAGES.filter((lang) =>
+        existingLanguages.includes(lang),
+      );
 
   const safeToContinue = validateConfig(config);
   if (!safeToContinue) {
     throw new Error('Invalid consent manager config');
   }
 
-  return config;
+  return { config, supportedLanguages };
 }
 
 /**

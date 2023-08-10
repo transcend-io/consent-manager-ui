@@ -12,7 +12,6 @@ import { getPrimaryRegime } from '../regimes';
 
 import { ConsentManagerLanguageKey } from '@transcend-io/internationalization';
 
-import { CONSENT_MANAGER_SUPPORTED_LANGUAGES } from '../i18n';
 import { makeConsentManagerAPI } from '../api';
 import { TranscendEventTarget } from '../event-target';
 import { useState } from 'preact/hooks';
@@ -39,7 +38,7 @@ export function App({
 }): JSX.Element {
   // Consent manager configuration
   const defaultConfig = getMergedConfig();
-  const [config, setConfig] = useState(defaultConfig);
+  const [{ config, supportedLanguages }, setConfig] = useState(defaultConfig);
 
   // Get the active privacy regime
   const privacyRegime = getPrimaryRegime(airgap.getRegimes());
@@ -61,7 +60,7 @@ export function App({
 
   // Language setup
   const { language, handleChangeLanguage, messages } = useLanguage({
-    supportedLanguages: CONSENT_MANAGER_SUPPORTED_LANGUAGES,
+    supportedLanguages,
     translationsLocation:
       // Order of priority:
       // 1. Take airgap.js data-messages
@@ -78,13 +77,19 @@ export function App({
     handleSetViewState,
     handleChangePrivacyPolicy: (privacyPolicyUrl) =>
       setConfig({
-        ...config,
-        privacyPolicy: privacyPolicyUrl,
+        supportedLanguages,
+        config: {
+          ...config,
+          privacyPolicy: privacyPolicyUrl,
+        },
       }),
     handleChangeSecondaryPolicy: (privacyPolicyUrl) =>
       setConfig({
-        ...config,
-        secondaryPolicy: privacyPolicyUrl,
+        supportedLanguages,
+        config: {
+          ...config,
+          secondaryPolicy: privacyPolicyUrl,
+        },
       }),
     airgap,
   });
@@ -107,7 +112,7 @@ export function App({
             modalOpenAuth={auth}
             viewState={viewState}
             config={config}
-            supportedLanguages={CONSENT_MANAGER_SUPPORTED_LANGUAGES}
+            supportedLanguages={supportedLanguages}
             firstSelectedViewState={firstSelectedViewState}
             handleSetViewState={handleSetViewState}
             handleChangeLanguage={handleChangeLanguage}
