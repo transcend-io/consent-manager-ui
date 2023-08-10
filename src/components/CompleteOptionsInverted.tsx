@@ -1,7 +1,7 @@
 import { h, JSX } from 'preact';
 import { useState } from 'preact/hooks';
 import { useIntl } from 'react-intl';
-import { useAirgap } from '../hooks';
+import { useAirgap, useGetPurposeMessageKeys } from '../hooks';
 import {
   messages,
   completeOptionsInvertedMessages,
@@ -16,14 +16,15 @@ import { Toggle } from './Toggle';
 import { CONSENT_OPTIONS } from '../constants';
 
 // Mapping of purposes to the message translation key
-const purposeToMessageKey: Record<string, DefinedMessage> = {
+const defaultPurposeToMessageKey: Record<string, DefinedMessage> = {
   Functional: completeOptionsInvertedMessages.functionalLabel,
   Analytics: completeOptionsInvertedMessages.analyticsLabel,
   Advertising: completeOptionsInvertedMessages.advertisingLabel,
   SaleOfInfo: completeOptionsInvertedMessages.saleOfInfoLabel,
 };
 
-const ORDER_OF_PURPOSES = Object.keys(purposeToMessageKey);
+// Encode the default purpose ordering
+const ORDER_OF_PURPOSES = Object.keys(defaultPurposeToMessageKey);
 
 /**
  * The model view where checking each checkbox represents an opt otu
@@ -39,6 +40,10 @@ export function CompleteOptionsInverted({
 
   // Get the tracking purposes from Airgap for display
   const initialConsentSelections = getConsentSelections(airgap);
+  const purposeToMessageKey = useGetPurposeMessageKeys({
+    consentSelection: initialConsentSelections,
+    defaultPurposeToMessageKey,
+  });
 
   // Set state on the currently selected toggles
   const [consentSelections, setConsentSelections] = useState(
