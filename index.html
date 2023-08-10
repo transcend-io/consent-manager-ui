@@ -53,6 +53,23 @@
 
   <body style="height: 100%">
     <h1>Transcend Consent Manager Playground!</h1>
+
+    <button id="cpra_button" style="display: none">
+      <img src="./privacy-choices-icon.svg" />
+      <span>Your Privacy Choices</span>
+    </button>
+
+    <script>
+      if (airgap && airgap.getRegimes().has('CPRA')) {
+        var cpraButton = document.getElementById('cpra_button');
+        cpraButton.onclick = function () {
+          transcend.showConsentManager({ viewState: 'AcceptOrRejectAll' });
+        };
+
+        cpraButton.style.display = 'block';
+      }
+    </script>
+
     <h2>Do Not Sell/Share</h2>
     <br />
     <button id="do-not-sell">Do Not Sell My Personal Information</button>

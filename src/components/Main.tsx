@@ -28,6 +28,7 @@ import { QuickOptions3 } from './QuickOptions3';
 import { PrivacyPolicyNotice } from './PrivacyPolicyNotice';
 import { AcceptAllOrMoreChoices } from './AcceptAllOrMoreChoices';
 import { AcceptOrRejectAllOrMoreChoices } from './AcceptOrRejectAllOrMoreChoices';
+import { AcceptAllRejectAllToggle } from './AcceptAllRejectAllToggle';
 
 /**
  * Presents view states (collapsed, GDPR-mode, CCPA-mode etc)
@@ -104,6 +105,13 @@ export function Main({
 
             {viewState === 'AcceptOrRejectAll' && (
               <AcceptOrRejectAll handleSetViewState={handleSetViewState} />
+            )}
+
+            {viewState === 'AcceptAllRejectAllToggle' && (
+              <AcceptAllRejectAllToggle
+                handleSetViewState={handleSetViewState}
+                fontColor={config.theme.fontColor}
+              />
             )}
 
             {viewState === 'AcceptAllOrMoreChoices' && (

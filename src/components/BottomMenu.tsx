@@ -30,18 +30,31 @@ export function BottomMenu({
 
   return (
     <div className="bottom-menu-container">
-      {![
-        'NoticeAndDoNotSell',
-        'DoNotSellDisclosure',
-        'OptOutDisclosure',
-        'PrivacyPolicyNotice',
-        'AcceptOrRejectAnalytics',
-        'AcceptAllOrMoreChoices',
-        'AcceptOrRejectAllOrMoreChoices',
-        'CompleteOptionsInverted',
-        'DoNotSellExplainer',
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      ].includes(viewState as any) &&
+      {viewState === 'LanguageOptions' ? (
+        <div className="bottom-menu-item-container">
+          <MenuItem
+            label={formatMessage(bottomMenuMessages.backButtonTooltip)}
+            type="button"
+            onClick={(e) => handleSetViewState('back', e)}
+          >
+            {formatMessage(bottomMenuMessages.backButtonText)}
+          </MenuItem>
+        </div>
+      ) : (
+        ![
+          'NoticeAndDoNotSell',
+          'DoNotSellDisclosure',
+          'OptOutDisclosure',
+          'PrivacyPolicyNotice',
+          'AcceptOrRejectAnalytics',
+          'AcceptAllOrMoreChoices',
+          'AcceptOrRejectAllOrMoreChoices',
+          'CompleteOptionsInverted',
+          'DoNotSellExplainer',
+          'LanguageOptions',
+          'AcceptAllRejectAllToggle',
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        ].includes(viewState as any) &&
         (viewState === 'CompleteOptions' ? (
           !firstSelectedViewState ||
           firstSelectedViewState === 'CompleteOptions' ? null : (
@@ -67,7 +80,8 @@ export function BottomMenu({
               {formatMessage(bottomMenuMessages.moreChoicesButtonPrimary)}
             </MenuItem>
           </div>
-        ))}
+        ))
+      )}
 
       {viewState === 'NoticeAndDoNotSell' && (
         <div className="bottom-menu-item-container">
@@ -108,6 +122,8 @@ export function BottomMenu({
           {formatMessage(
             viewState === 'CompleteOptionsInverted'
               ? bottomMenuMessages.showPolicyButtonCompleteOptionsInverted
+              : viewState === 'AcceptAllOrMoreChoices'
+              ? bottomMenuMessages.showPolicyButtonsAcceptAllOrMoreChoices
               : bottomMenuMessages.showPolicyButtonPrimary,
           )}
         </MenuItem>

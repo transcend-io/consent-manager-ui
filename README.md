@@ -237,6 +237,20 @@ A banner that handles opting in or out of the `Advertising` tag.
 | More choices           | Redirects to the `CompleteOptions` view state. No purposes change.                                                                                                                                                                                                                                               |
 | See our Privacy Policy | Redirects to the privacy policy link specified in [Consent Display Settings](https://app.transcend.io/consent-manager/display-settings) or the [`data-privacy-policy`](https://docs.transcend.io/docs/consent/faq#how-can-i-customize-the-privacy-policy-link-when-hosting-on-multiple-domains?) data attribute. |
 
+### `AcceptAllRejectAllToggle`
+
+**WARNING: In some jurisdictions this UI may be considered a dark pattern. Use at your own risk.** To learn more, head over to our blog post: [Demystifying dark patterns: A practical primer for CPRA compliance](https://transcend.io/blog/dark-patterns-cpra/).
+
+![ViewState = AcceptAllRejectAllToggle](https://github.com/transcend-io/consent-manager-ui/assets/10264973/a8a74188-5464-48fc-9720-d84e7f23c300)
+
+#### Button Mapping
+
+| Button Title           | Callback Description                                                                                                                                                                                                                                                                                             |
+| ---------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Toggle Switch          | Opts the user in or out of all purpose.                                                                                                                                                                                                                                                                          |
+| X - Icon               | Closes the modal with no changes to purposes and no changes to consent confirmation.                                                                                                                                                                                                                             |
+| See our Privacy Policy | Redirects to the privacy policy link specified in [Consent Display Settings](https://app.transcend.io/consent-manager/display-settings) or the [`data-privacy-policy`](https://docs.transcend.io/docs/consent/faq#how-can-i-customize-the-privacy-policy-link-when-hosting-on-multiple-domains?) data attribute. |
+
 ### `LanguageOptions`
 
 This is the view state that allows the user to select their language.

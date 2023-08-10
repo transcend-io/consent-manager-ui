@@ -147,6 +147,19 @@ export const messages = defineMessages('ui.src.messages', {
     description:
       'Button text for redirecting the user to more granular consent choices.',
   },
+  consentTitleAcceptAllRejectAllToggle: {
+    defaultMessage: 'Your Privacy Choices',
+    description:
+      'The title displayed in the AcceptAllRejectAllToggle view state.',
+  },
+  acceptAllRejectAllToggleDescription: {
+    defaultMessage:
+      /* eslint-disable max-len */
+      'By opting in below, you agree to the storing of cookies on your device for functional, analytics, and advertising purposes.',
+    /* eslint-enable max-len */
+    description:
+      'The description text for the AcceptAllRejectAllToggle view state.',
+  },
 });
 
 export const quickOptionsMessages = defineMessages('ui.src.quickOptions', {
@@ -263,6 +276,16 @@ export const optOutDisclosureMessages = defineMessages(
 );
 
 export const bottomMenuMessages = defineMessages('ui.src.bottomMenu', {
+  backButtonText: {
+    defaultMessage: 'Go back',
+    description:
+      'Hover text the back button in the footer of the consent banner language options.',
+  },
+  backButtonTooltip: {
+    defaultMessage: 'Go back',
+    description:
+      'Main text for the back button in the footer of the consent banner language options.',
+  },
   moreChoicesButtonPrimary: {
     defaultMessage: 'More choices',
     description: 'Text for selecting specific more opt out choices.',
@@ -280,13 +303,18 @@ export const bottomMenuMessages = defineMessages('ui.src.bottomMenu', {
     description: 'Hover/alt text for selecting simpler opt out choices.',
   },
   showPolicyButtonPrimary: {
-    defaultMessage: 'See Our Privacy Policy',
+    defaultMessage: 'See our privacy policy',
     description: 'Text for linking out to privacy policy.',
   },
   showPolicyButtonCompleteOptionsInverted: {
-    defaultMessage: 'See Our Privacy Policy',
+    defaultMessage: 'See our privacy policy',
     description:
       'Text for linking out to privacy policy in CompleteOptionsInverted UI.',
+  },
+  showPolicyButtonsAcceptAllOrMoreChoices: {
+    defaultMessage: 'See our privacy policy',
+    description:
+      'Text for linking out to privacy policy in AcceptAllOrMoreChoices UI.',
   },
   showPolicyButtonLabel: {
     defaultMessage: 'Visit our privacy policy',
