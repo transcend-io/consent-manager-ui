@@ -1,4 +1,4 @@
-import { ConsentSelection } from 'src/types';
+import { ConsentSelection } from '../types';
 
 import { useMemo } from 'preact/hooks';
 
