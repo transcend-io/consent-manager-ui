@@ -6,13 +6,6 @@ import { DefinedMessage } from '@transcend-io/internationalization';
 
 const CUSTOM_PURPOSE_MESSAGE_PREFIX = 'cm-ui.purpose';
 
-export interface PurposeMessages {
-  /** The lookup of purpose trackingTypes to message key */
-  purposeToMessageKey: Record<string, DefinedMessage>;
-  /** The order of all purposes */
-  orderOfPurposes: string[];
-}
-
 export const useGetPurposeMessageKeys = ({
   consentSelection,
   defaultPurposeToMessageKey,
@@ -21,7 +14,7 @@ export const useGetPurposeMessageKeys = ({
   consentSelection: ConsentSelection;
   /** The lookup of messages for default purpose types */
   defaultPurposeToMessageKey: Record<string, DefinedMessage>;
-}): PurposeMessages => {
+}): Record<string, DefinedMessage> => {
   const purposeToMessageKey: Record<string, DefinedMessage> = useMemo(
     () =>
       // the purpose type is unique for the bundle
@@ -41,9 +34,6 @@ export const useGetPurposeMessageKeys = ({
       }, defaultPurposeToMessageKey as Record<string, DefinedMessage>),
     [consentSelection, defaultPurposeToMessageKey],
   );
-  const orderOfPurposes = useMemo(
-    () => Object.keys(purposeToMessageKey),
-    [purposeToMessageKey],
-  );
-  return { purposeToMessageKey, orderOfPurposes };
+
+  return purposeToMessageKey;
 };

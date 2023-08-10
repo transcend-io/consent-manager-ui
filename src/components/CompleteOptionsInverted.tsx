@@ -23,6 +23,9 @@ const defaultPurposeToMessageKey: Record<string, DefinedMessage> = {
   SaleOfInfo: completeOptionsInvertedMessages.saleOfInfoLabel,
 };
 
+// Encode the default purpose ordering
+const ORDER_OF_PURPOSES = Object.keys(defaultPurposeToMessageKey);
+
 /**
  * The model view where checking each checkbox represents an opt otu
  */
@@ -37,7 +40,7 @@ export function CompleteOptionsInverted({
 
   // Get the tracking purposes from Airgap for display
   const initialConsentSelections = getConsentSelections(airgap);
-  const { purposeToMessageKey, orderOfPurposes } = useGetPurposeMessageKeys({
+  const purposeToMessageKey = useGetPurposeMessageKeys({
     consentSelection: initialConsentSelections,
     defaultPurposeToMessageKey,
   });
@@ -73,12 +76,12 @@ export function CompleteOptionsInverted({
   // sort ordering of options
   const orderedSelections = Object.entries(consentSelections).sort(([a], [b]) =>
     // sort custom purposes to the end
-    orderOfPurposes.indexOf(a) < 0 && orderOfPurposes.indexOf(b) > 0
+    ORDER_OF_PURPOSES.indexOf(a) < 0 && ORDER_OF_PURPOSES.indexOf(b) > 0
       ? 1
-      : orderOfPurposes.indexOf(b) < 0 && orderOfPurposes.indexOf(a) > 0
+      : ORDER_OF_PURPOSES.indexOf(b) < 0 && ORDER_OF_PURPOSES.indexOf(a) > 0
       ? -1
       : // order purposes based on order defined above
-        orderOfPurposes.indexOf(a) - orderOfPurposes.indexOf(b),
+        ORDER_OF_PURPOSES.indexOf(a) - ORDER_OF_PURPOSES.indexOf(b),
   );
 
   return (
