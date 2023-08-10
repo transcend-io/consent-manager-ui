@@ -12,10 +12,9 @@ import { getPrimaryRegime } from '../regimes';
 
 import { ConsentManagerLanguageKey } from '@transcend-io/internationalization';
 
-import { CONSENT_MANAGER_SUPPORTED_LANGUAGES } from '../i18n';
 import { makeConsentManagerAPI } from '../api';
 import { TranscendEventTarget } from '../event-target';
-import { useMemo, useState } from 'preact/hooks';
+import { useState } from 'preact/hooks';
 
 // TODO: https://transcend.height.app/T-13483
 // Fix IntlProvider JSX types
@@ -39,13 +38,7 @@ export function App({
 }): JSX.Element {
   // Consent manager configuration
   const defaultConfig = getMergedConfig();
-  const [config, setConfig] = useState(defaultConfig);
-  const supportedLanguages = useMemo(
-    () =>
-      (config.allowedLanguages as ConsentManagerLanguageKey[]) ||
-      CONSENT_MANAGER_SUPPORTED_LANGUAGES,
-    [config.allowedLanguages],
-  );
+  const [{ config, allowedLanguages }, setConfig] = useState(defaultConfig);
 
   // Get the active privacy regime
   const privacyRegime = getPrimaryRegime(airgap.getRegimes());
@@ -67,7 +60,7 @@ export function App({
 
   // Language setup
   const { language, handleChangeLanguage, messages } = useLanguage({
-    supportedLanguages,
+    supportedLanguages: allowedLanguages,
     translationsLocation:
       // Order of priority:
       // 1. Take airgap.js data-messages
@@ -84,13 +77,19 @@ export function App({
     handleSetViewState,
     handleChangePrivacyPolicy: (privacyPolicyUrl) =>
       setConfig({
-        ...config,
-        privacyPolicy: privacyPolicyUrl,
+        allowedLanguages,
+        config: {
+          ...config,
+          privacyPolicy: privacyPolicyUrl,
+        },
       }),
     handleChangeSecondaryPolicy: (privacyPolicyUrl) =>
       setConfig({
-        ...config,
-        secondaryPolicy: privacyPolicyUrl,
+        allowedLanguages,
+        config: {
+          ...config,
+          secondaryPolicy: privacyPolicyUrl,
+        },
       }),
     airgap,
   });
@@ -113,7 +112,7 @@ export function App({
             modalOpenAuth={auth}
             viewState={viewState}
             config={config}
-            supportedLanguages={supportedLanguages}
+            supportedLanguages={allowedLanguages}
             firstSelectedViewState={firstSelectedViewState}
             handleSetViewState={handleSetViewState}
             handleChangeLanguage={handleChangeLanguage}

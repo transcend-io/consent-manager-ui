@@ -8,6 +8,7 @@ import type {
   PrivacyRegimeToInitialViewState,
 } from '@transcend-io/airgap.js-types';
 import { ViewState } from '@transcend-io/airgap.js-types/build/enums/viewState';
+import { ConsentManagerLanguageKey } from '@transcend-io/internationalization';
 import { CONSENT_MANAGER_SUPPORTED_LANGUAGES } from './i18n';
 import { logger } from './logger';
 import { settings, LOG_LEVELS, extraConfig } from './settings';
@@ -17,7 +18,7 @@ const {
   privacyCenter,
   privacyPolicy = privacyCenter || '/privacy',
   secondaryPolicy,
-  allowedLanguages = CONSENT_MANAGER_SUPPORTED_LANGUAGES,
+  allowedLanguages,
   dismissedViewState = 'Hidden',
 } = settings;
 
@@ -64,12 +65,18 @@ const baseConfig: Omit<
   },
   initialViewStateByPrivacyRegime: DEFAULT_VIEW_STATE_BY_PRIVACY_REGIME_COPIED,
 };
+
 /**
  * Merges config from defaults and settings. JSON is automatically decoded.
  *
  * @returns the consent manager config to use in the UI
  */
-export function getMergedConfig(): ConsentManagerConfig {
+export function getMergedConfig(): {
+  /** Merged config */
+  config: ConsentManagerConfig;
+  /** Languages split out separately for type-safety and preserving raw value */
+  allowedLanguages: ConsentManagerLanguageKey[];
+} {
   const settingsConfig: ConsentManagerConfigInput =
     typeof settings === 'string'
       ? jsonParseSafe(settings, () => ({}))
@@ -95,12 +102,22 @@ export function getMergedConfig(): ConsentManagerConfig {
   config.dismissedViewState ??= dismissedViewState;
   config.allowedLanguages ??= allowedLanguages;
 
+  // Determine the language settings to use
+  const existingLanguages = config.allowedLanguages
+    ? config.allowedLanguages.split(',')
+    : [];
+  const allowedLanguagesParsed = !config.allowedLanguages
+    ? CONSENT_MANAGER_SUPPORTED_LANGUAGES
+    : CONSENT_MANAGER_SUPPORTED_LANGUAGES.filter((lang) =>
+        existingLanguages.includes(lang),
+      );
+
   const safeToContinue = validateConfig(config);
   if (!safeToContinue) {
     throw new Error('Invalid consent manager config');
   }
 
-  return config;
+  return { config, allowedLanguages: allowedLanguagesParsed };
 }
 
 /**

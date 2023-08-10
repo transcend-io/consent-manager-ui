@@ -173,6 +173,7 @@ export function Main({
               handleSetViewState={handleSetViewState}
               viewState={viewState}
               fontColor={config.theme.fontColor}
+              allowedLanguages={supportedLanguages}
             />
           </div>
         </div>
