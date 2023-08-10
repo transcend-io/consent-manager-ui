@@ -1,7 +1,7 @@
 import { h, JSX } from 'preact';
 import { useState } from 'preact/hooks';
 import { useIntl } from 'react-intl';
-import { useAirgap } from '../hooks';
+import { useAirgap, useGetPurposeMessageKeys } from '../hooks';
 import { messages, completeOptionsMessages } from '../messages';
 import type { ConsentSelection, HandleSetViewState } from '../types';
 import { getConsentSelections } from '../consent-selections';
@@ -12,15 +12,13 @@ import { Toggle } from './Toggle';
 import { CONSENT_OPTIONS } from '../constants';
 
 // Mapping of purposes to the message translation key
-const purposeToMessageKey: Record<string, DefinedMessage> = {
+const defaultPurposeToMessageKey: Record<string, DefinedMessage> = {
   Essential: completeOptionsMessages.essentialLabel,
   Functional: completeOptionsMessages.functionalLabel,
   Analytics: completeOptionsMessages.analyticsLabel,
   Advertising: completeOptionsMessages.advertisingLabel,
   SaleOfInfo: completeOptionsMessages.saleOfInfoLabel,
 };
-
-const ORDER_OF_PURPOSES = Object.keys(purposeToMessageKey);
 
 /**
  * The model view for "More Choices" showing granular checkboxes and more info
@@ -36,6 +34,10 @@ export function CompleteOptions({
 
   // Get the tracking purposes from Airgap for display
   const initialConsentSelections = getConsentSelections(airgap);
+  const { purposeToMessageKey, orderOfPurposes } = useGetPurposeMessageKeys({
+    consentSelection: initialConsentSelections,
+    defaultPurposeToMessageKey,
+  });
 
   // Set state on the currently selected toggles
   const [consentSelections, setConsentSelections] = useState(
@@ -68,12 +70,12 @@ export function CompleteOptions({
   // sort ordering of options
   const orderedSelections = Object.entries(consentSelections).sort(([a], [b]) =>
     // sort custom purposes to the end
-    ORDER_OF_PURPOSES.indexOf(a) < 0 && ORDER_OF_PURPOSES.indexOf(b) > 0
+    orderOfPurposes.indexOf(a) < 0 && orderOfPurposes.indexOf(b) > 0
       ? 1
-      : ORDER_OF_PURPOSES.indexOf(b) < 0 && ORDER_OF_PURPOSES.indexOf(a) > 0
+      : orderOfPurposes.indexOf(b) < 0 && orderOfPurposes.indexOf(a) > 0
       ? -1
       : // order purposes based on order defined above
-        ORDER_OF_PURPOSES.indexOf(a) - ORDER_OF_PURPOSES.indexOf(b),
+        orderOfPurposes.indexOf(a) - orderOfPurposes.indexOf(b),
   );
 
   // Render description

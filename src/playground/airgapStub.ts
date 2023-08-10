@@ -10,10 +10,11 @@ import { appendConsentLog } from './helpers/consentLog';
 
 const getPurposeTypes: AirgapAPI['getPurposeTypes'] = () => {
   const purposeTypes = localStorage.getItem('getPurposeTypes');
-  if (!purposeTypes) {
-    return defaultTrackingPurposes;
-  }
-  return JSON.parse(purposeTypes);
+  // if (!purposeTypes) {
+  //   return defaultTrackingPurposes;
+  // }
+  console.log({ purposeTypes })
+  return JSON.parse(purposeTypes ?? {});
 };
 
 export const airgapStub: AirgapAPI = {
@@ -74,8 +75,8 @@ export const airgapStub: AirgapAPI = {
     regimes?.has('GDPR') || regimes?.has('LGPD')
       ? new Set(['Essential', 'Functional', 'Analytics', 'Advertising'])
       : regimes?.has('CPRA') || regimes?.has('CPA') || regimes?.has('CDPA')
-      ? new Set(['Essential', 'SaleOfInfo'])
-      : new Set(['Essential']),
+        ? new Set(['Essential', 'SaleOfInfo'])
+        : new Set(['Essential']),
   /** Get initialized tracking purposes config */
   getPurposeTypes,
   /** Clear airgap queue & caches. Returns `true` on success. */

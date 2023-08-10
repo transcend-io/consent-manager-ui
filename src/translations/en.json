@@ -76,5 +76,5 @@
   "ui.src.quickOptions.functionalAnalyticsButtonSecondary": "extra site features",
   "ui.src.quickOptions.functionalButtonPrimary": "Functional",
   "ui.src.quickOptions.functionalButtonSecondary": "extra site features",
-  "purposes.CustomPurpose": "Custom Purpose"
+  "purpose.CustomPurpose": "Special Custom Purpose Label"
 }

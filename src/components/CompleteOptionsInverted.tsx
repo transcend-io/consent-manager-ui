@@ -1,7 +1,7 @@
 import { h, JSX } from 'preact';
-import { useMemo, useState } from 'preact/hooks';
+import { useState } from 'preact/hooks';
 import { useIntl } from 'react-intl';
-import { useAirgap } from '../hooks';
+import { useAirgap, useGetPurposeMessageKeys } from '../hooks';
 import {
   messages,
   completeOptionsInvertedMessages,
@@ -37,30 +37,10 @@ export function CompleteOptionsInverted({
 
   // Get the tracking purposes from Airgap for display
   const initialConsentSelections = getConsentSelections(airgap);
-  const purposeToMessageKey: Record<string, DefinedMessage> = useMemo(
-    () =>
-      // the purpose type is unique for the bundle
-      Object.keys(initialConsentSelections ?? {}).reduce(
-        (allMessages, purposeType) => {
-          const customPurposeMessageLabel = `purpose.${purposeType}`;
-          const resolvedLabel =
-            defaultPurposeToMessageKey[purposeType] ??
-            Object.hasOwnProperty.call(messages, customPurposeMessageLabel);
-          return resolvedLabel
-            ? {
-                ...allMessages,
-                [purposeType]: resolvedLabel,
-              }
-            : allMessages;
-        },
-        {} as Record<string, DefinedMessage>,
-      ),
-    [initialConsentSelections],
-  );
-  const orderOfPurposes = useMemo(
-    () => Object.keys(purposeToMessageKey),
-    [purposeToMessageKey],
-  );
+  const { purposeToMessageKey, orderOfPurposes } = useGetPurposeMessageKeys({
+    consentSelection: initialConsentSelections,
+    defaultPurposeToMessageKey,
+  });
 
   // Set state on the currently selected toggles
   const [consentSelections, setConsentSelections] = useState(
