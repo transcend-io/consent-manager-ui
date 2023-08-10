@@ -103,7 +103,9 @@ export function getMergedConfig(): {
   config.languages ??= languages;
 
   // Determine the language settings to use
-  const existingLanguages = config.languages ? config.languages.split(',') : [];
+  const existingLanguages = config.languages
+    ? config.languages.trim().split(/\s*,\s*/)
+    : [];
   const supportedLanguages = !config.languages
     ? CONSENT_MANAGER_SUPPORTED_LANGUAGES
     : CONSENT_MANAGER_SUPPORTED_LANGUAGES.filter((lang) =>
