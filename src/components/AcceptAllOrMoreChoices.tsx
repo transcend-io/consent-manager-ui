@@ -47,7 +47,7 @@ export function AcceptAllOrMoreChoices({
           </p>
         </div>
         <div>
-        <p className="paragraph">
+          <p className="paragraph">
             <div
               // eslint-disable-next-line react/no-danger
               dangerouslySetInnerHTML={{

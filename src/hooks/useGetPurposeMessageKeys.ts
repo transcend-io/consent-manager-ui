@@ -10,10 +10,13 @@ export interface PurposeMessages {
   /** The lookup of purpose trackingTypes to message key */
   purposeToMessageKey: Record<string, DefinedMessage>;
   /** The order of all purposes */
-  orderOfPurposes: string[]
+  orderOfPurposes: string[];
 }
 
-export const useGetPurposeMessageKeys = ({ consentSelection, defaultPurposeToMessageKey }: {
+export const useGetPurposeMessageKeys = ({
+  consentSelection,
+  defaultPurposeToMessageKey,
+}: {
   /** The configured airgap purpose types */
   consentSelection: ConsentSelection;
   /** The lookup of messages for default purpose types */
@@ -22,23 +25,20 @@ export const useGetPurposeMessageKeys = ({ consentSelection, defaultPurposeToMes
   const purposeToMessageKey: Record<string, DefinedMessage> = useMemo(
     () =>
       // the purpose type is unique for the bundle
-      Object.keys(consentSelection ?? {}).reduce(
-        (allMessages, purposeType) => {
-          if (allMessages[purposeType]) {
-            return allMessages;
-          }
-          const customPurposeMessageLabel = `${CUSTOM_PURPOSE_MESSAGE_PREFIX}.${purposeType}`;
-          return {
-            ...allMessages,
-            [purposeType]: {
-              id: customPurposeMessageLabel,
-              defaultMessage: purposeType,
-              description: `Translatable name for custom purpose '${purposeType}'`,
-            } as DefinedMessage,
-          };
-        },
-        defaultPurposeToMessageKey as Record<string, DefinedMessage>,
-      ),
+      Object.keys(consentSelection ?? {}).reduce((allMessages, purposeType) => {
+        if (allMessages[purposeType]) {
+          return allMessages;
+        }
+        const customPurposeMessageLabel = `${CUSTOM_PURPOSE_MESSAGE_PREFIX}.${purposeType}`;
+        return {
+          ...allMessages,
+          [purposeType]: {
+            id: customPurposeMessageLabel,
+            defaultMessage: purposeType,
+            description: `Translatable name for custom purpose '${purposeType}'`,
+          } as DefinedMessage,
+        };
+      }, defaultPurposeToMessageKey as Record<string, DefinedMessage>),
     [consentSelection, defaultPurposeToMessageKey],
   );
   const orderOfPurposes = useMemo(
@@ -46,4 +46,4 @@ export const useGetPurposeMessageKeys = ({ consentSelection, defaultPurposeToMes
     [purposeToMessageKey],
   );
   return { purposeToMessageKey, orderOfPurposes };
-}
+};
