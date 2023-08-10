@@ -4,6 +4,8 @@ import { useMemo } from 'preact/hooks';
 
 import { DefinedMessage } from '@transcend-io/internationalization';
 
+const CUSTOM_PURPOSE_MESSAGE_PREFIX = 'cm-ui.purpose'
+
 export interface PurposeMessages {
   /** The lookup of purpose trackingTypes to message key */
   purposeToMessageKey: Record<string, DefinedMessage>;
@@ -25,7 +27,7 @@ export const useGetPurposeMessageKeys = ({ consentSelection, defaultPurposeToMes
           if (allMessages[purposeType]) {
             return allMessages;
           }
-          const customPurposeMessageLabel = `purpose.${purposeType}`;
+          const customPurposeMessageLabel = `${CUSTOM_PURPOSE_MESSAGE_PREFIX}.${purposeType}`;
           return {
             ...allMessages,
             [purposeType]: {
