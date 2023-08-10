@@ -1,5 +1,5 @@
 import { h, JSX } from 'preact';
-import { useState } from 'preact/hooks';
+import { useMemo, useState } from 'preact/hooks';
 import { useIntl } from 'react-intl';
 import { useAirgap } from '../hooks';
 import {
@@ -16,14 +16,12 @@ import { Toggle } from './Toggle';
 import { CONSENT_OPTIONS } from '../constants';
 
 // Mapping of purposes to the message translation key
-const purposeToMessageKey: Record<string, DefinedMessage> = {
+const defaultPurposeToMessageKey: Record<string, DefinedMessage> = {
   Functional: completeOptionsInvertedMessages.functionalLabel,
   Analytics: completeOptionsInvertedMessages.analyticsLabel,
   Advertising: completeOptionsInvertedMessages.advertisingLabel,
   SaleOfInfo: completeOptionsInvertedMessages.saleOfInfoLabel,
 };
-
-const ORDER_OF_PURPOSES = Object.keys(purposeToMessageKey);
 
 /**
  * The model view where checking each checkbox represents an opt otu
@@ -39,6 +37,30 @@ export function CompleteOptionsInverted({
 
   // Get the tracking purposes from Airgap for display
   const initialConsentSelections = getConsentSelections(airgap);
+  const purposeToMessageKey: Record<string, DefinedMessage> = useMemo(
+    () =>
+      // the purpose type is unique for the bundle
+      Object.keys(initialConsentSelections ?? {}).reduce(
+        (allMessages, purposeType) => {
+          const customPurposeMessageLabel = `purpose.${purposeType}`;
+          const resolvedLabel =
+            defaultPurposeToMessageKey[purposeType] ??
+            Object.hasOwnProperty.call(messages, customPurposeMessageLabel);
+          return resolvedLabel
+            ? {
+                ...allMessages,
+                [purposeType]: resolvedLabel,
+              }
+            : allMessages;
+        },
+        {} as Record<string, DefinedMessage>,
+      ),
+    [initialConsentSelections],
+  );
+  const orderOfPurposes = useMemo(
+    () => Object.keys(purposeToMessageKey),
+    [purposeToMessageKey],
+  );
 
   // Set state on the currently selected toggles
   const [consentSelections, setConsentSelections] = useState(
@@ -71,12 +93,12 @@ export function CompleteOptionsInverted({
   // sort ordering of options
   const orderedSelections = Object.entries(consentSelections).sort(([a], [b]) =>
     // sort custom purposes to the end
-    ORDER_OF_PURPOSES.indexOf(a) < 0 && ORDER_OF_PURPOSES.indexOf(b) > 0
+    orderOfPurposes.indexOf(a) < 0 && orderOfPurposes.indexOf(b) > 0
       ? 1
-      : ORDER_OF_PURPOSES.indexOf(b) < 0 && ORDER_OF_PURPOSES.indexOf(a) > 0
+      : orderOfPurposes.indexOf(b) < 0 && orderOfPurposes.indexOf(a) > 0
       ? -1
       : // order purposes based on order defined above
-        ORDER_OF_PURPOSES.indexOf(a) - ORDER_OF_PURPOSES.indexOf(b),
+        orderOfPurposes.indexOf(a) - orderOfPurposes.indexOf(b),
   );
 
   return (
