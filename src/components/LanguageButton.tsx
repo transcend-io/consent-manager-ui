@@ -3,6 +3,7 @@ import type { AirgapAuth, ViewState } from '@transcend-io/airgap.js-types';
 import { useIntl } from 'react-intl';
 import type { HandleSetViewState } from '../types';
 import { messages } from '../messages';
+import { ConsentManagerLanguageKey } from '@transcend-io/internationalization';
 
 /**
  * The button to change languages
@@ -11,6 +12,7 @@ export function LanguageButton({
   handleSetViewState,
   viewState,
   fontColor,
+  allowedLanguages,
 }: {
   /** Function to change viewState */
   handleSetViewState: HandleSetViewState;
@@ -18,6 +20,11 @@ export function LanguageButton({
   viewState: ViewState;
   /** Font color */
   fontColor: string;
+  /**
+   * The list of enabled languages - when not specified, all languages are shown.
+   * When specified with length = 0 | 1, no button is shown
+   */
+  allowedLanguages?: ConsentManagerLanguageKey[];
 }): JSX.Element {
   const { formatMessage } = useIntl();
   const onLanguageOptions = viewState === 'LanguageOptions';
@@ -29,6 +36,11 @@ export function LanguageButton({
       handleSetViewState('back', e);
     }
   };
+
+  // show no language button when languages is disabled
+  if (allowedLanguages && allowedLanguages.length < 2) {
+    return <span />;
+  }
 
   return (
     <button

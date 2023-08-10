@@ -8,6 +8,7 @@ import type {
   PrivacyRegimeToInitialViewState,
 } from '@transcend-io/airgap.js-types';
 import { ViewState } from '@transcend-io/airgap.js-types/build/enums/viewState';
+import { CONSENT_MANAGER_SUPPORTED_LANGUAGES } from './i18n';
 import { logger } from './logger';
 import { settings, LOG_LEVELS, extraConfig } from './settings';
 import { jsonParseSafe } from './utils/safe-json-parse';
@@ -16,6 +17,7 @@ const {
   privacyCenter,
   privacyPolicy = privacyCenter || '/privacy',
   secondaryPolicy,
+  allowedLanguages = CONSENT_MANAGER_SUPPORTED_LANGUAGES,
   dismissedViewState = 'Hidden',
 } = settings;
 
@@ -91,6 +93,7 @@ export function getMergedConfig(): ConsentManagerConfig {
   config.privacyPolicy ??= privacyPolicy;
   config.secondaryPolicy ??= secondaryPolicy;
   config.dismissedViewState ??= dismissedViewState;
+  config.allowedLanguages ??= allowedLanguages;
 
   const safeToContinue = validateConfig(config);
   if (!safeToContinue) {
