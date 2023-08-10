@@ -6,6 +6,7 @@
   "ui.src.bottomMenu.showPolicyButtonCompleteOptionsInverted": "Text for linking out to privacy policy in CompleteOptionsInverted UI.",
   "ui.src.bottomMenu.showPolicyButtonLabel": "Hover/alt for linking out to privacy policy.",
   "ui.src.bottomMenu.showPolicyButtonPrimary": "Text for linking out to privacy policy.",
+  "ui.src.bottomMenu.showPolicyButtonsAcceptAllOrMoreChoices": "Text for linking out to privacy policy in AcceptAllOrMoreChoices UI.",
   "ui.src.bottomMenu.showSecondaryPolicyButton": "Text for linking out to secondary policy.",
   "ui.src.bottomMenu.showSecondaryPolicyButtonLabel": "Hover/alt for linking out to secondary policy.",
   "ui.src.bottomMenu.simplerChoicesButtonLabel": "Hover/alt text for selecting simpler opt out choices.",

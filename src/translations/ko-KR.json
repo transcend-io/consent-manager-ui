@@ -6,6 +6,7 @@
   "ui.src.bottomMenu.showPolicyButtonCompleteOptionsInverted": "개인 정보 보호 정책 보기",
   "ui.src.bottomMenu.showPolicyButtonLabel": "개인 정보 보호 정책 방문하기",
   "ui.src.bottomMenu.showPolicyButtonPrimary": "개인 정보 보호 정책 보기",
+  "ui.src.bottomMenu.showPolicyButtonsAcceptAllOrMoreChoices": "개인 정보 보호 정책 보기",
   "ui.src.bottomMenu.showSecondaryPolicyButton": "더 읽어보기",
   "ui.src.bottomMenu.showSecondaryPolicyButtonLabel": "개인 정보 보호 선택에 대해 자세히 알아보기",
   "ui.src.bottomMenu.simplerChoicesButtonLabel": "클릭하면 더 간단한 선택 표시",
