@@ -13,7 +13,7 @@ const getPurposeTypes: AirgapAPI['getPurposeTypes'] = () => {
   if (!purposeTypes) {
     return defaultTrackingPurposes;
   }
-  return JSON.parse(purposeTypes);
+  return JSON.parse(purposeTypes ?? {});
 };
 
 export const airgapStub: AirgapAPI = {
