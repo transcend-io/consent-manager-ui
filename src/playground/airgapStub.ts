@@ -10,10 +10,9 @@ import { appendConsentLog } from './helpers/consentLog';
 
 const getPurposeTypes: AirgapAPI['getPurposeTypes'] = () => {
   const purposeTypes = localStorage.getItem('getPurposeTypes');
-  // if (!purposeTypes) {
-  //   return defaultTrackingPurposes;
-  // }
-  console.log({ purposeTypes })
+  if (!purposeTypes) {
+    return defaultTrackingPurposes;
+  }
   return JSON.parse(purposeTypes ?? {});
 };
 
