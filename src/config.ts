@@ -18,7 +18,7 @@ const {
   privacyCenter,
   privacyPolicy = privacyCenter || '/privacy',
   secondaryPolicy,
-  allowedLanguages,
+  languages,
   dismissedViewState = 'Hidden',
 } = settings;
 
@@ -75,7 +75,7 @@ export function getMergedConfig(): {
   /** Merged config */
   config: ConsentManagerConfig;
   /** Languages split out separately for type-safety and preserving raw value */
-  allowedLanguages: ConsentManagerLanguageKey[];
+  supportedLanguages: ConsentManagerLanguageKey[];
 } {
   const settingsConfig: ConsentManagerConfigInput =
     typeof settings === 'string'
@@ -100,13 +100,11 @@ export function getMergedConfig(): {
   config.privacyPolicy ??= privacyPolicy;
   config.secondaryPolicy ??= secondaryPolicy;
   config.dismissedViewState ??= dismissedViewState;
-  config.allowedLanguages ??= allowedLanguages;
+  config.languages ??= languages;
 
   // Determine the language settings to use
-  const existingLanguages = config.allowedLanguages
-    ? config.allowedLanguages.split(',')
-    : [];
-  const allowedLanguagesParsed = !config.allowedLanguages
+  const existingLanguages = config.languages ? config.languages.split(',') : [];
+  const supportedLanguages = !config.languages
     ? CONSENT_MANAGER_SUPPORTED_LANGUAGES
     : CONSENT_MANAGER_SUPPORTED_LANGUAGES.filter((lang) =>
         existingLanguages.includes(lang),
@@ -117,7 +115,7 @@ export function getMergedConfig(): {
     throw new Error('Invalid consent manager config');
   }
 
-  return { config, allowedLanguages: allowedLanguagesParsed };
+  return { config, supportedLanguages };
 }
 
 /**

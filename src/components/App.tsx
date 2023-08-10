@@ -38,7 +38,7 @@ export function App({
 }): JSX.Element {
   // Consent manager configuration
   const defaultConfig = getMergedConfig();
-  const [{ config, allowedLanguages }, setConfig] = useState(defaultConfig);
+  const [{ config, supportedLanguages }, setConfig] = useState(defaultConfig);
 
   // Get the active privacy regime
   const privacyRegime = getPrimaryRegime(airgap.getRegimes());
@@ -60,7 +60,7 @@ export function App({
 
   // Language setup
   const { language, handleChangeLanguage, messages } = useLanguage({
-    supportedLanguages: allowedLanguages,
+    supportedLanguages,
     translationsLocation:
       // Order of priority:
       // 1. Take airgap.js data-messages
@@ -77,7 +77,7 @@ export function App({
     handleSetViewState,
     handleChangePrivacyPolicy: (privacyPolicyUrl) =>
       setConfig({
-        allowedLanguages,
+        supportedLanguages,
         config: {
           ...config,
           privacyPolicy: privacyPolicyUrl,
@@ -85,7 +85,7 @@ export function App({
       }),
     handleChangeSecondaryPolicy: (privacyPolicyUrl) =>
       setConfig({
-        allowedLanguages,
+        supportedLanguages,
         config: {
           ...config,
           secondaryPolicy: privacyPolicyUrl,
@@ -112,7 +112,7 @@ export function App({
             modalOpenAuth={auth}
             viewState={viewState}
             config={config}
-            supportedLanguages={allowedLanguages}
+            supportedLanguages={supportedLanguages}
             firstSelectedViewState={firstSelectedViewState}
             handleSetViewState={handleSetViewState}
             handleChangeLanguage={handleChangeLanguage}

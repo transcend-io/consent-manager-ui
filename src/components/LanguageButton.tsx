@@ -12,7 +12,7 @@ export function LanguageButton({
   handleSetViewState,
   viewState,
   fontColor,
-  allowedLanguages,
+  supportedLanguages,
 }: {
   /** Function to change viewState */
   handleSetViewState: HandleSetViewState;
@@ -24,7 +24,7 @@ export function LanguageButton({
    * The list of enabled languages - when not specified, all languages are shown.
    * When specified with length = 0 | 1, no button is shown
    */
-  allowedLanguages?: ConsentManagerLanguageKey[];
+  supportedLanguages?: ConsentManagerLanguageKey[];
 }): JSX.Element {
   const { formatMessage } = useIntl();
   const onLanguageOptions = viewState === 'LanguageOptions';
@@ -38,7 +38,7 @@ export function LanguageButton({
   };
 
   // show no language button when languages is disabled
-  if (allowedLanguages && allowedLanguages.length < 2) {
+  if (supportedLanguages && supportedLanguages.length < 2) {
     return <span />;
   }
 
