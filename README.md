@@ -255,7 +255,7 @@ A banner that handles opting in or out of the `Advertising` tag.
 
 This is the view state that allows the user to select their language.
 
-![ViewState = LanguageOptions](https://user-images.githubusercontent.com/10264973/188251088-527c227d-0674-46f6-b544-757d8ab2a539.jpg)
+![ViewState = LanguageOptions](https://github.com/transcend-io/main/assets/10264973/186331ce-0448-42bc-843b-b5f7d4584f09)
 
 #### Button Mapping
 
