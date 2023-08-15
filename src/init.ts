@@ -82,7 +82,7 @@ export const init = async (): Promise<void> => {
     // Create the Transcend API
     const transcend: TranscendAPI = Object.assign(consentManagerAPI, {
       readyQueue: [],
-      ...transcendInit,
+      ...(transcendInit.xdi ? { xdi: transcendInit.xdi } : {}),
       /**
        * Transcend Consent Manager ready listener registrar
        *
