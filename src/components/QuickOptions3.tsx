@@ -61,7 +61,7 @@ export function QuickOptions3({
 
   return (
     <div>
-      <p className="text-title text-title-center">
+      <p id="consent-dialog-title" className="text-title text-title-center">
         {formatMessage(messages.consentTitle)}
       </p>
       <div className="column-content">

@@ -22,7 +22,7 @@ export function AcceptOrRejectAnalytics({
     <div className="column-content">
       <div>
         <div>
-          <p className="text-title text-title-left">
+          <p id="consent-dialog-title" className="text-title text-title-left">
             {formatMessage(messages.consentTitleAcceptOrRejectAnalytics)}
           </p>
         </div>

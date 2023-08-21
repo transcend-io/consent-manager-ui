@@ -29,6 +29,7 @@ import { PrivacyPolicyNotice } from './PrivacyPolicyNotice';
 import { AcceptAllOrMoreChoices } from './AcceptAllOrMoreChoices';
 import { AcceptOrRejectAllOrMoreChoices } from './AcceptOrRejectAllOrMoreChoices';
 import { AcceptAllRejectAllToggle } from './AcceptAllRejectAllToggle';
+import { useEffect, useRef } from 'preact/hooks';
 
 /**
  * Presents view states (collapsed, GDPR-mode, CCPA-mode etc)
@@ -60,14 +61,29 @@ export function Main({
   /** Set of supported languages */
   supportedLanguages: ConsentManagerLanguageKey[];
 }): JSX.Element {
+  // need to focus the first button in the modal when the modal is opened
+  const dialogRef = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    if (!isViewStateClosed(viewState) && dialogRef.current) {
+      dialogRef?.current?.querySelector('button')?.focus();
+    }
+  }, [viewState, dialogRef]);
+
   // Modal open views
   if (!isViewStateClosed(viewState)) {
     if (!isResponseViewState(viewState)) {
       airgap.setPrompted(true);
     }
     return (
-      <div role="dialog" aria-model="true" className="modal-container">
-        <div role="document" className="modal-container-inner">
+      <div
+        role="dialog"
+        aria-model="true"
+        aria-labelledby="consent-dialog-title"
+        className="modal-container"
+        id="consentManagerMainDialog"
+        ref={dialogRef}
+      >
+        <div role="document" className="modal-container-inner" tabIndex={0}>
           <div role="document" className="inner-container">
             {viewState === 'QuickOptions' && (
               <QuickOptions handleSetViewState={handleSetViewState} />
