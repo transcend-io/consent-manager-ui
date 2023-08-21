@@ -166,11 +166,9 @@ a:focus {
   height: 16px;
   vertical-align: baseline;
   color: var(--text-color);
-  white-space: nowrap;
   text-shadow: none;
   padding-left: 25px;
-  white-space: nowrap;
-  text-wrap: wrap;
+  word-wrap: break-word;
 }
 
 /** Style applied to create custom checkmark */
