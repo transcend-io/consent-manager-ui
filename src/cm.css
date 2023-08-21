@@ -170,6 +170,7 @@ a:focus {
   text-shadow: none;
   padding-left: 25px;
   white-space: nowrap;
+  text-wrap: wrap;
 }
 
 /** Style applied to create custom checkmark */
