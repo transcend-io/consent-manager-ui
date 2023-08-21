@@ -29,6 +29,7 @@ import { PrivacyPolicyNotice } from './PrivacyPolicyNotice';
 import { AcceptAllOrMoreChoices } from './AcceptAllOrMoreChoices';
 import { AcceptOrRejectAllOrMoreChoices } from './AcceptOrRejectAllOrMoreChoices';
 import { AcceptAllRejectAllToggle } from './AcceptAllRejectAllToggle';
+import { useEffect, useRef } from 'preact/hooks';
 
 /**
  * Presents view states (collapsed, GDPR-mode, CCPA-mode etc)
@@ -60,6 +61,14 @@ export function Main({
   /** Set of supported languages */
   supportedLanguages: ConsentManagerLanguageKey[];
 }): JSX.Element {
+  // need to focus the first button in the modal when the modal is opened
+  const dialogRef = useRef();
+  useEffect(() => {
+    if (!isViewStateClosed(viewState) && dialogRef.current) {
+      dialogRef.current.querySelector('button').focus();
+    }
+  }, [isViewStateClosed(viewState), dialogRef.current]);
+
   // Modal open views
   if (!isViewStateClosed(viewState)) {
     if (!isResponseViewState(viewState)) {
@@ -71,6 +80,8 @@ export function Main({
         aria-model="true"
         aria-labelledby="consent-dialog-title"
         className="modal-container"
+        id="consentManagerMainDialog"
+        ref={dialogRef}
       >
         <div role="document" className="modal-container-inner" tabIndex={0}>
           <div role="document" className="inner-container">
