@@ -62,7 +62,7 @@ export function Main({
   supportedLanguages: ConsentManagerLanguageKey[];
 }): JSX.Element {
   // need to focus the first button in the modal when the modal is opened
-  const dialogRef = useRef();
+  const dialogRef = useRef<HTMLDivElement>();
   useEffect(() => {
     if (!isViewStateClosed(viewState) && dialogRef.current) {
       dialogRef.current.querySelector('button').focus();
