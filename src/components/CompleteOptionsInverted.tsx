@@ -86,7 +86,7 @@ export function CompleteOptionsInverted({
 
   return (
     <div className="complete-options-container">
-      <p className="text-title text-title-center">
+      <p id="consent-dialog-title" className="text-title text-title-center">
         {formatMessage(messages.completeOptionsInvertedTitle)}
       </p>
       <form className="complete-options-form">

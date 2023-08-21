@@ -54,7 +54,7 @@ export function OptOutDisclosure({
     <div className="column-content">
       <div>
         <div>
-          <p className="text-title text-title-left">
+          <p id="consent-dialog-title" className="text-title text-title-left">
             {formatMessage(
               globalPrivacyControl
                 ? optOutDisclosureMessages.optOutHonoredGpc

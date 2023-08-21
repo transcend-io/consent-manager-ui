@@ -66,8 +66,13 @@ export function Main({
       airgap.setPrompted(true);
     }
     return (
-      <div role="dialog" aria-model="true" className="modal-container">
-        <div role="document" className="modal-container-inner">
+      <div
+        role="dialog"
+        aria-model="true"
+        aria-labelledby="consent-dialog-title"
+        className="modal-container"
+      >
+        <div role="document" className="modal-container-inner" tabIndex={0}>
           <div role="document" className="inner-container">
             {viewState === 'QuickOptions' && (
               <QuickOptions handleSetViewState={handleSetViewState} />
