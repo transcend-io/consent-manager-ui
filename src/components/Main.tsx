@@ -1,4 +1,4 @@
-import { h, JSX } from 'preact';
+import { h, JSX, Ref } from 'preact';
 import type {
   AirgapAPI,
   AirgapAuth,
@@ -81,7 +81,11 @@ export function Main({
         aria-labelledby="consent-dialog-title"
         className="modal-container"
         id="consentManagerMainDialog"
-        ref={dialogRef.current ? (dialogRef as any) : undefined}
+        ref={
+          dialogRef.current
+            ? (dialogRef as unknown as Ref<HTMLDivElement>)
+            : undefined
+        }
       >
         <div role="document" className="modal-container-inner" tabIndex={0}>
           <div role="document" className="inner-container">
