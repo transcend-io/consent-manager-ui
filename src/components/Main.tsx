@@ -62,7 +62,7 @@ export function Main({
   supportedLanguages: ConsentManagerLanguageKey[];
 }): JSX.Element {
   // need to focus the first button in the modal when the modal is opened
-  const dialogRef = useRef<HTMLDivElement>();
+  const dialogRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
     if (!isViewStateClosed(viewState) && dialogRef.current) {
       dialogRef?.current?.querySelector('button')?.focus();
@@ -81,11 +81,7 @@ export function Main({
         aria-labelledby="consent-dialog-title"
         className="modal-container"
         id="consentManagerMainDialog"
-        ref={
-          dialogRef.current
-            ? (dialogRef as unknown as Ref<HTMLDivElement>)
-            : undefined
-        }
+        ref={dialogRef}
       >
         <div role="document" className="modal-container-inner" tabIndex={0}>
           <div role="document" className="inner-container">
