@@ -65,9 +65,9 @@ export function Main({
   const dialogRef = useRef<HTMLDivElement>();
   useEffect(() => {
     if (!isViewStateClosed(viewState) && dialogRef.current) {
-      dialogRef.current.querySelector('button').focus();
+      dialogRef?.current?.querySelector('button')?.focus();
     }
-  }, [isViewStateClosed(viewState), dialogRef.current]);
+  }, [viewState, dialogRef]);
 
   // Modal open views
   if (!isViewStateClosed(viewState)) {
@@ -81,7 +81,7 @@ export function Main({
         aria-labelledby="consent-dialog-title"
         className="modal-container"
         id="consentManagerMainDialog"
-        ref={dialogRef}
+        ref={dialogRef.current ? (dialogRef as any) : undefined}
       >
         <div role="document" className="modal-container-inner" tabIndex={0}>
           <div role="document" className="inner-container">
