@@ -1,6 +1,7 @@
 import { h, JSX } from 'preact';
 import { useIntl } from 'react-intl';
 import type { ViewState } from '@transcend-io/airgap.js-types';
+import { DefinedMessage } from '@transcend-io/internationalization';
 import { bottomMenuMessages, noticeAndDoNotSellMessages } from '../messages';
 import type { HandleSetViewState } from '../types';
 import { MenuItem } from './MenuItem';
@@ -27,6 +28,35 @@ export function BottomMenu({
   secondaryPolicy: string;
 }): JSX.Element {
   const { formatMessage } = useIntl();
+  const VIEW_STATE_TO_MESSAGE: { [k in ViewState]: DefinedMessage } = {
+    LanguageOptions: bottomMenuMessages.showPolicyButtonLanguageOptions,
+    DoNotSellDisclosure: bottomMenuMessages.showPolicyButtonDoNotSellDisclosure,
+    OptOutDisclosure: bottomMenuMessages.showPolicyButtonOptOutDisclosure,
+    QuickOptions: bottomMenuMessages.showPolicyButtonQuickOptions,
+    QuickOptions3: bottomMenuMessages.showPolicyButtonQuickOptions3,
+    AcceptAll: bottomMenuMessages.showPolicyButtonAcceptAll,
+    AcceptAllOrMoreChoices:
+      bottomMenuMessages.showPolicyButtonAcceptAllOrMoreChoices,
+    AcceptOrRejectAll: bottomMenuMessages.showPolicyButtonAcceptOrRejectAll,
+    AcceptOrRejectAllOrMoreChoices:
+      bottomMenuMessages.showPolicyButtonAcceptOrRejectAllOrMoreChoices,
+    AcceptOrRejectAnalytics:
+      bottomMenuMessages.showPolicyButtonAcceptOrRejectAnalytics,
+    AcceptOrRejectAdvertising:
+      bottomMenuMessages.showPolicyButtonAcceptOrRejectAdvertising,
+    AcceptAllRejectAllToggle:
+      bottomMenuMessages.showPolicyButtonAcceptAllRejectAllToggle,
+    NoticeAndDoNotSell: bottomMenuMessages.showPolicyButtonNoticeAndDoNotSell,
+    DoNotSellExplainer: bottomMenuMessages.showPolicyButtonDoNotSellExplainer,
+    PrivacyPolicyNotice: bottomMenuMessages.showPolicyButtonPrivacyPolicyNotice,
+    CompleteOptions: bottomMenuMessages.showPolicyButtonCompleteOptions,
+    CompleteOptionsInverted:
+      bottomMenuMessages.showPolicyButtonCompleteOptionsInverted,
+    // These shouldn't require text for a policy link
+    Collapsed: bottomMenuMessages.showPolicyButtonUndefined,
+    Closed: bottomMenuMessages.showPolicyButtonUndefined,
+    Hidden: bottomMenuMessages.showPolicyButtonUndefined,
+  };
 
   return (
     <div className="bottom-menu-container">
@@ -95,21 +125,24 @@ export function BottomMenu({
         </div>
       )}
 
-      {secondaryPolicy && viewState === 'CompleteOptionsInverted' && (
-        <div className="bottom-menu-item-container">
-          <MenuItem
-            label={formatMessage(
-              bottomMenuMessages.showSecondaryPolicyButtonLabel,
-            )}
-            type="a"
-            href={secondaryPolicy}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            {formatMessage(bottomMenuMessages.showSecondaryPolicyButton)}
-          </MenuItem>
-        </div>
-      )}
+      {
+        // Privacy Link - CompleteOptionsInverted special case
+        secondaryPolicy && viewState === 'CompleteOptionsInverted' && (
+          <div className="bottom-menu-item-container">
+            <MenuItem
+              label={formatMessage(
+                bottomMenuMessages.showSecondaryPolicyButtonLabel,
+              )}
+              type="a"
+              href={secondaryPolicy}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {formatMessage(bottomMenuMessages.showSecondaryPolicyButton)}
+            </MenuItem>
+          </div>
+        )
+      }
 
       <div className="bottom-menu-item-container">
         <MenuItem
@@ -119,13 +152,7 @@ export function BottomMenu({
           target="_blank"
           rel="noopener noreferrer"
         >
-          {formatMessage(
-            viewState === 'CompleteOptionsInverted'
-              ? bottomMenuMessages.showPolicyButtonCompleteOptionsInverted
-              : viewState === 'AcceptAllOrMoreChoices'
-              ? bottomMenuMessages.showPolicyButtonsAcceptAllOrMoreChoices
-              : bottomMenuMessages.showPolicyButtonPrimary,
-          )}
+          {formatMessage(VIEW_STATE_TO_MESSAGE[viewState])}
         </MenuItem>
       </div>
     </div>
