@@ -390,37 +390,6 @@ export const bottomMenuMessages = defineMessages('ui.src.bottomMenu', {
     description:
       'Text for linking out to privacy policy in the CompleteOptionsInverted UI.',
   },
-  /*
-      LanguageOptions: bottomMenuMessages.showPolicyButtonsAcceptAllOrMoreChoices,
-    DoNotSellDisclosure:
-      bottomMenuMessages.showPolicyButtonsAcceptAllOrMoreChoices,
-    OptOutDisclosure:
-      bottomMenuMessages.showPolicyButtonCompleteOptionsInverted,
-    QuickOptions: bottomMenuMessages.showPolicyButtonCompleteOptionsInverted,
-    QuickOptions3: bottomMenuMessages.showPolicyButtonsAcceptAllOrMoreChoices,
-    AcceptAll: bottomMenuMessages.showPolicyButtonsAcceptAllOrMoreChoices,
-    AcceptAllOrMoreChoices:
-      bottomMenuMessages.showPolicyButtonsAcceptAllOrMoreChoices,
-    AcceptOrRejectAll:
-      bottomMenuMessages.showPolicyButtonCompleteOptionsInverted,
-    AcceptOrRejectAllOrMoreChoices:
-      bottomMenuMessages.showPolicyButtonsAcceptAllOrMoreChoices,
-    AcceptOrRejectAnalytics:
-      bottomMenuMessages.showPolicyButtonCompleteOptionsInverted,
-    AcceptOrRejectAdvertising:
-      bottomMenuMessages.showPolicyButtonCompleteOptionsInverted,
-    AcceptAllRejectAllToggle:
-      bottomMenuMessages.showPolicyButtonCompleteOptionsInverted,
-    NoticeAndDoNotSell:
-      bottomMenuMessages.showPolicyButtonsAcceptAllOrMoreChoices,
-    DoNotSellExplainer:
-      bottomMenuMessages.showPolicyButtonsAcceptAllOrMoreChoices,
-    PrivacyPolicyNotice:
-      bottomMenuMessages.showPolicyButtonCompleteOptionsInverted,
-    CompleteOptions: bottomMenuMessages.showPolicyButtonCompleteOptionsInverted,
-    CompleteOptionsInverted:
-      bottomMenuMessages.showPolicyButtonCompleteOptionsInverted,
-  */
   // END --- Privacy Policy Link Text, per ViewState
   showPolicyButtonLabel: {
     defaultMessage: 'Visit our privacy policy',
