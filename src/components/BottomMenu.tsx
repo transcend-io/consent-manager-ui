@@ -57,6 +57,7 @@ export function BottomMenu({
     Closed: bottomMenuMessages.showPolicyButtonUndefined,
     Hidden: bottomMenuMessages.showPolicyButtonUndefined,
   };
+  const policyMessage = VIEW_STATE_TO_MESSAGE[viewState];
 
   return (
     <div className="bottom-menu-container">
@@ -152,7 +153,9 @@ export function BottomMenu({
           target="_blank"
           rel="noopener noreferrer"
         >
-          {formatMessage(VIEW_STATE_TO_MESSAGE[viewState])}
+          {policyMessage
+            ? formatMessage(policyMessage)
+            : bottomMenuMessages.showPolicyButtonUndefined}
         </MenuItem>
       </div>
     </div>
