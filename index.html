@@ -161,7 +161,8 @@
           setupDoNotSellButton();
         });
 
-        transcend.addEventListener(
+        // this script will blur the screen while a consent banner is showing
+        /*transcend.addEventListener(
           'view-state-change',
           ({ detail: { viewState, previousViewState } }) => {
             let closedViewStates = ['Hidden', 'Closed', 'Collapsed'];
@@ -178,7 +179,7 @@
               cm.dataset.shown = 'shown';
             }
           },
-        );
+        );*/
 
         // setup the do not sell button
         setupDoNotSellButton();
