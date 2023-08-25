@@ -156,7 +156,7 @@ export function BottomMenu({
         >
           {policyMessage
             ? formatMessage(policyMessage)
-            : bottomMenuMessages.showPolicyButtonUndefined}
+            : 'Undefined Policy Link Message'}
         </MenuItem>
       </div>
     </div>
