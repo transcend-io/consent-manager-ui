@@ -305,6 +305,8 @@ export const bottomMenuMessages = defineMessages('ui.src.bottomMenu', {
   // Privacy Policy Link Text, per ViewState --- START
   showPolicyButtonUndefined: {
     defaultMessage: 'Undefined Policy View State',
+    description:
+      'Text for linking out to privacy policy in the LanguageOptions UI.',
   },
   showPolicyButtonLanguageOptions: {
     defaultMessage: 'See our privacy policy',

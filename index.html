@@ -161,6 +161,25 @@
           setupDoNotSellButton();
         });
 
+        transcend.addEventListener(
+          'view-state-change',
+          ({ detail: { viewState, previousViewState } }) => {
+            let closedViewStates = ['Hidden', 'Closed', 'Collapsed'];
+            let cm = document.getElementById('transcend-consent-manager');
+
+            if (closedViewStates.includes(viewState)) {
+              cm.style.inset = '';
+              cm.style.pointerEvents = '';
+              cm.style.backgroundColor = '';
+            } else {
+              cm.style.inset = '0';
+              cm.style.pointerEvents = 'all';
+              cm.style.backgroundColor = 'rgba(0,0,0,0.5)';
+              cm.dataset.shown = 'shown';
+            }
+          },
+        );
+
         // setup the do not sell button
         setupDoNotSellButton();
 
