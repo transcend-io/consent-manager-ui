@@ -21,7 +21,6 @@
   "ui.src.bottomMenu.showPolicyButtonPrivacyPolicyNotice": "Text for linking out to privacy policy in the PrivacyPolicyNotice UI.",
   "ui.src.bottomMenu.showPolicyButtonQuickOptions": "Text for linking out to privacy policy in the QuickOptions UI.",
   "ui.src.bottomMenu.showPolicyButtonQuickOptions3": "Text for linking out to privacy policy in the QuickOptions3 UI.",
-  "ui.src.bottomMenu.showPolicyButtonUndefined": "",
   "ui.src.bottomMenu.showSecondaryPolicyButton": "Text for linking out to secondary policy.",
   "ui.src.bottomMenu.showSecondaryPolicyButtonLabel": "Hover/alt for linking out to secondary policy.",
   "ui.src.bottomMenu.simplerChoicesButtonLabel": "Hover/alt text for selecting simpler opt out choices.",
