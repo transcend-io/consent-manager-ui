@@ -39,7 +39,12 @@ export function PrivacyPolicyNotice({
         </div>
         <div>
           <p className="paragraph">
-            {formatMessage(messages.privacyPolicyNoticeDescription)}
+            <div
+              // eslint-disable-next-line react/no-danger
+              dangerouslySetInnerHTML={{
+                __html: formatMessage(messages.privacyPolicyNoticeDescription),
+              }}
+            />
           </p>
         </div>
       </div>

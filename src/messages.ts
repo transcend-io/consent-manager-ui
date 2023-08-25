@@ -302,10 +302,6 @@ export const bottomMenuMessages = defineMessages('ui.src.bottomMenu', {
     defaultMessage: 'Click to show simpler choices',
     description: 'Hover/alt text for selecting simpler opt out choices.',
   },
-  // Privacy Policy Link Text, per ViewState --- START
-  showPolicyButtonUndefined: {
-    defaultMessage: 'Undefined Policy View State',
-  },
   showPolicyButtonLanguageOptions: {
     defaultMessage: 'See our privacy policy',
     description:

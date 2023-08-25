@@ -64,7 +64,14 @@ export function OptOutDisclosure({
         </div>
         <div>
           <p className="paragraph">
-            {formatMessage(optOutDisclosureMessages.optOutHonoredDescription)}
+            <div
+              // eslint-disable-next-line react/no-danger
+              dangerouslySetInnerHTML={{
+                __html: formatMessage(
+                  optOutDisclosureMessages.optOutHonoredDescription,
+                ),
+              }}
+            />
           </p>
         </div>
       </div>

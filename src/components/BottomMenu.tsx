@@ -6,6 +6,36 @@ import { bottomMenuMessages, noticeAndDoNotSellMessages } from '../messages';
 import type { HandleSetViewState } from '../types';
 import { MenuItem } from './MenuItem';
 
+const VIEW_STATE_TO_MESSAGE: { [k in ViewState]: DefinedMessage } = {
+  LanguageOptions: bottomMenuMessages.showPolicyButtonLanguageOptions,
+  DoNotSellDisclosure: bottomMenuMessages.showPolicyButtonDoNotSellDisclosure,
+  OptOutDisclosure: bottomMenuMessages.showPolicyButtonOptOutDisclosure,
+  QuickOptions: bottomMenuMessages.showPolicyButtonQuickOptions,
+  QuickOptions3: bottomMenuMessages.showPolicyButtonQuickOptions3,
+  AcceptAll: bottomMenuMessages.showPolicyButtonAcceptAll,
+  AcceptAllOrMoreChoices:
+    bottomMenuMessages.showPolicyButtonAcceptAllOrMoreChoices,
+  AcceptOrRejectAll: bottomMenuMessages.showPolicyButtonAcceptOrRejectAll,
+  AcceptOrRejectAllOrMoreChoices:
+    bottomMenuMessages.showPolicyButtonAcceptOrRejectAllOrMoreChoices,
+  AcceptOrRejectAnalytics:
+    bottomMenuMessages.showPolicyButtonAcceptOrRejectAnalytics,
+  AcceptOrRejectAdvertising:
+    bottomMenuMessages.showPolicyButtonAcceptOrRejectAdvertising,
+  AcceptAllRejectAllToggle:
+    bottomMenuMessages.showPolicyButtonAcceptAllRejectAllToggle,
+  NoticeAndDoNotSell: bottomMenuMessages.showPolicyButtonNoticeAndDoNotSell,
+  DoNotSellExplainer: bottomMenuMessages.showPolicyButtonDoNotSellExplainer,
+  PrivacyPolicyNotice: bottomMenuMessages.showPolicyButtonPrivacyPolicyNotice,
+  CompleteOptions: bottomMenuMessages.showPolicyButtonCompleteOptions,
+  CompleteOptionsInverted:
+    bottomMenuMessages.showPolicyButtonCompleteOptionsInverted,
+  // These shouldn't require text for a policy link
+  Collapsed: bottomMenuMessages.showPolicyButtonCompleteOptionsInverted,
+  Closed: bottomMenuMessages.showPolicyButtonCompleteOptionsInverted,
+  Hidden: bottomMenuMessages.showPolicyButtonCompleteOptionsInverted,
+};
+
 /**
  * Renders the menu for the bottom of the banner
  */
@@ -28,35 +58,6 @@ export function BottomMenu({
   secondaryPolicy: string;
 }): JSX.Element {
   const { formatMessage } = useIntl();
-  const VIEW_STATE_TO_MESSAGE: { [k in ViewState]: DefinedMessage } = {
-    LanguageOptions: bottomMenuMessages.showPolicyButtonLanguageOptions,
-    DoNotSellDisclosure: bottomMenuMessages.showPolicyButtonDoNotSellDisclosure,
-    OptOutDisclosure: bottomMenuMessages.showPolicyButtonOptOutDisclosure,
-    QuickOptions: bottomMenuMessages.showPolicyButtonQuickOptions,
-    QuickOptions3: bottomMenuMessages.showPolicyButtonQuickOptions3,
-    AcceptAll: bottomMenuMessages.showPolicyButtonAcceptAll,
-    AcceptAllOrMoreChoices:
-      bottomMenuMessages.showPolicyButtonAcceptAllOrMoreChoices,
-    AcceptOrRejectAll: bottomMenuMessages.showPolicyButtonAcceptOrRejectAll,
-    AcceptOrRejectAllOrMoreChoices:
-      bottomMenuMessages.showPolicyButtonAcceptOrRejectAllOrMoreChoices,
-    AcceptOrRejectAnalytics:
-      bottomMenuMessages.showPolicyButtonAcceptOrRejectAnalytics,
-    AcceptOrRejectAdvertising:
-      bottomMenuMessages.showPolicyButtonAcceptOrRejectAdvertising,
-    AcceptAllRejectAllToggle:
-      bottomMenuMessages.showPolicyButtonAcceptAllRejectAllToggle,
-    NoticeAndDoNotSell: bottomMenuMessages.showPolicyButtonNoticeAndDoNotSell,
-    DoNotSellExplainer: bottomMenuMessages.showPolicyButtonDoNotSellExplainer,
-    PrivacyPolicyNotice: bottomMenuMessages.showPolicyButtonPrivacyPolicyNotice,
-    CompleteOptions: bottomMenuMessages.showPolicyButtonCompleteOptions,
-    CompleteOptionsInverted:
-      bottomMenuMessages.showPolicyButtonCompleteOptionsInverted,
-    // These shouldn't require text for a policy link
-    Collapsed: bottomMenuMessages.showPolicyButtonUndefined,
-    Closed: bottomMenuMessages.showPolicyButtonUndefined,
-    Hidden: bottomMenuMessages.showPolicyButtonUndefined,
-  };
   const policyMessage = VIEW_STATE_TO_MESSAGE[viewState];
 
   return (
@@ -155,7 +156,7 @@ export function BottomMenu({
         >
           {policyMessage
             ? formatMessage(policyMessage)
-            : bottomMenuMessages.showPolicyButtonUndefined}
+            : 'Undefined Policy Link Message'}
         </MenuItem>
       </div>
     </div>

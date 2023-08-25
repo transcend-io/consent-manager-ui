@@ -63,9 +63,14 @@ export function DoNotSellDisclosure({
         </div>
         <div>
           <p className="paragraph">
-            {formatMessage(
-              noticeAndDoNotSellMessages.doNotSellHonoredDescription,
-            )}
+            <div
+              // eslint-disable-next-line react/no-danger
+              dangerouslySetInnerHTML={{
+                __html: formatMessage(
+                  noticeAndDoNotSellMessages.doNotSellHonoredDescription,
+                ),
+              }}
+            />
           </p>
         </div>
       </div>
