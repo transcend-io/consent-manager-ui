@@ -302,20 +302,95 @@ export const bottomMenuMessages = defineMessages('ui.src.bottomMenu', {
     defaultMessage: 'Click to show simpler choices',
     description: 'Hover/alt text for selecting simpler opt out choices.',
   },
-  showPolicyButtonPrimary: {
+  // Privacy Policy Link Text, per ViewState --- START
+  showPolicyButtonUndefined: {
+    defaultMessage: 'Undefined Policy View State',
+  },
+  showPolicyButtonLanguageOptions: {
     defaultMessage: 'See our privacy policy',
-    description: 'Text for linking out to privacy policy.',
+    description:
+      'Text for linking out to privacy policy in the LanguageOptions UI.',
+  },
+  showPolicyButtonDoNotSellDisclosure: {
+    defaultMessage: 'See our privacy policy',
+    description:
+      'Text for linking out to privacy policy in the DoNotSellDisclosure UI.',
+  },
+  showPolicyButtonOptOutDisclosure: {
+    defaultMessage: 'See our privacy policy',
+    description:
+      'Text for linking out to privacy policy in OptOutDisclosure UI.',
+  },
+  showPolicyButtonQuickOptions: {
+    defaultMessage: 'See our privacy policy',
+    description:
+      'Text for linking out to privacy policy in the QuickOptions UI.',
+  },
+  showPolicyButtonQuickOptions3: {
+    defaultMessage: 'See our privacy policy',
+    description:
+      'Text for linking out to privacy policy in the QuickOptions3 UI.',
+  },
+  showPolicyButtonAcceptAll: {
+    defaultMessage: 'See our privacy policy',
+    description: 'Text for linking out to privacy policy in the AcceptAll UI.',
+  },
+  showPolicyButtonAcceptAllOrMoreChoices: {
+    defaultMessage: 'See our privacy policy',
+    description:
+      'Text for linking out to privacy policy in the AcceptAllOrMoreChoices UI.',
+  },
+  showPolicyButtonAcceptOrRejectAll: {
+    defaultMessage: 'See our privacy policy',
+    description:
+      'Text for linking out to privacy policy in the AcceptOrRejectAll UI.',
+  },
+  showPolicyButtonAcceptOrRejectAllOrMoreChoices: {
+    defaultMessage: 'See our privacy policy',
+    description:
+      'Text for linking out to privacy policy in the AcceptOrRejectAllOrMoreChoices UI.',
+  },
+  showPolicyButtonAcceptOrRejectAnalytics: {
+    defaultMessage: 'See our privacy policy',
+    description:
+      'Text for linking out to privacy policy in the AcceptOrRejectAnalytics UI.',
+  },
+  showPolicyButtonAcceptOrRejectAdvertising: {
+    defaultMessage: 'See our privacy policy',
+    description:
+      'Text for linking out to privacy policy in the AcceptOrRejectAdvertising UI.',
+  },
+  showPolicyButtonAcceptAllRejectAllToggle: {
+    defaultMessage: 'See our privacy policy',
+    description:
+      'Text for linking out to privacy policy in the AcceptAllRejectAllToggle UI.',
+  },
+  showPolicyButtonNoticeAndDoNotSell: {
+    defaultMessage: 'See our privacy policy',
+    description:
+      'Text for linking out to privacy policy in the NoticeAndDoNotSell UI.',
+  },
+  showPolicyButtonDoNotSellExplainer: {
+    defaultMessage: 'See our privacy policy',
+    description:
+      'Text for linking out to privacy policy in the DoNotSellExplainer UI.',
+  },
+  showPolicyButtonPrivacyPolicyNotice: {
+    defaultMessage: 'See our privacy policy',
+    description:
+      'Text for linking out to privacy policy in the PrivacyPolicyNotice UI.',
+  },
+  showPolicyButtonCompleteOptions: {
+    defaultMessage: 'See our privacy policy',
+    description:
+      'Text for linking out to privacy policy in the CompleteOptions UI.',
   },
   showPolicyButtonCompleteOptionsInverted: {
     defaultMessage: 'See our privacy policy',
     description:
-      'Text for linking out to privacy policy in CompleteOptionsInverted UI.',
+      'Text for linking out to privacy policy in the CompleteOptionsInverted UI.',
   },
-  showPolicyButtonsAcceptAllOrMoreChoices: {
-    defaultMessage: 'See our privacy policy',
-    description:
-      'Text for linking out to privacy policy in AcceptAllOrMoreChoices UI.',
-  },
+  // END --- Privacy Policy Link Text, per ViewState
   showPolicyButtonLabel: {
     defaultMessage: 'Visit our privacy policy',
     description: 'Hover/alt for linking out to privacy policy.',
