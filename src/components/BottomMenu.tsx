@@ -6,7 +6,7 @@ import { bottomMenuMessages, noticeAndDoNotSellMessages } from '../messages';
 import type { HandleSetViewState } from '../types';
 import { MenuItem } from './MenuItem';
 
-const VIEW_STATE_TO_MESSAGE: { [k in ViewState]: DefinedMessage } = {
+const VIEW_STATE_TO_MESSAGE: { [k in ViewState]?: DefinedMessage } = {
   LanguageOptions: bottomMenuMessages.showPolicyButtonLanguageOptions,
   DoNotSellDisclosure: bottomMenuMessages.showPolicyButtonDoNotSellDisclosure,
   OptOutDisclosure: bottomMenuMessages.showPolicyButtonOptOutDisclosure,
