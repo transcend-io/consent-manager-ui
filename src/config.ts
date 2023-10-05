@@ -5,7 +5,7 @@
 import type {
   ConsentManagerConfig,
   ConsentManagerConfigInput,
-  PrivacyRegimeToInitialViewState,
+  ExperienceToInitialViewState,
 } from '@transcend-io/airgap.js-types';
 import { ViewState } from '@transcend-io/airgap.js-types/build/enums/viewState';
 import { ConsentManagerLanguageKey } from '@transcend-io/internationalization';
@@ -28,10 +28,10 @@ const {
  * TODO: https://transcend.height.app/T-20982 - consider
  * a simpler option, such as a dedicated package for constants
  */
-export const DEFAULT_VIEW_STATE_BY_PRIVACY_REGIME_COPIED: PrivacyRegimeToInitialViewState =
+export const DEFAULT_VIEW_STATE_BY_PRIVACY_REGIME_COPIED: ExperienceToInitialViewState =
   {
     // EU
-    GDPR: 'QuickOptions',
+    GDPR: 'TCF_EU',
     // Brazil
     LGPD: 'QuickOptions',
     // US: California
