@@ -9,6 +9,7 @@ import type {
 } from '@transcend-io/airgap.js-types';
 import { ViewState } from '@transcend-io/airgap.js-types/build/enums/viewState';
 import { ConsentManagerLanguageKey } from '@transcend-io/internationalization';
+import { log } from 'console';
 import { CONSENT_MANAGER_SUPPORTED_LANGUAGES } from './i18n';
 import { logger } from './logger';
 import { settings, LOG_LEVELS, extraConfig } from './settings';
@@ -126,18 +127,24 @@ export function getMergedConfig(): {
  * @param viewState - the view state to validate
  * @param param - Parameter name to use in error messages
  * @param errors - list of errors to append to
+ * @param critical - boolean whether invalid should throw error
  * @returns whether viewState is a recognized view state
  */
 const validateViewState = (
   viewState: ViewState,
   param: string,
   errors: string[],
+  critical = true,
 ): boolean => {
   const valid = Object.values(ViewState).some(
     (knownViewState) => knownViewState === viewState,
   );
   if (!valid) {
-    errors.push(`Unrecognized ${param}: ${viewState}`);
+    if (critical) {
+      errors.push(`Unrecognized ${param}: ${viewState}`);
+    } else {
+      logger.warn(`Unrecognized ${param}: ${viewState} - ignoring`);
+    }
   }
   return valid;
 };
@@ -175,6 +182,7 @@ function validateConfig(config: ConsentManagerConfig): boolean {
           viewState,
           `${initialViewStateByPrivacyRegimeParam} map value`,
           errors,
+          false,
         );
       }
     });
