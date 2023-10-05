@@ -20,7 +20,12 @@ import type { HandleSetViewState } from '../types';
 export function isViewStateClosed(
   viewState: ViewState,
 ): viewState is DismissedViewState {
-  const closedViewStates: ViewState[] = ['Hidden', 'Closed', 'Collapsed'];
+  const closedViewStates: ViewState[] = [
+    'Hidden',
+    'Closed',
+    'Collapsed',
+    'TCF_EU',
+  ];
   return closedViewStates.includes(viewState);
 }
 
