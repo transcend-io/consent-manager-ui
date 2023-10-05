@@ -9,7 +9,6 @@ import type {
 } from '@transcend-io/airgap.js-types';
 import { ViewState } from '@transcend-io/airgap.js-types/build/enums/viewState';
 import { ConsentManagerLanguageKey } from '@transcend-io/internationalization';
-import { log } from 'console';
 import { CONSENT_MANAGER_SUPPORTED_LANGUAGES } from './i18n';
 import { logger } from './logger';
 import { settings, LOG_LEVELS, extraConfig } from './settings';
