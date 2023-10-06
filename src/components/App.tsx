@@ -4,7 +4,6 @@ import type {
   AirgapAPI,
   ConsentManagerAPI,
 } from '@transcend-io/airgap.js-types';
-import { getMergedConfig } from '../config';
 import { AirgapProvider, useLanguage, useViewState } from '../hooks';
 import { settings } from '../settings';
 import { Main } from './Main';
@@ -15,6 +14,7 @@ import { ConsentManagerLanguageKey } from '@transcend-io/internationalization';
 import { makeConsentManagerAPI } from '../api';
 import { TranscendEventTarget } from '../event-target';
 import { useState } from 'preact/hooks';
+import { MergedConsentManagerConfig } from 'src/types';
 
 // TODO: https://transcend.height.app/T-13483
 // Fix IntlProvider JSX types
@@ -30,14 +30,16 @@ const eventTarget = new TranscendEventTarget();
 export function App({
   airgap,
   callback,
+  defaultConfig,
 }: {
   /** The Airgap API */
   airgap: AirgapAPI;
   /** A callback which passes the consent manager API out of Preact to be exposed on `window.transcend` */
   callback: (finalizedConsentManagerAPI: ConsentManagerAPI) => void;
+  /** Default consent manager configuration */
+  defaultConfig: MergedConsentManagerConfig;
 }): JSX.Element {
   // Consent manager configuration
-  const defaultConfig = getMergedConfig();
   const [{ config, supportedLanguages }, setConfig] = useState(defaultConfig);
 
   // Get the active privacy regime

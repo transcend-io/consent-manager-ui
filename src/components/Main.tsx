@@ -77,7 +77,7 @@ export function Main({
     return (
       <div
         role="dialog"
-        aria-model="true"
+        aria-modal="true"
         aria-labelledby="consent-dialog-title"
         className="modal-container"
         id="consentManagerMainDialog"
