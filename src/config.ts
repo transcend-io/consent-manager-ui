@@ -64,7 +64,6 @@ const baseConfig: Omit<
     desktop: '1024px',
   },
   initialViewStateByPrivacyRegime: DEFAULT_VIEW_STATE_BY_PRIVACY_REGIME_COPIED,
-  uiZIndex: '2147483647', // max z-index to overlap everything else by default
 };
 
 /**

@@ -27,7 +27,8 @@ export const injectConsentManagerApp = async (
     // The outer div to wrap the shadow root
     const consentManager = createHTMLElement('div');
     consentManager.style.position = 'fixed'; // so as not to affect position
-    consentManager.style.zIndex = mergedConfig.config.uiZIndex;
+    // Use the user provided z-index or default to the maximum to make sure we overlap everything
+    consentManager.style.zIndex = mergedConfig.config.uiZIndex ?? '2147483647';
     consentManager.id = 'transcend-consent-manager';
 
     try {
