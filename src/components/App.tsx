@@ -14,7 +14,7 @@ import { ConsentManagerLanguageKey } from '@transcend-io/internationalization';
 import { makeConsentManagerAPI } from '../api';
 import { TranscendEventTarget } from '../event-target';
 import { useState } from 'preact/hooks';
-import { MergedConsentManagerConfig } from './types';
+import { MergedConsentManagerConfig } from '../types';
 
 // TODO: https://transcend.height.app/T-13483
 // Fix IntlProvider JSX types
