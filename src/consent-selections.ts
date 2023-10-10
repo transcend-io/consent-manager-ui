@@ -16,10 +16,13 @@ export function getConsentSelections(airgap: AirgapAPI): ConsentSelection {
   const initialConsentSelections: ConsentSelection = {};
 
   // Get the purposes for processing configured for this organization.
+  const regimePurposes = airgap.getRegimePurposes();
   const purposeTypes = airgap.getPurposeTypes();
+  const applicablePurposes = Object.keys(purposeTypes)
+    .filter((purpose) => regimePurposes.has(purpose));
 
   // By default reflect airgap.getPurposeTypes API
-  Object.keys(purposeTypes).forEach((purpose) => {
+  applicablePurposes.forEach((purpose) => {
     const { configurable, showInConsentManager } = purposeTypes[purpose];
 
     if (showInConsentManager && configurable) {
