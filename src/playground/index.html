@@ -10,13 +10,26 @@
     <!-- Stub transcendInit -->
     <script>
       if (!self.transcend) {
-        self.transcend = {
+        /**
+         * Check for loadOptions in local storage, and inject onto transcendInit
+         * This is before ui.js so we make sure to load our options before initializing the ui
+         */
+        let loadOptions = {};
+        const loadOptionsInStorage = localStorage.getItem('loadOptions');
+        if (loadOptionsInStorage) {
+          try {
+            loadOptions = JSON.parse(loadOptionsInStorage);
+          } catch (err) {}
+        }
+        const stub = {
+          consentManagerConfig: loadOptions,
           readyQueue: [],
           ready(callback) {
             this.readyQueue.push(callback);
           },
           ...self.transcend,
         };
+        self.transcend = stub;
       }
     </script>
 

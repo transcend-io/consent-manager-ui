@@ -6,6 +6,7 @@ import type {
 import { App } from './components/App';
 import { logger } from './logger';
 import { createHTMLElement } from './utils/create-html-element';
+import { getMergedConfig } from './config';
 
 // The `transcend` API: methods which we'll create inside Preact and pass back out here via callback
 let consentManagerAPI: ConsentManagerAPI | null = null;
@@ -22,11 +23,12 @@ export const injectConsentManagerApp = async (
 ): Promise<ConsentManagerAPI> => {
   // The interface hasn't initialized yet
   if (consentManagerAPI === null) {
+    const mergedConfig = getMergedConfig();
     // The outer div to wrap the shadow root
     const consentManager = createHTMLElement('div');
     consentManager.style.position = 'fixed'; // so as not to affect position
-    consentManager.style.zIndex = '83951225900329'; // high z-index to stay on top
-    // 83951225900329..toString(36) === 'transcend'
+    // Use the user provided z-index or default to the maximum to make sure we overlap everything
+    consentManager.style.zIndex = mergedConfig.config.uiZIndex ?? '2147483647';
     consentManager.id = 'transcend-consent-manager';
 
     try {
@@ -59,6 +61,7 @@ export const injectConsentManagerApp = async (
             callback={(finalizedConsentManagerAPI: ConsentManagerAPI): void => {
               resolve(finalizedConsentManagerAPI);
             }}
+            defaultConfig={mergedConfig}
           />,
           appContainer,
         );

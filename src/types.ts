@@ -2,6 +2,7 @@ import type {
   TrackingPurpose,
   ViewState,
   AirgapAuth,
+  ConsentManagerConfig,
 } from '@transcend-io/airgap.js-types';
 import { ConsentManagerLanguageKey } from '@transcend-io/internationalization';
 
@@ -63,3 +64,10 @@ export type HandleSetLanguage = (language: ConsentManagerLanguageKey) => void;
  * Handler for changing the privacy policy link
  */
 export type HandleChangePrivacyPolicy = (privacyPolicyLink: string) => void;
+
+export interface MergedConsentManagerConfig {
+  /** Merged config */
+  config: ConsentManagerConfig;
+  /** Languages split out separately for type-safety and preserving raw value */
+  supportedLanguages: ConsentManagerLanguageKey[];
+}

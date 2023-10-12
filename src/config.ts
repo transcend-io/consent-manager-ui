@@ -8,11 +8,11 @@ import type {
   ExperienceToInitialViewState,
 } from '@transcend-io/airgap.js-types';
 import { ViewState } from '@transcend-io/airgap.js-types/build/enums/viewState';
-import { ConsentManagerLanguageKey } from '@transcend-io/internationalization';
 import { CONSENT_MANAGER_SUPPORTED_LANGUAGES } from './i18n';
 import { logger } from './logger';
 import { settings, LOG_LEVELS, extraConfig } from './settings';
 import { jsonParseSafe } from './utils/safe-json-parse';
+import { MergedConsentManagerConfig } from './types';
 
 const {
   privacyCenter,
@@ -71,12 +71,7 @@ const baseConfig: Omit<
  *
  * @returns the consent manager config to use in the UI
  */
-export function getMergedConfig(): {
-  /** Merged config */
-  config: ConsentManagerConfig;
-  /** Languages split out separately for type-safety and preserving raw value */
-  supportedLanguages: ConsentManagerLanguageKey[];
-} {
+export function getMergedConfig(): MergedConsentManagerConfig {
   const settingsConfig: ConsentManagerConfigInput =
     typeof settings === 'string'
       ? jsonParseSafe(settings, () => ({}))
