@@ -114,7 +114,7 @@ This option is similar to `CompleteOptions` but the checkboxes are inverted -- c
 
 This is a good banner style when you are using Transcend for [Preference Management](https://docs.transcend.io/docs/consent/reference/managed-preferences).
 
-![ViewState = CompleteOptionsToggles](https://user-images.githubusercontent.com/10264973/188251095-7c7fd1b5-7748-4430-b7af-130e37db2dc5.jpg)
+![ViewState = CompleteOptionsToggles](https://github.com/transcend-io/consent-manager-ui/assets/10264973/94f85234-aad7-4596-969e-fd91af42f4ab)
 
 #### Button Mapping
 
