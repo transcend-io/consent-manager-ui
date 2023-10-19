@@ -6,35 +6,39 @@ import { bottomMenuMessages, noticeAndDoNotSellMessages } from '../messages';
 import type { HandleSetViewState } from '../types';
 import { MenuItem } from './MenuItem';
 
-const VIEW_STATE_TO_MESSAGE: { [k in ViewState]?: DefinedMessage } = {
-  LanguageOptions: bottomMenuMessages.showPolicyButtonLanguageOptions,
-  DoNotSellDisclosure: bottomMenuMessages.showPolicyButtonDoNotSellDisclosure,
-  OptOutDisclosure: bottomMenuMessages.showPolicyButtonOptOutDisclosure,
-  QuickOptions: bottomMenuMessages.showPolicyButtonQuickOptions,
-  QuickOptions3: bottomMenuMessages.showPolicyButtonQuickOptions3,
-  AcceptAll: bottomMenuMessages.showPolicyButtonAcceptAll,
-  AcceptAllOrMoreChoices:
-    bottomMenuMessages.showPolicyButtonAcceptAllOrMoreChoices,
-  AcceptOrRejectAll: bottomMenuMessages.showPolicyButtonAcceptOrRejectAll,
-  AcceptOrRejectAllOrMoreChoices:
-    bottomMenuMessages.showPolicyButtonAcceptOrRejectAllOrMoreChoices,
-  AcceptOrRejectAnalytics:
-    bottomMenuMessages.showPolicyButtonAcceptOrRejectAnalytics,
-  AcceptOrRejectAdvertising:
-    bottomMenuMessages.showPolicyButtonAcceptOrRejectAdvertising,
-  AcceptAllRejectAllToggle:
-    bottomMenuMessages.showPolicyButtonAcceptAllRejectAllToggle,
-  NoticeAndDoNotSell: bottomMenuMessages.showPolicyButtonNoticeAndDoNotSell,
-  DoNotSellExplainer: bottomMenuMessages.showPolicyButtonDoNotSellExplainer,
-  PrivacyPolicyNotice: bottomMenuMessages.showPolicyButtonPrivacyPolicyNotice,
-  CompleteOptions: bottomMenuMessages.showPolicyButtonCompleteOptions,
-  CompleteOptionsInverted:
-    bottomMenuMessages.showPolicyButtonCompleteOptionsInverted,
-  // These shouldn't require text for a policy link
-  Collapsed: bottomMenuMessages.showPolicyButtonCompleteOptionsInverted,
-  Closed: bottomMenuMessages.showPolicyButtonCompleteOptionsInverted,
-  Hidden: bottomMenuMessages.showPolicyButtonCompleteOptionsInverted,
-};
+const VIEW_STATE_TO_MESSAGE: { [k in ViewState]: DefinedMessage | undefined } =
+  {
+    LanguageOptions: bottomMenuMessages.showPolicyButtonLanguageOptions,
+    DoNotSellDisclosure: bottomMenuMessages.showPolicyButtonDoNotSellDisclosure,
+    OptOutDisclosure: bottomMenuMessages.showPolicyButtonOptOutDisclosure,
+    QuickOptions: bottomMenuMessages.showPolicyButtonQuickOptions,
+    QuickOptions3: bottomMenuMessages.showPolicyButtonQuickOptions3,
+    AcceptAll: bottomMenuMessages.showPolicyButtonAcceptAll,
+    AcceptAllOrMoreChoices:
+      bottomMenuMessages.showPolicyButtonAcceptAllOrMoreChoices,
+    AcceptOrRejectAll: bottomMenuMessages.showPolicyButtonAcceptOrRejectAll,
+    AcceptOrRejectAllOrMoreChoices:
+      bottomMenuMessages.showPolicyButtonAcceptOrRejectAllOrMoreChoices,
+    AcceptOrRejectAnalytics:
+      bottomMenuMessages.showPolicyButtonAcceptOrRejectAnalytics,
+    AcceptOrRejectAdvertising:
+      bottomMenuMessages.showPolicyButtonAcceptOrRejectAdvertising,
+    AcceptAllRejectAllToggle:
+      bottomMenuMessages.showPolicyButtonAcceptAllRejectAllToggle,
+    NoticeAndDoNotSell: bottomMenuMessages.showPolicyButtonNoticeAndDoNotSell,
+    DoNotSellExplainer: bottomMenuMessages.showPolicyButtonDoNotSellExplainer,
+    PrivacyPolicyNotice: bottomMenuMessages.showPolicyButtonPrivacyPolicyNotice,
+    CompleteOptions: bottomMenuMessages.showPolicyButtonCompleteOptions,
+    CompleteOptionsInverted:
+      bottomMenuMessages.showPolicyButtonCompleteOptionsInverted,
+    // These shouldn't require text for a policy link
+    Collapsed: bottomMenuMessages.showPolicyButtonCompleteOptionsInverted,
+    Closed: bottomMenuMessages.showPolicyButtonCompleteOptionsInverted,
+    Hidden: bottomMenuMessages.showPolicyButtonCompleteOptionsInverted,
+    TCF_EU: undefined,
+    CompleteOptionsToggles:
+      bottomMenuMessages.showPolicyButtonCompleteOptionsToggles,
+  };
 
 /**
  * Renders the menu for the bottom of the banner
@@ -83,6 +87,7 @@ export function BottomMenu({
           'AcceptOrRejectAllOrMoreChoices',
           'CompleteOptionsInverted',
           'DoNotSellExplainer',
+          'CompleteOptionsToggles',
           'LanguageOptions',
           'AcceptAllRejectAllToggle',
           // eslint-disable-next-line @typescript-eslint/no-explicit-any

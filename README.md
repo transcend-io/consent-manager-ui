@@ -110,6 +110,20 @@ This option is similar to `CompleteOptions` but the checkboxes are inverted -- c
 | See our Privacy Policy | Redirects to the privacy policy link specified in [Consent Display Settings](https://app.transcend.io/consent-manager/display-settings) or the [`data-privacy-policy`](https://docs.transcend.io/docs/consent/faq#how-can-i-customize-the-privacy-policy-link-when-hosting-on-multiple-domains?) data attribute. |
 | Read more              | Redirects to the secondary policy specified using the `data-secondary-policy` data attribute.                                                                                                                                                                                                                    |
 
+### `CompleteOptionsToggles`
+
+This is a good banner style when you are using Transcend for [Preference Management](https://docs.transcend.io/docs/consent/reference/managed-preferences).
+
+![ViewState = CompleteOptionsToggles](https://github.com/transcend-io/consent-manager-ui/assets/10264973/94f85234-aad7-4596-969e-fd91af42f4ab)
+
+#### Button Mapping
+
+| Button Title           | Callback Description                                                                                                                                                                                                                                                                                             |
+| ---------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Toggle Switch          | Switching one of the toggles opts the user in or out of a purpose. Changes are applied immediately as the toggle is switched                                                                                                                                                                                     |
+| X - Icon               | Closes the modal with no changes to purposes and no changes to consent confirmation.                                                                                                                                                                                                                             |
+| See our Privacy Policy | Redirects to the privacy policy link specified in [Consent Display Settings](https://app.transcend.io/consent-manager/display-settings) or the [`data-privacy-policy`](https://docs.transcend.io/docs/consent/faq#how-can-i-customize-the-privacy-policy-link-when-hosting-on-multiple-domains?) data attribute. |
+
 ### `DoNotSellDisclosure`
 
 Unlike the other view states, this view state should be opened using `onClick={(event) => transcend.doNotSell(event)}`. Note: for React development, please use: `onClick={(event) => transcend.doNotSell(event.nativeEvent)}`. This view state will opt the user out upon opening of the modal, while the other view states require an additional button to be clicked to ensure compliance.

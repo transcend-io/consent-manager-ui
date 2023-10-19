@@ -5,23 +5,11 @@ import { useAirgap, useGetPurposeMessageKeys } from '../hooks';
 import { messages, completeOptionsMessages } from '../messages';
 import type { ConsentSelection, HandleSetViewState } from '../types';
 import { getConsentSelections } from '../consent-selections';
-import { DefinedMessage } from '@transcend-io/internationalization';
 import { Button } from './Button';
 import { GPCIndicator } from './GPCIndicator';
 import { Toggle } from './Toggle';
 import { CONSENT_OPTIONS } from '../constants';
-
-// Mapping of purposes to the message translation key
-const defaultPurposeToMessageKey: Record<string, DefinedMessage> = {
-  Essential: completeOptionsMessages.essentialLabel,
-  Functional: completeOptionsMessages.functionalLabel,
-  Analytics: completeOptionsMessages.analyticsLabel,
-  Advertising: completeOptionsMessages.advertisingLabel,
-  SaleOfInfo: completeOptionsMessages.saleOfInfoLabel,
-};
-
-// Encode the default purpose ordering
-const ORDER_OF_PURPOSES = Object.keys(defaultPurposeToMessageKey);
+import { DEFAULT_PURPOSE_TO_MESSAGE_KEY, ORDER_OF_PURPOSES } from './constants';
 
 /**
  * The model view for "More Choices" showing granular checkboxes and more info
@@ -39,7 +27,7 @@ export function CompleteOptions({
   const initialConsentSelections = getConsentSelections(airgap);
   const purposeToMessageKey = useGetPurposeMessageKeys({
     consentSelection: initialConsentSelections,
-    defaultPurposeToMessageKey,
+    defaultPurposeToMessageKey: DEFAULT_PURPOSE_TO_MESSAGE_KEY,
   });
 
   // Set state on the currently selected toggles

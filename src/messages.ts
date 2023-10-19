@@ -160,6 +160,16 @@ export const messages = defineMessages('ui.src.messages', {
     description:
       'The description text for the AcceptAllRejectAllToggle view state.',
   },
+  consentTitleCompleteOptionsToggle: {
+    defaultMessage: 'Privacy Settings',
+    description: 'The title text for the CompleteOptionsToggles view state.',
+  },
+  consentTitleCompleteOptionsToggleDescription: {
+    defaultMessage:
+      'Below is an overview of the different technologies we use when processing your personal information.',
+    description:
+      'The description text for the CompleteOptionsToggles view state.',
+  },
 });
 
 export const quickOptionsMessages = defineMessages('ui.src.quickOptions', {
@@ -335,6 +345,11 @@ export const bottomMenuMessages = defineMessages('ui.src.bottomMenu', {
     defaultMessage: 'See our privacy policy',
     description:
       'Text for linking out to privacy policy in the AcceptAllOrMoreChoices UI.',
+  },
+  showPolicyButtonCompleteOptionsToggles: {
+    defaultMessage: 'See our privacy policy',
+    description:
+      'Text for linking out to privacy policy in the CompleteOptionsToggles UI.',
   },
   showPolicyButtonAcceptOrRejectAll: {
     defaultMessage: 'See our privacy policy',

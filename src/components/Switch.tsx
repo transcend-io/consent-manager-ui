@@ -7,10 +7,13 @@ export function Switch({
   id,
   checked,
   handleSwitch,
+  disabled,
   label,
 }: {
   /** Based opt in status */
   checked: boolean;
+  /** If disabled */
+  disabled?: boolean;
   /** Parent's event handler */
   handleSwitch: (
     checked: boolean,
@@ -36,6 +39,7 @@ export function Switch({
           className="switch switch-checkbox screen-reader"
           id={`switch-${id}`}
           type="checkbox"
+          disabled={disabled}
           checked={checked}
           onClick={handleClick}
         />

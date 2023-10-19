@@ -2,29 +2,14 @@ import { h, JSX } from 'preact';
 import { useState } from 'preact/hooks';
 import { useIntl } from 'react-intl';
 import { useAirgap, useGetPurposeMessageKeys } from '../hooks';
-import {
-  messages,
-  completeOptionsInvertedMessages,
-  completeOptionsMessages,
-} from '../messages';
+import { messages, completeOptionsMessages } from '../messages';
 import type { ConsentSelection, HandleSetViewState } from '../types';
 import { getConsentSelections } from '../consent-selections';
-import { DefinedMessage } from '@transcend-io/internationalization';
 import { Button } from './Button';
 import { GPCIndicator } from './GPCIndicator';
 import { Toggle } from './Toggle';
 import { CONSENT_OPTIONS } from '../constants';
-
-// Mapping of purposes to the message translation key
-const defaultPurposeToMessageKey: Record<string, DefinedMessage> = {
-  Functional: completeOptionsInvertedMessages.functionalLabel,
-  Analytics: completeOptionsInvertedMessages.analyticsLabel,
-  Advertising: completeOptionsInvertedMessages.advertisingLabel,
-  SaleOfInfo: completeOptionsInvertedMessages.saleOfInfoLabel,
-};
-
-// Encode the default purpose ordering
-const ORDER_OF_PURPOSES = Object.keys(defaultPurposeToMessageKey);
+import { DEFAULT_PURPOSE_TO_MESSAGE_KEY, ORDER_OF_PURPOSES } from './constants';
 
 /**
  * The model view where checking each checkbox represents an opt otu
@@ -42,7 +27,7 @@ export function CompleteOptionsInverted({
   const initialConsentSelections = getConsentSelections(airgap);
   const purposeToMessageKey = useGetPurposeMessageKeys({
     consentSelection: initialConsentSelections,
-    defaultPurposeToMessageKey,
+    defaultPurposeToMessageKey: DEFAULT_PURPOSE_TO_MESSAGE_KEY,
   });
 
   // Set state on the currently selected toggles

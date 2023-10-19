@@ -30,6 +30,7 @@ import { AcceptAllOrMoreChoices } from './AcceptAllOrMoreChoices';
 import { AcceptOrRejectAllOrMoreChoices } from './AcceptOrRejectAllOrMoreChoices';
 import { AcceptAllRejectAllToggle } from './AcceptAllRejectAllToggle';
 import { useEffect, useRef } from 'preact/hooks';
+import { CompleteOptionsToggles } from './CompleteOptionsToggles';
 
 /**
  * Presents view states (collapsed, GDPR-mode, CCPA-mode etc)
@@ -106,6 +107,13 @@ export function Main({
 
             {viewState === 'DoNotSellExplainer' && (
               <DoNotSellExplainer
+                handleSetViewState={handleSetViewState}
+                fontColor={config.theme.fontColor}
+              />
+            )}
+
+            {viewState === 'CompleteOptionsToggles' && (
+              <CompleteOptionsToggles
                 handleSetViewState={handleSetViewState}
                 fontColor={config.theme.fontColor}
               />
