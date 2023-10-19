@@ -571,6 +571,44 @@ a:focus {
   margin-top: 2em;
 }
 
+/***********************
+ * CompleteOptionsToggle
+ ***********************/
+
+/** Styles for button of X marker in top right corner */
+.complete-options-toggle-close {
+  --squareDimension: 25px;
+  padding: 4px;
+  position: absolute;
+  top: 21px;
+  right: 21px;
+  border: none;
+  cursor: pointer;
+  background-color: #f2f2f2;
+  border-radius: 5px;
+  height: var(--squareDimension);
+  width: var(--squareDimension);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 150ms;
+}
+
+/** Styles for button of X marker in top right corner on hover */
+.complete-options-toggle-close:hover, .complete-options-toggle-close:focus {
+  background-color: #e2e2e2;
+}
+
+/** Outline for do not sell explainer */
+.complete-options-toggle-interface {
+  margin-top: 2em;
+}
+
+/** Styles for complete options toggle description */
+.complete-options-toggle-description {
+  padding-bottom: 2em;
+}
+
 /*******************
  * GPC Indicator
  *******************/
