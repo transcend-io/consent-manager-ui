@@ -49,9 +49,6 @@ export function CompleteOptionsToggles({
         ORDER_OF_PURPOSES.indexOf(a) - ORDER_OF_PURPOSES.indexOf(b),
   );
 
-  // FIXME
-  // const switchId = `sale-of-info-${consentLocal}`;
-
   const handleSwitch = ({
     checked,
     purpose,
