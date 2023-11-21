@@ -61,6 +61,13 @@ export const airgapPromise = new Promise<AirgapAPI>((resolve) => {
  * Initialize the Consent Manager UI and Transcend API
  */
 export const init = async (): Promise<void> => {
+  // handle embedding constraints
+  const suppressUIDueToEmbeddingConstraints =
+    // eslint-disable-next-line no-restricted-globals
+    settings.uiAllowInEmbeds === 'off' && self !== top;
+  if (suppressUIDueToEmbeddingConstraints) {
+    return;
+  }
   try {
     if (LOG_ENABLED) {
       logger.tag('Transcend', () => {
