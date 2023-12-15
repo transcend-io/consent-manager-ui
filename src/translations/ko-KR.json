@@ -39,6 +39,7 @@
   "ui.src.completeOptions.toggleEnable": "이 목적을 위한 데이터 수집을 활성화하려면 클릭하십시오.",
   "ui.src.completeOptionsInverted.advertisingLabel": "광고 수신 거부",
   "ui.src.completeOptionsInverted.analyticsLabel": "애널리틱스 수신 거부",
+  "ui.src.completeOptionsInverted.description": "-",
   "ui.src.completeOptionsInverted.functionalLabel": "옵트아웃 기능",
   "ui.src.completeOptionsInverted.saleOfInfoLabel": "내 개인 정보를 판매/공유하지 마십시오.",
   "ui.src.messages.acceptAdvertising": "괜찮아",

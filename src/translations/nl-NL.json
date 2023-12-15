@@ -39,6 +39,7 @@
   "ui.src.completeOptions.toggleEnable": "Klik om het verzamelen van gegevens voor dit doel in te schakelen",
   "ui.src.completeOptionsInverted.advertisingLabel": "Afmelden voor advertenties",
   "ui.src.completeOptionsInverted.analyticsLabel": "Analytics uitschakelen",
+  "ui.src.completeOptionsInverted.description": "-",
   "ui.src.completeOptionsInverted.functionalLabel": "Afmelden voor Functional",
   "ui.src.completeOptionsInverted.saleOfInfoLabel": "Verkoop/deel mijn persoonlijke gegevens niet.",
   "ui.src.messages.acceptAdvertising": "oké",

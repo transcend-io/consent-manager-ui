@@ -39,6 +39,7 @@
   "ui.src.completeOptions.toggleEnable": "คลิกเพื่อเปิดใช้งานการเก็บรวบรวมข้อมูลเพื่อการนี้",
   "ui.src.completeOptionsInverted.advertisingLabel": "เลือกไม่รับโฆษณา",
   "ui.src.completeOptionsInverted.analyticsLabel": "เลือกไม่รับการวิเคราะห์",
+  "ui.src.completeOptionsInverted.description": "-",
   "ui.src.completeOptionsInverted.functionalLabel": "เลือกไม่ใช้ฟังก์ชัน",
   "ui.src.completeOptionsInverted.saleOfInfoLabel": "อย่าขาย/แบ่งปันข้อมูลส่วนบุคคลของฉัน",
   "ui.src.messages.acceptAdvertising": "โอเค",

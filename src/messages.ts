@@ -478,6 +478,11 @@ export const completeOptionsMessages = defineMessages(
 export const completeOptionsInvertedMessages = defineMessages(
   'ui.src.completeOptionsInverted',
   {
+    description: {
+      defaultMessage: '-',
+      description:
+        'Freeform description text for the CompleteOptionsInverted consent banner.',
+    },
     functionalLabel: {
       defaultMessage: 'Opt out of Functional',
       description:

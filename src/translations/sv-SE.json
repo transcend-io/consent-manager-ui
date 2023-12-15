@@ -39,6 +39,7 @@
   "ui.src.completeOptions.toggleEnable": "Klicka för att aktivera insamling av data för detta ändamål",
   "ui.src.completeOptionsInverted.advertisingLabel": "Avstå från reklam",
   "ui.src.completeOptionsInverted.analyticsLabel": "Välj bort Analytics",
+  "ui.src.completeOptionsInverted.description": "-",
   "ui.src.completeOptionsInverted.functionalLabel": "Välj bort Functional",
   "ui.src.completeOptionsInverted.saleOfInfoLabel": "Sälj/Dela inte min personliga information.",
   "ui.src.messages.acceptAdvertising": "Okej",

@@ -39,6 +39,7 @@
   "ui.src.completeOptions.toggleEnable": "Cliquez pour activer la collecte de données à cette fin",
   "ui.src.completeOptionsInverted.advertisingLabel": "Se désinscrire de la publicité",
   "ui.src.completeOptionsInverted.analyticsLabel": "Se désinscrire d'Analytics",
+  "ui.src.completeOptionsInverted.description": "-",
   "ui.src.completeOptionsInverted.functionalLabel": "Désactiver Functional",
   "ui.src.completeOptionsInverted.saleOfInfoLabel": "Ne vendez pas et ne partagez pas mes informations personnelles.",
   "ui.src.messages.acceptAdvertising": "OK",

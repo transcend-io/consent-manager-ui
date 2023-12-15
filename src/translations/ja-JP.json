@@ -39,6 +39,7 @@
   "ui.src.completeOptions.toggleEnable": "クリックすると、この目的のためにデータの収集が有効になります",
   "ui.src.completeOptionsInverted.advertisingLabel": "広告のオプトアウト",
   "ui.src.completeOptionsInverted.analyticsLabel": "アナリティクスをオプトアウト",
+  "ui.src.completeOptionsInverted.description": "-",
   "ui.src.completeOptionsInverted.functionalLabel": "機能からオプトアウト",
   "ui.src.completeOptionsInverted.saleOfInfoLabel": "私の個人情報を販売/共有しないでください。",
   "ui.src.messages.acceptAdvertising": "はい",

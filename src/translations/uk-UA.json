@@ -39,6 +39,7 @@
   "ui.src.completeOptions.toggleEnable": "Натисніть, щоб увімкнути збір даних для цієї мети",
   "ui.src.completeOptionsInverted.advertisingLabel": "Відмова від реклами",
   "ui.src.completeOptionsInverted.analyticsLabel": "Відмова від аналітики",
+  "ui.src.completeOptionsInverted.description": "-",
   "ui.src.completeOptionsInverted.functionalLabel": "Відмовтеся від Функціональні",
   "ui.src.completeOptionsInverted.saleOfInfoLabel": "Не продавати та не передавати мою особисту інформацію.",
   "ui.src.messages.acceptAdvertising": "Гаразд",

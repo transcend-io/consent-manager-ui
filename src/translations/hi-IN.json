@@ -39,6 +39,7 @@
   "ui.src.completeOptions.toggleEnable": "इस उद्देश्य के लिए डेटा के संग्रह को सक्षम करने के लिए क्लिक करें",
   "ui.src.completeOptionsInverted.advertisingLabel": "विज्ञापन से ऑप्ट आउट करें",
   "ui.src.completeOptionsInverted.analyticsLabel": "एनालिटिक्स से ऑप्ट आउट करें",
+  "ui.src.completeOptionsInverted.description": "-",
   "ui.src.completeOptionsInverted.functionalLabel": "फंक्शनल से ऑप्ट आउट करें",
   "ui.src.completeOptionsInverted.saleOfInfoLabel": "मेरी व्यक्तिगत जानकारी न बेचें/साझा न करें।",
   "ui.src.messages.acceptAdvertising": "ठीक है",

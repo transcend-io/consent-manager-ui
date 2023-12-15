@@ -39,6 +39,7 @@
   "ui.src.completeOptions.toggleEnable": "Kliek om die versameling van data vir hierdie doel te aktiveer",
   "ui.src.completeOptionsInverted.advertisingLabel": "Kies uit Advertising",
   "ui.src.completeOptionsInverted.analyticsLabel": "Kies uit Analytics",
+  "ui.src.completeOptionsInverted.description": "-",
   "ui.src.completeOptionsInverted.functionalLabel": "Kies uit Funksionele",
   "ui.src.completeOptionsInverted.saleOfInfoLabel": "Moenie verkoop/Deel My Persoonlike Inligting.",
   "ui.src.messages.acceptAdvertising": "Goed",

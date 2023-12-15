@@ -39,6 +39,7 @@
   "ui.src.completeOptions.toggleEnable": "Napsauta, jos haluat ottaa käyttöön tietojen keräämisen tätä tarkoitusta varten",
   "ui.src.completeOptionsInverted.advertisingLabel": "Poistaminen mainonnasta",
   "ui.src.completeOptionsInverted.analyticsLabel": "Analyticsin kieltäytyminen",
+  "ui.src.completeOptionsInverted.description": "-",
   "ui.src.completeOptionsInverted.functionalLabel": "Ota pois toiminnallinen",
   "ui.src.completeOptionsInverted.saleOfInfoLabel": "Älä myy/jaa henkilökohtaisia tietojani.",
   "ui.src.messages.acceptAdvertising": "Okei",

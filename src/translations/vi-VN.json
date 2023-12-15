@@ -39,6 +39,7 @@
   "ui.src.completeOptions.toggleEnable": "Nhấn vào đây để cho phép thu thập dữ liệu cho mục đích này",
   "ui.src.completeOptionsInverted.advertisingLabel": "Chọn không tham gia quảng cáo",
   "ui.src.completeOptionsInverted.analyticsLabel": "Chọn không tham gia Analytics",
+  "ui.src.completeOptionsInverted.description": "-",
   "ui.src.completeOptionsInverted.functionalLabel": "Chọn không tham gia chức năng",
   "ui.src.completeOptionsInverted.saleOfInfoLabel": "Không Bán/Chia Sẻ Thông Tin Cá Nhân Của Tôi.",
   "ui.src.messages.acceptAdvertising": "đuợc",

@@ -39,6 +39,7 @@
   "ui.src.completeOptions.toggleEnable": "Kattintson ide, hogy engedélyezze az adatok gyűjtését erre a célra",
   "ui.src.completeOptionsInverted.advertisingLabel": "Leiratkozás a hirdetésekről",
   "ui.src.completeOptionsInverted.analyticsLabel": "Leiratkozás az Analytics szolgáltatásról",
+  "ui.src.completeOptionsInverted.description": "-",
   "ui.src.completeOptionsInverted.functionalLabel": "Leiratkozás a Funkcionális lehetőségről",
   "ui.src.completeOptionsInverted.saleOfInfoLabel": "Ne adja el/ossza meg személyes adataimat.",
   "ui.src.messages.acceptAdvertising": "oké",

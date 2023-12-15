@@ -39,6 +39,7 @@
   "ui.src.completeOptions.toggleEnable": "Klik for at aktivere indsamling af data til dette formål",
   "ui.src.completeOptionsInverted.advertisingLabel": "Fravælg annoncering",
   "ui.src.completeOptionsInverted.analyticsLabel": "Fravælg Analytics",
+  "ui.src.completeOptionsInverted.description": "-",
   "ui.src.completeOptionsInverted.functionalLabel": "Fravælg Functional",
   "ui.src.completeOptionsInverted.saleOfInfoLabel": "Sælg/Del ikke/del mine personlige oplysninger.",
   "ui.src.messages.acceptAdvertising": "Okay",

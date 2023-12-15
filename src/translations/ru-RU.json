@@ -39,6 +39,7 @@
   "ui.src.completeOptions.toggleEnable": "Нажмите, чтобы включить сбор данных для этой цели",
   "ui.src.completeOptionsInverted.advertisingLabel": "Отказаться от рекламы",
   "ui.src.completeOptionsInverted.analyticsLabel": "Отказаться от аналитики",
+  "ui.src.completeOptionsInverted.description": "-",
   "ui.src.completeOptionsInverted.functionalLabel": "Отказаться от функционального",
   "ui.src.completeOptionsInverted.saleOfInfoLabel": "Не продавайте и не передавайте мою личную информацию.",
   "ui.src.messages.acceptAdvertising": "Хорошо",

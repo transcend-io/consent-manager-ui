@@ -39,6 +39,7 @@
   "ui.src.completeOptions.toggleEnable": "Haga clic para habilitar la recopilación de datos con este fin",
   "ui.src.completeOptionsInverted.advertisingLabel": "Optar por no participar en la publicidad",
   "ui.src.completeOptionsInverted.analyticsLabel": "Optar por no participar en Analytics",
+  "ui.src.completeOptionsInverted.description": "-",
   "ui.src.completeOptionsInverted.functionalLabel": "Optar por no participar en Funcional",
   "ui.src.completeOptionsInverted.saleOfInfoLabel": "No vender/compartir mi información personal.",
   "ui.src.messages.acceptAdvertising": "Bien",
