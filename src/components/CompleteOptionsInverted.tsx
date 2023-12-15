@@ -2,7 +2,11 @@ import { h, JSX } from 'preact';
 import { useState } from 'preact/hooks';
 import { useIntl } from 'react-intl';
 import { useAirgap, useGetPurposeMessageKeys } from '../hooks';
-import { messages, completeOptionsMessages } from '../messages';
+import {
+  messages,
+  completeOptionsMessages,
+  completeOptionsInvertedMessages,
+} from '../messages';
 import type { ConsentSelection, HandleSetViewState } from '../types';
 import { getConsentSelections } from '../consent-selections';
 import { Button } from './Button';
@@ -69,6 +73,11 @@ export function CompleteOptionsInverted({
         ORDER_OF_PURPOSES.indexOf(a) - ORDER_OF_PURPOSES.indexOf(b),
   );
 
+  // Render description
+  const description = formatMessage(
+    completeOptionsInvertedMessages.description,
+  );
+
   return (
     <div className="complete-options-container">
       <p id="consent-dialog-title" className="text-title text-title-center">
@@ -76,6 +85,16 @@ export function CompleteOptionsInverted({
       </p>
       <form className="complete-options-form">
         <GPCIndicator />
+        {description && description !== '-' ? (
+          <p className="paragraph">
+            <div
+              // eslint-disable-next-line react/no-danger
+              dangerouslySetInnerHTML={{
+                __html: description,
+              }}
+            />
+          </p>
+        ) : undefined}
         <div className="toggles-container">
           {orderedSelections.map(([purpose, isChecked]) => (
             <Toggle
