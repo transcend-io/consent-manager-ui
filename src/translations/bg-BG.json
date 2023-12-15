@@ -39,6 +39,7 @@
   "ui.src.completeOptions.toggleEnable": "Кликнете, за да разрешите събирането на данни за тази цел",
   "ui.src.completeOptionsInverted.advertisingLabel": "Излезте от рекламата",
   "ui.src.completeOptionsInverted.analyticsLabel": "Излезте от Анализ",
+  "ui.src.completeOptionsInverted.description": "-",
   "ui.src.completeOptionsInverted.functionalLabel": "Излезте от функционално",
   "ui.src.completeOptionsInverted.saleOfInfoLabel": "Не продавайте/споделяйте моята лична информация.",
   "ui.src.messages.acceptAdvertising": "Добре.",

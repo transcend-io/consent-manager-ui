@@ -39,6 +39,7 @@
   "ui.src.completeOptions.toggleEnable": "Kliknite da biste omogućili prikupljanje podataka u tu svrhu",
   "ui.src.completeOptionsInverted.advertisingLabel": "Isključivanje oglašavanja",
   "ui.src.completeOptionsInverted.analyticsLabel": "Isključivanje usluge Analytics",
+  "ui.src.completeOptionsInverted.description": "-",
   "ui.src.completeOptionsInverted.functionalLabel": "Isključite Funkcionalno",
   "ui.src.completeOptionsInverted.saleOfInfoLabel": "Ne prodati/dijeliti moje osobne podatke.",
   "ui.src.messages.acceptAdvertising": "u redu",

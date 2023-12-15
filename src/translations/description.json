@@ -39,6 +39,7 @@
   "ui.src.completeOptions.toggleEnable": "Hover/alt text for disabled opt in/opt out checkboxes when user is opted out in CompleteOptions view state.",
   "ui.src.completeOptionsInverted.advertisingLabel": "Text for advertising purposes in CompleteOptionsInverted view state.",
   "ui.src.completeOptionsInverted.analyticsLabel": "Text for analytics purposes in CompleteOptionsInverted view state.",
+  "ui.src.completeOptionsInverted.description": "Freeform description text for the CompleteOptionsInverted consent banner.",
   "ui.src.completeOptionsInverted.functionalLabel": "Text for functional purposes in CompleteOptionsInverted view state.",
   "ui.src.completeOptionsInverted.saleOfInfoLabel": "Text for sale of information purposes in CompleteOptionsInverted view state.",
   "ui.src.messages.acceptAdvertising": "The affirmative response for opting into advertising in the \"AcceptOrRejectAdvertising\" view state.",

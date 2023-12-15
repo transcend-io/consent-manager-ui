@@ -39,6 +39,7 @@
   "ui.src.completeOptions.toggleEnable": "Κάντε κλικ για να ενεργοποιήσετε τη συλλογή δεδομένων για το σκοπό αυτό",
   "ui.src.completeOptionsInverted.advertisingLabel": "Εξαίρεση από διαφημίσεις",
   "ui.src.completeOptionsInverted.analyticsLabel": "Εξαίρεση από το Analytics",
+  "ui.src.completeOptionsInverted.description": "-",
   "ui.src.completeOptionsInverted.functionalLabel": "Εξαίρεση Λειτουργικής",
   "ui.src.completeOptionsInverted.saleOfInfoLabel": "Να μην πωλούν/κοινοποιώ τα προσωπικά μου στοιχεία.",
   "ui.src.messages.acceptAdvertising": "ΟΚ",

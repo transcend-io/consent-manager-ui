@@ -39,6 +39,7 @@
   "ui.src.completeOptions.toggleEnable": "Spustelėkite, kad šiuo tikslu būtų galima rinkti duomenis",
   "ui.src.completeOptionsInverted.advertisingLabel": "Pasitraukti iš reklamos",
   "ui.src.completeOptionsInverted.analyticsLabel": "Pasitraukti iš “Analytics”",
+  "ui.src.completeOptionsInverted.description": "-",
   "ui.src.completeOptionsInverted.functionalLabel": "Pasitraukti iš funkcinio",
   "ui.src.completeOptionsInverted.saleOfInfoLabel": "Negalima parduoti/dalytis mano asmenine informacija.",
   "ui.src.messages.acceptAdvertising": "Gerai",

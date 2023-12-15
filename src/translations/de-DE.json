@@ -39,6 +39,7 @@
   "ui.src.completeOptions.toggleEnable": "Klicken Sie hier, um die Datenerfassung für diesen Zweck zu aktivieren",
   "ui.src.completeOptionsInverted.advertisingLabel": "Werbung abbestellen",
   "ui.src.completeOptionsInverted.analyticsLabel": "Analytik abbestellen",
+  "ui.src.completeOptionsInverted.description": "-",
   "ui.src.completeOptionsInverted.functionalLabel": "Funktional abbestellen",
   "ui.src.completeOptionsInverted.saleOfInfoLabel": "Verkaufen/teilen Sie meine persönlichen Daten nicht.",
   "ui.src.messages.acceptAdvertising": "Okay",

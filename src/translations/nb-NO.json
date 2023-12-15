@@ -39,6 +39,7 @@
   "ui.src.completeOptions.toggleEnable": "Klikk for å aktivere innsamling av data for dette formålet",
   "ui.src.completeOptionsInverted.advertisingLabel": "Velg bort reklame",
   "ui.src.completeOptionsInverted.analyticsLabel": "Velg bort Analytics",
+  "ui.src.completeOptionsInverted.description": "-",
   "ui.src.completeOptionsInverted.functionalLabel": "Velg bort Functional",
   "ui.src.completeOptionsInverted.saleOfInfoLabel": "Ikke selg/del min personlige informasjon.",
   "ui.src.messages.acceptAdvertising": "Greit",

@@ -39,6 +39,7 @@
   "ui.src.completeOptions.toggleEnable": "Click to enable collection of data for this purpose",
   "ui.src.completeOptionsInverted.advertisingLabel": "Opt out of Advertising",
   "ui.src.completeOptionsInverted.analyticsLabel": "Opt out of Analytics",
+  "ui.src.completeOptionsInverted.description": "-",
   "ui.src.completeOptionsInverted.functionalLabel": "Opt out of Functional",
   "ui.src.completeOptionsInverted.saleOfInfoLabel": "Do Not Sell/Share My Personal Information.",
   "ui.src.messages.acceptAdvertising": "Okay",

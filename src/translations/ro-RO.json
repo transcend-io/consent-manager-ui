@@ -39,6 +39,7 @@
   "ui.src.completeOptions.toggleEnable": "Faceți clic pentru a permite colectarea datelor în acest scop",
   "ui.src.completeOptionsInverted.advertisingLabel": "Renunțați la publicitate",
   "ui.src.completeOptionsInverted.analyticsLabel": "Renunțați la Analytics",
+  "ui.src.completeOptionsInverted.description": "-",
   "ui.src.completeOptionsInverted.functionalLabel": "Renunțați la Funcțional",
   "ui.src.completeOptionsInverted.saleOfInfoLabel": "Nu vindeți/distribuiți informațiile mele personale.",
   "ui.src.messages.acceptAdvertising": "Bine.",

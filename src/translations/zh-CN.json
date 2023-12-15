@@ -39,6 +39,7 @@
   "ui.src.completeOptions.toggleEnable": "单击以启用用于此目的的数据收集",
   "ui.src.completeOptionsInverted.advertisingLabel": "选择退出广告",
   "ui.src.completeOptionsInverted.analyticsLabel": "选择退出分析",
+  "ui.src.completeOptionsInverted.description": "-",
   "ui.src.completeOptionsInverted.functionalLabel": "选择退出 “功能”",
   "ui.src.completeOptionsInverted.saleOfInfoLabel": "请勿出售/分享我的个人信息。",
   "ui.src.messages.acceptAdvertising": "好的",

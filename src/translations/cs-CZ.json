@@ -39,6 +39,7 @@
   "ui.src.completeOptions.toggleEnable": "Kliknutím povolíte shromažďování údajů za tímto účelem",
   "ui.src.completeOptionsInverted.advertisingLabel": "Odhlásit se z reklamy",
   "ui.src.completeOptionsInverted.analyticsLabel": "Odhlásit se z Analytics",
+  "ui.src.completeOptionsInverted.description": "-",
   "ui.src.completeOptionsInverted.functionalLabel": "Odhlásit se z funkčního",
   "ui.src.completeOptionsInverted.saleOfInfoLabel": "Neprodávají/nesdílejte mé osobní údaje.",
   "ui.src.messages.acceptAdvertising": "Dobře",

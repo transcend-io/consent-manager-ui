@@ -39,6 +39,7 @@
   "ui.src.completeOptions.toggleEnable": "Klik untuk mengaktifkan pengumpulan data untuk tujuan ini",
   "ui.src.completeOptionsInverted.advertisingLabel": "Menyisih dari Iklan",
   "ui.src.completeOptionsInverted.analyticsLabel": "Menyisih dari Analytics",
+  "ui.src.completeOptionsInverted.description": "-",
   "ui.src.completeOptionsInverted.functionalLabel": "Menyisih dari Fungsional",
   "ui.src.completeOptionsInverted.saleOfInfoLabel": "Jangan Menjual/Membagikan Informasi Pribadi Saya.",
   "ui.src.messages.acceptAdvertising": "baik",

@@ -39,6 +39,7 @@
   "ui.src.completeOptions.toggleEnable": "Fare clic per abilitare la raccolta di dati per questo scopo",
   "ui.src.completeOptionsInverted.advertisingLabel": "Disattiva la pubblicità",
   "ui.src.completeOptionsInverted.analyticsLabel": "Disattiva Analytics",
+  "ui.src.completeOptionsInverted.description": "-",
   "ui.src.completeOptionsInverted.functionalLabel": "Disattiva Functional",
   "ui.src.completeOptionsInverted.saleOfInfoLabel": "Non vendere/condividere le mie informazioni personali.",
   "ui.src.messages.acceptAdvertising": "Va bene",

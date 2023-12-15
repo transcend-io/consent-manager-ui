@@ -39,6 +39,7 @@
   "ui.src.completeOptions.toggleEnable": "انقر لتمكين جمع البيانات لهذا الغرض",
   "ui.src.completeOptionsInverted.advertisingLabel": "إلغاء الاشتراك في الإعلانات",
   "ui.src.completeOptionsInverted.analyticsLabel": "إلغاء الاشتراك في التحليلات",
+  "ui.src.completeOptionsInverted.description": "-",
   "ui.src.completeOptionsInverted.functionalLabel": "إلغاء الاشتراك في الوظيفة",
   "ui.src.completeOptionsInverted.saleOfInfoLabel": "لا تبيع/تشارك معلوماتي الشخصية.",
   "ui.src.messages.acceptAdvertising": "حسنا",

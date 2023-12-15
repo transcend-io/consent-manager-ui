@@ -39,6 +39,7 @@
   "ui.src.completeOptions.toggleEnable": "Bu amaçla veri toplanmasını etkinleştirmek için tıklayın",
   "ui.src.completeOptionsInverted.advertisingLabel": "Reklamcılıktan Vazgeçmek",
   "ui.src.completeOptionsInverted.analyticsLabel": "Analytics'i devre dışı bırakma",
+  "ui.src.completeOptionsInverted.description": "-",
   "ui.src.completeOptionsInverted.functionalLabel": "İşlevselden Çıkma",
   "ui.src.completeOptionsInverted.saleOfInfoLabel": "Kişisel Bilgilerimi Satmayı/Paylaşmayın.",
   "ui.src.messages.acceptAdvertising": "Tamam",

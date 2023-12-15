@@ -39,6 +39,7 @@
   "ui.src.completeOptions.toggleEnable": "இந்த நோக்கத்திற்காக தரவு சேகரிப்பு செயல்படுத்த கிளிக் செய்யவும்",
   "ui.src.completeOptionsInverted.advertisingLabel": "விளம்பரம் விலக",
   "ui.src.completeOptionsInverted.analyticsLabel": "அனலிட்டிக்ஸ் விலக",
+  "ui.src.completeOptionsInverted.description": "-",
   "ui.src.completeOptionsInverted.functionalLabel": "செயல்பாட்டு விலக",
   "ui.src.completeOptionsInverted.saleOfInfoLabel": "விற்க வேண்டாம்/எனது தனிப்பட்ட தகவல்களை பகிர்ந்து கொள்ளுங்கள்.",
   "ui.src.messages.acceptAdvertising": "சரி",
