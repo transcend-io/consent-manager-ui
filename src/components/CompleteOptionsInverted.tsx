@@ -13,7 +13,10 @@ import { Button } from './Button';
 import { GPCIndicator } from './GPCIndicator';
 import { Toggle } from './Toggle';
 import { CONSENT_OPTIONS } from '../constants';
-import { DEFAULT_PURPOSE_TO_MESSAGE_KEY, ORDER_OF_PURPOSES } from './constants';
+import {
+  DEFAULT_PURPOSE_TO_INVERTED_MESSAGE_KEY,
+  ORDER_OF_PURPOSES,
+} from './constants';
 
 /**
  * The model view where checking each checkbox represents an opt otu
@@ -31,7 +34,7 @@ export function CompleteOptionsInverted({
   const initialConsentSelections = getConsentSelections(airgap);
   const purposeToMessageKey = useGetPurposeMessageKeys({
     consentSelection: initialConsentSelections,
-    defaultPurposeToMessageKey: DEFAULT_PURPOSE_TO_MESSAGE_KEY,
+    defaultPurposeToMessageKey: DEFAULT_PURPOSE_TO_INVERTED_MESSAGE_KEY,
   });
 
   // Set state on the currently selected toggles
