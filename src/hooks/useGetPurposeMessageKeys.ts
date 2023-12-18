@@ -34,6 +34,7 @@ export const useGetPurposeMessageKeys = ({
       }, defaultPurposeToMessageKey as Record<string, DefinedMessage>),
     [consentSelection, defaultPurposeToMessageKey],
   );
+  console.log({ purposeToMessageKey })
 
   return purposeToMessageKey;
 };
