@@ -181,6 +181,19 @@ This banner can be used to notify users of privacy policy changes. This banner d
 | Okay                   | Closes the modal with no changes to purposes, however, airgap.getConsent().confirmed is set to true to prevent the modal from re-showing.                                                                                                                                                                        |
 | See our Privacy Policy | Redirects to the privacy policy link specified in [Consent Display Settings](https://app.transcend.io/consent-manager/display-settings) or the [`data-privacy-policy`](https://docs.transcend.io/docs/consent/faq#how-can-i-customize-the-privacy-policy-link-when-hosting-on-multiple-domains?) data attribute. |
 
+## `PrivacyPolicyNoticeWithCloseButton`
+
+This banner can be used to notify users of privacy policy changes. It does not collect consent preferences, however, it will save a consent timestamp for whenever the user acknowledges the policy change, and closes the modal. This banner is similar to `PrivacyPolicyNotice`, however instead of using a button to close the modal - an X icon is used in the top right-hand corner of the modal.
+
+![ViewState = PrivacyPolicyNoticeWithCloseButton](FIXME)
+
+#### Button Mapping
+
+| Button Title           | Callback Description                                                                                                                                                                                                                                                                                             |
+| ---------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| X - Icon               | Closes the modal with no changes to purposes, however, airgap.getConsent().confirmed is set to true to prevent the modal from re-showing.                                                                                                                                                                        |
+| See our Privacy Policy | Redirects to the privacy policy link specified in [Consent Display Settings](https://app.transcend.io/consent-manager/display-settings) or the [`data-privacy-policy`](https://docs.transcend.io/docs/consent/faq#how-can-i-customize-the-privacy-policy-link-when-hosting-on-multiple-domains?) data attribute. |
+
 ### `NoticeAndDoNotSell`
 
 **Deprecated: Use DoNotSellDisclosure or DoNotSellExplainer for CPRA compliance** This option adds too much friction, and would likely be ruled non-compliant.

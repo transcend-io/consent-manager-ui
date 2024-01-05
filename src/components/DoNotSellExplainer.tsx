@@ -5,6 +5,7 @@ import { CONSENT_OPTIONS } from '../constants';
 import { useAirgap } from '../hooks';
 import { messages } from '../messages';
 import type { HandleSetViewState } from '../types';
+import { CloseButton } from './CloseButton';
 import { GPCIndicator } from './GPCIndicator';
 import { Switch } from './Switch';
 
@@ -51,23 +52,13 @@ export function DoNotSellExplainer({
 
   return (
     <div className="column-content">
-      <button
-        type="button"
-        aria-label={formatMessage(messages.close)}
-        className="do-not-sell-explainer-close"
+      <CloseButton
         onClick={() => {
           handleSetViewState('close');
         }}
-      >
-        <svg width="24" height="24" viewBox="0 0 32 32" aria-hidden="true">
-          <path
-            fill={fontColor}
-            // eslint-disable-next-line max-len
-            d="M25.71 24.29a.996.996 0 1 1-1.41 1.41L16 17.41 7.71 25.7a.996.996 0 1 1-1.41-1.41L14.59 16l-8.3-8.29A.996.996 0 1 1 7.7 6.3l8.3 8.29 8.29-8.29a.996.996 0 1 1 1.41 1.41L17.41 16l8.3 8.29z"
-          />
-        </svg>
-        <span className="screen-reader">{formatMessage(messages.close)}</span>
-      </button>
+        className="do-not-sell-explainer-close"
+        fontColor={fontColor}
+      />
       <div>
         <div>
           <p id="consent-dialog-title" className="text-title text-title-left">

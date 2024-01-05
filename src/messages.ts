@@ -34,6 +34,17 @@ export const messages = defineMessages('ui.src.messages', {
     description:
       'The description displayed for the PrivacyPolicyNotice banner.',
   },
+  consentTitlePrivacyPolicyNoticeWithCloseButton: {
+    defaultMessage: 'Our Privacy Policy Has Changed',
+    description:
+      'The title displayed for the PrivacyPolicyNoticeWithCloseButton banner.',
+  },
+  privacyPolicyNoticeWithCloseButtonDescription: {
+    defaultMessage:
+      "We've updated your privacy policy. Click the link below to learn more about how we use your personal information.",
+    description:
+      'The description displayed for the PrivacyPolicyNoticeWithCloseButton banner.',
+  },
   consentTitleDoNotSellExplainer: {
     defaultMessage: 'Do Not Sell or Share My Personal Information',
     description: 'The title displayed for the DoNotSellExplainer banner.',
@@ -390,6 +401,11 @@ export const bottomMenuMessages = defineMessages('ui.src.bottomMenu', {
     defaultMessage: 'See our privacy policy',
     description:
       'Text for linking out to privacy policy in the PrivacyPolicyNotice UI.',
+  },
+  showPolicyButtonPrivacyPolicyNoticeWithCloseButton: {
+    defaultMessage: 'See our privacy policy',
+    description:
+      'Text for linking out to privacy policy in the PrivacyPolicyNoticeWithCloseButton UI.',
   },
   showPolicyButtonCompleteOptions: {
     defaultMessage: 'See our privacy policy',

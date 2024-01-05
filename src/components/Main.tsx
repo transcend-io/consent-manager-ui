@@ -26,6 +26,7 @@ import { AcceptOrRejectAnalytics } from './AcceptOrRejectAnalytics';
 import { DoNotSellExplainer } from './DoNotSellExplainer';
 import { QuickOptions3 } from './QuickOptions3';
 import { PrivacyPolicyNotice } from './PrivacyPolicyNotice';
+import { PrivacyPolicyNoticeWithCloseButton } from './PrivacyPolicyNoticeWithCloseButton';
 import { AcceptAllOrMoreChoices } from './AcceptAllOrMoreChoices';
 import { AcceptOrRejectAllOrMoreChoices } from './AcceptOrRejectAllOrMoreChoices';
 import { AcceptAllRejectAllToggle } from './AcceptAllRejectAllToggle';
@@ -125,6 +126,13 @@ export function Main({
 
             {viewState === 'PrivacyPolicyNotice' && (
               <PrivacyPolicyNotice handleSetViewState={handleSetViewState} />
+            )}
+
+            {viewState === 'PrivacyPolicyNoticeWithCloseButton' && (
+              <PrivacyPolicyNoticeWithCloseButton
+                handleSetViewState={handleSetViewState}
+                fontColor={config.theme.fontColor}
+              />
             )}
 
             {viewState === 'AcceptOrRejectAll' && (

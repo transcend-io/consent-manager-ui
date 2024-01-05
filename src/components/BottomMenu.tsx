@@ -38,6 +38,8 @@ const VIEW_STATE_TO_MESSAGE: { [k in ViewState]: DefinedMessage | undefined } =
     TCF_EU: undefined,
     CompleteOptionsToggles:
       bottomMenuMessages.showPolicyButtonCompleteOptionsToggles,
+    PrivacyPolicyNoticeWithCloseButton:
+      bottomMenuMessages.showPolicyButtonPrivacyPolicyNoticeWithCloseButton,
   };
 
 /**
@@ -82,6 +84,7 @@ export function BottomMenu({
           'DoNotSellDisclosure',
           'OptOutDisclosure',
           'PrivacyPolicyNotice',
+          'PrivacyPolicyNoticeWithCloseButton',
           'AcceptOrRejectAnalytics',
           'AcceptAllOrMoreChoices',
           'AcceptOrRejectAllOrMoreChoices',
