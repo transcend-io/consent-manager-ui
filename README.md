@@ -185,7 +185,7 @@ This banner can be used to notify users of privacy policy changes. This banner d
 
 This banner can be used to notify users of privacy policy changes. It does not collect consent preferences, however, it will save a consent timestamp for whenever the user acknowledges the policy change, and closes the modal. This banner is similar to `PrivacyPolicyNotice`, however instead of using a button to close the modal - an X icon is used in the top right-hand corner of the modal.
 
-![ViewState = PrivacyPolicyNoticeWithCloseButton](FIXME)
+![ViewState = PrivacyPolicyNoticeWithCloseButton](https://github.com/transcend-io/consent-manager-ui/assets/10264973/54010d7f-905a-4014-8268-5915590b177b)
 
 #### Button Mapping
 

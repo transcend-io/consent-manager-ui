@@ -1,6 +1,6 @@
 import { h, JSX } from 'preact';
 import { useIntl } from 'react-intl';
-import { messages } from 'src/messages';
+import { messages } from '../messages';
 
 /**
  * Close button, useful for closing modal

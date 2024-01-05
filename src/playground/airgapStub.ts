@@ -16,12 +16,24 @@ const getPurposeTypes: AirgapAPI['getPurposeTypes'] = () => {
   return JSON.parse(purposeTypes ?? {});
 };
 
+const AIRGAP_STATUS = {
+  protection: false,
+  csp: false,
+  monitoring: false,
+  telemetry: false,
+};
+
 export const airgapStub: AirgapAPI = {
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
   ready: (callback) => callback(airgapStub),
   /** Queue of callbacks to dispatch once airgap is ready */
   readyQueue: [],
+  toggle: () => {
+    AIRGAP_STATUS.protection = !AIRGAP_STATUS.protection;
+    return true;
+  },
+  status: AIRGAP_STATUS,
   /** Enqueue cross-domain data sync across all airgap bundle domains */
   sync: () => Promise.resolve(),
   /** Resolve airgap request overrides for a URL */
