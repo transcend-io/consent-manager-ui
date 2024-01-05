@@ -571,6 +571,63 @@ a:focus {
   margin-top: 2em;
 }
 
+/*******************
+ * AcceptAllRejectAllToggle
+ *******************/
+
+/** Styles for button of X marker in top right corner */
+.accept-all-reject-all-toggle-close {
+  --squareDimension: 25px;
+  padding: 4px;
+  position: absolute;
+  top: 21px;
+  right: 21px;
+  border: none;
+  cursor: pointer;
+  background-color: #f2f2f2;
+  border-radius: 5px;
+  height: var(--squareDimension);
+  width: var(--squareDimension);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 150ms;
+}
+
+/** Styles for button of X marker in top right corner on hover */
+.accept-all-reject-all-toggle-close:hover, .accept-all-reject-all-toggle-close:focus {
+  background-color: #e2e2e2;
+}
+
+/*******************
+ * PrivacyPolicyNoticeWithCloseButton
+ *******************/
+
+/** Styles for button of X marker in top right corner */
+.privacy-policy-notice-with-close-button-close {
+  --squareDimension: 25px;
+  padding: 4px;
+  position: absolute;
+  top: 21px;
+  right: 21px;
+  border: none;
+  cursor: pointer;
+  background-color: #f2f2f2;
+  border-radius: 5px;
+  height: var(--squareDimension);
+  width: var(--squareDimension);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 150ms;
+}
+
+/** Styles for button of X marker in top right corner on hover */
+.privacy-policy-notice-with-close-button-close:hover, .privacy-policy-notice-with-close-button-close:focus {
+  background-color: #e2e2e2;
+}
+
+
 /***********************
  * CompleteOptionsToggle
  ***********************/
