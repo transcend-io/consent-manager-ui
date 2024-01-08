@@ -23,7 +23,7 @@ const STRING_TAG = 'Transcend';
 /**
  * EventTarget shim
  */
-export const EventTargetShim = Object.freeze(
+export const TranscendEventTarget = Object.freeze(
   IS_EDGEHTML || (SAFARI_VERSION && +SAFARI_VERSION < 14)
     ? /**
        * EventTarget shim for EdgeHTML and Safari <14
