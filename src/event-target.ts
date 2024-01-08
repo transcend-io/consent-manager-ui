@@ -18,7 +18,7 @@ export const brand = <T>(object: T, brand: string): T =>
     writable: false,
   });
 
-const STRING_TAG = 'Transcend';
+const TO_STRING_TAG = 'Transcend';
 
 /**
  * EventTarget shim
@@ -42,7 +42,7 @@ export const TranscendEventTarget = Object.freeze(
           // const target = call(nativeCreateDocument, domImplementation, '', '');
           const target = document.implementation.createDocument('', '');
           // eslint-disable-next-line no-constructor-return
-          return brand(target, STRING_TAG);
+          return brand(target, TO_STRING_TAG);
         }
       }
     : /**
@@ -56,7 +56,7 @@ export const TranscendEventTarget = Object.freeze(
          */
         constructor(...args: ConstructorParameters<typeof EventTarget>) {
           super(...args);
-          brand(this, STRING_TAG);
+          brand(this, TO_STRING_TAG);
         }
       },
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
