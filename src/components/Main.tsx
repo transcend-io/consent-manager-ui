@@ -73,7 +73,7 @@ export function Main({
 
   // Modal open views
   if (!isViewStateClosed(viewState)) {
-    if (!isResponseViewState(viewState)) {
+    if (!isResponseViewState(viewState) && !airgap.getConsent().prompted) {
       airgap.setPrompted(true);
     }
     return (
