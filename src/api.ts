@@ -63,10 +63,16 @@ export function makeConsentManagerAPI({
       Promise.resolve(
         handleSetViewState(options?.viewState || 'OptOutDisclosure', auth),
       ),
-    showConsentManager: (options) =>
-      Promise.resolve(
-        handleSetViewState(options?.viewState || 'open', undefined, true),
-      ),
+    // eslint-disable-next-line require-await
+    showConsentManager: async (options) => {
+      if (options?.viewState !== ViewState.TCF_EU) {
+        handleSetViewState(options?.viewState || 'open', undefined, true);
+        return;
+      }
+      logger.warn(
+        'TCF_EU view state is not valid. Please configure your regime to use this view state.',
+      );
+    },
     hideConsentManager: () => Promise.resolve(handleSetViewState('close')),
     toggleConsentManager: () =>
       Promise.resolve(
