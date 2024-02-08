@@ -1,5 +1,5 @@
 import { useCallback, useState } from 'preact/hooks';
-import {
+import type {
   AirgapAuth,
   DismissedViewState,
   ResponseViewState,
