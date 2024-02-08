@@ -82,6 +82,7 @@ export function makeConsentManagerAPI({
           ViewState.Closed,
           ViewState.Collapsed,
           ViewState.Hidden,
+          ViewState.LanguageOptions,
         ];
         logger.error(
           `${
