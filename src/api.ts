@@ -65,13 +65,28 @@ export function makeConsentManagerAPI({
       ),
     // eslint-disable-next-line require-await
     showConsentManager: async (options) => {
-      if (options?.viewState !== ViewState.TCF_EU) {
-        handleSetViewState(options?.viewState || 'open', undefined, true);
+      if (options?.viewState === ViewState.TCF_EU) {
+        logger.warn(
+          'TCF_EU view state is not valid. Please configure your regime to use this view state.',
+        );
         return;
       }
-      logger.warn(
-        'TCF_EU view state is not valid. Please configure your regime to use this view state.',
-      );
+      if (
+        options?.viewState &&
+        !Object.values(ViewState).includes(options.viewState)
+      ) {
+        logger.warn(
+          `${
+            options.viewState
+          } is not a valid view state. Valid view states include ${Object.values(
+            ViewState,
+          )
+            .filter((viewState) => viewState !== ViewState.TCF_EU)
+            .join(', ')}`,
+        );
+        return;
+      }
+      handleSetViewState(options?.viewState || 'open', undefined, true);
     },
     hideConsentManager: () => Promise.resolve(handleSetViewState('close')),
     toggleConsentManager: () =>
