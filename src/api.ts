@@ -67,7 +67,8 @@ export function makeConsentManagerAPI({
     showConsentManager: async (options) => {
       if (options?.viewState === ViewState.TCF_EU) {
         logger.error(
-          'TCF_EU view state is not valid. Please configure your regime to use this view state.',
+          'TCF_EU view state is not valid for this user experience. ' +
+            'Please configure your Regional Experience to use this view state and try again.',
         );
         return;
       }
