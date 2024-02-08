@@ -2,6 +2,7 @@ import {
   AirgapAPI,
   ConsentManagerAPI,
   ViewState,
+  InitialViewState,
 } from '@transcend-io/airgap.js-types';
 import { isViewStateClosed } from './hooks';
 import { logger } from './logger';
@@ -63,10 +64,37 @@ export function makeConsentManagerAPI({
       Promise.resolve(
         handleSetViewState(options?.viewState || 'OptOutDisclosure', auth),
       ),
-    showConsentManager: (options) =>
-      Promise.resolve(
-        handleSetViewState(options?.viewState || 'open', undefined, true),
-      ),
+    // eslint-disable-next-line require-await
+    showConsentManager: async (options) => {
+      if (options?.viewState === ViewState.TCF_EU) {
+        logger.error(
+          'TCF_EU view state is not valid for this user experience. ' +
+            'Please configure your Regional Experience to use this view state and try again.',
+        );
+        return;
+      }
+      const excludedViewStates: InitialViewState[] = [
+        InitialViewState.TCF_EU, // not valid without TCF experience
+        InitialViewState.Hidden, // not 'open'
+      ];
+      const validViewStates = Object.values(InitialViewState).filter(
+        (state) => !excludedViewStates.includes(state),
+      );
+      if (
+        options?.viewState &&
+        !validViewStates.includes(options.viewState as InitialViewState)
+      ) {
+        logger.error(
+          `${
+            options.viewState
+          } is not a valid view state. Valid view states include ${validViewStates.join(
+            ', ',
+          )}`,
+        );
+        return;
+      }
+      handleSetViewState(options?.viewState || 'open', undefined, true);
+    },
     hideConsentManager: () => Promise.resolve(handleSetViewState('close')),
     toggleConsentManager: () =>
       Promise.resolve(
