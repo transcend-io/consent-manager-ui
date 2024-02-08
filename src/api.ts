@@ -76,13 +76,20 @@ export function makeConsentManagerAPI({
         options?.viewState &&
         !Object.values(ViewState).includes(options.viewState)
       ) {
+        // view states that are not valid since they are closed or TCF
+        const invalidViewStates: ViewState[] = [
+          ViewState.TCF_EU,
+          ViewState.Closed,
+          ViewState.Collapsed,
+          ViewState.Hidden,
+        ];
         logger.error(
           `${
             options.viewState
           } is not a valid view state. Valid view states include ${Object.values(
             ViewState,
           )
-            .filter((viewState) => viewState !== ViewState.TCF_EU)
+            .filter((viewState) => !invalidViewStates.includes(viewState))
             .join(', ')}`,
         );
         return;
