@@ -66,7 +66,7 @@ export function makeConsentManagerAPI({
     // eslint-disable-next-line require-await
     showConsentManager: async (options) => {
       if (options?.viewState === ViewState.TCF_EU) {
-        logger.warn(
+        logger.error(
           'TCF_EU view state is not valid. Please configure your regime to use this view state.',
         );
         return;
@@ -75,7 +75,7 @@ export function makeConsentManagerAPI({
         options?.viewState &&
         !Object.values(ViewState).includes(options.viewState)
       ) {
-        logger.warn(
+        logger.error(
           `${
             options.viewState
           } is not a valid view state. Valid view states include ${Object.values(
