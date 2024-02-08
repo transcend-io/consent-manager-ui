@@ -63,7 +63,7 @@ const inheritLogLevels = (logLevels: LogLevel[]): LogLevel[] => {
 };
 
 const wildcardLogLevels = ['all', '*'];
-const logLevelsSetting = (settings.log ?? '').toLowerCase();
+const logLevelsSetting = (settings.log ?? 'warn error').toLowerCase();
 
 /**
  * Enabled log levels
