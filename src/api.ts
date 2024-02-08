@@ -2,6 +2,7 @@ import {
   AirgapAPI,
   ConsentManagerAPI,
   ViewState,
+  InitialViewState,
 } from '@transcend-io/airgap.js-types';
 import { isViewStateClosed } from './hooks';
 import { logger } from './logger';
@@ -72,26 +73,23 @@ export function makeConsentManagerAPI({
         );
         return;
       }
+      const excludedViewStates: InitialViewState[] = [
+        InitialViewState.TCF_EU, // not valid without TCF experience
+        InitialViewState.Hidden, // not 'open'
+      ];
+      const validViewStates = Object.values(InitialViewState).filter(
+        (state) => !excludedViewStates.includes(state),
+      );
       if (
         options?.viewState &&
-        !Object.values(ViewState).includes(options.viewState)
+        !validViewStates.includes(options.viewState as InitialViewState)
       ) {
-        // view states that are not valid since they are closed or TCF
-        const invalidViewStates: ViewState[] = [
-          ViewState.TCF_EU,
-          ViewState.Closed,
-          ViewState.Collapsed,
-          ViewState.Hidden,
-          ViewState.LanguageOptions,
-        ];
         logger.error(
           `${
             options.viewState
-          } is not a valid view state. Valid view states include ${Object.values(
-            ViewState,
-          )
-            .filter((viewState) => !invalidViewStates.includes(viewState))
-            .join(', ')}`,
+          } is not a valid view state. Valid view states include ${validViewStates.join(
+            ', ',
+          )}`,
         );
         return;
       }
