@@ -52,6 +52,7 @@ export function useViewState({
   initialViewState,
   dismissedViewState,
   eventTarget,
+  savedActiveElement,
 }: {
   /** Which state this consent manager should go to when opened */
   initialViewState: InitialViewState;
@@ -59,6 +60,8 @@ export function useViewState({
   dismissedViewState: DismissedViewState;
   /** The event target on the `transcend` API, where we will dispatch view state change events */
   eventTarget: EventTarget;
+  /** Element previously focused before our ui modal was opened */
+  savedActiveElement: HTMLElement | null;
 }): {
   /** The current view state */
   viewState: ViewState;
@@ -118,14 +121,24 @@ export function useViewState({
           break;
 
         // Request to close the modal, to the closed view state (which depends on whether customer wants to display the collapse view or hide it)
-        case 'close':
+        case 'close': {
           setState({
             current: dismissedViewState,
             previous: state.current,
             auth,
             firstSelectedViewState: null,
           });
+          if (savedActiveElement !== null) {
+            savedActiveElement.focus();
+          } else {
+            const tempInteractiveEl = document.createElement('span');
+            tempInteractiveEl.setAttribute('tabindex', '1');
+            document.body.prepend(tempInteractiveEl);
+            tempInteractiveEl.focus();
+            tempInteractiveEl.remove();
+          }
           break;
+        }
 
         // Request to go to a specific view state, e.g. the language options page
         default:
