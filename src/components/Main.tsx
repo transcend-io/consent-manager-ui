@@ -81,6 +81,7 @@ export function Main({
         role="dialog"
         aria-modal="true"
         aria-labelledby="consent-dialog-title"
+        aria-live="polite"
         className="modal-container"
         id="consentManagerMainDialog"
         ref={dialogRef}
