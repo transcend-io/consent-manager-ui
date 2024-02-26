@@ -58,6 +58,11 @@ export function App({
       initialViewState,
       dismissedViewState,
       eventTarget,
+      savedActiveElement:
+        document.activeElement instanceof HTMLElement &&
+        document.activeElement !== document.body
+          ? document.activeElement
+          : null,
     });
 
   // Language setup
