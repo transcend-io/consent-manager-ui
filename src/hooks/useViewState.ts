@@ -128,6 +128,12 @@ export function useViewState({
             auth,
             firstSelectedViewState: null,
           });
+          /* If the user previously had something focused before the modal popped up, then focus it.
+           * Otherwise, we have to do this really janky "reset" behavior with the temporary element
+           * because Chrome specifically has some weird internal state around focus order that is
+           * very difficult to interact with. We create an element with maximum focus priority and
+           * focus it so that when we delete it the user will be at the start of the focus order
+           * just like if they had freshly loaded the page. */
           if (savedActiveElement !== null) {
             savedActiveElement.focus();
           } else {
