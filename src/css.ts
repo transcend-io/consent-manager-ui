@@ -17,7 +17,7 @@ export const injectCss = (stylesheetUrl: string): Promise<void> =>
       link.rel = 'stylesheet';
       link.id = stylesheetUrl;
       link.href = stylesheetUrl;
-      link.addEventListener('load', () => res);
+      link.addEventListener('load', () => res());
       root.appendChild(link);
     } else {
       logger.error(`Failed to inject css into consent manager!`);
