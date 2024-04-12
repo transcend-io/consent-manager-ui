@@ -4,13 +4,9 @@ import type {
 } from '@transcend-io/airgap.js-types';
 import { DEFAULT_VIEW_STATE_BY_PRIVACY_REGIME_COPIED } from '../config';
 
-export const defaultConfig: ConsentManagerConfig = {
+export const defaultConfig: Partial<ConsentManagerConfig> = {
   css: './build/cm.css',
   messages: '',
-  theme: {
-    primaryColor: '#3333FF',
-    fontColor: '#010101',
-  },
   breakpoints: {
     tablet: '640px',
     desktop: '1024px',
