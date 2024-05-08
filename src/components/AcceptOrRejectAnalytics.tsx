@@ -19,16 +19,21 @@ export function AcceptOrRejectAnalytics({
   const { formatMessage } = useIntl();
 
   return (
-    <div className="column-content">
+    <div className="column-content" role="none">
       <div>
         <div>
-          <p id="consent-dialog-title" className="text-title text-title-left">
+          <p
+            id="consent-dialog-title"
+            role="heading"
+            className="text-title text-title-left"
+          >
             {formatMessage(messages.consentTitleAcceptOrRejectAnalytics)}
           </p>
         </div>
         <div>
           <p className="paragraph">
             <div
+              role="paragraph"
               // eslint-disable-next-line react/no-danger
               dangerouslySetInnerHTML={{
                 __html: formatMessage(
@@ -39,7 +44,7 @@ export function AcceptOrRejectAnalytics({
           </p>
         </div>
       </div>
-      <div className="accept-or-reject-all-button-row">
+      <div className="accept-or-reject-all-button-row" role="none">
         <Button
           primaryText={formatMessage(messages.acceptAnalytics)}
           handleClick={(event) => {
@@ -47,6 +52,9 @@ export function AcceptOrRejectAnalytics({
             airgap.setConsent(event, { Analytics: true }, CONSENT_OPTIONS);
             handleSetViewState('close');
           }}
+          ariaDescription={formatMessage(
+            messages.acceptAnalyticsButtonAriaDescription,
+          )}
         />
         <Button
           primaryText={formatMessage(messages.rejectAnalytics)}
@@ -55,6 +63,10 @@ export function AcceptOrRejectAnalytics({
             airgap.setConsent(event, { Analytics: false }, CONSENT_OPTIONS);
             handleSetViewState('close');
           }}
+          ariaDescription={formatMessage(
+            messages.rejectAnalyticsButtonAriaDescription,
+          )}
+          autoFocus
         />
       </div>
     </div>

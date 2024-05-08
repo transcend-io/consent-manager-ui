@@ -32,6 +32,9 @@ import { AcceptOrRejectAllOrMoreChoices } from './AcceptOrRejectAllOrMoreChoices
 import { AcceptAllRejectAllToggle } from './AcceptAllRejectAllToggle';
 import { useEffect, useRef } from 'preact/hooks';
 import { CompleteOptionsToggles } from './CompleteOptionsToggles';
+import { useIntl } from 'react-intl';
+import { messages } from '../messages';
+import { autoFocusElement } from '../helpers';
 
 /**
  * Presents view states (collapsed, GDPR-mode, CCPA-mode etc)
@@ -63,11 +66,14 @@ export function Main({
   /** Set of supported languages */
   supportedLanguages: ConsentManagerLanguageKey[];
 }): JSX.Element {
+  const { formatMessage } = useIntl();
   // need to focus the first button in the modal when the modal is opened
   const dialogRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
     if (!isViewStateClosed(viewState) && dialogRef.current) {
-      dialogRef?.current?.querySelector('button')?.focus();
+      setTimeout(() => {
+        if (dialogRef.current) autoFocusElement(dialogRef.current);
+      }, 0);
     }
   }, [viewState, dialogRef]);
 
@@ -80,14 +86,18 @@ export function Main({
       <div
         role="dialog"
         aria-modal="true"
-        aria-labelledby="consent-dialog-title"
+        aria-label={formatMessage(messages.modalAriaLabel)}
         aria-live="polite"
         className="modal-container"
         id="consentManagerMainDialog"
         ref={dialogRef}
       >
         <div role="document" className="modal-container-inner" tabIndex={0}>
-          <div role="document" className="inner-container">
+          <div
+            role="main"
+            className="inner-container"
+            aria-description={formatMessage(messages.modalAriaDescription)}
+          >
             {viewState === 'QuickOptions' && (
               <QuickOptions handleSetViewState={handleSetViewState} />
             )}
@@ -193,7 +203,7 @@ export function Main({
               />
             )}
           </div>
-          <div className="footer-container">
+          <div role="contentinfo" className="footer-container">
             <TranscendLogo fontColor={config.theme.fontColor} />
             <BottomMenu
               firstSelectedViewState={firstSelectedViewState}

@@ -13,6 +13,7 @@ export function Toggle({
   handleToggle,
   ariaLabel,
   invertLabels,
+  autoFocus,
 }: {
   /** The name for this consent toggle */
   name: string;
@@ -26,13 +27,14 @@ export function Toggle({
   ariaLabel?: string;
   /** When true, invert the labels for the alt text */
   invertLabels?: boolean;
+  /** Whether to autofocus this input */
+  autoFocus?: true;
 }): JSX.Element {
   const { formatMessage } = useIntl();
 
   const [toggleState, setToggleState] = useState<boolean>(initialToggleState);
 
-  const handleChange = (event: JSX.TargetedEvent): void => {
-    const { checked } = event.target as HTMLInputElement; // preact typing bug https://github.com/preactjs/preact/issues/1930
+  const handleChange = (checked: boolean): void => {
     setToggleState(checked);
     handleToggle(checked);
   };
@@ -43,7 +45,6 @@ export function Toggle({
   return (
     <label
       className="toggle-label"
-      htmlFor={id}
       aria-label={
         ariaLabel ||
         `${
@@ -67,8 +68,17 @@ export function Toggle({
         id={id}
         name={name}
         checked={toggleState}
-        onChange={handleChange}
+        onChange={() => handleChange(!toggleState)}
         disabled={disabled}
+        onKeyPress={(e) => {
+          if (e.key !== 'Enter') return;
+          e.stopPropagation();
+          e.preventDefault();
+          handleChange(!toggleState);
+        }}
+        {...{
+          'data-autofocus': autoFocus,
+        }}
       />
       <span className="toggle-checkmark" />
       {name}

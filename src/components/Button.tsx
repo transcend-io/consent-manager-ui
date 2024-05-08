@@ -7,6 +7,9 @@ export function Button({
   primaryText,
   secondaryText,
   handleClick,
+  type,
+  ariaDescription,
+  autoFocus,
 }: {
   /** The button primary text */
   primaryText: string;
@@ -14,9 +17,23 @@ export function Button({
   secondaryText?: string;
   /** Parent handler for the form */
   handleClick: JSX.MouseEventHandler<HTMLButtonElement> | undefined;
+  /** Optional button type */
+  type?: 'submit' | 'reset' | 'button';
+  /** Aria button description */
+  ariaDescription?: string;
+  /** Whether to autofocus this button */
+  autoFocus?: true;
 }): JSX.Element {
   return (
-    <button className="button" onClick={handleClick}>
+    <button
+      className="button"
+      onClick={handleClick}
+      {...{
+        type,
+        'aria-description': ariaDescription,
+        'data-autofocus': autoFocus,
+      }}
+    >
       <span className="button-base-text button-primary-text">
         {primaryText}
       </span>

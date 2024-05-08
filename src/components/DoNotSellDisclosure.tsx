@@ -50,10 +50,14 @@ export function DoNotSellDisclosure({
     return <div />;
   }
   return (
-    <div className="column-content">
+    <div className="column-content" role="none">
       <div>
         <div>
-          <p id="consent-dialog-title" className="text-title text-title-left">
+          <p
+            id="consent-dialog-title"
+            role="heading"
+            className="text-title text-title-left"
+          >
             {formatMessage(
               globalPrivacyControl
                 ? noticeAndDoNotSellMessages.doNotSellHonoredGpc
@@ -64,6 +68,7 @@ export function DoNotSellDisclosure({
         <div>
           <p className="paragraph">
             <div
+              role="paragraph"
               // eslint-disable-next-line react/no-danger
               dangerouslySetInnerHTML={{
                 __html: formatMessage(
@@ -79,6 +84,7 @@ export function DoNotSellDisclosure({
           noticeAndDoNotSellMessages.confirmButtonPrimary,
         )}
         handleClick={handleConfirm}
+        autoFocus
       />
     </div>
   );

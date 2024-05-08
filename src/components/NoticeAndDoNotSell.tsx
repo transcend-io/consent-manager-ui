@@ -28,8 +28,12 @@ export function NoticeAndDoNotSell({
   };
 
   return (
-    <div className="column-content">
-      <p id="consent-dialog-title" className="text-title text-title-left">
+    <div className="column-content" role="none">
+      <p
+        id="consent-dialog-title"
+        role="heading"
+        className="text-title text-title-left"
+      >
         {formatMessage(messages.noticeTitle)}
       </p>
       <Button
@@ -37,6 +41,8 @@ export function NoticeAndDoNotSell({
           noticeAndDoNotSellMessages.confirmButtonPrimary,
         )}
         handleClick={handleConfirm}
+        ariaDescription={formatMessage(messages.noticeButtonAriaDescription)}
+        autoFocus
       />
     </div>
   );

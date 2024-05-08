@@ -63,6 +63,22 @@ export const messages = defineMessages('ui.src.messages', {
     description:
       'The negative response for opting out of analytics in the "AcceptOrRejectAnalytics" view state.',
   },
+  acceptAnalyticsButtonAriaDescription: {
+    defaultMessage: 'Accept analytics and close dialog',
+    description: 'The aria description on the accept analytics button.',
+  },
+  rejectAnalyticsButtonAriaDescription: {
+    defaultMessage: `Reject analytics and close dialog`,
+    description: 'The aria description on the reject analytics button.',
+  },
+  acceptAdvertisingButtonAriaDescription: {
+    defaultMessage: 'Accept advertising and close dialog',
+    description: 'The aria description on the accept advertising button.',
+  },
+  rejectAdvertisingButtonAriaDescription: {
+    defaultMessage: `Reject advertising and close dialog`,
+    description: 'The aria description on the reject advertising button.',
+  },
   acceptOrRejectAnalyticsDescription: {
     defaultMessage:
       'By clicking "Okay", you agree to the usage of your sensitive information for analytics purposes.',
@@ -181,6 +197,31 @@ export const messages = defineMessages('ui.src.messages', {
     description:
       'The description text for the CompleteOptionsToggles view state.',
   },
+  modalAriaLabel: {
+    defaultMessage: 'User data usage dialog',
+    description:
+      'The aria label used by screen readers for the modal. This is read when the modal is opened and focused.',
+  },
+  modalAriaDescription: {
+    defaultMessage:
+      'Please review the below information or selections regarding your user data usage.',
+    description:
+      'The aria description used by screen readers for the modal. This is read when the modal is opened and focused.',
+  },
+  acceptAllButtonAriaDescription: {
+    defaultMessage: 'Accept all cookies and close dialog.',
+    description:
+      'The aria description read when the accept all button is focused.',
+  },
+  rejectAllButtonAriaDescription: {
+    defaultMessage: 'Reject all cookies and close dialog.',
+    description:
+      'The aria description read when the reject all button is focused.',
+  },
+  noticeButtonAriaDescription: {
+    defaultMessage: 'Acknowledge and close dialog.',
+    description: 'The aria description read when the ok button is focused.',
+  },
 });
 
 export const quickOptionsMessages = defineMessages('ui.src.quickOptions', {
@@ -233,6 +274,10 @@ export const quickOptionsMessages = defineMessages('ui.src.quickOptions', {
     defaultMessage: 'helps us personalize ads',
     description:
       'Secondary button text for selecting functional, essential, analytics and advertising data flows/cookies.',
+  },
+  buttonAriaDescription: {
+    defaultMessage: 'Select consent and close dialog',
+    description: 'Description for consent submission buttons.',
   },
 });
 

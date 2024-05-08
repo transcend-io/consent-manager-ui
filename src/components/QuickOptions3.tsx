@@ -61,10 +61,14 @@ export function QuickOptions3({
 
   return (
     <div>
-      <p id="consent-dialog-title" className="text-title text-title-center">
+      <p
+        id="consent-dialog-title"
+        role="heading"
+        className="text-title text-title-center"
+      >
         {formatMessage(messages.consentTitle)}
       </p>
-      <div className="column-content">
+      <div className="column-content" role="none">
         <Button
           primaryText={formatMessage(
             quickOptionsMessages.essentialsButtonPrimary,
@@ -75,6 +79,10 @@ export function QuickOptions3({
           handleClick={(event) =>
             handleQuickOption(event, QuickOption.Essential)
           }
+          ariaDescription={formatMessage(
+            quickOptionsMessages.buttonAriaDescription,
+          )}
+          autoFocus
         />
         <Button
           primaryText={formatMessage(
@@ -86,6 +94,9 @@ export function QuickOptions3({
           handleClick={(event) =>
             handleQuickOption(event, QuickOption.AnalyticsFunctional)
           }
+          ariaDescription={formatMessage(
+            quickOptionsMessages.buttonAriaDescription,
+          )}
         />
         <Button
           primaryText={formatMessage(
@@ -97,6 +108,9 @@ export function QuickOptions3({
           handleClick={(event) =>
             handleQuickOption(event, QuickOption.Advertising)
           }
+          ariaDescription={formatMessage(
+            quickOptionsMessages.buttonAriaDescription,
+          )}
         />
       </div>
     </div>

@@ -80,6 +80,7 @@ export function OptOutDisclosure({
           noticeAndDoNotSellMessages.confirmButtonPrimary,
         )}
         handleClick={handleConfirm}
+        autoFocus
       />
     </div>
   );

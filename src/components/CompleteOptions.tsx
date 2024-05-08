@@ -73,8 +73,12 @@ export function CompleteOptions({
   const description = formatMessage(completeOptionsMessages.description);
 
   return (
-    <div className="complete-options-container">
-      <p id="consent-dialog-title" className="text-title text-title-center">
+    <div className="complete-options-container" role="none">
+      <p
+        role="heading"
+        id="consent-dialog-title"
+        className="text-title text-title-center"
+      >
         {formatMessage(messages.consentTitle)}
       </p>
       <form className="complete-options-form">
@@ -103,7 +107,7 @@ export function CompleteOptions({
               completeOptionsMessages.essentialAriaLabel,
             )}
           />
-          {orderedSelections.map(([purpose, isChecked]) => (
+          {orderedSelections.map(([purpose, isChecked], idx) => (
             <Toggle
               key={purpose}
               name={
@@ -116,12 +120,14 @@ export function CompleteOptions({
               handleToggle={(checked: boolean) =>
                 handleToggle(purpose, checked)
               }
+              {...(idx === 0 ? { autoFocus: true } : {})}
             />
           ))}
         </div>
         <Button
           handleClick={handleSave}
           primaryText={formatMessage(completeOptionsMessages.saveButtonPrimary)}
+          type="submit"
         />
       </form>
     </div>

@@ -39,16 +39,21 @@ export function AcceptAllOrMoreChoices({
   };
 
   return (
-    <div className="column-content">
+    <div className="column-content" role="none">
       <div>
         <div>
-          <p id="consent-dialog-title" className="text-title text-title-left">
+          <p
+            id="consent-dialog-title"
+            role="heading"
+            className="text-title text-title-left"
+          >
             {formatMessage(messages.consentTitleAcceptAll)}
           </p>
         </div>
         <div>
           <p className="paragraph">
             <div
+              role="paragraph"
               // eslint-disable-next-line react/no-danger
               dangerouslySetInnerHTML={{
                 __html: formatMessage(messages.acceptAllDescription),
@@ -61,10 +66,14 @@ export function AcceptAllOrMoreChoices({
         <Button
           primaryText={formatMessage(messages.acceptAllButtonPrimary)}
           handleClick={handleAcceptAll}
+          ariaDescription={formatMessage(
+            messages.acceptAllButtonAriaDescription,
+          )}
         />
         <Button
           primaryText={formatMessage(messages.moreChoicesButtonPrimary)}
           handleClick={handleMoreChoices}
+          autoFocus
         />
       </div>
     </div>

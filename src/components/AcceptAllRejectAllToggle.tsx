@@ -30,7 +30,7 @@ export function AcceptAllRejectAllToggle({
   const [consentLocal, setConsentLocal] = useState(
     !!airgap.getConsent().purposes.SaleOfInfo,
   );
-  const switchId = `all-purposes-${consentLocal}`;
+  const switchId = `all-purposes`;
 
   const handleSwitch = (
     checked: boolean,
@@ -57,7 +57,7 @@ export function AcceptAllRejectAllToggle({
   };
 
   return (
-    <div className="column-content">
+    <div className="column-content" role="none">
       <CloseButton
         onClick={() => {
           handleSetViewState('close');
@@ -67,13 +67,18 @@ export function AcceptAllRejectAllToggle({
       />
       <div>
         <div>
-          <p id="consent-dialog-title" className="text-title text-title-left">
+          <p
+            id="consent-dialog-title"
+            role="heading"
+            className="text-title text-title-left"
+          >
             {formatMessage(messages.consentTitleAcceptAllRejectAllToggle)}
           </p>
         </div>
         <div>
           <p className="paragraph">
             <div
+              role="paragraph"
               // eslint-disable-next-line react/no-danger
               dangerouslySetInnerHTML={{
                 __html: formatMessage(
@@ -94,9 +99,13 @@ export function AcceptAllRejectAllToggle({
                 ? messages.doNotSellOptedIn
                 : messages.doNotSellOptedOut,
             )}
+            autoFocus
           />
-
-          <p className="paragraph">
+          <p
+            className="paragraph"
+            role={'status'}
+            aria-hidden={typeof saving === 'boolean' ? 'false' : 'true'}
+          >
             {typeof saving === 'boolean'
               ? formatMessage(
                   saving

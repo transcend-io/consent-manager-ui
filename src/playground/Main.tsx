@@ -27,7 +27,10 @@ export default function Main(): JSX.Element {
           Open a view
         </p>
         {Object.values(ViewState)
-          .filter((viewState) => viewState !== 'DoNotSellDisclosure')
+          .filter(
+            (viewState) =>
+              !['DoNotSellDisclosure', 'OptOutDisclosure'].includes(viewState),
+          )
           .map((viewState) => (
             <button
               class="button secondary"
@@ -42,6 +45,12 @@ export default function Main(): JSX.Element {
           onClick={(e) => window.transcend?.doNotSell(e)}
         >
           Do Not Sell or Share My Personal Information
+        </button>
+        <button
+          class="button secondary"
+          onClick={(e) => window.transcend?.optOutNotice(e)}
+        >
+          Opt Out Disclosure
         </button>
       </div>
 
