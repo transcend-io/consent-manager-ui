@@ -27,9 +27,7 @@ export function CloseButton({
       aria-label={formatMessage(messages.close)}
       className={className}
       onClick={onClick}
-      {...{
-        'data-autofocus': autoFocus,
-      }}
+      data-autofocus={autoFocus}
     >
       <svg width="24" height="24" viewBox="0 0 32 32" aria-hidden="true">
         <path
