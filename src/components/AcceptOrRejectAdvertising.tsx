@@ -44,7 +44,11 @@ export function AcceptOrRejectAdvertising({
           </p>
         </div>
       </div>
-      <div className="accept-or-reject-all-button-row" role="none">
+      <div
+        className="accept-or-reject-all-button-row"
+        role="group"
+        aria-label={formatMessage(messages.buttonGroupAriaDescription)}
+      >
         <Button
           primaryText={formatMessage(messages.acceptAdvertising)}
           handleClick={(event) => {
@@ -52,9 +56,6 @@ export function AcceptOrRejectAdvertising({
             airgap.setConsent(event, { Advertising: true }, CONSENT_OPTIONS);
             handleSetViewState('close');
           }}
-          ariaDescription={formatMessage(
-            messages.acceptAdvertisingButtonAriaDescription,
-          )}
         />
         <Button
           primaryText={formatMessage(messages.rejectAdvertising)}
@@ -63,9 +64,6 @@ export function AcceptOrRejectAdvertising({
             airgap.setConsent(event, { Advertising: false }, CONSENT_OPTIONS);
             handleSetViewState('close');
           }}
-          ariaDescription={formatMessage(
-            messages.rejectAdvertisingButtonAriaDescription,
-          )}
           autoFocus
         />
       </div>

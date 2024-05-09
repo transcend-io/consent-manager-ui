@@ -94,7 +94,11 @@ export function CompleteOptions({
           </p>
         ) : undefined}
 
-        <div className="toggles-container">
+        <div
+          className="toggles-container"
+          role="group"
+          aria-label={formatMessage(messages.buttonGroupAriaDescription)}
+        >
           <Toggle
             key="Essential"
             name={formatMessage(purposeToMessageKey.Essential)}

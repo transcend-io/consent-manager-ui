@@ -102,7 +102,11 @@ export function CompleteOptionsInverted({
             />
           </p>
         ) : undefined}
-        <div className="toggles-container" role="none">
+        <div
+          className="toggles-container"
+          role="group"
+          aria-label={formatMessage(messages.buttonGroupAriaDescription)}
+        >
           {orderedSelections.map(([purpose, isChecked], idx) => (
             <Toggle
               key={purpose}

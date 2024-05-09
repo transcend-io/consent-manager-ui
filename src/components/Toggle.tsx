@@ -76,9 +76,7 @@ export function Toggle({
           e.preventDefault();
           handleChange(!toggleState);
         }}
-        {...{
-          'data-autofocus': autoFocus,
-        }}
+        data-autofocus={autoFocus}
       />
       <span className="toggle-checkmark" />
       {name}

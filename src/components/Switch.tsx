@@ -43,9 +43,7 @@ export function Switch({
           if (e.key !== 'Enter') return;
           handleSwitch(!checked, e);
         }}
-        {...{
-          'data-autofocus': autoFocus,
-        }}
+        data-autofocus={autoFocus}
       />
       <span className="switch switch-background">
         <span className="switch switch-button" />

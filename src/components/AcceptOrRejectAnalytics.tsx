@@ -44,7 +44,11 @@ export function AcceptOrRejectAnalytics({
           </p>
         </div>
       </div>
-      <div className="accept-or-reject-all-button-row" role="none">
+      <div
+        className="accept-or-reject-all-button-row"
+        role="group"
+        aria-label={formatMessage(messages.buttonGroupAriaDescription)}
+      >
         <Button
           primaryText={formatMessage(messages.acceptAnalytics)}
           handleClick={(event) => {
@@ -52,9 +56,6 @@ export function AcceptOrRejectAnalytics({
             airgap.setConsent(event, { Analytics: true }, CONSENT_OPTIONS);
             handleSetViewState('close');
           }}
-          ariaDescription={formatMessage(
-            messages.acceptAnalyticsButtonAriaDescription,
-          )}
         />
         <Button
           primaryText={formatMessage(messages.rejectAnalytics)}
@@ -63,9 +64,6 @@ export function AcceptOrRejectAnalytics({
             airgap.setConsent(event, { Analytics: false }, CONSENT_OPTIONS);
             handleSetViewState('close');
           }}
-          ariaDescription={formatMessage(
-            messages.rejectAnalyticsButtonAriaDescription,
-          )}
           autoFocus
         />
       </div>

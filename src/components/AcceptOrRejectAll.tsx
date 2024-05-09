@@ -63,20 +63,18 @@ export function AcceptOrRejectAll({
           </p>
         </div>
       </div>
-      <div className="accept-or-reject-all-button-row" role="none">
+      <div
+        className="accept-or-reject-all-button-row"
+        role="group"
+        aria-label={formatMessage(messages.buttonGroupAriaDescription)}
+      >
         <Button
           primaryText={formatMessage(messages.acceptAllButtonPrimary)}
           handleClick={handleAcceptAll}
-          ariaDescription={formatMessage(
-            messages.acceptAllButtonAriaDescription,
-          )}
         />
         <Button
           primaryText={formatMessage(messages.rejectAllButtonPrimary)}
           handleClick={handleRejectAll}
-          ariaDescription={formatMessage(
-            messages.rejectAllButtonAriaDescription,
-          )}
           autoFocus
         />
       </div>

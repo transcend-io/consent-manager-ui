@@ -68,7 +68,11 @@ export function QuickOptions3({
       >
         {formatMessage(messages.consentTitle)}
       </p>
-      <div className="column-content" role="none">
+      <div
+        className="column-content"
+        role="group"
+        aria-label={formatMessage(messages.buttonGroupAriaDescription)}
+      >
         <Button
           primaryText={formatMessage(
             quickOptionsMessages.essentialsButtonPrimary,
@@ -79,9 +83,6 @@ export function QuickOptions3({
           handleClick={(event) =>
             handleQuickOption(event, QuickOption.Essential)
           }
-          ariaDescription={formatMessage(
-            quickOptionsMessages.buttonAriaDescription,
-          )}
           autoFocus
         />
         <Button
@@ -94,9 +95,6 @@ export function QuickOptions3({
           handleClick={(event) =>
             handleQuickOption(event, QuickOption.AnalyticsFunctional)
           }
-          ariaDescription={formatMessage(
-            quickOptionsMessages.buttonAriaDescription,
-          )}
         />
         <Button
           primaryText={formatMessage(
@@ -108,9 +106,6 @@ export function QuickOptions3({
           handleClick={(event) =>
             handleQuickOption(event, QuickOption.Advertising)
           }
-          ariaDescription={formatMessage(
-            quickOptionsMessages.buttonAriaDescription,
-          )}
         />
       </div>
     </div>

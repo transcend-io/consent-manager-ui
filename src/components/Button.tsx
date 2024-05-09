@@ -28,11 +28,9 @@ export function Button({
     <button
       className="button"
       onClick={handleClick}
-      {...{
-        type,
-        'aria-description': ariaDescription,
-        'data-autofocus': autoFocus,
-      }}
+      type={type}
+      aria-description={ariaDescription}
+      data-autofocus={autoFocus}
     >
       <span className="button-base-text button-primary-text">
         {primaryText}

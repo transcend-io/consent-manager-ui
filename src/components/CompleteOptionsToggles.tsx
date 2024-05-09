@@ -101,7 +101,11 @@ export function CompleteOptionsToggles({
             />
           </p>
         </div>
-        <div className="margin-tops complete-options-toggle-interface">
+        <div
+          className="margin-tops complete-options-toggle-interface"
+          role="group"
+          aria-label={formatMessage(messages.buttonGroupAriaDescription)}
+        >
           <span key="essential">
             <Switch
               id={`Essential-true`}
