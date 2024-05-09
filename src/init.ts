@@ -84,7 +84,7 @@ export const init = async (): Promise<void> => {
     );
 
     // Inject CSS into the application
-    injectCss(settings.css || 'cm.css');
+    await injectCss(settings.css || 'cm.css');
 
     // Create the Transcend API
     const transcend: TranscendAPI = Object.assign(consentManagerAPI, {
