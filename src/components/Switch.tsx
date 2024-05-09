@@ -9,7 +9,7 @@ export function Switch({
   handleSwitch,
   disabled,
   label,
-  autoFocus,
+  initialFocus,
 }: {
   /** Based opt in status */
   checked: boolean;
@@ -25,11 +25,8 @@ export function Switch({
   /** The label for the switch */
   label: string;
   /** Whether to autofocus this input */
-  autoFocus?: true;
+  initialFocus?: true;
 }): JSX.Element {
-  const handleClick = (e: JSX.TargetedEvent<HTMLInputElement, Event>): void =>
-    handleSwitch(!checked, e);
-
   return (
     <label className="switch label">
       <input
@@ -38,12 +35,12 @@ export function Switch({
         type="checkbox"
         disabled={disabled}
         checked={checked}
-        onClick={handleClick}
+        onChange={(e) => handleSwitch(!checked, e)}
         onKeyPress={(e) => {
           if (e.key !== 'Enter') return;
           handleSwitch(!checked, e);
         }}
-        data-autofocus={autoFocus}
+        data-initialFocus={initialFocus}
       />
       <span className="switch switch-background">
         <span className="switch switch-button" />
