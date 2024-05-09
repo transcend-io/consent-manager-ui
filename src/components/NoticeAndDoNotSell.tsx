@@ -42,7 +42,7 @@ export function NoticeAndDoNotSell({
         )}
         handleClick={handleConfirm}
         ariaDescription={formatMessage(messages.noticeButtonAriaDescription)}
-        autoFocus
+        initialFocus
       />
     </div>
   );

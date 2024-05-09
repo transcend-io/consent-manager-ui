@@ -13,7 +13,7 @@ export function Toggle({
   handleToggle,
   ariaLabel,
   invertLabels,
-  autoFocus,
+  initialFocus,
 }: {
   /** The name for this consent toggle */
   name: string;
@@ -28,7 +28,7 @@ export function Toggle({
   /** When true, invert the labels for the alt text */
   invertLabels?: boolean;
   /** Whether to autofocus this input */
-  autoFocus?: true;
+  initialFocus?: true;
 }): JSX.Element {
   const { formatMessage } = useIntl();
 
@@ -76,7 +76,7 @@ export function Toggle({
           e.preventDefault();
           handleChange(!toggleState);
         }}
-        data-autofocus={autoFocus}
+        data-initialFocus={initialFocus}
       />
       <span className="toggle-checkmark" />
       {name}

@@ -9,7 +9,7 @@ export function Button({
   handleClick,
   type,
   ariaDescription,
-  autoFocus,
+  initialFocus,
 }: {
   /** The button primary text */
   primaryText: string;
@@ -22,7 +22,7 @@ export function Button({
   /** Aria button description */
   ariaDescription?: string;
   /** Whether to autofocus this button */
-  autoFocus?: true;
+  initialFocus?: true;
 }): JSX.Element {
   return (
     <button
@@ -30,7 +30,7 @@ export function Button({
       onClick={handleClick}
       type={type}
       aria-description={ariaDescription}
-      data-autofocus={autoFocus}
+      data-initialFocus={initialFocus}
     >
       <span className="button-base-text button-primary-text">
         {primaryText}

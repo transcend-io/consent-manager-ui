@@ -84,7 +84,7 @@ export function DoNotSellDisclosure({
           noticeAndDoNotSellMessages.confirmButtonPrimary,
         )}
         handleClick={handleConfirm}
-        autoFocus
+        initialFocus
       />
     </div>
   );

@@ -56,7 +56,7 @@ export function AcceptOrRejectAdvertising({
             airgap.setConsent(event, { Advertising: false }, CONSENT_OPTIONS);
             handleSetViewState('close');
           }}
-          autoFocus
+          initialFocus
         />
         <Button
           primaryText={formatMessage(messages.acceptAdvertising)}

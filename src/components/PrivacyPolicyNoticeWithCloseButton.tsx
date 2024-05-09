@@ -32,7 +32,7 @@ export function PrivacyPolicyNoticeWithCloseButton({
         }}
         className="privacy-policy-notice-with-close-button-close"
         fontColor={fontColor}
-        autoFocus
+        initialFocus
       />
       <div>
         <div>

@@ -70,7 +70,7 @@ export function AcceptAllOrMoreChoices({
         <Button
           primaryText={formatMessage(messages.moreChoicesButtonPrimary)}
           handleClick={handleMoreChoices}
-          autoFocus
+          initialFocus
         />
         <Button
           primaryText={formatMessage(messages.acceptAllButtonPrimary)}

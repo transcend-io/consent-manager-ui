@@ -99,7 +99,7 @@ export function AcceptAllRejectAllToggle({
                 ? messages.doNotSellOptedIn
                 : messages.doNotSellOptedOut,
             )}
-            autoFocus
+            initialFocus
           />
           <p
             className="paragraph"

@@ -56,7 +56,7 @@ export function AcceptOrRejectAnalytics({
             airgap.setConsent(event, { Analytics: false }, CONSENT_OPTIONS);
             handleSetViewState('close');
           }}
-          autoFocus
+          initialFocus
         />
         <Button
           primaryText={formatMessage(messages.acceptAnalytics)}

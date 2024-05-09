@@ -121,7 +121,7 @@ export function CompleteOptionsInverted({
               handleToggle={(checked: boolean) =>
                 handleToggle(purpose, checked)
               }
-              {...(idx === 0 ? { autoFocus: true } : {})}
+              {...(idx === 0 ? { initialFocus: true } : {})}
             />
           ))}
         </div>

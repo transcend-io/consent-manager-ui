@@ -146,7 +146,7 @@ export function CompleteOptionsToggles({
                     ? formatMessage(purposeToMessageKey[purpose])
                     : purpose
                 }
-                {...(idx === 0 ? { autoFocus: true } : {})}
+                {...(idx === 0 ? { initialFocus: true } : {})}
               />
               <p className="paragraph complete-options-toggle-description">
                 {purposeToDescription[purpose]?.description}

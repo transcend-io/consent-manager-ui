@@ -1,11 +1,11 @@
 /**
- * Focuses first descendant of the root arg with the data-autofocus attribute
+ * Focuses first descendant of the root arg with the data-initialFocus attribute
  *
  * @param root - element to use as document root
  */
-export function autoFocusElement(root: Element | DocumentFragment): void {
+export function initialFocusElement(root: Element | DocumentFragment): void {
   const el = root.querySelector(
-    'button[data-autofocus=true], input[data-autofocus=true]',
+    'button[data-initialFocus=true], input[data-initialFocus=true]',
   ) as HTMLButtonElement | HTMLInputElement | null;
   el?.focus();
 }

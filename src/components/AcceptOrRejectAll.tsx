@@ -71,7 +71,7 @@ export function AcceptOrRejectAll({
         <Button
           primaryText={formatMessage(messages.rejectAllButtonPrimary)}
           handleClick={handleRejectAll}
-          autoFocus
+          initialFocus
         />
         <Button
           primaryText={formatMessage(messages.acceptAllButtonPrimary)}

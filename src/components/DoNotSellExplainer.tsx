@@ -89,7 +89,7 @@ export function DoNotSellExplainer({
                 ? messages.doNotSellOptedIn
                 : messages.doNotSellOptedOut,
             )}
-            autoFocus
+            initialFocus
           />
 
           <p

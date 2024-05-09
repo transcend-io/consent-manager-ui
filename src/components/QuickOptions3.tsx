@@ -83,7 +83,7 @@ export function QuickOptions3({
           handleClick={(event) =>
             handleQuickOption(event, QuickOption.Essential)
           }
-          autoFocus
+          initialFocus
         />
         <Button
           primaryText={formatMessage(

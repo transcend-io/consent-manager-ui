@@ -56,7 +56,7 @@ export function AcceptAll({
         primaryText={formatMessage(messages.acceptAllButtonPrimary)}
         handleClick={handleAcceptAll}
         ariaDescription={formatMessage(messages.acceptAllButtonAriaDescription)}
-        autoFocus
+        initialFocus
       />
     </div>
   );

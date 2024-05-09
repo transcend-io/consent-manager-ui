@@ -56,7 +56,7 @@ export function PrivacyPolicyNotice({
       <Button
         primaryText={formatMessage(messages.privacyPolicyNoticeButton)}
         handleClick={handlePrivacyPolicyNotice}
-        autoFocus
+        initialFocus
       />
     </div>
   );
