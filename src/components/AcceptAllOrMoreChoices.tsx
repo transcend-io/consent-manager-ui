@@ -68,13 +68,13 @@ export function AcceptAllOrMoreChoices({
         aria-label={formatMessage(messages.buttonGroupAriaDescription)}
       >
         <Button
-          primaryText={formatMessage(messages.acceptAllButtonPrimary)}
-          handleClick={handleAcceptAll}
-        />
-        <Button
           primaryText={formatMessage(messages.moreChoicesButtonPrimary)}
           handleClick={handleMoreChoices}
           autoFocus
+        />
+        <Button
+          primaryText={formatMessage(messages.acceptAllButtonPrimary)}
+          handleClick={handleAcceptAll}
         />
       </div>
     </div>

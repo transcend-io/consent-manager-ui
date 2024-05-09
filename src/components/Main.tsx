@@ -67,7 +67,9 @@ export function Main({
   supportedLanguages: ConsentManagerLanguageKey[];
 }): JSX.Element {
   const { formatMessage } = useIntl();
-  // need to focus the first button in the modal when the modal is opened
+  // need to focus the element marked with data-autofocus when the modal is opened
+  // regular autofocus attributes caused errors, thus the data attribute usage
+  // NOTE: if we want to meet a11y guidelines we will need to implement a focus trap as well
   const dialogRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
     if (!isViewStateClosed(viewState) && dialogRef.current) {

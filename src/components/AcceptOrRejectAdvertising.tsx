@@ -50,14 +50,6 @@ export function AcceptOrRejectAdvertising({
         aria-label={formatMessage(messages.buttonGroupAriaDescription)}
       >
         <Button
-          primaryText={formatMessage(messages.acceptAdvertising)}
-          handleClick={(event) => {
-            event.preventDefault();
-            airgap.setConsent(event, { Advertising: true }, CONSENT_OPTIONS);
-            handleSetViewState('close');
-          }}
-        />
-        <Button
           primaryText={formatMessage(messages.rejectAdvertising)}
           handleClick={(event) => {
             event.preventDefault();
@@ -65,6 +57,14 @@ export function AcceptOrRejectAdvertising({
             handleSetViewState('close');
           }}
           autoFocus
+        />
+        <Button
+          primaryText={formatMessage(messages.acceptAdvertising)}
+          handleClick={(event) => {
+            event.preventDefault();
+            airgap.setConsent(event, { Advertising: true }, CONSENT_OPTIONS);
+            handleSetViewState('close');
+          }}
         />
       </div>
     </div>
