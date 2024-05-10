@@ -9,6 +9,7 @@ export function CloseButton({
   className,
   fontColor,
   onClick,
+  initialFocus,
 }: {
   /** Class name of button */
   className: string;
@@ -16,6 +17,8 @@ export function CloseButton({
   fontColor: string;
   /** Function to change viewState */
   onClick: (event: JSX.TargetedEvent<HTMLButtonElement, MouseEvent>) => void;
+  /** Whether to autofocus this button */
+  initialFocus?: true;
 }): JSX.Element {
   const { formatMessage } = useIntl();
   return (
@@ -24,6 +27,7 @@ export function CloseButton({
       aria-label={formatMessage(messages.close)}
       className={className}
       onClick={onClick}
+      data-initialFocus={initialFocus}
     >
       <svg width="24" height="24" viewBox="0 0 32 32" aria-hidden="true">
         <path

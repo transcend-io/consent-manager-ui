@@ -181,6 +181,30 @@ export const messages = defineMessages('ui.src.messages', {
     description:
       'The description text for the CompleteOptionsToggles view state.',
   },
+  modalAriaLabel: {
+    defaultMessage: 'User data usage dialog',
+    description:
+      'The aria label used by screen readers for the modal. This is read when the modal is opened and focused.',
+  },
+  modalAriaDescription: {
+    defaultMessage:
+      'Please review the below information or selections regarding your user data usage.',
+    description:
+      'The aria description used by screen readers for the modal. This is read when the modal is opened and focused.',
+  },
+  acceptAllButtonAriaDescription: {
+    defaultMessage: 'Accept all cookies and close dialog.',
+    description:
+      'The aria description read when the accept all button is focused.',
+  },
+  noticeButtonAriaDescription: {
+    defaultMessage: 'Acknowledge and close dialog.',
+    description: 'The aria description read when the ok button is focused.',
+  },
+  buttonGroupAriaDescription: {
+    defaultMessage: 'Select consent and close dialog',
+    description: 'Description for consent submission button groups.',
+  },
 });
 
 export const quickOptionsMessages = defineMessages('ui.src.quickOptions', {

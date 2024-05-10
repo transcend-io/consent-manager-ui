@@ -1,4 +1,4 @@
-import { Fragment, h, JSX } from 'preact';
+import { h, JSX } from 'preact';
 
 /**
  * A switch
@@ -9,6 +9,7 @@ export function Switch({
   handleSwitch,
   disabled,
   label,
+  initialFocus,
 }: {
   /** Based opt in status */
   checked: boolean;
@@ -23,31 +24,28 @@ export function Switch({
   id: string;
   /** The label for the switch */
   label: string;
+  /** Whether to autofocus this input */
+  initialFocus?: true;
 }): JSX.Element {
-  const handleClick = (
-    event: JSX.TargetedEvent<HTMLInputElement, Event>,
-  ): void => {
-    event.preventDefault();
-    handleSwitch(!checked, event);
-  };
-
   return (
-    <Fragment>
-      <label className="switch label">
-        <input
-          key={id}
-          className="switch switch-checkbox screen-reader"
-          id={`switch-${id}`}
-          type="checkbox"
-          disabled={disabled}
-          checked={checked}
-          onClick={handleClick}
-        />
-        <span className="switch switch-background">
-          <span className="switch switch-button" />
-        </span>
-        {label}
-      </label>
-    </Fragment>
+    <label className="switch label">
+      <input
+        className="switch switch-checkbox screen-reader"
+        id={`switch-${id}`}
+        type="checkbox"
+        disabled={disabled}
+        checked={checked}
+        onChange={(e) => handleSwitch(!checked, e)}
+        onKeyPress={(e) => {
+          if (e.key !== 'Enter') return;
+          handleSwitch(!checked, e);
+        }}
+        data-initialFocus={initialFocus}
+      />
+      <span className="switch switch-background">
+        <span className="switch switch-button" />
+      </span>
+      {label}
+    </label>
   );
 }

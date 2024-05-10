@@ -59,10 +59,18 @@ export function QuickOptions({
 
   return (
     <div>
-      <p id="consent-dialog-title" className="text-title text-title-center">
+      <p
+        id="consent-dialog-title"
+        className="text-title text-title-center"
+        role="heading"
+      >
         {formatMessage(messages.consentTitle)}
       </p>
-      <div className="column-content">
+      <div
+        role="group"
+        className="column-content"
+        aria-label={formatMessage(messages.buttonGroupAriaDescription)}
+      >
         <Button
           primaryText={formatMessage(
             quickOptionsMessages.essentialsButtonPrimary,
@@ -73,6 +81,7 @@ export function QuickOptions({
           handleClick={(event) =>
             handleQuickOption(event, QuickOption.Essential)
           }
+          initialFocus
         />
         <Button
           primaryText={formatMessage(

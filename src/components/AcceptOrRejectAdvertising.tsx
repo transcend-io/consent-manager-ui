@@ -19,16 +19,21 @@ export function AcceptOrRejectAdvertising({
   const { formatMessage } = useIntl();
 
   return (
-    <div className="column-content">
+    <div className="column-content" role="none">
       <div>
         <div>
-          <p id="consent-dialog-title" className="text-title text-title-left">
+          <p
+            id="consent-dialog-title"
+            role="heading"
+            className="text-title text-title-left"
+          >
             {formatMessage(messages.consentTitleAcceptOrRejectAdvertising)}
           </p>
         </div>
         <div>
           <p className="paragraph">
             <div
+              role="paragraph"
               // eslint-disable-next-line react/no-danger
               dangerouslySetInnerHTML={{
                 __html: formatMessage(
@@ -39,20 +44,25 @@ export function AcceptOrRejectAdvertising({
           </p>
         </div>
       </div>
-      <div className="accept-or-reject-all-button-row">
-        <Button
-          primaryText={formatMessage(messages.acceptAdvertising)}
-          handleClick={(event) => {
-            event.preventDefault();
-            airgap.setConsent(event, { Advertising: true }, CONSENT_OPTIONS);
-            handleSetViewState('close');
-          }}
-        />
+      <div
+        className="accept-or-reject-all-button-row"
+        role="group"
+        aria-label={formatMessage(messages.buttonGroupAriaDescription)}
+      >
         <Button
           primaryText={formatMessage(messages.rejectAdvertising)}
           handleClick={(event) => {
             event.preventDefault();
             airgap.setConsent(event, { Advertising: false }, CONSENT_OPTIONS);
+            handleSetViewState('close');
+          }}
+          initialFocus
+        />
+        <Button
+          primaryText={formatMessage(messages.acceptAdvertising)}
+          handleClick={(event) => {
+            event.preventDefault();
+            airgap.setConsent(event, { Advertising: true }, CONSENT_OPTIONS);
             handleSetViewState('close');
           }}
         />

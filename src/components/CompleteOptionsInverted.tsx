@@ -82,8 +82,12 @@ export function CompleteOptionsInverted({
   );
 
   return (
-    <div className="complete-options-container">
-      <p id="consent-dialog-title" className="text-title text-title-center">
+    <div className="complete-options-container" role="none">
+      <p
+        id="consent-dialog-title"
+        role="heading"
+        className="text-title text-title-center"
+      >
         {formatMessage(messages.completeOptionsInvertedTitle)}
       </p>
       <form className="complete-options-form">
@@ -98,8 +102,12 @@ export function CompleteOptionsInverted({
             />
           </p>
         ) : undefined}
-        <div className="toggles-container">
-          {orderedSelections.map(([purpose, isChecked]) => (
+        <div
+          className="toggles-container"
+          role="group"
+          aria-label={formatMessage(messages.buttonGroupAriaDescription)}
+        >
+          {orderedSelections.map(([purpose, isChecked], idx) => (
             <Toggle
               key={purpose}
               invertLabels
@@ -113,6 +121,7 @@ export function CompleteOptionsInverted({
               handleToggle={(checked: boolean) =>
                 handleToggle(purpose, checked)
               }
+              {...(idx === 0 ? { initialFocus: true } : {})}
             />
           ))}
         </div>

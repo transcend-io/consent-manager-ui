@@ -171,6 +171,11 @@ a:focus {
   word-wrap: break-word;
 }
 
+.toggle-label input:focus + span {
+  outline: 2px solid rgba(51, 157, 255, 0.7);
+  outline-offset: 1px;
+}
+
 /** Style applied to create custom checkmark */
 .toggle-checkmark {
   display: inline-block;
@@ -709,6 +714,7 @@ a:focus {
   vertical-align: baseline;
   text-shadow: none;
   white-space: nowrap;
+  padding: 0 5px;
 }
 
 /** Removes checkbox for the switch since checkbox is basis for switch */

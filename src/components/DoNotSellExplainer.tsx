@@ -31,7 +31,6 @@ export function DoNotSellExplainer({
   const [consentLocal, setConsentLocal] = useState(
     !!airgap.getConsent().purposes.SaleOfInfo,
   );
-  const switchId = `sale-of-info-${consentLocal}`;
 
   const handleSwitch = (
     checked: boolean,
@@ -51,7 +50,7 @@ export function DoNotSellExplainer({
   };
 
   return (
-    <div className="column-content">
+    <div className="column-content" role="none">
       <CloseButton
         onClick={() => {
           handleSetViewState('close');
@@ -61,7 +60,11 @@ export function DoNotSellExplainer({
       />
       <div>
         <div>
-          <p id="consent-dialog-title" className="text-title text-title-left">
+          <p
+            id="consent-dialog-title"
+            role="heading"
+            className="text-title text-title-left"
+          >
             {formatMessage(messages.consentTitleDoNotSellExplainer)}
           </p>
         </div>
@@ -78,7 +81,7 @@ export function DoNotSellExplainer({
         <div className="margin-tops do-not-sell-explainer-interface">
           <GPCIndicator />
           <Switch
-            id={switchId}
+            id="sale-of-info"
             checked={consentLocal}
             handleSwitch={handleSwitch}
             label={formatMessage(
@@ -86,9 +89,14 @@ export function DoNotSellExplainer({
                 ? messages.doNotSellOptedIn
                 : messages.doNotSellOptedOut,
             )}
+            initialFocus
           />
 
-          <p className="paragraph">
+          <p
+            className="paragraph"
+            role={'status'}
+            aria-hidden={typeof saving === 'boolean' ? 'false' : 'true'}
+          >
             {typeof saving === 'boolean'
               ? formatMessage(
                   saving

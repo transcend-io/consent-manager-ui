@@ -70,7 +70,7 @@ export function CompleteOptionsToggles({
   };
 
   return (
-    <div className="column-content">
+    <div className="column-content" role="none">
       <CloseButton
         onClick={() => {
           handleSetViewState('close');
@@ -80,13 +80,18 @@ export function CompleteOptionsToggles({
       />
       <div>
         <div>
-          <p id="consent-dialog-title" className="text-title text-title-left">
+          <p
+            id="consent-dialog-title"
+            role="heading"
+            className="text-title text-title-left"
+          >
             {formatMessage(messages.consentTitleCompleteOptionsToggle)}
           </p>
         </div>
         <div>
           <p className="paragraph">
             <div
+              role="paragraph"
               // eslint-disable-next-line react/no-danger
               dangerouslySetInnerHTML={{
                 __html: formatMessage(
@@ -96,7 +101,11 @@ export function CompleteOptionsToggles({
             />
           </p>
         </div>
-        <div className="margin-tops complete-options-toggle-interface">
+        <div
+          className="margin-tops complete-options-toggle-interface"
+          role="group"
+          aria-label={formatMessage(messages.buttonGroupAriaDescription)}
+        >
           <span key="essential">
             <Switch
               id={`Essential-true`}
@@ -120,10 +129,10 @@ export function CompleteOptionsToggles({
               {purposeToDescription.Essential?.description}
             </p>
           </span>
-          {orderedSelections.map(([purpose, isChecked]) => (
+          {orderedSelections.map(([purpose, isChecked], idx) => (
             <span key={purpose}>
               <Switch
-                id={`${purpose}-${isChecked}`}
+                id={purpose}
                 checked={isChecked}
                 handleSwitch={(checked, event) =>
                   handleSwitch({
@@ -137,6 +146,7 @@ export function CompleteOptionsToggles({
                     ? formatMessage(purposeToMessageKey[purpose])
                     : purpose
                 }
+                {...(idx === 0 ? { initialFocus: true } : {})}
               />
               <p className="paragraph complete-options-toggle-description">
                 {purposeToDescription[purpose]?.description}

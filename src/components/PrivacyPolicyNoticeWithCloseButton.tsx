@@ -23,7 +23,7 @@ export function PrivacyPolicyNoticeWithCloseButton({
   const { formatMessage } = useIntl();
 
   return (
-    <div className="column-content">
+    <div className="column-content" role="none">
       <CloseButton
         onClick={(event) => {
           event.preventDefault();
@@ -32,10 +32,15 @@ export function PrivacyPolicyNoticeWithCloseButton({
         }}
         className="privacy-policy-notice-with-close-button-close"
         fontColor={fontColor}
+        initialFocus
       />
       <div>
         <div>
-          <p id="consent-dialog-title" className="text-title text-title-left">
+          <p
+            id="consent-dialog-title"
+            role="heading"
+            className="text-title text-title-left"
+          >
             {formatMessage(
               messages.consentTitlePrivacyPolicyNoticeWithCloseButton,
             )}
@@ -44,6 +49,7 @@ export function PrivacyPolicyNoticeWithCloseButton({
         <div>
           <p className="paragraph">
             <div
+              role="paragraph"
               // eslint-disable-next-line react/no-danger
               dangerouslySetInnerHTML={{
                 __html: formatMessage(
