@@ -73,6 +73,7 @@ export function Main({
   const dialogRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
     if (!isViewStateClosed(viewState) && dialogRef.current) {
+      // This setTimeout was necessary for the api triggered states, (DoNotSell|OptOut)Disclosure
       setTimeout(() => {
         if (dialogRef.current) initialFocusElement(dialogRef.current);
       }, 0);

@@ -103,7 +103,7 @@ export function AcceptAllRejectAllToggle({
           />
           <p
             className="paragraph"
-            role={'status'}
+            role="status"
             aria-hidden={typeof saving === 'boolean' ? 'false' : 'true'}
           >
             {typeof saving === 'boolean'
