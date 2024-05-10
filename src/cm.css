@@ -171,6 +171,7 @@ a:focus {
   word-wrap: break-word;
 }
 
+/** Style applied to the checkbox toggle box */
 .toggle-label input:focus + span {
   outline: 2px solid rgba(51, 157, 255, 0.7);
   outline-offset: 1px;
