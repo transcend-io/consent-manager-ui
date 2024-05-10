@@ -84,6 +84,8 @@ export const init = async (): Promise<void> => {
     );
 
     // Inject CSS into the application
+    // TODO: This should probably be awaited but it breaks non-stubbed airgap inits
+    // https://transcend.height.app/T-35913
     injectCss(settings.css || 'cm.css');
 
     // Create the Transcend API
