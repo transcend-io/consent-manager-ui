@@ -136,6 +136,7 @@ export function makeConsentManagerAPI({
       handleSetViewState('open', undefined, true);
       return Promise.resolve();
     },
+    version: process.env.VERSION as string,
   };
 
   const consentManagerAPI: ConsentManagerAPI = Object.assign(
