@@ -91,7 +91,7 @@ export const build = async (
               }
             : undefined,
         define: {
-          'process.env.version': JSON.stringify(
+          'process.env.VERSION': JSON.stringify(
             // eslint-disable-next-line global-require, import/no-dynamic-require
             require(`${cwd}/package.json`).version,
           ),
