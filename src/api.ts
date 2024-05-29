@@ -13,6 +13,7 @@ import {
   HandleChangePrivacyPolicy,
   HandleSetViewState,
 } from './types';
+import { VERSION } from './constants';
 
 interface MakeConsentManagerAPIInput {
   /** The event target, where events as dispatched */
@@ -136,7 +137,7 @@ export function makeConsentManagerAPI({
       handleSetViewState('open', undefined, true);
       return Promise.resolve();
     },
-    version: process.env.VERSION as string,
+    version: VERSION,
   };
 
   const consentManagerAPI: ConsentManagerAPI = Object.assign(

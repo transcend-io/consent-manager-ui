@@ -15,6 +15,7 @@ import { injectCss } from './css';
 import { logger } from './logger';
 import { LOG_ENABLED, LOG_LEVELS, settings } from './settings';
 import { throwOutside } from './utils/throw-outside';
+import { VERSION } from './constants';
 
 // eslint-disable-next-line no-restricted-globals, @typescript-eslint/no-explicit-any
 const view = self as any;
@@ -71,7 +72,7 @@ export const init = async (): Promise<void> => {
   try {
     if (LOG_ENABLED) {
       logger.tag('Transcend', () => {
-        logger.groupCollapsed('Initializing Consent Manager UI');
+        logger.groupCollapsed(`Initializing Consent Manager UI v${VERSION}`);
       });
     }
 
