@@ -34,7 +34,10 @@ export const injectConsentManagerApp = async (
     try {
       const shadowRoot =
         consentManager?.attachShadow?.({
-          mode: mergedConfig.config.uiShadowRoot || 'closed',
+          mode:
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            (mergedConfig.config.uiShadowRoot as any as 'closed' | 'open') ||
+            'closed',
         }) || consentManager;
 
       // Create an inner div for event listeners
