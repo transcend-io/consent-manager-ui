@@ -1,7 +1,7 @@
 import { h, JSX } from 'preact';
 import { useIntl } from 'react-intl';
 import { CONSENT_OPTIONS } from '../constants';
-import { useAirgap } from '../hooks';
+import { useAirgap, useAuth } from '../hooks';
 import { messages } from '../messages';
 import type { HandleSetViewState } from '../types';
 import { CloseButton } from './CloseButton';
@@ -20,6 +20,7 @@ export function PrivacyPolicyNoticeWithCloseButton({
   fontColor: string;
 }): JSX.Element {
   const { airgap } = useAirgap();
+  const { auth } = useAuth();
   const { formatMessage } = useIntl();
 
   return (
@@ -27,7 +28,7 @@ export function PrivacyPolicyNoticeWithCloseButton({
       <CloseButton
         onClick={(event) => {
           event.preventDefault();
-          airgap.setConsent(event, {}, CONSENT_OPTIONS);
+          airgap.setConsent(auth || event, {}, CONSENT_OPTIONS);
           handleSetViewState('close');
         }}
         className="privacy-policy-notice-with-close-button-close"

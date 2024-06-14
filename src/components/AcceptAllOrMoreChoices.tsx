@@ -1,6 +1,6 @@
 import { h, JSX } from 'preact';
 import { useIntl } from 'react-intl';
-import { useAirgap } from '../hooks';
+import { useAirgap, useAuth } from '../hooks';
 import { messages } from '../messages';
 import type { HandleSetViewState } from '../types';
 import { Button } from './Button';
@@ -15,6 +15,7 @@ export function AcceptAllOrMoreChoices({
   handleSetViewState: HandleSetViewState;
 }): JSX.Element {
   const { airgap } = useAirgap();
+  const { auth } = useAuth();
   const { formatMessage } = useIntl();
 
   // Opt in to all purposes
@@ -24,7 +25,7 @@ export function AcceptAllOrMoreChoices({
     event: JSX.TargetedEvent<HTMLButtonElement, MouseEvent>,
   ): void => {
     event.preventDefault();
-    airgap.optIn(event);
+    airgap.optIn(auth || event);
     handleSetViewState('close');
   };
 

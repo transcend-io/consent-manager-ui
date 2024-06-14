@@ -1,7 +1,7 @@
 import { h, JSX } from 'preact';
 import { useIntl } from 'react-intl';
 import { CONSENT_OPTIONS } from '../constants';
-import { useAirgap } from '../hooks';
+import { useAirgap, useAuth } from '../hooks';
 import { messages } from '../messages';
 import type { HandleSetViewState } from '../types';
 import { Button } from './Button';
@@ -16,6 +16,7 @@ export function AcceptOrRejectAdvertising({
   handleSetViewState: HandleSetViewState;
 }): JSX.Element {
   const { airgap } = useAirgap();
+  const { auth } = useAuth();
   const { formatMessage } = useIntl();
 
   return (
@@ -53,7 +54,11 @@ export function AcceptOrRejectAdvertising({
           primaryText={formatMessage(messages.rejectAdvertising)}
           handleClick={(event) => {
             event.preventDefault();
-            airgap.setConsent(event, { Advertising: false }, CONSENT_OPTIONS);
+            airgap.setConsent(
+              auth || event,
+              { Advertising: false },
+              CONSENT_OPTIONS,
+            );
             handleSetViewState('close');
           }}
           initialFocus
@@ -62,7 +67,11 @@ export function AcceptOrRejectAdvertising({
           primaryText={formatMessage(messages.acceptAdvertising)}
           handleClick={(event) => {
             event.preventDefault();
-            airgap.setConsent(event, { Advertising: true }, CONSENT_OPTIONS);
+            airgap.setConsent(
+              auth || event,
+              { Advertising: true },
+              CONSENT_OPTIONS,
+            );
             handleSetViewState('close');
           }}
         />

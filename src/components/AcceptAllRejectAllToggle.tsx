@@ -25,6 +25,7 @@ export function AcceptAllRejectAllToggle({
   fontColor: string;
 }): JSX.Element {
   const { airgap } = useAirgap();
+  const { auth } = useAuth();
   const { formatMessage } = useIntl();
   const [saving, setSaving] = useState<boolean | null>(null);
   const [consentLocal, setConsentLocal] = useState(
@@ -38,10 +39,10 @@ export function AcceptAllRejectAllToggle({
   ): void => {
     if (checked) {
       event.preventDefault();
-      airgap.optIn(event);
+      airgap.optIn(auth || event);
     } else {
       event.preventDefault();
-      airgap.optOut(event);
+      airgap.optOut(auth || event);
     }
 
     setConsentLocal(checked);

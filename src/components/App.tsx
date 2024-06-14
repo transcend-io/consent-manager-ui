@@ -15,6 +15,7 @@ import { makeConsentManagerAPI } from '../api';
 import { TranscendEventTarget } from '../event-target';
 import { useState } from 'preact/hooks';
 import { MergedConsentManagerConfig } from '../types';
+import { useAuth } from 'src/hooks/useAuth';
 
 // TODO: https://transcend.height.app/T-13483
 // Fix IntlProvider JSX types
@@ -52,18 +53,26 @@ export function App({
       privacyRegime as keyof typeof initialViewStateByPrivacyRegime
     ] || 'Hidden';
 
+  // Auth key setup
+  const { auth: storedAuth, handleChangeAuthKey } = useAuth();
+
   // View state controller. Defaults based on regime and config.
-  const { viewState, firstSelectedViewState, handleSetViewState, auth } =
-    useViewState({
-      initialViewState,
-      dismissedViewState,
-      eventTarget,
-      savedActiveElement:
-        document.activeElement instanceof HTMLElement &&
-        document.activeElement !== document.body
-          ? document.activeElement
-          : null,
-    });
+  const {
+    viewState,
+    firstSelectedViewState,
+    handleSetViewState,
+    /** auth for triggering authenticated/side-effect view states  */
+    auth,
+  } = useViewState({
+    initialViewState,
+    dismissedViewState,
+    eventTarget,
+    savedActiveElement:
+      document.activeElement instanceof HTMLElement &&
+      document.activeElement !== document.body
+        ? document.activeElement
+        : null,
+  });
 
   // Language setup
   const { language, handleChangeLanguage, messages } = useLanguage({
@@ -80,6 +89,7 @@ export function App({
   const consentManagerAPI = makeConsentManagerAPI({
     eventTarget,
     viewState,
+    handleChangeAuthKey,
     handleChangeLanguage,
     handleSetViewState,
     handleChangePrivacyPolicy: (privacyPolicyUrl) =>

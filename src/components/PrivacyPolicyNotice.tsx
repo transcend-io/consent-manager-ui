@@ -1,7 +1,7 @@
 import { h, JSX } from 'preact';
 import { useIntl } from 'react-intl';
 import { CONSENT_OPTIONS } from '../constants';
-import { useAirgap } from '../hooks';
+import { useAirgap, useAuth } from '../hooks';
 import { messages } from '../messages';
 import type { HandleSetViewState } from '../types';
 import { Button } from './Button';
@@ -16,6 +16,7 @@ export function PrivacyPolicyNotice({
   handleSetViewState: HandleSetViewState;
 }): JSX.Element {
   const { airgap } = useAirgap();
+  const { auth } = useAuth();
   const { formatMessage } = useIntl();
 
   // Opt in to all purposes
@@ -25,7 +26,7 @@ export function PrivacyPolicyNotice({
     event: JSX.TargetedEvent<HTMLButtonElement, MouseEvent>,
   ): void => {
     event.preventDefault();
-    airgap.setConsent(event, {}, CONSENT_OPTIONS);
+    airgap.setConsent(auth || event, {}, CONSENT_OPTIONS);
     handleSetViewState('close');
   };
 

@@ -1,7 +1,7 @@
 import { h, JSX } from 'preact';
 import { useState } from 'preact/hooks';
 import { useIntl } from 'react-intl';
-import { useAirgap, useGetPurposeMessageKeys } from '../hooks';
+import { useAirgap, useAuth, useGetPurposeMessageKeys } from '../hooks';
 import { messages, completeOptionsMessages } from '../messages';
 import type { ConsentSelection, HandleSetViewState } from '../types';
 import { getConsentSelections } from '../consent-selections';
@@ -22,6 +22,7 @@ export function CompleteOptions({
 }): JSX.Element {
   const { formatMessage } = useIntl();
   const { airgap } = useAirgap();
+  const { auth } = useAuth();
 
   // Get the tracking purposes from Airgap for display
   const initialConsentSelections = getConsentSelections(airgap);
@@ -54,7 +55,7 @@ export function CompleteOptions({
     Object.entries(consentSelections).forEach(([purpose, isChecked]) => {
       newConsent.purposes[purpose] = isChecked;
     });
-    airgap.setConsent(event, newConsent.purposes, CONSENT_OPTIONS);
+    airgap.setConsent(auth || event, newConsent.purposes, CONSENT_OPTIONS);
     handleSetViewState('close');
   };
 

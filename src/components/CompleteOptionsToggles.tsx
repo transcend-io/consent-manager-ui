@@ -25,6 +25,7 @@ export function CompleteOptionsToggles({
 }): JSX.Element {
   const { airgap } = useAirgap();
   const { formatMessage } = useIntl();
+  const { auth } = useAuth();
 
   // Get the tracking purposes from Airgap for display
   const initialConsentSelections = getConsentSelections(airgap);
@@ -62,7 +63,7 @@ export function CompleteOptionsToggles({
     /** Event */
     event: JSX.TargetedEvent<HTMLInputElement, Event>;
   }): void => {
-    airgap.setConsent(event, { [purpose]: checked }, CONSENT_OPTIONS);
+    airgap.setConsent(auth || event, { [purpose]: checked }, CONSENT_OPTIONS);
     setConsentSelections({
       ...consentSelections,
       [purpose]: checked,

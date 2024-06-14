@@ -65,6 +65,11 @@ export type HandleSetLanguage = (language: ConsentManagerLanguageKey) => void;
  */
 export type HandleChangePrivacyPolicy = (privacyPolicyLink: string) => void;
 
+/**
+ * Handler for changing the consent change auth key
+ */
+export type HandleChangeAuthKey = (authKey: AirgapAuth) => void;
+
 export interface MergedConsentManagerConfig {
   /** Merged config */
   config: ConsentManagerConfig;

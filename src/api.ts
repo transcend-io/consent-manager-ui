@@ -3,6 +3,7 @@ import {
   ConsentManagerAPI,
   ViewState,
   InitialViewState,
+  AirgapAuth,
 } from '@transcend-io/airgap.js-types';
 import { isViewStateClosed } from './hooks';
 import { logger } from './logger';
@@ -12,6 +13,7 @@ import {
   HandleSetLanguage,
   HandleChangePrivacyPolicy,
   HandleSetViewState,
+  HandleChangeAuthKey,
 } from './types';
 import { VERSION } from './constants';
 
@@ -20,6 +22,8 @@ interface MakeConsentManagerAPIInput {
   eventTarget: EventTarget;
   /** Property for the current view state of the consent manager UI */
   viewState: ViewState;
+  /** Method to change the current auth key */
+  handleChangeAuthKey: HandleChangeAuthKey;
   /** Method to change language */
   handleChangeLanguage: HandleSetLanguage;
   /** Method to change view state */
@@ -43,6 +47,7 @@ let promptSuppressionNoticeShown = false;
 export function makeConsentManagerAPI({
   eventTarget,
   viewState,
+  handleChangeAuthKey,
   handleChangeLanguage,
   handleChangePrivacyPolicy,
   handleChangeSecondaryPolicy,
@@ -136,6 +141,9 @@ export function makeConsentManagerAPI({
       }
       handleSetViewState('open', undefined, true);
       return Promise.resolve();
+    },
+    setAuth: (key: AirgapAuth): void => {
+      handleChangeAuthKey(key);
     },
     version: VERSION,
   };

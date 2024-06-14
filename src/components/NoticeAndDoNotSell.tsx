@@ -2,7 +2,7 @@ import { h, JSX } from 'preact';
 import { useIntl } from 'react-intl';
 import { messages, noticeAndDoNotSellMessages } from '../messages';
 import type { HandleSetViewState } from '../types';
-import { useAirgap } from '../hooks';
+import { useAirgap, useAuth } from '../hooks';
 import { Button } from './Button';
 import { CONSENT_OPTIONS } from '../constants';
 
@@ -16,6 +16,7 @@ export function NoticeAndDoNotSell({
   handleSetViewState: HandleSetViewState;
 }): JSX.Element {
   const { airgap } = useAirgap();
+  const { auth } = useAuth();
   const { formatMessage } = useIntl();
 
   const handleConfirm: JSX.MouseEventHandler<HTMLButtonElement> | undefined = (
@@ -23,7 +24,11 @@ export function NoticeAndDoNotSell({
   ): void => {
     event.preventDefault();
     // Confirm current consent
-    airgap.setConsent(event, airgap.getConsent().purposes, CONSENT_OPTIONS);
+    airgap.setConsent(
+      auth || event,
+      airgap.getConsent().purposes,
+      CONSENT_OPTIONS,
+    );
     handleSetViewState('close');
   };
 

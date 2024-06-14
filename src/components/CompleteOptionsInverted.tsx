@@ -1,7 +1,7 @@
 import { h, JSX } from 'preact';
 import { useState } from 'preact/hooks';
 import { useIntl } from 'react-intl';
-import { useAirgap, useGetPurposeMessageKeys } from '../hooks';
+import { useAirgap, useAuth, useGetPurposeMessageKeys } from '../hooks';
 import {
   messages,
   completeOptionsMessages,
@@ -29,6 +29,7 @@ export function CompleteOptionsInverted({
 }): JSX.Element {
   const { formatMessage } = useIntl();
   const { airgap } = useAirgap();
+  const { auth } = useAuth();
 
   // Get the tracking purposes from Airgap for display
   const initialConsentSelections = getConsentSelections(airgap);
@@ -61,7 +62,7 @@ export function CompleteOptionsInverted({
     Object.entries(consentSelections).forEach(([purpose, isConsented]) => {
       newConsent.purposes[purpose] = isConsented;
     });
-    airgap.setConsent(event, newConsent.purposes, CONSENT_OPTIONS);
+    airgap.setConsent(auth || event, newConsent.purposes, CONSENT_OPTIONS);
     handleSetViewState('close');
   };
 

@@ -7,7 +7,7 @@ import {
   optOutDisclosureMessages,
 } from '../messages';
 import type { HandleSetViewState } from '../types';
-import { useAirgap } from '../hooks';
+import { useAirgap, useAuth } from '../hooks';
 import { Button } from './Button';
 
 /**
@@ -23,13 +23,14 @@ export function OptOutDisclosure({
   handleSetViewState: HandleSetViewState;
 }): JSX.Element {
   const { airgap } = useAirgap();
+  const { auth } = useAuth();
   const { formatMessage } = useIntl();
 
   // don't render success unless opt out occurs
   const [isOptedOut, setIsOptedOut] = useState(false);
 
   const handleOptOut = (event: AirgapAuth): void => {
-    airgap.optOut(event);
+    airgap.optOut(auth || event);
   };
 
   const handleConfirm = (): void => {

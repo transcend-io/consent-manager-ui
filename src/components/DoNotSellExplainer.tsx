@@ -27,6 +27,7 @@ export function DoNotSellExplainer({
 }): JSX.Element {
   const { airgap } = useAirgap();
   const { formatMessage } = useIntl();
+  const { auth } = useAuth();
   const [saving, setSaving] = useState<boolean | null>(null);
   const [consentLocal, setConsentLocal] = useState(
     !!airgap.getConsent().purposes.SaleOfInfo,
@@ -36,7 +37,7 @@ export function DoNotSellExplainer({
     checked: boolean,
     event: JSX.TargetedEvent<HTMLInputElement, Event>,
   ): void => {
-    airgap.setConsent(event, { SaleOfInfo: checked }, CONSENT_OPTIONS);
+    airgap.setConsent(auth || event, { SaleOfInfo: checked }, CONSENT_OPTIONS);
     setConsentLocal(checked);
     setSaving(true);
 

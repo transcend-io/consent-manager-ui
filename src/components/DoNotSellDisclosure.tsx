@@ -22,13 +22,14 @@ export function DoNotSellDisclosure({
 }): JSX.Element {
   const { airgap } = useAirgap();
   const { formatMessage } = useIntl();
+  const { auth } = useAuth();
 
   // don't render success unless opt out occurs
   const [isOptedOut, setIsOptedOut] = useState(false);
 
   const handleOptOut = (event: AirgapAuth): void => {
     // Confirm current consent
-    airgap.setConsent(event, { SaleOfInfo: false }, CONSENT_OPTIONS);
+    airgap.setConsent(auth || event, { SaleOfInfo: false }, CONSENT_OPTIONS);
   };
 
   const handleConfirm = (): void => {

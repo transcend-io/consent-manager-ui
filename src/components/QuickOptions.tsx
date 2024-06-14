@@ -1,7 +1,7 @@
 import { h, JSX } from 'preact';
 import { useIntl } from 'react-intl';
 import { CONSENT_OPTIONS } from '../constants';
-import { useAirgap } from '../hooks';
+import { useAirgap, useAuth } from '../hooks';
 import { messages, quickOptionsMessages } from '../messages';
 import type { HandleSetViewState } from '../types';
 import { Button } from './Button';
@@ -27,6 +27,7 @@ export function QuickOptions({
 }): JSX.Element {
   const { formatMessage } = useIntl();
   const { airgap } = useAirgap();
+  const { auth } = useAuth();
 
   // Opt in to all purposes
   const handleQuickOption = (
@@ -53,7 +54,7 @@ export function QuickOptions({
         consentsBySelectedQuickOption[selectedQuickOption].includes(purpose);
     });
 
-    airgap.setConsent(event, newConsent.purposes, CONSENT_OPTIONS);
+    airgap.setConsent(auth || event, newConsent.purposes, CONSENT_OPTIONS);
     handleSetViewState('close');
   };
 
