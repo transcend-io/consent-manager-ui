@@ -128,6 +128,7 @@ export function CompleteOptionsInverted({
         <Button
           handleClick={handleSave}
           primaryText={formatMessage(completeOptionsMessages.saveButtonPrimary)}
+          {...(orderedSelections.length === 0 ? { initialFocus: true } : {})}
         />
       </form>
     </div>

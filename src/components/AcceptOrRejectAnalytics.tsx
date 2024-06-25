@@ -50,6 +50,14 @@ export function AcceptOrRejectAnalytics({
         aria-label={formatMessage(messages.buttonGroupAriaDescription)}
       >
         <Button
+          primaryText={formatMessage(messages.acceptAnalytics)}
+          handleClick={(event) => {
+            event.preventDefault();
+            airgap.setConsent(event, { Analytics: true }, CONSENT_OPTIONS);
+            handleSetViewState('close');
+          }}
+        />
+        <Button
           primaryText={formatMessage(messages.rejectAnalytics)}
           handleClick={(event) => {
             event.preventDefault();
@@ -57,14 +65,6 @@ export function AcceptOrRejectAnalytics({
             handleSetViewState('close');
           }}
           initialFocus
-        />
-        <Button
-          primaryText={formatMessage(messages.acceptAnalytics)}
-          handleClick={(event) => {
-            event.preventDefault();
-            airgap.setConsent(event, { Analytics: true }, CONSENT_OPTIONS);
-            handleSetViewState('close');
-          }}
         />
       </div>
     </div>

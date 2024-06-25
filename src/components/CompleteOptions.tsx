@@ -132,6 +132,7 @@ export function CompleteOptions({
           handleClick={handleSave}
           primaryText={formatMessage(completeOptionsMessages.saveButtonPrimary)}
           type="submit"
+          {...(orderedSelections.length === 0 ? { initialFocus: true } : {})}
         />
       </form>
     </div>

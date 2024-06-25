@@ -77,6 +77,7 @@ export function CompleteOptionsToggles({
         }}
         className="complete-options-toggle-close"
         fontColor={fontColor}
+        {...(orderedSelections.length === 0 ? { initialFocus: true } : {})}
       />
       <div>
         <div>
