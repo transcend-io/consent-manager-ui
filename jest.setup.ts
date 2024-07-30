@@ -1,15 +1,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { jest } from '@jest/globals';
-import { readFileSync } from 'node:fs';
+import { readFileSync } from 'fs';
 
 import { airgapStub } from './src/playground/airgapStub';
-
-declare global {
-  interface Window {
-    /** TODO */
-    JEST_SETUP_VARS: Record<string, unknown>;
-  }
-}
+import { testWindow } from './src/tests/utils'
 
 const mockAg = readFileSync('./src/ag-mock.js').toString();
 
@@ -18,15 +12,15 @@ newScript.innerHTML = mockAg;
 
 document.head.append(newScript);
 
-window.JEST_SETUP_VARS = {};
+testWindow.JEST_SETUP_VARS = { messages: {} };
 
 const MESSAGES_PATH = 'src/translations/en.json';
 const messagesStringified = readFileSync(MESSAGES_PATH, 'utf8');
 const messages = JSON.parse(messagesStringified);
 
-window.JEST_SETUP_VARS.messages = messages;
+testWindow.JEST_SETUP_VARS.messages = messages;
 
-(window as any).fetch = jest.fn().mockImplementation((path: any) => {
+(testWindow as any).fetch = jest.fn().mockImplementation((path: any) => {
   const data = readFileSync(path, 'utf8');
   return Promise.resolve({
     ok: true,
@@ -37,6 +31,6 @@ window.JEST_SETUP_VARS.messages = messages;
 /**
  * Add Airgap API stub to window/self/globalThis
  */
-(window as any).airgap = Object.assign(airgapStub, (window as any).airgap);
+(testWindow as any).airgap = Object.assign(airgapStub, (window as any).airgap);
 
 /* eslint-enable @typescript-eslint/no-explicit-any */

@@ -1,5 +1,9 @@
-import { MOCK_PURPOSES } from './constants';
+import { TranslatedMessages } from '@transcend-io/internationalization';
 
-export type MockPurposeKeys = keyof typeof MOCK_PURPOSES;
-export type MockPurposeValues = typeof MOCK_PURPOSES[MockPurposeKeys];
-export type MockPurposeNames = MockPurposeValues['name']
+export interface TestWindow extends Window {
+  /** Jest setup variables */
+  JEST_SETUP_VARS: {
+    /** Cached english messages read from en.json */
+    messages: TranslatedMessages
+  } & Record<string, unknown>;
+}

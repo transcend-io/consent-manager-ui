@@ -30,6 +30,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [\
             ["@jest/globals", "npm:29.7.0"],\
             ["@monaco-editor/react", "virtual:c76842a5689228a0ce1b65e064c1f5e0d5b61e442d08b6527a3b1f100ca1f2105e58f5f1435c5a59df3cce3338560737838d99dae36d25b47d20aa50c89d0539#npm:4.6.0"],\
+            ["@prettier/sync", "virtual:c76842a5689228a0ce1b65e064c1f5e0d5b61e442d08b6527a3b1f100ca1f2105e58f5f1435c5a59df3cce3338560737838d99dae36d25b47d20aa50c89d0539#npm:0.5.2"],\
             ["@testing-library/jest-dom", "npm:6.4.8"],\
             ["@testing-library/preact", "virtual:c76842a5689228a0ce1b65e064c1f5e0d5b61e442d08b6527a3b1f100ca1f2105e58f5f1435c5a59df3cce3338560737838d99dae36d25b47d20aa50c89d0539#npm:3.2.4"],\
             ["@transcend-io/airgap.js-types", "npm:10.15.0"],\
@@ -63,7 +64,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["live-server", "npm:1.2.2"],\
             ["monaco-editor", "npm:0.34.1"],\
             ["preact", "npm:10.5.14"],\
-            ["prettier", "npm:2.8.8"],\
+            ["prettier", "npm:3.3.3"],\
             ["react-intl", "virtual:c76842a5689228a0ce1b65e064c1f5e0d5b61e442d08b6527a3b1f100ca1f2105e58f5f1435c5a59df3cce3338560737838d99dae36d25b47d20aa50c89d0539#npm:6.6.8"],\
             ["ts-jest", "virtual:c76842a5689228a0ce1b65e064c1f5e0d5b61e442d08b6527a3b1f100ca1f2105e58f5f1435c5a59df3cce3338560737838d99dae36d25b47d20aa50c89d0539#npm:29.2.3"],\
             ["ts-node", "virtual:c76842a5689228a0ce1b65e064c1f5e0d5b61e442d08b6527a3b1f100ca1f2105e58f5f1435c5a59df3cce3338560737838d99dae36d25b47d20aa50c89d0539#npm:10.9.2"],\
@@ -1618,6 +1619,29 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
+      ["@prettier/sync", [\
+        ["npm:0.5.2", {\
+          "packageLocation": "./.yarn/cache/@prettier-sync-npm-0.5.2-1faf710025-172cdc62f4.zip/node_modules/@prettier/sync/",\
+          "packageDependencies": [\
+            ["@prettier/sync", "npm:0.5.2"]\
+          ],\
+          "linkType": "SOFT"\
+        }],\
+        ["virtual:c76842a5689228a0ce1b65e064c1f5e0d5b61e442d08b6527a3b1f100ca1f2105e58f5f1435c5a59df3cce3338560737838d99dae36d25b47d20aa50c89d0539#npm:0.5.2", {\
+          "packageLocation": "./.yarn/__virtual__/@prettier-sync-virtual-56751d5099/0/cache/@prettier-sync-npm-0.5.2-1faf710025-172cdc62f4.zip/node_modules/@prettier/sync/",\
+          "packageDependencies": [\
+            ["@prettier/sync", "virtual:c76842a5689228a0ce1b65e064c1f5e0d5b61e442d08b6527a3b1f100ca1f2105e58f5f1435c5a59df3cce3338560737838d99dae36d25b47d20aa50c89d0539#npm:0.5.2"],\
+            ["@types/prettier", null],\
+            ["make-synchronized", "npm:0.2.9"],\
+            ["prettier", "npm:3.3.3"]\
+          ],\
+          "packagePeers": [\
+            "@types/prettier",\
+            "prettier"\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
       ["@sinclair/typebox", [\
         ["npm:0.27.8", {\
           "packageLocation": "./.yarn/cache/@sinclair-typebox-npm-0.27.8-23e206d653-00bd7362a3.zip/node_modules/@sinclair/typebox/",\
@@ -1762,6 +1786,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@transcend-io/consent-manager-ui", "workspace:."],\
             ["@jest/globals", "npm:29.7.0"],\
             ["@monaco-editor/react", "virtual:c76842a5689228a0ce1b65e064c1f5e0d5b61e442d08b6527a3b1f100ca1f2105e58f5f1435c5a59df3cce3338560737838d99dae36d25b47d20aa50c89d0539#npm:4.6.0"],\
+            ["@prettier/sync", "virtual:c76842a5689228a0ce1b65e064c1f5e0d5b61e442d08b6527a3b1f100ca1f2105e58f5f1435c5a59df3cce3338560737838d99dae36d25b47d20aa50c89d0539#npm:0.5.2"],\
             ["@testing-library/jest-dom", "npm:6.4.8"],\
             ["@testing-library/preact", "virtual:c76842a5689228a0ce1b65e064c1f5e0d5b61e442d08b6527a3b1f100ca1f2105e58f5f1435c5a59df3cce3338560737838d99dae36d25b47d20aa50c89d0539#npm:3.2.4"],\
             ["@transcend-io/airgap.js-types", "npm:10.15.0"],\
@@ -1795,7 +1820,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["live-server", "npm:1.2.2"],\
             ["monaco-editor", "npm:0.34.1"],\
             ["preact", "npm:10.5.14"],\
-            ["prettier", "npm:2.8.8"],\
+            ["prettier", "npm:3.3.3"],\
             ["react-intl", "virtual:c76842a5689228a0ce1b65e064c1f5e0d5b61e442d08b6527a3b1f100ca1f2105e58f5f1435c5a59df3cce3338560737838d99dae36d25b47d20aa50c89d0539#npm:6.6.8"],\
             ["ts-jest", "virtual:c76842a5689228a0ce1b65e064c1f5e0d5b61e442d08b6527a3b1f100ca1f2105e58f5f1435c5a59df3cce3338560737838d99dae36d25b47d20aa50c89d0539#npm:29.2.3"],\
             ["ts-node", "virtual:c76842a5689228a0ce1b65e064c1f5e0d5b61e442d08b6527a3b1f100ca1f2105e58f5f1435c5a59df3cce3338560737838d99dae36d25b47d20aa50c89d0539#npm:10.9.2"],\
@@ -8337,6 +8362,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
+      ["make-synchronized", [\
+        ["npm:0.2.9", {\
+          "packageLocation": "./.yarn/cache/make-synchronized-npm-0.2.9-3caee4a4d9-11d8af618a.zip/node_modules/make-synchronized/",\
+          "packageDependencies": [\
+            ["make-synchronized", "npm:0.2.9"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
       ["makeerror", [\
         ["npm:1.0.12", {\
           "packageLocation": "./.yarn/cache/makeerror-npm-1.0.12-69abf085d7-b38a025a12.zip/node_modules/makeerror/",\
@@ -9351,10 +9385,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]\
       ]],\
       ["prettier", [\
-        ["npm:2.8.8", {\
-          "packageLocation": "./.yarn/cache/prettier-npm-2.8.8-430828a36c-b49e409431.zip/node_modules/prettier/",\
+        ["npm:3.3.3", {\
+          "packageLocation": "./.yarn/unplugged/prettier-npm-3.3.3-e811f023f3/node_modules/prettier/",\
           "packageDependencies": [\
-            ["prettier", "npm:2.8.8"]\
+            ["prettier", "npm:3.3.3"]\
           ],\
           "linkType": "HARD"\
         }]\

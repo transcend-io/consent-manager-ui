@@ -1,0 +1,102 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CompleteOptions 1`] = `
+"<div>
+  <div class="complete-options-container" role="none">
+    <p
+      role="heading"
+      id="consent-dialog-title"
+      class="text-title text-title-center"
+    >
+      What can we use data for?
+    </p>
+    <form class="complete-options-form">
+      <span style="display: none"></span>
+      <div
+        class="toggles-container"
+        role="group"
+        aria-label="Select consent and close dialog"
+      >
+        <label
+          class="toggle-label"
+          aria-label="Essential data collection cannot be turned off."
+          title="Essential data collection cannot be turned off."
+          ><input
+            class="toggle-input"
+            type="checkbox"
+            id="essential-purposes"
+            name="Essential purposes"
+            disabled=""
+          /><span class="toggle-checkmark"></span>Essential purposes</label
+        ><label
+          class="toggle-label"
+          aria-label="Click to disable collection of data for this purpose – functionality"
+          title="Click to disable collection of data for this purpose – functionality"
+          ><input
+            class="toggle-input"
+            type="checkbox"
+            id="functionality"
+            name="Functionality"
+            data-initialfocus="true"
+          /><span class="toggle-checkmark"></span>Functionality</label
+        ><label
+          class="toggle-label"
+          aria-label="Click to disable collection of data for this purpose – analytics"
+          title="Click to disable collection of data for this purpose – analytics"
+          ><input
+            class="toggle-input"
+            type="checkbox"
+            id="analytics"
+            name="Analytics"
+          /><span class="toggle-checkmark"></span>Analytics</label
+        ><label
+          class="toggle-label"
+          aria-label="Click to disable collection of data for this purpose – advertising"
+          title="Click to disable collection of data for this purpose – advertising"
+          ><input
+            class="toggle-input"
+            type="checkbox"
+            id="advertising"
+            name="Advertising"
+          /><span class="toggle-checkmark"></span>Advertising</label
+        ><label
+          class="toggle-label"
+          aria-label="Click to disable collection of data for this purpose – sale of personal information"
+          title="Click to disable collection of data for this purpose – sale of personal information"
+          ><input
+            class="toggle-input"
+            type="checkbox"
+            id="sale-of-personal-information"
+            name="Sale of personal information"
+          /><span class="toggle-checkmark"></span>Sale of personal
+          information</label
+        ><label
+          class="toggle-label"
+          aria-label="Click to disable collection of data for this purpose – custompurpose"
+          title="Click to disable collection of data for this purpose – custompurpose"
+          ><input
+            class="toggle-input"
+            type="checkbox"
+            id="custompurpose"
+            name="CustomPurpose"
+          /><span class="toggle-checkmark"></span>CustomPurpose</label
+        ><label
+          class="toggle-label"
+          aria-label="Click to disable collection of data for this purpose – uniquepurpose"
+          title="Click to disable collection of data for this purpose – uniquepurpose"
+          ><input
+            class="toggle-input"
+            type="checkbox"
+            id="uniquepurpose"
+            name="UniquePurpose"
+          /><span class="toggle-checkmark"></span>UniquePurpose</label
+        >
+      </div>
+      <button class="button" type="submit">
+        <span class="button-base-text button-primary-text">Confirm</span>
+      </button>
+    </form>
+  </div>
+</div>
+"
+`;
