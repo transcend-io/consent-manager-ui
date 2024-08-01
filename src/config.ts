@@ -96,6 +96,11 @@ export function getMergedConfig(): MergedConsentManagerConfig {
   config.secondaryPolicy ??= secondaryPolicy;
   config.dismissedViewState ??= dismissedViewState;
   config.languages ??= languages;
+  if (typeof config.initialViewStateByPrivacyRegime === 'string') {
+    config.initialViewStateByPrivacyRegime = JSON.parse(
+      config.initialViewStateByPrivacyRegime,
+    );
+  }
 
   // Determine the language settings to use
   const existingLanguages = config.languages
