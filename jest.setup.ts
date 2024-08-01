@@ -5,12 +5,10 @@ import { readFileSync } from 'fs';
 import { airgapStub } from './src/playground/airgapStub';
 import { testWindow } from './src/tests/utils'
 
-const mockAg = readFileSync('./src/ag-mock.js').toString();
+import { init as initMockAirgap } from './src/tests/ag-mock'
+import { MOCK_PURPOSES } from './src/tests/constants'
 
-const newScript = document.createElement('script');
-newScript.innerHTML = mockAg;
-
-document.head.append(newScript);
+initMockAirgap(MOCK_PURPOSES)
 
 testWindow.JEST_SETUP_VARS = { messages: {} };
 

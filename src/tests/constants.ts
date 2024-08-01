@@ -63,4 +63,4 @@ export const MOCK_PURPOSES = {
     trackingType: 'UniquePurpose',
     optOutSignals: [],
   },
-} as const;
+};

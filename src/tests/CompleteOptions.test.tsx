@@ -1,7 +1,8 @@
 import '@testing-library/jest-dom';
 
 import { h } from 'preact';
-import { clickPurposeCheckbox, getPurposeCheckState, render } from './utils';
+import { render } from './utils/render';
+import { clickPurposeCheckbox, getPurposeCheckState } from './utils/checkbox';
 import { test, expect } from '@jest/globals';
 
 import { CompleteOptions } from '../components/CompleteOptions';

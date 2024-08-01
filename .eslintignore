@@ -12,4 +12,3 @@
 *.testjs
 *.testts
 LICENSE
-src/ag-mock.js
