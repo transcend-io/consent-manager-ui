@@ -14,8 +14,8 @@ import { sortByPurposeOrder } from '../helpers';
 test('CompleteOptions', () => {
   const prevPurposes = { ...window.airgap?.getConsent().purposes };
 
-  const screen = render(<CompleteOptions handleSetViewState={() => null} />);
-  const { container, snapshot } = screen;
+  let screen = render(<CompleteOptions handleSetViewState={() => null} />);
+  let { container, snapshot, unmount } = screen;
 
   expect(snapshot).toMatchSnapshot();
 
@@ -68,5 +68,26 @@ test('CompleteOptions', () => {
 
   Object.entries(MOCK_PURPOSES).forEach(([, purpose]) => {
     expect(!!prevPurposes?.[purpose.name]).toEqual(!purposes?.[purpose.name]);
+  });
+
+  unmount();
+
+  screen = render(<CompleteOptions handleSetViewState={() => null} />);
+  ({ container, snapshot, unmount } = screen);
+
+  // Ensure we rerender the ui with the new consent when unmounting and remounting ui
+  (
+    Object.entries(MOCK_PURPOSES) as [
+      keyof typeof MOCK_PURPOSES,
+      (typeof MOCK_PURPOSES)[keyof typeof MOCK_PURPOSES],
+    ][]
+  ).forEach(([key, purpose]) => {
+    const label =
+      purpose.name in DEFAULT_PURPOSE_TO_MESSAGE_KEY
+        ? DEFAULT_PURPOSE_TO_MESSAGE_KEY[purpose.name].defaultMessage
+        : purpose.name;
+    expect(getPurposeCheckState(screen, label)).toEqual(
+      !MOCK_PURPOSES[key].defaultConsent,
+    );
   });
 });
