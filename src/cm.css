@@ -4,7 +4,7 @@
 
 /** Variables to insert into the remainder of the stylesheet */
 * {
-  --primary-color: #3333ff;
+  --primary-color: #000000;
   --text-color: #010101;
 }
 
@@ -15,11 +15,11 @@
 /** Buttons displayed throughout the consent UI */
 .button {
   min-height: 42px;
-  border-radius: 500px;
+  border-radius: 0px;
   width: 100%;
-  background-color: rgba(255, 255, 255, 0.7);
+  background-color: rgba(214,245,232,255);
   opacity: 0.9;
-  border: 1px solid var(--primary-color);
+  border: 2px solid #000000;
   box-sizing: border-box;
   cursor: pointer;
   filter: brightness(100%);
@@ -28,6 +28,7 @@
   text-align: center;
   padding: 6px;
   transition: filter 150ms, background-color 150ms;
+  border-radius: 5px;
 }
 
 /** Not the last button in a list of buttons */
@@ -37,7 +38,7 @@
 
 /** On button hover */
 .button:hover {
-  background-color: var(--primary-color);
+  background-color: rgba(1,72,78,255);
 }
 
 /** Inner text on button hover */
@@ -56,7 +57,7 @@
 
 /** Styles applied to "primary" button text */
 .button-primary-text {
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 700;
 }
 
@@ -68,7 +69,7 @@
 
 /** Button focus */
 button:focus {
-  outline: 2px solid rgba(51, 157, 255, 0.7);
+  outline: 1px solid #9fbbc6;
 }
 
 /** Anchor focus */
