@@ -99,6 +99,7 @@ export function Main({
             {viewState === 'CompleteOptions' && (
               <img height="20" 
                    alt="Back" 
+                   class="pointer"
                    src="https://www.svgrepo.com/show/305142/arrow-ios-back.svg" 
                    onClick={() => handleSetViewState(firstSelectedViewState)}
                />
