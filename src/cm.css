@@ -516,12 +516,16 @@ a:focus {
   transition: width 150ms, height 150ms;
 }
 
+.we-use-cookies-paragraph {
+  padding-bottom: 20px;
+}
+
 /** Inner contents wrapper for modal content */
 .modal-container-inner {
   min-height: 79px;
   height: calc(100% - 38px);
   width: 100%;
-  padding-bottom: 38px;
+  padding: 25px 20px 38px 20px;
 }
 
 /** Styles that wrap the text container of the modal content. Excludes footer */

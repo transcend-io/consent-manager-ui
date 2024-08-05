@@ -62,7 +62,7 @@ export function AcceptOrRejectAllOrMoreChoices({
           </p>
         </div>
         <div>
-          <p className="paragraph">
+          <p className="paragraph we-use-cookies-paragraph">
             <div
               role="paragraph"
               // eslint-disable-next-line react/no-danger
