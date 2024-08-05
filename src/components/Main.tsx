@@ -96,7 +96,7 @@ export function Main({
         ref={dialogRef}
       >
         <div class="modal-container-top">
-          Shippo Icon Here
+          <img src="https://cdn.prod.website-files.com/6462967bbf70fa5b5b227351/646bd3ac70ee08fca9869afe_shippo-logo-dark.svg" loading="eager" height="20" alt="Shippo" class="sw_navlogo" />
         </div>
         <div role="document" className="modal-container-inner" tabIndex={0}>
           <div

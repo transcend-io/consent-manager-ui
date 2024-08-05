@@ -864,7 +864,9 @@ a:focus {
   }
 
   .modal-container-top {
-    background-color: yellow;
+    margin: -13px -21px 0px -21px;
+    border-bottom: 2px solid #000;
+    padding: 0px 0px 2px 10px;
   }
 
   /** TranscendLogo */
