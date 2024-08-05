@@ -501,14 +501,13 @@ a:focus {
   margin: 0 auto;
   width: calc(100% - 10px);
   box-sizing: border-box;
-  border-radius: 18px;
-  border: 0.5px solid #d8d8d8;
-  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 0px;
+  border: 2px solid #000000;
+  background-color: rgba(214,245,232,255);
   overflow: hidden;
   padding: 21px;
   font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir,
     helvetica neue, helvetica, 'sans-serif';
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(20px) saturate(5);
   -webkit-backdrop-filter: blur(20px) saturate(5);
   animation: fadeIn 150ms;
