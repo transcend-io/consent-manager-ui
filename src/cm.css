@@ -171,6 +171,8 @@ a:focus {
   text-shadow: none;
   padding-left: 25px;
   word-wrap: break-word;
+  padding-left: 30px;
+  padding-top: 1px;
 }
 
 /** Style applied to the checkbox toggle box */
@@ -182,8 +184,8 @@ a:focus {
 /** Style applied to create custom checkmark */
 .toggle-checkmark {
   display: inline-block;
-  width: 16px;
-  height: 16px;
+  width: 17px;
+  height: 17px;
   box-sizing: border-box;
   border-radius: 4px;
   margin-right: 5px;
@@ -194,6 +196,7 @@ a:focus {
   left: 0;
   transition: all 150ms ease, background 300ms ease;
   cursor: pointer;
+  transform: scale(1.5);
 }
 
 /** Style applied to create custom checkmark ::after */
@@ -231,7 +234,7 @@ a:focus {
 
 /** Style applied to checkbox input span when checked */
 .toggle-input:checked + span {
-  background: var(--primary-color);
+  background: rgb(37, 214, 149);
   border-color: transparent;
 }
 
@@ -868,9 +871,10 @@ a:focus {
   }
 
   .modal-container-top {
-    margin: -13px -21px 0px -21px;
+    margin: -21px -21px 0px -21px;
     border-bottom: 2px solid #000;
-    padding: 0px 0px 2px 10px;
+    padding: 6px 0px 2px 10px;
+    background-color: #fff;
   }
 
   /** TranscendLogo */
