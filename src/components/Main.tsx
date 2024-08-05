@@ -95,6 +95,9 @@ export function Main({
         id="consentManagerMainDialog"
         ref={dialogRef}
       >
+        <div class="modal-container-top">
+          Shippo Icon Here
+        </div>
         <div role="document" className="modal-container-inner" tabIndex={0}>
           <div
             role="main"

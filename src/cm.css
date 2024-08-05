@@ -863,6 +863,10 @@ a:focus {
     bottom: 22px;
   }
 
+  .modal-container-top {
+    background-color: yellow;
+  }
+
   /** TranscendLogo */
   .transcend-logo-container {
     width: 64px;

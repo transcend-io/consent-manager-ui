@@ -72,25 +72,25 @@ export function AcceptOrRejectAllOrMoreChoices({
             />
           </p>
         </div>
-      </div>
-      <div
-        className="accept-or-reject-all-button-row"
-        role="group"
-        aria-label={formatMessage(messages.buttonGroupAriaDescription)}
-      >
-        <Button
-          primaryText={formatMessage(messages.acceptAllButtonPrimary)}
-          handleClick={handleAcceptAll}
-        />
-        <Button
-          primaryText={formatMessage(messages.rejectAllButtonPrimary)}
-          handleClick={handleRejectAll}
-          initialFocus
-        />
-        <Button
-          primaryText={formatMessage(messages.moreChoicesButtonPrimary)}
-          handleClick={handleMoreChoices}
-        />
+        <div
+          className="accept-or-reject-all-button-row"
+          role="group"
+          aria-label={formatMessage(messages.buttonGroupAriaDescription)}
+        >
+          <Button
+            primaryText={formatMessage(messages.acceptAllButtonPrimary)}
+            handleClick={handleAcceptAll}
+            initialFocus
+          />
+          <Button
+            primaryText={formatMessage(messages.rejectAllButtonPrimary)}
+            handleClick={handleRejectAll}
+          />
+          <Button
+            primaryText={formatMessage(messages.moreChoicesButtonPrimary)}
+            handleClick={handleMoreChoices}
+          />
+        </div>
       </div>
     </div>
   );
