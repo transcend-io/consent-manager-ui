@@ -573,6 +573,8 @@ a:focus {
   align-items: center;
   justify-content: center;
   transition: background-color 150ms;
+  margin-top: -17px;
+  margin-right: -17px;
 }
 
 /** Styles for button of X marker in top right corner on hover */
