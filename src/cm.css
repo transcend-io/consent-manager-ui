@@ -857,7 +857,6 @@ a:focus {
 
   /** CompleteOptions */
   .toggles-container {
-    flex-direction: row;
   }
 
   /** Modal */
