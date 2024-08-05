@@ -209,7 +209,7 @@ export function Main({
               />
             )}
           </div>
-          <div role="contentinfo" className="footer-container">
+{/*          <div role="contentinfo" className="footer-container">
             <TranscendLogo fontColor={config.theme.fontColor} />
             <BottomMenu
               firstSelectedViewState={firstSelectedViewState}
@@ -225,7 +225,7 @@ export function Main({
               supportedLanguages={supportedLanguages}
             />
           </div>
-        </div>
+*/}        </div>
       </div>
     );
   }

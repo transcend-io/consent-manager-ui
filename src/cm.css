@@ -525,7 +525,7 @@ a:focus {
   min-height: 79px;
   height: calc(100% - 38px);
   width: 100%;
-  padding: 25px 20px 38px 20px;
+  padding: 25px 25px 10px 20px;
 }
 
 /** Styles that wrap the text container of the modal content. Excludes footer */
