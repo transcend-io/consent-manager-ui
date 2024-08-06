@@ -9,7 +9,7 @@ import { IntlProvider } from 'react-intl';
 import { ConsentManagerLanguageKey } from '@transcend-io/internationalization';
 import { AirgapAPI } from '@transcend-io/airgap.js-types';
 import * as prettier from '@prettier/sync';
-import { TestWindow } from '../types';
+import { TestWindow } from './types';
 
 export const testWindow = window as unknown as TestWindow;
 

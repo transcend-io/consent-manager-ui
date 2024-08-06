@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NoticeAndDoNotSell matches snapshot 1`] = `
+"<div>
+  <div class="column-content" role="none">
+    <p
+      id="consent-dialog-title"
+      role="heading"
+      class="text-title text-title-left"
+    >
+      This website processes personal data
+    </p>
+    <button
+      class="button"
+      aria-description="Acknowledge and close dialog."
+      data-initialfocus="true"
+    >
+      <span class="button-base-text button-primary-text">Okay</span>
+    </button>
+  </div>
+</div>
+"
+`;

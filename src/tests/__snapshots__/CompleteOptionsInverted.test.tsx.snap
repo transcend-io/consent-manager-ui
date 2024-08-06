@@ -1,14 +1,14 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`CompleteOptions matches snapshot 1`] = `
+exports[`CompleteOptionsInverted matches snapshot 1`] = `
 "<div>
   <div class="complete-options-container" role="none">
     <p
-      role="heading"
       id="consent-dialog-title"
+      role="heading"
       class="text-title text-title-center"
     >
-      What can we use data for?
+      Your Privacy Choices
     </p>
     <form class="complete-options-form">
       <span style="display: none"></span>
@@ -19,57 +19,46 @@ exports[`CompleteOptions matches snapshot 1`] = `
       >
         <label
           class="toggle-label"
-          aria-label="Essential data collection cannot be turned off."
-          title="Essential data collection cannot be turned off."
+          aria-label="Click to disable collection of data for this purpose – opt out of functional"
+          title="Click to disable collection of data for this purpose – opt out of functional"
           ><input
             class="toggle-input"
             type="checkbox"
-            id="essential-purposes"
-            name="Essential purposes"
-            disabled=""
-          /><span class="toggle-checkmark"></span>Essential purposes</label
-        ><label
-          class="toggle-label"
-          aria-label="Click to disable collection of data for this purpose – functionality"
-          title="Click to disable collection of data for this purpose – functionality"
-          ><input
-            class="toggle-input"
-            type="checkbox"
-            id="functionality"
-            name="Functionality"
+            id="opt-out-of-functional"
+            name="Opt out of Functional"
             data-initialfocus="true"
-          /><span class="toggle-checkmark"></span>Functionality</label
+          /><span class="toggle-checkmark"></span>Opt out of Functional</label
         ><label
           class="toggle-label"
-          aria-label="Click to disable collection of data for this purpose – analytics"
-          title="Click to disable collection of data for this purpose – analytics"
+          aria-label="Click to disable collection of data for this purpose – opt out of analytics"
+          title="Click to disable collection of data for this purpose – opt out of analytics"
           ><input
             class="toggle-input"
             type="checkbox"
-            id="analytics"
-            name="Analytics"
-          /><span class="toggle-checkmark"></span>Analytics</label
+            id="opt-out-of-analytics"
+            name="Opt out of Analytics"
+          /><span class="toggle-checkmark"></span>Opt out of Analytics</label
         ><label
           class="toggle-label"
-          aria-label="Click to disable collection of data for this purpose – advertising"
-          title="Click to disable collection of data for this purpose – advertising"
+          aria-label="Click to disable collection of data for this purpose – opt out of advertising"
+          title="Click to disable collection of data for this purpose – opt out of advertising"
           ><input
             class="toggle-input"
             type="checkbox"
-            id="advertising"
-            name="Advertising"
-          /><span class="toggle-checkmark"></span>Advertising</label
+            id="opt-out-of-advertising"
+            name="Opt out of Advertising"
+          /><span class="toggle-checkmark"></span>Opt out of Advertising</label
         ><label
           class="toggle-label"
-          aria-label="Click to disable collection of data for this purpose – sale of personal information"
-          title="Click to disable collection of data for this purpose – sale of personal information"
+          aria-label="Click to disable collection of data for this purpose – do not sell/share my personal information."
+          title="Click to disable collection of data for this purpose – do not sell/share my personal information."
           ><input
             class="toggle-input"
             type="checkbox"
-            id="sale-of-personal-information"
-            name="Sale of personal information"
-          /><span class="toggle-checkmark"></span>Sale of personal
-          information</label
+            id="do-not-sell/share-my-personal-information."
+            name="Do Not Sell/Share My Personal Information."
+          /><span class="toggle-checkmark"></span>Do Not Sell/Share My Personal
+          Information.</label
         ><label
           class="toggle-label"
           aria-label="Click to disable collection of data for this purpose – custompurpose"
@@ -92,7 +81,7 @@ exports[`CompleteOptions matches snapshot 1`] = `
           /><span class="toggle-checkmark"></span>UniquePurpose</label
         >
       </div>
-      <button class="button" type="submit">
+      <button class="button">
         <span class="button-base-text button-primary-text">Confirm</span>
       </button>
     </form>

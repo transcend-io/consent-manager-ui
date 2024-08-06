@@ -3,12 +3,7 @@ import { jest } from '@jest/globals';
 import { readFileSync } from 'fs';
 
 import { airgapStub } from './src/playground/airgapStub';
-import { testWindow } from './src/tests/utils'
-
-import { init as initMockAirgap } from './src/tests/ag-mock'
-import { MOCK_PURPOSES } from './src/tests/constants'
-
-initMockAirgap(MOCK_PURPOSES)
+import { testWindow } from './src/tests/utils/render'
 
 testWindow.JEST_SETUP_VARS = { messages: {} };
 

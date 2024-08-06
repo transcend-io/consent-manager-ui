@@ -1,13 +1,13 @@
 import {
-  AirgapAPI,
   ConsentOptions,
   TrackingConsent,
   TrackingConsentDetails,
   TrackingPurposesTypes
 } from '@transcend-io/airgap.js-types';
+import { testWindow } from './render';
 
 export const init = (purposeTypes: TrackingPurposesTypes): void => {
-  let consentCache: TrackingConsentDetails = {
+  const DEFAULT_CONSENT = {
     confirmed: false,
     prompted: false,
     timestamp: '',
@@ -16,19 +16,23 @@ export const init = (purposeTypes: TrackingPurposesTypes): void => {
         .map(([key, purpose]) => ([key, purpose.defaultConsent]))
     ) as TrackingConsent
   }
+  let consentCache: TrackingConsentDetails = JSON.parse(JSON.stringify(DEFAULT_CONSENT));
 
   const getPurposeTypes = (): TrackingPurposesTypes => purposeTypes;
   const optIn = (): void => {
-    const optedInEntries = Object.entries(consentCache.purposes).map(([key]) => ([key, true]))
-    consentCache.purposes = Object.fromEntries(optedInEntries)
+    const optedInEntries = Object.entries(consentCache.purposes).map(([key]) => ([key, true]));
+    consentCache.purposes = Object.fromEntries(optedInEntries);
+    consentCache.confirmed = true;
   }
   const optOut = (): void => {
-    const optedOutEntries = Object.entries(consentCache.purposes).map(([key]) => ([key, false]))
-    consentCache.purposes = Object.fromEntries(optedOutEntries)
+    const optedOutEntries = Object.entries(consentCache.purposes).map(([key]) => ([key, false]));
+    consentCache.purposes = Object.fromEntries(optedOutEntries);
+    consentCache.confirmed = true;
   }
   const setConsent = (event: Event, purposes: TrackingConsent, options: ConsentOptions): void => {
     consentCache = {
       ...consentCache,
+      confirmed: true,
       ...options,
       purposes: {
         ...consentCache.purposes,
@@ -42,8 +46,9 @@ export const init = (purposeTypes: TrackingPurposesTypes): void => {
     });
   const getPrivacySignals = (): Set<"DNT" | "GPC"> => new Set()
   const getRegimePurposes = (): Set<string> => new Set(Object.keys(purposeTypes));
+  const reset = (): void => { consentCache = JSON.parse(JSON.stringify(DEFAULT_CONSENT)) };
 
-  window.airgap = {
+  testWindow.airgap = {
     getPurposeTypes,
     optIn,
     optOut,
@@ -51,5 +56,6 @@ export const init = (purposeTypes: TrackingPurposesTypes): void => {
     getConsent,
     getPrivacySignals,
     getRegimePurposes,
-  } as unknown as AirgapAPI
+    reset,
+  }
 }

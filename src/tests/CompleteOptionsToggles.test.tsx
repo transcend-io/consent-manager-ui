@@ -5,7 +5,7 @@ import { render, testWindow } from './utils/render';
 import { clickPurposeCheckbox, getPurposeCheckState } from './utils/checkbox';
 import { test, expect, describe, beforeEach } from '@jest/globals';
 
-import { CompleteOptions } from '../components/CompleteOptions';
+import { CompleteOptionsToggles } from '../components/CompleteOptionsToggles';
 import { fireEvent } from '@testing-library/preact';
 import { MOCK_PURPOSES_OPTED_IN } from './utils/constants';
 import { DEFAULT_PURPOSE_TO_MESSAGE_KEY } from '../components/constants';
@@ -13,18 +13,18 @@ import { sortByPurposeOrder } from '../helpers';
 import { getPurposeEntries, getPurposeMessage, getPurposeValues } from './utils/purposes';
 import { init as initMockAirgap } from './utils/ag-mock'
 
-describe('CompleteOptions', () => {
+describe('CompleteOptionsToggles', () => {
   beforeEach(() => {
     initMockAirgap(MOCK_PURPOSES_OPTED_IN);
   });
 
   test('matches snapshot', () => {
-    const { snapshot } = render(<CompleteOptions handleSetViewState={() => null} />);
+    const { snapshot } = render(<CompleteOptionsToggles fontColor="#000" handleSetViewState={() => null} />);
     expect(snapshot).toMatchSnapshot();
   });
 
   test('purpose ordering is consistent', () => {
-    const screen = render(<CompleteOptions handleSetViewState={() => null} />);
+    const screen = render(<CompleteOptionsToggles fontColor="#000" handleSetViewState={() => null} />);
     const { container } = screen;
 
     const sortedNamesToLabels = [
@@ -39,7 +39,7 @@ describe('CompleteOptions', () => {
         ),
     ];
 
-    const domLabels = [...container.querySelectorAll('form label')]
+    const domLabels = [...container.querySelectorAll('div.complete-options-toggle-interface label')]
       ?.map((label) =>
         [...label.childNodes].find((child) => child.nodeType === 3),
       )
@@ -49,10 +49,10 @@ describe('CompleteOptions', () => {
   });
 
   test('defaults are honored', () => {
-    const screen = render(<CompleteOptions handleSetViewState={() => null} />);
+    const screen = render(<CompleteOptionsToggles fontColor="#000" handleSetViewState={() => null} />);
     getPurposeEntries().forEach(([key, purpose]) => {
       const label = getPurposeMessage(purpose);
-      expect(getPurposeCheckState(screen, label)).toEqual(
+      expect(getPurposeCheckState(screen, label, { selector: 'label' })).toEqual(
         MOCK_PURPOSES_OPTED_IN[key].defaultConsent,
       );
     });
@@ -60,12 +60,12 @@ describe('CompleteOptions', () => {
 
   test('check states change when clicked, submission affects stored consent', () => {
     const prevConsent = { ...testWindow.airgap?.getConsent() };
-    const screen = render(<CompleteOptions handleSetViewState={() => null} />);
+    const screen = render(<CompleteOptionsToggles fontColor="#000" handleSetViewState={() => null} />);
     const { container } = screen;
     getPurposeEntries().forEach(([key, purpose]) => {
       const label = getPurposeMessage(purpose);
-      clickPurposeCheckbox(screen, label);
-      expect(getPurposeCheckState(screen, label)).toEqual(
+      clickPurposeCheckbox(screen, label, { selector: 'label' });
+      expect(getPurposeCheckState(screen, label, { selector: 'label' })).toEqual(
         !MOCK_PURPOSES_OPTED_IN[key].defaultConsent,
       );
     });
@@ -84,11 +84,11 @@ describe('CompleteOptions', () => {
   });
 
   test('purposes rerender on remount', () => {
-    let screen = render(<CompleteOptions handleSetViewState={() => null} />);
+    let screen = render(<CompleteOptionsToggles fontColor="#000" handleSetViewState={() => null} />);
     let { container, unmount } = screen;
     getPurposeValues().forEach((purpose) => {
       const label = getPurposeMessage(purpose);
-      clickPurposeCheckbox(screen, label);
+      clickPurposeCheckbox(screen, label, { selector: 'label' });
     });
 
     // Ensure submission reflects purpose selection in airgap
@@ -97,13 +97,13 @@ describe('CompleteOptions', () => {
 
     unmount();
 
-    screen = render(<CompleteOptions handleSetViewState={() => null} />);
+    screen = render(<CompleteOptionsToggles fontColor="#000" handleSetViewState={() => null} />);
     ({ container, unmount } = screen);
 
     // Ensure we rerender the ui with the new consent when unmounting and remounting ui
     getPurposeEntries().forEach(([key, purpose]) => {
       const label = getPurposeMessage(purpose);
-      expect(getPurposeCheckState(screen, label)).toEqual(
+      expect(getPurposeCheckState(screen, label, { selector: 'label' })).toEqual(
         !MOCK_PURPOSES_OPTED_IN[key].defaultConsent,
       );
     });

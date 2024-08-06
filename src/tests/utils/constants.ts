@@ -1,8 +1,7 @@
-export const MOCK_PURPOSES = {
+const MOCK_PURPOSES_BASE = {
   Advertising: {
     name: 'Advertising',
     description: 'Helps us and others serve ads relevant to you.',
-    defaultConsent: true,
     showInConsentManager: true,
     configurable: true,
     essential: false,
@@ -13,7 +12,6 @@ export const MOCK_PURPOSES = {
   Analytics: {
     name: 'Analytics',
     description: 'Help us learn how our site is used and how it performs.',
-    defaultConsent: true,
     showInConsentManager: true,
     configurable: true,
     essential: false,
@@ -24,7 +22,6 @@ export const MOCK_PURPOSES = {
   CustomPurpose: {
     name: 'CustomPurpose',
     description: 'Spacey',
-    defaultConsent: true,
     showInConsentManager: true,
     configurable: true,
     essential: false,
@@ -34,7 +31,6 @@ export const MOCK_PURPOSES = {
   Functional: {
     name: 'Functional',
     description: 'Personalization, autofilled forms, etc.',
-    defaultConsent: true,
     showInConsentManager: true,
     configurable: true,
     essential: false,
@@ -45,7 +41,6 @@ export const MOCK_PURPOSES = {
   SaleOfInfo: {
     name: 'SaleOfInfo',
     description: 'Sale of personal information.',
-    defaultConsent: true,
     showInConsentManager: true,
     configurable: true,
     essential: false,
@@ -56,11 +51,20 @@ export const MOCK_PURPOSES = {
   UniquePurpose: {
     name: 'UniquePurpose',
     description: 'Unique Purpose',
-    defaultConsent: true,
     showInConsentManager: true,
     configurable: true,
     essential: false,
     trackingType: 'UniquePurpose',
     optOutSignals: [],
   },
-};
+}
+
+export const MOCK_PURPOSES_OPTED_OUT = Object.fromEntries(
+  Object.entries(MOCK_PURPOSES_BASE)
+    .map(([key, purpose]) => [key, { ...purpose, defaultConsent: false }])
+);
+
+export const MOCK_PURPOSES_OPTED_IN = Object.fromEntries(
+  Object.entries(MOCK_PURPOSES_BASE)
+    .map(([key, purpose]) => [key, { ...purpose, defaultConsent: true }])
+);
