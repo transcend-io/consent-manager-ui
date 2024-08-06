@@ -1,1 +1,1 @@
-ignores: ["@types/node", "@yarnpkg/sdks", "depcheck", "prettier", "@yarnpkg/pnpify", "eslint-plugin-compat", "eslint-plugin-jest", "eslint-plugin-react", "eslint-plugin-react-hooks", "jest-environment-jsdom"]
+ignores: ["@types/node", "@yarnpkg/sdks", "depcheck", "prettier", "@yarnpkg/pnpify", "eslint-plugin-compat", "eslint-plugin-jest", "eslint-plugin-react", "eslint-plugin-react-hooks", "jest-environment-jsdom", "bufferutil", "utf-8-validate", "@yarnpkg/cli", "@yarnpkg/core", "clipanion", "@yarnpkg/plugin-essentials", "semver", "**/.yarn/**"]
