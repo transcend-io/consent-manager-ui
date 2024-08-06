@@ -103,5 +103,7 @@ describe('QuickOptions', () => {
     expect(!!prevConsent.purposes?.Advertising).toEqual(!consent.purposes?.Advertising);
     expect(prevConsent.confirmed).toEqual(false);
     expect(consent.confirmed).toEqual(true);
+
+    expect(true).toEqual(false);
   });
 });
