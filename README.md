@@ -327,3 +327,23 @@ yarn start
 ```
 
 This command will run a very simple HTML file defined in ./index.html. Any changes made to the ./index.html or ./src will cause the page to auto-reload without needing to restart the server.
+
+## Testing
+
+This repository has [Jest](https://jestjs.io/) tests available for all view states. These unit tests help to ensure core functionality remains unchanged,
+and run as part of the PR CI process. The test themselves include snapshots of the view state HTML to help prevent regressions in terms of UI logic or
+DOM behavior.
+
+To run these tests, pull down this repository and run
+
+```sh
+yarn test
+```
+
+For maintainers, if a change you're making introduces a diff, you can walk through the snapshot changes interactively by running
+
+```sh
+yarn test:watch
+```
+
+and reviewing and approving diffs for the changed snapshots.

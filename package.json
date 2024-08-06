@@ -40,7 +40,8 @@
     "build:playground": "rm -rf build/ && yarn build && cp ./src/playground/playground.css ./build/",
     "playground": "yarn build:playground && concurrently 'WATCH=true yarn build' 'yarn live-server --host=localhost --open=./src/playground/index.html --mount=/src/playground/:./src/'",
     "prepublish": "yarn build",
-    "test": "yarn pnpify jest -r ts-node/register './src/**/*.test.ts'"
+    "test": "yarn jest",
+    "test:watch": "yarn jest --watch"
   },
   "devDependencies": {
     "@jest/globals": "^29.3.1",
