@@ -7,19 +7,29 @@ import {
 import { isViewStateClosed } from './hooks';
 import { logger } from './logger';
 import { PRIVACY_SIGNAL_NAME } from './privacy-signals';
-import { LOG_LEVELS } from './settings';
+import { LOG_LEVELS, settings } from './settings';
 import {
   HandleSetLanguage,
   HandleChangePrivacyPolicy,
   HandleSetViewState,
+  HandleChangeUiVariables,
 } from './types';
 import { VERSION } from './constants';
+import type { ConsentManagerLanguageKey } from '@transcend-io/internationalization';
+import { getTranscendPolicies } from './utils/getTranscendPolicies';
+import { ObjByString } from '@transcend-io/type-utils';
 
 interface MakeConsentManagerAPIInput {
   /** The event target, where events as dispatched */
   eventTarget: EventTarget;
   /** Property for the current view state of the consent manager UI */
   viewState: ViewState;
+  /** The currently selected language */
+  activeLocale: ConsentManagerLanguageKey;
+  /** The current dynamic variables */
+  currentVariables: ObjByString;
+  /** Method to handle changes to UI global variables */
+  handleChangeUiVariables: HandleChangeUiVariables;
   /** Method to change language */
   handleChangeLanguage: HandleSetLanguage;
   /** Method to change view state */
@@ -43,13 +53,28 @@ let promptSuppressionNoticeShown = false;
 export function makeConsentManagerAPI({
   eventTarget,
   viewState,
+  activeLocale,
+  currentVariables,
   handleChangeLanguage,
+  handleChangeUiVariables,
   handleChangePrivacyPolicy,
   handleChangeSecondaryPolicy,
   handleSetViewState,
   airgap,
 }: MakeConsentManagerAPIInput): ConsentManagerAPI {
   const consentManagerMethods: Omit<ConsentManagerAPI, keyof EventTarget> = {
+    setTranscendUiVariables: (variables) =>
+      Promise.resolve(handleChangeUiVariables(variables)),
+    getTranscendUiVariables: () => currentVariables,
+    getTranscendPolicies: (input = {}) =>
+      Promise.resolve(
+        getTranscendPolicies(
+          input,
+          settings.policiesCdnLocation, // FIXME override
+          activeLocale,
+          currentVariables,
+        ),
+      ),
     setPrivacyPolicy: (privacyPolicyLink) =>
       Promise.resolve(handleChangePrivacyPolicy(privacyPolicyLink)),
     setSecondaryPolicy: (privacyPolicyLink) =>

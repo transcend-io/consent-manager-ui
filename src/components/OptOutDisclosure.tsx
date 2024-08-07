@@ -9,6 +9,7 @@ import {
 import type { HandleSetViewState } from '../types';
 import { useAirgap } from '../hooks';
 import { Button } from './Button';
+import { ObjByString } from '@transcend-io/type-utils';
 
 /**
  * Component showing acknowledgement of a 1 click opt out of all purposes
@@ -16,11 +17,14 @@ import { Button } from './Button';
 export function OptOutDisclosure({
   handleSetViewState,
   modalOpenAuth,
+  globalUiVariables,
 }: {
   /** Authentication for opening the airgap modal */
   modalOpenAuth: AirgapAuth;
   /** Function to change viewState */
   handleSetViewState: HandleSetViewState;
+  /** Global UI view state variables */
+  globalUiVariables: ObjByString;
 }): JSX.Element {
   const { airgap } = useAirgap();
   const { formatMessage } = useIntl();
@@ -59,6 +63,7 @@ export function OptOutDisclosure({
               globalPrivacyControl
                 ? optOutDisclosureMessages.optOutHonoredGpc
                 : optOutDisclosureMessages.optOutHonored,
+              globalUiVariables,
             )}
           </p>
         </div>
@@ -69,6 +74,7 @@ export function OptOutDisclosure({
               dangerouslySetInnerHTML={{
                 __html: formatMessage(
                   optOutDisclosureMessages.optOutHonoredDescription,
+                  globalUiVariables,
                 ),
               }}
             />
@@ -78,6 +84,7 @@ export function OptOutDisclosure({
       <Button
         primaryText={formatMessage(
           noticeAndDoNotSellMessages.confirmButtonPrimary,
+          globalUiVariables,
         )}
         handleClick={handleConfirm}
         initialFocus

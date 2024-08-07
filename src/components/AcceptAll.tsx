@@ -1,3 +1,4 @@
+import { ObjByString } from '@transcend-io/type-utils';
 import { h, JSX } from 'preact';
 import { useIntl } from 'react-intl';
 import { useAirgap } from '../hooks';
@@ -10,7 +11,10 @@ import { Button } from './Button';
  */
 export function AcceptAll({
   handleSetViewState,
+  globalUiVariables,
 }: {
+  /** Global variables to pass to message contents */
+  globalUiVariables: ObjByString;
   /** Function to change viewState */
   handleSetViewState: HandleSetViewState;
 }): JSX.Element {
@@ -37,7 +41,7 @@ export function AcceptAll({
             role="heading"
             className="text-title text-title-left"
           >
-            {formatMessage(messages.consentTitleAcceptAll)}
+            {formatMessage(messages.consentTitleAcceptAll, globalUiVariables)}
           </p>
         </div>
         <div>
@@ -46,16 +50,25 @@ export function AcceptAll({
               role="paragraph"
               // eslint-disable-next-line react/no-danger
               dangerouslySetInnerHTML={{
-                __html: formatMessage(messages.acceptAllDescription),
+                __html: formatMessage(
+                  messages.acceptAllDescription,
+                  globalUiVariables,
+                ),
               }}
             />
           </p>
         </div>
       </div>
       <Button
-        primaryText={formatMessage(messages.acceptAllButtonPrimary)}
+        primaryText={formatMessage(
+          messages.acceptAllButtonPrimary,
+          globalUiVariables,
+        )}
         handleClick={handleAcceptAll}
-        ariaDescription={formatMessage(messages.acceptAllButtonAriaDescription)}
+        ariaDescription={formatMessage(
+          messages.acceptAllButtonAriaDescription,
+          globalUiVariables,
+        )}
         initialFocus
       />
     </div>

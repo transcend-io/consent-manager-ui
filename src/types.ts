@@ -5,6 +5,7 @@ import type {
   ConsentManagerConfig,
 } from '@transcend-io/airgap.js-types';
 import { ConsentManagerLanguageKey } from '@transcend-io/internationalization';
+import { ObjByString } from '@transcend-io/type-utils';
 
 /**
  * Disclosure of a tracking purpose
@@ -59,6 +60,11 @@ export type HandleSetViewState = (
  * Handler for setting user language
  */
 export type HandleSetLanguage = (language: ConsentManagerLanguageKey) => void;
+
+/**
+ * Handler for changing UI variables
+ */
+export type HandleChangeUiVariables = (variables: ObjByString) => void;
 
 /**
  * Handler for changing the privacy policy link

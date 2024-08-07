@@ -1,3 +1,4 @@
+import { ObjByString } from '@transcend-io/type-utils';
 import { h, JSX } from 'preact';
 import { useState } from 'preact/hooks';
 import { useIntl } from 'react-intl';
@@ -19,11 +20,14 @@ let savingTimeout: ReturnType<typeof setTimeout>;
 export function DoNotSellExplainer({
   handleSetViewState,
   fontColor,
+  globalUiVariables,
 }: {
   /** Function to change viewState */
   handleSetViewState: HandleSetViewState;
   /** Font color */
   fontColor: string;
+  /** Global UI view state variables */
+  globalUiVariables: ObjByString;
 }): JSX.Element {
   const { airgap } = useAirgap();
   const { formatMessage } = useIntl();
@@ -57,6 +61,7 @@ export function DoNotSellExplainer({
         }}
         className="do-not-sell-explainer-close"
         fontColor={fontColor}
+        globalUiVariables={globalUiVariables}
       />
       <div>
         <div>
@@ -65,7 +70,10 @@ export function DoNotSellExplainer({
             role="heading"
             className="text-title text-title-left"
           >
-            {formatMessage(messages.consentTitleDoNotSellExplainer)}
+            {formatMessage(
+              messages.consentTitleDoNotSellExplainer,
+              globalUiVariables,
+            )}
           </p>
         </div>
         <div>
@@ -73,13 +81,16 @@ export function DoNotSellExplainer({
             <div
               // eslint-disable-next-line react/no-danger
               dangerouslySetInnerHTML={{
-                __html: formatMessage(messages.doNotSellDescription),
+                __html: formatMessage(
+                  messages.doNotSellDescription,
+                  globalUiVariables,
+                ),
               }}
             />
           </p>
         </div>
         <div className="margin-tops do-not-sell-explainer-interface">
-          <GPCIndicator />
+          <GPCIndicator globalUiVariables={globalUiVariables} />
           <Switch
             id="sale-of-info"
             checked={consentLocal}
@@ -88,6 +99,7 @@ export function DoNotSellExplainer({
               consentLocal
                 ? messages.doNotSellOptedIn
                 : messages.doNotSellOptedOut,
+              globalUiVariables,
             )}
             initialFocus
           />
@@ -104,6 +116,7 @@ export function DoNotSellExplainer({
                     : consentLocal
                     ? messages.preferencesSavedOptedIn
                     : messages.preferencesSaved,
+                  globalUiVariables,
                 )
               : '\u200b'}
           </p>

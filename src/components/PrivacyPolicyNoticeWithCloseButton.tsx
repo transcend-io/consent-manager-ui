@@ -1,3 +1,4 @@
+import { ObjByString } from '@transcend-io/type-utils';
 import { h, JSX } from 'preact';
 import { useIntl } from 'react-intl';
 import { CONSENT_OPTIONS } from '../constants';
@@ -13,11 +14,14 @@ import { CloseButton } from './CloseButton';
 export function PrivacyPolicyNoticeWithCloseButton({
   handleSetViewState,
   fontColor,
+  globalUiVariables,
 }: {
   /** Function to change viewState */
   handleSetViewState: HandleSetViewState;
   /** Font color */
   fontColor: string;
+  /** Global UI view state variables */
+  globalUiVariables: ObjByString;
 }): JSX.Element {
   const { airgap } = useAirgap();
   const { formatMessage } = useIntl();
@@ -30,6 +34,7 @@ export function PrivacyPolicyNoticeWithCloseButton({
           airgap.setConsent(event, {}, CONSENT_OPTIONS);
           handleSetViewState('close');
         }}
+        globalUiVariables={globalUiVariables}
         className="privacy-policy-notice-with-close-button-close"
         fontColor={fontColor}
         initialFocus
@@ -43,6 +48,7 @@ export function PrivacyPolicyNoticeWithCloseButton({
           >
             {formatMessage(
               messages.consentTitlePrivacyPolicyNoticeWithCloseButton,
+              globalUiVariables,
             )}
           </p>
         </div>
@@ -54,6 +60,7 @@ export function PrivacyPolicyNoticeWithCloseButton({
               dangerouslySetInnerHTML={{
                 __html: formatMessage(
                   messages.privacyPolicyNoticeWithCloseButtonDescription,
+                  globalUiVariables,
                 ),
               }}
             />

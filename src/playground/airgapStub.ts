@@ -23,6 +23,7 @@ const AIRGAP_STATUS = {
   telemetry: false,
 };
 
+// FIXME
 export const airgapStub: AirgapAPI = {
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore

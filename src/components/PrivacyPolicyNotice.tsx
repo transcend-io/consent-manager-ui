@@ -1,3 +1,4 @@
+import { ObjByString } from '@transcend-io/type-utils';
 import { h, JSX } from 'preact';
 import { useIntl } from 'react-intl';
 import { CONSENT_OPTIONS } from '../constants';
@@ -11,9 +12,12 @@ import { Button } from './Button';
  */
 export function PrivacyPolicyNotice({
   handleSetViewState,
+  globalUiVariables,
 }: {
   /** Function to change viewState */
   handleSetViewState: HandleSetViewState;
+  /** Global UI view state variables */
+  globalUiVariables: ObjByString;
 }): JSX.Element {
   const { airgap } = useAirgap();
   const { formatMessage } = useIntl();
@@ -38,7 +42,10 @@ export function PrivacyPolicyNotice({
             role="heading"
             className="text-title text-title-left"
           >
-            {formatMessage(messages.consentTitlePrivacyPolicyNotice)}
+            {formatMessage(
+              messages.consentTitlePrivacyPolicyNotice,
+              globalUiVariables,
+            )}
           </p>
         </div>
         <div>
@@ -47,14 +54,20 @@ export function PrivacyPolicyNotice({
               role="paragraph"
               // eslint-disable-next-line react/no-danger
               dangerouslySetInnerHTML={{
-                __html: formatMessage(messages.privacyPolicyNoticeDescription),
+                __html: formatMessage(
+                  messages.privacyPolicyNoticeDescription,
+                  globalUiVariables,
+                ),
               }}
             />
           </p>
         </div>
       </div>
       <Button
-        primaryText={formatMessage(messages.privacyPolicyNoticeButton)}
+        primaryText={formatMessage(
+          messages.privacyPolicyNoticeButton,
+          globalUiVariables,
+        )}
         handleClick={handlePrivacyPolicyNotice}
         initialFocus
       />

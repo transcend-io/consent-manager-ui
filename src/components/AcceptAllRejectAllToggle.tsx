@@ -1,3 +1,4 @@
+import { ObjByString } from '@transcend-io/type-utils';
 import { h, JSX } from 'preact';
 import { useState } from 'preact/hooks';
 import { useIntl } from 'react-intl';
@@ -18,11 +19,14 @@ let savingTimeout: ReturnType<typeof setTimeout>;
 export function AcceptAllRejectAllToggle({
   handleSetViewState,
   fontColor,
+  globalUiVariables,
 }: {
   /** Function to change viewState */
   handleSetViewState: HandleSetViewState;
   /** Font color */
   fontColor: string;
+  /** Global variables to pass to message contents */
+  globalUiVariables: ObjByString;
 }): JSX.Element {
   const { airgap } = useAirgap();
   const { formatMessage } = useIntl();
@@ -64,6 +68,7 @@ export function AcceptAllRejectAllToggle({
         }}
         className="accept-all-reject-all-toggle-close"
         fontColor={fontColor}
+        globalUiVariables={globalUiVariables}
       />
       <div>
         <div>
@@ -72,7 +77,10 @@ export function AcceptAllRejectAllToggle({
             role="heading"
             className="text-title text-title-left"
           >
-            {formatMessage(messages.consentTitleAcceptAllRejectAllToggle)}
+            {formatMessage(
+              messages.consentTitleAcceptAllRejectAllToggle,
+              globalUiVariables,
+            )}
           </p>
         </div>
         <div>
@@ -83,13 +91,14 @@ export function AcceptAllRejectAllToggle({
               dangerouslySetInnerHTML={{
                 __html: formatMessage(
                   messages.acceptAllRejectAllToggleDescription,
+                  globalUiVariables,
                 ),
               }}
             />
           </p>
         </div>
         <div className="margin-tops do-not-sell-explainer-interface">
-          <GPCIndicator />
+          <GPCIndicator globalUiVariables={globalUiVariables} />
           <Switch
             id={switchId}
             checked={consentLocal}
@@ -98,6 +107,7 @@ export function AcceptAllRejectAllToggle({
               consentLocal
                 ? messages.doNotSellOptedIn
                 : messages.doNotSellOptedOut,
+              globalUiVariables,
             )}
             initialFocus
           />
@@ -113,6 +123,7 @@ export function AcceptAllRejectAllToggle({
                     : consentLocal
                     ? messages.preferencesSavedOptedIn
                     : messages.preferencesSaved,
+                  globalUiVariables,
                 )
               : '\u200b'}
           </p>

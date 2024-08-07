@@ -17,15 +17,19 @@ import {
   DEFAULT_PURPOSE_TO_INVERTED_MESSAGE_KEY,
   ORDER_OF_PURPOSES,
 } from './constants';
+import { ObjByString } from '@transcend-io/type-utils';
 
 /**
  * The model view where checking each checkbox represents an opt otu
  */
 export function CompleteOptionsInverted({
   handleSetViewState,
+  globalUiVariables,
 }: {
   /** Function to change viewState */
   handleSetViewState: HandleSetViewState;
+  /** Global variables to pass to message contents */
+  globalUiVariables: ObjByString;
 }): JSX.Element {
   const { formatMessage } = useIntl();
   const { airgap } = useAirgap();
@@ -79,6 +83,7 @@ export function CompleteOptionsInverted({
   // Render description
   const description = formatMessage(
     completeOptionsInvertedMessages.description,
+    globalUiVariables,
   );
 
   return (
@@ -88,10 +93,13 @@ export function CompleteOptionsInverted({
         role="heading"
         className="text-title text-title-center"
       >
-        {formatMessage(messages.completeOptionsInvertedTitle)}
+        {formatMessage(
+          messages.completeOptionsInvertedTitle,
+          globalUiVariables,
+        )}
       </p>
       <form className="complete-options-form">
-        <GPCIndicator />
+        <GPCIndicator globalUiVariables={globalUiVariables} />
         {description && description !== '-' ? (
           <p className="paragraph">
             <div
@@ -105,15 +113,22 @@ export function CompleteOptionsInverted({
         <div
           className="toggles-container"
           role="group"
-          aria-label={formatMessage(messages.buttonGroupAriaDescription)}
+          aria-label={formatMessage(
+            messages.buttonGroupAriaDescription,
+            globalUiVariables,
+          )}
         >
           {orderedSelections.map(([purpose, isChecked], idx) => (
             <Toggle
               key={purpose}
+              globalUiVariables={globalUiVariables}
               invertLabels
               name={
                 Object.hasOwnProperty.call(purposeToMessageKey, purpose)
-                  ? formatMessage(purposeToMessageKey[purpose])
+                  ? formatMessage(
+                      purposeToMessageKey[purpose],
+                      globalUiVariables,
+                    )
                   : purpose
               }
               initialToggleState={!isChecked}
@@ -127,7 +142,10 @@ export function CompleteOptionsInverted({
         </div>
         <Button
           handleClick={handleSave}
-          primaryText={formatMessage(completeOptionsMessages.saveButtonPrimary)}
+          primaryText={formatMessage(
+            completeOptionsMessages.saveButtonPrimary,
+            globalUiVariables,
+          )}
           {...(orderedSelections.length === 0 ? { initialFocus: true } : {})}
         />
       </form>
