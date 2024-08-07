@@ -340,10 +340,9 @@ To run these tests, pull down this repository and run
 yarn test
 ```
 
-For maintainers, if a change you're making introduces a diff, you can walk through the snapshot changes interactively by running
+For maintainers: if a change you're making introduces a diff, you can walk through the snapshot changes interactively and review diffs/update snapshots
+on a case by case basis by running
 
 ```sh
 yarn test:watch
 ```
-
-and reviewing and approving diffs for the changed snapshots.
