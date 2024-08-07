@@ -47,17 +47,14 @@ export function PrivacyPolicyNoticeWithCloseButton({
           </p>
         </div>
         <div>
-          <p className="paragraph">
-            <div
-              role="paragraph"
-              // eslint-disable-next-line react/no-danger
-              dangerouslySetInnerHTML={{
-                __html: formatMessage(
-                  messages.privacyPolicyNoticeWithCloseButtonDescription,
-                ),
-              }}
-            />
-          </p>
+          <p className="paragraph"
+            // eslint-disable-next-line react/no-danger
+            dangerouslySetInnerHTML={{
+              __html: formatMessage(
+                messages.privacyPolicyNoticeWithCloseButtonDescription,
+              ),
+            }}
+          />
         </div>
       </div>
     </div>

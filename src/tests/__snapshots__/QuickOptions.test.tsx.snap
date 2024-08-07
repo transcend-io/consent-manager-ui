@@ -1,0 +1,44 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`QuickOptions matches snapshot 1`] = `
+"<div>
+  <div>
+    <p
+      id="consent-dialog-title"
+      class="text-title text-title-center"
+      role="heading"
+    >
+      What can we use data for?
+    </p>
+    <div
+      role="group"
+      class="column-content"
+      aria-label="Select consent and close dialog"
+    >
+      <button class="button" data-initialfocus="true">
+        <span class="button-base-text button-primary-text">Only Essentials</span
+        ><span class="button-base-text button-secondary-text"
+          >required to operate</span
+        ></button
+      ><button class="button">
+        <span class="button-base-text button-primary-text">Functional</span
+        ><span class="button-base-text button-secondary-text"
+          >extra site features</span
+        ></button
+      ><button class="button">
+        <span class="button-base-text button-primary-text">Analytics</span
+        ><span class="button-base-text button-secondary-text"
+          >helps us improve</span
+        ></button
+      ><button class="button">
+        <span class="button-base-text button-primary-text"
+          >Ads and Analytics</span
+        ><span class="button-base-text button-secondary-text"
+          >helps us personalize ads</span
+        >
+      </button>
+    </div>
+  </div>
+</div>
+"
+`;

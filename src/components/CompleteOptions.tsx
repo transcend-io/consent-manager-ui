@@ -9,7 +9,8 @@ import { Button } from './Button';
 import { GPCIndicator } from './GPCIndicator';
 import { Toggle } from './Toggle';
 import { CONSENT_OPTIONS } from '../constants';
-import { DEFAULT_PURPOSE_TO_MESSAGE_KEY, ORDER_OF_PURPOSES } from './constants';
+import { DEFAULT_PURPOSE_TO_MESSAGE_KEY } from './constants';
+import { sortByPurposeOrder } from '../helpers';
 
 /**
  * The model view for "More Choices" showing granular checkboxes and more info
@@ -59,15 +60,8 @@ export function CompleteOptions({
   };
 
   // sort ordering of options
-  const orderedSelections = Object.entries(consentSelections).sort(([a], [b]) =>
-    // sort custom purposes to the end
-    ORDER_OF_PURPOSES.indexOf(a) < 0 && ORDER_OF_PURPOSES.indexOf(b) > 0
-      ? 1
-      : ORDER_OF_PURPOSES.indexOf(b) < 0 && ORDER_OF_PURPOSES.indexOf(a) > 0
-      ? -1
-      : // order purposes based on order defined above
-        ORDER_OF_PURPOSES.indexOf(a) - ORDER_OF_PURPOSES.indexOf(b),
-  );
+  const orderedSelections =
+    Object.entries(consentSelections).sort(sortByPurposeOrder);
 
   // Render description
   const description = formatMessage(completeOptionsMessages.description);

@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AcceptOrRejectAnalytics matches snapshot 1`] = `
+"<div>
+  <div class="column-content" role="none">
+    <div>
+      <div>
+        <p
+          id="consent-dialog-title"
+          role="heading"
+          class="text-title text-title-left"
+        >
+          This website uses analytics
+        </p>
+      </div>
+      <div>
+        <p class="paragraph">
+          By clicking "Okay", you agree to the usage of your sensitive
+          information for analytics purposes.
+        </p>
+      </div>
+    </div>
+    <div
+      class="accept-or-reject-all-button-row"
+      role="group"
+      aria-label="Select consent and close dialog"
+    >
+      <button class="button">
+        <span class="button-base-text button-primary-text">Okay</span></button
+      ><button class="button" data-initialfocus="true">
+        <span class="button-base-text button-primary-text">Do not track</span>
+      </button>
+    </div>
+  </div>
+</div>
+"
+`;

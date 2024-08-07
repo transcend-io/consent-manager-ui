@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DoNotSellDisclosure matches snapshot 1`] = `
+"<div>
+  <div class="column-content" role="none">
+    <div>
+      <div>
+        <p
+          id="consent-dialog-title"
+          role="heading"
+          class="text-title text-title-left"
+        >
+          Your opt-out request has been honored.
+        </p>
+      </div>
+      <div>
+        <p class="paragraph">
+          We've received your request for this device or browser, and we will no
+          longer sell or share your data with third parties. Learn more about
+          our data practices in our privacy policy.
+        </p>
+      </div>
+    </div>
+    <button class="button" data-initialfocus="true">
+      <span class="button-base-text button-primary-text">Okay</span>
+    </button>
+  </div>
+</div>
+"
+`;
