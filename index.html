@@ -167,6 +167,21 @@
         });
       };
 
+      /**
+       * Dynamically change out policy content based on language
+       */
+      async function setPolicyContent(language) {
+        if (language) {
+          await transcend.setActiveLocale(language);
+        }
+        const [policy] = await transcend.getTranscendPolicies({
+          policyTitles: ['Label Privacy Policy'],
+          // variables: { labelName: 'Marshmalt Records' },
+          locale: language || transcend.getActiveLocale(),
+        });
+        document.getElementById('policy-content').innerHTML = policy.content;
+      }
+
       // Prepare document on ready
       transcend.ready(() => {
         // Add buttons for view states
@@ -207,16 +222,7 @@
             labelName: 'Marshmalt Records',
           })
           .then(() => {
-            transcend
-              .getTranscendPolicies({
-                policyTitles: ['Label Privacy Policy'],
-                // variables: { labelName: 'Marshmalt Records' },
-                locale: 'fr',
-              })
-              .then(([policy]) => {
-                document.getElementById('policy-content').innerHTML =
-                  policy.content;
-              });
+            setPolicyContent();
           });
 
         // resolve consent from backend

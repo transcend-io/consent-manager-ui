@@ -75,11 +75,13 @@ export function makeConsentManagerAPI({
           currentVariables,
         ),
       ),
+
     setPrivacyPolicy: (privacyPolicyLink) =>
       Promise.resolve(handleChangePrivacyPolicy(privacyPolicyLink)),
     setSecondaryPolicy: (privacyPolicyLink) =>
       Promise.resolve(handleChangeSecondaryPolicy(privacyPolicyLink)),
     setActiveLocale: (locale) => Promise.resolve(handleChangeLanguage(locale)),
+    getActiveLocale: () => activeLocale,
     getViewState: () => viewState,
     viewStates: new Set(Object.values(ViewState)),
     doNotSell: (auth, options) =>

@@ -25,6 +25,18 @@ const AIRGAP_STATUS = {
 
 // FIXME
 export const airgapStub: AirgapAPI = {
+  isAllowed: () => Promise.resolve(false),
+  isCookieAllowed: () => Promise.resolve(false),
+  isRequestAllowed: () => Promise.resolve(false),
+  getPurposes: () => Promise.resolve({} as any),
+  getRequestPurposes: () => Promise.resolve({} as any),
+  getCookiePurposes: () => Promise.resolve({} as any),
+  export: () => ({} as any),
+  isConsented: () => true,
+  override: () => ({} as any),
+  overrideCookies: () => ({} as any),
+  watch: () => ({} as any),
+  watchCookies: () => ({} as any),
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
   ready: (callback) => callback(airgapStub),

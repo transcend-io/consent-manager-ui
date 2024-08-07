@@ -2,9 +2,34 @@ import type {
   GetTranscendPolicies,
   TranscendPolicy,
 } from '@transcend-io/airgap.js-types';
-import type { ConsentManagerLanguageKey } from '@transcend-io/internationalization';
+import type {
+  ConsentManagerLanguageKey,
+  LanguageKey,
+} from '@transcend-io/internationalization';
 import type { ObjByString } from '@transcend-io/type-utils';
 import { compile } from './compile';
+
+/**
+ * Update a translation for a particular message
+ *
+ * @param translations - Translations
+ * @param locale - The language to fetch
+ * @returns The message with the translation updated or created
+ */
+function getTranslation(
+  translations: {
+    /** Language of translation */
+    locale: LanguageKey;
+    /** Value of translation */
+    value: string;
+  }[],
+  locale: LanguageKey,
+): string {
+  return (
+    translations.find((translation) => translation.locale === locale)?.value ||
+    ''
+  );
+}
 
 /**
  * Fetch a set of policy documents defined in Transcend.
@@ -45,6 +70,7 @@ export async function getTranscendPolicies(
     ...input.variables,
   };
 
+  // FIXME enforce API shape
   // Convert the parsed data into the expected format
   const formatted: TranscendPolicy[] = parsed.map(
     (policy: {
@@ -61,15 +87,31 @@ export async function getTranscendPolicies(
         content: {
           /** Default message of content */
           defaultMessage: string;
+          /** Translations */
+          translations: {
+            /** Language of translation */
+            locale: LanguageKey;
+            /** Value of translation */
+            value: string;
+          }[];
         };
       }[];
-    }): TranscendPolicy => ({
-      id: policy.id,
-      title: policy.title.defaultMessage,
-      content: Object.keys(allVariables).length
-        ? compile(policy.versions[0].content.defaultMessage, allVariables)
-        : policy.versions[0].content.defaultMessage,
-    }),
+    }): TranscendPolicy => {
+      const content =
+        getTranslation(policy.versions[0].content.translations, activeLocale) ||
+        getTranslation(
+          policy.versions[0].content.translations,
+          activeLocale.split('-')[0] as LanguageKey,
+        ) ||
+        policy.versions[0].content.defaultMessage;
+      return {
+        id: policy.id,
+        title: policy.title.defaultMessage,
+        content: Object.keys(allVariables).length
+          ? compile(content, allVariables)
+          : content,
+      };
+    },
   );
 
   // Filter by IDs of titles
