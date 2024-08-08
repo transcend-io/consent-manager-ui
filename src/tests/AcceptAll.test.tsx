@@ -6,8 +6,11 @@ import { test, expect, describe, beforeEach } from '@jest/globals';
 
 import { AcceptAll } from '../components/AcceptAll';
 import { fireEvent } from '@testing-library/preact';
-import { MOCK_PURPOSES_OPTED_OUT } from './utils/constants';
-import { init as initMockAirgap } from './utils/ag-mock'
+import {
+  MOCK_PURPOSES_OPTED_OUT,
+  MOCK_TEMPLATE_VARIABLES,
+} from './utils/constants';
+import { init as initMockAirgap } from './utils/ag-mock';
 
 describe('AcceptAll', () => {
   beforeEach(() => {
@@ -15,13 +18,23 @@ describe('AcceptAll', () => {
   });
 
   test('matches snapshot', () => {
-    const { snapshot } = render(<AcceptAll handleSetViewState={() => null} />);
+    const { snapshot } = render(
+      <AcceptAll
+        handleSetViewState={() => null}
+        globalUiVariables={MOCK_TEMPLATE_VARIABLES}
+      />,
+    );
     expect(snapshot).toMatchSnapshot();
   });
 
   test('submission affects stored consent', () => {
     const prevConsent = { ...testWindow.airgap.getConsent() };
-    const { container } = render(<AcceptAll handleSetViewState={() => null} />);
+    const { container } = render(
+      <AcceptAll
+        handleSetViewState={() => null}
+        globalUiVariables={MOCK_TEMPLATE_VARIABLES}
+      />,
+    );
 
     // Ensure submission reflects purpose selection in airgap
     const submitButton = container.querySelector('button');
@@ -30,7 +43,9 @@ describe('AcceptAll', () => {
     const consent = { ...testWindow.airgap.getConsent() };
 
     Object.entries(MOCK_PURPOSES_OPTED_OUT).forEach(([, purpose]) => {
-      expect(!!prevConsent.purposes?.[purpose.name]).toEqual(!consent.purposes?.[purpose.name]);
+      expect(!!prevConsent.purposes?.[purpose.name]).toEqual(
+        !consent.purposes?.[purpose.name],
+      );
     });
     expect(prevConsent.confirmed).toEqual(false);
     expect(consent.confirmed).toEqual(true);
