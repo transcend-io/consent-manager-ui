@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AcceptOrRejectAllOrMoreChoices matches snapshot 1`] = `
+"<div>
+  <div class="column-content" role="none">
+    <div>
+      <div>
+        <p
+          id="consent-dialog-title"
+          role="heading"
+          class="text-title text-title-left"
+        >
+          We use cookies
+        </p>
+      </div>
+      <div>
+        <p class="paragraph">
+          By clicking “Accept all”, you agree to the storing of cookies on your
+          device for functional, analytics, and advertising purposes.
+        </p>
+      </div>
+    </div>
+    <div
+      class="accept-or-reject-all-button-row"
+      role="group"
+      aria-label="Select consent and close dialog"
+    >
+      <button class="button">
+        <span class="button-base-text button-primary-text"
+          >Accept all</span
+        ></button
+      ><button class="button" data-initialfocus="true">
+        <span class="button-base-text button-primary-text"
+          >Reject all</span
+        ></button
+      ><button class="button">
+        <span class="button-base-text button-primary-text">More choices</span>
+      </button>
+    </div>
+  </div>
+</div>
+"
+`;

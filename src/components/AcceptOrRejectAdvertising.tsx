@@ -38,18 +38,16 @@ export function AcceptOrRejectAdvertising({
           </p>
         </div>
         <div>
-          <p className="paragraph">
-            <div
-              role="paragraph"
-              // eslint-disable-next-line react/no-danger
-              dangerouslySetInnerHTML={{
-                __html: formatMessage(
-                  messages.acceptOrRejectAdvertisingDescription,
-                  globalUiVariables,
-                ),
-              }}
-            />
-          </p>
+          <p
+            className="paragraph"
+            // eslint-disable-next-line react/no-danger
+            dangerouslySetInnerHTML={{
+              __html: formatMessage(
+                messages.acceptOrRejectAdvertisingDescription,
+                globalUiVariables,
+              ),
+            }}
+          />
         </div>
       </div>
       <div

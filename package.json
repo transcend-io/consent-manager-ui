@@ -7,7 +7,7 @@
     "url": "https://github.com/transcend-io/consent-manager-ui.git"
   },
   "homepage": "https://github.com/transcend-io/consent-manager-ui",
-  "version": "4.17.0",
+  "version": "4.18.0",
   "license": "MIT",
   "main": "build/ui",
   "files": [
@@ -41,13 +41,19 @@
     "build:playground": "rm -rf build/ && yarn build && cp ./src/playground/playground.css ./build/",
     "playground": "yarn build:playground && concurrently 'WATCH=true yarn build' 'yarn live-server --host=localhost --open=./src/playground/index.html --mount=/src/playground/:./src/'",
     "prepublish": "yarn build",
-    "test": "yarn pnpify jest -r ts-node/register './src/**/*.test.ts'"
+    "test": "yarn jest",
+    "test:watch": "yarn jest --watch"
   },
   "devDependencies": {
+    "@jest/globals": "^29.3.1",
     "@monaco-editor/react": "^4.4.5",
+    "@prettier/sync": "^0.5.2",
+    "@testing-library/jest-dom": "^6.4.6",
+    "@testing-library/preact": "^3.2.4",
     "@transcend-io/airgap.js-types": "^12.2.0",
     "@transcend-io/type-utils": "^1.0.7",
-    "@types/node": "^17.0.21",
+    "@types/jest": "^29.5.12",
+    "@types/node": "^17.0.45",
     "@typescript-eslint/eslint-plugin": "^5.12.1",
     "@typescript-eslint/parser": "^5.12.1",
     "@yarnpkg/esbuild-plugin-pnp": "^2.0.1",
@@ -68,10 +74,12 @@
     "eslint-plugin-jsdoc": "^37.9.4",
     "eslint-plugin-react": "^7.29.2",
     "eslint-plugin-react-hooks": "^4.3.0",
-    "jest": "^27.5.1",
+    "jest": "^29.7.0",
+    "jest-environment-jsdom": "^29.7.0",
     "live-server": "^1.2.2",
     "monaco-editor": "^0.34.0",
-    "prettier": "^2.7.1",
+    "prettier": "^3.3.3",
+    "ts-jest": "^29.2.3",
     "ts-node": "^10.5.0",
     "typescript": "^4.7.4"
   },

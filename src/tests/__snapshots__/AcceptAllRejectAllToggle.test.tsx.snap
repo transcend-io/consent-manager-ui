@@ -1,0 +1,52 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AcceptAllRejectAllToggle matches snapshot 1`] = `
+"<div>
+  <div class="column-content" role="none">
+    <button
+      type="button"
+      aria-label="Close consent manager"
+      class="accept-all-reject-all-toggle-close"
+    >
+      <svg width="24" height="24" viewBox="0 0 32 32" aria-hidden="true">
+        <path
+          fill="#000"
+          d="M25.71 24.29a.996.996 0 1 1-1.41 1.41L16 17.41 7.71 25.7a.996.996 0 1 1-1.41-1.41L14.59 16l-8.3-8.29A.996.996 0 1 1 7.7 6.3l8.3 8.29 8.29-8.29a.996.996 0 1 1 1.41 1.41L17.41 16l8.3 8.29z"
+        ></path></svg
+      ><span class="screen-reader">Close consent manager</span>
+    </button>
+    <div>
+      <div>
+        <p
+          id="consent-dialog-title"
+          role="heading"
+          class="text-title text-title-left"
+        >
+          Your Privacy Choices
+        </p>
+      </div>
+      <div>
+        <p class="paragraph">
+          By opting in below, you agree to the storing of cookies on your device
+          for functional, analytics, and advertising purposes.
+        </p>
+      </div>
+      <div class="margin-tops do-not-sell-explainer-interface">
+        <span style="display: none"></span
+        ><label class="switch label"
+          ><input
+            class="switch switch-checkbox screen-reader"
+            id="switch-all-purposes"
+            type="checkbox"
+            data-initialfocus="true"
+          /><span class="switch switch-background"
+            ><span class="switch switch-button"></span></span
+          >Switch the toggle to opt out.</label
+        >
+        <p class="paragraph" role="status" aria-hidden="true">​</p>
+      </div>
+    </div>
+  </div>
+</div>
+"
+`;

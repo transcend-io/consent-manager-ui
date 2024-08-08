@@ -84,18 +84,16 @@ export function AcceptAllRejectAllToggle({
           </p>
         </div>
         <div>
-          <p className="paragraph">
-            <div
-              role="paragraph"
-              // eslint-disable-next-line react/no-danger
-              dangerouslySetInnerHTML={{
-                __html: formatMessage(
-                  messages.acceptAllRejectAllToggleDescription,
-                  globalUiVariables,
-                ),
-              }}
-            />
-          </p>
+          <p
+            className="paragraph"
+            // eslint-disable-next-line react/no-danger
+            dangerouslySetInnerHTML={{
+              __html: formatMessage(
+                messages.acceptAllRejectAllToggleDescription,
+                globalUiVariables,
+              ),
+            }}
+          />
         </div>
         <div className="margin-tops do-not-sell-explainer-interface">
           <GPCIndicator globalUiVariables={globalUiVariables} />

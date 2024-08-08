@@ -1,0 +1,76 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DoNotSellExplainer matches snapshot 1`] = `
+"<div>
+  <div class="column-content" role="none">
+    <button
+      type="button"
+      aria-label="Close consent manager"
+      class="do-not-sell-explainer-close"
+    >
+      <svg width="24" height="24" viewBox="0 0 32 32" aria-hidden="true">
+        <path
+          fill="#000"
+          d="M25.71 24.29a.996.996 0 1 1-1.41 1.41L16 17.41 7.71 25.7a.996.996 0 1 1-1.41-1.41L14.59 16l-8.3-8.29A.996.996 0 1 1 7.7 6.3l8.3 8.29 8.29-8.29a.996.996 0 1 1 1.41 1.41L17.41 16l8.3 8.29z"
+        ></path></svg
+      ><span class="screen-reader">Close consent manager</span>
+    </button>
+    <div>
+      <div>
+        <p
+          id="consent-dialog-title"
+          role="heading"
+          class="text-title text-title-left"
+        >
+          Do Not Sell or Share My Personal Information
+        </p>
+      </div>
+      <div>
+        <div class="paragraph">
+          <p>
+            We do not disclose your personal information to third parties in
+            exchange for monetary consideration. In some instances, however, we
+            may disclose your personal information to third parties in exchange
+            for other valuable consideration, such as to enhance our product
+            offerings, offer display advertisements, and in other ways which you
+            can read about in our Privacy Statement.
+          </p>
+          <p>
+            By opting out below, we will not disclose your personal information
+            to third parties in exchange for valuable consideration.
+          </p>
+          <p>
+            Please note that by opting out of these types of disclosures, you
+            may limit our ability to customize your experience with content that
+            may be of interest to you.
+          </p>
+          <p>
+            If you have an account with us, sign in to persist your opt-out.
+          </p>
+          <p>
+            If you do not have an account, you may opt-out of the disclosure of
+            your personal information to third parties for valuable
+            consideration (e.g., information stored in cookies) from this web
+            browser below.
+          </p>
+        </div>
+      </div>
+      <div class="margin-tops do-not-sell-explainer-interface">
+        <span style="display: none"></span
+        ><label class="switch label"
+          ><input
+            class="switch switch-checkbox screen-reader"
+            id="switch-sale-of-info"
+            type="checkbox"
+            data-initialfocus="true"
+          /><span class="switch switch-background"
+            ><span class="switch switch-button"></span></span
+          >Switch the toggle to opt out.</label
+        >
+        <p class="paragraph" role="status" aria-hidden="true">​</p>
+      </div>
+    </div>
+  </div>
+</div>
+"
+`;

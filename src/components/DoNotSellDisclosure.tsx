@@ -71,18 +71,16 @@ export function DoNotSellDisclosure({
           </p>
         </div>
         <div>
-          <p className="paragraph">
-            <div
-              role="paragraph"
-              // eslint-disable-next-line react/no-danger
-              dangerouslySetInnerHTML={{
-                __html: formatMessage(
-                  noticeAndDoNotSellMessages.doNotSellHonoredDescription,
-                  globalUiVariables,
-                ),
-              }}
-            />
-          </p>
+          <p
+            className="paragraph"
+            // eslint-disable-next-line react/no-danger
+            dangerouslySetInnerHTML={{
+              __html: formatMessage(
+                noticeAndDoNotSellMessages.doNotSellHonoredDescription,
+                globalUiVariables,
+              ),
+            }}
+          />
         </div>
       </div>
       <Button

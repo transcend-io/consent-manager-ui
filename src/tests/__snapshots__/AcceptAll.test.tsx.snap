@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AcceptAll matches snapshot 1`] = `
+"<div>
+  <div class="column-content" role="none">
+    <div>
+      <div>
+        <p
+          id="consent-dialog-title"
+          role="heading"
+          class="text-title text-title-left"
+        >
+          We use cookies
+        </p>
+      </div>
+      <div>
+        <p class="paragraph">
+          By clicking “Accept all”, you agree to the storing of cookies on your
+          device for functional, analytics, and advertising purposes.
+        </p>
+      </div>
+    </div>
+    <button
+      class="button"
+      aria-description="Accept all cookies and close dialog."
+      data-initialfocus="true"
+    >
+      <span class="button-base-text button-primary-text">Accept all</span>
+    </button>
+  </div>
+</div>
+"
+`;

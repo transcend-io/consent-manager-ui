@@ -251,6 +251,7 @@ module.exports = {
     /** We want to eventually turn this to an error */
     '@typescript-eslint/ban-types': ['error'],
     '@typescript-eslint/no-explicit-any': ['error'],
+    'jest/no-jest-import': 0,
   },
   overrides: [
     /**

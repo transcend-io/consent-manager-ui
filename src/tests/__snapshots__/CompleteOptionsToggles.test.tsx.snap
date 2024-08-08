@@ -1,0 +1,137 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CompleteOptionsToggles matches snapshot 1`] = `
+"<div>
+  <div class="column-content" role="none">
+    <button
+      type="button"
+      aria-label="Close consent manager"
+      class="complete-options-toggle-close"
+    >
+      <svg width="24" height="24" viewBox="0 0 32 32" aria-hidden="true">
+        <path
+          fill="#000"
+          d="M25.71 24.29a.996.996 0 1 1-1.41 1.41L16 17.41 7.71 25.7a.996.996 0 1 1-1.41-1.41L14.59 16l-8.3-8.29A.996.996 0 1 1 7.7 6.3l8.3 8.29 8.29-8.29a.996.996 0 1 1 1.41 1.41L17.41 16l8.3 8.29z"
+        ></path></svg
+      ><span class="screen-reader">Close consent manager</span>
+    </button>
+    <div>
+      <div>
+        <p
+          id="consent-dialog-title"
+          role="heading"
+          class="text-title text-title-left"
+        >
+          Privacy Settings
+        </p>
+      </div>
+      <div>
+        <p class="paragraph">
+          Below is an overview of the different technologies we use when
+          processing your personal information.
+        </p>
+      </div>
+      <div
+        class="margin-tops complete-options-toggle-interface"
+        role="group"
+        aria-label="Select consent and close dialog"
+      >
+        <span
+          ><label class="switch label"
+            ><input
+              class="switch switch-checkbox screen-reader"
+              id="switch-Essential-true"
+              type="checkbox"
+              disabled=""
+            /><span class="switch switch-background"
+              ><span class="switch switch-button"></span></span
+            >Essential purposes</label
+          >
+          <p class="paragraph complete-options-toggle-description"></p></span
+        ><span
+          ><label class="switch label"
+            ><input
+              class="switch switch-checkbox screen-reader"
+              id="switch-Functional"
+              type="checkbox"
+              data-initialfocus="true"
+            /><span class="switch switch-background"
+              ><span class="switch switch-button"></span></span
+            >Functionality</label
+          >
+          <p class="paragraph complete-options-toggle-description">
+            Personalization, autofilled forms, etc.
+          </p></span
+        ><span
+          ><label class="switch label"
+            ><input
+              class="switch switch-checkbox screen-reader"
+              id="switch-Analytics"
+              type="checkbox"
+            /><span class="switch switch-background"
+              ><span class="switch switch-button"></span></span
+            >Analytics</label
+          >
+          <p class="paragraph complete-options-toggle-description">
+            Help us learn how our site is used and how it performs.
+          </p></span
+        ><span
+          ><label class="switch label"
+            ><input
+              class="switch switch-checkbox screen-reader"
+              id="switch-Advertising"
+              type="checkbox"
+            /><span class="switch switch-background"
+              ><span class="switch switch-button"></span></span
+            >Advertising</label
+          >
+          <p class="paragraph complete-options-toggle-description">
+            Helps us and others serve ads relevant to you.
+          </p></span
+        ><span
+          ><label class="switch label"
+            ><input
+              class="switch switch-checkbox screen-reader"
+              id="switch-SaleOfInfo"
+              type="checkbox"
+            /><span class="switch switch-background"
+              ><span class="switch switch-button"></span></span
+            >Sale of personal information</label
+          >
+          <p class="paragraph complete-options-toggle-description">
+            Sale of personal information.
+          </p></span
+        ><span
+          ><label class="switch label"
+            ><input
+              class="switch switch-checkbox screen-reader"
+              id="switch-CustomPurpose"
+              type="checkbox"
+            /><span class="switch switch-background"
+              ><span class="switch switch-button"></span></span
+            >CustomPurpose</label
+          >
+          <p class="paragraph complete-options-toggle-description">
+            Spacey
+          </p></span
+        ><span
+          ><label class="switch label"
+            ><input
+              class="switch switch-checkbox screen-reader"
+              id="switch-UniquePurpose"
+              type="checkbox"
+            /><span class="switch switch-background"
+              ><span class="switch switch-button"></span></span
+            >UniquePurpose</label
+          >
+          <p class="paragraph complete-options-toggle-description">
+            Unique Purpose
+          </p></span
+        >
+        <p class="paragraph"></p>
+      </div>
+    </div>
+  </div>
+</div>
+"
+`;

@@ -98,18 +98,16 @@ export function CompleteOptionsToggles({
           </p>
         </div>
         <div>
-          <p className="paragraph">
-            <div
-              role="paragraph"
-              // eslint-disable-next-line react/no-danger
-              dangerouslySetInnerHTML={{
-                __html: formatMessage(
-                  messages.consentTitleCompleteOptionsToggleDescription,
-                  globalUiVariables,
-                ),
-              }}
-            />
-          </p>
+          <p
+            className="paragraph"
+            // eslint-disable-next-line react/no-danger
+            dangerouslySetInnerHTML={{
+              __html: formatMessage(
+                messages.consentTitleCompleteOptionsToggleDescription,
+                globalUiVariables,
+              ),
+            }}
+          />
         </div>
         <div
           className="margin-tops complete-options-toggle-interface"

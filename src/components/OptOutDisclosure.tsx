@@ -68,17 +68,16 @@ export function OptOutDisclosure({
           </p>
         </div>
         <div>
-          <p className="paragraph">
-            <div
-              // eslint-disable-next-line react/no-danger
-              dangerouslySetInnerHTML={{
-                __html: formatMessage(
-                  optOutDisclosureMessages.optOutHonoredDescription,
-                  globalUiVariables,
-                ),
-              }}
-            />
-          </p>
+          <p
+            className="paragraph"
+            // eslint-disable-next-line react/no-danger
+            dangerouslySetInnerHTML={{
+              __html: formatMessage(
+                optOutDisclosureMessages.optOutHonoredDescription,
+                globalUiVariables,
+              ),
+            }}
+          />
         </div>
       </div>
       <Button
