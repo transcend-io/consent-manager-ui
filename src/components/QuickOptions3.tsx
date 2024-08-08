@@ -1,3 +1,4 @@
+import { ObjByString } from '@transcend-io/type-utils';
 import { h, JSX } from 'preact';
 import { useIntl } from 'react-intl';
 import { CONSENT_OPTIONS } from '../constants';
@@ -20,9 +21,12 @@ enum QuickOption {
  */
 export function QuickOptions3({
   handleSetViewState,
+  globalUiVariables,
 }: {
   /** Function to change viewState */
   handleSetViewState: HandleSetViewState;
+  /** Global UI view state variables */
+  globalUiVariables: ObjByString;
 }): JSX.Element {
   const { formatMessage } = useIntl();
   const { airgap } = useAirgap();
@@ -66,19 +70,24 @@ export function QuickOptions3({
         role="heading"
         className="text-title text-title-center"
       >
-        {formatMessage(messages.consentTitle)}
+        {formatMessage(messages.consentTitle, globalUiVariables)}
       </p>
       <div
         className="column-content"
         role="group"
-        aria-label={formatMessage(messages.buttonGroupAriaDescription)}
+        aria-label={formatMessage(
+          messages.buttonGroupAriaDescription,
+          globalUiVariables,
+        )}
       >
         <Button
           primaryText={formatMessage(
             quickOptionsMessages.essentialsButtonPrimary,
+            globalUiVariables,
           )}
           secondaryText={formatMessage(
             quickOptionsMessages.essentialsButtonSecondary,
+            globalUiVariables,
           )}
           handleClick={(event) =>
             handleQuickOption(event, QuickOption.Essential)
@@ -88,9 +97,11 @@ export function QuickOptions3({
         <Button
           primaryText={formatMessage(
             quickOptionsMessages.functionalAnalyticsButtonPrimary,
+            globalUiVariables,
           )}
           secondaryText={formatMessage(
             quickOptionsMessages.functionalAnalyticsButtonSecondary,
+            globalUiVariables,
           )}
           handleClick={(event) =>
             handleQuickOption(event, QuickOption.AnalyticsFunctional)
@@ -99,9 +110,11 @@ export function QuickOptions3({
         <Button
           primaryText={formatMessage(
             quickOptionsMessages.advertisingButtonPrimary,
+            globalUiVariables,
           )}
           secondaryText={formatMessage(
             quickOptionsMessages.advertisingButtonSecondary,
+            globalUiVariables,
           )}
           handleClick={(event) =>
             handleQuickOption(event, QuickOption.Advertising)

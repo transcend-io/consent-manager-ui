@@ -7,11 +7,18 @@ import { test, expect, describe, beforeEach } from '@jest/globals';
 
 import { CompleteOptions } from '../components/CompleteOptions';
 import { fireEvent } from '@testing-library/preact';
-import { MOCK_PURPOSES_OPTED_IN } from './utils/constants';
+import {
+  MOCK_PURPOSES_OPTED_IN,
+  MOCK_TEMPLATE_VARIABLES,
+} from './utils/constants';
 import { DEFAULT_PURPOSE_TO_MESSAGE_KEY } from '../components/constants';
 import { sortByPurposeOrder } from '../helpers';
-import { getPurposeEntries, getPurposeMessage, getPurposeValues } from './utils/purposes';
-import { init as initMockAirgap } from './utils/ag-mock'
+import {
+  getPurposeEntries,
+  getPurposeMessage,
+  getPurposeValues,
+} from './utils/purposes';
+import { init as initMockAirgap } from './utils/ag-mock';
 
 describe('CompleteOptions', () => {
   beforeEach(() => {
@@ -19,12 +26,22 @@ describe('CompleteOptions', () => {
   });
 
   test('matches snapshot', () => {
-    const { snapshot } = render(<CompleteOptions handleSetViewState={() => null} />);
+    const { snapshot } = render(
+      <CompleteOptions
+        handleSetViewState={() => null}
+        globalUiVariables={MOCK_TEMPLATE_VARIABLES}
+      />,
+    );
     expect(snapshot).toMatchSnapshot();
   });
 
   test('purpose ordering is consistent', () => {
-    const screen = render(<CompleteOptions handleSetViewState={() => null} />);
+    const screen = render(
+      <CompleteOptions
+        handleSetViewState={() => null}
+        globalUiVariables={MOCK_TEMPLATE_VARIABLES}
+      />,
+    );
     const { container } = screen;
 
     const sortedNamesToLabels = [
@@ -49,7 +66,12 @@ describe('CompleteOptions', () => {
   });
 
   test('defaults are honored', () => {
-    const screen = render(<CompleteOptions handleSetViewState={() => null} />);
+    const screen = render(
+      <CompleteOptions
+        handleSetViewState={() => null}
+        globalUiVariables={MOCK_TEMPLATE_VARIABLES}
+      />,
+    );
     getPurposeEntries().forEach(([key, purpose]) => {
       const label = getPurposeMessage(purpose);
       expect(getPurposeCheckState(screen, label)).toEqual(
@@ -60,7 +82,12 @@ describe('CompleteOptions', () => {
 
   test('check states change when clicked, submission affects stored consent', () => {
     const prevConsent = { ...testWindow.airgap?.getConsent() };
-    const screen = render(<CompleteOptions handleSetViewState={() => null} />);
+    const screen = render(
+      <CompleteOptions
+        handleSetViewState={() => null}
+        globalUiVariables={MOCK_TEMPLATE_VARIABLES}
+      />,
+    );
     const { container } = screen;
     getPurposeEntries().forEach(([key, purpose]) => {
       const label = getPurposeMessage(purpose);
@@ -77,14 +104,21 @@ describe('CompleteOptions', () => {
     const consent = { ...testWindow.airgap?.getConsent() };
 
     Object.entries(MOCK_PURPOSES_OPTED_IN).forEach(([, purpose]) => {
-      expect(!!prevConsent.purposes?.[purpose.name]).toEqual(!consent.purposes?.[purpose.name]);
+      expect(!!prevConsent.purposes?.[purpose.name]).toEqual(
+        !consent.purposes?.[purpose.name],
+      );
     });
     expect(prevConsent.confirmed).toEqual(false);
     expect(consent.confirmed).toEqual(true);
   });
 
   test('purposes rerender on remount', () => {
-    let screen = render(<CompleteOptions handleSetViewState={() => null} />);
+    let screen = render(
+      <CompleteOptions
+        handleSetViewState={() => null}
+        globalUiVariables={MOCK_TEMPLATE_VARIABLES}
+      />,
+    );
     let { container, unmount } = screen;
     getPurposeValues().forEach((purpose) => {
       const label = getPurposeMessage(purpose);
@@ -97,7 +131,12 @@ describe('CompleteOptions', () => {
 
     unmount();
 
-    screen = render(<CompleteOptions handleSetViewState={() => null} />);
+    screen = render(
+      <CompleteOptions
+        handleSetViewState={() => null}
+        globalUiVariables={MOCK_TEMPLATE_VARIABLES}
+      />,
+    );
     ({ container, unmount } = screen);
 
     // Ensure we rerender the ui with the new consent when unmounting and remounting ui

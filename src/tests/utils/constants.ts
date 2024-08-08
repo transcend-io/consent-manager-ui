@@ -57,14 +57,20 @@ const MOCK_PURPOSES_BASE = {
     trackingType: 'UniquePurpose',
     optOutSignals: [],
   },
-}
+};
+
+export const MOCK_TEMPLATE_VARIABLES = { labelName: 'Test Label' };
 
 export const MOCK_PURPOSES_OPTED_OUT = Object.fromEntries(
-  Object.entries(MOCK_PURPOSES_BASE)
-    .map(([key, purpose]) => [key, { ...purpose, defaultConsent: false }])
+  Object.entries(MOCK_PURPOSES_BASE).map(([key, purpose]) => [
+    key,
+    { ...purpose, defaultConsent: false },
+  ]),
 );
 
 export const MOCK_PURPOSES_OPTED_IN = Object.fromEntries(
-  Object.entries(MOCK_PURPOSES_BASE)
-    .map(([key, purpose]) => [key, { ...purpose, defaultConsent: true }])
+  Object.entries(MOCK_PURPOSES_BASE).map(([key, purpose]) => [
+    key,
+    { ...purpose, defaultConsent: true },
+  ]),
 );

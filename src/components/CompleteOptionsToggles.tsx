@@ -1,3 +1,4 @@
+import { ObjByString } from '@transcend-io/type-utils';
 import { h, JSX } from 'preact';
 import { useMemo, useState } from 'preact/hooks';
 import { useIntl } from 'react-intl';
@@ -17,11 +18,14 @@ import { Switch } from './Switch';
 export function CompleteOptionsToggles({
   handleSetViewState,
   fontColor,
+  globalUiVariables,
 }: {
   /** Function to change viewState */
   handleSetViewState: HandleSetViewState;
   /** Font color */
   fontColor: string;
+  /** Global UI view state variables  */
+  globalUiVariables: ObjByString;
 }): JSX.Element {
   const { airgap } = useAirgap();
   const { formatMessage } = useIntl();
@@ -77,6 +81,7 @@ export function CompleteOptionsToggles({
         }}
         className="complete-options-toggle-close"
         fontColor={fontColor}
+        globalUiVariables={globalUiVariables}
         {...(orderedSelections.length === 0 ? { initialFocus: true } : {})}
       />
       <div>
@@ -86,15 +91,20 @@ export function CompleteOptionsToggles({
             role="heading"
             className="text-title text-title-left"
           >
-            {formatMessage(messages.consentTitleCompleteOptionsToggle)}
+            {formatMessage(
+              messages.consentTitleCompleteOptionsToggle,
+              globalUiVariables,
+            )}
           </p>
         </div>
         <div>
-          <p className="paragraph"
+          <p
+            className="paragraph"
             // eslint-disable-next-line react/no-danger
             dangerouslySetInnerHTML={{
               __html: formatMessage(
                 messages.consentTitleCompleteOptionsToggleDescription,
+                globalUiVariables,
               ),
             }}
           />
@@ -102,7 +112,10 @@ export function CompleteOptionsToggles({
         <div
           className="margin-tops complete-options-toggle-interface"
           role="group"
-          aria-label={formatMessage(messages.buttonGroupAriaDescription)}
+          aria-label={formatMessage(
+            messages.buttonGroupAriaDescription,
+            globalUiVariables,
+          )}
         >
           <span key="essential">
             <Switch
@@ -119,7 +132,10 @@ export function CompleteOptionsToggles({
               }
               label={
                 Object.hasOwnProperty.call(purposeToMessageKey, 'Essential')
-                  ? formatMessage(purposeToMessageKey.Essential)
+                  ? formatMessage(
+                      purposeToMessageKey.Essential,
+                      globalUiVariables,
+                    )
                   : 'Essential'
               }
             />
@@ -141,7 +157,10 @@ export function CompleteOptionsToggles({
                 }
                 label={
                   Object.hasOwnProperty.call(purposeToMessageKey, purpose)
-                    ? formatMessage(purposeToMessageKey[purpose])
+                    ? formatMessage(
+                        purposeToMessageKey[purpose],
+                        globalUiVariables,
+                      )
                     : purpose
                 }
                 {...(idx === 0 ? { initialFocus: true } : {})}

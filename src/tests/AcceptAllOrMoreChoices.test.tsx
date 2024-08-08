@@ -6,8 +6,11 @@ import { test, expect, describe, beforeEach } from '@jest/globals';
 
 import { AcceptAllOrMoreChoices } from '../components/AcceptAllOrMoreChoices';
 import { fireEvent } from '@testing-library/preact';
-import { MOCK_PURPOSES_OPTED_OUT } from './utils/constants';
-import { init as initMockAirgap } from './utils/ag-mock'
+import {
+  MOCK_PURPOSES_OPTED_OUT,
+  MOCK_TEMPLATE_VARIABLES,
+} from './utils/constants';
+import { init as initMockAirgap } from './utils/ag-mock';
 import { messages } from '../messages';
 
 describe('AcceptAllOrMoreChoices', () => {
@@ -16,17 +19,26 @@ describe('AcceptAllOrMoreChoices', () => {
   });
 
   test('matches snapshot', () => {
-    const { snapshot } = render(<AcceptAllOrMoreChoices handleSetViewState={() => null} />);
+    const { snapshot } = render(
+      <AcceptAllOrMoreChoices
+        handleSetViewState={() => null}
+        globalUiVariables={MOCK_TEMPLATE_VARIABLES}
+      />,
+    );
     expect(snapshot).toMatchSnapshot();
   });
 
   test('button ordering is consistent', () => {
-    const { container } = render(<AcceptAllOrMoreChoices handleSetViewState={() => null} />);
+    const { container } = render(
+      <AcceptAllOrMoreChoices
+        handleSetViewState={() => null}
+        globalUiVariables={MOCK_TEMPLATE_VARIABLES}
+      />,
+    );
 
-    const domLabels = [...container.querySelectorAll('button')]
-      ?.map((span) =>
-        span.children[0].childNodes.item(0).textContent
-      )
+    const domLabels = [...container.querySelectorAll('button')]?.map(
+      (span) => span.children[0].childNodes.item(0).textContent,
+    );
 
     expect(domLabels).toStrictEqual([
       messages.acceptAllButtonPrimary.defaultMessage,
@@ -36,7 +48,12 @@ describe('AcceptAllOrMoreChoices', () => {
 
   test('submission affects stored consent', () => {
     const prevConsent = { ...testWindow.airgap.getConsent() };
-    const { container } = render(<AcceptAllOrMoreChoices handleSetViewState={() => null} />);
+    const { container } = render(
+      <AcceptAllOrMoreChoices
+        handleSetViewState={() => null}
+        globalUiVariables={MOCK_TEMPLATE_VARIABLES}
+      />,
+    );
 
     // Ensure submission reflects purpose selection in airgap
     const submitButton = container.querySelector('button');
@@ -45,7 +62,9 @@ describe('AcceptAllOrMoreChoices', () => {
     const consent = { ...testWindow.airgap.getConsent() };
 
     Object.entries(MOCK_PURPOSES_OPTED_OUT).forEach(([, purpose]) => {
-      expect(!!prevConsent.purposes?.[purpose.name]).toEqual(!consent.purposes?.[purpose.name]);
+      expect(!!prevConsent.purposes?.[purpose.name]).toEqual(
+        !consent.purposes?.[purpose.name],
+      );
     });
     expect(prevConsent.confirmed).toEqual(false);
     expect(consent.confirmed).toEqual(true);
@@ -53,11 +72,18 @@ describe('AcceptAllOrMoreChoices', () => {
 
   test('that CompleteOptions is opened', () => {
     let calledArg;
-    const { container } = render(<AcceptAllOrMoreChoices handleSetViewState={(state) => { calledArg = state }} />);
+    const { container } = render(
+      <AcceptAllOrMoreChoices
+        handleSetViewState={(state) => {
+          calledArg = state;
+        }}
+        globalUiVariables={MOCK_TEMPLATE_VARIABLES}
+      />,
+    );
 
     const moreChoicesButton = container.querySelector('button:nth-of-type(2)');
     if (moreChoicesButton) fireEvent.click(moreChoicesButton);
 
-    expect(calledArg).toEqual('CompleteOptions')
+    expect(calledArg).toEqual('CompleteOptions');
   });
 });

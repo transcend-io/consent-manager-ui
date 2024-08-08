@@ -45,6 +45,9 @@ export function App({
   // Get the active privacy regime
   const privacyRegime = getPrimaryRegime(airgap.getRegimes());
 
+  // Global variables used for message templates
+  const [currentVariables, handleChangeUiVariables] = useState({});
+
   // Get default view states
   const { initialViewStateByPrivacyRegime, dismissedViewState } = config;
   const initialViewState =
@@ -80,7 +83,10 @@ export function App({
   const consentManagerAPI = makeConsentManagerAPI({
     eventTarget,
     viewState,
+    currentVariables,
+    handleChangeUiVariables,
     handleChangeLanguage,
+    activeLocale: language,
     handleSetViewState,
     handleChangePrivacyPolicy: (privacyPolicyUrl) =>
       setConfig({
@@ -115,6 +121,7 @@ export function App({
         {/** Ensure messages are loaded before any UI is displayed */}
         {messages ? (
           <Main
+            globalUiVariables={currentVariables}
             airgap={airgap}
             modalOpenAuth={auth}
             viewState={viewState}

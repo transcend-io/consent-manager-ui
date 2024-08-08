@@ -7,11 +7,18 @@ import { test, expect, describe, beforeEach } from '@jest/globals';
 
 import { CompleteOptionsInverted } from '../components/CompleteOptionsInverted';
 import { fireEvent } from '@testing-library/preact';
-import { MOCK_PURPOSES_OPTED_IN } from './utils/constants';
+import {
+  MOCK_PURPOSES_OPTED_IN,
+  MOCK_TEMPLATE_VARIABLES,
+} from './utils/constants';
 import { DEFAULT_PURPOSE_TO_INVERTED_MESSAGE_KEY } from '../components/constants';
 import { sortByPurposeOrder } from '../helpers';
-import { getPurposeEntries, getPurposeMessageInverted, getPurposeValues } from './utils/purposes';
-import { init as initMockAirgap } from './utils/ag-mock'
+import {
+  getPurposeEntries,
+  getPurposeMessageInverted,
+  getPurposeValues,
+} from './utils/purposes';
+import { init as initMockAirgap } from './utils/ag-mock';
 
 describe('CompleteOptionsInverted', () => {
   beforeEach(() => {
@@ -19,12 +26,22 @@ describe('CompleteOptionsInverted', () => {
   });
 
   test('matches snapshot', () => {
-    const { snapshot } = render(<CompleteOptionsInverted handleSetViewState={() => null} />);
+    const { snapshot } = render(
+      <CompleteOptionsInverted
+        handleSetViewState={() => null}
+        globalUiVariables={MOCK_TEMPLATE_VARIABLES}
+      />,
+    );
     expect(snapshot).toMatchSnapshot();
   });
 
   test('purpose ordering is consistent', () => {
-    const screen = render(<CompleteOptionsInverted handleSetViewState={() => null} />);
+    const screen = render(
+      <CompleteOptionsInverted
+        handleSetViewState={() => null}
+        globalUiVariables={MOCK_TEMPLATE_VARIABLES}
+      />,
+    );
     const { container } = screen;
 
     const sortedNamesToLabels = [
@@ -33,7 +50,8 @@ describe('CompleteOptionsInverted', () => {
         .sort(sortByPurposeOrder)
         .map(([purposeName]) =>
           purposeName in DEFAULT_PURPOSE_TO_INVERTED_MESSAGE_KEY
-            ? DEFAULT_PURPOSE_TO_INVERTED_MESSAGE_KEY[purposeName].defaultMessage
+            ? DEFAULT_PURPOSE_TO_INVERTED_MESSAGE_KEY[purposeName]
+                .defaultMessage
             : purposeName,
         ),
     ];
@@ -48,7 +66,12 @@ describe('CompleteOptionsInverted', () => {
   });
 
   test('defaults are honored', () => {
-    const screen = render(<CompleteOptionsInverted handleSetViewState={() => null} />);
+    const screen = render(
+      <CompleteOptionsInverted
+        handleSetViewState={() => null}
+        globalUiVariables={MOCK_TEMPLATE_VARIABLES}
+      />,
+    );
     getPurposeEntries().forEach(([key, purpose]) => {
       const label = getPurposeMessageInverted(purpose);
       expect(getPurposeCheckState(screen, label)).toEqual(
@@ -60,7 +83,12 @@ describe('CompleteOptionsInverted', () => {
   test('check states change when clicked, submission affects stored consent', () => {
     const prevConsent = { ...testWindow.airgap?.getConsent() };
     // console.log(prevConsent)
-    const screen = render(<CompleteOptionsInverted handleSetViewState={() => null} />);
+    const screen = render(
+      <CompleteOptionsInverted
+        handleSetViewState={() => null}
+        globalUiVariables={MOCK_TEMPLATE_VARIABLES}
+      />,
+    );
     const { container } = screen;
     getPurposeEntries().forEach(([key, purpose]) => {
       const label = getPurposeMessageInverted(purpose);
@@ -78,14 +106,21 @@ describe('CompleteOptionsInverted', () => {
     // console.log(consent)
 
     Object.entries(MOCK_PURPOSES_OPTED_IN).forEach(([, purpose]) => {
-      expect(!!prevConsent.purposes?.[purpose.name]).toEqual(!consent.purposes?.[purpose.name]);
+      expect(!!prevConsent.purposes?.[purpose.name]).toEqual(
+        !consent.purposes?.[purpose.name],
+      );
     });
     expect(prevConsent.confirmed).toEqual(false);
     expect(consent.confirmed).toEqual(true);
   });
 
   test('purposes rerender on remount', () => {
-    let screen = render(<CompleteOptionsInverted handleSetViewState={() => null} />);
+    let screen = render(
+      <CompleteOptionsInverted
+        handleSetViewState={() => null}
+        globalUiVariables={MOCK_TEMPLATE_VARIABLES}
+      />,
+    );
     let { container, unmount } = screen;
     getPurposeValues().forEach((purpose) => {
       const label = getPurposeMessageInverted(purpose);
@@ -98,7 +133,12 @@ describe('CompleteOptionsInverted', () => {
 
     unmount();
 
-    screen = render(<CompleteOptionsInverted handleSetViewState={() => null} />);
+    screen = render(
+      <CompleteOptionsInverted
+        handleSetViewState={() => null}
+        globalUiVariables={MOCK_TEMPLATE_VARIABLES}
+      />,
+    );
     ({ container, unmount } = screen);
 
     // Ensure we rerender the ui with the new consent when unmounting and remounting ui

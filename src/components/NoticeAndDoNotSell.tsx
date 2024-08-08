@@ -5,15 +5,19 @@ import type { HandleSetViewState } from '../types';
 import { useAirgap } from '../hooks';
 import { Button } from './Button';
 import { CONSENT_OPTIONS } from '../constants';
+import { ObjByString } from '@transcend-io/type-utils';
 
 /**
  * Component showing 'okay' button for "do not sell my personal information" interface
  */
 export function NoticeAndDoNotSell({
   handleSetViewState,
+  globalUiVariables,
 }: {
   /** Function to change viewState */
   handleSetViewState: HandleSetViewState;
+  /** Global UI view state variables */
+  globalUiVariables: ObjByString;
 }): JSX.Element {
   const { airgap } = useAirgap();
   const { formatMessage } = useIntl();
@@ -34,14 +38,18 @@ export function NoticeAndDoNotSell({
         role="heading"
         className="text-title text-title-left"
       >
-        {formatMessage(messages.noticeTitle)}
+        {formatMessage(messages.noticeTitle, globalUiVariables)}
       </p>
       <Button
         primaryText={formatMessage(
           noticeAndDoNotSellMessages.confirmButtonPrimary,
+          globalUiVariables,
         )}
         handleClick={handleConfirm}
-        ariaDescription={formatMessage(messages.noticeButtonAriaDescription)}
+        ariaDescription={formatMessage(
+          messages.noticeButtonAriaDescription,
+          globalUiVariables,
+        )}
         initialFocus
       />
     </div>

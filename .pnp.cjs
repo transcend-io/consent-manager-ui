@@ -33,7 +33,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@prettier/sync", "virtual:c76842a5689228a0ce1b65e064c1f5e0d5b61e442d08b6527a3b1f100ca1f2105e58f5f1435c5a59df3cce3338560737838d99dae36d25b47d20aa50c89d0539#npm:0.5.2"],\
             ["@testing-library/jest-dom", "npm:6.4.8"],\
             ["@testing-library/preact", "virtual:c76842a5689228a0ce1b65e064c1f5e0d5b61e442d08b6527a3b1f100ca1f2105e58f5f1435c5a59df3cce3338560737838d99dae36d25b47d20aa50c89d0539#npm:3.2.4"],\
-            ["@transcend-io/airgap.js-types", "npm:10.15.0"],\
+            ["@transcend-io/airgap.js-types", "npm:12.2.0"],\
             ["@transcend-io/internationalization", "npm:1.6.0"],\
             ["@transcend-io/logger", "npm:1.1.0"],\
             ["@transcend-io/type-utils", "npm:1.4.2"],\
@@ -1757,10 +1757,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]\
       ]],\
       ["@transcend-io/airgap.js-types", [\
-        ["npm:10.15.0", {\
-          "packageLocation": "./.yarn/cache/@transcend-io-airgap.js-types-npm-10.15.0-04d03b2efb-681251cdcc.zip/node_modules/@transcend-io/airgap.js-types/",\
+        ["npm:12.2.0", {\
+          "packageLocation": "./.yarn/cache/@transcend-io-airgap.js-types-npm-12.2.0-d1c89d7b66-a0c92b7a5a.zip/node_modules/@transcend-io/airgap.js-types/",\
           "packageDependencies": [\
-            ["@transcend-io/airgap.js-types", "npm:10.15.0"],\
+            ["@transcend-io/airgap.js-types", "npm:12.2.0"],\
             ["@transcend-io/type-utils", "npm:1.4.2"],\
             ["fp-ts", "npm:2.16.9"],\
             ["io-ts", "virtual:647270e91e7a3b3be8360975cf4b261fc37aa1becc6251358c91b0bf0733ffddc3f7d7b9c35550155c202696cf87b8999803730126a6d8c46e4270742d944b5d#npm:2.2.21"]\
@@ -1789,7 +1789,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@prettier/sync", "virtual:c76842a5689228a0ce1b65e064c1f5e0d5b61e442d08b6527a3b1f100ca1f2105e58f5f1435c5a59df3cce3338560737838d99dae36d25b47d20aa50c89d0539#npm:0.5.2"],\
             ["@testing-library/jest-dom", "npm:6.4.8"],\
             ["@testing-library/preact", "virtual:c76842a5689228a0ce1b65e064c1f5e0d5b61e442d08b6527a3b1f100ca1f2105e58f5f1435c5a59df3cce3338560737838d99dae36d25b47d20aa50c89d0539#npm:3.2.4"],\
-            ["@transcend-io/airgap.js-types", "npm:10.15.0"],\
+            ["@transcend-io/airgap.js-types", "npm:12.2.0"],\
             ["@transcend-io/internationalization", "npm:1.6.0"],\
             ["@transcend-io/logger", "npm:1.1.0"],\
             ["@transcend-io/type-utils", "npm:1.4.2"],\
