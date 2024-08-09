@@ -529,7 +529,7 @@ a:focus {
   min-height: 79px;
   height: calc(100% - 38px);
   width: 100%;
-  padding: 25px 25px 10px 20px;
+  padding: 25px 0px 0px 0px;
 }
 
 /** Styles that wrap the text container of the modal content. Excludes footer */
@@ -872,13 +872,6 @@ a:focus {
     bottom: 22px;
   }
 
-  .modal-container-top {
-    margin: -21px -21px 0px -21px;
-    border-bottom: 2px solid #000;
-    padding: 6px 0px 2px 10px;
-    background-color: #fff;
-  }
-
   /** TranscendLogo */
   .transcend-logo-container {
     width: 64px;
@@ -890,9 +883,22 @@ a:focus {
   .transcend-logo-svg:hover path, .transcend-logo-container:focus path {
     fill: var(--primary-color);
   }
+
+  .modal-container-inner {
+    padding: 25px 25px 10px 20px;
+  }
+
 }
 
 
 .pointer {
   cursor: pointer;
 }
+
+.modal-container-top {
+  margin: -21px -21px 0px -21px;
+  border-bottom: 2px solid #000;
+  padding: 6px 0px 2px 10px;
+  background-color: #fff;
+}
+
