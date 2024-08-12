@@ -1,0 +1,9 @@
+@font-face {
+    font-family: 'Neue Haas Unica';
+    src: local('Neue Haas Unica Bold'), local('Neue-Haas-Unica-Bold'),
+        url('NeueHaasUnica-Bold.woff2') format('woff2'),
+        url('NeueHaasUnica-Bold.woff') format('woff'),
+        url('NeueHaasUnica-Bold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+  }

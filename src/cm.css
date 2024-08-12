@@ -28,7 +28,7 @@
   text-align: center;
   padding: 6px;
   transition: filter 150ms, background-color 150ms;
-  border-radius: 5px;
+  border-radius: 8px;
 }
 
 /** Not the last button in a list of buttons */
@@ -57,8 +57,8 @@
 
 /** Styles applied to "primary" button text */
 .button-primary-text {
-  font-size: 14px;
-  font-weight: 700;
+  font-size: 23px;
+  font-weight: 600;
 }
 
 /** Styles applied to "secondary" button text */
@@ -69,7 +69,7 @@
 
 /** Button focus */
 button:focus {
-  outline: 1px solid #9fbbc6;
+  outline: 0px solid #9fbbc6;
 }
 
 /** Anchor focus */
@@ -110,12 +110,15 @@ a:focus {
   font-style: normal;
   font-weight: 700;
   line-height: 40px;
+  padding-bottom: 5px;
 }
 
 /** Paragraph text styles */
 .paragraph {
   color: var(--text-color);
-  font-size: 14px;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
   margin: 0 0 18px 0;
 }
 
@@ -284,6 +287,7 @@ a:focus {
 
 /** Button row styles for AcceptOrRejectAll view state */
 .accept-or-reject-all-button-row {
+  padding-top: 5px;
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -515,7 +519,7 @@ a:focus {
   background-color: rgba(214,245,232,255);
   overflow: hidden;
   padding: 21px;
-  font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir,
+  font-family: 'Neue Haas Unica', -apple-system, BlinkMacSystemFont, avenir next, avenir,
     helvetica neue, helvetica, 'sans-serif';
   backdrop-filter: blur(20px) saturate(5);
   -webkit-backdrop-filter: blur(20px) saturate(5);
@@ -825,7 +829,8 @@ a:focus {
 @media (min-width: 640px) {
   /** Button Styles */
   .button {
-    width: 135px;
+    width: 195px;
+    padding: 20px;
   }
   .button:not(:last-of-type) {
     margin-bottom: 0;
