@@ -368,7 +368,7 @@ export const bottomMenuMessages = defineMessages('ui.src.bottomMenu', {
       'Text for linking out to privacy policy in the QuickOptions UI.',
   },
   showPolicyButtonQuickOptions3: {
-    defaultMessage: 'See our privacy policy',
+    defaultMessage: 'See our privacy notice',
     description:
       'Text for linking out to privacy policy in the QuickOptions3 UI.',
   },
@@ -392,7 +392,7 @@ export const bottomMenuMessages = defineMessages('ui.src.bottomMenu', {
       'Text for linking out to privacy policy in the AcceptOrRejectAll UI.',
   },
   showPolicyButtonAcceptOrRejectAllOrMoreChoices: {
-    defaultMessage: 'See our privacy policy',
+    defaultMessage: 'See our Privacy Notice',
     description:
       'Text for linking out to privacy policy in the AcceptOrRejectAllOrMoreChoices UI.',
   },

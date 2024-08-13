@@ -1,9 +1,11 @@
 import { h, JSX } from 'preact';
 import { useIntl } from 'react-intl';
 import { useAirgap } from '../hooks';
-import { messages } from '../messages';
+import { messages, bottomMenuMessages } from '../messages';
 import type { HandleSetViewState } from '../types';
 import { Button } from './Button';
+import { MenuItem } from './MenuItem';
+
 
 /**
  * Component showing "accept all" or "reject all" or "more choices"
@@ -63,13 +65,13 @@ export function AcceptOrRejectAllOrMoreChoices({
         </div>
         <div>
           <p className="paragraph we-use-cookies-paragraph">
-            <div
-              role="paragraph"
-              // eslint-disable-next-line react/no-danger
-              dangerouslySetInnerHTML={{
-                __html: formatMessage(messages.acceptAllDescription),
-              }}
-            />
+            <div role="paragraph">
+              {formatMessage(messages.acceptAllDescription)}
+              &nbsp; 
+              <a href="https://privacy.goshippo.com/" class="privacy-policy-link" target="_blank">
+                {formatMessage(bottomMenuMessages.showPolicyButtonAcceptOrRejectAllOrMoreChoices)}
+              </a>
+            </div>
           </p>
         </div>
         <div

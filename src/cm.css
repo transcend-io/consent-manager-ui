@@ -8,6 +8,13 @@
   --text-color: #010101;
 }
 
+
+.privacy-policy-link {
+  text-decoration: underline;
+  color: black;
+  font-weight: 600;
+}
+
 /*******************
  * Button Styles
  *******************/
@@ -29,6 +36,8 @@
   padding: 6px;
   transition: filter 150ms, background-color 150ms;
   border-radius: 8px;
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 
 /** Not the last button in a list of buttons */
@@ -117,7 +126,7 @@ a:focus {
 .paragraph {
   color: var(--text-color);
   font-size: 16px;
-  font-weight: 500;
+  font-weight: 300;
   line-height: 24px;
   margin: 0 0 18px 0;
 }
