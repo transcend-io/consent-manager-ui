@@ -15,6 +15,10 @@
   font-weight: 600;
 }
 
+.privacy-policy-bottom {
+  padding-top: 20px;
+}
+
 /*******************
  * Button Styles
  *******************/
@@ -164,7 +168,6 @@ a:focus {
   margin: 20px;
   flex-direction: column;
   align-content: center;
-  flex-wrap: wrap;
   width: 100%;
   justify-content: center;
 }
@@ -179,16 +182,16 @@ a:focus {
 .toggle-label {
   position: relative;
   margin: 0 10px 15px 10px;
-  font-size: 12px;
-  font-weight: 500;
+  font-weight: 300;
   height: 16px;
   vertical-align: baseline;
   color: var(--text-color);
   text-shadow: none;
   padding-left: 25px;
   word-wrap: break-word;
-  padding-left: 30px;
+  padding-left: 35px;
   padding-top: 1px;
+  padding-bottom: 15px;
 }
 
 /** Style applied to the checkbox toggle box */
@@ -269,12 +272,12 @@ a:focus {
 /** Style applied to toggle input when focused */
 .toggle-input:hover:enabled + span,
 .toggle-input:focus-visible + span {
-  border-color: var(--primary-color);
+  border-color: #1DC982;
 }
 
 /** Style applied to checkbox input span when disabled */
 .toggle-input:disabled + span {
-  background-color: #ececec;
+  background-color: #9FBBC6;
   cursor: not-allowed;
 }
 
@@ -852,7 +855,7 @@ a:focus {
   }
   .text-title-center {
     margin: 0 0 18px 0;
-    text-align: center;
+    text-align: center; 
   }
   .paragraph {
     margin: 18px 18px 0 0;
@@ -880,6 +883,7 @@ a:focus {
 
   /** CompleteOptions */
   .toggles-container {
+    margin-bottom: 0px;
   }
 
   /** Modal */

@@ -53,7 +53,7 @@
   "ui.src.messages.close": "Close consent manager",
   "ui.src.messages.collapsedLabel": "Privacy Settings",
   "ui.src.messages.completeOptionsInvertedTitle": "Your Privacy Choices",
-  "ui.src.messages.consentTitle": "What can we use data for?",
+  "ui.src.messages.consentTitle": "Manage privacy preferences",
   "ui.src.messages.consentTitleAcceptAll": "We use cookies",
   "ui.src.messages.consentTitleAcceptAllRejectAllToggle": "Your Privacy Choices",
   "ui.src.messages.consentTitleAcceptOrRejectAdvertising": "This website uses advertising",

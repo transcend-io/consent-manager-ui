@@ -3,7 +3,7 @@ import { defineMessages } from '@transcend-io/internationalization';
 
 export const messages = defineMessages('ui.src.messages', {
   consentTitle: {
-    defaultMessage: 'What can we use data for?',
+    defaultMessage: 'Manage privacy preferences',
     description:
       'The title displayed when asking the user for specific opt out/in preferences.',
   },
