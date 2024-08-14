@@ -16,11 +16,10 @@
   left: 0px;
   right: 0px;
   margin: 0 auto;
-  width: calc(100%);
-  overflow: hidden;
-  padding: 0px;
+  width: 100%;
   backdrop-filter: blur(20px) saturate(5);
   -webkit-backdrop-filter: blur(20px) saturate(5);
+  height: 100%;
 }
 
 .privacy-policy-link {
@@ -533,10 +532,8 @@ a:focus {
 
 /** Container that is wrapped around the modal */
 .modal-container {
-  position: fixed;
+  position: relative;
   bottom: 10px;
-  left: 5px;
-  right: 5px;
   margin: 0 auto;
   width: calc(100% - 10px);
   box-sizing: border-box;
@@ -552,6 +549,8 @@ a:focus {
   animation: fadeIn 150ms;
   max-height: 90%;
   transition: width 150ms, height 150ms;
+  top: 50%;
+  transform: translateY(-50%);
 }
 
 .we-use-cookies-paragraph {
