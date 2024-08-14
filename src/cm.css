@@ -9,6 +9,20 @@
 }
 
 
+.background-blur {
+  position: fixed;
+  top: 0px;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  margin: 0 auto;
+  width: calc(100%);
+  overflow: hidden;
+  padding: 0px;
+  backdrop-filter: blur(20px) saturate(5);
+  -webkit-backdrop-filter: blur(20px) saturate(5);
+}
+
 .privacy-policy-link {
   text-decoration: underline;
   color: black;
