@@ -69,14 +69,12 @@ export function DoNotSellExplainer({
           </p>
         </div>
         <div>
-          <p className="paragraph">
-            <div
-              // eslint-disable-next-line react/no-danger
-              dangerouslySetInnerHTML={{
-                __html: formatMessage(messages.doNotSellDescription),
-              }}
-            />
-          </p>
+          <div className="paragraph"
+            // eslint-disable-next-line react/no-danger
+            dangerouslySetInnerHTML={{
+              __html: formatMessage(messages.doNotSellDescription),
+            }}
+          />
         </div>
         <div>
           <div>

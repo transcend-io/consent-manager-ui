@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`OptOutDisclosure matches snapshot 1`] = `
+"<div>
+  <div class="column-content">
+    <div>
+      <div>
+        <p id="consent-dialog-title" class="text-title text-title-left">
+          Your opt-out request has been honored.
+        </p>
+      </div>
+      <div>
+        <p class="paragraph">
+          We've received your request for this device or browser, and you have
+          been opted out. Learn more about our data practices in our privacy
+          policy.
+        </p>
+      </div>
+    </div>
+    <button class="button" data-initialfocus="true">
+      <span class="button-base-text button-primary-text">Okay</span>
+    </button>
+  </div>
+</div>
+"
+`;

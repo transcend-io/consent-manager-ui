@@ -1,0 +1,91 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CompleteOptionsInverted matches snapshot 1`] = `
+"<div>
+  <div class="complete-options-container" role="none">
+    <p
+      id="consent-dialog-title"
+      role="heading"
+      class="text-title text-title-center"
+    >
+      Your Privacy Choices
+    </p>
+    <form class="complete-options-form">
+      <span style="display: none"></span>
+      <div
+        class="toggles-container"
+        role="group"
+        aria-label="Select consent and close dialog"
+      >
+        <label
+          class="toggle-label"
+          aria-label="Click to disable collection of data for this purpose – opt out of functional"
+          title="Click to disable collection of data for this purpose – opt out of functional"
+          ><input
+            class="toggle-input"
+            type="checkbox"
+            id="opt-out-of-functional"
+            name="Opt out of Functional"
+            data-initialfocus="true"
+          /><span class="toggle-checkmark"></span>Opt out of Functional</label
+        ><label
+          class="toggle-label"
+          aria-label="Click to disable collection of data for this purpose – opt out of analytics"
+          title="Click to disable collection of data for this purpose – opt out of analytics"
+          ><input
+            class="toggle-input"
+            type="checkbox"
+            id="opt-out-of-analytics"
+            name="Opt out of Analytics"
+          /><span class="toggle-checkmark"></span>Opt out of Analytics</label
+        ><label
+          class="toggle-label"
+          aria-label="Click to disable collection of data for this purpose – opt out of advertising"
+          title="Click to disable collection of data for this purpose – opt out of advertising"
+          ><input
+            class="toggle-input"
+            type="checkbox"
+            id="opt-out-of-advertising"
+            name="Opt out of Advertising"
+          /><span class="toggle-checkmark"></span>Opt out of Advertising</label
+        ><label
+          class="toggle-label"
+          aria-label="Click to disable collection of data for this purpose – do not sell/share my personal information."
+          title="Click to disable collection of data for this purpose – do not sell/share my personal information."
+          ><input
+            class="toggle-input"
+            type="checkbox"
+            id="do-not-sell/share-my-personal-information."
+            name="Do Not Sell/Share My Personal Information."
+          /><span class="toggle-checkmark"></span>Do Not Sell/Share My Personal
+          Information.</label
+        ><label
+          class="toggle-label"
+          aria-label="Click to disable collection of data for this purpose – custompurpose"
+          title="Click to disable collection of data for this purpose – custompurpose"
+          ><input
+            class="toggle-input"
+            type="checkbox"
+            id="custompurpose"
+            name="CustomPurpose"
+          /><span class="toggle-checkmark"></span>CustomPurpose</label
+        ><label
+          class="toggle-label"
+          aria-label="Click to disable collection of data for this purpose – uniquepurpose"
+          title="Click to disable collection of data for this purpose – uniquepurpose"
+          ><input
+            class="toggle-input"
+            type="checkbox"
+            id="uniquepurpose"
+            name="UniquePurpose"
+          /><span class="toggle-checkmark"></span>UniquePurpose</label
+        >
+      </div>
+      <button class="button">
+        <span class="button-base-text button-primary-text">Confirm</span>
+      </button>
+    </form>
+  </div>
+</div>
+"
+`;

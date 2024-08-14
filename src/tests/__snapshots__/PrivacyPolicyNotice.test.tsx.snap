@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PrivacyPolicyNotice matches snapshot 1`] = `
+"<div>
+  <div class="column-content" role="none">
+    <div>
+      <div>
+        <p
+          id="consent-dialog-title"
+          role="heading"
+          class="text-title text-title-left"
+        >
+          Our Privacy Policy Has Changed
+        </p>
+      </div>
+      <div>
+        <p class="paragraph">
+          We've updated your privacy policy. Click the link below to learn more
+          about how we use your personal information.
+        </p>
+      </div>
+    </div>
+    <button class="button" data-initialfocus="true">
+      <span class="button-base-text button-primary-text">Okay</span>
+    </button>
+  </div>
+</div>
+"
+`;
