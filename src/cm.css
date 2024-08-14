@@ -16,7 +16,7 @@
 }
 
 .privacy-policy-bottom {
-  padding-top: 20px;
+  padding-top: 25px;
 }
 
 /*******************
@@ -181,7 +181,7 @@ a:focus {
 /** Style applied to each label text for each checkbox toggle and switch */
 .toggle-label {
   position: relative;
-  margin: 0 10px 15px 10px;
+  margin: 0 10px 20px 10px;
   font-weight: 300;
   height: 16px;
   vertical-align: baseline;

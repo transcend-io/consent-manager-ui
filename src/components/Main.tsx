@@ -98,15 +98,10 @@ export function Main({
         <div class="modal-container-top">
             {viewState === 'CompleteOptions' && (
               <svg 
-                onClick={() => handleSetViewState(firstSelectedViewState)}
-                class="pointer"
-                fill="#000000" height="20px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <g data-name="Layer 2">
-                <g data-name="arrow-ios-back">
-                <rect width="24" height="24" transform="rotate(90 12 12)" opacity="0"/>
-                <path d="M13.83 19a1 1 0 0 1-.78-.37l-4.83-6a1 1 0 0 1 0-1.27l5-6a1 1 0 0 1 1.54 1.28L10.29 12l4.32 5.36a1 1 0 0 1-.78 1.64z"/>
-                </g>
-                </g>
+                  onClick={() => handleSetViewState(firstSelectedViewState)}
+                  class="pointer"
+                  width="12" height="21" viewBox="0 0 12 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M10 20.251L0 10.251L10 0.250977L11.775 2.02598L3.55 10.251L11.775 18.476L10 20.251Z" fill="black"/>
               </svg>
             )}
             {viewState != 'CompleteOptions' && (
