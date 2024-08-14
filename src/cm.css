@@ -530,7 +530,7 @@ a:focus {
   border: 2px solid #000000;
   background-color: rgba(214,245,232,255);
   overflow: hidden;
-  padding: 21px;
+  padding: 21px 0px 21px 21px;
   font-family: 'Neue Haas Unica', -apple-system, BlinkMacSystemFont, avenir next, avenir,
     helvetica neue, helvetica, 'sans-serif';
   backdrop-filter: blur(20px) saturate(5);
@@ -548,7 +548,7 @@ a:focus {
 .modal-container-inner {
   min-height: 79px;
   height: calc(100% - 38px);
-  width: 95%;
+  width: 92%;
   padding: 25px 0px 0px 0px;
 }
 
