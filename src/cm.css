@@ -299,7 +299,7 @@ a:focus {
 
 /** Button row styles for AcceptOrRejectAll view state */
 .accept-or-reject-all-button-row {
-  padding-top: 5px;
+  padding-top: 10px;
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -548,7 +548,7 @@ a:focus {
 .modal-container-inner {
   min-height: 79px;
   height: calc(100% - 38px);
-  width: 100%;
+  width: 95%;
   padding: 25px 0px 0px 0px;
 }
 
@@ -909,7 +909,7 @@ a:focus {
   }
 
   .modal-container-inner {
-    padding: 25px 25px 10px 20px;
+    padding: 25px 25px 25px 30px;
   }
 
 }
