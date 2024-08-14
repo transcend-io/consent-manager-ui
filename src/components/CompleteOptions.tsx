@@ -124,7 +124,7 @@ export function CompleteOptions({
               handleToggle={(checked: boolean) =>
                 handleToggle(purpose, checked)
               }
-              {...(idx === 0 ? { initialFocus: true } : {})}
+              {...(idx === 0 ? { initialFocus: false } : {})}
             />
           ))}
           <Button

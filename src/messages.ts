@@ -95,7 +95,7 @@ export const messages = defineMessages('ui.src.messages', {
     description: 'Button to dismiss privacy policy notice.',
   },
   doNotSellOptedOut: {
-    defaultMessage: `You have been successfully opted out.`,
+    defaultMessage: `Successfully opted out.`,
     description:
       'Explainer text in DoNotSellExplainer banner when opted out of sale of data.',
   },

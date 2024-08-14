@@ -129,9 +129,9 @@ a:focus {
 /** Paragraph text styles */
 .paragraph {
   color: var(--text-color);
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 300;
-  line-height: 24px;
+  line-height: 16px;
   margin: 0 0 18px 0;
 }
 
@@ -742,6 +742,7 @@ a:focus {
   text-shadow: none;
   white-space: nowrap;
   padding: 0 5px;
+  font-size: 14px;
 }
 
 /** Removes checkbox for the switch since checkbox is basis for switch */
@@ -835,6 +836,16 @@ a:focus {
 
 /** At least table */
 @media (min-width: 640px) {
+
+  .switch.label {
+    font-size: 16px;
+  }
+
+  .paragraph {
+    font-size: 16px;
+    line-height: 24px;
+  }
+
   /** Button Styles */
   .button {
     width: 153px;
@@ -922,7 +933,7 @@ a:focus {
 .modal-container-top {
   margin: -21px -21px 0px -21px;
   border-bottom: 2px solid #000;
-  padding: 8px 0px 4px 10px;
+  padding: 8px 0px 4px 15px;
   background-color: rgba(214,245,232,255);
 }
 

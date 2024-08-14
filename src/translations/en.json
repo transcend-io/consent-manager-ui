@@ -65,7 +65,7 @@
   "ui.src.messages.consentTitlePrivacyPolicyNoticeWithCloseButton": "Our Privacy Policy Has Changed",
   "ui.src.messages.doNotSellDescription": "<p>We do not disclose your personal information to third parties in exchange for monetary consideration. In some instances, however, we may disclose your personal information to third parties in exchange for other valuable consideration, such as to enhance our product offerings, display online targeted advertising, and in other ways which you can read about in our Privacy Notice.</p><p>By opting out below, we will not disclose your personal information to third parties in exchange for valuable consideration.</p><p>Please note that choices related to opting out of the disclosure of your personal information to third parties for valuable consideration (e.g., information stored in cookies) are specific to the browser or device where you are making the election.</p>",
   "ui.src.messages.doNotSellOptedIn": "Switch the toggle to opt out.",
-  "ui.src.messages.doNotSellOptedOut": "You have been successfully opted out.",
+  "ui.src.messages.doNotSellOptedOut": "Successfully opted out.",
   "ui.src.messages.moreChoicesButtonPrimary": "More choices",
   "ui.src.messages.noticeTitle": "This website processes personal data",
   "ui.src.messages.preferencesSaved": "Preferences Saved!",
