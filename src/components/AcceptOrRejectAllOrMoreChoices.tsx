@@ -90,6 +90,7 @@ export function AcceptOrRejectAllOrMoreChoices({
           />
           <Button
             primaryText={formatMessage(messages.moreChoicesButtonPrimary)}
+            additionalClassName="button-large button"
             handleClick={handleMoreChoices}
           />
         </div>

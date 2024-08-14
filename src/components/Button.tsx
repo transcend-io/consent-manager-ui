@@ -10,6 +10,7 @@ export function Button({
   type,
   ariaDescription,
   initialFocus,
+  additionalClassName,
 }: {
   /** The button primary text */
   primaryText: string;
@@ -23,10 +24,12 @@ export function Button({
   ariaDescription?: string;
   /** Whether to autofocus this button */
   initialFocus?: true;
+  /** className to be added together with `button` */
+  additionalClassName?: string;
 }): JSX.Element {
   return (
     <button
-      className="button"
+      className={additionalClassName || ' button'}
       onClick={handleClick}
       type={type}
       aria-description={ariaDescription}

@@ -837,9 +837,15 @@ a:focus {
 @media (min-width: 640px) {
   /** Button Styles */
   .button {
-    width: 195px;
+    width: 153px;
     padding: 20px;
   }
+
+  .button-large {
+    width: 250px;
+    padding: 20px;
+  }
+
   .button:not(:last-of-type) {
     margin-bottom: 0;
   }
