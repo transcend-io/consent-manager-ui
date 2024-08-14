@@ -17,8 +17,8 @@
   right: 0px;
   margin: 0 auto;
   width: 100%;
-  backdrop-filter: blur(20px) saturate(5);
-  -webkit-backdrop-filter: blur(20px) saturate(5);
+  backdrop-filter: blur(5px) brightness(80%);
+  -webkit-backdrop-filter: blur(5px) brightness(80%);
   height: 100%;
 }
 
@@ -544,8 +544,6 @@ a:focus {
   padding: 21px 0px 21px 21px;
   font-family: 'Neue Haas Unica', -apple-system, BlinkMacSystemFont, avenir next, avenir,
     helvetica neue, helvetica, 'sans-serif';
-  backdrop-filter: blur(20px) saturate(5);
-  -webkit-backdrop-filter: blur(20px) saturate(5);
   animation: fadeIn 150ms;
   max-height: 90%;
   transition: width 150ms, height 150ms;
