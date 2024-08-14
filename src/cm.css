@@ -728,7 +728,7 @@ a:focus {
 /** Styles for the switch */
 .switch {
   --switchHeight: 20px;
-  --switchGutter: -2px;
+  --switchGutter: -3px;
   --switchButtonDiameter: calc(var(--switchHeight) - var(--switchGutter) * 2);
 }
 
@@ -755,7 +755,7 @@ a:focus {
   cursor: pointer;
   width: calc(var(--switchHeight) * 2 - 2px);
   height: var(--switchHeight);
-  background: rgb(37, 214, 149);
+  background: #7de8bc;
   border-radius: var(--switchHeight);
   position: relative;
   transition: background-color 150ms;
@@ -771,7 +771,7 @@ a:focus {
   height: var(--switchButtonDiameter);
   border-radius: var(--switchButtonDiameter);
   transition: 150ms;
-  background: rgba(1,72,78,255);
+  background: #1f7a54;
 }
 
 /** When switch is checked */
@@ -782,7 +782,7 @@ a:focus {
 
 /** When switch background is checked */
 .switch.switch-checkbox:checked + .switch.switch-background {
-  background-color: rgb(37, 214, 149);
+  background-color: #7de8bc;
 }
 
 /** When switch is focused */
