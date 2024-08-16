@@ -200,6 +200,7 @@ a:focus {
   margin: 0 10px 20px 10px;
   font-weight: var(--neue-haas-regular);
   height: 16px;
+  line-height: 16px;
   vertical-align: baseline;
   color: var(--text-color);
   text-shadow: none;
@@ -804,7 +805,7 @@ a:focus {
 .switch.switch-checkbox:focus + .switch.switch-background .switch.switch-button {
   outline: 2px solid rgba(51, 157, 255, 0.7);
   outline-offset: 1px;
-  outline-width: 5px;
+  outline-width: 0px;
 }
 
 /** Switch button when active */
