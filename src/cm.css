@@ -7,10 +7,7 @@
   --primary-color: #000000;
   --text-color: #010101;
 
-  /** Rodrigo PC - these comments can be removed*/
-  /**--neue-haas-name: 'Neue Haas Unica';*/
   --neue-haas-name: 'neue-haas-unica';
-  
   --neue-haas-bold: 600;
   --neue-haas-regular: 300;
 }
@@ -24,8 +21,8 @@
   right: 0px;
   margin: 0 auto;
   width: 100%;
-  backdrop-filter: blur(5px) brightness(80%);
-  -webkit-backdrop-filter: blur(5px) brightness(80%);
+  backdrop-filter: blur(0px) brightness(50%);
+  -webkit-backdrop-filter: blur(0px) brightness(50%);
   height: 100%;
 }
 
@@ -213,7 +210,7 @@ a:focus {
 
 /** Style applied to the checkbox toggle box */
 .toggle-label input:focus + span {
-  outline: 2px solid rgba(51, 157, 255, 0.7);
+  outline: 0px solid rgba(51, 157, 255, 0.7);
   outline-offset: 1px;
 }
 
@@ -617,6 +614,7 @@ a:focus {
 /** Outline for do not sell explainer */
 .do-not-sell-explainer-interface {
   margin-top: 2em;
+  margin-bottom: 5px;
 }
 
 /*******************
@@ -771,7 +769,7 @@ a:focus {
   cursor: pointer;
   width: calc(var(--switchHeight) * 2 - 2px);
   height: var(--switchHeight);
-  background: #7de8bc;
+  background: #c1d5db;
   border-radius: var(--switchHeight);
   position: relative;
   transition: background-color 150ms;
@@ -787,18 +785,24 @@ a:focus {
   height: var(--switchButtonDiameter);
   border-radius: var(--switchButtonDiameter);
   transition: 150ms;
-  background: #1f7a54;
+  background: #547c8c;
 }
 
 /** When switch is checked */
 .switch.switch-checkbox:checked + .switch.switch-background .switch.switch-button {
   left: calc(100% - var(--switchGutter));
   transform: translateX(-100%);
+  background: #1e7a54;
 }
 
 /** When switch background is checked */
 .switch.switch-checkbox:checked + .switch.switch-background {
-  background-color: #7de8bc;
+  background-color: #7ce8bc;
+}
+
+
+.switch.switch-checkbox:hover + .switch.switch-background .switch.switch-button {
+  background: #1a4c38;
 }
 
 /** When switch is focused */

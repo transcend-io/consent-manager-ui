@@ -95,22 +95,6 @@ export function DoNotSellExplainer({
                 : messages.doNotSellOptedOut,
             )}
           />
-
-          <p
-            className="paragraph"
-            role={'status'}
-            aria-hidden={typeof saving === 'boolean' ? 'false' : 'true'}
-          >
-            {typeof saving === 'boolean'
-              ? formatMessage(
-                  saving
-                    ? messages.saving
-                    : consentLocal
-                    ? messages.preferencesSavedOptedIn
-                    : messages.preferencesSaved,
-                )
-              : '\u200b'}
-          </p>
         </div>
       </div>
     </div>
