@@ -3,7 +3,7 @@ import { defineMessages } from '@transcend-io/internationalization';
 
 export const messages = defineMessages('ui.src.messages', {
   consentTitle: {
-    defaultMessage: 'What can we use data for?',
+    defaultMessage: 'Manage privacy preferences',
     description:
       'The title displayed when asking the user for specific opt out/in preferences.',
   },
@@ -46,7 +46,7 @@ export const messages = defineMessages('ui.src.messages', {
       'The description displayed for the PrivacyPolicyNoticeWithCloseButton banner.',
   },
   consentTitleDoNotSellExplainer: {
-    defaultMessage: 'Do Not Sell or Share My Personal Information',
+    defaultMessage: 'Your privacy choices',
     description: 'The title displayed for the DoNotSellExplainer banner.',
   },
   consentTitleAcceptOrRejectAnalytics: {
@@ -95,7 +95,7 @@ export const messages = defineMessages('ui.src.messages', {
     description: 'Button to dismiss privacy policy notice.',
   },
   doNotSellOptedOut: {
-    defaultMessage: `You have been successfully opted out.`,
+    defaultMessage: `Successfully opted out.`,
     description:
       'Explainer text in DoNotSellExplainer banner when opted out of sale of data.',
   },
@@ -114,11 +114,7 @@ export const messages = defineMessages('ui.src.messages', {
   },
   doNotSellDescription: {
     /* eslint-disable max-len */
-    defaultMessage: `<p>We do not disclose your personal information to third parties in exchange for monetary consideration. In some instances, however, we may disclose your personal information to third parties in exchange for other valuable consideration, such as to enhance our product offerings, offer display advertisements, and in other ways which you can read about in our Privacy Statement.</p>
-    <p>By opting out below, we will not disclose your personal information to third parties in exchange for valuable consideration.</p>
-    <p>Please note that by opting out of these types of disclosures, you may limit our ability to customize your experience with content that may be of interest to you.</p>
-    <p>If you have an account with us, sign in to persist your opt-out.</p>
-    <p>If you do not have an account, you may opt-out of the disclosure of your personal information to third parties for valuable consideration (e.g., information stored in cookies) from this web browser below.</p>`,
+    defaultMessage: `<p>We do not disclose your personal information to third parties in exchange for monetary consideration. In some instances, however, we may disclose your personal information to third parties in exchange for other valuable consideration, such as to enhance our product offerings, display online targeted advertising, and in other ways which you can read about in our Privacy Notice.</p><p>By opting out below, we will not disclose your personal information to third parties in exchange for valuable consideration.</p><p>Please note that choices related to opting out of the disclosure of your personal information to third parties for valuable consideration (e.g., information stored in cookies) are specific to the browser or device where you are making the election.</p>`,
     /* eslint-enable max-len */
     description: 'The description text for the the DoNotSellExplainer banner.',
   },
@@ -368,7 +364,7 @@ export const bottomMenuMessages = defineMessages('ui.src.bottomMenu', {
       'Text for linking out to privacy policy in the QuickOptions UI.',
   },
   showPolicyButtonQuickOptions3: {
-    defaultMessage: 'See our privacy policy',
+    defaultMessage: 'See our privacy notice',
     description:
       'Text for linking out to privacy policy in the QuickOptions3 UI.',
   },
@@ -392,7 +388,7 @@ export const bottomMenuMessages = defineMessages('ui.src.bottomMenu', {
       'Text for linking out to privacy policy in the AcceptOrRejectAll UI.',
   },
   showPolicyButtonAcceptOrRejectAllOrMoreChoices: {
-    defaultMessage: 'See our privacy policy',
+    defaultMessage: 'See our Privacy Notice',
     description:
       'Text for linking out to privacy policy in the AcceptOrRejectAllOrMoreChoices UI.',
   },

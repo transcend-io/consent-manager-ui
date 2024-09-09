@@ -29,12 +29,8 @@ export function CloseButton({
       onClick={onClick}
       data-initialFocus={initialFocus}
     >
-      <svg width="24" height="24" viewBox="0 0 32 32" aria-hidden="true">
-        <path
-          fill={fontColor}
-          // eslint-disable-next-line max-len
-          d="M25.71 24.29a.996.996 0 1 1-1.41 1.41L16 17.41 7.71 25.7a.996.996 0 1 1-1.41-1.41L14.59 16l-8.3-8.29A.996.996 0 1 1 7.7 6.3l8.3 8.29 8.29-8.29a.996.996 0 1 1 1.41 1.41L17.41 16l8.3 8.29z"
-        />
+      <svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M2.06045 16.2227L0.460449 14.6227L6.86045 8.22266L0.460449 1.82266L2.06045 0.222656L8.46045 6.62266L14.8604 0.222656L16.4604 1.82266L10.0604 8.22266L16.4604 14.6227L14.8604 16.2227L8.46045 9.82266L2.06045 16.2227Z" fill="black"/>
       </svg>
       <span className="screen-reader">{formatMessage(messages.close)}</span>
     </button>

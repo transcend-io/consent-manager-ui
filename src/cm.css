@@ -4,8 +4,36 @@
 
 /** Variables to insert into the remainder of the stylesheet */
 * {
-  --primary-color: #3333ff;
+  --primary-color: #000000;
   --text-color: #010101;
+
+  --neue-haas-name: 'neue-haas-unica';
+  --neue-haas-bold: 600;
+  --neue-haas-regular: 300;
+}
+
+
+.background-blur {
+  position: fixed;
+  top: 0px;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  margin: 0 auto;
+  width: 100%;
+  backdrop-filter: blur(0px) brightness(50%);
+  -webkit-backdrop-filter: blur(0px) brightness(50%);
+  height: 100%;
+}
+
+.privacy-policy-link {
+  text-decoration: underline;
+  color: black;
+  font-weight: var(--neue-haas-bold);
+}
+
+.privacy-policy-bottom {
+  padding-top: 25px;
 }
 
 /*******************
@@ -14,20 +42,19 @@
 
 /** Buttons displayed throughout the consent UI */
 .button {
-  min-height: 42px;
-  border-radius: 500px;
+  height: 60px;
   width: 100%;
-  background-color: rgba(255, 255, 255, 0.7);
+  background-color: rgba(214,245,232,255);
   opacity: 0.9;
-  border: 1px solid var(--primary-color);
+  border: 2px solid #000000;
   box-sizing: border-box;
   cursor: pointer;
   filter: brightness(100%);
   flex-shrink: 0;
   font-family: inherit;
   text-align: center;
-  padding: 6px;
   transition: filter 150ms, background-color 150ms;
+  border-radius: 8px;
 }
 
 /** Not the last button in a list of buttons */
@@ -37,7 +64,7 @@
 
 /** On button hover */
 .button:hover {
-  background-color: var(--primary-color);
+  background-color: rgba(1,72,78,255);
 }
 
 /** Inner text on button hover */
@@ -56,8 +83,8 @@
 
 /** Styles applied to "primary" button text */
 .button-primary-text {
-  font-size: 12px;
-  font-weight: 700;
+  font-size: 23px;
+  font-weight: var(--neue-haas-bold);
 }
 
 /** Styles applied to "secondary" button text */
@@ -68,7 +95,7 @@
 
 /** Button focus */
 button:focus {
-  outline: 2px solid rgba(51, 157, 255, 0.7);
+  outline: 0px solid #9fbbc6;
 }
 
 /** Anchor focus */
@@ -104,12 +131,20 @@ a:focus {
   color: var(--text-color);
   margin: 0 0 18px 0;
   text-align: center;
+  font-family: "Rethink Sans", sans-serif;
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 40px;
+  padding-bottom: 5px;
 }
 
 /** Paragraph text styles */
 .paragraph {
   color: var(--text-color);
   font-size: 14px;
+  font-weight: var(--neue-haas-regular);
+  line-height: 16px;
   margin: 0 0 18px 0;
 }
 
@@ -146,7 +181,6 @@ a:focus {
   margin: 20px;
   flex-direction: column;
   align-content: center;
-  flex-wrap: wrap;
   width: 100%;
   justify-content: center;
 }
@@ -160,28 +194,31 @@ a:focus {
 /** Style applied to each label text for each checkbox toggle and switch */
 .toggle-label {
   position: relative;
-  margin: 0 10px 15px 10px;
-  font-size: 12px;
-  font-weight: 500;
+  margin: 0 10px 20px 10px;
+  font-weight: var(--neue-haas-regular);
   height: 16px;
+  line-height: 16px;
   vertical-align: baseline;
   color: var(--text-color);
   text-shadow: none;
   padding-left: 25px;
   word-wrap: break-word;
+  padding-left: 35px;
+  padding-top: 1px;
+  padding-bottom: 15px;
 }
 
 /** Style applied to the checkbox toggle box */
 .toggle-label input:focus + span {
-  outline: 2px solid rgba(51, 157, 255, 0.7);
+  outline: 0px solid rgba(51, 157, 255, 0.7);
   outline-offset: 1px;
 }
 
 /** Style applied to create custom checkmark */
 .toggle-checkmark {
   display: inline-block;
-  width: 16px;
-  height: 16px;
+  width: 17px;
+  height: 17px;
   box-sizing: border-box;
   border-radius: 4px;
   margin-right: 5px;
@@ -192,6 +229,7 @@ a:focus {
   left: 0;
   transition: all 150ms ease, background 300ms ease;
   cursor: pointer;
+  transform: scale(1.5);
 }
 
 /** Style applied to create custom checkmark ::after */
@@ -229,7 +267,7 @@ a:focus {
 
 /** Style applied to checkbox input span when checked */
 .toggle-input:checked + span {
-  background: var(--primary-color);
+  background: rgb(37, 214, 149);
   border-color: transparent;
 }
 
@@ -248,12 +286,12 @@ a:focus {
 /** Style applied to toggle input when focused */
 .toggle-input:hover:enabled + span,
 .toggle-input:focus-visible + span {
-  border-color: var(--primary-color);
+  border-color: #1DC982;
 }
 
 /** Style applied to checkbox input span when disabled */
 .toggle-input:disabled + span {
-  background-color: #ececec;
+  background-color: #9FBBC6;
   cursor: not-allowed;
 }
 
@@ -275,6 +313,7 @@ a:focus {
 
 /** Button row styles for AcceptOrRejectAll view state */
 .accept-or-reject-all-button-row {
+  padding-top: 10px;
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -494,34 +533,35 @@ a:focus {
 
 /** Container that is wrapped around the modal */
 .modal-container {
-  position: fixed;
+  position: relative;
   bottom: 10px;
-  left: 5px;
-  right: 5px;
   margin: 0 auto;
   width: calc(100% - 10px);
   box-sizing: border-box;
-  border-radius: 18px;
-  border: 0.5px solid #d8d8d8;
-  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 0px;
+  border: 2px solid #000000;
+  background-color: rgba(214,245,232,255);
   overflow: hidden;
-  padding: 21px;
-  font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir,
+  padding: 21px 0px 21px 21px;
+  font-family: var(--neue-haas-name), -apple-system, BlinkMacSystemFont, avenir next, avenir,
     helvetica neue, helvetica, 'sans-serif';
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(20px) saturate(5);
-  -webkit-backdrop-filter: blur(20px) saturate(5);
   animation: fadeIn 150ms;
   max-height: 90%;
   transition: width 150ms, height 150ms;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.we-use-cookies-paragraph {
+  padding-bottom: 20px;
 }
 
 /** Inner contents wrapper for modal content */
 .modal-container-inner {
   min-height: 79px;
   height: calc(100% - 38px);
-  width: 100%;
-  padding-bottom: 38px;
+  width: 92%;
+  padding: 25px 0px 0px 0px;
 }
 
 /** Styles that wrap the text container of the modal content. Excludes footer */
@@ -553,11 +593,11 @@ a:focus {
   --squareDimension: 25px;
   padding: 4px;
   position: absolute;
-  top: 21px;
-  right: 21px;
+  top: 7px;
+  right: 7px;
   border: none;
   cursor: pointer;
-  background-color: #f2f2f2;
+  background-color: rgba(214,245,232,255);
   border-radius: 5px;
   height: var(--squareDimension);
   width: var(--squareDimension);
@@ -569,12 +609,12 @@ a:focus {
 
 /** Styles for button of X marker in top right corner on hover */
 .do-not-sell-explainer-close:hover, .do-not-sell-explainer-close:focus {
-  background-color: #e2e2e2;
 }
 
 /** Outline for do not sell explainer */
 .do-not-sell-explainer-interface {
   margin-top: 2em;
+  margin-bottom: 5px;
 }
 
 /*******************
@@ -701,7 +741,7 @@ a:focus {
 /** Styles for the switch */
 .switch {
   --switchHeight: 20px;
-  --switchGutter: 2px;
+  --switchGutter: -3px;
   --switchButtonDiameter: calc(var(--switchHeight) - var(--switchGutter) * 2);
 }
 
@@ -709,13 +749,13 @@ a:focus {
 .switch.label {
   display: flex;
   align-items: center;
-  font-weight: 500;
-  font-size: 14px;
+  font-weight: var(--neue-haas-regular);
   height: 16px;
   vertical-align: baseline;
   text-shadow: none;
   white-space: nowrap;
   padding: 0 5px;
+  font-size: 14px;
 }
 
 /** Removes checkbox for the switch since checkbox is basis for switch */
@@ -729,7 +769,7 @@ a:focus {
   cursor: pointer;
   width: calc(var(--switchHeight) * 2 - 2px);
   height: var(--switchHeight);
-  background: #7e8793;
+  background: #c1d5db;
   border-radius: var(--switchHeight);
   position: relative;
   transition: background-color 150ms;
@@ -745,25 +785,31 @@ a:focus {
   height: var(--switchButtonDiameter);
   border-radius: var(--switchButtonDiameter);
   transition: 150ms;
-  background: #fff;
+  background: #547c8c;
 }
 
 /** When switch is checked */
 .switch.switch-checkbox:checked + .switch.switch-background .switch.switch-button {
   left: calc(100% - var(--switchGutter));
   transform: translateX(-100%);
+  background: #1e7a54;
 }
 
 /** When switch background is checked */
 .switch.switch-checkbox:checked + .switch.switch-background {
-  background-color: var(--primary-color);
+  background-color: #7ce8bc;
+}
+
+
+.switch.switch-checkbox:hover + .switch.switch-background .switch.switch-button {
+  background: #1a4c38;
 }
 
 /** When switch is focused */
 .switch.switch-checkbox:focus + .switch.switch-background .switch.switch-button {
   outline: 2px solid rgba(51, 157, 255, 0.7);
   outline-offset: 1px;
-  outline-width: 5px;
+  outline-width: 0px;
 }
 
 /** Switch button when active */
@@ -809,10 +855,25 @@ a:focus {
 
 /** At least table */
 @media (min-width: 640px) {
+
+  .switch.label {
+    font-size: 16px;
+  }
+
+  .paragraph {
+    font-size: 16px;
+    line-height: 24px;
+  }
+
   /** Button Styles */
   .button {
-    width: 135px;
+    width: 153px;
   }
+
+  .button-large {
+    width: 250px;
+  }
+
   .button:not(:last-of-type) {
     margin-bottom: 0;
   }
@@ -824,7 +885,7 @@ a:focus {
   }
   .text-title-center {
     margin: 0 0 18px 0;
-    text-align: center;
+    text-align: center; 
   }
   .paragraph {
     margin: 18px 18px 0 0;
@@ -852,13 +913,13 @@ a:focus {
 
   /** CompleteOptions */
   .toggles-container {
-    flex-direction: row;
+    margin-bottom: 0px;
   }
 
   /** Modal */
   .modal-container {
     bottom: 5px;
-    max-width: 630px;
+    max-width: 694px;
     min-height: 160px;
     bottom: 22px;
   }
@@ -874,4 +935,22 @@ a:focus {
   .transcend-logo-svg:hover path, .transcend-logo-container:focus path {
     fill: var(--primary-color);
   }
+
+  .modal-container-inner {
+    padding: 25px 25px 25px 30px;
+  }
+
 }
+
+
+.pointer {
+  cursor: pointer;
+}
+
+.modal-container-top {
+  margin: -21px -21px 0px -21px;
+  border-bottom: 2px solid #000;
+  padding: 8px 0px 4px 15px;
+  background-color: rgba(214,245,232,255);
+}
+

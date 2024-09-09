@@ -2,7 +2,7 @@ import { h, JSX } from 'preact';
 import { useState } from 'preact/hooks';
 import { useIntl } from 'react-intl';
 import { useAirgap, useGetPurposeMessageKeys } from '../hooks';
-import { messages, completeOptionsMessages } from '../messages';
+import { messages, completeOptionsMessages, bottomMenuMessages } from '../messages';
 import type { ConsentSelection, HandleSetViewState } from '../types';
 import { getConsentSelections } from '../consent-selections';
 import { Button } from './Button';
@@ -71,7 +71,7 @@ export function CompleteOptions({
       <p
         role="heading"
         id="consent-dialog-title"
-        className="text-title text-title-center"
+        className="text-title text-title-left"
       >
         {formatMessage(messages.consentTitle)}
       </p>
@@ -118,16 +118,21 @@ export function CompleteOptions({
               handleToggle={(checked: boolean) =>
                 handleToggle(purpose, checked)
               }
-              {...(idx === 0 ? { initialFocus: true } : {})}
+              {...(idx === 0 ? { initialFocus: false } : {})}
             />
           ))}
+          <Button
+            handleClick={handleSave}
+            primaryText={formatMessage(completeOptionsMessages.saveButtonPrimary)}
+            type="submit"
+            {...(orderedSelections.length === 0 ? { initialFocus: true } : {})}
+          />
+          <div class="privacy-policy-bottom">
+            <a href="https://privacy.goshippo.com/" class="privacy-policy-link" target="_blank">
+              {formatMessage(bottomMenuMessages.showPolicyButtonAcceptOrRejectAllOrMoreChoices)}
+            </a>
+          </div>
         </div>
-        <Button
-          handleClick={handleSave}
-          primaryText={formatMessage(completeOptionsMessages.saveButtonPrimary)}
-          type="submit"
-          {...(orderedSelections.length === 0 ? { initialFocus: true } : {})}
-        />
       </form>
     </div>
   );

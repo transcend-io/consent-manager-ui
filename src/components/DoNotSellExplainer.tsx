@@ -3,7 +3,7 @@ import { useState } from 'preact/hooks';
 import { useIntl } from 'react-intl';
 import { CONSENT_OPTIONS } from '../constants';
 import { useAirgap } from '../hooks';
-import { messages } from '../messages';
+import { messages, bottomMenuMessages } from '../messages';
 import type { HandleSetViewState } from '../types';
 import { CloseButton } from './CloseButton';
 import { GPCIndicator } from './GPCIndicator';
@@ -76,6 +76,13 @@ export function DoNotSellExplainer({
             }}
           />
         </div>
+        <div>
+          <div>
+            <a href="https://privacy.goshippo.com/" class="privacy-policy-link" target="_blank">
+              {formatMessage(bottomMenuMessages.showPolicyButtonAcceptOrRejectAllOrMoreChoices)}
+            </a>
+          </div>
+        </div>
         <div className="margin-tops do-not-sell-explainer-interface">
           <GPCIndicator />
           <Switch
@@ -87,24 +94,7 @@ export function DoNotSellExplainer({
                 ? messages.doNotSellOptedIn
                 : messages.doNotSellOptedOut,
             )}
-            initialFocus
           />
-
-          <p
-            className="paragraph"
-            role={'status'}
-            aria-hidden={typeof saving === 'boolean' ? 'false' : 'true'}
-          >
-            {typeof saving === 'boolean'
-              ? formatMessage(
-                  saving
-                    ? messages.saving
-                    : consentLocal
-                    ? messages.preferencesSavedOptedIn
-                    : messages.preferencesSaved,
-                )
-              : '\u200b'}
-          </p>
         </div>
       </div>
     </div>
