@@ -6,12 +6,20 @@
 * {
   --primary-color: #000000;
   --text-color: #010101;
-
+  --shippo-solid-teal: #01474F;
   --neue-haas-name: 'neue-haas-unica';
   --neue-haas-bold: 600;
   --neue-haas-regular: 300;
+  /* Neue Haas weights */
+  --title-neue-haas-weight: 500;
+  --primary-button-neue-haas-weight: 400;
+  /* Rethink Sans weights */
+  --title-rethink-sans-weight: 700;
+  --primary-button-rethink-sans-weight: 700;
+  /* change these to neue-haas for app & portal css */
+  --title-text-weight: var(--title-rethink-sans-weight);
+  --primary-button-weight: var(--primary-button-rethink-sans-weight);
 }
-
 
 .background-blur {
   position: fixed;
@@ -64,7 +72,7 @@
 
 /** On button hover */
 .button:hover {
-  background-color: rgba(1,72,78,255);
+  background-color: #00484E;
 }
 
 /** Inner text on button hover */
@@ -84,13 +92,25 @@
 /** Styles applied to "primary" button text */
 .button-primary-text {
   font-size: 23px;
-  font-weight: var(--neue-haas-bold);
+  font-weight: var(--primary-button-weight);
 }
 
 /** Styles applied to "secondary" button text */
 .button-secondary-text {
   font-size: 9px;
   font-weight: 400;
+}
+
+.button-confirm-cta button{
+  background-color: var(--shippo-solid-teal);
+}
+
+.button-confirm-cta button span{
+  color: #ffff;
+}
+
+.button-confirm-cta button:hover{
+  background-color: #173236;
 }
 
 /** Button focus */
@@ -131,10 +151,10 @@ a:focus {
   color: var(--text-color);
   margin: 0 0 18px 0;
   text-align: center;
-  font-family: "Rethink Sans", sans-serif;
+  font-family: 'Rethink Sans', var(--neue-haas-name), sans-serif;
   font-size: 32px;
   font-style: normal;
-  font-weight: 700;
+  font-weight: var(--title-text-weight,700);
   line-height: 40px;
   padding-bottom: 5px;
 }
@@ -174,6 +194,9 @@ a:focus {
   align-items: center;
 }
 
+.complete-options-form-left {
+  align-items: flex-start;
+}
 /** Container for rendering checkbox toggles */
 .toggles-container {
   height: 100%;
@@ -190,11 +213,12 @@ a:focus {
   height: inherit;
   animation: fadeIn 200ms ease-in;
 }
-
 /** Style applied to each label text for each checkbox toggle and switch */
 .toggle-label {
   position: relative;
   margin: 0 10px 20px 10px;
+  font-family: var(--neue-haas-name), -apple-system, BlinkMacSystemFont, avenir next, avenir,
+  helvetica neue, helvetica, 'sans-serif';
   font-weight: var(--neue-haas-regular);
   height: 16px;
   line-height: 16px;
@@ -305,8 +329,12 @@ a:focus {
 /** Style applied to checkbox input span when disabled */
 .toggle-input:disabled + span::after {
   border-color: #d8d8d8;
+  color: white;
 }
 
+.toggle-label[for=essential-purposes]{
+  color: #9FBBC6;
+}
 /*******************
  * AcceptOrRejectAll
  *******************/
@@ -889,6 +917,16 @@ a:focus {
   }
   .paragraph {
     margin: 18px 18px 0 0;
+  }
+
+  .paragraph-left {
+    margin: 0 18px 0 0;
+    text-align: left;
+    padding: 5px 0;
+  }
+
+  .toggles-container-left {
+    margin:  18px 0 18px -5px;
   }
   .column-content {
     flex-direction: row;

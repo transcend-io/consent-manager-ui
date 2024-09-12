@@ -78,7 +78,7 @@ export function DoNotSellExplainer({
         </div>
         <div>
           <div>
-            <a href="https://privacy.goshippo.com/" class="privacy-policy-link" target="_blank">
+            <a href="https://privacy.goshippo.com/policies?name=privacy-notice" class="privacy-policy-link" target="_blank" rel="noreferrer">
               {formatMessage(bottomMenuMessages.showPolicyButtonAcceptOrRejectAllOrMoreChoices)}
             </a>
           </div>

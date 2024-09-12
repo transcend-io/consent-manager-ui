@@ -6,7 +6,6 @@ import type { HandleSetViewState } from '../types';
 import { Button } from './Button';
 import { MenuItem } from './MenuItem';
 
-
 /**
  * Component showing "accept all" or "reject all" or "more choices"
  */
@@ -67,8 +66,8 @@ export function AcceptOrRejectAllOrMoreChoices({
           <p className="paragraph we-use-cookies-paragraph">
             <div role="paragraph">
               {formatMessage(messages.acceptAllDescription)}
-              &nbsp; 
-              <a href="https://privacy.goshippo.com/" class="privacy-policy-link" target="_blank">
+              &nbsp;
+              <a href="https://privacy.goshippo.com/policies?name=privacy-notice" class="privacy-policy-link" target="_blank" rel="noreferrer">
                 {formatMessage(bottomMenuMessages.showPolicyButtonAcceptOrRejectAllOrMoreChoices)}
               </a>
             </div>

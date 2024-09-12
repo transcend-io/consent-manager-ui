@@ -45,6 +45,7 @@ export function Toggle({
   return (
     <label
       className="toggle-label"
+      for={id}
       aria-label={
         ariaLabel ||
         `${
