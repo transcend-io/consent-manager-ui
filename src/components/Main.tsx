@@ -95,7 +95,7 @@ export function Main({
         id="consentManagerMainDialog"
         ref={dialogRef}
       >
-        <div role="document" className="modal-container-inner" tabIndex={0}>
+        <div role="document" className="modal-container-inner">
           <div
             role="main"
             className="inner-container"
