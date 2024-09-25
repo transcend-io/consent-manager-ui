@@ -182,7 +182,7 @@ export const messages = defineMessages('ui.src.messages', {
       'The description text for the CompleteOptionsToggles view state.',
   },
   modalAriaLabel: {
-    defaultMessage: 'User data usage dialog',
+    defaultMessage: 'cookie consent banner',
     description:
       'The aria label used by screen readers for the modal. This is read when the modal is opened and focused.',
   },

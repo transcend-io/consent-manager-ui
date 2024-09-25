@@ -19,7 +19,7 @@ export function AcceptOrRejectAnalytics({
   const { formatMessage } = useIntl();
 
   return (
-    <div className="column-content" role="none">
+    <div className="column-content">
       <div>
         <div>
           <p
@@ -43,8 +43,6 @@ export function AcceptOrRejectAnalytics({
       </div>
       <div
         className="accept-or-reject-all-button-row"
-        role="group"
-        aria-label={formatMessage(messages.buttonGroupAriaDescription)}
       >
         <Button
           primaryText={formatMessage(messages.acceptAnalytics)}

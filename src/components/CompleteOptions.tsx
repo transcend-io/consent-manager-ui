@@ -68,67 +68,63 @@ export function CompleteOptions({
 
   return (
     <div className="complete-options-container" role="none">
-      <p
-        role="heading"
-        id="consent-dialog-title"
-        className="text-title text-title-center"
-      >
-        {formatMessage(messages.consentTitle)}
-      </p>
-      <form className="complete-options-form">
-        <GPCIndicator />
-        {description && description !== '-' ? (
-          <p className="paragraph">
-            <div
-              // eslint-disable-next-line react/no-danger
-              dangerouslySetInnerHTML={{
-                __html: description,
-              }}
-            />
-          </p>
-        ) : undefined}
+      <fieldset>
+        <legend>{formatMessage(messages.consentTitle)}</legend>
+        <form className="complete-options-form">
+          <GPCIndicator />
+          {description && description !== '-' ? (
+            <p className="paragraph">
+              <div
+                // eslint-disable-next-line react/no-danger
+                dangerouslySetInnerHTML={{
+                  __html: description,
+                }}
+              />
+            </p>
+          ) : undefined}
 
-        <div
-          className="toggles-container"
-          role="group"
-          aria-label={formatMessage(messages.buttonGroupAriaDescription)}
-        >
-          <Toggle
-            key="Essential"
-            name={formatMessage(purposeToMessageKey.Essential)}
-            initialToggleState
-            disabled
-            handleToggle={() => {
-              // noop
-            }}
-            ariaLabel={formatMessage(
-              completeOptionsMessages.essentialAriaLabel,
-            )}
-          />
-          {orderedSelections.map(([purpose, isChecked], idx) => (
+          <div
+            className="toggles-container"
+            role="group"
+            aria-label={formatMessage(messages.buttonGroupAriaDescription)}
+          >
             <Toggle
-              key={purpose}
-              name={
-                Object.hasOwnProperty.call(purposeToMessageKey, purpose)
-                  ? formatMessage(purposeToMessageKey[purpose])
-                  : purpose
-              }
-              initialToggleState={isChecked}
-              disabled={false}
-              handleToggle={(checked: boolean) =>
-                handleToggle(purpose, checked)
-              }
-              {...(idx === 0 ? { initialFocus: true } : {})}
+              key="Essential"
+              name={formatMessage(purposeToMessageKey.Essential)}
+              initialToggleState
+              disabled
+              handleToggle={() => {
+                // noop
+              }}
+              ariaLabel={formatMessage(
+                completeOptionsMessages.essentialAriaLabel,
+              )}
             />
-          ))}
-        </div>
-        <Button
-          handleClick={handleSave}
-          primaryText={formatMessage(completeOptionsMessages.saveButtonPrimary)}
-          type="submit"
-          {...(orderedSelections.length === 0 ? { initialFocus: true } : {})}
-        />
-      </form>
+            {orderedSelections.map(([purpose, isChecked], idx) => (
+              <Toggle
+                key={purpose}
+                name={
+                  Object.hasOwnProperty.call(purposeToMessageKey, purpose)
+                    ? formatMessage(purposeToMessageKey[purpose])
+                    : purpose
+                }
+                initialToggleState={isChecked}
+                disabled={false}
+                handleToggle={(checked: boolean) =>
+                  handleToggle(purpose, checked)
+                }
+                {...(idx === 0 ? { initialFocus: true } : {})}
+              />
+            ))}
+          </div>
+          <Button
+            handleClick={handleSave}
+            primaryText={formatMessage(completeOptionsMessages.saveButtonPrimary)}
+            type="submit"
+            {...(orderedSelections.length === 0 ? { initialFocus: true } : {})}
+          />
+        </form>
+      </fieldset>
     </div>
   );
 }
