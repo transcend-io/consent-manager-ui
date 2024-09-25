@@ -94,9 +94,7 @@ export function Main({
         ref={dialogRef}
       >
         <div className="modal-container-inner">
-          <div
-            className="inner-container"
-          >
+          <div className="inner-container">
             {viewState === 'QuickOptions' && (
               <QuickOptions handleSetViewState={handleSetViewState} />
             )}

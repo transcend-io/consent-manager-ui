@@ -51,7 +51,8 @@ export function AcceptAllOrMoreChoices({
           </p>
         </div>
         <div>
-          <p className="paragraph"
+          <p
+            className="paragraph"
             // eslint-disable-next-line react/no-danger
             dangerouslySetInnerHTML={{
               __html: formatMessage(messages.acceptAllDescription),
@@ -59,9 +60,7 @@ export function AcceptAllOrMoreChoices({
           />
         </div>
       </div>
-      <div
-        className="accept-or-reject-all-button-row"
-      >
+      <div className="accept-or-reject-all-button-row">
         <Button
           primaryText={formatMessage(messages.acceptAllButtonPrimary)}
           handleClick={handleAcceptAll}
