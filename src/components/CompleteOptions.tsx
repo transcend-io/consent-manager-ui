@@ -120,7 +120,7 @@ export function CompleteOptions({
           <Button
             handleClick={handleSave}
             primaryText={formatMessage(
-              completeOptionsMessages.saveButtonPrimary
+              completeOptionsMessages.saveButtonPrimary,
             )}
             type="submit"
             {...(orderedSelections.length === 0 ? { initialFocus: true } : {})}
