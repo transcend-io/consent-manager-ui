@@ -68,7 +68,7 @@ export function CompleteOptions({
 
   return (
     <div className="complete-options-container" role="none">
-      <fieldset style={{border: "0"}}>
+      <fieldset style={{ border: '0' }}>
         <legend
           id="consent-dialog-title"
           className="text-title text-title-center"
