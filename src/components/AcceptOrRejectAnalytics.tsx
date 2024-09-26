@@ -19,7 +19,7 @@ export function AcceptOrRejectAnalytics({
   const { formatMessage } = useIntl();
 
   return (
-    <div className="column-content" role="none">
+    <div className="column-content">
       <div>
         <div>
           <p
@@ -31,7 +31,8 @@ export function AcceptOrRejectAnalytics({
           </p>
         </div>
         <div>
-          <p className="paragraph"
+          <p
+            className="paragraph"
             // eslint-disable-next-line react/no-danger
             dangerouslySetInnerHTML={{
               __html: formatMessage(
@@ -41,11 +42,7 @@ export function AcceptOrRejectAnalytics({
           />
         </div>
       </div>
-      <div
-        className="accept-or-reject-all-button-row"
-        role="group"
-        aria-label={formatMessage(messages.buttonGroupAriaDescription)}
-      >
+      <div className="accept-or-reject-all-button-row">
         <Button
           primaryText={formatMessage(messages.acceptAnalytics)}
           handleClick={(event) => {

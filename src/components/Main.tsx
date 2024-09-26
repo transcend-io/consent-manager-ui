@@ -87,20 +87,14 @@ export function Main({
     }
     return (
       <div
-        role="dialog"
-        aria-modal="true"
+        role="regions"
         aria-label={formatMessage(messages.modalAriaLabel)}
-        aria-live="polite"
         className="modal-container"
         id="consentManagerMainDialog"
         ref={dialogRef}
       >
-        <div role="document" className="modal-container-inner">
-          <div
-            role="main"
-            className="inner-container"
-            aria-description={formatMessage(messages.modalAriaDescription)}
-          >
+        <div className="modal-container-inner">
+          <div className="inner-container">
             {viewState === 'QuickOptions' && (
               <QuickOptions handleSetViewState={handleSetViewState} />
             )}
@@ -206,7 +200,7 @@ export function Main({
               />
             )}
           </div>
-          <div role="contentinfo" className="footer-container">
+          <div className="footer-container">
             <TranscendLogo fontColor={config.theme.fontColor} />
             <BottomMenu
               firstSelectedViewState={firstSelectedViewState}
