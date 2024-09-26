@@ -69,7 +69,10 @@ export function CompleteOptions({
   return (
     <div className="complete-options-container" role="none">
       <fieldset>
-        <legend>{formatMessage(messages.consentTitle)}</legend>
+        <legend
+          id="consent-dialog-title"
+          className="text-title text-title-center"
+        >{formatMessage(messages.consentTitle)}</legend>
         <form className="complete-options-form">
           <GPCIndicator />
           {description && description !== '-' ? (
