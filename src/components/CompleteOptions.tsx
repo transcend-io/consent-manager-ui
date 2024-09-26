@@ -119,7 +119,7 @@ export function CompleteOptions({
           </div>
           <Button
             handleClick={handleSave}
-            primaryText={formatMessage
+            primaryText={formatMessage(
               completeOptionsMessages.saveButtonPrimary
             )}
             type="submit"
