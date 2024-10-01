@@ -134,7 +134,7 @@ a:focus {
   display: flex;
   flex-direction: column;
   width: 100%;
-  margin: 0 auto;
+  margin: 0 auto 2px auto;
   justify-content: space-between;
   align-items: center;
 }
