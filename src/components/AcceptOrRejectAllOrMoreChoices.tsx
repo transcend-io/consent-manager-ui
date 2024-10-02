@@ -54,7 +54,7 @@ export function AcceptOrRejectAllOrMoreChoices({
   };
 
   return (
-    <div className="column-content" role="none">
+    <div className="column-content">
       <div>
         <div>
           <p
@@ -78,14 +78,7 @@ export function AcceptOrRejectAllOrMoreChoices({
           />
         </div>
       </div>
-      <div
-        className="accept-or-reject-all-button-row"
-        role="group"
-        aria-label={formatMessage(
-          messages.buttonGroupAriaDescription,
-          globalUiVariables,
-        )}
-      >
+      <div className="accept-or-reject-all-button-row">
         <Button
           primaryText={formatMessage(
             messages.acceptAllButtonPrimary,

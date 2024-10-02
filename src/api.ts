@@ -70,7 +70,7 @@ export function makeConsentManagerAPI({
       Promise.resolve(
         getTranscendPolicies(
           input,
-          settings.policiesCdnLocation, // FIXME override
+          settings.policiesCdnLocation,
           activeLocale,
           currentVariables,
         ),

@@ -26,7 +26,7 @@
     "@transcend-io/internationalization": "^1.6.0",
     "@transcend-io/logger": "^1.1.0",
     "preact": "10.5.14",
-    "react-intl": "^6.2.5",
+    "react-intl": "=6.2.5",
     "tslib": "^2.4.1"
   },
   "scripts": {

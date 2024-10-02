@@ -75,82 +75,83 @@ export function CompleteOptions({
 
   return (
     <div className="complete-options-container" role="none">
-      <p
-        role="heading"
-        id="consent-dialog-title"
-        className="text-title text-title-center"
-      >
-        {formatMessage(messages.consentTitle, globalUiVariables)}
-      </p>
-      <form className="complete-options-form">
-        <GPCIndicator globalUiVariables={globalUiVariables} />
-        {description && description !== '-' ? (
-          <p className="paragraph">
-            <div
-              // eslint-disable-next-line react/no-danger
-              dangerouslySetInnerHTML={{
-                __html: description,
-              }}
-            />
-          </p>
-        ) : undefined}
-
-        <div
-          className="toggles-container"
-          role="group"
-          aria-label={formatMessage(
-            messages.buttonGroupAriaDescription,
-            globalUiVariables,
-          )}
+      <fieldset style={{ border: '0' }}>
+        <legend
+          id="consent-dialog-title"
+          className="text-title text-title-center"
         >
-          <Toggle
-            globalUiVariables={globalUiVariables}
-            key="Essential"
-            name={formatMessage(
-              purposeToMessageKey.Essential,
+          {formatMessage(messages.consentTitle, globalUiVariables)}
+        </legend>
+        <form className="complete-options-form">
+          <GPCIndicator globalUiVariables={globalUiVariables} />
+          {description && description !== '-' ? (
+            <p className="paragraph">
+              <div
+                // eslint-disable-next-line react/no-danger
+                dangerouslySetInnerHTML={{
+                  __html: description,
+                }}
+              />
+            </p>
+          ) : undefined}
+
+          <div
+            className="toggles-container"
+            role="group"
+            aria-label={formatMessage(
+              messages.buttonGroupAriaDescription,
               globalUiVariables,
             )}
-            initialToggleState
-            disabled
-            handleToggle={() => {
-              // noop
-            }}
-            ariaLabel={formatMessage(
-              completeOptionsMessages.essentialAriaLabel,
-              globalUiVariables,
-            )}
-          />
-          {orderedSelections.map(([purpose, isChecked], idx) => (
+          >
             <Toggle
+              key="Essential"
               globalUiVariables={globalUiVariables}
-              key={purpose}
-              name={
-                Object.hasOwnProperty.call(purposeToMessageKey, purpose)
-                  ? formatMessage(
-                      purposeToMessageKey[purpose],
-                      globalUiVariables,
-                    )
-                  : purpose
-              }
-              initialToggleState={isChecked}
-              disabled={false}
-              handleToggle={(checked: boolean) =>
-                handleToggle(purpose, checked)
-              }
-              {...(idx === 0 ? { initialFocus: true } : {})}
+              name={formatMessage(
+                purposeToMessageKey.Essential,
+                globalUiVariables,
+              )}
+              initialToggleState
+              disabled
+              handleToggle={() => {
+                // noop
+              }}
+              ariaLabel={formatMessage(
+                completeOptionsMessages.essentialAriaLabel,
+                globalUiVariables,
+              )}
             />
-          ))}
-        </div>
-        <Button
-          handleClick={handleSave}
-          primaryText={formatMessage(
-            completeOptionsMessages.saveButtonPrimary,
-            globalUiVariables,
-          )}
-          type="submit"
-          {...(orderedSelections.length === 0 ? { initialFocus: true } : {})}
-        />
-      </form>
+            {orderedSelections.map(([purpose, isChecked], idx) => (
+              <Toggle
+                key={purpose}
+                globalUiVariables={globalUiVariables}
+                name={
+                  Object.hasOwnProperty.call(purposeToMessageKey, purpose)
+                    ? formatMessage(
+                        purposeToMessageKey[purpose],
+                        globalUiVariables,
+                      )
+                    : purpose
+                }
+                initialToggleState={isChecked}
+                disabled={false}
+                handleToggle={(checked: boolean) =>
+                  handleToggle(purpose, checked)
+                }
+                {...(idx === 0 ? { initialFocus: true } : {})}
+              />
+            ))}
+          </div>
+          <Button
+            handleClick={handleSave}
+            primaryText={formatMessage(
+              completeOptionsMessages.saveButtonPrimary,
+              globalUiVariables,
+            )}
+            type="submit"
+            {...(orderedSelections.length === 0 ? { initialFocus: true } : {})}
+          />
+        </form>
+      </fieldset>
     </div>
   );
 }

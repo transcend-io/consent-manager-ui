@@ -65,7 +65,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["monaco-editor", "npm:0.34.1"],\
             ["preact", "npm:10.5.14"],\
             ["prettier", "npm:3.3.3"],\
-            ["react-intl", "virtual:c76842a5689228a0ce1b65e064c1f5e0d5b61e442d08b6527a3b1f100ca1f2105e58f5f1435c5a59df3cce3338560737838d99dae36d25b47d20aa50c89d0539#npm:6.6.8"],\
+            ["react-intl", "virtual:c76842a5689228a0ce1b65e064c1f5e0d5b61e442d08b6527a3b1f100ca1f2105e58f5f1435c5a59df3cce3338560737838d99dae36d25b47d20aa50c89d0539#npm:6.2.5"],\
             ["ts-jest", "virtual:c76842a5689228a0ce1b65e064c1f5e0d5b61e442d08b6527a3b1f100ca1f2105e58f5f1435c5a59df3cce3338560737838d99dae36d25b47d20aa50c89d0539#npm:29.2.3"],\
             ["ts-node", "virtual:c76842a5689228a0ce1b65e064c1f5e0d5b61e442d08b6527a3b1f100ca1f2105e58f5f1435c5a59df3cce3338560737838d99dae36d25b47d20aa50c89d0539#npm:10.9.2"],\
             ["tslib", "npm:2.6.3"],\
@@ -980,68 +980,68 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]\
       ]],\
       ["@formatjs/ecma402-abstract", [\
-        ["npm:2.0.0", {\
-          "packageLocation": "./.yarn/cache/@formatjs-ecma402-abstract-npm-2.0.0-a81766ac3e-0bba3b4f1a.zip/node_modules/@formatjs/ecma402-abstract/",\
+        ["npm:1.14.3", {\
+          "packageLocation": "./.yarn/cache/@formatjs-ecma402-abstract-npm-1.14.3-0c3d1a26d2-504ae97750.zip/node_modules/@formatjs/ecma402-abstract/",\
           "packageDependencies": [\
-            ["@formatjs/ecma402-abstract", "npm:2.0.0"],\
-            ["@formatjs/intl-localematcher", "npm:0.5.4"],\
+            ["@formatjs/ecma402-abstract", "npm:1.14.3"],\
+            ["@formatjs/intl-localematcher", "npm:0.2.32"],\
             ["tslib", "npm:2.6.3"]\
           ],\
           "linkType": "HARD"\
         }]\
       ]],\
       ["@formatjs/fast-memoize", [\
-        ["npm:2.2.0", {\
-          "packageLocation": "./.yarn/cache/@formatjs-fast-memoize-npm-2.2.0-4a46a61b8b-8697fe72a7.zip/node_modules/@formatjs/fast-memoize/",\
+        ["npm:1.2.7", {\
+          "packageLocation": "./.yarn/cache/@formatjs-fast-memoize-npm-1.2.7-a6c0f2541c-ba372a3e93.zip/node_modules/@formatjs/fast-memoize/",\
           "packageDependencies": [\
-            ["@formatjs/fast-memoize", "npm:2.2.0"],\
+            ["@formatjs/fast-memoize", "npm:1.2.7"],\
             ["tslib", "npm:2.6.3"]\
           ],\
           "linkType": "HARD"\
         }]\
       ]],\
       ["@formatjs/icu-messageformat-parser", [\
-        ["npm:2.7.8", {\
-          "packageLocation": "./.yarn/cache/@formatjs-icu-messageformat-parser-npm-2.7.8-f6b64e3bd8-404d673265.zip/node_modules/@formatjs/icu-messageformat-parser/",\
+        ["npm:2.1.14", {\
+          "packageLocation": "./.yarn/cache/@formatjs-icu-messageformat-parser-npm-2.1.14-c0bb1bc4ac-4d13230af0.zip/node_modules/@formatjs/icu-messageformat-parser/",\
           "packageDependencies": [\
-            ["@formatjs/icu-messageformat-parser", "npm:2.7.8"],\
-            ["@formatjs/ecma402-abstract", "npm:2.0.0"],\
-            ["@formatjs/icu-skeleton-parser", "npm:1.8.2"],\
+            ["@formatjs/icu-messageformat-parser", "npm:2.1.14"],\
+            ["@formatjs/ecma402-abstract", "npm:1.14.3"],\
+            ["@formatjs/icu-skeleton-parser", "npm:1.3.18"],\
             ["tslib", "npm:2.6.3"]\
           ],\
           "linkType": "HARD"\
         }]\
       ]],\
       ["@formatjs/icu-skeleton-parser", [\
-        ["npm:1.8.2", {\
-          "packageLocation": "./.yarn/cache/@formatjs-icu-skeleton-parser-npm-1.8.2-de6f6f7fa4-8735322fa9.zip/node_modules/@formatjs/icu-skeleton-parser/",\
+        ["npm:1.3.18", {\
+          "packageLocation": "./.yarn/cache/@formatjs-icu-skeleton-parser-npm-1.3.18-3cbfc6044a-19655c452e.zip/node_modules/@formatjs/icu-skeleton-parser/",\
           "packageDependencies": [\
-            ["@formatjs/icu-skeleton-parser", "npm:1.8.2"],\
-            ["@formatjs/ecma402-abstract", "npm:2.0.0"],\
+            ["@formatjs/icu-skeleton-parser", "npm:1.3.18"],\
+            ["@formatjs/ecma402-abstract", "npm:1.14.3"],\
             ["tslib", "npm:2.6.3"]\
           ],\
           "linkType": "HARD"\
         }]\
       ]],\
       ["@formatjs/intl", [\
-        ["npm:2.10.4", {\
-          "packageLocation": "./.yarn/cache/@formatjs-intl-npm-2.10.4-bffdbd357f-13a1fada25.zip/node_modules/@formatjs/intl/",\
+        ["npm:2.6.3", {\
+          "packageLocation": "./.yarn/cache/@formatjs-intl-npm-2.6.3-33e1dda302-1922ec1d63.zip/node_modules/@formatjs/intl/",\
           "packageDependencies": [\
-            ["@formatjs/intl", "npm:2.10.4"]\
+            ["@formatjs/intl", "npm:2.6.3"]\
           ],\
           "linkType": "SOFT"\
         }],\
-        ["virtual:073a538da6f204b310e61cdda108d98669eedbd31445add439ef4a7fd130ddb558b0fc08efe9e3164a536180706e7b4fc4de6eef94076f09d58c980f118a719e#npm:2.10.4", {\
-          "packageLocation": "./.yarn/__virtual__/@formatjs-intl-virtual-e457c6b4d7/0/cache/@formatjs-intl-npm-2.10.4-bffdbd357f-13a1fada25.zip/node_modules/@formatjs/intl/",\
+        ["virtual:00cf9eddb168ca8a65b2d6e1396a55b81109d896344205eee02b882a038f057ce5a5f8d5bca9f1f9fc26205c6f717b9629c70310a47b498c1bf4bc052df8b02b#npm:2.6.3", {\
+          "packageLocation": "./.yarn/__virtual__/@formatjs-intl-virtual-cb414fb381/0/cache/@formatjs-intl-npm-2.6.3-33e1dda302-1922ec1d63.zip/node_modules/@formatjs/intl/",\
           "packageDependencies": [\
-            ["@formatjs/intl", "virtual:073a538da6f204b310e61cdda108d98669eedbd31445add439ef4a7fd130ddb558b0fc08efe9e3164a536180706e7b4fc4de6eef94076f09d58c980f118a719e#npm:2.10.4"],\
-            ["@formatjs/ecma402-abstract", "npm:2.0.0"],\
-            ["@formatjs/fast-memoize", "npm:2.2.0"],\
-            ["@formatjs/icu-messageformat-parser", "npm:2.7.8"],\
-            ["@formatjs/intl-displaynames", "npm:6.6.8"],\
-            ["@formatjs/intl-listformat", "npm:7.5.7"],\
+            ["@formatjs/intl", "virtual:00cf9eddb168ca8a65b2d6e1396a55b81109d896344205eee02b882a038f057ce5a5f8d5bca9f1f9fc26205c6f717b9629c70310a47b498c1bf4bc052df8b02b#npm:2.6.3"],\
+            ["@formatjs/ecma402-abstract", "npm:1.14.3"],\
+            ["@formatjs/fast-memoize", "npm:1.2.7"],\
+            ["@formatjs/icu-messageformat-parser", "npm:2.1.14"],\
+            ["@formatjs/intl-displaynames", "npm:6.2.3"],\
+            ["@formatjs/intl-listformat", "npm:7.1.7"],\
             ["@types/typescript", null],\
-            ["intl-messageformat", "npm:10.5.14"],\
+            ["intl-messageformat", "npm:10.2.5"],\
             ["tslib", "npm:2.6.3"],\
             ["typescript", "patch:typescript@npm%3A4.9.5#~builtin<compat/typescript>::version=4.9.5&hash=23ec76"]\
           ],\
@@ -1053,34 +1053,34 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]\
       ]],\
       ["@formatjs/intl-displaynames", [\
-        ["npm:6.6.8", {\
-          "packageLocation": "./.yarn/cache/@formatjs-intl-displaynames-npm-6.6.8-bcd333267a-c68bf23803.zip/node_modules/@formatjs/intl-displaynames/",\
+        ["npm:6.2.3", {\
+          "packageLocation": "./.yarn/cache/@formatjs-intl-displaynames-npm-6.2.3-62645576d1-2e5fe38231.zip/node_modules/@formatjs/intl-displaynames/",\
           "packageDependencies": [\
-            ["@formatjs/intl-displaynames", "npm:6.6.8"],\
-            ["@formatjs/ecma402-abstract", "npm:2.0.0"],\
-            ["@formatjs/intl-localematcher", "npm:0.5.4"],\
+            ["@formatjs/intl-displaynames", "npm:6.2.3"],\
+            ["@formatjs/ecma402-abstract", "npm:1.14.3"],\
+            ["@formatjs/intl-localematcher", "npm:0.2.32"],\
             ["tslib", "npm:2.6.3"]\
           ],\
           "linkType": "HARD"\
         }]\
       ]],\
       ["@formatjs/intl-listformat", [\
-        ["npm:7.5.7", {\
-          "packageLocation": "./.yarn/cache/@formatjs-intl-listformat-npm-7.5.7-3524ff7bd9-f1f920442b.zip/node_modules/@formatjs/intl-listformat/",\
+        ["npm:7.1.7", {\
+          "packageLocation": "./.yarn/cache/@formatjs-intl-listformat-npm-7.1.7-ebce332137-96b45bcf0e.zip/node_modules/@formatjs/intl-listformat/",\
           "packageDependencies": [\
-            ["@formatjs/intl-listformat", "npm:7.5.7"],\
-            ["@formatjs/ecma402-abstract", "npm:2.0.0"],\
-            ["@formatjs/intl-localematcher", "npm:0.5.4"],\
+            ["@formatjs/intl-listformat", "npm:7.1.7"],\
+            ["@formatjs/ecma402-abstract", "npm:1.14.3"],\
+            ["@formatjs/intl-localematcher", "npm:0.2.32"],\
             ["tslib", "npm:2.6.3"]\
           ],\
           "linkType": "HARD"\
         }]\
       ]],\
       ["@formatjs/intl-localematcher", [\
-        ["npm:0.5.4", {\
-          "packageLocation": "./.yarn/cache/@formatjs-intl-localematcher-npm-0.5.4-e30cfcd8fd-a0af57874f.zip/node_modules/@formatjs/intl-localematcher/",\
+        ["npm:0.2.32", {\
+          "packageLocation": "./.yarn/cache/@formatjs-intl-localematcher-npm-0.2.32-1117c79148-477e18aaba.zip/node_modules/@formatjs/intl-localematcher/",\
           "packageDependencies": [\
-            ["@formatjs/intl-localematcher", "npm:0.5.4"],\
+            ["@formatjs/intl-localematcher", "npm:0.2.32"],\
             ["tslib", "npm:2.6.3"]\
           ],\
           "linkType": "HARD"\
@@ -1821,7 +1821,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["monaco-editor", "npm:0.34.1"],\
             ["preact", "npm:10.5.14"],\
             ["prettier", "npm:3.3.3"],\
-            ["react-intl", "virtual:c76842a5689228a0ce1b65e064c1f5e0d5b61e442d08b6527a3b1f100ca1f2105e58f5f1435c5a59df3cce3338560737838d99dae36d25b47d20aa50c89d0539#npm:6.6.8"],\
+            ["react-intl", "virtual:c76842a5689228a0ce1b65e064c1f5e0d5b61e442d08b6527a3b1f100ca1f2105e58f5f1435c5a59df3cce3338560737838d99dae36d25b47d20aa50c89d0539#npm:6.2.5"],\
             ["ts-jest", "virtual:c76842a5689228a0ce1b65e064c1f5e0d5b61e442d08b6527a3b1f100ca1f2105e58f5f1435c5a59df3cce3338560737838d99dae36d25b47d20aa50c89d0539#npm:29.2.3"],\
             ["ts-node", "virtual:c76842a5689228a0ce1b65e064c1f5e0d5b61e442d08b6527a3b1f100ca1f2105e58f5f1435c5a59df3cce3338560737838d99dae36d25b47d20aa50c89d0539#npm:10.9.2"],\
             ["tslib", "npm:2.6.3"],\
@@ -6756,13 +6756,13 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]\
       ]],\
       ["intl-messageformat", [\
-        ["npm:10.5.14", {\
-          "packageLocation": "./.yarn/cache/intl-messageformat-npm-10.5.14-0494957584-7aaed15328.zip/node_modules/intl-messageformat/",\
+        ["npm:10.2.5", {\
+          "packageLocation": "./.yarn/cache/intl-messageformat-npm-10.2.5-0d8dd1b0b8-048d6e3e74.zip/node_modules/intl-messageformat/",\
           "packageDependencies": [\
-            ["intl-messageformat", "npm:10.5.14"],\
-            ["@formatjs/ecma402-abstract", "npm:2.0.0"],\
-            ["@formatjs/fast-memoize", "npm:2.2.0"],\
-            ["@formatjs/icu-messageformat-parser", "npm:2.7.8"],\
+            ["intl-messageformat", "npm:10.2.5"],\
+            ["@formatjs/ecma402-abstract", "npm:1.14.3"],\
+            ["@formatjs/fast-memoize", "npm:1.2.7"],\
+            ["@formatjs/icu-messageformat-parser", "npm:2.1.14"],\
             ["tslib", "npm:2.6.3"]\
           ],\
           "linkType": "HARD"\
@@ -9551,27 +9551,27 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]\
       ]],\
       ["react-intl", [\
-        ["npm:6.6.8", {\
-          "packageLocation": "./.yarn/cache/react-intl-npm-6.6.8-6892708451-41e43d1d15.zip/node_modules/react-intl/",\
+        ["npm:6.2.5", {\
+          "packageLocation": "./.yarn/cache/react-intl-npm-6.2.5-5ae1877907-826b6ed593.zip/node_modules/react-intl/",\
           "packageDependencies": [\
-            ["react-intl", "npm:6.6.8"]\
+            ["react-intl", "npm:6.2.5"]\
           ],\
           "linkType": "SOFT"\
         }],\
-        ["virtual:c76842a5689228a0ce1b65e064c1f5e0d5b61e442d08b6527a3b1f100ca1f2105e58f5f1435c5a59df3cce3338560737838d99dae36d25b47d20aa50c89d0539#npm:6.6.8", {\
-          "packageLocation": "./.yarn/__virtual__/react-intl-virtual-073a538da6/0/cache/react-intl-npm-6.6.8-6892708451-41e43d1d15.zip/node_modules/react-intl/",\
+        ["virtual:c76842a5689228a0ce1b65e064c1f5e0d5b61e442d08b6527a3b1f100ca1f2105e58f5f1435c5a59df3cce3338560737838d99dae36d25b47d20aa50c89d0539#npm:6.2.5", {\
+          "packageLocation": "./.yarn/__virtual__/react-intl-virtual-00cf9eddb1/0/cache/react-intl-npm-6.2.5-5ae1877907-826b6ed593.zip/node_modules/react-intl/",\
           "packageDependencies": [\
-            ["react-intl", "virtual:c76842a5689228a0ce1b65e064c1f5e0d5b61e442d08b6527a3b1f100ca1f2105e58f5f1435c5a59df3cce3338560737838d99dae36d25b47d20aa50c89d0539#npm:6.6.8"],\
-            ["@formatjs/ecma402-abstract", "npm:2.0.0"],\
-            ["@formatjs/icu-messageformat-parser", "npm:2.7.8"],\
-            ["@formatjs/intl", "virtual:073a538da6f204b310e61cdda108d98669eedbd31445add439ef4a7fd130ddb558b0fc08efe9e3164a536180706e7b4fc4de6eef94076f09d58c980f118a719e#npm:2.10.4"],\
-            ["@formatjs/intl-displaynames", "npm:6.6.8"],\
-            ["@formatjs/intl-listformat", "npm:7.5.7"],\
+            ["react-intl", "virtual:c76842a5689228a0ce1b65e064c1f5e0d5b61e442d08b6527a3b1f100ca1f2105e58f5f1435c5a59df3cce3338560737838d99dae36d25b47d20aa50c89d0539#npm:6.2.5"],\
+            ["@formatjs/ecma402-abstract", "npm:1.14.3"],\
+            ["@formatjs/icu-messageformat-parser", "npm:2.1.14"],\
+            ["@formatjs/intl", "virtual:00cf9eddb168ca8a65b2d6e1396a55b81109d896344205eee02b882a038f057ce5a5f8d5bca9f1f9fc26205c6f717b9629c70310a47b498c1bf4bc052df8b02b#npm:2.6.3"],\
+            ["@formatjs/intl-displaynames", "npm:6.2.3"],\
+            ["@formatjs/intl-listformat", "npm:7.1.7"],\
             ["@types/hoist-non-react-statics", "npm:3.3.5"],\
             ["@types/react", "npm:18.3.3"],\
             ["@types/typescript", null],\
             ["hoist-non-react-statics", "npm:3.3.2"],\
-            ["intl-messageformat", "npm:10.5.14"],\
+            ["intl-messageformat", "npm:10.2.5"],\
             ["react", null],\
             ["tslib", "npm:2.6.3"],\
             ["typescript", "patch:typescript@npm%3A4.9.5#~builtin<compat/typescript>::version=4.9.5&hash=23ec76"]\
