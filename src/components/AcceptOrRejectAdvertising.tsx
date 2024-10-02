@@ -1,3 +1,4 @@
+import { ObjByString } from '@transcend-io/type-utils';
 import { h, JSX } from 'preact';
 import { useIntl } from 'react-intl';
 import { CONSENT_OPTIONS } from '../constants';
@@ -11,9 +12,12 @@ import { Button } from './Button';
  */
 export function AcceptOrRejectAdvertising({
   handleSetViewState,
+  globalUiVariables,
 }: {
   /** Function to change viewState */
   handleSetViewState: HandleSetViewState;
+  /** Global UI variables to pass to messages */
+  globalUiVariables: ObjByString;
 }): JSX.Element {
   const { airgap } = useAirgap();
   const { formatMessage } = useIntl();
@@ -27,7 +31,10 @@ export function AcceptOrRejectAdvertising({
             role="heading"
             className="text-title text-title-left"
           >
-            {formatMessage(messages.consentTitleAcceptOrRejectAdvertising)}
+            {formatMessage(
+              messages.consentTitleAcceptOrRejectAdvertising,
+              globalUiVariables,
+            )}
           </p>
         </div>
         <div>
@@ -37,6 +44,7 @@ export function AcceptOrRejectAdvertising({
             dangerouslySetInnerHTML={{
               __html: formatMessage(
                 messages.acceptOrRejectAdvertisingDescription,
+                globalUiVariables,
               ),
             }}
           />
@@ -44,7 +52,10 @@ export function AcceptOrRejectAdvertising({
       </div>
       <div className="accept-or-reject-all-button-row">
         <Button
-          primaryText={formatMessage(messages.acceptAdvertising)}
+          primaryText={formatMessage(
+            messages.acceptAdvertising,
+            globalUiVariables,
+          )}
           handleClick={(event) => {
             event.preventDefault();
             airgap.setConsent(event, { Advertising: true }, CONSENT_OPTIONS);
@@ -52,7 +63,10 @@ export function AcceptOrRejectAdvertising({
           }}
         />
         <Button
-          primaryText={formatMessage(messages.rejectAdvertising)}
+          primaryText={formatMessage(
+            messages.rejectAdvertising,
+            globalUiVariables,
+          )}
           handleClick={(event) => {
             event.preventDefault();
             airgap.setConsent(event, { Advertising: false }, CONSENT_OPTIONS);

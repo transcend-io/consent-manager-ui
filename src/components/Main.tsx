@@ -35,6 +35,7 @@ import { CompleteOptionsToggles } from './CompleteOptionsToggles';
 import { useIntl } from 'react-intl';
 import { messages } from '../messages';
 import { initialFocusElement } from '../helpers';
+import { ObjByString } from '@transcend-io/type-utils';
 
 /**
  * Presents view states (collapsed, GDPR-mode, CCPA-mode etc)
@@ -44,11 +45,14 @@ export function Main({
   viewState,
   config,
   firstSelectedViewState,
+  globalUiVariables,
   handleSetViewState,
   handleChangeLanguage,
   supportedLanguages,
   modalOpenAuth,
 }: {
+  /** Global variables for UI view state */
+  globalUiVariables: ObjByString;
   /** airgap.js API */
   airgap: AirgapAPI;
   /** Configuration for consent UI */
@@ -88,7 +92,7 @@ export function Main({
     return (
       <div
         role="regions"
-        aria-label={formatMessage(messages.modalAriaLabel)}
+        aria-label={formatMessage(messages.modalAriaLabel, globalUiVariables)}
         className="modal-container"
         id="consentManagerMainDialog"
         ref={dialogRef}
@@ -96,21 +100,29 @@ export function Main({
         <div className="modal-container-inner">
           <div className="inner-container">
             {viewState === 'QuickOptions' && (
-              <QuickOptions handleSetViewState={handleSetViewState} />
+              <QuickOptions
+                handleSetViewState={handleSetViewState}
+                globalUiVariables={globalUiVariables}
+              />
             )}
 
             {viewState === 'AcceptAll' && (
-              <AcceptAll handleSetViewState={handleSetViewState} />
+              <AcceptAll
+                handleSetViewState={handleSetViewState}
+                globalUiVariables={globalUiVariables}
+              />
             )}
 
             {viewState === 'AcceptOrRejectAnalytics' && (
               <AcceptOrRejectAnalytics
                 handleSetViewState={handleSetViewState}
+                globalUiVariables={globalUiVariables}
               />
             )}
             {viewState === 'AcceptOrRejectAdvertising' && (
               <AcceptOrRejectAdvertising
                 handleSetViewState={handleSetViewState}
+                globalUiVariables={globalUiVariables}
               />
             )}
 
@@ -118,6 +130,7 @@ export function Main({
               <DoNotSellExplainer
                 handleSetViewState={handleSetViewState}
                 fontColor={config.theme.fontColor}
+                globalUiVariables={globalUiVariables}
               />
             )}
 
@@ -125,42 +138,58 @@ export function Main({
               <CompleteOptionsToggles
                 handleSetViewState={handleSetViewState}
                 fontColor={config.theme.fontColor}
+                globalUiVariables={globalUiVariables}
               />
             )}
 
             {viewState === 'QuickOptions3' && (
-              <QuickOptions3 handleSetViewState={handleSetViewState} />
+              <QuickOptions3
+                handleSetViewState={handleSetViewState}
+                globalUiVariables={globalUiVariables}
+              />
             )}
 
             {viewState === 'PrivacyPolicyNotice' && (
-              <PrivacyPolicyNotice handleSetViewState={handleSetViewState} />
+              <PrivacyPolicyNotice
+                handleSetViewState={handleSetViewState}
+                globalUiVariables={globalUiVariables}
+              />
             )}
 
             {viewState === 'PrivacyPolicyNoticeWithCloseButton' && (
               <PrivacyPolicyNoticeWithCloseButton
                 handleSetViewState={handleSetViewState}
                 fontColor={config.theme.fontColor}
+                globalUiVariables={globalUiVariables}
               />
             )}
 
             {viewState === 'AcceptOrRejectAll' && (
-              <AcceptOrRejectAll handleSetViewState={handleSetViewState} />
+              <AcceptOrRejectAll
+                handleSetViewState={handleSetViewState}
+                globalUiVariables={globalUiVariables}
+              />
             )}
 
             {viewState === 'AcceptAllRejectAllToggle' && (
               <AcceptAllRejectAllToggle
                 handleSetViewState={handleSetViewState}
                 fontColor={config.theme.fontColor}
+                globalUiVariables={globalUiVariables}
               />
             )}
 
             {viewState === 'AcceptAllOrMoreChoices' && (
-              <AcceptAllOrMoreChoices handleSetViewState={handleSetViewState} />
+              <AcceptAllOrMoreChoices
+                handleSetViewState={handleSetViewState}
+                globalUiVariables={globalUiVariables}
+              />
             )}
 
             {viewState === 'AcceptOrRejectAllOrMoreChoices' && (
               <AcceptOrRejectAllOrMoreChoices
                 handleSetViewState={handleSetViewState}
+                globalUiVariables={globalUiVariables}
               />
             )}
 
@@ -168,6 +197,7 @@ export function Main({
               <DoNotSellDisclosure
                 handleSetViewState={handleSetViewState}
                 modalOpenAuth={modalOpenAuth}
+                globalUiVariables={globalUiVariables}
               />
             )}
 
@@ -175,21 +205,29 @@ export function Main({
               <OptOutDisclosure
                 handleSetViewState={handleSetViewState}
                 modalOpenAuth={modalOpenAuth}
+                globalUiVariables={globalUiVariables}
               />
             )}
 
             {viewState === 'CompleteOptions' && (
-              <CompleteOptions handleSetViewState={handleSetViewState} />
+              <CompleteOptions
+                handleSetViewState={handleSetViewState}
+                globalUiVariables={globalUiVariables}
+              />
             )}
 
             {viewState === 'CompleteOptionsInverted' && (
               <CompleteOptionsInverted
                 handleSetViewState={handleSetViewState}
+                globalUiVariables={globalUiVariables}
               />
             )}
 
             {viewState === 'NoticeAndDoNotSell' && (
-              <NoticeAndDoNotSell handleSetViewState={handleSetViewState} />
+              <NoticeAndDoNotSell
+                handleSetViewState={handleSetViewState}
+                globalUiVariables={globalUiVariables}
+              />
             )}
 
             {viewState === 'LanguageOptions' && (
@@ -208,12 +246,14 @@ export function Main({
               handleSetViewState={handleSetViewState}
               privacyPolicy={config.privacyPolicy}
               secondaryPolicy={config.secondaryPolicy}
+              globalUiVariables={globalUiVariables}
             />
             <LanguageButton
               handleSetViewState={handleSetViewState}
               viewState={viewState}
               fontColor={config.theme.fontColor}
               supportedLanguages={supportedLanguages}
+              globalUiVariables={globalUiVariables}
             />
           </div>
         </div>
@@ -226,7 +266,12 @@ export function Main({
     viewState === 'Collapsed' &&
     (!firstSelectedViewState || !isViewStateClosed(firstSelectedViewState))
   ) {
-    return <Collapsed handleSetViewState={handleSetViewState} />;
+    return (
+      <Collapsed
+        handleSetViewState={handleSetViewState}
+        globalUiVariables={globalUiVariables}
+      />
+    );
   }
 
   // Completely hidden

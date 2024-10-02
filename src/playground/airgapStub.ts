@@ -23,7 +23,28 @@ const AIRGAP_STATUS = {
   telemetry: false,
 };
 
+// TODO: https://transcend.height.app/T-37618 - improve stub definition for new prototypes
 export const airgapStub: AirgapAPI = {
+  isAllowed: () => Promise.resolve(false),
+  isCookieAllowed: () => Promise.resolve(false),
+  isRequestAllowed: () => Promise.resolve(false),
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  getPurposes: () => Promise.resolve({} as any),
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  getRequestPurposes: () => Promise.resolve({} as any),
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  getCookiePurposes: () => Promise.resolve({} as any),
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  export: () => ({} as any),
+  isConsented: () => true,
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  override: () => ({} as any),
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  overrideCookies: () => ({} as any),
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  watch: () => ({} as any),
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  watchCookies: () => ({} as any),
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
   ready: (callback) => callback(airgapStub),

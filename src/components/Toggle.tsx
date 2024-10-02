@@ -1,3 +1,4 @@
+import { ObjByString } from '@transcend-io/type-utils';
 import { h, JSX } from 'preact';
 import { useState } from 'preact/hooks';
 import { useIntl } from 'react-intl';
@@ -14,7 +15,10 @@ export function Toggle({
   ariaLabel,
   invertLabels,
   initialFocus,
+  globalUiVariables,
 }: {
+  /** Global UI view state variables */
+  globalUiVariables: ObjByString;
   /** The name for this consent toggle */
   name: string;
   /** Based on Airgap local storage */
@@ -49,16 +53,28 @@ export function Toggle({
         ariaLabel ||
         `${
           useToggleDisable
-            ? formatMessage(completeOptionsMessages.toggleDisable)
-            : formatMessage(completeOptionsMessages.toggleEnable)
+            ? formatMessage(
+                completeOptionsMessages.toggleDisable,
+                globalUiVariables,
+              )
+            : formatMessage(
+                completeOptionsMessages.toggleEnable,
+                globalUiVariables,
+              )
         } – ${name.toLocaleLowerCase()}`
       }
       title={
         ariaLabel ||
         `${
           useToggleDisable
-            ? formatMessage(completeOptionsMessages.toggleDisable)
-            : formatMessage(completeOptionsMessages.toggleEnable)
+            ? formatMessage(
+                completeOptionsMessages.toggleDisable,
+                globalUiVariables,
+              )
+            : formatMessage(
+                completeOptionsMessages.toggleEnable,
+                globalUiVariables,
+              )
         } – ${name.toLocaleLowerCase()}`
       }
     >

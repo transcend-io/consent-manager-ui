@@ -1,3 +1,4 @@
+import { ObjByString } from '@transcend-io/type-utils';
 import { h, JSX } from 'preact';
 import { useIntl } from 'react-intl';
 import { CONSENT_OPTIONS } from '../constants';
@@ -11,9 +12,12 @@ import { Button } from './Button';
  */
 export function AcceptOrRejectAnalytics({
   handleSetViewState,
+  globalUiVariables,
 }: {
   /** Function to change viewState */
   handleSetViewState: HandleSetViewState;
+  /** Global UI view state variables */
+  globalUiVariables: ObjByString;
 }): JSX.Element {
   const { airgap } = useAirgap();
   const { formatMessage } = useIntl();
@@ -27,7 +31,10 @@ export function AcceptOrRejectAnalytics({
             role="heading"
             className="text-title text-title-left"
           >
-            {formatMessage(messages.consentTitleAcceptOrRejectAnalytics)}
+            {formatMessage(
+              messages.consentTitleAcceptOrRejectAnalytics,
+              globalUiVariables,
+            )}
           </p>
         </div>
         <div>
@@ -37,6 +44,7 @@ export function AcceptOrRejectAnalytics({
             dangerouslySetInnerHTML={{
               __html: formatMessage(
                 messages.acceptOrRejectAnalyticsDescription,
+                globalUiVariables,
               ),
             }}
           />
@@ -44,7 +52,10 @@ export function AcceptOrRejectAnalytics({
       </div>
       <div className="accept-or-reject-all-button-row">
         <Button
-          primaryText={formatMessage(messages.acceptAnalytics)}
+          primaryText={formatMessage(
+            messages.acceptAnalytics,
+            globalUiVariables,
+          )}
           handleClick={(event) => {
             event.preventDefault();
             airgap.setConsent(event, { Analytics: true }, CONSENT_OPTIONS);
@@ -52,7 +63,10 @@ export function AcceptOrRejectAnalytics({
           }}
         />
         <Button
-          primaryText={formatMessage(messages.rejectAnalytics)}
+          primaryText={formatMessage(
+            messages.rejectAnalytics,
+            globalUiVariables,
+          )}
           handleClick={(event) => {
             event.preventDefault();
             airgap.setConsent(event, { Analytics: false }, CONSENT_OPTIONS);

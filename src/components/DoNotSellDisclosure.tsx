@@ -7,18 +7,22 @@ import type { HandleSetViewState } from '../types';
 import { useAirgap } from '../hooks';
 import { Button } from './Button';
 import { CONSENT_OPTIONS } from '../constants';
+import { ObjByString } from '@transcend-io/type-utils';
 
 /**
  * Component showing acknowledgement of do not sell
  */
 export function DoNotSellDisclosure({
   handleSetViewState,
+  globalUiVariables,
   modalOpenAuth,
 }: {
   /** Authentication for opening the airgap modal */
   modalOpenAuth: AirgapAuth;
   /** Function to change viewState */
   handleSetViewState: HandleSetViewState;
+  /** Global UI view state variables */
+  globalUiVariables: ObjByString;
 }): JSX.Element {
   const { airgap } = useAirgap();
   const { formatMessage } = useIntl();
@@ -62,15 +66,18 @@ export function DoNotSellDisclosure({
               globalPrivacyControl
                 ? noticeAndDoNotSellMessages.doNotSellHonoredGpc
                 : noticeAndDoNotSellMessages.doNotSellHonored,
+              globalUiVariables,
             )}
           </p>
         </div>
         <div>
-          <p className="paragraph"
+          <p
+            className="paragraph"
             // eslint-disable-next-line react/no-danger
             dangerouslySetInnerHTML={{
               __html: formatMessage(
                 noticeAndDoNotSellMessages.doNotSellHonoredDescription,
+                globalUiVariables,
               ),
             }}
           />
@@ -79,6 +86,7 @@ export function DoNotSellDisclosure({
       <Button
         primaryText={formatMessage(
           noticeAndDoNotSellMessages.confirmButtonPrimary,
+          globalUiVariables,
         )}
         handleClick={handleConfirm}
         initialFocus

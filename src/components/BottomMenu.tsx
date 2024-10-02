@@ -5,6 +5,7 @@ import { DefinedMessage } from '@transcend-io/internationalization';
 import { bottomMenuMessages, noticeAndDoNotSellMessages } from '../messages';
 import type { HandleSetViewState } from '../types';
 import { MenuItem } from './MenuItem';
+import { ObjByString } from '@transcend-io/type-utils';
 
 const VIEW_STATE_TO_MESSAGE: { [k in ViewState]: DefinedMessage | undefined } =
   {
@@ -51,6 +52,7 @@ export function BottomMenu({
   firstSelectedViewState,
   secondaryPolicy,
   privacyPolicy,
+  globalUiVariables,
 }: {
   /** The first view state when opening the modal */
   firstSelectedViewState: ViewState | null;
@@ -62,6 +64,8 @@ export function BottomMenu({
   privacyPolicy: string;
   /** Secondary policy */
   secondaryPolicy: string;
+  /** Global UI view state variables */
+  globalUiVariables: ObjByString;
 }): JSX.Element {
   const { formatMessage } = useIntl();
   const policyMessage = VIEW_STATE_TO_MESSAGE[viewState];
@@ -71,11 +75,17 @@ export function BottomMenu({
       {viewState === 'LanguageOptions' ? (
         <div className="bottom-menu-item-container">
           <MenuItem
-            label={formatMessage(bottomMenuMessages.backButtonTooltip)}
+            label={formatMessage(
+              bottomMenuMessages.backButtonTooltip,
+              globalUiVariables,
+            )}
             type="button"
             onClick={(e) => handleSetViewState('back', e)}
           >
-            {formatMessage(bottomMenuMessages.backButtonText)}
+            {formatMessage(
+              bottomMenuMessages.backButtonText,
+              globalUiVariables,
+            )}
           </MenuItem>
         </div>
       ) : (
@@ -102,22 +112,32 @@ export function BottomMenu({
               <MenuItem
                 label={formatMessage(
                   bottomMenuMessages.simplerChoicesButtonLabel,
+                  globalUiVariables,
                 )}
                 type="button"
                 onClick={() => handleSetViewState(firstSelectedViewState)}
               >
-                {formatMessage(bottomMenuMessages.simplerChoicesButtonPrimary)}
+                {formatMessage(
+                  bottomMenuMessages.simplerChoicesButtonPrimary,
+                  globalUiVariables,
+                )}
               </MenuItem>
             </div>
           )
         ) : (
           <div className="bottom-menu-item-container">
             <MenuItem
-              label={formatMessage(bottomMenuMessages.moreChoicesButtonLabel)}
+              label={formatMessage(
+                bottomMenuMessages.moreChoicesButtonLabel,
+                globalUiVariables,
+              )}
               type="button"
               onClick={() => handleSetViewState('CompleteOptions')}
             >
-              {formatMessage(bottomMenuMessages.moreChoicesButtonPrimary)}
+              {formatMessage(
+                bottomMenuMessages.moreChoicesButtonPrimary,
+                globalUiVariables,
+              )}
             </MenuItem>
           </div>
         ))
@@ -126,11 +146,17 @@ export function BottomMenu({
       {viewState === 'NoticeAndDoNotSell' && (
         <div className="bottom-menu-item-container">
           <MenuItem
-            label={formatMessage(noticeAndDoNotSellMessages.doNotSellLabel)}
+            label={formatMessage(
+              noticeAndDoNotSellMessages.doNotSellLabel,
+              globalUiVariables,
+            )}
             type="button"
             onClick={() => handleSetViewState('CompleteOptions')}
           >
-            {formatMessage(noticeAndDoNotSellMessages.doNotSellPrimary)}
+            {formatMessage(
+              noticeAndDoNotSellMessages.doNotSellPrimary,
+              globalUiVariables,
+            )}
           </MenuItem>
         </div>
       )}
@@ -142,13 +168,17 @@ export function BottomMenu({
             <MenuItem
               label={formatMessage(
                 bottomMenuMessages.showSecondaryPolicyButtonLabel,
+                globalUiVariables,
               )}
               type="a"
               href={secondaryPolicy}
               target="_blank"
               rel="noopener noreferrer"
             >
-              {formatMessage(bottomMenuMessages.showSecondaryPolicyButton)}
+              {formatMessage(
+                bottomMenuMessages.showSecondaryPolicyButton,
+                globalUiVariables,
+              )}
             </MenuItem>
           </div>
         )
@@ -156,14 +186,17 @@ export function BottomMenu({
 
       <div className="bottom-menu-item-container">
         <MenuItem
-          label={formatMessage(bottomMenuMessages.showPolicyButtonLabel)}
+          label={formatMessage(
+            bottomMenuMessages.showPolicyButtonLabel,
+            globalUiVariables,
+          )}
           type="a"
           href={privacyPolicy}
           target="_blank"
           rel="noopener noreferrer"
         >
           {policyMessage
-            ? formatMessage(policyMessage)
+            ? formatMessage(policyMessage, globalUiVariables)
             : 'Undefined Policy Link Message'}
         </MenuItem>
       </div>

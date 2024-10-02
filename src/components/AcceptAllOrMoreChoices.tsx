@@ -1,3 +1,4 @@
+import { ObjByString } from '@transcend-io/type-utils';
 import { h, JSX } from 'preact';
 import { useIntl } from 'react-intl';
 import { useAirgap } from '../hooks';
@@ -10,9 +11,12 @@ import { Button } from './Button';
  */
 export function AcceptAllOrMoreChoices({
   handleSetViewState,
+  globalUiVariables,
 }: {
   /** Function to change viewState */
   handleSetViewState: HandleSetViewState;
+  /** Global variables to pass to message contents */
+  globalUiVariables: ObjByString;
 }): JSX.Element {
   const { airgap } = useAirgap();
   const { formatMessage } = useIntl();
@@ -47,7 +51,7 @@ export function AcceptAllOrMoreChoices({
             role="heading"
             className="text-title text-title-left"
           >
-            {formatMessage(messages.consentTitleAcceptAll)}
+            {formatMessage(messages.consentTitleAcceptAll, globalUiVariables)}
           </p>
         </div>
         <div>
@@ -55,18 +59,27 @@ export function AcceptAllOrMoreChoices({
             className="paragraph"
             // eslint-disable-next-line react/no-danger
             dangerouslySetInnerHTML={{
-              __html: formatMessage(messages.acceptAllDescription),
+              __html: formatMessage(
+                messages.acceptAllDescription,
+                globalUiVariables,
+              ),
             }}
           />
         </div>
       </div>
       <div className="accept-or-reject-all-button-row">
         <Button
-          primaryText={formatMessage(messages.acceptAllButtonPrimary)}
+          primaryText={formatMessage(
+            messages.acceptAllButtonPrimary,
+            globalUiVariables,
+          )}
           handleClick={handleAcceptAll}
         />
         <Button
-          primaryText={formatMessage(messages.moreChoicesButtonPrimary)}
+          primaryText={formatMessage(
+            messages.moreChoicesButtonPrimary,
+            globalUiVariables,
+          )}
           handleClick={handleMoreChoices}
           initialFocus
         />

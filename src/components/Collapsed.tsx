@@ -1,3 +1,4 @@
+import { ObjByString } from '@transcend-io/type-utils';
 import { h, JSX } from 'preact';
 import { useRef } from 'preact/hooks';
 import { useIntl } from 'react-intl';
@@ -10,9 +11,12 @@ import { TranscendLogoLogomark } from './TranscendLogo';
  */
 export function Collapsed({
   handleSetViewState,
+  globalUiVariables,
 }: {
   /** Function to change viewState */
   handleSetViewState: HandleSetViewState;
+  /** Global UI view state variables */
+  globalUiVariables: ObjByString;
 }): JSX.Element {
   const { formatMessage } = useIntl();
   const paragraphRef = useRef<HTMLParagraphElement>(null);
@@ -21,7 +25,7 @@ export function Collapsed({
     <button
       onClick={() => handleSetViewState('open')}
       className="collapsed-container"
-      aria-label={formatMessage(messages.collapsedLabel)}
+      aria-label={formatMessage(messages.collapsedLabel, globalUiVariables)}
     >
       <svg
         className="collapsed-square-logo-svg"
@@ -31,7 +35,9 @@ export function Collapsed({
       >
         <TranscendLogoLogomark />
       </svg>
-      <p ref={paragraphRef}>{formatMessage(messages.collapsedLabel)}</p>
+      <p ref={paragraphRef}>
+        {formatMessage(messages.collapsedLabel, globalUiVariables)}
+      </p>
     </button>
   );
 }
