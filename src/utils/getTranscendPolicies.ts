@@ -70,7 +70,7 @@ export async function getTranscendPolicies(
     ...input.variables,
   };
 
-  // FIXME enforce API shape
+  // TODO: https://transcend.height.app/T-39372 - enforce API shape with codec
   // Convert the parsed data into the expected format
   const formatted: TranscendPolicy[] = parsed.map(
     (policy: {
