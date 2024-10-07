@@ -167,7 +167,7 @@
         if (language) {
           await transcend.setActiveLocale(language);
         }
-        const [policy] = await transcend.getTranscendPolicies({
+        const [policy] = await transcend.getPolicies({
           policyTitles: ['Label Privacy Policy'],
           // variables: { labelName: 'Marshmalt Records' },
           locale: language || transcend.getActiveLocale(),
@@ -211,7 +211,7 @@
         setupDoNotSellButton();
 
         transcend
-          .setTranscendUiVariables({
+          .setUiVariables({
             labelName: 'Marshmalt Records',
           })
           .then(() => {

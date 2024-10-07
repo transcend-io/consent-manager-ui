@@ -63,10 +63,10 @@ export function makeConsentManagerAPI({
   airgap,
 }: MakeConsentManagerAPIInput): ConsentManagerAPI {
   const consentManagerMethods: Omit<ConsentManagerAPI, keyof EventTarget> = {
-    setTranscendUiVariables: (variables) =>
+    setUiVariables: (variables) =>
       Promise.resolve(handleChangeUiVariables(variables)),
-    getTranscendUiVariables: () => currentVariables,
-    getTranscendPolicies: (input = {}) =>
+    getUiVariables: () => currentVariables,
+    getPolicies: (input = {}) =>
       Promise.resolve(
         getTranscendPolicies(
           input,
