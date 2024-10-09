@@ -463,24 +463,44 @@ export const completeOptionsMessages = defineMessages(
       defaultMessage: 'Essential purposes',
       description: 'Text for essential purposes in CompleteOptions view state.',
     },
+    essentialDescription: {
+      defaultMessage: 'No consent needed.',
+      description: 'Text for essential purposes description in CompleteOptions view state.',
+    },
     functionalLabel: {
       defaultMessage: 'Functionality',
       description:
         'Text for functional purposes in CompleteOptions view state.',
     },
+    functionalDescription: {
+      defaultMessage: 'Personalization, autofilled forms, etc.',
+      description: 'Text for functional purposes description in CompleteOptions view state.',
+    },
     analyticsLabel: {
       defaultMessage: 'Analytics',
       description: 'Text for analytics purposes in CompleteOptions view state.',
+    },
+    analyticsDescription: {
+      defaultMessage: 'Help us learn how our site is used and how it performs.',
+      description: 'Text for analytics purposes description in CompleteOptions view state.',
     },
     advertisingLabel: {
       defaultMessage: 'Advertising',
       description:
         'Text for advertising purposes in CompleteOptions view state.',
     },
+    advertisingDescription: {
+      defaultMessage: 'Helps us and others serve ads relevant to you.',
+      description: 'Text for advertising purposes description in CompleteOptions view state.',
+    },
     saleOfInfoLabel: {
       defaultMessage: 'Sale of personal information',
       description:
         'Text for sale of information purposes in CompleteOptions view state.',
+    },
+    saleOfInfoDescription: {
+      defaultMessage: 'Sale of personal information.',
+      description: 'Text for advertising purposes description in CompleteOptions view state.',
     },
     saveButtonPrimary: {
       defaultMessage: 'Confirm',
