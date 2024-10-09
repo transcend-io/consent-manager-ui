@@ -40,7 +40,7 @@ export const useGetPurposeDescriptionKeys = ({
           ...allMessages,
           [purposeType]: {
             id: purposeMessageDescriptionId,
-            defaultMessage: airgapPurposes[purposeType]?.description, // should be desc
+            defaultMessage: airgapPurposes[purposeType]?.description,
             description: `Translatable description for purpose '${purposeType}'`,
           } as DefinedMessage,
         };
