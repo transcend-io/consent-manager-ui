@@ -1,5 +1,5 @@
 import type {
-  TrackingPurposesDetails,
+  TrackingPurposeDetails,
   TrackingPurposesTypes,
 } from '@transcend-io/airgap.js-types';
 
@@ -11,7 +11,7 @@ import { useMemo } from 'preact/hooks';
 import { DefinedMessage } from '@transcend-io/internationalization';
 
 const CUSTOM_PURPOSE_DESCRIPTION_PREFIX = 'cm-ui.purposeDescription';
-const DEFAULT_PURPOSE_DESCRIPTION_PREFIX = 'ui.src.CompleteOptions'
+const DEFAULT_PURPOSE_DESCRIPTION_PREFIX = 'ui.src.CompleteOptions';
 
 export const useGetPurposeDescriptionKeys = ({
   consentSelection,
@@ -32,10 +32,17 @@ export const useGetPurposeDescriptionKeys = ({
         if (allMessages[purposeType]) {
           return allMessages;
         }
-        const purposeMessageDescriptionId = Object.values(defaultTrackingPurposes).find(
-          (defaultPurpose) => (defaultPurpose as TrackingPurposesDetails).trackingType === purposeType,
-        ) ? `${DEFAULT_PURPOSE_DESCRIPTION_PREFIX}.${purposeType.charAt(0).toLowerCase()}${purposeType.slice(1)}Description` :
-        `${CUSTOM_PURPOSE_DESCRIPTION_PREFIX}.${purposeType}`;
+        const purposeMessageDescriptionId = Object.values(
+          defaultTrackingPurposes,
+        ).find(
+          (defaultPurpose) =>
+            (defaultPurpose as TrackingPurposeDetails).trackingType ===
+            purposeType,
+        )
+          ? `${DEFAULT_PURPOSE_DESCRIPTION_PREFIX}.${purposeType
+              .charAt(0)
+              .toLowerCase()}${purposeType.slice(1)}Description`
+          : `${CUSTOM_PURPOSE_DESCRIPTION_PREFIX}.${purposeType}`;
         return {
           ...allMessages,
           [purposeType]: {

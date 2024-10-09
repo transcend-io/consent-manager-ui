@@ -4,11 +4,19 @@ import { useMemo, useState } from 'preact/hooks';
 import { useIntl } from 'react-intl';
 import { getConsentSelections } from '../consent-selections';
 import { CONSENT_OPTIONS } from '../constants';
-import { useAirgap, useGetPurposeDescriptionKeys, useGetPurposeMessageKeys } from '../hooks';
+import {
+  useAirgap,
+  useGetPurposeDescriptionKeys,
+  useGetPurposeMessageKeys,
+} from '../hooks';
 import { messages } from '../messages';
 import type { HandleSetViewState } from '../types';
 import { CloseButton } from './CloseButton';
-import { DEFAULT_PURPOSE_TO_DESCRIPTION_KEY, DEFAULT_PURPOSE_TO_MESSAGE_KEY, ORDER_OF_PURPOSES } from './constants';
+import {
+  DEFAULT_PURPOSE_TO_DESCRIPTION_KEY,
+  DEFAULT_PURPOSE_TO_MESSAGE_KEY,
+  ORDER_OF_PURPOSES,
+} from './constants';
 import { Switch } from './Switch';
 
 /**
@@ -170,12 +178,10 @@ export function CompleteOptionsToggles({
                 {...(idx === 0 ? { initialFocus: true } : {})}
               />
               <p className="paragraph complete-options-toggle-description">
-              {
-                  formatMessage(
-                        purposeToDescriptionKey[purpose],
-                        globalUiVariables,
-                      )
-                }
+              {formatMessage(
+                purposeToDescriptionKey[purpose],
+                globalUiVariables,
+              )}
               </p>
             </span>
           ))}

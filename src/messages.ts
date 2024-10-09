@@ -465,7 +465,8 @@ export const completeOptionsMessages = defineMessages(
     },
     essentialDescription: {
       defaultMessage: 'No consent needed.',
-      description: 'Text for essential purposes description in CompleteOptions view state.',
+      description:
+        'Text for essential purposes description in CompleteOptions view state.',
     },
     functionalLabel: {
       defaultMessage: 'Functionality',
@@ -474,7 +475,8 @@ export const completeOptionsMessages = defineMessages(
     },
     functionalDescription: {
       defaultMessage: 'Personalization, autofilled forms, etc.',
-      description: 'Text for functional purposes description in CompleteOptions view state.',
+      description:
+        'Text for functional purposes description in CompleteOptions view state.',
     },
     analyticsLabel: {
       defaultMessage: 'Analytics',
@@ -482,7 +484,8 @@ export const completeOptionsMessages = defineMessages(
     },
     analyticsDescription: {
       defaultMessage: 'Help us learn how our site is used and how it performs.',
-      description: 'Text for analytics purposes description in CompleteOptions view state.',
+      description:
+        'Text for analytics purposes description in CompleteOptions view state.',
     },
     advertisingLabel: {
       defaultMessage: 'Advertising',
@@ -491,7 +494,8 @@ export const completeOptionsMessages = defineMessages(
     },
     advertisingDescription: {
       defaultMessage: 'Helps us and others serve ads relevant to you.',
-      description: 'Text for advertising purposes description in CompleteOptions view state.',
+      description:
+        'Text for advertising purposes description in CompleteOptions view state.',
     },
     saleOfInfoLabel: {
       defaultMessage: 'Sale of personal information',
@@ -500,7 +504,8 @@ export const completeOptionsMessages = defineMessages(
     },
     saleOfInfoDescription: {
       defaultMessage: 'Sale of personal information.',
-      description: 'Text for advertising purposes description in CompleteOptions view state.',
+      description:
+        'Text for advertising purposes description in CompleteOptions view state.',
     },
     saveButtonPrimary: {
       defaultMessage: 'Confirm',

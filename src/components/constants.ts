@@ -13,7 +13,10 @@ export const DEFAULT_PURPOSE_TO_MESSAGE_KEY: Record<string, DefinedMessage> = {
   SaleOfInfo: completeOptionsMessages.saleOfInfoLabel,
 };
 
-export const DEFAULT_PURPOSE_TO_DESCRIPTION_KEY: Record<string, DefinedMessage> = {
+export const DEFAULT_PURPOSE_TO_DESCRIPTION_KEY: Record<
+  string,
+  DefinedMessage
+> = {
   Essential: completeOptionsMessages.essentialDescription,
   Functional: completeOptionsMessages.functionalDescription,
   Analytics: completeOptionsMessages.analyticsDescription,
