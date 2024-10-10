@@ -177,7 +177,9 @@ export function useLanguage({
   const [messages, setMessages] = useState<TranslatedMessages | undefined>();
 
   // Store the HTML opening/closing tags we need to replace our tag variables with
-  const [htmlTagVariables, setHtmlTagVariables] = useState<Record<string, string>>({});
+  const [htmlTagVariables, setHtmlTagVariables] = useState<
+    Record<string, string>
+  >({});
 
   // Load the default translations
   useEffect(() => {
