@@ -10,19 +10,22 @@ import { TranslatedMessages } from '@transcend-io/internationalization';
  */
 export function substituteHtml(messages: TranslatedMessages): {
   /** The set of messages with their HTML opening/closing tags substituted */
-  substitutedMessages: TranslatedMessages,
+  substitutedMessages: TranslatedMessages;
   /** The set of variables used to replace the substitutions with their corresponding HTML opening/closing tags */
-  tagVariables: Record<string, string>
+  tagVariables: Record<string, string>;
 } {
-  const substitutedMessages = { ...messages};
+  const substitutedMessages = { ...messages };
   const tagVariables: Record<string, string> = {};
   Object.entries(substitutedMessages).forEach(([key, rawMessage]) => {
     let placeholderMessage = rawMessage;
-    const htmlTags = [...rawMessage.matchAll(/<[^>]+>/g)].flat()
+    const htmlTags = [...rawMessage.matchAll(/<[^>]+>/g)].flat();
     htmlTags.forEach((tag, idx) => {
       const uniqKey = key.replaceAll('.', '_');
-      placeholderMessage = placeholderMessage.replace(tag, `{tcm_${uniqKey}_tag_match_${idx}}`);
-      tagVariables[`tcm_${uniqKey}_tag_match_${idx}`] = tag
+      placeholderMessage = placeholderMessage.replace(
+        tag,
+        `{tcm_${uniqKey}_tag_match_${idx}}`,
+      );
+      tagVariables[`tcm_${uniqKey}_tag_match_${idx}`] = tag;
     });
     substitutedMessages[key] = placeholderMessage;
   });
