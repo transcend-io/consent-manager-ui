@@ -152,7 +152,10 @@ export function CompleteOptionsToggles({
               }
             />
             <p className="paragraph complete-options-toggle-description">
-              {purposeToDescription.Essential?.description}
+              {formatMessage(
+                purposeToDescriptionKey['Essential'],
+                globalUiVariables,
+              )}
             </p>
           </span>
           {orderedSelections.map(([purpose, isChecked], idx) => (
@@ -178,10 +181,10 @@ export function CompleteOptionsToggles({
                 {...(idx === 0 ? { initialFocus: true } : {})}
               />
               <p className="paragraph complete-options-toggle-description">
-              {formatMessage(
-                purposeToDescriptionKey[purpose],
-                globalUiVariables,
-              )}
+                {formatMessage(
+                  purposeToDescriptionKey[purpose],
+                  globalUiVariables,
+                )}
               </p>
             </span>
           ))}
