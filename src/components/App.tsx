@@ -69,7 +69,7 @@ export function App({
     });
 
   // Language setup
-  const { language, handleChangeLanguage, messages } = useLanguage({
+  const { language, handleChangeLanguage, messages, htmlTagVariables } = useLanguage({
     supportedLanguages,
     translationsLocation:
       // Order of priority:
@@ -121,7 +121,7 @@ export function App({
         {/** Ensure messages are loaded before any UI is displayed */}
         {messages ? (
           <Main
-            globalUiVariables={currentVariables}
+            globalUiVariables={{ ...currentVariables, ...htmlTagVariables }}
             airgap={airgap}
             modalOpenAuth={auth}
             viewState={viewState}
