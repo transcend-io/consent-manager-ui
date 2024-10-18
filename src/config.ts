@@ -206,6 +206,7 @@ export const CSP_NONCE = nonce;
 if (CSP_NONCE) {
   const currentScriptDataset = document.currentScript?.dataset;
   if (currentScriptDataset) {
+    // hide nonce from other scripts
     delete currentScriptDataset.nonce;
   }
 }
