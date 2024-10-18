@@ -74,6 +74,8 @@ export const injectConsentManagerApp = async (
           )}`;
         }
 
+        // activate stylesheet
+        // we want to activate AFTER setup for external and BEFORE setup for inline
         appContainer.appendChild(style);
         attachToDoc();
 
