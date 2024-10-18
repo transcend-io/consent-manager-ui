@@ -47,16 +47,16 @@ export const injectConsentManagerApp = async (
       shadowRoot.appendChild(appContainer);
 
       // Don't inherit global styles
-      const style = appContainer.appendChild(
-        createHTMLElement<HTMLStyleElement>('style'),
-      );
-
-      // Append UI container to doc to activate style.sheet
-      (document.documentElement || document).append(consentManager);
+      const style = createHTMLElement<HTMLStyleElement>('style');
 
       if (CSP_NONCE) {
         style.nonce = CSP_NONCE;
       }
+
+      appContainer.appendChild(style);
+
+      // Append UI container to doc to activate style.sheet
+      (document.documentElement || document).append(consentManager);
 
       // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
       style
