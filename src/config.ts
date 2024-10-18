@@ -21,6 +21,7 @@ const {
   languages,
   dismissedViewState = 'Hidden',
   nonce,
+  inlineCss
 } = settings;
 
 /**
@@ -210,3 +211,6 @@ if (CSP_NONCE) {
     delete currentScriptDataset.nonce;
   }
 }
+
+export const ALLOW_INLINE_CSS = inlineCss !== 'off';
+export const EXTERNALIZE_INLINE_CSS = inlineCss === 'data:';
