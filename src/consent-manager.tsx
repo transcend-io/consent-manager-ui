@@ -6,7 +6,7 @@ import type {
 import { App } from './components/App';
 import { logger } from './logger';
 import { createHTMLElement } from './utils/create-html-element';
-import { getMergedConfig } from './config';
+import { CSP_NONCE, getMergedConfig } from './config';
 
 // The `transcend` API: methods which we'll create inside Preact and pass back out here via callback
 let consentManagerAPI: ConsentManagerAPI | null = null;
@@ -53,6 +53,10 @@ export const injectConsentManagerApp = async (
 
       // Append UI container to doc to activate style.sheet
       (document.documentElement || document).append(consentManager);
+
+      if (CSP_NONCE) {
+        style.nonce = CSP_NONCE;
+      }
 
       // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
       style
