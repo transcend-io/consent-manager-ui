@@ -1,3 +1,4 @@
+import { CSP_NONCE } from './config';
 import { getAppContainer } from './consent-manager';
 import { logger } from './logger';
 import { createHTMLElement } from './utils/create-html-element';
@@ -13,6 +14,9 @@ export const injectCss = (stylesheetUrl: string): Promise<void> =>
     const root = getAppContainer();
     if (root && stylesheetUrl) {
       const link = createHTMLElement<HTMLLinkElement>('link');
+      if (CSP_NONCE) {
+        link.nonce = CSP_NONCE;
+      }
       link.type = 'text/css';
       link.rel = 'stylesheet';
       link.id = stylesheetUrl;
