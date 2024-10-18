@@ -76,26 +76,6 @@ export const getNearestSupportedLanguage = (
   );
 
 /**
- * Picks a default language for the user
- *
- * @param supportedLanguages - Set of supported languages
- * @returns the language key of the best default language for this user
- */
-export function pickDefaultLanguage(
-  supportedLanguages: ConsentManagerLanguageKey[],
-): ConsentManagerLanguageKey {
-  if (settings.locale && supportedLanguages.includes(settings.locale)) {
-    return settings.locale;
-  }
-
-  const preferredLanguages = getUserLanguages();
-  return (
-    getNearestSupportedLanguage(preferredLanguages, sortSupportedLanguagesByPreference(supportedLanguages)) ||
-    ConsentManagerLanguageKey.En
-  );
-}
-
-/**
  * Sorts the supported languages by the user's preferences
  *
  * @param languages - an object of translations
@@ -119,6 +99,26 @@ export const sortSupportedLanguagesByPreference = (
         : Infinity;
     return rank(a) - rank(b);
   });
+
+/**
+ * Picks a default language for the user
+ *
+ * @param supportedLanguages - Set of supported languages
+ * @returns the language key of the best default language for this user
+ */
+export function pickDefaultLanguage(
+  supportedLanguages: ConsentManagerLanguageKey[],
+): ConsentManagerLanguageKey {
+  if (settings.locale && supportedLanguages.includes(settings.locale)) {
+    return settings.locale;
+  }
+
+  const preferredLanguages = getUserLanguages();
+  return (
+    getNearestSupportedLanguage(preferredLanguages, sortSupportedLanguagesByPreference(supportedLanguages)) ||
+    ConsentManagerLanguageKey.En
+  );
+}
 
 /**
  * Fetch message translations
