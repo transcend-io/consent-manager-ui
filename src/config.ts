@@ -20,7 +20,7 @@ const {
   secondaryPolicy,
   languages,
   dismissedViewState = 'Hidden',
-  nonce
+  nonce,
 } = settings;
 
 /**
