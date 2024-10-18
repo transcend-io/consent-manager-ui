@@ -40,7 +40,7 @@ export const injectConsentManagerApp = async (
     const attachToDoc = (): void => {
       // Append UI container to doc to activate style.sheet
       (document.documentElement || document).append(consentManager);
-    }
+    };
 
     try {
       const shadowRoot =
@@ -70,7 +70,7 @@ export const injectConsentManagerApp = async (
         if (EXTERNALIZE_INLINE_CSS) {
           (style as HTMLLinkElement).rel = 'stylesheet';
           (style as HTMLLinkElement).href = `data:text/css,${encodeURIComponent(
-            CSS_RESET
+            CSS_RESET,
           )}`;
         }
 
