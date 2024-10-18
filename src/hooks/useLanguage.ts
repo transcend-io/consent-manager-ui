@@ -90,7 +90,7 @@ export function pickDefaultLanguage(
 
   const preferredLanguages = getUserLanguages();
   return (
-    getNearestSupportedLanguage(preferredLanguages, supportedLanguages) ||
+    getNearestSupportedLanguage(preferredLanguages, sortSupportedLanguagesByPreference(supportedLanguages)) ||
     ConsentManagerLanguageKey.En
   );
 }
