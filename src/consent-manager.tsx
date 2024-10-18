@@ -6,7 +6,12 @@ import type {
 import { App } from './components/App';
 import { logger } from './logger';
 import { createHTMLElement } from './utils/create-html-element';
-import { ALLOW_INLINE_CSS, CSP_NONCE, EXTERNALIZE_INLINE_CSS, getMergedConfig } from './config';
+import {
+  ALLOW_INLINE_CSS,
+  CSP_NONCE,
+  EXTERNALIZE_INLINE_CSS,
+  getMergedConfig,
+} from './config';
 import { CSS_RESET } from './constants';
 
 // The `transcend` API: methods which we'll create inside Preact and pass back out here via callback
@@ -55,7 +60,7 @@ export const injectConsentManagerApp = async (
       if (ALLOW_INLINE_CSS) {
         // Don't inherit global styles
         const style = createHTMLElement<HTMLStyleElement | HTMLLinkElement>(
-          EXTERNALIZE_INLINE_CSS ? 'link' : 'style'
+          EXTERNALIZE_INLINE_CSS ? 'link' : 'style',
         );
 
         if (CSP_NONCE) {
@@ -64,7 +69,9 @@ export const injectConsentManagerApp = async (
 
         if (EXTERNALIZE_INLINE_CSS) {
           (style as HTMLLinkElement).rel = 'stylesheet';
-          (style as HTMLLinkElement).href = `data:text/css,${encodeURIComponent(CSS_RESET)}`;
+          (style as HTMLLinkElement).href = `data:text/css,${encodeURIComponent(
+            CSS_RESET
+          )}`;
         }
 
         appContainer.appendChild(style);
