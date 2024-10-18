@@ -58,6 +58,10 @@ export const injectConsentManagerApp = async (
       // Append UI container to doc to activate style.sheet
       (document.documentElement || document).append(consentManager);
 
+      if (CSP_NONCE) {
+        style.nonce = CSP_NONCE;
+      }
+
       // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
       style
         .sheet! // 1st rule so subsequent properties are reset
