@@ -21,7 +21,7 @@ const {
   languages,
   dismissedViewState = 'Hidden',
   nonce,
-  inlineCss
+  inlineCss,
 } = settings;
 
 /**
