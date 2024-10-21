@@ -6,7 +6,13 @@ import type {
 import { App } from './components/App';
 import { logger } from './logger';
 import { createHTMLElement } from './utils/create-html-element';
-import { CSP_NONCE, getMergedConfig } from './config';
+import {
+  ALLOW_INLINE_CSS,
+  CSP_NONCE,
+  EXTERNALIZE_INLINE_CSS,
+  getMergedConfig,
+} from './config';
+import { CSS_RESET } from './constants';
 
 // The `transcend` API: methods which we'll create inside Preact and pass back out here via callback
 let consentManagerAPI: ConsentManagerAPI | null = null;
@@ -31,6 +37,11 @@ export const injectConsentManagerApp = async (
     consentManager.style.zIndex = mergedConfig.config.uiZIndex ?? '2147483647';
     consentManager.id = 'transcend-consent-manager';
 
+    const attachToDoc = (): void => {
+      // Append UI container to doc to activate style.sheet
+      (document.documentElement || document).append(consentManager);
+    };
+
     try {
       const shadowRoot =
         consentManager?.attachShadow?.({
@@ -46,26 +57,37 @@ export const injectConsentManagerApp = async (
       appContainer ??= createHTMLElement('div');
       shadowRoot.appendChild(appContainer);
 
-      // Don't inherit global styles
-      const style = createHTMLElement<HTMLStyleElement>('style');
+      if (ALLOW_INLINE_CSS) {
+        // Don't inherit global styles
+        const style = createHTMLElement<HTMLStyleElement | HTMLLinkElement>(
+          EXTERNALIZE_INLINE_CSS ? 'link' : 'style',
+        );
 
-      if (CSP_NONCE) {
-        style.nonce = CSP_NONCE;
+        if (CSP_NONCE) {
+          style.nonce = CSP_NONCE;
+        }
+
+        if (EXTERNALIZE_INLINE_CSS) {
+          (style as HTMLLinkElement).rel = 'stylesheet';
+          (style as HTMLLinkElement).href = `data:text/css,${encodeURIComponent(
+            CSS_RESET,
+          )}`;
+        }
+
+        // activate stylesheet
+        // we want to activate AFTER setup for external and BEFORE setup for inline
+        appContainer.appendChild(style);
+        attachToDoc();
+
+        if (!EXTERNALIZE_INLINE_CSS) {
+          // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+          (style as HTMLStyleElement)
+            .sheet! // 1st rule so subsequent properties are reset
+            .insertRule(CSS_RESET);
+        }
+      } else {
+        attachToDoc();
       }
-
-      appContainer.appendChild(style);
-
-      // Append UI container to doc to activate style.sheet
-      (document.documentElement || document).append(consentManager);
-
-      if (CSP_NONCE) {
-        style.nonce = CSP_NONCE;
-      }
-
-      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-      style
-        .sheet! // 1st rule so subsequent properties are reset
-        .insertRule(':host { all: initial }');
 
       // Wait for the instantiated Consent Manager API from Preact
       consentManagerAPI = await new Promise<ConsentManagerAPI>((resolve) => {
