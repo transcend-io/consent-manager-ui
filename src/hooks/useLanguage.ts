@@ -115,8 +115,10 @@ export function pickDefaultLanguage(
 
   const preferredLanguages = getUserLanguages();
   return (
-    getNearestSupportedLanguage(preferredLanguages, sortSupportedLanguagesByPreference(supportedLanguages)) ||
-    ConsentManagerLanguageKey.En
+    getNearestSupportedLanguage(
+      preferredLanguages,
+      sortSupportedLanguagesByPreference(supportedLanguages),
+    ) || ConsentManagerLanguageKey.En
   );
 }
 
