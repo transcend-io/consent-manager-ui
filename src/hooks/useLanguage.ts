@@ -5,6 +5,7 @@ import {
   Translations,
 } from '@transcend-io/internationalization';
 import { settings } from '../settings';
+import { substituteHtml } from '../utils/substitute-html';
 
 export const loadedTranslations: Translations = Object.create(null);
 
@@ -75,26 +76,6 @@ export const getNearestSupportedLanguage = (
   );
 
 /**
- * Picks a default language for the user
- *
- * @param supportedLanguages - Set of supported languages
- * @returns the language key of the best default language for this user
- */
-export function pickDefaultLanguage(
-  supportedLanguages: ConsentManagerLanguageKey[],
-): ConsentManagerLanguageKey {
-  if (settings.locale && supportedLanguages.includes(settings.locale)) {
-    return settings.locale;
-  }
-
-  const preferredLanguages = getUserLanguages();
-  return (
-    getNearestSupportedLanguage(preferredLanguages, supportedLanguages) ||
-    ConsentManagerLanguageKey.En
-  );
-}
-
-/**
  * Sorts the supported languages by the user's preferences
  *
  * @param languages - an object of translations
@@ -118,6 +99,28 @@ export const sortSupportedLanguagesByPreference = (
         : Infinity;
     return rank(a) - rank(b);
   });
+
+/**
+ * Picks a default language for the user
+ *
+ * @param supportedLanguages - Set of supported languages
+ * @returns the language key of the best default language for this user
+ */
+export function pickDefaultLanguage(
+  supportedLanguages: ConsentManagerLanguageKey[],
+): ConsentManagerLanguageKey {
+  if (settings.locale && supportedLanguages.includes(settings.locale)) {
+    return settings.locale;
+  }
+
+  const preferredLanguages = getUserLanguages();
+  return (
+    getNearestSupportedLanguage(
+      preferredLanguages,
+      sortSupportedLanguagesByPreference(supportedLanguages),
+    ) || ConsentManagerLanguageKey.En
+  );
+}
 
 /**
  * Fetch message translations
@@ -163,6 +166,8 @@ export function useLanguage({
   handleChangeLanguage: (language: ConsentManagerLanguageKey) => void;
   /** Message translations */
   messages: TranslatedMessages | undefined;
+  /** HTML opening/closing tab variables */
+  htmlTagVariables: Record<string, string>;
 } {
   // The current language
   const [language, setLanguage] = useState<ConsentManagerLanguageKey>(() =>
@@ -173,22 +178,34 @@ export function useLanguage({
   // Hold the translations for that language (fetched async)
   const [messages, setMessages] = useState<TranslatedMessages | undefined>();
 
+  // Store the HTML opening/closing tags we need to replace our tag variables with
+  const [htmlTagVariables, setHtmlTagVariables] = useState<
+    Record<string, string>
+  >({});
+
   // Load the default translations
   useEffect(() => {
-    getTranslations(translationsLocation, language).then((messages) =>
-      setMessages(messages),
-    );
+    getTranslations(translationsLocation, language).then((messages) => {
+      // Replace raw HTML tags with variables bc raw HTML causes parsing errors
+      const { substitutedMessages, tagVariables } = substituteHtml(messages);
+      setHtmlTagVariables(tagVariables);
+      setMessages(substitutedMessages);
+    });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleChangeLanguage = useCallback(
     async (language: ConsentManagerLanguageKey) => {
       const newMessages = await getTranslations(translationsLocation, language);
-      setMessages(newMessages);
+
+      // Replace raw HTML tags with variables bc raw HTML causes parsing errors
+      const { substitutedMessages, tagVariables } = substituteHtml(newMessages);
+      setMessages(substitutedMessages);
+      setHtmlTagVariables(tagVariables);
       setLanguage(language);
     },
     [setLanguage, translationsLocation],
   );
 
-  return { language, handleChangeLanguage, messages };
+  return { language, handleChangeLanguage, messages, htmlTagVariables };
 }

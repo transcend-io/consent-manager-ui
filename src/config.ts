@@ -20,6 +20,8 @@ const {
   secondaryPolicy,
   languages,
   dismissedViewState = 'Hidden',
+  nonce,
+  inlineCss,
 } = settings;
 
 /**
@@ -200,3 +202,15 @@ function validateConfig(config: ConsentManagerConfig): boolean {
 
   return true;
 }
+
+export const CSP_NONCE = nonce;
+if (CSP_NONCE) {
+  const currentScriptDataset = document.currentScript?.dataset;
+  if (currentScriptDataset) {
+    // hide nonce from other scripts
+    delete currentScriptDataset.nonce;
+  }
+}
+
+export const ALLOW_INLINE_CSS = inlineCss !== 'off';
+export const EXTERNALIZE_INLINE_CSS = inlineCss === 'data:';

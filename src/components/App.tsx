@@ -69,15 +69,16 @@ export function App({
     });
 
   // Language setup
-  const { language, handleChangeLanguage, messages } = useLanguage({
-    supportedLanguages,
-    translationsLocation:
-      // Order of priority:
-      // 1. Take airgap.js data-messages
-      // 2. Take consentManagerConfig.messages
-      // 3. Look for translations locally
-      settings.messages || config.messages || './translations',
-  });
+  const { language, handleChangeLanguage, messages, htmlTagVariables } =
+    useLanguage({
+      supportedLanguages,
+      translationsLocation:
+        // Order of priority:
+        // 1. Take airgap.js data-messages
+        // 2. Take consentManagerConfig.messages
+        // 3. Look for translations locally
+        settings.messages || config.messages || './translations',
+    });
 
   // Create the `transcend` API
   const consentManagerAPI = makeConsentManagerAPI({
@@ -121,7 +122,7 @@ export function App({
         {/** Ensure messages are loaded before any UI is displayed */}
         {messages ? (
           <Main
-            globalUiVariables={currentVariables}
+            globalUiVariables={{ ...currentVariables, ...htmlTagVariables }}
             airgap={airgap}
             modalOpenAuth={auth}
             viewState={viewState}
