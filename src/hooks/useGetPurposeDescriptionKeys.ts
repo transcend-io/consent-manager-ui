@@ -1,3 +1,5 @@
+import camelCase from 'lodash/camelCase';
+
 import type {
   TrackingPurposeDetails,
   TrackingPurposesTypes,
@@ -10,8 +12,7 @@ import { useMemo } from 'preact/hooks';
 
 import { DefinedMessage } from '@transcend-io/internationalization';
 
-const CUSTOM_PURPOSE_DESCRIPTION_PREFIX = 'cm-ui.purposeDescription';
-const DEFAULT_PURPOSE_DESCRIPTION_PREFIX = 'ui.src.CompleteOptions';
+const PURPOSE_MESSAGE_PREFIX = 'purpose.trackingType';
 
 export const useGetPurposeDescriptionKeys = ({
   consentSelection,
@@ -29,20 +30,7 @@ export const useGetPurposeDescriptionKeys = ({
     () =>
       // the purpose type is unique for the bundle
       Object.keys(consentSelection ?? {}).reduce((allMessages, purposeType) => {
-        if (allMessages[purposeType]) {
-          return allMessages;
-        }
-        const purposeMessageDescriptionId = Object.values(
-          defaultTrackingPurposes,
-        ).find(
-          (defaultPurpose) =>
-            (defaultPurpose as TrackingPurposeDetails).trackingType ===
-            purposeType,
-        )
-          ? `${DEFAULT_PURPOSE_DESCRIPTION_PREFIX}.${purposeType
-              .charAt(0)
-              .toLowerCase()}${purposeType.slice(1)}Description`
-          : `${CUSTOM_PURPOSE_DESCRIPTION_PREFIX}.${purposeType}`;
+        const purposeMessageDescriptionId = `${PURPOSE_MESSAGE_PREFIX}.${camelCase(purposeType)}.description`;
         return {
           ...allMessages,
           [purposeType]: {

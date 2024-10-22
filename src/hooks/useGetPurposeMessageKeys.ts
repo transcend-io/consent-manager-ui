@@ -1,10 +1,11 @@
+import camelCase from 'lodash/camelCase';
 import { ConsentSelection } from '../types';
 
 import { useMemo } from 'preact/hooks';
 
 import { DefinedMessage } from '@transcend-io/internationalization';
 
-const CUSTOM_PURPOSE_MESSAGE_PREFIX = 'cm-ui.purpose';
+const PURPOSE_MESSAGE_PREFIX = 'purpose.trackingType';
 
 export const useGetPurposeMessageKeys = ({
   consentSelection,
@@ -19,16 +20,13 @@ export const useGetPurposeMessageKeys = ({
     () =>
       // the purpose type is unique for the bundle
       Object.keys(consentSelection ?? {}).reduce((allMessages, purposeType) => {
-        if (allMessages[purposeType]) {
-          return allMessages;
-        }
-        const customPurposeMessageLabel = `${CUSTOM_PURPOSE_MESSAGE_PREFIX}.${purposeType}`;
+        const purposeMessageLabel = `${PURPOSE_MESSAGE_PREFIX}.${camelCase(purposeType)}.title`;
         return {
           ...allMessages,
           [purposeType]: {
-            id: customPurposeMessageLabel,
+            id: purposeMessageLabel,
             defaultMessage: purposeType,
-            description: `Translatable name for custom purpose '${purposeType}'`,
+            description: `Translatable name for purpose '${purposeType}'`,
           } as DefinedMessage,
         };
       }, defaultPurposeToMessageKey as Record<string, DefinedMessage>),
