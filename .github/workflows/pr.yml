@@ -9,7 +9,7 @@ jobs:
       - uses: actions/setup-node@v3.1.1
         with:
           node-version: '16.20.2'
-      - run: npm install -g "yarn@1.22.5"
+      - run: npm install -g "yarn@4.5.1"
         shell: bash
       - uses: nick-fields/retry@v2
         with:
