@@ -195,7 +195,7 @@ export function pickDefaultLanguage(
   }
 
   const preferredLanguages = getUserLanguages();
-  /* We should refactor this ASAP TODO
+  /* We should refactor this ASAP TODO: https://transcend.height.app/T-39777
    * Extend supportedLanguages to include locales that we consider equivalent
    * e.g. instead of just having en, include en-US, en-GB, en-AU, etc
    */
