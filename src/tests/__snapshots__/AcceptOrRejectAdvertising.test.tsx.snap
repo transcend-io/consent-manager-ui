@@ -20,9 +20,7 @@ exports[`AcceptOrRejectAdvertising matches snapshot 1`] = `
         </p>
       </div>
     </div>
-    <div
-      class="accept-or-reject-all-button-row"
-    >
+    <div class="accept-or-reject-all-button-row">
       <button class="button">
         <span class="button-base-text button-primary-text">Okay</span></button
       ><button class="button" data-initialfocus="true">

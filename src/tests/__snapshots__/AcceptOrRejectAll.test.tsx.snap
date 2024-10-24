@@ -20,9 +20,7 @@ exports[`AcceptOrRejectAll matches snapshot 1`] = `
         </p>
       </div>
     </div>
-    <div
-      class="accept-or-reject-all-button-row"
-    >
+    <div class="accept-or-reject-all-button-row">
       <button class="button">
         <span class="button-base-text button-primary-text"
           >Accept all</span
