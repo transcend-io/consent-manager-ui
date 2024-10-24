@@ -23,6 +23,8 @@ export const TRANSLATE_LOCALE = {
   [LanguageKey.NlNl]: 'nl',
   [LanguageKey.NlBe]: 'nl',
   [LanguageKey.Es419]: 'es-MX',
+  // This is a hack to fix the fact that we don't have a LanguageKey -> BrowserLanguageKey mapping
+  'es-MX': 'es-MX',
   [LanguageKey.ZhHk]: 'zh-TW',
   [LanguageKey.AfZz]: 'af',
   [LanguageKey.Ar]: 'ar',
@@ -85,7 +87,7 @@ export const TRANSLATE_LOCALE = {
   [LanguageKey.SlSl]: 'sl',
   [LanguageKey.MrIn]: 'mr',
   [LanguageKey.ZuZa]: 'en',
-} as { [k in LanguageKey]: string };
+} as unknown as { [k in LanguageKey]: string };
 
 /** Mapping of AWS base translation keys to list of browser locales that should use them */
 export const INVERTED_TRANSLATE_LOCALE = invertSafe(TRANSLATE_LOCALE);
