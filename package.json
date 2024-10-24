@@ -30,7 +30,7 @@
     "tslib": "^2.4.1"
   },
   "scripts": {
-    "update:sdks": "yarn set version from sources && yarn sdks base",
+    "update:sdks": "yarn sdks base",
     "update:deps": "yarn upgrade-interactive && yarn update:sdks",
     "build": "ts-node --transpile-only ./build.ts && cp -r ./src/translations ./build/translations && cp ./src/cm.css ./build/",
     "tsc:build": "yarn pnpify tsc --build",

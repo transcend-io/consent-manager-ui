@@ -1,9 +1,5 @@
 import { ComponentChild, h } from 'preact';
-import {
-  render,
-  RenderOptions,
-  RenderResult,
-} from '@testing-library/preact';
+import { render, RenderOptions, RenderResult } from '@testing-library/preact';
 import { AirgapProvider } from '../../hooks/useAirgap';
 import { IntlProvider } from 'react-intl';
 import { ConsentManagerLanguageKey } from '@transcend-io/internationalization';
@@ -20,7 +16,7 @@ interface CustomRenderResult extends RenderResult {
 
 interface RenderWrapperProps {
   /** Arbitrary children to be provided by the test */
-  children: ComponentChild[]
+  children: ComponentChild[];
 }
 
 const wrapper = ({ children }: RenderWrapperProps): ComponentChild => {
@@ -35,8 +31,7 @@ const wrapper = ({ children }: RenderWrapperProps): ComponentChild => {
         (
           <AirgapProvider newAirgap={window.airgap as AirgapAPI}>
             {children}
-          </AirgapProvider>
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          </AirgapProvider> // eslint-disable-next-line @typescript-eslint/no-explicit-any
         ) as any
       }
     </IntlProvider>
@@ -49,7 +44,7 @@ const customRender = (
 ): CustomRenderResult => {
   const result = render(ui, { wrapper, ...options });
   const snapshot = result.container.outerHTML;
-  const prettySnapshot = prettier.format(snapshot, { parser: 'html' })
+  const prettySnapshot = prettier.format(snapshot, { parser: 'html' });
   return {
     snapshot: prettySnapshot,
     ...result,
