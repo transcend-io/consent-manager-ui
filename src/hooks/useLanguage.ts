@@ -179,8 +179,8 @@ export const sortSupportedLanguagesByPreference = (
       preferredLanguagesFull.includes(l)
         ? preferredLanguagesFull.indexOf(l)
         : preferredLanguagesShort.includes(l)
-          ? preferredLanguagesShort.indexOf(l)
-          : Infinity;
+        ? preferredLanguagesShort.indexOf(l)
+        : Infinity;
     return rank(a) - rank(b);
   });
 
