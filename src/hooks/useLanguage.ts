@@ -18,7 +18,7 @@ export const loadedTranslations: Translations = Object.create(null);
  * This is here for a quick fix of our CM UI translation logic. Copied from the monorepo's extract_intl.ts
  * This should be removed ASAP (it should be in the intl repo and imported, not in here or extract_intl.ts)
  */
-export const TRANSLATE_LOCALE: { [k in LanguageKey]: string } = {
+export const TRANSLATE_LOCALE = {
   [LanguageKey.EsEs]: 'es',
   [LanguageKey.NlNl]: 'nl',
   [LanguageKey.NlBe]: 'nl',
@@ -85,7 +85,7 @@ export const TRANSLATE_LOCALE: { [k in LanguageKey]: string } = {
   [LanguageKey.SlSl]: 'sl',
   [LanguageKey.MrIn]: 'mr',
   [LanguageKey.ZuZa]: 'en',
-};
+} as { [k in LanguageKey]: string };
 
 /** Mapping of AWS base translation keys to list of browser locales that should use them */
 export const INVERTED_TRANSLATE_LOCALE = invertSafe(TRANSLATE_LOCALE);
@@ -204,7 +204,7 @@ export function pickDefaultLanguage(
    */
   const extendedSupportedLanguages = supportedLanguages
     .map((lang: ConsentManagerLanguageKey) => getDuplicativeLocalizations(lang))
-    .flat();
+    .flat() as ConsentManagerLanguageKey[];
   const nearestExtendedLanguage =
     getNearestSupportedLanguage(
       preferredLanguages,
@@ -214,8 +214,8 @@ export function pickDefaultLanguage(
   let nearestTranslation = nearestExtendedLanguage;
   if (!supportedLanguages.includes(nearestTranslation)) {
     nearestTranslation = getDuplicativeLocalizations(nearestTranslation).find(
-      (lang) => supportedLanguages.includes(lang),
-    );
+      (lang) => supportedLanguages.includes(lang as ConsentManagerLanguageKey),
+    ) as ConsentManagerLanguageKey;
   }
   return nearestTranslation;
 }
