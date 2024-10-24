@@ -1,13 +1,99 @@
 import { useCallback, useEffect, useState } from 'preact/hooks';
 import {
   ConsentManagerLanguageKey,
+  LanguageKey,
   TranslatedMessages,
   Translations,
 } from '@transcend-io/internationalization';
 import { settings } from '../settings';
 import { substituteHtml } from '../utils/substitute-html';
+import { invertSafe } from '@transcend-io/type-utils';
 
 export const loadedTranslations: Translations = Object.create(null);
+
+/**
+ * Mapping of browser locale to AWS base translation key
+ *
+ * TODO: https://transcend.height.app/T-39777
+ * This is here for a quick fix of our CM UI translation logic. Copied from the monorepo's extract_intl.ts
+ * This should be removed ASAP (it should be in the intl repo and imported, not in here or extract_intl.ts)
+ */
+export const TRANSLATE_LOCALE = {
+  [LanguageKey.EsEs]: 'es',
+  [LanguageKey.NlNl]: 'nl',
+  [LanguageKey.NlBe]: 'nl',
+  [LanguageKey.Es419]: 'es-MX',
+  // This is a hack to fix the fact that we don't have a LanguageKey -> BrowserLanguageKey mapping
+  'es-MX': 'es-MX',
+  [LanguageKey.ZhHk]: 'zh-TW',
+  [LanguageKey.AfZz]: 'af',
+  [LanguageKey.Ar]: 'ar',
+  [LanguageKey.En]: 'en',
+  [LanguageKey.Fr]: 'fr',
+  [LanguageKey.Es]: 'es',
+  [LanguageKey.De]: 'de',
+  [LanguageKey.It]: 'it',
+  [LanguageKey.Ja]: 'ja',
+  [LanguageKey.Ru]: 'ru',
+  [LanguageKey.ArAe]: 'ar',
+  [LanguageKey.FrFr]: 'fr',
+  [LanguageKey.DeDe]: 'de',
+  [LanguageKey.ItIt]: 'it',
+  [LanguageKey.BgBg]: 'bg',
+  [LanguageKey.ZhCn]: 'zh',
+  [LanguageKey.HrHr]: 'hr',
+  [LanguageKey.CsCz]: 'cs',
+  [LanguageKey.DaDk]: 'da',
+  [LanguageKey.EnGb]: 'en',
+  [LanguageKey.FiFi]: 'fi',
+  [LanguageKey.ElGr]: 'el',
+  [LanguageKey.HiIn]: 'hi',
+  [LanguageKey.HuHu]: 'hu',
+  [LanguageKey.IdId]: 'id',
+  [LanguageKey.JaJp]: 'ja',
+  [LanguageKey.KoKr]: 'ko',
+  [LanguageKey.LtLt]: 'lt',
+  [LanguageKey.MsMy]: 'ms',
+  [LanguageKey.NbNi]: 'no',
+  [LanguageKey.PlPl]: 'pl',
+  [LanguageKey.PtBr]: 'pt',
+  [LanguageKey.PtPt]: 'pt',
+  [LanguageKey.RoRo]: 'ro',
+  [LanguageKey.RuRu]: 'ru',
+  [LanguageKey.SrLatnRs]: 'sr',
+  [LanguageKey.SvSe]: 'sv',
+  [LanguageKey.TaIn]: 'ta',
+  [LanguageKey.ThTh]: 'th',
+  [LanguageKey.TrTr]: 'tr',
+  [LanguageKey.UkUa]: 'uk',
+  [LanguageKey.ViVn]: 'vi',
+  [LanguageKey.EnUS]: 'en',
+  [LanguageKey.EnAu]: 'en',
+  [LanguageKey.FrBe]: 'fr',
+  [LanguageKey.EnIe]: 'en',
+  [LanguageKey.EnCa]: 'en',
+  [LanguageKey.EnAe]: 'en',
+  [LanguageKey.DeAt]: 'de',
+  [LanguageKey.DeCh]: 'de',
+  [LanguageKey.ItCh]: 'it',
+  [LanguageKey.FrCh]: 'fr',
+  [LanguageKey.HeIl]: 'he',
+  [LanguageKey.EnNz]: 'en',
+  [LanguageKey.EtEe]: 'et',
+  [LanguageKey.IsIs]: 'is',
+  [LanguageKey.LvLv]: 'lv',
+  [LanguageKey.MtMt]: 'mt',
+  [LanguageKey.SkSk]: 'sk',
+  [LanguageKey.SlSl]: 'sl',
+  [LanguageKey.MrIn]: 'mr',
+  [LanguageKey.ZuZa]: 'en',
+} as unknown as { [k in LanguageKey]: string };
+
+/** Mapping of AWS base translation keys to list of browser locales that should use them */
+export const INVERTED_TRANSLATE_LOCALE = invertSafe(TRANSLATE_LOCALE);
+
+const getDuplicativeLocalizations = (lang: LanguageKey): LanguageKey[] =>
+  INVERTED_TRANSLATE_LOCALE[TRANSLATE_LOCALE[lang]];
 
 /**
  * Detect user-preferred languages from the user agent
@@ -114,12 +200,26 @@ export function pickDefaultLanguage(
   }
 
   const preferredLanguages = getUserLanguages();
-  return (
+  /* We should refactor this ASAP TODO: https://transcend.height.app/T-39777
+   * Extend supportedLanguages to include locales that we consider equivalent
+   * e.g. instead of just having en, include en-US, en-GB, en-AU, etc
+   */
+  const extendedSupportedLanguages = supportedLanguages
+    .map((lang: ConsentManagerLanguageKey) => getDuplicativeLocalizations(lang))
+    .flat() as ConsentManagerLanguageKey[];
+  const nearestExtendedLanguage =
     getNearestSupportedLanguage(
       preferredLanguages,
-      sortSupportedLanguagesByPreference(supportedLanguages),
-    ) || ConsentManagerLanguageKey.En
-  );
+      sortSupportedLanguagesByPreference(extendedSupportedLanguages),
+    ) || ConsentManagerLanguageKey.En;
+
+  let nearestTranslation = nearestExtendedLanguage;
+  if (!supportedLanguages.includes(nearestTranslation)) {
+    nearestTranslation = getDuplicativeLocalizations(nearestTranslation).find(
+      (lang) => supportedLanguages.includes(lang as ConsentManagerLanguageKey),
+    ) as ConsentManagerLanguageKey;
+  }
+  return nearestTranslation;
 }
 
 /**
