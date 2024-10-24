@@ -90,6 +90,9 @@ export const TRANSLATE_LOCALE: { [k in LanguageKey]: string } = {
 /** Mapping of AWS base translation keys to list of browser locales that should use them */
 export const INVERTED_TRANSLATE_LOCALE = invertSafe(TRANSLATE_LOCALE);
 
+const getDuplicativeLocalizations = (lang: LanguageKey): LanguageKey[] =>
+  INVERTED_TRANSLATE_LOCALE[TRANSLATE_LOCALE[lang]];
+
 /**
  * Detect user-preferred languages from the user agent
  *
@@ -176,8 +179,8 @@ export const sortSupportedLanguagesByPreference = (
       preferredLanguagesFull.includes(l)
         ? preferredLanguagesFull.indexOf(l)
         : preferredLanguagesShort.includes(l)
-        ? preferredLanguagesShort.indexOf(l)
-        : Infinity;
+          ? preferredLanguagesShort.indexOf(l)
+          : Infinity;
     return rank(a) - rank(b);
   });
 
@@ -200,8 +203,7 @@ export function pickDefaultLanguage(
    * e.g. instead of just having en, include en-US, en-GB, en-AU, etc
    */
   const extendedSupportedLanguages = supportedLanguages
-    .map((lang: ConsentManagerLanguageKey) => TRANSLATE_LOCALE[lang])
-    .map((awsLang: string) => INVERTED_TRANSLATE_LOCALE[awsLang])
+    .map((lang: ConsentManagerLanguageKey) => getDuplicativeLocalizations(lang))
     .flat();
   const nearestExtendedLanguage =
     getNearestSupportedLanguage(
@@ -211,9 +213,9 @@ export function pickDefaultLanguage(
 
   let nearestTranslation = nearestExtendedLanguage;
   if (!supportedLanguages.includes(nearestTranslation)) {
-    nearestTranslation = INVERTED_TRANSLATE_LOCALE[
-      TRANSLATE_LOCALE[nearestTranslation]
-    ].find((lang) => supportedLanguages.includes(lang));
+    nearestTranslation = getDuplicativeLocalizations(nearestTranslation).find(
+      (lang) => supportedLanguages.includes(lang),
+    );
   }
   return nearestTranslation;
 }
