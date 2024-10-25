@@ -38,7 +38,7 @@ export const useGetPurposeMessageKeys = ({
             ...allMessages,
             [purposeType]: {
               id: `cm-ui.purpose.${purposeType}`,
-              defaultMessage: 
+              defaultMessage:
                 defaultPurposeToMessageKey[purposeType]?.defaultMessage ||
                 purposeType,
               description: `Translatable name for purpose '${purposeType}'`,
