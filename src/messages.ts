@@ -456,32 +456,60 @@ export const bottomMenuMessages = defineMessages('ui.src.bottomMenu', {
   },
 });
 
+export const purposeMessages = defineMessages('purpose.trackingType', {
+  'Essential.title': {
+    defaultMessage: 'Essential',
+    description: 'Text for essential purposes in CompleteOptions view state.',
+  },
+  'Essential.description': {
+    defaultMessage: 'No consent needed.',
+    description:
+      'Text for essential purposes description in CompleteOptions view state.',
+  },
+  'Functional.title': {
+    defaultMessage: 'Functional',
+    description:
+      'Text for functional purposes in CompleteOptions view state.',
+  },
+  'Functional.description': {
+    defaultMessage: 'Personalization, autofilled forms, etc.',
+    description:
+      'Text for functional purposes description in CompleteOptions view state.',
+  },
+  'Analytics.title': {
+    defaultMessage: 'Analytics',
+    description: 'Text for analytics purposes in CompleteOptions view state.',
+  },
+  'Analytics.description': {
+    defaultMessage: 'Help us learn how our site is used and how it performs.',
+    description:
+      'Text for analytics purposes description in CompleteOptions view state.',
+  },
+  'Advertising.title': {
+    defaultMessage: 'Advertising',
+    description:
+      'Text for advertising purposes in CompleteOptions view state.',
+  },
+  'Advertising.description': {
+    defaultMessage: 'Helps us and others serve ads relevant to you.',
+    description:
+      'Text for advertising purposes description in CompleteOptions view state.',
+  },
+  'SaleOfInfo.title': {
+    defaultMessage: 'SaleOfInfo',
+    description:
+      'Text for sale of information purposes in CompleteOptions view state.',
+  },
+  'SaleOfInfo.description': {
+    defaultMessage: 'Sale of personal information.',
+    description:
+      'Text for advertising purposes description in CompleteOptions view state.',
+  },
+});
+
 export const completeOptionsMessages = defineMessages(
   'ui.src.completeOptions',
   {
-    essentialLabel: {
-      defaultMessage: 'Essential purposes',
-      description: 'Text for essential purposes in CompleteOptions view state.',
-    },
-    functionalLabel: {
-      defaultMessage: 'Functionality',
-      description:
-        'Text for functional purposes in CompleteOptions view state.',
-    },
-    analyticsLabel: {
-      defaultMessage: 'Analytics',
-      description: 'Text for analytics purposes in CompleteOptions view state.',
-    },
-    advertisingLabel: {
-      defaultMessage: 'Advertising',
-      description:
-        'Text for advertising purposes in CompleteOptions view state.',
-    },
-    saleOfInfoLabel: {
-      defaultMessage: 'Sale of personal information',
-      description:
-        'Text for sale of information purposes in CompleteOptions view state.',
-    },
     saveButtonPrimary: {
       defaultMessage: 'Confirm',
       description: 'Confirm button text in CompleteOptions view state.',
