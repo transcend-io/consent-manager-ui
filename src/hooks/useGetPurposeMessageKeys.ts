@@ -18,7 +18,7 @@ export const useGetPurposeMessageKeys = ({
   const purposeToMessageKey: Record<string, DefinedMessage> = useMemo(
     () =>
       // the purpose type is unique for the bundle
-      Object.keys(consentSelection ?? {}).reduce((allMessages, purposeType) => {
+    [...Object.keys(consentSelection ?? {}), 'Essential'].reduce((allMessages, purposeType) => {
         const purposeMessageLabel = `${PURPOSE_MESSAGE_PREFIX}.${purposeType}.title`;
         return {
           ...allMessages,
