@@ -1,4 +1,3 @@
-import camelCase from 'lodash/camelCase';
 import { ConsentSelection } from '../types';
 
 import { useMemo } from 'preact/hooks';
@@ -20,7 +19,7 @@ export const useGetPurposeMessageKeys = ({
     () =>
       // the purpose type is unique for the bundle
       Object.keys(consentSelection ?? {}).reduce((allMessages, purposeType) => {
-        const purposeMessageLabel = `${PURPOSE_MESSAGE_PREFIX}.${camelCase(purposeType)}.title`;
+        const purposeMessageLabel = `${PURPOSE_MESSAGE_PREFIX}.${purposeType}.title`;
         return {
           ...allMessages,
           [purposeType]: {

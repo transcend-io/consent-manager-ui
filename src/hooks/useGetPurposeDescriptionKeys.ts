@@ -1,12 +1,8 @@
-import camelCase from 'lodash/camelCase';
-
 import type {
-  TrackingPurposeDetails,
   TrackingPurposesTypes,
 } from '@transcend-io/airgap.js-types';
 
 import { ConsentSelection } from '../types';
-import { defaultTrackingPurposes } from 'src/playground/defaults';
 
 import { useMemo } from 'preact/hooks';
 
@@ -30,7 +26,7 @@ export const useGetPurposeDescriptionKeys = ({
     () =>
       // the purpose type is unique for the bundle
       Object.keys(consentSelection ?? {}).reduce((allMessages, purposeType) => {
-        const purposeMessageDescriptionId = `${PURPOSE_MESSAGE_PREFIX}.${camelCase(purposeType)}.description`;
+        const purposeMessageDescriptionId = `${PURPOSE_MESSAGE_PREFIX}.${purposeType}.description`;
         return {
           ...allMessages,
           [purposeType]: {
