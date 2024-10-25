@@ -38,7 +38,7 @@ export const useGetPurposeDescriptionKeys = ({
               } as DefinedMessage,
             };
           }
-          return {...allMessages};
+          return { ...allMessages };
         },
         defaultPurposeToDescriptionKey as Record<string, DefinedMessage>,
       ),
