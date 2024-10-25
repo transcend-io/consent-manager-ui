@@ -6,7 +6,7 @@ import { DefinedMessage } from '@transcend-io/internationalization';
 
 const PURPOSE_MESSAGE_PREFIX = 'purpose.trackingType';
 
-export const useGetPurposeMessageKeys = ({
+export const useGetInvertedPurposeMessageKeys = ({
   consentSelection,
   defaultPurposeToMessageKey,
 }: {
@@ -20,15 +20,19 @@ export const useGetPurposeMessageKeys = ({
       // the purpose type is unique for the bundle
       [...Object.keys(consentSelection ?? {}), 'Essential'].reduce(
         (allMessages, purposeType) => {
-          const purposeMessageLabel = `${PURPOSE_MESSAGE_PREFIX}.${purposeType}.title`;
-          return {
-            ...allMessages,
-            [purposeType]: {
-              id: purposeMessageLabel,
-              defaultMessage: purposeType,
-              description: `Translatable name for purpose '${purposeType}'`,
-            } as DefinedMessage,
-          };
+            if (allMessages[purposeType]) {
+                return allMessages;
+            }
+            const purposeMessageLabel = `${PURPOSE_MESSAGE_PREFIX}.${purposeType}.title`;
+            return {
+                ...allMessages,
+                [purposeType]: {
+                id: purposeMessageLabel,
+                defaultMessage: defaultPurposeToMessageKey[purposeType]?.defaultMessage
+                    || purposeType,
+                description: `Translatable name for purpose '${purposeType}'`,
+                } as DefinedMessage,
+            };
         },
         defaultPurposeToMessageKey as Record<string, DefinedMessage>,
       ),

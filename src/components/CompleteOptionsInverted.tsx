@@ -1,7 +1,7 @@
 import { h, JSX } from 'preact';
 import { useState } from 'preact/hooks';
 import { useIntl } from 'react-intl';
-import { useAirgap, useGetPurposeMessageKeys } from '../hooks';
+import { useAirgap, useGetInvertedPurposeMessageKeys } from '../hooks';
 import {
   messages,
   completeOptionsMessages,
@@ -36,10 +36,9 @@ export function CompleteOptionsInverted({
 
   // Get the tracking purposes from Airgap for display
   const initialConsentSelections = getConsentSelections(airgap);
-  const purposeToMessageKey = useGetPurposeMessageKeys({
+  const purposeToMessageKey = useGetInvertedPurposeMessageKeys({
     consentSelection: initialConsentSelections,
     defaultPurposeToMessageKey: DEFAULT_PURPOSE_TO_INVERTED_MESSAGE_KEY,
-    inverted: true,
   });
 
   // Set state on the currently selected toggles
