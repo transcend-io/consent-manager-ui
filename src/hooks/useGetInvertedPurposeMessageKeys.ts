@@ -20,19 +20,20 @@ export const useGetInvertedPurposeMessageKeys = ({
       // the purpose type is unique for the bundle
       [...Object.keys(consentSelection ?? {}), 'Essential'].reduce(
         (allMessages, purposeType) => {
-            if (allMessages[purposeType]) {
-                return allMessages;
-            }
-            const purposeMessageLabel = `${PURPOSE_MESSAGE_PREFIX}.${purposeType}.title`;
-            return {
-                ...allMessages,
-                [purposeType]: {
-                id: purposeMessageLabel,
-                defaultMessage: defaultPurposeToMessageKey[purposeType]?.defaultMessage
-                    || purposeType,
-                description: `Translatable name for purpose '${purposeType}'`,
-                } as DefinedMessage,
-            };
+          if (allMessages[purposeType]) {
+            return allMessages;
+          }
+          const purposeMessageLabel = `${PURPOSE_MESSAGE_PREFIX}.${purposeType}.title`;
+          return {
+            ...allMessages,
+            [purposeType]: {
+              id: purposeMessageLabel,
+              defaultMessage:
+                defaultPurposeToMessageKey[purposeType]?.defaultMessage ||
+                purposeType,
+              description: `Translatable name for purpose '${purposeType}'`,
+            } as DefinedMessage,
+          };
         },
         defaultPurposeToMessageKey as Record<string, DefinedMessage>,
       ),

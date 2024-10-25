@@ -1,6 +1,4 @@
-import type {
-  TrackingPurposesTypes,
-} from '@transcend-io/airgap.js-types';
+import type { TrackingPurposesTypes } from '@transcend-io/airgap.js-types';
 
 import { ConsentSelection } from '../types';
 
@@ -25,7 +23,8 @@ export const useGetPurposeDescriptionKeys = ({
   const purposeToDescriptionKey: Record<string, DefinedMessage> = useMemo(
     () =>
       // hard-coding Essential since it's not provided by consentSelection
-      [...Object.keys(consentSelection ?? {}), 'Essential'].reduce((allMessages, purposeType) => {
+      [...Object.keys(consentSelection ?? {}), 'Essential'].reduce(
+        (allMessages, purposeType) => {
           // making sure default message for Essential is not overwritten
           // by missing Essential message from airgap
           if (airgapPurposes[purposeType]?.description) {
@@ -40,7 +39,9 @@ export const useGetPurposeDescriptionKeys = ({
             };
           }
           return {...allMessages};
-      }, defaultPurposeToDescriptionKey as Record<string, DefinedMessage>),
+        },
+        defaultPurposeToDescriptionKey as Record<string, DefinedMessage>,
+      ),
     [consentSelection, defaultPurposeToDescriptionKey],
   );
 

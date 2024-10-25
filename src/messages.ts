@@ -468,8 +468,7 @@ export const purposeMessages = defineMessages('purpose.trackingType', {
   },
   'Functional.title': {
     defaultMessage: 'Functional',
-    description:
-      'Text for functional purposes in CompleteOptions view state.',
+    description: 'Text for functional purposes in CompleteOptions view state.',
   },
   'Functional.description': {
     defaultMessage: 'Personalization, autofilled forms, etc.',
@@ -487,8 +486,7 @@ export const purposeMessages = defineMessages('purpose.trackingType', {
   },
   'Advertising.title': {
     defaultMessage: 'Advertising',
-    description:
-      'Text for advertising purposes in CompleteOptions view state.',
+    description: 'Text for advertising purposes in CompleteOptions view state.',
   },
   'Advertising.description': {
     defaultMessage: 'Helps us and others serve ads relevant to you.',
