@@ -7,7 +7,7 @@ import {
 export const getPurposeCheckState = <T extends RenderResult>(
   screen: T,
   purposeName: string,
-  options: SelectorMatcherOptions = {}
+  options: SelectorMatcherOptions = {},
 ): boolean => {
   const checkboxEl = screen
     .getByText(purposeName, { ...options, exact: false })
@@ -18,7 +18,7 @@ export const getPurposeCheckState = <T extends RenderResult>(
 export const clickPurposeCheckbox = <T extends RenderResult>(
   screen: T,
   purposeName: string,
-  options: SelectorMatcherOptions = {}
+  options: SelectorMatcherOptions = {},
 ): void => {
   const checkboxEl = screen
     .getByText(purposeName, { ...options, exact: false })

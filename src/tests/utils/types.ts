@@ -2,7 +2,7 @@ import {
   ConsentOptions,
   TrackingConsent,
   TrackingConsentDetails,
-  TrackingPurposesTypes
+  TrackingPurposesTypes,
 } from '@transcend-io/airgap.js-types';
 import { TranslatedMessages } from '@transcend-io/internationalization';
 
@@ -10,7 +10,7 @@ export interface TestWindowBase extends Window {
   /** Jest setup variables */
   JEST_SETUP_VARS: {
     /** Cached english messages read from en.json */
-    messages: TranslatedMessages
+    messages: TranslatedMessages;
   } & Record<string, unknown>;
 }
 
@@ -19,20 +19,24 @@ export type TestWindow = Omit<TestWindowBase, 'airgap'> & {
   /** mock ag object */
   airgap: {
     /** mock getPurposeTypes fxn */
-    getPurposeTypes: () => TrackingPurposesTypes
+    getPurposeTypes: () => TrackingPurposesTypes;
     /** mock optIn fxn */
-    optIn: () => void
+    optIn: () => void;
     /** mock optOut fxn */
-    optOut: () => void
+    optOut: () => void;
     /** mock setConsent fxn */
-    setConsent: (event: Event, purposes: TrackingConsent, options: ConsentOptions) => void
+    setConsent: (
+      event: Event,
+      purposes: TrackingConsent,
+      options: ConsentOptions,
+    ) => void;
     /** mock getConsent fxn */
-    getConsent: () => TrackingConsentDetails
+    getConsent: () => TrackingConsentDetails;
     /** mock getPrivacySignals fxn */
-    getPrivacySignals: () => Set<"DNT" | "GPC">
+    getPrivacySignals: () => Set<'DNT' | 'GPC'>;
     /** mock getRegimePurposes fxn */
-    getRegimePurposes: () => Set<string>
+    getRegimePurposes: () => Set<string>;
     /** mock reset fxn */
-    reset: () => void
-  }
-}
+    reset: () => void;
+  };
+};

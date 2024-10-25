@@ -3,7 +3,7 @@ import { jest } from '@jest/globals';
 import { readFileSync } from 'fs';
 
 import { airgapStub } from './src/playground/airgapStub';
-import { testWindow } from './src/tests/utils/render'
+import { testWindow } from './src/tests/utils/render';
 
 testWindow.JEST_SETUP_VARS = { messages: {} };
 
