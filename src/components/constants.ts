@@ -1,8 +1,5 @@
 import { DefinedMessage } from '@transcend-io/internationalization';
-import {
-  completeOptionsInvertedMessages,
-  purposeMessages,
-} from '../messages';
+import { completeOptionsInvertedMessages, purposeMessages } from '../messages';
 
 // Mapping of purposes to the message translation key
 export const DEFAULT_PURPOSE_TO_MESSAGE_KEY: Record<string, DefinedMessage> = {
@@ -22,7 +19,7 @@ export const DEFAULT_PURPOSE_TO_DESCRIPTION_KEY: Record<
   Analytics: purposeMessages['Analytics.description'],
   Advertising: purposeMessages['Advertising.description'],
   SaleOfInfo: purposeMessages['SaleOfInfo.description'],
-}
+};
 
 export const DEFAULT_PURPOSE_TO_INVERTED_MESSAGE_KEY: Record<
   string,
