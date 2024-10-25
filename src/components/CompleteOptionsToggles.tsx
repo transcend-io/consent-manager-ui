@@ -153,7 +153,7 @@ export function CompleteOptionsToggles({
             />
             <p className="paragraph complete-options-toggle-description">
               {formatMessage(
-                purposeToDescriptionKey['Essential'],
+                purposeToDescriptionKey.Essential,
                 globalUiVariables,
               )}
             </p>

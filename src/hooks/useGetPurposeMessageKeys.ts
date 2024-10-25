@@ -9,7 +9,7 @@ const PURPOSE_MESSAGE_PREFIX = 'purpose.trackingType';
 export const useGetPurposeMessageKeys = ({
   consentSelection,
   defaultPurposeToMessageKey,
-  inverted=false,
+  inverted = false,
 }: {
   /** The configured airgap purpose types */
   consentSelection: ConsentSelection;
@@ -21,32 +21,32 @@ export const useGetPurposeMessageKeys = ({
   const purposeToMessageKey: Record<string, DefinedMessage> = useMemo(
     () =>
       // the purpose type is unique for the bundle
-    [...Object.keys(consentSelection ?? {}), 'Essential'].reduce(
-      (allMessages, purposeType) => {
-        if (!inverted) {
-          const purposeMessageLabel = `${PURPOSE_MESSAGE_PREFIX}.${purposeType}.title`;
+      [...Object.keys(consentSelection ?? {}), 'Essential'].reduce(
+        (allMessages, purposeType) => {
+          if (!inverted) {
+            const purposeMessageLabel = `${PURPOSE_MESSAGE_PREFIX}.${purposeType}.title`;
+            return {
+              ...allMessages,
+              [purposeType]: {
+                id: purposeMessageLabel,
+                defaultMessage: purposeType,
+                description: `Translatable name for purpose '${purposeType}'`,
+              } as DefinedMessage,
+            };
+          }
           return {
             ...allMessages,
             [purposeType]: {
-              id: purposeMessageLabel,
-              defaultMessage: purposeType,
+              id: `cm-ui.purpose.${purposeType}`,
+              defaultMessage: 
+                defaultPurposeToMessageKey[purposeType]?.defaultMessage || 
+                purposeType,
               description: `Translatable name for purpose '${purposeType}'`,
             } as DefinedMessage,
           };
-        }
-        return {
-          ...allMessages,
-          [purposeType]: {
-            id: `cm-ui.purpose.${purposeType}`,
-            defaultMessage: 
-              defaultPurposeToMessageKey[purposeType]?.defaultMessage || 
-              purposeType,
-            description: `Translatable name for purpose '${purposeType}'`,
-          } as DefinedMessage,
-        };
-      },
-      defaultPurposeToMessageKey as Record<string, DefinedMessage>
-    ),
+        },
+        defaultPurposeToMessageKey as Record<string, DefinedMessage>
+      ),
     [consentSelection, defaultPurposeToMessageKey],
   );
 
