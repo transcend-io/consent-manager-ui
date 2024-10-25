@@ -6,29 +6,29 @@ import {
 
 // Mapping of purposes to the message translation key
 export const DEFAULT_PURPOSE_TO_MESSAGE_KEY: Record<string, DefinedMessage> = {
-  Essential: purposeMessages['essential.title'],
-  Functional: purposeMessages['functional.title'],
-  Analytics: purposeMessages['analytics.title'],
-  Advertising: purposeMessages['advertising.title'],
-  SaleOfInfo: purposeMessages['saleOfInfo.title'],
+  Essential: purposeMessages['Essential.title'],
+  Functional: purposeMessages['Functional.title'],
+  Analytics: purposeMessages['Analytics.title'],
+  Advertising: purposeMessages['Advertising.title'],
+  SaleOfInfo: purposeMessages['SaleOfInfo.title'],
 };
 
 export const DEFAULT_PURPOSE_TO_DESCRIPTION_KEY: Record<
   string,
   DefinedMessage
 > = {
-  Essential: purposeMessages['essential.description'],
-  Functional: purposeMessages['functional.description'],
-  Analytics: purposeMessages['analytics.description'],
-  Advertising: purposeMessages['advertising.description'],
-  SaleOfInfo: purposeMessages['saleOfInfo.description'],
+  Essential: purposeMessages['Essential.description'],
+  Functional: purposeMessages['Functional.description'],
+  Analytics: purposeMessages['Analytics.description'],
+  Advertising: purposeMessages['Advertising.description'],
+  SaleOfInfo: purposeMessages['SaleOfInfo.description'],
 }
 
 export const DEFAULT_PURPOSE_TO_INVERTED_MESSAGE_KEY: Record<
   string,
   DefinedMessage
 > = {
-  Essential: purposeMessages['essential.title'],
+  Essential: purposeMessages['Essential.title'],
   Functional: completeOptionsInvertedMessages.functionalLabel,
   Analytics: completeOptionsInvertedMessages.analyticsLabel,
   Advertising: completeOptionsInvertedMessages.advertisingLabel,
