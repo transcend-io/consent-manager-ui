@@ -458,7 +458,7 @@ export const bottomMenuMessages = defineMessages('ui.src.bottomMenu', {
 
 export const purposeMessages = defineMessages('purpose.trackingType', {
   'essential.title': {
-    defaultMessage: 'Essential purposes',
+    defaultMessage: 'Essential',
     description: 'Text for essential purposes in CompleteOptions view state.',
   },
   'essential.description': {
@@ -467,7 +467,7 @@ export const purposeMessages = defineMessages('purpose.trackingType', {
       'Text for essential purposes description in CompleteOptions view state.',
   },
   'functional.title': {
-    defaultMessage: 'Functionality',
+    defaultMessage: 'Functional',
     description:
       'Text for functional purposes in CompleteOptions view state.',
   },
@@ -496,7 +496,7 @@ export const purposeMessages = defineMessages('purpose.trackingType', {
       'Text for advertising purposes description in CompleteOptions view state.',
   },
   'saleOfInfo.title': {
-    defaultMessage: 'Sale of personal information',
+    defaultMessage: 'SaleOfInfo',
     description:
       'Text for sale of information purposes in CompleteOptions view state.',
   },
