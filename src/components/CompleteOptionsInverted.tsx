@@ -39,6 +39,7 @@ export function CompleteOptionsInverted({
   const purposeToMessageKey = useGetPurposeMessageKeys({
     consentSelection: initialConsentSelections,
     defaultPurposeToMessageKey: DEFAULT_PURPOSE_TO_INVERTED_MESSAGE_KEY,
+    inverted: true,
   });
 
   // Set state on the currently selected toggles
