@@ -39,13 +39,13 @@ export const useGetPurposeMessageKeys = ({
             [purposeType]: {
               id: `cm-ui.purpose.${purposeType}`,
               defaultMessage: 
-                defaultPurposeToMessageKey[purposeType]?.defaultMessage || 
+                defaultPurposeToMessageKey[purposeType]?.defaultMessage ||
                 purposeType,
               description: `Translatable name for purpose '${purposeType}'`,
             } as DefinedMessage,
           };
         },
-        defaultPurposeToMessageKey as Record<string, DefinedMessage>
+        defaultPurposeToMessageKey as Record<string, DefinedMessage>,
       ),
     [consentSelection, defaultPurposeToMessageKey],
   );
