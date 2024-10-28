@@ -508,6 +508,27 @@ export const purposeMessages = defineMessages('purpose.trackingType', {
 export const completeOptionsMessages = defineMessages(
   'ui.src.completeOptions',
   {
+    essentialLabel: {
+      defaultMessage: 'Essential',
+      description: 'Text for essential purposes in CompleteOptions view state.',
+    },
+    functionalLabel: {
+      defaultMessage: 'Functional',
+      description: 'Text for functional purposes in CompleteOptions view state.',
+    },
+    analyticsLabel: {
+      defaultMessage: 'Analytics',
+      description: 'Text for analytics purposes in CompleteOptions view state.',
+    },
+    advertisingLabel: {
+      defaultMessage: 'Advertising',
+      description: 'Text for advertising purposes in CompleteOptions view state.',
+    },
+    saleOfInfoLabel: {
+      defaultMessage: 'SaleOfInfo',
+      description:
+        'Text for sale of information purposes in CompleteOptions view state.',
+    },
     saveButtonPrimary: {
       defaultMessage: 'Confirm',
       description: 'Confirm button text in CompleteOptions view state.',
