@@ -519,12 +519,12 @@ export const completeOptionsMessages = defineMessages(
     },
     analyticsLabel: {
       defaultMessage: 'Analytics',
-      description:
-        'Text for analytics purposes in CompleteOptions view state.',
+      description: 'Text for analytics purposes in CompleteOptions view state.',
     },
     advertisingLabel: {
       defaultMessage: 'Advertising',
-      description: 'Text for advertising purposes in CompleteOptions view state.',
+      description:
+        'Text for advertising purposes in CompleteOptions view state.',
     },
     saleOfInfoLabel: {
       defaultMessage: 'SaleOfInfo',
