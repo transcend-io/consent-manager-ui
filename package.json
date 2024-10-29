@@ -7,7 +7,7 @@
     "url": "https://github.com/transcend-io/consent-manager-ui.git"
   },
   "homepage": "https://github.com/transcend-io/consent-manager-ui",
-  "version": "4.22.1",
+  "version": "4.22.2",
   "license": "MIT",
   "main": "build/ui",
   "files": [
@@ -42,6 +42,7 @@
     "playground": "yarn build:playground && concurrently 'WATCH=true yarn build' 'yarn live-server --host=localhost --open=./src/playground/index.html --mount=/src/playground/:./src/'",
     "prepublish": "yarn build",
     "test": "yarn jest",
+    "test:update": "yarn jest -u",
     "test:watch": "yarn jest --watch"
   },
   "devDependencies": {

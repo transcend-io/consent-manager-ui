@@ -20,6 +20,9 @@ export const useGetPurposeMessageKeys = ({
       // the purpose type is unique for the bundle
       [...Object.keys(consentSelection ?? {}), 'Essential'].reduce(
         (allMessages, purposeType) => {
+          if (allMessages[purposeType]) {
+            return allMessages;
+          }
           const purposeMessageLabel = `${PURPOSE_MESSAGE_PREFIX}.${purposeType}.title`;
           return {
             ...allMessages,
