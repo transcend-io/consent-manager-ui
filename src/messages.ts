@@ -513,7 +513,7 @@ export const completeOptionsMessages = defineMessages(
       description: 'Text for essential purposes in CompleteOptions view state.',
     },
     functionalLabel: {
-      defaultMessage: 'Functionality',
+      defaultMessage: 'Functional',
       description:
         'Text for functional purposes in CompleteOptions view state.',
     },
