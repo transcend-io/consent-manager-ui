@@ -42,6 +42,7 @@
     "playground": "yarn build:playground && concurrently 'WATCH=true yarn build' 'yarn live-server --host=localhost --open=./src/playground/index.html --mount=/src/playground/:./src/'",
     "prepublish": "yarn build",
     "test": "yarn jest",
+    "test:update": "yarn jest -u",
     "test:watch": "yarn jest --watch"
   },
   "devDependencies": {

@@ -513,7 +513,7 @@ export const completeOptionsMessages = defineMessages(
       description: 'Text for essential purposes in CompleteOptions view state.',
     },
     functionalLabel: {
-      defaultMessage: 'Functional',
+      defaultMessage: 'Functionality',
       description:
         'Text for functional purposes in CompleteOptions view state.',
     },
@@ -527,7 +527,7 @@ export const completeOptionsMessages = defineMessages(
         'Text for advertising purposes in CompleteOptions view state.',
     },
     saleOfInfoLabel: {
-      defaultMessage: 'Sale of personal information.',
+      defaultMessage: 'Sale of personal information',
       description:
         'Text for sale of information purposes in CompleteOptions view state.',
     },

@@ -47,7 +47,9 @@ exports[`CompleteOptionsToggles matches snapshot 1`] = `
               ><span class="switch switch-button"></span></span
             >Essential purposes</label
           >
-          <p class="paragraph complete-options-toggle-description"></p></span
+          <p class="paragraph complete-options-toggle-description">
+            No consent needed.
+          </p></span
         ><span
           ><label class="switch label"
             ><input
