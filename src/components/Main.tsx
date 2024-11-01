@@ -91,7 +91,7 @@ export function Main({
     }
     return (
       <div
-        role="regions"
+        role="region"
         aria-label={formatMessage(messages.modalAriaLabel, globalUiVariables)}
         className="modal-container"
         id="consentManagerMainDialog"
