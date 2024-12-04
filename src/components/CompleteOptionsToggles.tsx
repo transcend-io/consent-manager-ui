@@ -44,6 +44,7 @@ export function CompleteOptionsToggles({
     consentSelection: initialConsentSelections,
     defaultPurposeToMessageKey: DEFAULT_PURPOSE_TO_MESSAGE_KEY,
   });
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const purposeToDescription = useMemo(() => airgap.getPurposeTypes(), []);
   const purposeToDescriptionKey = useGetPurposeDescriptionKeys({
     consentSelection: initialConsentSelections,
