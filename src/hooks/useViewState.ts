@@ -135,7 +135,6 @@ export function useViewState({
            * focus it so that when we delete it the user will be at the start of the focus order
            * just like if they had freshly loaded the page. */
           if (savedActiveElement !== null) {
-            savedActiveElement.focus();
           } else {
             const tempInteractiveEl = document.createElement('span');
             tempInteractiveEl.setAttribute('tabindex', '1');
