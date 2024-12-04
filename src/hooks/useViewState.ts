@@ -53,6 +53,7 @@ export function useViewState({
   dismissedViewState,
   eventTarget,
   savedActiveElement,
+  autofocus,
 }: {
   /** Which state this consent manager should go to when opened */
   initialViewState: InitialViewState;
@@ -62,6 +63,8 @@ export function useViewState({
   eventTarget: EventTarget;
   /** Element previously focused before our ui modal was opened */
   savedActiveElement: HTMLElement | null;
+  /** Whether to on last focused element on reopen */
+  autofocus?: boolean;
 }): {
   /** The current view state */
   viewState: ViewState;
@@ -134,7 +137,8 @@ export function useViewState({
            * very difficult to interact with. We create an element with maximum focus priority and
            * focus it so that when we delete it the user will be at the start of the focus order
            * just like if they had freshly loaded the page. */
-          if (savedActiveElement !== null) {
+          const shouldFocus = autofocus ?? true;
+          if (savedActiveElement !== null && shouldFocus) {
             savedActiveElement.focus();
           } else {
             const tempInteractiveEl = document.createElement('span');
@@ -159,7 +163,8 @@ export function useViewState({
           break;
       }
     },
-    [state, setState, initialViewState, dismissedViewState],
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [state, setState, initialViewState, dismissedViewState, autofocus],
   );
 
   // Now that the viewState has updated, dispatch an event on the `transcend` API / event target

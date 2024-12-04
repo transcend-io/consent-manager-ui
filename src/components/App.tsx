@@ -49,7 +49,8 @@ export function App({
   const [currentVariables, handleChangeUiVariables] = useState({});
 
   // Get default view states
-  const { initialViewStateByPrivacyRegime, dismissedViewState } = config;
+  const { initialViewStateByPrivacyRegime, dismissedViewState, autofocus } =
+    config;
   const initialViewState =
     initialViewStateByPrivacyRegime[
       privacyRegime as keyof typeof initialViewStateByPrivacyRegime
@@ -66,6 +67,7 @@ export function App({
         document.activeElement !== document.body
           ? document.activeElement
           : null,
+      autofocus,
     });
 
   // Language setup

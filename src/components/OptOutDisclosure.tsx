@@ -48,6 +48,7 @@ export function OptOutDisclosure({
   useEffect(() => {
     handleOptOut(modalOpenAuth);
     setIsOptedOut(true);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // delay UI until opt out happens

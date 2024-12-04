@@ -77,12 +77,15 @@ export function Main({
   const dialogRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
     if (!isViewStateClosed(viewState) && dialogRef.current) {
+      const shouldAutofocus = config.autofocus ?? true;
       // This setTimeout was necessary for the api triggered states, (DoNotSell|OptOut)Disclosure
       setTimeout(() => {
-        if (dialogRef.current) initialFocusElement(dialogRef.current);
+        if (dialogRef.current && shouldAutofocus) {
+          initialFocusElement(dialogRef.current);
+        }
       }, 0);
     }
-  }, [viewState, dialogRef]);
+  }, [viewState, dialogRef, config.autofocus]);
 
   // Modal open views
   if (!isViewStateClosed(viewState)) {

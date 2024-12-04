@@ -42,6 +42,7 @@ export const useGetPurposeDescriptionKeys = ({
         },
         defaultPurposeToDescriptionKey as Record<string, DefinedMessage>,
       ),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [consentSelection, defaultPurposeToDescriptionKey],
   );
 
