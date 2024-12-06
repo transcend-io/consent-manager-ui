@@ -137,7 +137,7 @@ export function useViewState({
            * very difficult to interact with. We create an element with maximum focus priority and
            * focus it so that when we delete it the user will be at the start of the focus order
            * just like if they had freshly loaded the page. */
-          const shouldFocus = !autofocus || autofocus === 'on';
+          const shouldFocus = autofocus !== 'off';
           if (savedActiveElement !== null && shouldFocus) {
             savedActiveElement.focus();
           } else {

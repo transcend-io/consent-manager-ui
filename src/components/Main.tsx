@@ -77,7 +77,7 @@ export function Main({
   const dialogRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
     if (!isViewStateClosed(viewState) && dialogRef.current) {
-      const shouldAutofocus = !config?.autofocus || config?.autofocus === 'on';
+      const shouldAutofocus = config?.autofocus !== 'off';
       // This setTimeout was necessary for the api triggered states, (DoNotSell|OptOut)Disclosure
       setTimeout(() => {
         if (dialogRef.current && shouldAutofocus) {
