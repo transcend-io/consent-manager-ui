@@ -63,8 +63,8 @@ export function useViewState({
   eventTarget: EventTarget;
   /** Element previously focused before our ui modal was opened */
   savedActiveElement: HTMLElement | null;
-  /** Whether to on last focused element on reopen */
-  autofocus?: boolean;
+  /** Whether to on last focused element on reopen: on or off */
+  autofocus?: string;
 }): {
   /** The current view state */
   viewState: ViewState;
@@ -137,7 +137,7 @@ export function useViewState({
            * very difficult to interact with. We create an element with maximum focus priority and
            * focus it so that when we delete it the user will be at the start of the focus order
            * just like if they had freshly loaded the page. */
-          const shouldFocus = autofocus ?? true;
+          const shouldFocus = autofocus !== 'off';
           if (savedActiveElement !== null && shouldFocus) {
             savedActiveElement.focus();
           } else {
