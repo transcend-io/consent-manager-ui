@@ -43,6 +43,13 @@ const VIEW_STATE_TO_MESSAGE: { [k in ViewState]: DefinedMessage | undefined } =
       bottomMenuMessages.showPolicyButtonPrivacyPolicyNoticeWithCloseButton,
   };
 
+// FIXME airgap.js-types
+const SKIP_SIMPLER_CHOICES_IF_ACTIVE = [
+  'CompleteOptions',
+  'CompleteOptionsInverted',
+  'CompleteOptionsToggles',
+];
+
 /**
  * Renders the menu for the bottom of the banner
  */
@@ -53,6 +60,7 @@ export function BottomMenu({
   secondaryPolicy,
   privacyPolicy,
   globalUiVariables,
+  moreChoicesViewState,
 }: {
   /** The first view state when opening the modal */
   firstSelectedViewState: ViewState | null;
@@ -66,6 +74,8 @@ export function BottomMenu({
   secondaryPolicy: string;
   /** Global UI view state variables */
   globalUiVariables: ObjByString;
+  /** The view state to use for more-choices redirect */
+  moreChoicesViewState: ViewState;
 }): JSX.Element {
   const { formatMessage } = useIntl();
   const policyMessage = VIEW_STATE_TO_MESSAGE[viewState];
@@ -98,16 +108,16 @@ export function BottomMenu({
           'AcceptOrRejectAnalytics',
           'AcceptAllOrMoreChoices',
           'AcceptOrRejectAllOrMoreChoices',
-          'CompleteOptionsInverted',
           'DoNotSellExplainer',
-          'CompleteOptionsToggles',
           'LanguageOptions',
           'AcceptAllRejectAllToggle',
           // eslint-disable-next-line @typescript-eslint/no-explicit-any
         ].includes(viewState as any) &&
-        (viewState === 'CompleteOptions' ? (
+        (SKIP_SIMPLER_CHOICES_IF_ACTIVE.includes(viewState) ? (
           !firstSelectedViewState ||
-          firstSelectedViewState === 'CompleteOptions' ? null : (
+          SKIP_SIMPLER_CHOICES_IF_ACTIVE.includes(
+            firstSelectedViewState,
+          ) ? null : (
             <div className="bottom-menu-item-container">
               <MenuItem
                 label={formatMessage(
@@ -132,7 +142,7 @@ export function BottomMenu({
                 globalUiVariables,
               )}
               type="button"
-              onClick={() => handleSetViewState('CompleteOptions')}
+              onClick={() => handleSetViewState(moreChoicesViewState)}
             >
               {formatMessage(
                 bottomMenuMessages.moreChoicesButtonPrimary,
@@ -151,7 +161,7 @@ export function BottomMenu({
               globalUiVariables,
             )}
             type="button"
-            onClick={() => handleSetViewState('CompleteOptions')}
+            onClick={() => handleSetViewState(moreChoicesViewState)}
           >
             {formatMessage(
               noticeAndDoNotSellMessages.doNotSellPrimary,

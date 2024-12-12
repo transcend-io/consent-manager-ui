@@ -49,6 +49,7 @@ export function Main({
   handleSetViewState,
   handleChangeLanguage,
   supportedLanguages,
+  moreChoicesViewState,
   modalOpenAuth,
 }: {
   /** Global variables for UI view state */
@@ -69,6 +70,8 @@ export function Main({
   handleChangeLanguage: (language: ConsentManagerLanguageKey) => void;
   /** Set of supported languages */
   supportedLanguages: ConsentManagerLanguageKey[];
+  /** The view state to use for more-choices redirect */
+  moreChoicesViewState: ViewState;
 }): JSX.Element {
   const { formatMessage } = useIntl();
   // need to focus the element marked with data-initialFocus when the modal is opened
@@ -186,6 +189,7 @@ export function Main({
               <AcceptAllOrMoreChoices
                 handleSetViewState={handleSetViewState}
                 globalUiVariables={globalUiVariables}
+                moreChoicesViewState={moreChoicesViewState}
               />
             )}
 
@@ -193,6 +197,7 @@ export function Main({
               <AcceptOrRejectAllOrMoreChoices
                 handleSetViewState={handleSetViewState}
                 globalUiVariables={globalUiVariables}
+                moreChoicesViewState={moreChoicesViewState}
               />
             )}
 
@@ -250,6 +255,7 @@ export function Main({
               privacyPolicy={config.privacyPolicy}
               secondaryPolicy={config.secondaryPolicy}
               globalUiVariables={globalUiVariables}
+              moreChoicesViewState={moreChoicesViewState}
             />
             <LanguageButton
               handleSetViewState={handleSetViewState}

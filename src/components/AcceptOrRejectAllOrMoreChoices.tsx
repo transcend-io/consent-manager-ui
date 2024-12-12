@@ -1,3 +1,4 @@
+import { ViewState } from '@transcend-io/airgap.js-types';
 import { ObjByString } from '@transcend-io/type-utils';
 import { h, JSX } from 'preact';
 import { useIntl } from 'react-intl';
@@ -12,11 +13,14 @@ import { Button } from './Button';
 export function AcceptOrRejectAllOrMoreChoices({
   handleSetViewState,
   globalUiVariables,
+  moreChoicesViewState,
 }: {
   /** Function to change viewState */
   handleSetViewState: HandleSetViewState;
   /** Global UI view state variables */
   globalUiVariables: ObjByString;
+  /** The view state to use for more-choices redirect */
+  moreChoicesViewState: ViewState;
 }): JSX.Element {
   const { airgap } = useAirgap();
   const { formatMessage } = useIntl();
@@ -50,7 +54,7 @@ export function AcceptOrRejectAllOrMoreChoices({
     event: JSX.TargetedEvent<HTMLButtonElement, MouseEvent>,
   ): void => {
     event.preventDefault();
-    handleSetViewState('CompleteOptions');
+    handleSetViewState(moreChoicesViewState);
   };
 
   return (

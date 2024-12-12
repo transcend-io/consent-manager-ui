@@ -23,6 +23,7 @@ describe('AcceptAllOrMoreChoices', () => {
       <AcceptAllOrMoreChoices
         handleSetViewState={() => null}
         globalUiVariables={MOCK_TEMPLATE_VARIABLES}
+        moreChoicesViewState="CompleteOptions"
       />,
     );
     expect(snapshot).toMatchSnapshot();
@@ -33,6 +34,7 @@ describe('AcceptAllOrMoreChoices', () => {
       <AcceptAllOrMoreChoices
         handleSetViewState={() => null}
         globalUiVariables={MOCK_TEMPLATE_VARIABLES}
+        moreChoicesViewState="CompleteOptions"
       />,
     );
 
@@ -52,6 +54,7 @@ describe('AcceptAllOrMoreChoices', () => {
       <AcceptAllOrMoreChoices
         handleSetViewState={() => null}
         globalUiVariables={MOCK_TEMPLATE_VARIABLES}
+        moreChoicesViewState="CompleteOptions"
       />,
     );
 
@@ -77,6 +80,7 @@ describe('AcceptAllOrMoreChoices', () => {
         handleSetViewState={(state) => {
           calledArg = state;
         }}
+        moreChoicesViewState="CompleteOptions"
         globalUiVariables={MOCK_TEMPLATE_VARIABLES}
       />,
     );
@@ -85,5 +89,23 @@ describe('AcceptAllOrMoreChoices', () => {
     if (moreChoicesButton) fireEvent.click(moreChoicesButton);
 
     expect(calledArg).toEqual('CompleteOptions');
+  });
+
+  test('that CompleteOptionsToggles is opened', () => {
+    let calledArg;
+    const { container } = render(
+      <AcceptAllOrMoreChoices
+        handleSetViewState={(state) => {
+          calledArg = state;
+        }}
+        moreChoicesViewState="CompleteOptionsToggles"
+        globalUiVariables={MOCK_TEMPLATE_VARIABLES}
+      />,
+    );
+
+    const moreChoicesButton = container.querySelector('button:nth-of-type(2)');
+    if (moreChoicesButton) fireEvent.click(moreChoicesButton);
+
+    expect(calledArg).toEqual('CompleteOptionsToggles');
   });
 });

@@ -20,6 +20,7 @@ describe('AcceptOrRejectAllOrMoreChoices', () => {
       <AcceptOrRejectAllOrMoreChoices
         handleSetViewState={() => null}
         globalUiVariables={MOCK_TEMPLATE_VARIABLES}
+        moreChoicesViewState="CompleteOptions"
       />,
     );
     expect(snapshot).toMatchSnapshot();
@@ -31,6 +32,7 @@ describe('AcceptOrRejectAllOrMoreChoices', () => {
       <AcceptOrRejectAllOrMoreChoices
         handleSetViewState={() => null}
         globalUiVariables={MOCK_TEMPLATE_VARIABLES}
+        moreChoicesViewState="CompleteOptions"
       />,
     );
 
@@ -52,6 +54,7 @@ describe('AcceptOrRejectAllOrMoreChoices', () => {
       <AcceptOrRejectAllOrMoreChoices
         handleSetViewState={() => null}
         globalUiVariables={MOCK_TEMPLATE_VARIABLES}
+        moreChoicesViewState="CompleteOptions"
       />,
     );
 
@@ -77,6 +80,7 @@ describe('AcceptOrRejectAllOrMoreChoices', () => {
       <AcceptOrRejectAllOrMoreChoices
         handleSetViewState={() => null}
         globalUiVariables={MOCK_TEMPLATE_VARIABLES}
+        moreChoicesViewState="CompleteOptions"
       />,
     );
 
@@ -103,6 +107,7 @@ describe('AcceptOrRejectAllOrMoreChoices', () => {
           calledArg = state;
         }}
         globalUiVariables={MOCK_TEMPLATE_VARIABLES}
+        moreChoicesViewState="CompleteOptions"
       />,
     );
 
@@ -110,5 +115,23 @@ describe('AcceptOrRejectAllOrMoreChoices', () => {
     if (moreChoicesButton) fireEvent.click(moreChoicesButton);
 
     expect(calledArg).toEqual('CompleteOptions');
+  });
+
+  test('that CompleteOptionsToggles is opened', () => {
+    let calledArg;
+    const { container } = render(
+      <AcceptOrRejectAllOrMoreChoices
+        handleSetViewState={(state) => {
+          calledArg = state;
+        }}
+        globalUiVariables={MOCK_TEMPLATE_VARIABLES}
+        moreChoicesViewState="CompleteOptionsToggles"
+      />,
+    );
+
+    const moreChoicesButton = container.querySelector('button:nth-of-type(3)');
+    if (moreChoicesButton) fireEvent.click(moreChoicesButton);
+
+    expect(calledArg).toEqual('CompleteOptionsToggles');
   });
 });
