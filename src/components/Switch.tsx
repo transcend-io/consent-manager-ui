@@ -27,6 +27,10 @@ export function Switch({
   /** Whether to autofocus this input */
   initialFocus?: true;
 }): JSX.Element {
+  let backgroundClassName = 'switch switch-background';
+  if (disabled) {
+    backgroundClassName += ' switch-disabled';
+  }
   return (
     <label className="switch label">
       <input
@@ -42,7 +46,7 @@ export function Switch({
         }}
         data-initialFocus={initialFocus}
       />
-      <span className="switch switch-background">
+      <span className={backgroundClassName}>
         <span className="switch switch-button" />
       </span>
       {label}
