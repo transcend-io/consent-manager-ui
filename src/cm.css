@@ -748,6 +748,11 @@ a:focus {
   background: #fff;
 }
 
+/** Disabled switch */
+.switch.switch-disabled {
+  opacity: 0.6;
+}
+
 /** When switch is checked */
 .switch.switch-checkbox:checked + .switch.switch-background .switch.switch-button {
   left: calc(100% - var(--switchGutter));
