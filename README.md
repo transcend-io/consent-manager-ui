@@ -22,7 +22,9 @@ The default consent interface is built with flexibility to choose between differ
 
 Standard GDPR style banner for opting in or out of all purposes. Selecting "More Choices" gives the ability to opt in or out of specific purposes.
 
-![ViewState = AcceptOrRejectAll](https://user-images.githubusercontent.com/10264973/188251091-84dcb0af-0fc8-42ee-b742-466c55c61cdb.jpg)
+![ViewState = AcceptOrRejectAll, Web](https://user-images.githubusercontent.com/10264973/188251091-84dcb0af-0fc8-42ee-b742-466c55c61cdb.jpg)
+
+![ViewState = AcceptOrRejectAll, Mobile](https://github.com/user-attachments/assets/fb8781d3-4cca-4f82-a1c1-b9c63440026a)
 
 #### Button Mapping
 
@@ -37,7 +39,9 @@ Standard GDPR style banner for opting in or out of all purposes. Selecting "More
 
 Similar to `AcceptOrRejectAll`, but the "More Choices" button is a primary button.
 
-![ViewState = AcceptOrRejectAllOrMoreChoices](https://user-images.githubusercontent.com/10264973/221736879-13ebbca0-34d6-4424-b358-7c6a56a97737.png)
+![ViewState = AcceptOrRejectAllOrMoreChoices, Web](https://user-images.githubusercontent.com/10264973/221736879-13ebbca0-34d6-4424-b358-7c6a56a97737.png)
+
+![ViewState = AcceptOrRejectAllOrMoreChoices, Mobile](https://github.com/user-attachments/assets/5ec492eb-2d7e-4dc5-868c-5caa128b4d54)
 
 #### Button Mapping
 
@@ -52,7 +56,9 @@ Similar to `AcceptOrRejectAll`, but the "More Choices" button is a primary butto
 
 This banner is recommended for GDPR-like regimes where customers can opt in or out of multiple purposes with 1 click. Each button includes the purposes for all options to the left of that button. For example, "Analytics" button includes "Essential", "Functional" and "Analytics".
 
-![ViewState = QuickOptions](https://user-images.githubusercontent.com/10264973/188251089-4e1a8335-1f9a-45c0-8e15-34054a63ae3d.jpg)
+![ViewState = QuickOptions, Web](https://user-images.githubusercontent.com/10264973/188251089-4e1a8335-1f9a-45c0-8e15-34054a63ae3d.jpg)
+
+![ViewState = QuickOptions, Mobile](https://github.com/user-attachments/assets/b463f224-fed4-41f4-a0b9-6d9af0fe622f)
 
 | Button Title           | Callback Description                                                                                                                                                                                                                                                                                             |
 | ---------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -67,7 +73,9 @@ This banner is recommended for GDPR-like regimes where customers can opt in or o
 
 This banner is the same as `QuickOptions` but the Functional & Analytics buttons are combined into 1.
 
-![ViewState = QuickOptions3](https://user-images.githubusercontent.com/10264973/207575262-298e9ba1-84ba-4443-8d54-bc30f11c47af.jpg)
+![ViewState = QuickOptions3, Web](https://user-images.githubusercontent.com/10264973/207575262-298e9ba1-84ba-4443-8d54-bc30f11c47af.jpg)
+
+![ViewState = QuickOptions3, Mobile](https://github.com/user-attachments/assets/f7ab85e2-4e96-4b11-9da1-2a40a1e51897)
 
 | Button Title           | Callback Description                                                                                                                                                                                                                                                                                             |
 | ---------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -81,7 +89,9 @@ This banner is the same as `QuickOptions` but the Functional & Analytics buttons
 
 This option is linked to in most other banners under the "More Choices" footer. This allows for explicit opting in or out of each purpose. If a user begins fully opted out, this UI requires clicking each checkbox to fully opt in.
 
-![ViewState = CompleteOptions](https://user-images.githubusercontent.com/10264973/188251095-7c7fd1b5-7748-4430-b7af-130e37db2dc5.jpg)
+![ViewState = CompleteOptions, Web](https://user-images.githubusercontent.com/10264973/188251095-7c7fd1b5-7748-4430-b7af-130e37db2dc5.jpg)
+
+![ViewState = CompleteOptions, Mobile](https://github.com/user-attachments/assets/e4e9b6df-b696-479b-92fa-0fb5395698b5)
 
 With optional description text:
 
@@ -99,7 +109,9 @@ With optional description text:
 
 This option is similar to `CompleteOptions` but the checkboxes are inverted -- checking each box opts the user out of a purpose.
 
-![ViewState = CompleteOptionsInverted](https://user-images.githubusercontent.com/10264973/209087837-f1b4dc82-dd22-4279-aff0-15a239452b9c.jpg)
+![ViewState = CompleteOptionsInverted, Web](https://user-images.githubusercontent.com/10264973/209087837-f1b4dc82-dd22-4279-aff0-15a239452b9c.jpg)
+
+![ViewState = CompleteOptionsInverted, Mobile](https://github.com/user-attachments/assets/648973f8-a423-44dc-ab73-0617946a0400)
 
 #### Button Mapping
 
@@ -114,7 +126,9 @@ This option is similar to `CompleteOptions` but the checkboxes are inverted -- c
 
 This is a good banner style when you are using Transcend for [Preference Management](https://docs.transcend.io/docs/consent/reference/managed-preferences).
 
-![ViewState = CompleteOptionsToggles](https://github.com/transcend-io/consent-manager-ui/assets/10264973/94f85234-aad7-4596-969e-fd91af42f4ab)
+![ViewState = CompleteOptionsToggles, Web](https://github.com/transcend-io/consent-manager-ui/assets/10264973/94f85234-aad7-4596-969e-fd91af42f4ab)
+
+![ViewState = CompleteOptionsToggles, Mobile](https://github.com/user-attachments/assets/34f240cb-142c-4f3f-bc0b-a114943f06d1)
 
 #### Button Mapping
 
@@ -130,7 +144,9 @@ Unlike the other view states, this view state should be opened using `onClick={(
 
 This is the recommended flow for US state laws with a do not sell requirement, as it allows for minimal friction in the opt-out process through a single click opt out.
 
-![ViewState = DoNotSellDisclosure](https://user-images.githubusercontent.com/10264973/188251093-fa0646ff-7559-4cd3-94f3-f7e47c02e360.jpg)
+![ViewState = DoNotSellDisclosure, Web](https://user-images.githubusercontent.com/10264973/188251093-fa0646ff-7559-4cd3-94f3-f7e47c02e360.jpg)
+
+![ViewState = DoNotSellDisclosure, Mobile](https://github.com/user-attachments/assets/50ce9d2f-b821-4067-ba15-f99610678c7b)
 
 #### Button Mapping
 
@@ -172,7 +188,9 @@ This is a 2 click opt out for do not sell or share. This option is useful for co
 
 This banner can be used to notify users of privacy policy changes. This banner does not collect consent preferences, however, it will save a consent timestamp for whenever the user acknowledges the policy change, and closes the modal.
 
-![ViewState = PrivacyPolicyNotice](https://user-images.githubusercontent.com/10264973/207575261-63a33c6e-6df0-4997-943c-806e48271cf8.jpg)
+![ViewState = PrivacyPolicyNotice, Web](https://user-images.githubusercontent.com/10264973/207575261-63a33c6e-6df0-4997-943c-806e48271cf8.jpg)
+
+![ViewState = PrivacyPolicyNotice, Mobile](https://github.com/user-attachments/assets/366c0576-f3d7-4081-9442-8468892d4646)
 
 #### Button Mapping
 
@@ -185,7 +203,9 @@ This banner can be used to notify users of privacy policy changes. This banner d
 
 This banner can be used to notify users of privacy policy changes. It does not collect consent preferences, however, it will save a consent timestamp for whenever the user acknowledges the policy change, and closes the modal. This banner is similar to `PrivacyPolicyNotice`, however instead of using a button to close the modal - an X icon is used in the top right-hand corner of the modal.
 
-![ViewState = PrivacyPolicyNoticeWithCloseButton](https://github.com/transcend-io/consent-manager-ui/assets/10264973/54010d7f-905a-4014-8268-5915590b177b)
+![ViewState = PrivacyPolicyNoticeWithCloseButton, Web](https://github.com/transcend-io/consent-manager-ui/assets/10264973/54010d7f-905a-4014-8268-5915590b177b)
+
+![ViewState = PrivacyPolicyNoticeWithCloseButton, Mobile](https://github.com/user-attachments/assets/569e6b83-d195-4d5e-9161-299008620ac1)
 
 #### Button Mapping
 
@@ -212,7 +232,9 @@ This banner can be used to notify users of privacy policy changes. It does not c
 
 A banner that handles opting in or out of the `Analytics` tag.
 
-![ViewState = AcceptOrRejectAnalytics](https://user-images.githubusercontent.com/10264973/209070374-6a35ae9d-8d98-4042-88e0-4b6bc1eb7d1a.jpg)
+![ViewState = AcceptOrRejectAnalytics, Web](https://user-images.githubusercontent.com/10264973/209070374-6a35ae9d-8d98-4042-88e0-4b6bc1eb7d1a.jpg)
+
+![ViewState = AcceptOrRejectAnalytics, Mobile](https://github.com/user-attachments/assets/e7a36e7f-e384-43b9-8d3e-fa973fdd16e8)
 
 #### Button Mapping
 
@@ -226,7 +248,9 @@ A banner that handles opting in or out of the `Analytics` tag.
 
 A banner that handles opting in or out of the `Advertising` tag.
 
-![ViewState = AcceptOrRejectAdvertising](https://github.com/transcend-io/consent-manager-ui/assets/10264973/7e36df8c-4752-4a2d-8616-c68d91ea1250)
+![ViewState = AcceptOrRejectAdvertising, Web](https://github.com/transcend-io/consent-manager-ui/assets/10264973/7e36df8c-4752-4a2d-8616-c68d91ea1250)
+
+![ViewState = AcceptOrRejectAdvertising, Mobile](https://github.com/user-attachments/assets/5dabda6c-9c7c-4089-b47d-b0e9f5fd5de6)
 
 #### Button Mapping
 
@@ -240,7 +264,9 @@ A banner that handles opting in or out of the `Advertising` tag.
 
 **WARNING: In some jurisdictions this UI may be considered a dark pattern. Use at your own risk.** To learn more, head over to our blog post: [Demystifying dark patterns: A practical primer for CPRA compliance](https://transcend.io/blog/dark-patterns-cpra/).
 
-![ViewState = AcceptAll](https://user-images.githubusercontent.com/10264973/223242491-7bb813f4-86de-40b4-8283-08f8048b3444.png)
+![ViewState = AcceptAll, Web](https://user-images.githubusercontent.com/10264973/223242491-7bb813f4-86de-40b4-8283-08f8048b3444.png)
+
+![ViewState = AcceptAll, Mobile](https://github.com/user-attachments/assets/e19d2e88-b8e1-4d5f-ae5d-b0f668401feb)
 
 #### Button Mapping
 
@@ -254,7 +280,9 @@ A banner that handles opting in or out of the `Advertising` tag.
 
 **WARNING: In some jurisdictions this UI may be considered a dark pattern. Use at your own risk.** To learn more, head over to our blog post: [Demystifying dark patterns: A practical primer for CPRA compliance](https://transcend.io/blog/dark-patterns-cpra/).
 
-![ViewState = AcceptAllOrMoreChoices](https://user-images.githubusercontent.com/10264973/221736031-2526a3a0-153b-484d-9067-c1072017d974.png)
+![ViewState = AcceptAllOrMoreChoices, Web](https://user-images.githubusercontent.com/10264973/221736031-2526a3a0-153b-484d-9067-c1072017d974.png)
+
+![ViewState = AcceptAllOrMoreChoices, Mobile](https://github.com/user-attachments/assets/6a8ed143-07e2-4638-a661-8802c10d8967)
 
 #### Button Mapping
 
