@@ -14,6 +14,8 @@ You can also run the playground locally with
 yarn playground
 ```
 
+FIXME
+
 ## View States
 
 The default consent interface is built with flexibility to choose between different "view states". The following view states are supported:
