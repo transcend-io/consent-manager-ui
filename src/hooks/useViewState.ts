@@ -143,8 +143,8 @@ export function useViewState({
               savedActiveElement.focus();
             } else {
               const tempInteractiveEl = document.createElement('span');
-              tempInteractiveEl.setAttribute('tabindex', '1');
-              document.body.prepend(tempInteractiveEl);
+              tempInteractiveEl.tabIndex = 1;
+              document.documentElement.prepend(tempInteractiveEl);
               tempInteractiveEl.focus();
               tempInteractiveEl.remove();
             }
