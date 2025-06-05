@@ -21,21 +21,21 @@ exports[`CompleteOptions matches snapshot 1`] = `
             ><input
               class="toggle-input"
               type="checkbox"
-              id="essential-purposes"
-              name="Essential purposes"
+              id="essential"
+              name="Essential"
               disabled=""
-            /><span class="toggle-checkmark"></span>Essential purposes</label
+            /><span class="toggle-checkmark"></span>Essential</label
           ><label
             class="toggle-label"
-            aria-label="Click to disable collection of data for this purpose – functionality"
-            title="Click to disable collection of data for this purpose – functionality"
+            aria-label="Click to disable collection of data for this purpose – functional"
+            title="Click to disable collection of data for this purpose – functional"
             ><input
               class="toggle-input"
               type="checkbox"
-              id="functionality"
-              name="Functionality"
+              id="functional"
+              name="Functional"
               data-initialfocus="true"
-            /><span class="toggle-checkmark"></span>Functionality</label
+            /><span class="toggle-checkmark"></span>Functional</label
           ><label
             class="toggle-label"
             aria-label="Click to disable collection of data for this purpose – analytics"
@@ -58,15 +58,14 @@ exports[`CompleteOptions matches snapshot 1`] = `
             /><span class="toggle-checkmark"></span>Advertising</label
           ><label
             class="toggle-label"
-            aria-label="Click to disable collection of data for this purpose – sale of personal information"
-            title="Click to disable collection of data for this purpose – sale of personal information"
+            aria-label="Click to disable collection of data for this purpose – saleofinfo"
+            title="Click to disable collection of data for this purpose – saleofinfo"
             ><input
               class="toggle-input"
               type="checkbox"
-              id="sale-of-personal-information"
-              name="Sale of personal information"
-            /><span class="toggle-checkmark"></span>Sale of personal
-            information</label
+              id="saleofinfo"
+              name="SaleOfInfo"
+            /><span class="toggle-checkmark"></span>SaleOfInfo</label
           ><label
             class="toggle-label"
             aria-label="Click to disable collection of data for this purpose – custompurpose"
