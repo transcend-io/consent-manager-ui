@@ -1123,14 +1123,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@transcend-io/airgap.js-types@npm:^12.7.0":
-  version: 12.7.0
-  resolution: "@transcend-io/airgap.js-types@npm:12.7.0"
+"@transcend-io/airgap.js-types@npm:^12.11.2":
+  version: 12.11.2
+  resolution: "@transcend-io/airgap.js-types@npm:12.11.2"
   dependencies:
     "@transcend-io/type-utils": "npm:^1.2.0"
     fp-ts: "npm:^2.16.1"
     io-ts: "npm:^2.2.21"
-  checksum: 10/df8d244c633f0f205c0e2382aaea5da0d5d64fc45d6473bf33a7cccbfc880c0703324b7f37469692f7a4ad3b43d14187cfa9a814c51275d9729e527b815242d6
+  checksum: 10/b13da326dcb488da4325c746fd8183ca458997d0f29b86756d3473bab16a867d72a1fc0a5648fb100ac27e9ca130794c8571f573335d41c3dbc1039fed943309
   languageName: node
   linkType: hard
 
@@ -1155,7 +1155,7 @@ __metadata:
     "@prettier/sync": "npm:^0.5.2"
     "@testing-library/jest-dom": "npm:^6.4.6"
     "@testing-library/preact": "npm:^3.2.4"
-    "@transcend-io/airgap.js-types": "npm:^12.7.0"
+    "@transcend-io/airgap.js-types": "npm:^12.11.2"
     "@transcend-io/internationalization": "npm:^1.6.0"
     "@transcend-io/logger": "npm:^1.1.0"
     "@transcend-io/type-utils": "npm:^1.5.0"
