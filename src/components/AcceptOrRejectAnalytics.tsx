@@ -19,7 +19,7 @@ export function AcceptOrRejectAnalytics({
   /** Global UI view state variables */
   globalUiVariables: ObjByString;
 }): JSX.Element {
-  const { airgap } = useAirgap();
+  const { airgap, buildStrictAuth } = useAirgap();
   const { formatMessage } = useIntl();
 
   return (
@@ -58,7 +58,11 @@ export function AcceptOrRejectAnalytics({
           )}
           handleClick={(event) => {
             event.preventDefault();
-            airgap.setConsent(event, { Analytics: true }, CONSENT_OPTIONS);
+            airgap.setConsent(
+              buildStrictAuth({ auth: event }),
+              { Analytics: true },
+              CONSENT_OPTIONS,
+            );
             handleSetViewState('close');
           }}
         />
@@ -69,7 +73,11 @@ export function AcceptOrRejectAnalytics({
           )}
           handleClick={(event) => {
             event.preventDefault();
-            airgap.setConsent(event, { Analytics: false }, CONSENT_OPTIONS);
+            airgap.setConsent(
+              buildStrictAuth({ auth: event }),
+              { Analytics: false },
+              CONSENT_OPTIONS,
+            );
             handleSetViewState('close');
           }}
           initialFocus

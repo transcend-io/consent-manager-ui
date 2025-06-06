@@ -28,7 +28,7 @@ export function AcceptAllRejectAllToggle({
   /** Global variables to pass to message contents */
   globalUiVariables: ObjByString;
 }): JSX.Element {
-  const { airgap } = useAirgap();
+  const { airgap, buildStrictAuth } = useAirgap();
   const { formatMessage } = useIntl();
   const [saving, setSaving] = useState<boolean | null>(null);
   const [consentLocal, setConsentLocal] = useState(
@@ -42,10 +42,10 @@ export function AcceptAllRejectAllToggle({
   ): void => {
     if (checked) {
       event.preventDefault();
-      airgap.optIn(event);
+      airgap.optIn(buildStrictAuth({ auth: event }));
     } else {
       event.preventDefault();
-      airgap.optOut(event);
+      airgap.optOut(buildStrictAuth({ auth: event }));
     }
 
     setConsentLocal(checked);
@@ -119,8 +119,8 @@ export function AcceptAllRejectAllToggle({
                   saving
                     ? messages.saving
                     : consentLocal
-                    ? messages.preferencesSavedOptedIn
-                    : messages.preferencesSaved,
+                      ? messages.preferencesSavedOptedIn
+                      : messages.preferencesSaved,
                   globalUiVariables,
                 )
               : '\u200b'}

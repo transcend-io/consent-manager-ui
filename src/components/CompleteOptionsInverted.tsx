@@ -32,7 +32,7 @@ export function CompleteOptionsInverted({
   globalUiVariables: ObjByString;
 }): JSX.Element {
   const { formatMessage } = useIntl();
-  const { airgap } = useAirgap();
+  const { airgap, buildStrictAuth } = useAirgap();
 
   // Get the tracking purposes from Airgap for display
   const initialConsentSelections = getConsentSelections(airgap);
@@ -65,7 +65,11 @@ export function CompleteOptionsInverted({
     Object.entries(consentSelections).forEach(([purpose, isConsented]) => {
       newConsent.purposes[purpose] = isConsented;
     });
-    airgap.setConsent(event, newConsent.purposes, CONSENT_OPTIONS);
+    airgap.setConsent(
+      buildStrictAuth({ auth: event }),
+      newConsent.purposes,
+      CONSENT_OPTIONS,
+    );
     handleSetViewState('close');
   };
 
@@ -75,9 +79,9 @@ export function CompleteOptionsInverted({
     ORDER_OF_PURPOSES.indexOf(a) < 0 && ORDER_OF_PURPOSES.indexOf(b) > 0
       ? 1
       : ORDER_OF_PURPOSES.indexOf(b) < 0 && ORDER_OF_PURPOSES.indexOf(a) > 0
-      ? -1
-      : // order purposes based on order defined above
-        ORDER_OF_PURPOSES.indexOf(a) - ORDER_OF_PURPOSES.indexOf(b),
+        ? -1
+        : // order purposes based on order defined above
+          ORDER_OF_PURPOSES.indexOf(a) - ORDER_OF_PURPOSES.indexOf(b),
   );
 
   // Render description

@@ -26,7 +26,7 @@ export function CompleteOptions({
   globalUiVariables: ObjByString;
 }): JSX.Element {
   const { formatMessage } = useIntl();
-  const { airgap } = useAirgap();
+  const { airgap, buildStrictAuth } = useAirgap();
 
   // Get the tracking purposes from Airgap for display
   const initialConsentSelections = getConsentSelections(airgap);
@@ -59,7 +59,11 @@ export function CompleteOptions({
     Object.entries(consentSelections).forEach(([purpose, isChecked]) => {
       newConsent.purposes[purpose] = isChecked;
     });
-    airgap.setConsent(event, newConsent.purposes, CONSENT_OPTIONS);
+    airgap.setConsent(
+      buildStrictAuth({ auth: event }),
+      newConsent.purposes,
+      CONSENT_OPTIONS,
+    );
     handleSetViewState('close');
   };
 

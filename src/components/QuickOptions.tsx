@@ -30,7 +30,7 @@ export function QuickOptions({
   globalUiVariables: ObjByString;
 }): JSX.Element {
   const { formatMessage } = useIntl();
-  const { airgap } = useAirgap();
+  const { airgap, buildStrictAuth } = useAirgap();
 
   // Opt in to all purposes
   const handleQuickOption = (
@@ -57,7 +57,11 @@ export function QuickOptions({
         consentsBySelectedQuickOption[selectedQuickOption].includes(purpose);
     });
 
-    airgap.setConsent(event, newConsent.purposes, CONSENT_OPTIONS);
+    airgap.setConsent(
+      buildStrictAuth({ auth: event }),
+      newConsent.purposes,
+      CONSENT_OPTIONS,
+    );
     handleSetViewState('close');
   };
 

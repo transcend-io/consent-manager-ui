@@ -18,7 +18,7 @@ export function AcceptOrRejectAllOrMoreChoices({
   /** Global UI view state variables */
   globalUiVariables: ObjByString;
 }): JSX.Element {
-  const { airgap } = useAirgap();
+  const { airgap, buildStrictAuth } = useAirgap();
   const { formatMessage } = useIntl();
 
   // Opt in to all purposes
@@ -28,7 +28,7 @@ export function AcceptOrRejectAllOrMoreChoices({
     event: JSX.TargetedEvent<HTMLButtonElement, MouseEvent>,
   ): void => {
     event.preventDefault();
-    airgap.optIn(event);
+    airgap.optIn(buildStrictAuth({ auth: event }));
     handleSetViewState('close');
   };
 
@@ -39,7 +39,7 @@ export function AcceptOrRejectAllOrMoreChoices({
     event: JSX.TargetedEvent<HTMLButtonElement, MouseEvent>,
   ): void => {
     event.preventDefault();
-    airgap.optOut(event);
+    airgap.optOut(buildStrictAuth({ auth: event }));
     handleSetViewState('close');
   };
 

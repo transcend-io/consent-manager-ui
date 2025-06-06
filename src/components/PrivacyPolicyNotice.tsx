@@ -19,7 +19,7 @@ export function PrivacyPolicyNotice({
   /** Global UI view state variables */
   globalUiVariables: ObjByString;
 }): JSX.Element {
-  const { airgap } = useAirgap();
+  const { airgap, buildStrictAuth } = useAirgap();
   const { formatMessage } = useIntl();
 
   // Opt in to all purposes
@@ -29,7 +29,7 @@ export function PrivacyPolicyNotice({
     event: JSX.TargetedEvent<HTMLButtonElement, MouseEvent>,
   ): void => {
     event.preventDefault();
-    airgap.setConsent(event, {}, CONSENT_OPTIONS);
+    airgap.setConsent(buildStrictAuth({ auth: event }), {}, CONSENT_OPTIONS);
     handleSetViewState('close');
   };
 
