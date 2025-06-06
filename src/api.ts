@@ -9,6 +9,7 @@ import { logger } from './logger';
 import { PRIVACY_SIGNAL_NAME } from './privacy-signals';
 import { LOG_LEVELS, settings } from './settings';
 import {
+  HandleSetAuth,
   HandleSetLanguage,
   HandleChangePrivacyPolicy,
   HandleSetViewState,
@@ -28,6 +29,8 @@ interface MakeConsentManagerAPIInput {
   activeLocale: ConsentManagerLanguageKey;
   /** The current dynamic variables */
   currentVariables: ObjByString;
+  /** Method to handle setting auth */
+  handleSetAuth: HandleSetAuth;
   /** Method to handle changes to UI global variables */
   handleChangeUiVariables: HandleChangeUiVariables;
   /** Method to change language */
@@ -55,6 +58,7 @@ export function makeConsentManagerAPI({
   viewState,
   activeLocale,
   currentVariables,
+  handleSetAuth,
   handleChangeLanguage,
   handleChangeUiVariables,
   handleChangePrivacyPolicy,
@@ -63,6 +67,7 @@ export function makeConsentManagerAPI({
   airgap,
 }: MakeConsentManagerAPIInput): ConsentManagerAPI {
   const consentManagerMethods: Omit<ConsentManagerAPI, keyof EventTarget> = {
+    setAuth: handleSetAuth,
     setUiVariables: (variables) =>
       Promise.resolve(handleChangeUiVariables(variables)),
     getUiVariables: () => currentVariables,
@@ -75,7 +80,6 @@ export function makeConsentManagerAPI({
           currentVariables,
         ),
       ),
-
     setPrivacyPolicy: (privacyPolicyLink) =>
       Promise.resolve(handleChangePrivacyPolicy(privacyPolicyLink)),
     setSecondaryPolicy: (privacyPolicyLink) =>
