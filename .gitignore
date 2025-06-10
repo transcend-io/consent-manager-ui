@@ -1,5 +1,6 @@
 tsc-build/
 build/
+.yarn/
 
 # Secrets
 *.env.secret
@@ -282,3 +283,4 @@ serverless-build/
 # Webpack
 **/.webpack/
 .caches
+.yarn/cache/anymatch-npm-1.3.2-a0b3155e35-b197f2adb8.zip
