@@ -20,7 +20,7 @@ interface TConfigContext {
   }: {
     /** Potentially non-strict auth */
     auth: AirgapAuth;
-  }) => AirgapAuthMap | null;
+  }) => AirgapAuth;
 }
 
 export const AirgapContext = createContext<TConfigContext>(
@@ -48,7 +48,7 @@ export const AirgapProvider = ({
       }
 
       if (auth instanceof Event) {
-        return { interaction: auth, load: auth, key: authKey };
+        return { ...auth, interaction: auth, key: authKey };
       }
 
       return { ...auth, key: authKey };
