@@ -132,6 +132,7 @@ export function App({
             airgap={airgap}
             modalOpenAuth={auth}
             viewState={viewState}
+            moreChoicesViewState={config.moreChoices}
             config={config}
             supportedLanguages={supportedLanguages}
             firstSelectedViewState={firstSelectedViewState}

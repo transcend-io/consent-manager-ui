@@ -65,8 +65,10 @@ const baseConfig: Omit<
     tablet: '640px',
     desktop: '1024px',
   },
+  moreChoices: 'CompleteOptions',
   initialViewStateByPrivacyRegime: DEFAULT_VIEW_STATE_BY_PRIVACY_REGIME_COPIED,
-};
+  // FIXME
+} as any;
 
 /**
  * Merges config from defaults and settings. JSON is automatically decoded.
@@ -98,6 +100,8 @@ export function getMergedConfig(): MergedConsentManagerConfig {
   config.secondaryPolicy ??= secondaryPolicy;
   config.dismissedViewState ??= dismissedViewState;
   config.languages ??= languages;
+  // FIXME
+  (config as any).moreChoices ??= 'CompleteOptions';
   if (typeof config.initialViewStateByPrivacyRegime === 'string') {
     config.initialViewStateByPrivacyRegime = JSON.parse(
       config.initialViewStateByPrivacyRegime,
