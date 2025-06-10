@@ -47,11 +47,14 @@ export const AirgapProvider = ({
         return auth;
       }
 
-      if (auth instanceof Event) {
-        return { ...auth, interaction: auth, key: authKey };
-      }
+      /* eslint-disable no-param-reassign */
+      /* eslint-disable @typescript-eslint/no-explicit-any */
+      (auth as any).key = authKey;
+      (auth as any).interaction = auth;
+      /* eslint-enable no-param-reassign */
+      /* eslint-enable @typescript-eslint/no-explicit-any */
 
-      return { ...auth, key: authKey };
+      return auth;
     },
     [authKey],
   );
