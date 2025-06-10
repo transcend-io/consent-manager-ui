@@ -2,6 +2,7 @@ import type {
   TrackingPurpose,
   ViewState,
   AirgapAuth,
+  AirgapAuthMap,
   ConsentManagerConfig,
 } from '@transcend-io/airgap.js-types';
 import { ConsentManagerLanguageKey } from '@transcend-io/internationalization';
@@ -55,6 +56,11 @@ export type HandleSetViewState = (
   auth?: AirgapAuth,
   resetFirstSelectedViewState?: boolean,
 ) => void;
+
+/**
+ * Handler for setting auth
+ */
+export type HandleSetAuth = (key: AirgapAuthMap['key']) => void;
 
 /**
  * Handler for setting user language

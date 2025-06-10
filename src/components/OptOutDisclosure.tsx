@@ -26,14 +26,14 @@ export function OptOutDisclosure({
   /** Global UI view state variables */
   globalUiVariables: ObjByString;
 }): JSX.Element {
-  const { airgap } = useAirgap();
+  const { airgap, buildStrictAuth } = useAirgap();
   const { formatMessage } = useIntl();
 
   // don't render success unless opt out occurs
   const [isOptedOut, setIsOptedOut] = useState(false);
 
   const handleOptOut = (event: AirgapAuth): void => {
-    airgap.optOut(event);
+    airgap.optOut(buildStrictAuth({ auth: event }));
   };
 
   const handleConfirm = (): void => {

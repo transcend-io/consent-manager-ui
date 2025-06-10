@@ -23,7 +23,7 @@ export function PrivacyPolicyNoticeWithCloseButton({
   /** Global UI view state variables */
   globalUiVariables: ObjByString;
 }): JSX.Element {
-  const { airgap } = useAirgap();
+  const { airgap, buildStrictAuth } = useAirgap();
   const { formatMessage } = useIntl();
 
   return (
@@ -31,7 +31,11 @@ export function PrivacyPolicyNoticeWithCloseButton({
       <CloseButton
         onClick={(event) => {
           event.preventDefault();
-          airgap.setConsent(event, {}, CONSENT_OPTIONS);
+          airgap.setConsent(
+            buildStrictAuth({ auth: event }),
+            {},
+            CONSENT_OPTIONS,
+          );
           handleSetViewState('close');
         }}
         globalUiVariables={globalUiVariables}

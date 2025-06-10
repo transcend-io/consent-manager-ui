@@ -2,6 +2,7 @@ import { h, JSX } from 'preact';
 import { IntlProvider as _IntlProvider } from 'react-intl';
 import type {
   AirgapAPI,
+  AirgapAuthMap,
   ConsentManagerAPI,
 } from '@transcend-io/airgap.js-types';
 import { AirgapProvider, useLanguage, useViewState } from '../hooks';
@@ -82,9 +83,12 @@ export function App({
         settings.messages || config.messages || './translations',
     });
 
+  const [airgapAuthKey, setAirgapAuthKey] = useState<AirgapAuthMap['key']>();
+
   // Create the `transcend` API
   const consentManagerAPI = makeConsentManagerAPI({
     eventTarget,
+    handleSetAuth: (key) => setAirgapAuthKey(key),
     viewState,
     currentVariables,
     handleChangeUiVariables,
@@ -120,7 +124,7 @@ export function App({
       // messages.ts are translated in english
       defaultLocale={ConsentManagerLanguageKey.En}
     >
-      <AirgapProvider newAirgap={airgap}>
+      <AirgapProvider newAirgap={airgap} authKey={airgapAuthKey}>
         {/** Ensure messages are loaded before any UI is displayed */}
         {messages ? (
           <Main

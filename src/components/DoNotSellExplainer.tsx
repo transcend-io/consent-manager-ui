@@ -29,7 +29,7 @@ export function DoNotSellExplainer({
   /** Global UI view state variables */
   globalUiVariables: ObjByString;
 }): JSX.Element {
-  const { airgap } = useAirgap();
+  const { airgap, buildStrictAuth } = useAirgap();
   const { formatMessage } = useIntl();
   const [saving, setSaving] = useState<boolean | null>(null);
   const [consentLocal, setConsentLocal] = useState(
@@ -40,7 +40,11 @@ export function DoNotSellExplainer({
     checked: boolean,
     event: JSX.TargetedEvent<HTMLInputElement, Event>,
   ): void => {
-    airgap.setConsent(event, { SaleOfInfo: checked }, CONSENT_OPTIONS);
+    airgap.setConsent(
+      buildStrictAuth({ auth: event }),
+      { SaleOfInfo: checked },
+      CONSENT_OPTIONS,
+    );
     setConsentLocal(checked);
     setSaving(true);
 
@@ -113,8 +117,8 @@ export function DoNotSellExplainer({
                   saving
                     ? messages.saving
                     : consentLocal
-                    ? messages.preferencesSavedOptedIn
-                    : messages.preferencesSaved,
+                      ? messages.preferencesSavedOptedIn
+                      : messages.preferencesSaved,
                   globalUiVariables,
                 )
               : '\u200b'}

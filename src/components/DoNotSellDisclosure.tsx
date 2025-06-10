@@ -24,7 +24,7 @@ export function DoNotSellDisclosure({
   /** Global UI view state variables */
   globalUiVariables: ObjByString;
 }): JSX.Element {
-  const { airgap } = useAirgap();
+  const { airgap, buildStrictAuth } = useAirgap();
   const { formatMessage } = useIntl();
 
   // don't render success unless opt out occurs
@@ -32,7 +32,11 @@ export function DoNotSellDisclosure({
 
   const handleOptOut = (event: AirgapAuth): void => {
     // Confirm current consent
-    airgap.setConsent(event, { SaleOfInfo: false }, CONSENT_OPTIONS);
+    airgap.setConsent(
+      buildStrictAuth({ auth: event }),
+      { SaleOfInfo: false },
+      CONSENT_OPTIONS,
+    );
   };
 
   const handleConfirm = (): void => {

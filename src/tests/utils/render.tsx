@@ -29,7 +29,10 @@ const wrapper = ({ children }: RenderWrapperProps): ComponentChild => {
     >
       {
         (
-          <AirgapProvider newAirgap={window.airgap as AirgapAPI}>
+          <AirgapProvider
+            newAirgap={window.airgap as AirgapAPI}
+            authKey={undefined}
+          >
             {children}
           </AirgapProvider> // eslint-disable-next-line @typescript-eslint/no-explicit-any
         ) as any

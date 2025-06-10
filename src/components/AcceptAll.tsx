@@ -18,7 +18,7 @@ export function AcceptAll({
   /** Function to change viewState */
   handleSetViewState: HandleSetViewState;
 }): JSX.Element {
-  const { airgap } = useAirgap();
+  const { airgap, buildStrictAuth } = useAirgap();
   const { formatMessage } = useIntl();
 
   // Opt in to all purposes
@@ -28,7 +28,7 @@ export function AcceptAll({
     event: JSX.TargetedEvent<HTMLButtonElement, MouseEvent>,
   ): void => {
     event.preventDefault();
-    airgap.optIn(event);
+    airgap.optIn(buildStrictAuth({ auth: event }));
     handleSetViewState('close');
   };
 

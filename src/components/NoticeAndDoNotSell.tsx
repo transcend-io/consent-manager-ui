@@ -19,7 +19,7 @@ export function NoticeAndDoNotSell({
   /** Global UI view state variables */
   globalUiVariables: ObjByString;
 }): JSX.Element {
-  const { airgap } = useAirgap();
+  const { airgap, buildStrictAuth } = useAirgap();
   const { formatMessage } = useIntl();
 
   const handleConfirm: JSX.MouseEventHandler<HTMLButtonElement> | undefined = (
@@ -27,7 +27,11 @@ export function NoticeAndDoNotSell({
   ): void => {
     event.preventDefault();
     // Confirm current consent
-    airgap.setConsent(event, airgap.getConsent().purposes, CONSENT_OPTIONS);
+    airgap.setConsent(
+      buildStrictAuth({ auth: event }),
+      airgap.getConsent().purposes,
+      CONSENT_OPTIONS,
+    );
     handleSetViewState('close');
   };
 

@@ -19,7 +19,7 @@ export function AcceptOrRejectAdvertising({
   /** Global UI variables to pass to messages */
   globalUiVariables: ObjByString;
 }): JSX.Element {
-  const { airgap } = useAirgap();
+  const { airgap, buildStrictAuth } = useAirgap();
   const { formatMessage } = useIntl();
 
   return (
@@ -58,7 +58,11 @@ export function AcceptOrRejectAdvertising({
           )}
           handleClick={(event) => {
             event.preventDefault();
-            airgap.setConsent(event, { Advertising: true }, CONSENT_OPTIONS);
+            airgap.setConsent(
+              buildStrictAuth({ auth: event }),
+              { Advertising: true },
+              CONSENT_OPTIONS,
+            );
             handleSetViewState('close');
           }}
         />
@@ -69,7 +73,11 @@ export function AcceptOrRejectAdvertising({
           )}
           handleClick={(event) => {
             event.preventDefault();
-            airgap.setConsent(event, { Advertising: false }, CONSENT_OPTIONS);
+            airgap.setConsent(
+              buildStrictAuth({ auth: event }),
+              { Advertising: false },
+              CONSENT_OPTIONS,
+            );
             handleSetViewState('close');
           }}
           initialFocus

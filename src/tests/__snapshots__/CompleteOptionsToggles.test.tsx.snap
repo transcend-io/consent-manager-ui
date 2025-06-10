@@ -43,9 +43,9 @@ exports[`CompleteOptionsToggles matches snapshot 1`] = `
               id="switch-Essential-true"
               type="checkbox"
               disabled=""
-            /><span class="switch switch-background"
+            /><span class="switch switch-background switch-disabled"
               ><span class="switch switch-button"></span></span
-            >Essential purposes</label
+            >Essential</label
           >
           <p class="paragraph complete-options-toggle-description">
             No consent needed.
@@ -59,7 +59,7 @@ exports[`CompleteOptionsToggles matches snapshot 1`] = `
               data-initialfocus="true"
             /><span class="switch switch-background"
               ><span class="switch switch-button"></span></span
-            >Functionality</label
+            >Functional</label
           >
           <p class="paragraph complete-options-toggle-description">
             Personalization, autofilled forms, etc.
@@ -98,7 +98,7 @@ exports[`CompleteOptionsToggles matches snapshot 1`] = `
               type="checkbox"
             /><span class="switch switch-background"
               ><span class="switch switch-button"></span></span
-            >Sale of personal information</label
+            >SaleOfInfo</label
           >
           <p class="paragraph complete-options-toggle-description">
             Sale of personal information.
