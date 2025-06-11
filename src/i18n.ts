@@ -1,92 +1,91 @@
-import { ConsentManagerLanguageKey } from '@transcend-io/internationalization';
-
-export const CONSENT_MANAGER_SUPPORTED_LANGUAGES = Object.values(
-  ConsentManagerLanguageKey,
-);
+import {
+  ConsentManagerSupportedTranslationValue,
+  CONSENT_MANAGER_SUPPORTED_LOCALES
+} from '@transcend-io/internationalization';
 
 /**
  * Languages names, written in their native language
  * Omits some unnecessarily specific or duplicate languages
  */
 export const selectableLanguages: {
-  [key in ConsentManagerLanguageKey]: string;
+  [key in ConsentManagerSupportedTranslationValue]: string;
 } = {
   /* English */
-  [ConsentManagerLanguageKey.En]: 'English',
+  [CONSENT_MANAGER_SUPPORTED_LOCALES.En]: 'English',
   /* French */
-  [ConsentManagerLanguageKey.FrFr]: 'Français',
+  [CONSENT_MANAGER_SUPPORTED_LOCALES.FrFr]: 'Français',
   /* German */
-  [ConsentManagerLanguageKey.DeDe]: 'Deutsch',
+  [CONSENT_MANAGER_SUPPORTED_LOCALES.DeDe]: 'Deutsch',
   /* Italian */
-  [ConsentManagerLanguageKey.ItIt]: 'Italiano',
+  [CONSENT_MANAGER_SUPPORTED_LOCALES.ItIt]: 'Italiano',
   /* Portuguese (Brazil) */
-  [ConsentManagerLanguageKey.PtBr]: 'Português',
+  [CONSENT_MANAGER_SUPPORTED_LOCALES.PtBr]: 'Português',
   /* Spanish (Latin America & Caribbean) */
-  [ConsentManagerLanguageKey.Es419]: 'Español',
+  [CONSENT_MANAGER_SUPPORTED_LOCALES.Es419]: 'Español',
   /* Spanish (Castilian) */
-  [ConsentManagerLanguageKey.EsEs]: 'Español (Castellano)',
+  [CONSENT_MANAGER_SUPPORTED_LOCALES.EsEs]: 'Español (Castellano)',
   /* Czech */
-  [ConsentManagerLanguageKey.CsCz]: 'Čeština',
+  [CONSENT_MANAGER_SUPPORTED_LOCALES.CsCz]: 'Čeština',
   /* Danish */
-  [ConsentManagerLanguageKey.DaDk]: 'Dansk',
+  [CONSENT_MANAGER_SUPPORTED_LOCALES.DaDk]: 'Dansk',
   /* Finnish */
-  [ConsentManagerLanguageKey.FiFi]: 'Suomi',
+  [CONSENT_MANAGER_SUPPORTED_LOCALES.FiFi]: 'Suomi',
   /* Greek */
-  [ConsentManagerLanguageKey.ElGr]: 'ελληνικά',
+  [CONSENT_MANAGER_SUPPORTED_LOCALES.ElGr]: 'ελληνικά',
   /* Lithuanian */
-  [ConsentManagerLanguageKey.LtLt]: 'Lietuvių',
+  [CONSENT_MANAGER_SUPPORTED_LOCALES.LtLt]: 'Lietuvių',
   /* Norwegian Bokmål */
-  [ConsentManagerLanguageKey.NbNi]: 'Bokmål',
+  [CONSENT_MANAGER_SUPPORTED_LOCALES.NbNi]: 'Bokmål',
   /* Polish */
-  [ConsentManagerLanguageKey.PlPl]: 'Polski',
+  [CONSENT_MANAGER_SUPPORTED_LOCALES.PlPl]: 'Polski',
   /* Romanian */
-  [ConsentManagerLanguageKey.RoRo]: 'Română',
+  [CONSENT_MANAGER_SUPPORTED_LOCALES.RoRo]: 'Română',
   /* Russian */
-  [ConsentManagerLanguageKey.RuRu]: 'Русский язык',
+  [CONSENT_MANAGER_SUPPORTED_LOCALES.RuRu]: 'Русский язык',
   /* Latn-Serbian (Latin) */
-  [ConsentManagerLanguageKey.SrLatnRs]: 'Srpski',
+  [CONSENT_MANAGER_SUPPORTED_LOCALES.SrLatnRs]: 'Srpski',
   /* Swedish */
-  [ConsentManagerLanguageKey.SvSe]: 'Svenska',
+  [CONSENT_MANAGER_SUPPORTED_LOCALES.SvSe]: 'Svenska',
   /* Arabic */
-  [ConsentManagerLanguageKey.ArAe]: 'العربية',
+  [CONSENT_MANAGER_SUPPORTED_LOCALES.ArAe]: 'العربية',
   /* Japanese */
-  [ConsentManagerLanguageKey.JaJp]: '日本語',
+  [CONSENT_MANAGER_SUPPORTED_LOCALES.JaJp]: '日本語',
   /* Korean */
-  [ConsentManagerLanguageKey.KoKr]: '한국어',
+  [CONSENT_MANAGER_SUPPORTED_LOCALES.KoKr]: '한국어',
   /* Chinese Simplified */
-  [ConsentManagerLanguageKey.ZhCn]: '汉语',
+  [CONSENT_MANAGER_SUPPORTED_LOCALES.ZhCn]: '汉语',
   /* Chinese (Traditional) */
-  [ConsentManagerLanguageKey.ZhHk]: '漢語',
+  [CONSENT_MANAGER_SUPPORTED_LOCALES.ZhHk]: '漢語',
   /* Russian */
-  [ConsentManagerLanguageKey.RuRu]: 'Русский язык',
+  [CONSENT_MANAGER_SUPPORTED_LOCALES.RuRu]: 'Русский язык',
   /* Afrikaans */
-  [ConsentManagerLanguageKey.AfZz]: 'Afrikaans',
+  [CONSENT_MANAGER_SUPPORTED_LOCALES.AfZz]: 'Afrikaans',
   /* Bulgarian */
-  [ConsentManagerLanguageKey.BgBg]: 'български',
+  [CONSENT_MANAGER_SUPPORTED_LOCALES.BgBg]: 'български',
   /* Croatian */
-  [ConsentManagerLanguageKey.HrHr]: 'Hrvatski',
+  [CONSENT_MANAGER_SUPPORTED_LOCALES.HrHr]: 'Hrvatski',
   /* Hungarian */
-  [ConsentManagerLanguageKey.HuHu]: 'Magyar',
+  [CONSENT_MANAGER_SUPPORTED_LOCALES.HuHu]: 'Magyar',
   /* Indonesian */
-  [ConsentManagerLanguageKey.IdId]: 'Bahasa Indonesia',
+  [CONSENT_MANAGER_SUPPORTED_LOCALES.IdId]: 'Bahasa Indonesia',
   /* Malay */
-  [ConsentManagerLanguageKey.MsMy]: 'Bahasa Melayu',
+  [CONSENT_MANAGER_SUPPORTED_LOCALES.MsMy]: 'Bahasa Melayu',
   /* Hindi */
-  [ConsentManagerLanguageKey.HiIn]: 'हिन्दी',
+  [CONSENT_MANAGER_SUPPORTED_LOCALES.HiIn]: 'हिन्दी',
   /* Marathi */
-  [ConsentManagerLanguageKey.MrIn]: 'मराठी',
+  [CONSENT_MANAGER_SUPPORTED_LOCALES.MrIn]: 'मराठी',
   /* Tamil */
-  [ConsentManagerLanguageKey.TaIn]: 'தமிழ்',
+  [CONSENT_MANAGER_SUPPORTED_LOCALES.TaIn]: 'தமிழ்',
   /* Thai */
-  [ConsentManagerLanguageKey.ThTh]: 'ภาษาไทย',
+  [CONSENT_MANAGER_SUPPORTED_LOCALES.ThTh]: 'ภาษาไทย',
   /* Turkish */
-  [ConsentManagerLanguageKey.TrTr]: 'Türkçe',
+  [CONSENT_MANAGER_SUPPORTED_LOCALES.TrTr]: 'Türkçe',
   /* Ukrainian */
-  [ConsentManagerLanguageKey.UkUa]: 'українська мова',
+  [CONSENT_MANAGER_SUPPORTED_LOCALES.UkUa]: 'українська мова',
   /* Vietnamese */
-  [ConsentManagerLanguageKey.ViVn]: 'Tiếng Việt',
+  [CONSENT_MANAGER_SUPPORTED_LOCALES.ViVn]: 'Tiếng Việt',
   /* Dutch */
-  [ConsentManagerLanguageKey.NlNl]: 'Nederlands',
+  [CONSENT_MANAGER_SUPPORTED_LOCALES.NlNl]: 'Nederlands',
   /* Hebrew */
-  [ConsentManagerLanguageKey.HeIl]: 'עברית',
+  [CONSENT_MANAGER_SUPPORTED_LOCALES.HeIl]: 'עברית',
 };

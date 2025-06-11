@@ -1156,7 +1156,7 @@ __metadata:
     "@testing-library/jest-dom": "npm:^6.4.6"
     "@testing-library/preact": "npm:^3.2.4"
     "@transcend-io/airgap.js-types": "npm:^12.11.2"
-    "@transcend-io/internationalization": "npm:^1.6.0"
+    "@transcend-io/internationalization": "npm:^1.7.1"
     "@transcend-io/logger": "npm:^1.1.0"
     "@transcend-io/type-utils": "npm:^1.5.0"
     "@types/jest": "npm:^29.5.12"
@@ -1195,10 +1195,10 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@transcend-io/internationalization@npm:^1.6.0":
-  version: 1.6.0
-  resolution: "@transcend-io/internationalization@npm:1.6.0"
-  checksum: 10/33d42b8e7b28be22326d3fe580b7bca438672c4fbd8735c05aae5852637c198b7e6e020f0454e54597afc4a575e1378b2c7b16179392d19959fa851235ea87fc
+"@transcend-io/internationalization@npm:^1.7.1":
+  version: 1.7.1
+  resolution: "@transcend-io/internationalization@npm:1.7.1"
+  checksum: 10/651d02d684fc7f1573a8aa5c8dfec88cc2dbb890c0d1c8780d3a2f921180a6faddc5e3dd5df0234536e84bbde334b0c4d864b0f76c70c9e5fb6bb5d3d65fae3a
   languageName: node
   linkType: hard
 

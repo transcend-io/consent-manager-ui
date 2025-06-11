@@ -3,7 +3,7 @@ import type { AirgapAuth, ViewState } from '@transcend-io/airgap.js-types';
 import { useIntl } from 'react-intl';
 import type { HandleSetViewState } from '../types';
 import { messages } from '../messages';
-import { ConsentManagerLanguageKey } from '@transcend-io/internationalization';
+import { ConsentManagerSupportedTranslationValue } from '@transcend-io/internationalization';
 import { ObjByString } from '@transcend-io/type-utils';
 
 /**
@@ -28,7 +28,7 @@ export function LanguageButton({
    * The list of enabled languages - when not specified, all languages are shown.
    * When specified with length = 0 | 1, no button is shown
    */
-  supportedLanguages?: ConsentManagerLanguageKey[];
+  supportedLanguages?: ConsentManagerSupportedTranslationValue[];
 }): JSX.Element {
   const { formatMessage } = useIntl();
   const onLanguageOptions = viewState === 'LanguageOptions';

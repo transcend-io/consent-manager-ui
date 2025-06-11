@@ -1,6 +1,6 @@
 import { h, JSX } from 'preact';
-import { ConsentManagerLanguageKey } from '@transcend-io/internationalization';
-import { sortSupportedLanguagesByPreference } from '../hooks';
+import { ConsentManagerSupportedTranslationValue } from '@transcend-io/internationalization';
+import { sortSupportedLocalesByPreference } from '../utils';
 import { selectableLanguages } from '../i18n';
 import type { HandleSetViewState } from '../types';
 import { MenuItem } from './MenuItem';
@@ -16,11 +16,11 @@ export function LanguageOptions({
   supportedLanguages,
 }: {
   /** Handler to change the language selection */
-  handleChangeLanguage: (language: ConsentManagerLanguageKey) => void;
+  handleChangeLanguage: (language: ConsentManagerSupportedTranslationValue) => void;
   /** Function to change viewState */
   handleSetViewState: HandleSetViewState;
   /** Supported consent manager languages */
-  supportedLanguages: ConsentManagerLanguageKey[];
+  supportedLanguages: ConsentManagerSupportedTranslationValue[];
 }): JSX.Element {
   /**
    * Handler for language button click - selects language
@@ -28,7 +28,7 @@ export function LanguageOptions({
    * @param language - The language selected
    */
   function handleClick(
-    language: ConsentManagerLanguageKey,
+    language: ConsentManagerSupportedTranslationValue,
     e: AirgapAuth,
   ): void {
     handleChangeLanguage(language);
@@ -37,7 +37,7 @@ export function LanguageOptions({
 
   // Selectable translations
   const availableTranslations = useMemo(
-    () => sortSupportedLanguagesByPreference(supportedLanguages),
+    () => sortSupportedLocalesByPreference(supportedLanguages),
     [supportedLanguages],
   );
 

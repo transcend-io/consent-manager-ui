@@ -1,148 +1,23 @@
 import { useCallback, useEffect, useState } from 'preact/hooks';
 import {
-  ConsentManagerLanguageKey,
-  LanguageKey,
+  ConsentManagerSupportedTranslationValue,
+  LocaleValue,
+  LOCALE_KEY,
+  LOCALE_TRANSLATION_MAP,
   TranslatedMessages,
   Translations,
 } from '@transcend-io/internationalization';
 import { settings } from '../settings';
-import { substituteHtml } from '../utils/substitute-html';
+import { getUserLocales, substituteHtml } from '../utils';
 import { invertSafe } from '@transcend-io/type-utils';
 
 export const loadedTranslations: Translations = Object.create(null);
 
-/**
- * Mapping of browser locale to AWS base translation key
- *
- * TODO: https://transcend.height.app/T-39777
- * This is here for a quick fix of our CM UI translation logic. Copied from the monorepo's extract_intl.ts
- * This should be removed ASAP (it should be in the intl repo and imported, not in here or extract_intl.ts)
- */
-export const TRANSLATE_LOCALE = {
-  [LanguageKey.EsEs]: 'es',
-  [LanguageKey.NlNl]: 'nl',
-  [LanguageKey.NlBe]: 'nl',
-  [LanguageKey.Es419]: 'es-MX',
-  // This is a hack to fix the fact that we don't have a LanguageKey -> BrowserLanguageKey mapping
-  'es-MX': 'es-MX',
-  [LanguageKey.ZhHk]: 'zh-TW',
-  [LanguageKey.AfZz]: 'af',
-  [LanguageKey.Ar]: 'ar',
-  [LanguageKey.En]: 'en',
-  [LanguageKey.Fr]: 'fr',
-  [LanguageKey.Es]: 'es',
-  [LanguageKey.De]: 'de',
-  [LanguageKey.It]: 'it',
-  [LanguageKey.Ja]: 'ja',
-  [LanguageKey.Ru]: 'ru',
-  [LanguageKey.ArAe]: 'ar',
-  [LanguageKey.FrFr]: 'fr',
-  [LanguageKey.DeDe]: 'de',
-  [LanguageKey.ItIt]: 'it',
-  [LanguageKey.BgBg]: 'bg',
-  [LanguageKey.ZhCn]: 'zh',
-  [LanguageKey.HrHr]: 'hr',
-  [LanguageKey.CsCz]: 'cs',
-  [LanguageKey.DaDk]: 'da',
-  [LanguageKey.EnGb]: 'en',
-  [LanguageKey.FiFi]: 'fi',
-  [LanguageKey.ElGr]: 'el',
-  [LanguageKey.HiIn]: 'hi',
-  [LanguageKey.HuHu]: 'hu',
-  [LanguageKey.IdId]: 'id',
-  [LanguageKey.JaJp]: 'ja',
-  [LanguageKey.KoKr]: 'ko',
-  [LanguageKey.LtLt]: 'lt',
-  [LanguageKey.MsMy]: 'ms',
-  [LanguageKey.NbNi]: 'no',
-  [LanguageKey.PlPl]: 'pl',
-  [LanguageKey.PtBr]: 'pt',
-  [LanguageKey.PtPt]: 'pt',
-  [LanguageKey.RoRo]: 'ro',
-  [LanguageKey.RuRu]: 'ru',
-  [LanguageKey.SrLatnRs]: 'sr',
-  [LanguageKey.SvSe]: 'sv',
-  [LanguageKey.TaIn]: 'ta',
-  [LanguageKey.ThTh]: 'th',
-  [LanguageKey.TrTr]: 'tr',
-  [LanguageKey.UkUa]: 'uk',
-  [LanguageKey.ViVn]: 'vi',
-  [LanguageKey.EnUS]: 'en',
-  [LanguageKey.EnAu]: 'en',
-  [LanguageKey.FrBe]: 'fr',
-  [LanguageKey.EnIe]: 'en',
-  [LanguageKey.EnCa]: 'en',
-  [LanguageKey.EnAe]: 'en',
-  [LanguageKey.DeAt]: 'de',
-  [LanguageKey.DeCh]: 'de',
-  [LanguageKey.ItCh]: 'it',
-  [LanguageKey.FrCh]: 'fr',
-  [LanguageKey.HeIl]: 'he',
-  [LanguageKey.EnNz]: 'en',
-  [LanguageKey.EtEe]: 'et',
-  [LanguageKey.IsIs]: 'is',
-  [LanguageKey.LvLv]: 'lv',
-  [LanguageKey.MtMt]: 'mt',
-  [LanguageKey.SkSk]: 'sk',
-  [LanguageKey.SlSl]: 'sl',
-  [LanguageKey.MrIn]: 'mr',
-  [LanguageKey.ZuZa]: 'en',
-} as unknown as { [k in LanguageKey]: string };
+/** Mapping of AWS base translation keys to list of Transcend locales that should use them */
+export const INVERTED_TRANSLATE_LOCALE = invertSafe(LOCALE_TRANSLATION_MAP);
 
-/** Mapping of AWS base translation keys to list of browser locales that should use them */
-export const INVERTED_TRANSLATE_LOCALE = invertSafe(TRANSLATE_LOCALE);
-
-const getDuplicativeLocalizations = (lang: LanguageKey): LanguageKey[] =>
-  INVERTED_TRANSLATE_LOCALE[TRANSLATE_LOCALE[lang]];
-
-/**
- * Detect user-preferred languages from the user agent
- *
- * @returns an ordered list of preferred languages in BCP47 format
- */
-export function getUserLanguages(): readonly string[] {
-  return navigator.languages && navigator.languages.length
-    ? navigator.languages
-    : [navigator.language];
-}
-
-/**
- * Get all potential sub-languages from a given ISO 639-1 or BCP47 language code
- *
- * @param langCode - ISO 639-1 or BCP47 format language code
- * @returns Array of potential sub-languages, sorted by most to least specific
- */
-const getAllSubLanguages = (langCode: ConsentManagerLanguageKey): string[] =>
-  langCode
-    .toLowerCase()
-    .split('-')
-    .flatMap((_, i, tags) => tags.slice(0, i + 1).join('-'))
-    .reverse();
-
-/**
- * Match preferred language list against a supported languages list
- *
- * @param preferred - Sorted language list in order of most preferable to least preferable
- * @param supported - List of supported languages to match from
- * @returns Preferred languages (including sub-language matches) that match supported languages list
- */
-export const matchLanguages = (
-  preferred: ConsentManagerLanguageKey[],
-  supported: ConsentManagerLanguageKey[],
-): string[] => {
-  const matches = new Set<string>();
-  const allSupportedLanguages = supported.flatMap(getAllSubLanguages);
-  return preferred.flatMap(getAllSubLanguages).filter((language) => {
-    if (!allSupportedLanguages.includes(language)) {
-      return false;
-    }
-    const unique = !matches.has(language);
-    if (unique) {
-      matches.add(language);
-    }
-    return unique;
-  });
-};
+const getDuplicativeLocales = (lang: LocaleValue): LocaleValue[] =>
+  INVERTED_TRANSLATE_LOCALE[LOCALE_TRANSLATION_MAP[lang]];
 
 /**
  * Get nearest matching language from a list of supported languages
@@ -152,74 +27,72 @@ export const matchLanguages = (
  * @returns Nearest supported language, sorted by preferred language list
  */
 export const getNearestSupportedLanguage = (
-  preferred: readonly string[],
-  supported: ConsentManagerLanguageKey[],
-): ConsentManagerLanguageKey | undefined =>
+  preferred: LocaleValue[],
+  supported: LocaleValue[],
+): LocaleValue | undefined =>
   supported.find((language) =>
-    getAllSubLanguages(language).some((lang) =>
-      preferred.some((preferredLang) => preferredLang.toLowerCase() === lang),
-    ),
+      preferred.some((preferredLang) => preferredLang.toLowerCase() === language)
   );
 
 /**
- * Sorts the supported languages by the user's preferences
+ * Get nearest matching locale from a list of supported locales
  *
- * @param languages - an object of translations
- * @returns a list of language keys, sorted
+ * @param preferred - Sorted locale list in order of most preferable to least preferable
+ * @param supported - List of supported locales to match from
+ * @returns Nearest supported locale, sorted by preferred locale list
  */
-export const sortSupportedLanguagesByPreference = (
-  languages: ConsentManagerLanguageKey[],
-): ConsentManagerLanguageKey[] =>
-  languages.sort((a, b) => {
-    const preferredLanguagesFull = getUserLanguages();
-
-    // Only use first token e.g. fr-CA => fr, and remove dupes e.g. [en-US, en] => [en], by casting to set
-    const preferredLanguagesShort = [
-      ...new Set(preferredLanguagesFull.map((l) => l.split('-')[0])),
-    ];
-    const rank = (l: string): number =>
-      preferredLanguagesFull.includes(l)
-        ? preferredLanguagesFull.indexOf(l)
-        : preferredLanguagesShort.includes(l)
-        ? preferredLanguagesShort.indexOf(l)
-        : Infinity;
-    return rank(a) - rank(b);
-  });
+export const getNearestSupportedLocale = (
+  preferred: LocaleValue[],
+  supported: LocaleValue[],
+): LocaleValue | undefined => {
+  let i;
+  const nearestLocaleIdx = supported.reduce((nearestLocaleIdx, supportedLocale) => {
+    // eslint-disable-next-line no-cond-assign
+    if ((i = preferred.indexOf(supportedLocale)) < nearestLocaleIdx && i > -1) {
+      return i;
+    }
+    return nearestLocaleIdx;
+  }, -1);
+  return nearestLocaleIdx === -1 ? undefined : preferred[nearestLocaleIdx];
+}
 
 /**
  * Picks a default language for the user
  *
- * @param supportedLanguages - Set of supported languages
+ * @param supportedLocales - Set of supported locales
  * @returns the language key of the best default language for this user
  */
 export function pickDefaultLanguage(
-  supportedLanguages: ConsentManagerLanguageKey[],
-): ConsentManagerLanguageKey {
-  if (settings.locale && supportedLanguages.includes(settings.locale)) {
+  supportedLocales: ConsentManagerSupportedTranslationValue[],
+): ConsentManagerSupportedTranslationValue {
+  if (settings.locale && supportedLocales.includes(settings.locale)) {
     return settings.locale;
   }
 
-  const preferredLanguages = getUserLanguages();
+  const preferredLocales = getUserLocales();
   /* We should refactor this ASAP TODO: https://transcend.height.app/T-39777
    * Extend supportedLanguages to include locales that we consider equivalent
    * e.g. instead of just having en, include en-US, en-GB, en-AU, etc
    */
-  const extendedSupportedLanguages = supportedLanguages
-    .map((lang: ConsentManagerLanguageKey) => getDuplicativeLocalizations(lang))
-    .flat() as ConsentManagerLanguageKey[];
+  const extendedSupportedLanguages = supportedLocales.flatMap((lang) =>
+    getDuplicativeLocales(lang),
+  );
   const nearestExtendedLanguage =
-    getNearestSupportedLanguage(
-      preferredLanguages,
-      sortSupportedLanguagesByPreference(extendedSupportedLanguages),
-    ) || ConsentManagerLanguageKey.En;
+  getNearestSupportedLocale(
+      preferredLocales,
+      extendedSupportedLanguages,
+    ) || LOCALE_KEY.En;
 
   let nearestTranslation = nearestExtendedLanguage;
-  if (!supportedLanguages.includes(nearestTranslation)) {
-    nearestTranslation = getDuplicativeLocalizations(nearestTranslation).find(
-      (lang) => supportedLanguages.includes(lang as ConsentManagerLanguageKey),
-    ) as ConsentManagerLanguageKey;
+  if (!(supportedLocales as string[]).includes(nearestTranslation)) {
+    nearestTranslation =
+      getDuplicativeLocales(nearestTranslation).find((lang) =>
+        supportedLocales.includes(
+          lang as ConsentManagerSupportedTranslationValue,
+        ),
+      ) ?? LOCALE_KEY.En;
   }
-  return nearestTranslation;
+  return nearestTranslation as ConsentManagerSupportedTranslationValue;
 }
 
 /**
@@ -231,7 +104,7 @@ export function pickDefaultLanguage(
  */
 export const getTranslations = async (
   translationsLocation: string,
-  language: ConsentManagerLanguageKey,
+  language: ConsentManagerSupportedTranslationValue,
 ): Promise<TranslatedMessages> => {
   loadedTranslations[language] ??= await (async () => {
     const pathToFetch = `${translationsLocation}/${language}.json`;
@@ -256,24 +129,27 @@ export function useLanguage({
   translationsLocation,
 }: {
   /** Set of supported languages */
-  supportedLanguages: ConsentManagerLanguageKey[];
+  supportedLanguages: ConsentManagerSupportedTranslationValue[];
   /** Base path to fetching messages */
   translationsLocation: string;
 }): {
   /** The language in use */
-  language: ConsentManagerLanguageKey;
+  language: ConsentManagerSupportedTranslationValue;
   /** A change language callback */
-  handleChangeLanguage: (language: ConsentManagerLanguageKey) => void;
+  handleChangeLanguage: (
+    language: ConsentManagerSupportedTranslationValue,
+  ) => void;
   /** Message translations */
   messages: TranslatedMessages | undefined;
   /** HTML opening/closing tab variables */
   htmlTagVariables: Record<string, string>;
 } {
   // The current language
-  const [language, setLanguage] = useState<ConsentManagerLanguageKey>(() =>
-    // choose a default language based on the browser selected
-    pickDefaultLanguage(supportedLanguages),
-  );
+  const [language, setLanguage] =
+    useState<ConsentManagerSupportedTranslationValue>(() =>
+      // choose a default language based on the browser selected
+      pickDefaultLanguage(supportedLanguages),
+    );
 
   // Hold the translations for that language (fetched async)
   const [messages, setMessages] = useState<TranslatedMessages | undefined>();
@@ -295,7 +171,7 @@ export function useLanguage({
   }, []);
 
   const handleChangeLanguage = useCallback(
-    async (language: ConsentManagerLanguageKey) => {
+    async (language: ConsentManagerSupportedTranslationValue) => {
       const newMessages = await getTranslations(translationsLocation, language);
 
       // Replace raw HTML tags with variables bc raw HTML causes parsing errors

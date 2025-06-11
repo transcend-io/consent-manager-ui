@@ -62,9 +62,9 @@ export function CompleteOptionsToggles({
     ORDER_OF_PURPOSES.indexOf(a) < 0 && ORDER_OF_PURPOSES.indexOf(b) > 0
       ? 1
       : ORDER_OF_PURPOSES.indexOf(b) < 0 && ORDER_OF_PURPOSES.indexOf(a) > 0
-      ? -1
-      : // order purposes based on order defined above
-        ORDER_OF_PURPOSES.indexOf(a) - ORDER_OF_PURPOSES.indexOf(b),
+        ? -1
+        : // order purposes based on order defined above
+          ORDER_OF_PURPOSES.indexOf(a) - ORDER_OF_PURPOSES.indexOf(b),
   );
 
   const handleSwitch = ({

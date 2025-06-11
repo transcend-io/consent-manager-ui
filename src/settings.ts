@@ -1,5 +1,5 @@
 import type { LogLevel } from '@transcend-io/airgap.js-types';
-import { COMMA_AND_OR_SPACE_SEPARATED_LIST } from './utils/comma-and-or-space-separated-list';
+import { COMMA_AND_OR_SPACE_SEPARATED_LIST } from './utils';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any, no-restricted-globals
 const airgapInit = (self as any)?.airgap;
@@ -77,10 +77,10 @@ export const LOG_LEVELS = new Set<LogLevel>(
     wildcardLogLevels.includes(logLevelsSetting)
       ? validLogLevels
       : !logLevelsSetting || logLevelsSetting === 'off'
-      ? []
-      : (logLevelsSetting
-          .toLowerCase()
-          .split(COMMA_AND_OR_SPACE_SEPARATED_LIST) as LogLevel[]),
+        ? []
+        : (logLevelsSetting
+            .toLowerCase()
+            .split(COMMA_AND_OR_SPACE_SEPARATED_LIST) as LogLevel[]),
   ),
 );
 

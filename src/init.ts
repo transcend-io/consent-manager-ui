@@ -14,7 +14,7 @@ import { injectConsentManagerApp } from './consent-manager';
 import { injectCss } from './css';
 import { logger } from './logger';
 import { LOG_ENABLED, LOG_LEVELS, settings } from './settings';
-import { throwOutside } from './utils/throw-outside';
+import { throwOutside } from './utils';
 import { VERSION } from './constants';
 
 // eslint-disable-next-line no-restricted-globals, @typescript-eslint/no-explicit-any
@@ -80,9 +80,8 @@ export const init = async (): Promise<void> => {
     const airgap = await airgapPromise;
 
     // Inject the consent manager app and pull out the API methods
-    const consentManagerAPI: ConsentManagerAPI = await injectConsentManagerApp(
-      airgap,
-    );
+    const consentManagerAPI: ConsentManagerAPI =
+      await injectConsentManagerApp(airgap);
 
     // Inject CSS into the application
     // TODO: This should probably be awaited but it breaks non-stubbed airgap inits

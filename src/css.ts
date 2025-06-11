@@ -1,7 +1,7 @@
 import { CSP_NONCE } from './config';
 import { getAppContainer } from './consent-manager';
 import { logger } from './logger';
-import { createHTMLElement } from './utils/create-html-element';
+import { createHTMLElement } from './utils';
 
 /**
  * Inject CSS into the application

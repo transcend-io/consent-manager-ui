@@ -5,7 +5,7 @@ import type {
   AirgapAuthMap,
   ConsentManagerConfig,
 } from '@transcend-io/airgap.js-types';
-import { ConsentManagerLanguageKey } from '@transcend-io/internationalization';
+import { ConsentManagerSupportedTranslationValue } from '@transcend-io/internationalization';
 import { ObjByString } from '@transcend-io/type-utils';
 
 /**
@@ -65,7 +65,7 @@ export type HandleSetAuth = (key: AirgapAuthMap['key']) => void;
 /**
  * Handler for setting user language
  */
-export type HandleSetLanguage = (language: ConsentManagerLanguageKey) => void;
+export type HandleSetLanguage = (language: ConsentManagerSupportedTranslationValue) => void;
 
 /**
  * Handler for changing UI variables
@@ -81,5 +81,5 @@ export interface MergedConsentManagerConfig {
   /** Merged config */
   config: ConsentManagerConfig;
   /** Languages split out separately for type-safety and preserving raw value */
-  supportedLanguages: ConsentManagerLanguageKey[];
+  supportedLanguages: ConsentManagerSupportedTranslationValue[];
 }

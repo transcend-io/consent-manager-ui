@@ -5,7 +5,7 @@ import type {
 } from '@transcend-io/airgap.js-types';
 import { App } from './components/App';
 import { logger } from './logger';
-import { createHTMLElement } from './utils/create-html-element';
+import { createHTMLElement } from './utils';
 import {
   ALLOW_INLINE_CSS,
   CSP_NONCE,
