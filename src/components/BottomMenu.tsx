@@ -100,47 +100,52 @@ export function BottomMenu({
           'AcceptOrRejectAllOrMoreChoices',
           'CompleteOptionsInverted',
           'DoNotSellExplainer',
-          'CompleteOptionsToggles',
           'LanguageOptions',
           'AcceptAllRejectAllToggle',
           // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        ].includes(viewState as any) &&
-        (viewState === 'CompleteOptions' ? (
-          !firstSelectedViewState ||
-          firstSelectedViewState === 'CompleteOptions' ? null : (
+        ].includes(viewState as any) && (
+          (viewState === 'CompleteOptions' || viewState === 'CompleteOptionsToggles') ? (
+              !firstSelectedViewState||
+                firstSelectedViewState === 'CompleteOptions' ||
+            firstSelectedViewState === 'CompleteOptionsToggles' ? null : (
+              <div className="bottom-menu-item-container">
+                <MenuItem
+                  label={formatMessage(
+                    bottomMenuMessages.simplerChoicesButtonLabel,
+                    globalUiVariables,
+                  )}
+                  type="button"
+                  onClick={() => handleSetViewState(firstSelectedViewState)}
+                >
+                  {formatMessage(
+                    bottomMenuMessages.simplerChoicesButtonPrimary,
+                    globalUiVariables,
+                  )}
+                </MenuItem>
+              </div>
+            )
+          ) : (
             <div className="bottom-menu-item-container">
               <MenuItem
                 label={formatMessage(
-                  bottomMenuMessages.simplerChoicesButtonLabel,
+                  bottomMenuMessages.moreChoicesButtonLabel,
                   globalUiVariables,
                 )}
                 type="button"
-                onClick={() => handleSetViewState(firstSelectedViewState)}
+                onClick={() => handleSetViewState(
+                  viewState === 'AcceptOrRejectAll'
+                    ? 'CompleteOptionsToggles'
+                    : 'CompleteOptions'
+                )}
               >
                 {formatMessage(
-                  bottomMenuMessages.simplerChoicesButtonPrimary,
+                  bottomMenuMessages.moreChoicesButtonPrimary,
                   globalUiVariables,
                 )}
               </MenuItem>
             </div>
           )
-        ) : (
-          <div className="bottom-menu-item-container">
-            <MenuItem
-              label={formatMessage(
-                bottomMenuMessages.moreChoicesButtonLabel,
-                globalUiVariables,
-              )}
-              type="button"
-              onClick={() => handleSetViewState('CompleteOptions')}
-            >
-              {formatMessage(
-                bottomMenuMessages.moreChoicesButtonPrimary,
-                globalUiVariables,
-              )}
-            </MenuItem>
-          </div>
-        ))
+        )
       )}
 
       {viewState === 'NoticeAndDoNotSell' && (
