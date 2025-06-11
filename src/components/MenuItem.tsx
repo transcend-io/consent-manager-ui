@@ -43,22 +43,22 @@ export function MenuItem({
   onClick,
   href,
   children,
+  classes,
 }: MenuItemProps): JSX.Element {
   return (
     <Fragment>
       {type === 'button' && (
         <button
           onClick={onClick as JSX.MouseEventHandler<HTMLButtonElement>}
-          className="bottom-menu-item"
+          className={`bottom-menu-item${classes ? ` ${classes}` : ''}`}
           aria-label={label}
-          title={label}
         >
           {children}
         </button>
       )}
       {type === 'a' && (
         <a
-          className="bottom-menu-item"
+          className={`bottom-menu-item${classes ? ` ${classes}` : ''}`}
           href={href}
           target="_blank"
           rel="noopener noreferrer"

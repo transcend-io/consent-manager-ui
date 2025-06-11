@@ -101,6 +101,13 @@ export function Main({
         ref={dialogRef}
       >
         <div className="modal-container-inner">
+          <LanguageButton
+              handleSetViewState={handleSetViewState}
+              viewState={viewState}
+              fontColor={config.theme.fontColor}
+              supportedLanguages={supportedLanguages}
+              globalUiVariables={globalUiVariables}
+            />
           <div className="inner-container">
             {viewState === 'QuickOptions' && (
               <QuickOptions
@@ -249,13 +256,6 @@ export function Main({
               handleSetViewState={handleSetViewState}
               privacyPolicy={config.privacyPolicy}
               secondaryPolicy={config.secondaryPolicy}
-              globalUiVariables={globalUiVariables}
-            />
-            <LanguageButton
-              handleSetViewState={handleSetViewState}
-              viewState={viewState}
-              fontColor={config.theme.fontColor}
-              supportedLanguages={supportedLanguages}
               globalUiVariables={globalUiVariables}
             />
           </div>

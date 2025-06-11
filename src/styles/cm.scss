@@ -1,0 +1,887 @@
+/*
+ * cm.scss - SCSS version of cm.css
+ */
+
+// Color variables
+$primary-color: #10841c;
+$focus-color: darken($primary-color, 0.5);
+$white: #ffffff;
+$black: #12191a;
+$text-color: #{black};
+$disabled-color: #bbb9ba;
+$dark: #162310;
+
+/*******************
+ * Variables
+ *******************/
+
+/** Variables to insert into the remainder of the stylesheet */
+* {
+	--primary-color: #{$primary-color};
+	--text-color: #{$text-color};
+	--white: #{$white};
+	--black: #{$black};
+	--disabled-color: #{$disabled-color};
+	--dark: #{$dark};
+	--focus-color: #{$focus-color};
+}
+
+/*******************
+ * Button Styles
+ *******************/
+
+/** Buttons displayed throughout the consent UI */
+.button {
+	min-height: 42px;
+	border-radius: 500px;
+	width: 100%;
+	background-color: var(--white);
+	opacity: 0.9;
+	border: 1px solid var(--primary-color);
+	box-sizing: border-box;
+	cursor: pointer;
+	filter: brightness(100%);
+	flex-shrink: 0;
+	font-family: inherit;
+	text-align: center;
+	padding: 6px;
+	transition: filter 150ms, background-color 150ms;
+	&:not(:last-of-type) {
+		margin-bottom: 8px;
+	}
+	&:hover,
+	&:focus {
+		background-color: var(--primary-color);
+		/** Inner text */
+		span {
+			color: var(--white);
+		}
+	}
+}
+
+/** Base styles applied to button text */
+.button-base-text {
+	color: var(--primary-color);
+	display: block;
+	font-style: normal;
+	text-align: center;
+	transition: color 150ms;
+}
+
+/** Styles applied to "primary" button text */
+.button-primary-text {
+	font-size: 12px;
+	font-weight: 700;
+}
+
+/** Styles applied to "secondary" button text */
+.button-secondary-text {
+	font-size: 9px;
+	font-weight: 400;
+}
+
+/** Button focus */
+button:focus {
+	outline: 2px solid var(--focus-color);
+}
+
+/** Anchor focus */
+a:focus {
+	outline: 2px solid var(--focus-color);
+}
+
+/***********************************
+ * Accessibility - non-visual label
+ ***********************************/
+
+/** Screen reader styles */
+.screen-reader {
+	border: 0;
+	clip: rect(0 0 0 0);
+	height: 1px;
+	margin: -1px;
+	overflow: hidden;
+	padding: 0;
+	position: absolute;
+	white-space: nowrap;
+	width: 1px;
+}
+
+/*******************
+ * Text Styles
+ *******************/
+
+/** Modal title text styles */
+.text-title {
+	font-size: 18px;
+	font-weight: 700;
+	color: var(--text-color);
+	margin: 0 0 18px 0;
+	text-align: center;
+}
+
+/** Paragraph text styles */
+.paragraph {
+	color: var(--text-color);
+	font-size: 14px;
+	margin: 0 0 18px 0;
+}
+
+/** Styles applied to the main contents of the consent modal (does not include footer) */
+.column-content {
+	min-height: 79px;
+	margin: 0 auto;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+	align-items: center;
+	animation: fadeIn 150ms;
+}
+
+/*******************
+ * CompleteOptions
+ *******************/
+
+/** Styles applied to `CompleteOptions` view state body  */
+.complete-options-form {
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	margin: 0 auto 2px auto;
+	justify-content: space-between;
+	align-items: center;
+}
+
+/** Container for rendering checkbox toggles */
+.toggles-container {
+	height: 100%;
+	display: flex;
+	margin: 20px;
+	flex-direction: column;
+	align-content: center;
+	flex-wrap: wrap;
+	width: 100%;
+	justify-content: center;
+}
+
+/** Container around `CompleteOptions` view state */
+.complete-options-container {
+	height: inherit;
+	animation: fadeIn 200ms ease-in;
+}
+
+/** Style applied to each label text for each checkbox toggle and switch */
+.toggle-label {
+	position: relative;
+	margin: 0 10px 15px 10px;
+	font-size: 12px;
+	font-weight: 500;
+	height: 16px;
+	vertical-align: baseline;
+	color: var(--text-color);
+	text-shadow: none;
+	padding-left: 25px;
+	word-wrap: break-word;
+	/** Style applied to the checkbox toggle box */
+	input:focus + span {
+		outline: 2px solid var(--focus-color);
+		outline-offset: 1px;
+	}
+}
+
+/** Style applied to create custom checkmark */
+.toggle-checkmark {
+	display: inline-block;
+	width: 16px;
+	height: 16px;
+	box-sizing: border-box;
+	border-radius: 4px;
+	margin-right: 5px;
+	background: rgba(255, 255, 255, 0.9);
+	border: 1px solid #d8d8d8;
+	position: absolute;
+	top: 0;
+	left: 0;
+	transition: all 150ms ease, background 300ms ease;
+	cursor: pointer;
+	/** Style applied to create custom checkmark ::after */
+	&::after {
+		opacity: 0;
+		transform-origin: bottom center;
+		transform: rotate(45deg) scale(0);
+		content: '';
+		position: absolute;
+		left: 1px;
+		top: 0;
+		width: 3px;
+		height: 8px;
+		border: solid #ffffff;
+		border-width: 0px 2px 2px 0px;
+		transition: all 150ms cubic-bezier(0.41, 0.94, 0.71, 1.41), opacity 150ms ease;
+	}
+}
+
+/** Style applied to checkbox input */
+.toggle-input {
+	position: absolute;
+	margin: 0;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	opacity: 0;
+	cursor: pointer;
+	/** Style applied to checkbox input when disabled */
+	&:disabled {
+		cursor: not-allowed;
+	}
+	/** Style applied to checkbox input span when checked */
+	&:checked + span {
+		background: var(--primary-color);
+		border-color: transparent;
+	}
+	/** Style applied to checkbox input when checked and hovering */
+	&:checked + span,
+	&:hover + span {
+		filter: brightness(0.9);
+	}
+	/** Style applied to checkbox input when checked and after */
+	&:checked + span::after {
+		opacity: 1;
+		transform: rotate(45deg) scale(1);
+	}
+	/** Style applied to toggle input when focused */
+	&:hover:enabled + span,
+	&:focus-visible + span {
+		border-color: var(--primary-color);
+	}
+
+	/** Style applied to checkbox input span when disabled */
+	&:disabled + span {
+		background-color: #ececec;
+		cursor: not-allowed;
+	}
+	/** Style applied to checkbox input span when disabled and hover */
+	&:disabled + span,
+	&:hover + span {
+		filter: none;
+		border-color: transparent;
+	}
+
+	/** Style applied to checkbox input span when disabled */
+	&:disabled + span::after {
+		border-color: var(--darkgray);
+	}
+}
+
+/*******************
+ * AcceptOrRejectAll
+ *******************/
+
+/** Button row styles for AcceptOrRejectAll view state */
+.accept-or-reject-all-button-row {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+}
+
+/*******************
+ * DoNotSellExplainer
+ *******************/
+
+/** Do not sell switch interface */
+.margin-tops > * {
+	margin-top: 2em;
+}
+
+/*******************
+ * LanguageOptions
+ *******************/
+
+/** Styles applied around the language container */
+.language-options-container {
+	width: 100%;
+	height: 100%;
+	animation: fadeIn 200ms ease-in;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	align-items: center;
+	margin: 0 auto;
+	justify-content: space-evenly;
+}
+
+/** Styles applied around each language selection */
+.language-item-container {
+	padding: 12px;
+}
+
+/** Styles applied to the language button */
+.language-button {
+	background: unset;
+	border: unset;
+	width: unset;
+	padding: unset;
+	margin: unset;
+	width: 17px;
+	height: 17px;
+	overflow: hidden;
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	cursor: pointer;
+}
+
+/** Styles to apply when language svg select button is hovered on */
+.language-button-inactive svg {
+	fill: var(--text-color);
+	transition: fill 150ms;
+}
+
+/** Styles to apply when actively labeled */
+.language-button-active svg {
+	fill: var(--primary-color);
+	transition: fill 150ms;
+}
+
+/** Styles to apply when language svg select button is hovered on */
+.language-button svg:hover {
+	fill: var(--primary-color);
+}
+
+/** Styles to apply when language svg select button is active */
+.language-button svg:active {
+	fill: var(--primary-color);
+}
+
+/*******************
+ * BottomMenu
+ *******************/
+
+/** Outer styles wrapped around entire bottom menu */
+.footer-container {
+	position: relative;
+	width: calc(100% - 21px * 2);
+	height: auto;
+}
+
+/** Styles applied to bottom menu */
+.bottom-menu-container {
+	width: calc(100% - 60px);
+	height: 100%;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-evenly;
+	align-items: center;
+	margin: 0 auto;
+}
+
+/** Styles applied to each item of bottom menu */
+.bottom-menu-item-container {
+	width: auto;
+}
+
+/** Menu item styles for the BottomMenu */
+.bottom-menu-item {
+	background: unset;
+	border: unset;
+	width: unset;
+	padding: unset;
+	margin: unset;
+
+	margin: 0 auto;
+	display: block;
+	min-width: fit-content;
+	width: auto;
+	text-align: center;
+	line-height: 1.5em;
+	font-family: inherit;
+	font-size: 10px;
+	font-weight: 500;
+	color: var(--text-color);
+	transition: text-decoration 150ms;
+	text-decoration: underline;
+	text-decoration-color: rgba(1, 1, 1, 0);
+	text-decoration-thickness: 1px;
+	text-underline-offset: 2px;
+	&:hover {
+		cursor: pointer;
+		text-decoration: underline;
+		text-decoration-color: rgba(1, 1, 1, 1);
+		text-decoration-thickness: 1px;
+		text-underline-offset: 2px;
+	}
+}
+
+/*******************
+ * Collapsed
+ *******************/
+
+/** Styles for the collapsed square logo  */
+.collapsed-square-logo-svg {
+	width: 20px;
+	height: 20px;
+	padding: 6px;
+	flex-shrink: 0;
+}
+
+/** Styles for the collapsed square logo path */
+.collapsed-square-logo-svg path {
+	fill: var(--text-color);
+	transition: fill 150ms;
+}
+
+/** The wrapper around the entire collapsed hovering consent icon */
+.collapsed-container {
+	position: fixed;
+	bottom: 100px;
+	right: 5px;
+	width: 32px;
+	height: 32px;
+	box-sizing: border-box;
+	border: none;
+	border-radius: 16px;
+	background-color: rgba(255, 255, 255, 0.95);
+	overflow: hidden;
+	cursor: pointer;
+	padding: 0;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: flex-start;
+	font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir, helvetica neue, helvetica, 'sans-serif';
+	box-shadow: 0px 1px 5px 1px rgba(0, 0, 0, 0.1);
+	backdrop-filter: blur(4px) saturate(5);
+	transition: width 150ms ease-in 500ms, background-color 150ms ease-in-out, box-shadow 150ms ease-in-out;
+}
+
+/** Styles applied to consent icon when actively selected */
+.collapsed-container:active {
+	background-color: rgba(255, 255, 255, 0.85);
+	box-shadow: 0px 0.5px 5px 1.5px rgba(0, 0, 0, 0.12);
+}
+
+/** Styles applied to consent icon on hover */
+.collapsed-container:hover {
+	width: 132px;
+	transition-delay: 0ms;
+}
+
+/** Styles applied to consent icon SVG contents */
+.collapsed-container:hover path {
+	fill: var(--primary-color);
+}
+
+/** Styles applied to consent icon paragraph text */
+.collapsed-container p {
+	font-size: 12px;
+	font-weight: 500;
+	white-space: nowrap;
+	color: var(--text-color);
+	opacity: 0;
+	transition: opacity 150ms ease-in 500ms;
+}
+
+/** Styles applied to consent icon paragraph text on hover */
+.collapsed-container:hover p {
+	opacity: 1;
+	transition-delay: 0ms;
+}
+
+/*******************
+ * Modal
+ *******************/
+
+/** Container that is wrapped around the modal */
+.modal-container {
+	position: fixed;
+	bottom: 10px;
+	left: 5px;
+	right: 5px;
+	margin: 0 auto;
+	box-sizing: border-box;
+	border-radius: 18px;
+	border: 0.5px solid #d8d8d8;
+	background-color: rgba(255, 255, 255, 0.9);
+	overflow: auto;
+	padding: 21px;
+	font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir, helvetica neue, helvetica, 'sans-serif';
+	box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+	backdrop-filter: blur(20px) saturate(5);
+	-webkit-backdrop-filter: blur(20px) saturate(5);
+	animation: fadeIn 150ms;
+	max-height: 90%;
+	transition: width 150ms, height 150ms;
+}
+
+/** Inner contents wrapper for modal content */
+.modal-container-inner {
+	width: 100%;
+}
+
+/*******************
+ * KeyFrames
+ *******************/
+
+/** Animation for fading in, used throughout the stylesheet */
+@keyframes fadeIn {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
+/*******************
+ * DoNotSellExplainer
+ *******************/
+
+/** Styles for button of X marker in top right corner */
+.do-not-sell-explainer-close {
+	--squareDimension: 25px;
+	padding: 4px;
+	position: absolute;
+	top: 21px;
+	right: 21px;
+	border: none;
+	cursor: pointer;
+	background-color: #f2f2f2;
+	border-radius: 5px;
+	height: var(--squareDimension);
+	width: var(--squareDimension);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	transition: background-color 150ms;
+}
+
+/** Styles for button of X marker in top right corner on hover */
+.do-not-sell-explainer-close:hover,
+.do-not-sell-explainer-close:focus {
+	background-color: #e2e2e2;
+}
+
+/** Outline for do not sell explainer */
+.do-not-sell-explainer-interface {
+	margin-top: 2em;
+}
+
+/*******************
+ * AcceptAllRejectAllToggle
+ *******************/
+
+/** Styles for button of X marker in top right corner */
+.accept-all-reject-all-toggle-close {
+	--squareDimension: 25px;
+	padding: 4px;
+	position: absolute;
+	top: 21px;
+	right: 21px;
+	border: none;
+	cursor: pointer;
+	background-color: #f2f2f2;
+	border-radius: 5px;
+	height: var(--squareDimension);
+	width: var(--squareDimension);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	transition: background-color 150ms;
+}
+
+/** Styles for button of X marker in top right corner on hover */
+.accept-all-reject-all-toggle-close:hover,
+.accept-all-reject-all-toggle-close:focus {
+	background-color: #e2e2e2;
+}
+
+/*******************
+ * PrivacyPolicyNoticeWithCloseButton
+ *******************/
+
+/** Styles for button of X marker in top right corner */
+.privacy-policy-notice-with-close-button-close {
+	--squareDimension: 25px;
+	padding: 4px;
+	position: absolute;
+	top: 21px;
+	right: 21px;
+	border: none;
+	cursor: pointer;
+	background-color: #f2f2f2;
+	border-radius: 5px;
+	height: var(--squareDimension);
+	width: var(--squareDimension);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	transition: background-color 150ms;
+}
+
+/** Styles for button of X marker in top right corner on hover */
+.privacy-policy-notice-with-close-button-close:hover,
+.privacy-policy-notice-with-close-button-close:focus {
+	background-color: #e2e2e2;
+}
+
+/***********************
+ * CompleteOptionsToggle
+ ***********************/
+
+/** Styles for button of X marker in top right corner */
+.complete-options-toggle-close {
+	--squareDimension: 25px;
+	padding: 4px;
+	position: absolute;
+	top: 21px;
+	right: 21px;
+	border: none;
+	cursor: pointer;
+	background-color: #f2f2f2;
+	border-radius: 5px;
+	height: var(--squareDimension);
+	width: var(--squareDimension);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	transition: background-color 150ms;
+}
+
+/** Styles for button of X marker in top right corner on hover */
+.complete-options-toggle-close:hover,
+.complete-options-toggle-close:focus {
+	background-color: #e2e2e2;
+}
+
+/** Outline for do not sell explainer */
+.complete-options-toggle-interface {
+	margin-top: 2em;
+}
+
+/** Styles for complete options toggle description */
+.complete-options-toggle-description {
+	padding-bottom: 2em;
+}
+
+/*******************
+ * GPC Indicator
+ *******************/
+
+/** GPC outer styles */
+.gpc-setting {
+	display: flex;
+	align-items: center;
+}
+
+/** GPC svg styles */
+.gpc-setting svg {
+	flex-shrink: 0;
+}
+
+/** GPC paragraph text */
+.gpc-setting p {
+	margin: 0 0 0 6px;
+	font-size: 14px;
+	color: var(--text-color);
+}
+
+/*******************
+ * Switch
+ *******************/
+
+/** Styles for the switch */
+.switch {
+	--switchHeight: 20px;
+	--switchGutter: 2px;
+	--switchButtonDiameter: calc(var(--switchHeight) - var(--switchGutter) * 2);
+
+	&.label {
+		display: flex;
+		align-items: center;
+		font-weight: 500;
+		font-size: 14px;
+		height: 16px;
+		vertical-align: baseline;
+		text-shadow: none;
+		white-space: nowrap;
+		padding: 0 5px;
+	}
+
+	&.switch-background {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		margin-right: 0.8em;
+		cursor: pointer;
+		width: calc(var(--switchHeight) * 2 - 2px);
+		height: var(--switchHeight);
+		background: #7e8793;
+		border-radius: var(--switchHeight);
+		position: relative;
+		transition: background-color 150ms;
+
+		.switch-button {
+			content: '';
+			position: absolute;
+			top: var(--switchGutter);
+			left: var(--switchGutter);
+			width: var(--switchButtonDiameter);
+			height: var(--switchButtonDiameter);
+			border-radius: var(--switchButtonDiameter);
+			transition: 150ms;
+			background: #fff;
+		}
+		&:active .switch-button {
+			width: calc(var(--switchButtonDiameter) * 1.2);
+		}
+	}
+
+	&.switch-disabled {
+		opacity: 0.6;
+		background-color: var(--disabled-color);
+	}
+
+	&.switch-checkbox {
+		&:checked + .switch-background {
+			&:not(.switch-disabled) {
+				background-color: var(--primary-color);
+			}
+
+			.switch-button {
+				left: calc(100% - var(--switchGutter));
+				transform: translateX(-100%);
+			}
+
+			// Focused state when checked
+			&:focus .switch-button {
+				background: var(--primary-color);
+				box-shadow: inset 0 0 0 0.125rem var(--white), 0 0 0 0.125rem var(--primary-color);
+			}
+		}
+
+		&:focus + .switch-background .switch-button {
+			background: var(--primary-color);
+			box-shadow: inset 0 0 0 0.125rem var(--white), 0 0 0 0.125rem var(--primary-color);
+		}
+	}
+}
+
+/*******************
+ * TranscendLogo
+ *******************/
+
+/** Container around the Transcend logo in the bottom left hand side of the modal */
+.transcend-logo-container {
+	width: 17px;
+	height: 17px;
+	overflow: hidden;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+}
+
+/** Styles applied to the Transcend svg logo in the bottom left hand side of the modal */
+.transcend-logo-svg {
+	width: 64px;
+	height: 17px;
+}
+
+/** Styles applied to the Transcend svg logo path in the bottom left hand side of the modal */
+.transcend-logo-svg path {
+	fill: var(--text-color);
+	transition: fill 150ms;
+}
+
+/*******************
+ * Media Styles
+ *******************/
+
+/** At least table */
+@media (min-width: 640px) {
+	/** Button Styles */
+	.button {
+		width: 135px;
+	}
+	.button:not(:last-of-type) {
+		margin-bottom: 0;
+	}
+
+	/** Text Styles */
+	.text-title-left {
+		margin: 0 18px 0 0;
+		text-align: left;
+	}
+	.text-title-center {
+		margin: 0 0 18px 0;
+		text-align: center;
+	}
+	.paragraph {
+		margin: 18px 18px 0 0;
+	}
+	.column-content {
+		flex-direction: row;
+	}
+
+	/** AcceptOrRejectAll */
+	.accept-or-reject-all-button-row {
+		flex-direction: row;
+	}
+	.accept-or-reject-all-button-row button:not(:first-of-type) {
+		margin-left: 10px;
+	}
+
+	/** Bottom Menu */
+	.bottom-menu-container {
+		width: calc(100% - 150px);
+		justify-content: space-evenly;
+	}
+	.bottom-menu-item {
+		font-size: 12px;
+	}
+
+	/** CompleteOptions */
+	.toggles-container {
+		flex-direction: row;
+	}
+
+	/** Modal */
+	.modal-container {
+		bottom: 5px;
+		max-width: 630px;
+		bottom: 22px;
+	}
+
+	/** TranscendLogo */
+	.transcend-logo-container {
+		width: auto;
+	}
+	.transcend-logo-svg:hover .transcend-wordmark,
+	.transcend-logo-container:focus .transcend-wordmark {
+		fill-opacity: 1;
+	}
+	.transcend-logo-svg:hover path,
+	.transcend-logo-container:focus path {
+		fill: var(--primary-color);
+	}
+}
+
+.external-link {
+  display: flex;
+  align-items: center;
+  svg {
+    fill: var(--primary-color);
+    width: 20px;
+    height: 20px;
+  }
+}
+
+.transcend-logo-container {
+  display: flex;
+  width: auto !important;
+  .external-link-transcend-logo {
+    width: 15px;
+    height: 15px;
+  }
+}

@@ -1,5 +1,6 @@
 /* eslint max-len: 0 */
-import { h, JSX } from 'preact';
+import {h, JSX} from 'preact';
+import {ExternalLinkIcon} from './ExternalLinkIcon';
 
 /**
  * The Transcend square logo
@@ -48,8 +49,8 @@ export function TranscendLogo({
       href="https://transcend.io/"
       target="_blank"
       rel="noopener noreferrer"
-      title="Powered by Transcend"
-      aria-label="Powered by Transcend"
+      title="Powered by Transcend. Opens in a new tab."
+      aria-label="Powered by Transcend. Opens in a new tab."
     >
       <svg
         className="transcend-logo-svg"
@@ -71,6 +72,7 @@ export function TranscendLogo({
           <path d="M58.7019 9.08691C58.7019 7.47553 59.6188 6.35733 60.9077 6.35733C61.1972 6.3446 61.4848 6.4088 61.7414 6.5434C61.998 6.678 62.2144 6.87819 62.3684 7.12359H62.399V4.46346H63.7691V11.6658H62.4496V10.9914H62.4284C62.1271 11.4846 61.6127 11.8153 60.8877 11.8153C59.5882 11.8165 58.7019 10.7595 58.7019 9.08691ZM62.4284 9.11751C62.4284 8.12997 62.1071 7.46964 61.2302 7.46964C60.4745 7.46964 60.092 8.1335 60.092 9.09044C60.092 10.0886 60.4851 10.6724 61.1902 10.6724C62.0059 10.6665 62.4284 10.0639 62.4284 9.11751Z" />
         </g>
       </svg>
+      <ExternalLinkIcon class="external-link-transcend-logo"/>
     </a>
   );
 }

@@ -6,6 +6,7 @@ import { bottomMenuMessages, noticeAndDoNotSellMessages } from '../messages';
 import type { HandleSetViewState } from '../types';
 import { MenuItem } from './MenuItem';
 import { ObjByString } from '@transcend-io/type-utils';
+import {ExternalLinkIcon} from './ExternalLinkIcon';
 
 const VIEW_STATE_TO_MESSAGE: { [k in ViewState]: DefinedMessage | undefined } =
   {
@@ -179,6 +180,7 @@ export function BottomMenu({
               href={secondaryPolicy}
               target="_blank"
               rel="noopener noreferrer"
+              classes="external-link"
             >
               {formatMessage(
                 bottomMenuMessages.showSecondaryPolicyButton,
@@ -199,10 +201,12 @@ export function BottomMenu({
           href={privacyPolicy}
           target="_blank"
           rel="noopener noreferrer"
+          classes="external-link"
         >
           {policyMessage
             ? formatMessage(policyMessage, globalUiVariables)
-            : 'Undefined Policy Link Message'}
+            :'Undefined Policy Link Message'}
+          <ExternalLinkIcon />
         </MenuItem>
       </div>
     </div>
