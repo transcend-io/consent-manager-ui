@@ -247,13 +247,6 @@ export function Main({
             )}
           </div>
           <div className="footer-container">
-            <LanguageButton
-              handleSetViewState={handleSetViewState}
-              viewState={viewState}
-              fontColor={config.theme.fontColor}
-              supportedLanguages={supportedLanguages}
-              globalUiVariables={globalUiVariables}
-            />
             <BottomMenu
               firstSelectedViewState={firstSelectedViewState}
               viewState={viewState}
