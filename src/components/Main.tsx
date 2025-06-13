@@ -101,13 +101,6 @@ export function Main({
         ref={dialogRef}
       >
         <div className="modal-container-inner">
-          <LanguageButton
-              handleSetViewState={handleSetViewState}
-              viewState={viewState}
-              fontColor={config.theme.fontColor}
-              supportedLanguages={supportedLanguages}
-              globalUiVariables={globalUiVariables}
-            />
           <div className="inner-container">
             {viewState === 'QuickOptions' && (
               <QuickOptions
@@ -249,7 +242,13 @@ export function Main({
             )}
           </div>
           <div className="footer-container">
-            <TranscendLogo fontColor={config.theme.fontColor} />
+            <LanguageButton
+              handleSetViewState={handleSetViewState}
+              viewState={viewState}
+              fontColor={config.theme.fontColor}
+              supportedLanguages={supportedLanguages}
+              globalUiVariables={globalUiVariables}
+            />
             <BottomMenu
               firstSelectedViewState={firstSelectedViewState}
               viewState={viewState}

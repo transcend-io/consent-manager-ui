@@ -2,7 +2,7 @@ import { h } from 'preact';
 
 export function ExternalLinkIcon(props: JSX.SVGAttributes<SVGSVGElement>) {
   return (
-    <svg fill="#000" viewBox="0 0 24 24" width="24" height="24" xmlns="http://www.w3.org/2000/svg" {...props}>
+    <svg fill="currentColor" viewBox="0 0 24 24" width="24" height="24" xmlns="http://www.w3.org/2000/svg" {...props}>
       <title>Opens in new tab.</title>
       <g strokeWidth={0}></g>
       <g strokeLinecap="round" strokeLinejoin="round"></g>

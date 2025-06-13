@@ -1,11 +1,14 @@
 /*
  * cm.scss - SCSS version of cm.css
  */
+@use 'sass:color';
 
 // Color variables
 $primary-color: #10841c;
-$focus-color: darken($primary-color, 0.5);
+$focus-color: color.adjust($primary-color, $lightness: -0.5%);
 $white: #ffffff;
+$light: #efefef;
+$gray: #d8d8d8;
 $black: #12191a;
 $text-color: #{black};
 $disabled-color: #bbb9ba;
@@ -36,22 +39,24 @@ $dark: #162310;
 	border-radius: 500px;
 	width: 100%;
 	background-color: var(--white);
-	opacity: 0.9;
 	border: 1px solid var(--primary-color);
 	box-sizing: border-box;
-	cursor: pointer;
 	filter: brightness(100%);
 	flex-shrink: 0;
 	font-family: inherit;
 	text-align: center;
 	padding: 6px;
 	transition: filter 150ms, background-color 150ms;
+
 	&:not(:last-of-type) {
 		margin-bottom: 8px;
 	}
+
 	&:hover,
-	&:focus {
+	&:focus,
+	&:active {
 		background-color: var(--primary-color);
+
 		/** Inner text */
 		span {
 			color: var(--white);
@@ -81,13 +86,29 @@ $dark: #162310;
 }
 
 /** Button focus */
-button:focus {
-	outline: 2px solid var(--focus-color);
+button {
+
+	&:focus,
+	&:active {
+		outline: 1px solid var(--primary-color);
+	}
+
+	&:hover {
+		cursor: pointer;
+	}
 }
 
 /** Anchor focus */
-a:focus {
-	outline: 2px solid var(--focus-color);
+a {
+
+	&:focus,
+	&:active {
+		outline: 1px solid var(--primary-color);
+	}
+
+	&:hover {
+		cursor: pointer;
+	}
 }
 
 /***********************************
@@ -123,8 +144,8 @@ a:focus {
 /** Paragraph text styles */
 .paragraph {
 	color: var(--text-color);
-	font-size: 14px;
-	margin: 0 0 18px 0;
+	font-size: 12px;
+	margin: auto;
 }
 
 /** Styles applied to the main contents of the consent modal (does not include footer) */
@@ -148,7 +169,7 @@ a:focus {
 	display: flex;
 	flex-direction: column;
 	width: 100%;
-	margin: 0 auto 2px auto;
+	margin: 0 auto;
 	justify-content: space-between;
 	align-items: center;
 }
@@ -157,7 +178,7 @@ a:focus {
 .toggles-container {
 	height: 100%;
 	display: flex;
-	margin: 20px;
+	//margin: 20px;
 	flex-direction: column;
 	align-content: center;
 	flex-wrap: wrap;
@@ -174,15 +195,16 @@ a:focus {
 /** Style applied to each label text for each checkbox toggle and switch */
 .toggle-label {
 	position: relative;
-	margin: 0 10px 15px 10px;
+	margin: auto;
 	font-size: 12px;
 	font-weight: 500;
-	height: 16px;
+	//height: 16px;
 	vertical-align: baseline;
 	color: var(--text-color);
 	text-shadow: none;
 	padding-left: 25px;
 	word-wrap: break-word;
+
 	/** Style applied to the checkbox toggle box */
 	input:focus + span {
 		outline: 2px solid var(--focus-color);
@@ -205,6 +227,7 @@ a:focus {
 	left: 0;
 	transition: all 150ms ease, background 300ms ease;
 	cursor: pointer;
+
 	/** Style applied to create custom checkmark ::after */
 	&::after {
 		opacity: 0;
@@ -232,25 +255,30 @@ a:focus {
 	height: 100%;
 	opacity: 0;
 	cursor: pointer;
+
 	/** Style applied to checkbox input when disabled */
 	&:disabled {
 		cursor: not-allowed;
 	}
+
 	/** Style applied to checkbox input span when checked */
 	&:checked + span {
 		background: var(--primary-color);
 		border-color: transparent;
 	}
+
 	/** Style applied to checkbox input when checked and hovering */
 	&:checked + span,
 	&:hover + span {
 		filter: brightness(0.9);
 	}
+
 	/** Style applied to checkbox input when checked and after */
 	&:checked + span::after {
 		opacity: 1;
 		transform: rotate(45deg) scale(1);
 	}
+
 	/** Style applied to toggle input when focused */
 	&:hover:enabled + span,
 	&:focus-visible + span {
@@ -262,6 +290,7 @@ a:focus {
 		background-color: #ececec;
 		cursor: not-allowed;
 	}
+
 	/** Style applied to checkbox input span when disabled and hover */
 	&:disabled + span,
 	&:hover + span {
@@ -319,40 +348,40 @@ a:focus {
 
 /** Styles applied to the language button */
 .language-button {
-	background: unset;
-	border: unset;
-	width: unset;
-	padding: unset;
-	margin: unset;
-	width: 17px;
+	background: none;
+	border: none;
+	padding: 0;
+	margin: 0;
+	width: auto;
 	height: 17px;
-	overflow: hidden;
-	position: absolute;
-	bottom: 0;
-	right: 0;
-	cursor: pointer;
-}
 
-/** Styles to apply when language svg select button is hovered on */
-.language-button-inactive svg {
-	fill: var(--text-color);
-	transition: fill 150ms;
-}
+	&:hover,
+	&:focus,
+	&:active {
+		cursor: pointer;
 
-/** Styles to apply when actively labeled */
-.language-button-active svg {
-	fill: var(--primary-color);
-	transition: fill 150ms;
-}
+		svg {
+			fill: var(--primary-color);
+			transition: fill 150ms;
+		}
+	}
 
-/** Styles to apply when language svg select button is hovered on */
-.language-button svg:hover {
-	fill: var(--primary-color);
-}
+	&:focus,
+	&:active {
+		outline: 1px solid var(--primary-color);
+	}
 
-/** Styles to apply when language svg select button is active */
-.language-button svg:active {
-	fill: var(--primary-color);
+	/** Styles to apply when language svg select button is hovered on */
+	.language-button-inactive svg {
+		fill: var(--text-color);
+		transition: fill 150ms;
+	}
+
+	/** Styles to apply when actively labeled */
+	.language-button-active svg {
+		fill: var(--primary-color);
+		transition: fill 150ms;
+	}
 }
 
 /*******************
@@ -362,13 +391,19 @@ a:focus {
 /** Outer styles wrapped around entire bottom menu */
 .footer-container {
 	position: relative;
-	width: calc(100% - 21px * 2);
 	height: auto;
+	display: flex;
+	align-items: center;
+	margin-top: 0.5rem;
+}
+
+/** Styles applied to each item of bottom menu */
+.bottom-menu-item-container {
+	width: auto;
 }
 
 /** Styles applied to bottom menu */
 .bottom-menu-container {
-	width: calc(100% - 60px);
 	height: 100%;
 	display: flex;
 	flex-direction: row;
@@ -377,22 +412,13 @@ a:focus {
 	margin: 0 auto;
 }
 
-/** Styles applied to each item of bottom menu */
-.bottom-menu-item-container {
-	width: auto;
-}
-
 /** Menu item styles for the BottomMenu */
 .bottom-menu-item {
-	background: unset;
-	border: unset;
-	width: unset;
-	padding: unset;
-	margin: unset;
-
+	background: none;
+	border: none;
+	padding: 0;
 	margin: 0 auto;
-	display: block;
-	min-width: fit-content;
+	display: flex;
 	width: auto;
 	text-align: center;
 	line-height: 1.5em;
@@ -400,17 +426,18 @@ a:focus {
 	font-size: 10px;
 	font-weight: 500;
 	color: var(--text-color);
-	transition: text-decoration 150ms;
 	text-decoration: underline;
-	text-decoration-color: rgba(1, 1, 1, 0);
-	text-decoration-thickness: 1px;
-	text-underline-offset: 2px;
-	&:hover {
+
+	&:hover,
+	&:focus,
+	&:active {
 		cursor: pointer;
-		text-decoration: underline;
-		text-decoration-color: rgba(1, 1, 1, 1);
-		text-decoration-thickness: 1px;
-		text-underline-offset: 2px;
+		color: var(--primary-color);
+	}
+
+	&:focus,
+	&:active {
+		outline: 1px solid var(--primary-color);
 	}
 }
 
@@ -503,7 +530,7 @@ a:focus {
 	box-sizing: border-box;
 	border-radius: 18px;
 	border: 0.5px solid #d8d8d8;
-	background-color: rgba(255, 255, 255, 0.9);
+	background-color: $light;
 	overflow: auto;
 	padding: 21px;
 	font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir, helvetica neue, helvetica, 'sans-serif';
@@ -529,6 +556,7 @@ a:focus {
 	0% {
 		opacity: 0;
 	}
+
 	100% {
 		opacity: 1;
 	}
@@ -701,9 +729,9 @@ a:focus {
 		display: flex;
 		align-items: center;
 		font-weight: 500;
-		font-size: 14px;
-		height: 16px;
-		vertical-align: baseline;
+		font-size: 12px;
+		//height: 16px;
+		//vertical-align: baseline;
 		text-shadow: none;
 		white-space: nowrap;
 		padding: 0 5px;
@@ -733,6 +761,7 @@ a:focus {
 			transition: 150ms;
 			background: #fff;
 		}
+
 		&:active .switch-button {
 			width: calc(var(--switchButtonDiameter) * 1.2);
 		}
@@ -774,36 +803,79 @@ a:focus {
 
 /** Container around the Transcend logo in the bottom left hand side of the modal */
 .transcend-logo-container {
-	width: 17px;
-	height: 17px;
-	overflow: hidden;
-	position: absolute;
-	bottom: 0;
-	left: 0;
+	display: flex;
+	align-items: center;
+	height: 18px;
+	position: relative;
+
+	&:hover,
+	&:focus,
+	&:active {
+
+		.transcend-logo-svg path,
+		.external-link-transcend-logo {
+			fill: var(--primary-color);
+			transition: fill 150ms;
+			cursor: pointer;
+		}
+	}
+
+	/** Styles applied to the Transcend svg logo in the bottom of the modal */
+	.transcend-logo-svg {
+		width: 64px;
+		height: 18px;
+
+		path {
+			fill: var(--text-color);
+			transition: fill 150ms;
+		}
+	}
+
+	.external-link-transcend-logo {
+		width: 15px;
+		height: 15px;
+		margin: 0 auto;
+
+		svg {
+			fill: var(--text-color);
+		}
+	}
 }
 
-/** Styles applied to the Transcend svg logo in the bottom left hand side of the modal */
-.transcend-logo-svg {
-	width: 64px;
-	height: 17px;
-}
+.external-link {
+	display: flex;
+	align-items: center;
 
-/** Styles applied to the Transcend svg logo path in the bottom left hand side of the modal */
-.transcend-logo-svg path {
-	fill: var(--text-color);
-	transition: fill 150ms;
-}
+	svg {
+		fill: var(--text-color);
+		width: 18px;
+		height: 18px;
+	}
 
-/*******************
- * Media Styles
- *******************/
+	&:hover,
+	&:focus,
+	&:active {
+		cursor: pointer;
+
+		svg {
+			fill: var(--primary-color);
+		}
+	}
+
+	&:focus,
+	&:active {
+		outline: 1px solid var(--primary-color);
+	}
+}
 
 /** At least table */
 @media (min-width: 640px) {
+
 	/** Button Styles */
 	.button {
 		width: 135px;
 	}
+
 	.button:not(:last-of-type) {
 		margin-bottom: 0;
 	}
@@ -813,13 +885,16 @@ a:focus {
 		margin: 0 18px 0 0;
 		text-align: left;
 	}
+
 	.text-title-center {
 		margin: 0 0 18px 0;
 		text-align: center;
 	}
+
 	.paragraph {
-		margin: 18px 18px 0 0;
+		margin: 0 auto;
 	}
+
 	.column-content {
 		flex-direction: row;
 	}
@@ -828,6 +903,7 @@ a:focus {
 	.accept-or-reject-all-button-row {
 		flex-direction: row;
 	}
+
 	.accept-or-reject-all-button-row button:not(:first-of-type) {
 		margin-left: 10px;
 	}
@@ -837,6 +913,7 @@ a:focus {
 		width: calc(100% - 150px);
 		justify-content: space-evenly;
 	}
+
 	.bottom-menu-item {
 		font-size: 12px;
 	}
@@ -850,38 +927,5 @@ a:focus {
 	.modal-container {
 		bottom: 5px;
 		max-width: 630px;
-		bottom: 22px;
 	}
-
-	/** TranscendLogo */
-	.transcend-logo-container {
-		width: auto;
-	}
-	.transcend-logo-svg:hover .transcend-wordmark,
-	.transcend-logo-container:focus .transcend-wordmark {
-		fill-opacity: 1;
-	}
-	.transcend-logo-svg:hover path,
-	.transcend-logo-container:focus path {
-		fill: var(--primary-color);
-	}
-}
-
-.external-link {
-  display: flex;
-  align-items: center;
-  svg {
-    fill: var(--primary-color);
-    width: 20px;
-    height: 20px;
-  }
-}
-
-.transcend-logo-container {
-  display: flex;
-  width: auto !important;
-  .external-link-transcend-logo {
-    width: 15px;
-    height: 15px;
-  }
 }

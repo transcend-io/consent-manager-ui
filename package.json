@@ -27,6 +27,7 @@
     "@transcend-io/logger": "^1.1.0",
     "preact": "10.5.14",
     "react-intl": "=6.2.5",
+    "sass": "^1.89.2",
     "tslib": "^2.4.1"
   },
   "scripts": {
@@ -43,7 +44,8 @@
     "prepublish": "yarn build",
     "test": "yarn jest",
     "test:update": "yarn jest -u",
-    "test:watch": "yarn jest --watch"
+    "test:watch": "yarn jest --watch",
+    "sass": "sass --watch src/styles/cm.scss:src/cm.css"
   },
   "devDependencies": {
     "@jest/globals": "^29.3.1",
