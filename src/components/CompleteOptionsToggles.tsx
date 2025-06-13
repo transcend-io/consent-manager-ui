@@ -9,7 +9,7 @@ import {
   useGetPurposeDescriptionKeys,
   useGetPurposeMessageKeys,
 } from '../hooks';
-import { messages } from '../messages';
+import { completeOptionsMessages, messages } from '../messages';
 import type { HandleSetViewState } from '../types';
 import { CloseButton } from './CloseButton';
 import {
@@ -18,6 +18,7 @@ import {
   ORDER_OF_PURPOSES,
 } from './constants';
 import { Switch } from './Switch';
+import { Button } from './Button';
 
 /**
  * Component showing explanatory text before offering a way
@@ -27,6 +28,7 @@ export function CompleteOptionsToggles({
   handleSetViewState,
   fontColor,
   globalUiVariables,
+  mode = 'immediate', // 'immediate' or 'confirm'
 }: {
   /** Function to change viewState */
   handleSetViewState: HandleSetViewState;
@@ -34,6 +36,7 @@ export function CompleteOptionsToggles({
   fontColor: string;
   /** Global UI view state variables  */
   globalUiVariables: ObjByString;
+  mode?: 'immediate' | 'confirm'; // add mode prop
 }): JSX.Element {
   const { airgap } = useAirgap();
   const { formatMessage } = useIntl();
@@ -55,6 +58,9 @@ export function CompleteOptionsToggles({
   const [consentSelections, setConsentSelections] = useState(
     initialConsentSelections,
   );
+
+  // For confirm mode, keep a separate state for pending changes
+  const [pendingSelections, setPendingSelections] = useState(consentSelections);
 
   // sort ordering of options
   const orderedSelections = Object.entries(consentSelections).sort(([a], [b]) =>
@@ -79,12 +85,32 @@ export function CompleteOptionsToggles({
     /** Event */
     event: JSX.TargetedEvent<HTMLInputElement, Event>;
   }): void => {
-    airgap.setConsent(event, { [purpose]: checked }, CONSENT_OPTIONS);
-    setConsentSelections({
-      ...consentSelections,
-      [purpose]: checked,
-    });
+    if (mode === 'immediate') {
+      airgap.setConsent(event, { [purpose]: checked }, CONSENT_OPTIONS);
+      setConsentSelections({
+        ...consentSelections,
+        [purpose]: checked,
+      });
+    } else {
+      setPendingSelections({
+        ...pendingSelections,
+        [purpose]: checked,
+      });
+    }
+    console.log('Testing Confirmation: ', airgap.getConsent().purposes);
   };
+
+  // When Confirm is pressed in confirm mode
+  const handleConfirm = (event: JSX.TargetedEvent<HTMLButtonElement, MouseEvent>) => {
+    event.preventDefault();
+    airgap.setConsent(event, pendingSelections, CONSENT_OPTIONS);
+    setConsentSelections(pendingSelections);
+    console.log('Testing Confirmation: ', airgap.getConsent().purposes);
+    handleSetViewState('close');
+  };
+
+  // Use correct selections for rendering
+  const selectionsToRender = mode === 'immediate' ? consentSelections : pendingSelections;
 
   return (
     <div className="column-content" role="none">
@@ -95,7 +121,7 @@ export function CompleteOptionsToggles({
         className="complete-options-toggle-close"
         fontColor={fontColor}
         globalUiVariables={globalUiVariables}
-        {...(orderedSelections.length === 0 ? { initialFocus: true } : {})}
+        {...(Object.entries(selectionsToRender).length === 0 ? { initialFocus: true } : {})}
       />
       <div>
         <div>
@@ -163,7 +189,7 @@ export function CompleteOptionsToggles({
             <span key={purpose}>
               <Switch
                 id={purpose}
-                checked={isChecked}
+                checked={selectionsToRender[purpose]}
                 handleSwitch={(checked, event) =>
                   handleSwitch({
                     checked,
@@ -189,8 +215,16 @@ export function CompleteOptionsToggles({
               </p>
             </span>
           ))}
-          <p className="paragraph" />
         </div>
+        {mode === 'confirm' && (
+          <div className="confirm-button-container">
+            <Button
+              primaryText={formatMessage(completeOptionsMessages.saveButtonPrimary, globalUiVariables)}
+              handleClick={handleConfirm}
+              initialFocus={orderedSelections.length === 0}
+            />
+          </div>
+        )}
       </div>
     </div>
   );

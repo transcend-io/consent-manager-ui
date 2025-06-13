@@ -809,5 +809,12 @@ a:hover {
     max-width: 630px;
   }
 }
+/** CONFIRMATION BUTTON */
+.confirm-button-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.25rem;
+}
 
 /*# sourceMappingURL=cm.css.map */

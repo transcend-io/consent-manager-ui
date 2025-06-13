@@ -203,9 +203,10 @@ export function BottomMenu({
           rel="noopener noreferrer"
           classes="external-link"
         >
+          {/* Only call formatMessage if policyMessage is defined */}
           {policyMessage
             ? formatMessage(policyMessage, globalUiVariables)
-            :'Undefined Policy Link Message'}
+            : 'See our privacy policy'}
           <ExternalLinkIcon />
         </MenuItem>
       </div>

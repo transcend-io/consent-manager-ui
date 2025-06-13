@@ -142,6 +142,11 @@ export function Main({
                 handleSetViewState={handleSetViewState}
                 fontColor={config.theme.fontColor}
                 globalUiVariables={globalUiVariables}
+                mode={
+                  firstSelectedViewState === 'AcceptOrRejectAll'
+                    ? 'confirm'
+                    : 'immediate'
+                }
               />
             )}
 
