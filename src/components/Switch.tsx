@@ -26,13 +26,15 @@ export function Switch({
   label: string;
   /** Whether to autofocus this input */
   initialFocus?: true;
-}): JSX.Element {
+  }): JSX.Element {
+  let labelClassName='switch label';
   let backgroundClassName = 'switch switch-background';
-  if (disabled) {
+  if(disabled) {
+    labelClassName+=' switch-disabled';
     backgroundClassName += ' switch-disabled';
   }
   return (
-    <label className="switch label">
+    <label className={labelClassName}>
       <input
         className="switch switch-checkbox screen-reader"
         id={`switch-${id}`}

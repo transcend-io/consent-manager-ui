@@ -113,7 +113,7 @@ a:hover {
 .paragraph {
   color: var(--text-color);
   font-size: 12px;
-  margin: auto;
+  padding: 0.25rem;
 }
 
 /** Styles applied to the main contents of the consent modal (does not include footer) */
@@ -611,12 +611,13 @@ a:hover {
 
 /** Outline for do not sell explainer */
 .complete-options-toggle-interface {
-  margin-top: 2em;
+  margin-top: 1rem;
 }
 
 /** Styles for complete options toggle description */
 .complete-options-toggle-description {
-  padding-bottom: 2em;
+  padding-bottom: 1rem;
+  margin-bottom: 0.25rem;
 }
 
 /*******************
@@ -658,12 +659,14 @@ a:hover {
   white-space: nowrap;
   padding: 0 5px;
 }
+.switch.label:not(.switch-disabled) {
+  cursor: pointer;
+}
 .switch.switch-background {
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin-right: 0.8em;
-  cursor: pointer;
   width: calc(var(--switchHeight) * 2 - 2px);
   height: var(--switchHeight);
   background: #7e8793;
@@ -685,7 +688,7 @@ a:hover {
 .switch.switch-background:active .switch-button {
   width: calc(var(--switchButtonDiameter) * 1.2);
 }
-.switch.switch-disabled {
+.switch.switch-background.switch-disabled {
   opacity: 0.6;
   background-color: var(--disabled-color);
 }
@@ -777,9 +780,6 @@ a:hover {
   .text-title-center {
     margin: 0 0 18px 0;
     text-align: center;
-  }
-  .paragraph {
-    margin: 0 auto;
   }
   .column-content {
     flex-direction: row;
