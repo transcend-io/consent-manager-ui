@@ -75,6 +75,7 @@ export function AcceptOrRejectAll({
             globalUiVariables,
           )}
           handleClick={handleAcceptAll}
+          initialFocus
         />
         <Button
           primaryText={formatMessage(
@@ -82,7 +83,7 @@ export function AcceptOrRejectAll({
             globalUiVariables,
           )}
           handleClick={handleRejectAll}
-          initialFocus
+
         />
       </div>
     </div>
