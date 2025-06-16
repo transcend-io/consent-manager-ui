@@ -142,12 +142,6 @@ export function Main({
 
           const elementToFocus = focusableElements[currentFocusIndex];
           if (elementToFocus) {
-            console.log('Focusing:', {
-              index: currentFocusIndex,
-              element: elementToFocus.tagName,
-              class: elementToFocus.className,
-              text: elementToFocus.textContent?.trim()
-            });
             elementToFocus.focus();
           }
         } else if (event.key === 'Escape') {
@@ -158,11 +152,6 @@ export function Main({
       // Set initial focus
       const setInitialFocus = () => {
         const focusableElements = getFocusableElements();
-        console.log('Focusable elements:', focusableElements.map(el => ({
-          tagName: el.tagName,
-          className: el.className,
-          textContent: el.textContent?.trim()
-        })));
 
         const initialFocusEl = modalElement.querySelector<HTMLElement>('[data-initialFocus]');
         if (initialFocusEl) {
