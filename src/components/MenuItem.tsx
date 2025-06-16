@@ -52,6 +52,13 @@ export function MenuItem({
           onClick={onClick as JSX.MouseEventHandler<HTMLButtonElement>}
           className={`bottom-menu-item${classes ? ` ${classes}` : ''}`}
           aria-label={label}
+          tabIndex={0}
+          onKeyDown={(e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault();
+              (onClick as JSX.MouseEventHandler<HTMLButtonElement>)?.(e as any);
+            }
+          }}
         >
           {children}
         </button>
@@ -64,6 +71,13 @@ export function MenuItem({
           rel="noopener noreferrer"
           aria-label={label}
           title={label}
+          tabIndex={0}
+          onKeyDown={(e) => {
+            if (e.key === 'Enter') {
+              e.preventDefault();
+              window.open(href, '_blank', 'noopener,noreferrer');
+            }
+          }}
         >
           {children}
         </a>
