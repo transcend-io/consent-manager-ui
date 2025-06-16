@@ -35,7 +35,8 @@ import { CompleteOptionsToggles } from './CompleteOptionsToggles';
 import { useIntl } from 'react-intl';
 import { messages } from '../messages';
 import { initialFocusElement } from '../helpers';
-import { ObjByString } from '@transcend-io/type-utils';
+import {ObjByString} from '@transcend-io/type-utils';
+import { createFocusTrap, FocusTrap } from 'focus-trap';
 
 /**
  * Presents view states (collapsed, GDPR-mode, CCPA-mode etc)
@@ -62,7 +63,7 @@ export function Main({
   /** The current viewState of the consent manager */
   viewState: ViewState;
   /** First view state selected when transcend.showConsentManager() is called */
-  firstSelectedViewState: ViewState | null;
+  firstSelectedViewState: ViewState | 'AcceptOrRejectAll' | null;
   /** Updater function for viewState */
   handleSetViewState: HandleSetViewState;
   /** Updater function for language change */
@@ -87,177 +88,198 @@ export function Main({
     }
   }, [viewState, dialogRef, config.autofocus]);
 
+const trapRef = useRef<FocusTrap | null>(null);
+
+useEffect(() => {
+  if (!isViewStateClosed(viewState) && dialogRef.current) {
+    trapRef.current = createFocusTrap(dialogRef.current, {
+      escapeDeactivates: true,
+      clickOutsideDeactivates: true,
+      fallbackFocus: dialogRef.current,
+    });
+    trapRef.current.activate();
+  }
+
+  return () => {
+    trapRef.current?.deactivate();
+  };
+}, [viewState]);
+
+  console.log('Initial viewState:', firstSelectedViewState);
+
   // Modal open views
   if (!isViewStateClosed(viewState)) {
     if (!isResponseViewState(viewState) && !airgap.getConsent().prompted) {
       airgap.setPrompted(true);
     }
     return (
-      <div
-        role="region"
-        aria-label={formatMessage(messages.modalAriaLabel, globalUiVariables)}
-        className="modal-container"
-        id="consentManagerMainDialog"
-        ref={dialogRef}
-      >
-        <div className="modal-container-inner">
-          <div className="inner-container">
-            {viewState === 'QuickOptions' && (
-              <QuickOptions
-                handleSetViewState={handleSetViewState}
-                globalUiVariables={globalUiVariables}
-              />
-            )}
+        <div
+          role="dialog"
+          aria-modal="true"
+          aria-label={formatMessage(messages.modalAriaLabel, globalUiVariables)}
+          className="modal-container"
+          id="consentManagerMainDialog"
+          ref={dialogRef}
+          tabIndex={-1}
+        >
+          <div className="modal-container-inner">
+            <div className="inner-container">
+              {viewState === 'QuickOptions' && (
+                <QuickOptions
+                  handleSetViewState={handleSetViewState}
+                  globalUiVariables={globalUiVariables}
+                />
+              )}
 
-            {viewState === 'AcceptAll' && (
-              <AcceptAll
-                handleSetViewState={handleSetViewState}
-                globalUiVariables={globalUiVariables}
-              />
-            )}
+              {viewState === 'AcceptAll' && (
+                <AcceptAll
+                  handleSetViewState={handleSetViewState}
+                  globalUiVariables={globalUiVariables}
+                />
+              )}
 
-            {viewState === 'AcceptOrRejectAnalytics' && (
-              <AcceptOrRejectAnalytics
-                handleSetViewState={handleSetViewState}
-                globalUiVariables={globalUiVariables}
-              />
-            )}
-            {viewState === 'AcceptOrRejectAdvertising' && (
-              <AcceptOrRejectAdvertising
-                handleSetViewState={handleSetViewState}
-                globalUiVariables={globalUiVariables}
-              />
-            )}
+              {viewState === 'AcceptOrRejectAnalytics' && (
+                <AcceptOrRejectAnalytics
+                  handleSetViewState={handleSetViewState}
+                  globalUiVariables={globalUiVariables}
+                />
+              )}
+              {viewState === 'AcceptOrRejectAdvertising' && (
+                <AcceptOrRejectAdvertising
+                  handleSetViewState={handleSetViewState}
+                  globalUiVariables={globalUiVariables}
+                />
+              )}
 
-            {viewState === 'DoNotSellExplainer' && (
-              <DoNotSellExplainer
+              {viewState === 'DoNotSellExplainer' && (
+                <DoNotSellExplainer
+                  handleSetViewState={handleSetViewState}
+                  fontColor={config.theme.fontColor}
+                  globalUiVariables={globalUiVariables}
+                />
+              )}
+
+              {viewState === 'CompleteOptionsToggles' && (
+                <CompleteOptionsToggles
+                  handleSetViewState={handleSetViewState}
+                  fontColor={config.theme.fontColor}
+                  globalUiVariables={globalUiVariables}
+                  mode={
+                    firstSelectedViewState === 'AcceptOrRejectAll'
+                      ? 'confirm'
+                      : 'immediate'
+                  }
+                />
+              )}
+
+              {viewState === 'QuickOptions3' && (
+                <QuickOptions3
+                  handleSetViewState={handleSetViewState}
+                  globalUiVariables={globalUiVariables}
+                />
+              )}
+
+              {viewState === 'PrivacyPolicyNotice' && (
+                <PrivacyPolicyNotice
+                  handleSetViewState={handleSetViewState}
+                  globalUiVariables={globalUiVariables}
+                />
+              )}
+
+              {viewState === 'PrivacyPolicyNoticeWithCloseButton' && (
+                <PrivacyPolicyNoticeWithCloseButton
+                  handleSetViewState={handleSetViewState}
+                  fontColor={config.theme.fontColor}
+                  globalUiVariables={globalUiVariables}
+                />
+              )}
+
+              {viewState === 'AcceptOrRejectAll' && (
+                <AcceptOrRejectAll
+                  handleSetViewState={handleSetViewState}
+                  globalUiVariables={globalUiVariables}
+                />
+              )}
+
+              {viewState === 'AcceptAllRejectAllToggle' && (
+                <AcceptAllRejectAllToggle
+                  handleSetViewState={handleSetViewState}
+                  fontColor={config.theme.fontColor}
+                  globalUiVariables={globalUiVariables}
+                />
+              )}
+
+              {viewState === 'AcceptAllOrMoreChoices' && (
+                <AcceptAllOrMoreChoices
+                  handleSetViewState={handleSetViewState}
+                  globalUiVariables={globalUiVariables}
+                />
+              )}
+
+              {viewState === 'AcceptOrRejectAllOrMoreChoices' && (
+                <AcceptOrRejectAllOrMoreChoices
+                  handleSetViewState={handleSetViewState}
+                  globalUiVariables={globalUiVariables}
+                />
+              )}
+
+              {viewState === 'DoNotSellDisclosure' && modalOpenAuth && (
+                <DoNotSellDisclosure
+                  handleSetViewState={handleSetViewState}
+                  modalOpenAuth={modalOpenAuth}
+                  globalUiVariables={globalUiVariables}
+                />
+              )}
+
+              {viewState === 'OptOutDisclosure' && modalOpenAuth && (
+                <OptOutDisclosure
+                  handleSetViewState={handleSetViewState}
+                  modalOpenAuth={modalOpenAuth}
+                  globalUiVariables={globalUiVariables}
+                />
+              )}
+
+              {viewState === 'CompleteOptions' && (
+                <CompleteOptions
+                  handleSetViewState={handleSetViewState}
+                  globalUiVariables={globalUiVariables}
+                />
+              )}
+
+              {viewState === 'CompleteOptionsInverted' && (
+                <CompleteOptionsInverted
+                  handleSetViewState={handleSetViewState}
+                  globalUiVariables={globalUiVariables}
+                />
+              )}
+
+              {viewState === 'NoticeAndDoNotSell' && (
+                <NoticeAndDoNotSell
+                  handleSetViewState={handleSetViewState}
+                  globalUiVariables={globalUiVariables}
+                />
+              )}
+
+              {viewState === 'LanguageOptions' && (
+                <LanguageOptions
+                  handleSetViewState={handleSetViewState}
+                  handleChangeLanguage={handleChangeLanguage}
+                  supportedLanguages={supportedLanguages}
+                />
+              )}
+            </div>
+            <div className="footer-container">
+              <BottomMenu
+                firstSelectedViewState={firstSelectedViewState}
+                viewState={viewState}
                 handleSetViewState={handleSetViewState}
-                fontColor={config.theme.fontColor}
+                privacyPolicy={config.privacyPolicy}
+                secondaryPolicy={config.secondaryPolicy}
                 globalUiVariables={globalUiVariables}
               />
-            )}
-
-            {viewState === 'CompleteOptionsToggles' && (
-              <CompleteOptionsToggles
-                handleSetViewState={handleSetViewState}
-                fontColor={config.theme.fontColor}
-                globalUiVariables={globalUiVariables}
-                mode={
-                  firstSelectedViewState === 'AcceptOrRejectAll'
-                    ? 'confirm'
-                    : 'immediate'
-                }
-              />
-            )}
-
-            {viewState === 'QuickOptions3' && (
-              <QuickOptions3
-                handleSetViewState={handleSetViewState}
-                globalUiVariables={globalUiVariables}
-              />
-            )}
-
-            {viewState === 'PrivacyPolicyNotice' && (
-              <PrivacyPolicyNotice
-                handleSetViewState={handleSetViewState}
-                globalUiVariables={globalUiVariables}
-              />
-            )}
-
-            {viewState === 'PrivacyPolicyNoticeWithCloseButton' && (
-              <PrivacyPolicyNoticeWithCloseButton
-                handleSetViewState={handleSetViewState}
-                fontColor={config.theme.fontColor}
-                globalUiVariables={globalUiVariables}
-              />
-            )}
-
-            {viewState === 'AcceptOrRejectAll' && (
-              <AcceptOrRejectAll
-                handleSetViewState={handleSetViewState}
-                globalUiVariables={globalUiVariables}
-              />
-            )}
-
-            {viewState === 'AcceptAllRejectAllToggle' && (
-              <AcceptAllRejectAllToggle
-                handleSetViewState={handleSetViewState}
-                fontColor={config.theme.fontColor}
-                globalUiVariables={globalUiVariables}
-              />
-            )}
-
-            {viewState === 'AcceptAllOrMoreChoices' && (
-              <AcceptAllOrMoreChoices
-                handleSetViewState={handleSetViewState}
-                globalUiVariables={globalUiVariables}
-              />
-            )}
-
-            {viewState === 'AcceptOrRejectAllOrMoreChoices' && (
-              <AcceptOrRejectAllOrMoreChoices
-                handleSetViewState={handleSetViewState}
-                globalUiVariables={globalUiVariables}
-              />
-            )}
-
-            {viewState === 'DoNotSellDisclosure' && modalOpenAuth && (
-              <DoNotSellDisclosure
-                handleSetViewState={handleSetViewState}
-                modalOpenAuth={modalOpenAuth}
-                globalUiVariables={globalUiVariables}
-              />
-            )}
-
-            {viewState === 'OptOutDisclosure' && modalOpenAuth && (
-              <OptOutDisclosure
-                handleSetViewState={handleSetViewState}
-                modalOpenAuth={modalOpenAuth}
-                globalUiVariables={globalUiVariables}
-              />
-            )}
-
-            {viewState === 'CompleteOptions' && (
-              <CompleteOptions
-                handleSetViewState={handleSetViewState}
-                globalUiVariables={globalUiVariables}
-              />
-            )}
-
-            {viewState === 'CompleteOptionsInverted' && (
-              <CompleteOptionsInverted
-                handleSetViewState={handleSetViewState}
-                globalUiVariables={globalUiVariables}
-              />
-            )}
-
-            {viewState === 'NoticeAndDoNotSell' && (
-              <NoticeAndDoNotSell
-                handleSetViewState={handleSetViewState}
-                globalUiVariables={globalUiVariables}
-              />
-            )}
-
-            {viewState === 'LanguageOptions' && (
-              <LanguageOptions
-                handleSetViewState={handleSetViewState}
-                handleChangeLanguage={handleChangeLanguage}
-                supportedLanguages={supportedLanguages}
-              />
-            )}
-          </div>
-          <div className="footer-container">
-            <BottomMenu
-              firstSelectedViewState={firstSelectedViewState}
-              viewState={viewState}
-              handleSetViewState={handleSetViewState}
-              privacyPolicy={config.privacyPolicy}
-              secondaryPolicy={config.secondaryPolicy}
-              globalUiVariables={globalUiVariables}
-            />
+            </div>
           </div>
         </div>
-      </div>
     );
   }
 
