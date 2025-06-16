@@ -31,13 +31,6 @@ export function Button({
       type={type || 'button'}
       aria-description={ariaDescription}
       data-initialFocus={initialFocus}
-      tabIndex={0}
-      onKeyDown={(e) => {
-        if (e.key === 'Enter' || e.key === ' ') {
-          e.preventDefault();
-          handleClick?.(e as any);
-        }
-      }}
     >
       <span className="button-base-text button-primary-text">
         {primaryText}
