@@ -1,0 +1,821 @@
+/*
+ * cm.scss - SCSS version of cm.css
+ */
+/*******************
+ * Variables
+ *******************/
+/** Variables to insert into the remainder of the stylesheet */
+* {
+  --primary-color: #10841c;
+  --text-color: black;
+  --white: #ffffff;
+  --black: #12191a;
+  --disabled-color: #bbb9ba;
+  --dark: #162310;
+  --focus-color: rgb(15.7243243243, 129.7256756757, 27.5175675676);
+}
+
+/******************* * Modal *******************/
+/** Container that is wrapped around the modal */
+.modal-container {
+  position: fixed;
+  bottom: 2px;
+  left: 5px;
+  right: 5px;
+  margin: 0 auto;
+  box-sizing: border-box;
+  border-top-right-radius: 18px;
+  border-top-left-radius: 18px;
+  border: 0.5px solid #d8d8d8;
+  background-color: #efefef;
+  overflow: auto;
+  padding: 21px;
+  font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir, helvetica neue, helvetica, "sans-serif";
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(20px) saturate(5);
+  -webkit-backdrop-filter: blur(20px) saturate(5);
+  animation: fadeIn 150ms;
+  max-height: 90%;
+  max-width: 50%;
+  transition: width 150ms, height 150ms;
+}
+@media (max-width: 740px) {
+  .modal-container {
+    max-width: 90%;
+  }
+}
+
+/** Inner contents wrapper for modal content */
+.modal-container-inner {
+  width: 100%;
+}
+
+/*******************
+ * Text Styles
+ *******************/
+/** Modal title text styles */
+.text-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text-color);
+  margin-bottom: 8px;
+}
+
+/** Styles applied to the main contents of the consent modal (does not include footer) */
+.column-content {
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  animation: fadeIn 150ms;
+  padding: 0.5rem 0;
+}
+@media (max-width: 740px) {
+  .column-content {
+    flex-direction: column;
+  }
+}
+
+.paragraph-container {
+  width: 60%;
+  margin-right: 10px;
+}
+@media (max-width: 740px) {
+  .paragraph-container {
+    width: 100%;
+    margin-right: 0;
+    margin-bottom: 8px;
+  }
+}
+
+/** Paragraph text styles */
+.paragraph {
+  color: var(--text-color);
+  font-size: 12px;
+  padding: 0.25rem;
+  margin: 0;
+}
+
+/** Button row styles for AcceptOrRejectAll view state */
+.accept-or-reject-all-button-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40%;
+  margin-left: 10px;
+}
+.accept-or-reject-all-button-row button {
+  margin: 0 8px;
+}
+@media (min-width: 741px) and (max-width: 1169px) {
+  .accept-or-reject-all-button-row {
+    flex-direction: column;
+  }
+  .accept-or-reject-all-button-row button:first-child {
+    margin-bottom: 8px;
+  }
+}
+@media (max-width: 740px) {
+  .accept-or-reject-all-button-row {
+    width: 100%;
+    flex-direction: row;
+    margin-left: 0;
+  }
+}
+@media (max-width: 450px) {
+  .accept-or-reject-all-button-row {
+    flex-direction: column;
+  }
+  .accept-or-reject-all-button-row button:first-child {
+    margin-bottom: 8px;
+  }
+}
+
+/*******************
+ * Button Styles
+ *******************/
+/** Buttons displayed throughout the consent UI */
+.button {
+  border-radius: 500px;
+  width: auto;
+  background-color: var(--white);
+  border: 1px solid var(--primary-color);
+  box-sizing: border-box;
+  filter: brightness(100%);
+  font-family: inherit;
+  text-align: center;
+  padding: 0.875rem 2rem;
+  white-space: nowrap;
+  transition: filter 150ms, background-color 150ms;
+  /** Inner text */
+}
+.button span {
+  color: var(--primary-color);
+}
+@media (max-width: 450px) {
+  .button {
+    white-space: normal;
+  }
+  .button:not(:last-of-type) {
+    margin-bottom: 8px;
+  }
+}
+.button:hover, .button:focus, .button:active {
+  outline: none;
+  box-shadow: inset 0 0 0 0.25rem var(--white), inset 0 0 0 0.5rem var(--primary-color);
+}
+
+/** Base styles applied to button text */
+.button-base-text {
+  color: var(--primary-color);
+  display: block;
+  font-style: normal;
+  text-align: center;
+  transition: color 150ms;
+}
+
+/** Styles applied to "primary" button text */
+.button-primary-text {
+  font-size: 12px;
+  font-weight: 700;
+}
+
+/** Styles applied to "secondary" button text */
+.button-secondary-text {
+  font-size: 9px;
+  font-weight: 400;
+}
+
+/** Button focus */
+button:focus, button:active {
+  outline: 1px solid var(--primary-color);
+}
+button:hover {
+  cursor: pointer;
+}
+
+/** Anchor focus */
+a:focus, a:active {
+  outline: 1px solid var(--primary-color);
+}
+a:hover {
+  cursor: pointer;
+}
+
+/***********************************
+ * Accessibility - non-visual label
+ ***********************************/
+/** Screen reader styles */
+.screen-reader {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+/*******************
+ * CompleteOptions
+ *******************/
+/** Styles applied to `CompleteOptions` view state body  */
+.complete-options-form {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin: 0 auto;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/** Container for rendering checkbox toggles */
+.toggles-container {
+  height: 100%;
+  display: flex;
+  align-content: center;
+  flex-wrap: wrap;
+  width: 100%;
+  justify-content: center;
+}
+@media (max-width: 740px) {
+  .toggles-container {
+    flex-direction: column;
+  }
+}
+
+/** Container around `CompleteOptions` view state */
+.complete-options-container {
+  height: inherit;
+  animation: fadeIn 200ms ease-in;
+}
+
+/** Style applied to each label text for each checkbox toggle and switch */
+.toggle-label {
+  position: relative;
+  margin: auto;
+  font-size: 12px;
+  font-weight: 500;
+  vertical-align: baseline;
+  color: var(--text-color);
+  text-shadow: none;
+  padding-left: 25px;
+  word-wrap: break-word;
+  /** Style applied to the checkbox toggle box */
+}
+.toggle-label input:focus + span {
+  outline: 2px solid var(--focus-color);
+  outline-offset: 1px;
+}
+
+/** Style applied to create custom checkmark */
+.toggle-checkmark {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  box-sizing: border-box;
+  border-radius: 4px;
+  margin-right: 5px;
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid #d8d8d8;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: all 150ms ease, background 300ms ease;
+  cursor: pointer;
+  /** Style applied to create custom checkmark ::after */
+}
+.toggle-checkmark::after {
+  opacity: 0;
+  transform-origin: bottom center;
+  transform: rotate(45deg) scale(0);
+  content: "";
+  position: absolute;
+  left: 1px;
+  top: 0;
+  width: 3px;
+  height: 8px;
+  border: solid #ffffff;
+  border-width: 0px 2px 2px 0px;
+  transition: all 150ms cubic-bezier(0.41, 0.94, 0.71, 1.41), opacity 150ms ease;
+}
+
+/** Style applied to checkbox input */
+.toggle-input {
+  position: absolute;
+  margin: 0;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+  /** Style applied to checkbox input when disabled */
+  /** Style applied to checkbox input span when checked */
+  /** Style applied to checkbox input when checked and hovering */
+  /** Style applied to checkbox input when checked and after */
+  /** Style applied to toggle input when focused */
+  /** Style applied to checkbox input span when disabled */
+  /** Style applied to checkbox input span when disabled and hover */
+  /** Style applied to checkbox input span when disabled */
+}
+.toggle-input:disabled {
+  cursor: not-allowed;
+}
+.toggle-input:checked + span {
+  background: var(--primary-color);
+  border-color: transparent;
+}
+.toggle-input:checked + span, .toggle-input:hover + span {
+  filter: brightness(0.9);
+}
+.toggle-input:checked + span::after {
+  opacity: 1;
+  transform: rotate(45deg) scale(1);
+}
+.toggle-input:hover:enabled + span, .toggle-input:focus-visible + span {
+  border-color: var(--primary-color);
+}
+.toggle-input:disabled + span {
+  background-color: #ececec;
+  cursor: not-allowed;
+}
+.toggle-input:disabled + span, .toggle-input:hover + span {
+  filter: none;
+  border-color: transparent;
+}
+.toggle-input:disabled + span::after {
+  border-color: var(--darkgray);
+}
+
+/*******************
+ * DoNotSellExplainer
+ *******************/
+/** Do not sell switch interface */
+.margin-tops > * {
+  margin-top: 2em;
+}
+
+/*******************
+ * LanguageOptions
+ *******************/
+/** Styles applied around the language container */
+.language-options-container {
+  width: 100%;
+  height: 100%;
+  animation: fadeIn 200ms ease-in;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  margin: 0 auto;
+  justify-content: space-evenly;
+}
+
+/** Styles applied around each language selection */
+.language-item-container {
+  padding: 12px;
+}
+
+/** Styles applied to the language button */
+.language-button {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  width: auto;
+  height: 17px;
+  /** Styles to apply when language svg select button is hovered on */
+  /** Styles to apply when actively labeled */
+}
+.language-button:hover, .language-button:focus, .language-button:active {
+  cursor: pointer;
+}
+.language-button:hover svg, .language-button:focus svg, .language-button:active svg {
+  fill: var(--primary-color);
+  transition: fill 150ms;
+}
+.language-button:focus, .language-button:active {
+  outline: 1px solid var(--primary-color);
+}
+.language-button .language-button-inactive svg {
+  fill: var(--text-color);
+  transition: fill 150ms;
+}
+.language-button .language-button-active svg {
+  fill: var(--primary-color);
+  transition: fill 150ms;
+}
+
+/*******************
+ * BottomMenu
+ *******************/
+/** Outer styles wrapped around entire bottom menu */
+.footer-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  margin-top: 1rem;
+}
+
+/** Styles applied to bottom menu */
+.bottom-menu-container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  margin: 0 auto;
+}
+@media (max-width: 450px) {
+  .bottom-menu-container {
+    flex-direction: column;
+  }
+}
+
+/** Menu item styles for the BottomMenu */
+.bottom-menu-item {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0 auto;
+  display: flex;
+  text-align: center;
+  line-height: 1.5em;
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-color);
+  text-decoration: underline;
+}
+.bottom-menu-item:hover, .bottom-menu-item:focus, .bottom-menu-item:active {
+  cursor: pointer;
+  color: var(--primary-color);
+}
+.bottom-menu-item:focus, .bottom-menu-item:active {
+  outline: 1px solid var(--primary-color);
+}
+
+/*******************
+ * Collapsed
+ *******************/
+/** Styles for the collapsed square logo  */
+.collapsed-square-logo-svg {
+  width: 20px;
+  height: 20px;
+  padding: 6px;
+  flex-shrink: 0;
+}
+
+/** Styles for the collapsed square logo path */
+.collapsed-square-logo-svg path {
+  fill: var(--text-color);
+  transition: fill 150ms;
+}
+
+/** The wrapper around the entire collapsed hovering consent icon */
+.collapsed-container {
+  position: fixed;
+  bottom: 100px;
+  right: 5px;
+  width: 32px;
+  height: 32px;
+  box-sizing: border-box;
+  border: none;
+  border-radius: 16px;
+  background-color: rgba(255, 255, 255, 0.95);
+  overflow: hidden;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir, helvetica neue, helvetica, "sans-serif";
+  box-shadow: 0px 1px 5px 1px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(4px) saturate(5);
+  transition: width 150ms ease-in 500ms, background-color 150ms ease-in-out, box-shadow 150ms ease-in-out;
+}
+
+/** Styles applied to consent icon when actively selected */
+.collapsed-container:active {
+  background-color: rgba(255, 255, 255, 0.85);
+  box-shadow: 0px 0.5px 5px 1.5px rgba(0, 0, 0, 0.12);
+}
+
+/** Styles applied to consent icon on hover */
+.collapsed-container:hover {
+  width: 132px;
+  transition-delay: 0ms;
+}
+
+/** Styles applied to consent icon SVG contents */
+.collapsed-container:hover path {
+  fill: var(--primary-color);
+}
+
+/** Styles applied to consent icon paragraph text */
+.collapsed-container p {
+  font-size: 12px;
+  font-weight: 500;
+  white-space: nowrap;
+  color: var(--text-color);
+  opacity: 0;
+  transition: opacity 150ms ease-in 500ms;
+}
+
+/** Styles applied to consent icon paragraph text on hover */
+.collapsed-container:hover p {
+  opacity: 1;
+  transition-delay: 0ms;
+}
+
+/*******************
+ * KeyFrames
+ *******************/
+/** Animation for fading in, used throughout the stylesheet */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+/*******************
+ * DoNotSellExplainer
+ *******************/
+/** Styles for button of X marker in top right corner */
+.do-not-sell-explainer-close {
+  --squareDimension: 25px;
+  padding: 4px;
+  position: absolute;
+  top: 21px;
+  right: 21px;
+  border: none;
+  cursor: pointer;
+  background-color: #f2f2f2;
+  border-radius: 5px;
+  height: var(--squareDimension);
+  width: var(--squareDimension);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 150ms;
+}
+
+/** Styles for button of X marker in top right corner on hover */
+.do-not-sell-explainer-close:hover,
+.do-not-sell-explainer-close:focus {
+  background-color: #e2e2e2;
+}
+
+/** Outline for do not sell explainer */
+.do-not-sell-explainer-interface {
+  margin-top: 2em;
+}
+
+/*******************
+ * AcceptAllRejectAllToggle
+ *******************/
+/** Styles for button of X marker in top right corner */
+.accept-all-reject-all-toggle-close {
+  --squareDimension: 25px;
+  padding: 4px;
+  position: absolute;
+  top: 21px;
+  right: 21px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  background-color: #efefef;
+  border-radius: 5px;
+  height: var(--squareDimension);
+  width: var(--squareDimension);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 150ms;
+}
+.accept-all-reject-all-toggle-close:hover {
+  cursor: pointer;
+}
+.accept-all-reject-all-toggle-close:focus, .accept-all-reject-all-toggle-close:active {
+  border: 1px solid #162310;
+}
+
+/*******************
+ * PrivacyPolicyNoticeWithCloseButton
+ *******************/
+/** Styles for button of X marker in top right corner */
+.privacy-policy-notice-with-close-button-close {
+  --squareDimension: 25px;
+  padding: 4px;
+  position: absolute;
+  top: 21px;
+  right: 21px;
+  border: none;
+  cursor: pointer;
+  background-color: #f2f2f2;
+  border-radius: 5px;
+  height: var(--squareDimension);
+  width: var(--squareDimension);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 150ms;
+}
+.privacy-policy-notice-with-close-button-close:hover, .privacy-policy-notice-with-close-button-close:focus {
+  background-color: #e2e2e2;
+}
+
+/***********************
+ * CompleteOptionsToggle
+ ***********************/
+/** Styles for button of X marker in top right corner */
+.complete-options-toggle-close {
+  --squareDimension: 30px;
+  padding: 4px;
+  position: absolute;
+  top: 21px;
+  right: 21px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  background-color: var(--light);
+  border-radius: 5px;
+  height: var(--squareDimension);
+  width: var(--squareDimension);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 150ms;
+}
+.complete-options-toggle-close:focus, .complete-options-toggle-close:active {
+  border: 1px solid var(--dark);
+}
+
+/** Outline for do not sell explainer */
+.complete-options-toggle-interface {
+  margin-top: 1rem;
+}
+
+/** Styles for complete options toggle description */
+.complete-options-toggle-description {
+  padding-bottom: 1rem;
+  margin-bottom: 0.25rem;
+}
+
+/*******************
+ * GPC Indicator
+ *******************/
+/** GPC outer styles */
+.gpc-setting {
+  display: flex;
+  align-items: center;
+}
+
+/** GPC svg styles */
+.gpc-setting svg {
+  flex-shrink: 0;
+}
+
+/** GPC paragraph text */
+.gpc-setting p {
+  margin: 0 0 0 6px;
+  font-size: 14px;
+  color: var(--text-color);
+}
+
+/*******************
+ * Switch
+ *******************/
+/** Styles for the switch */
+.switch {
+  --switchHeight: 20px;
+  --switchGutter: 2px;
+  --switchButtonDiameter: calc(var(--switchHeight) - var(--switchGutter) * 2);
+}
+.switch.label {
+  display: flex;
+  align-items: center;
+  font-weight: 500;
+  font-size: 12px;
+  text-shadow: none;
+  white-space: nowrap;
+  padding: 0 5px;
+}
+.switch.label:not(.switch-disabled) {
+  cursor: pointer;
+}
+.switch.switch-background {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-right: 0.8em;
+  width: calc(var(--switchHeight) * 2 - 2px);
+  height: var(--switchHeight);
+  background: #7e8793;
+  border-radius: var(--switchHeight);
+  position: relative;
+  transition: background-color 150ms;
+}
+.switch.switch-background .switch-button {
+  content: "";
+  position: absolute;
+  top: var(--switchGutter);
+  left: var(--switchGutter);
+  width: var(--switchButtonDiameter);
+  height: var(--switchButtonDiameter);
+  border-radius: var(--switchButtonDiameter);
+  transition: 150ms;
+  background: #fff;
+}
+.switch.switch-background:active .switch-button {
+  width: calc(var(--switchButtonDiameter) * 1.2);
+}
+.switch.switch-background.switch-disabled {
+  opacity: 0.6;
+  background-color: var(--disabled-color);
+}
+.switch.switch-checkbox:checked + .switch-background:not(.switch-disabled) {
+  background-color: var(--primary-color);
+}
+.switch.switch-checkbox:checked + .switch-background .switch-button {
+  left: calc(100% - var(--switchGutter));
+  transform: translateX(-100%);
+}
+.switch.switch-checkbox:checked + .switch-background:focus .switch-button {
+  background: var(--primary-color);
+  box-shadow: inset 0 0 0 0.125rem var(--white), 0 0 0 0.125rem var(--primary-color);
+}
+.switch.switch-checkbox:focus + .switch-background .switch-button {
+  background: var(--primary-color);
+  box-shadow: inset 0 0 0 0.125rem var(--white), 0 0 0 0.125rem var(--primary-color);
+}
+
+/*******************
+ * TranscendLogo
+ *******************/
+/** Container around the Transcend logo in the bottom left hand side of the modal */
+.transcend-logo-container {
+  display: flex;
+  align-items: center;
+  height: 18px;
+  position: relative;
+  /** Styles applied to the Transcend svg logo in the bottom of the modal */
+}
+.transcend-logo-container:hover .transcend-logo-svg path,
+.transcend-logo-container:hover .external-link-transcend-logo, .transcend-logo-container:focus .transcend-logo-svg path,
+.transcend-logo-container:focus .external-link-transcend-logo, .transcend-logo-container:active .transcend-logo-svg path,
+.transcend-logo-container:active .external-link-transcend-logo {
+  fill: var(--primary-color);
+  transition: fill 150ms;
+  cursor: pointer;
+}
+.transcend-logo-container .transcend-logo-svg {
+  width: 64px;
+  height: 18px;
+}
+.transcend-logo-container .transcend-logo-svg path {
+  fill: var(--text-color);
+  transition: fill 150ms;
+}
+.transcend-logo-container .external-link-transcend-logo {
+  width: 15px;
+  height: 15px;
+  margin: 0 auto;
+}
+.transcend-logo-container .external-link-transcend-logo svg {
+  fill: var(--text-color);
+}
+
+.external-link {
+  display: flex;
+  align-items: center;
+}
+.external-link svg {
+  fill: var(--text-color);
+  width: 18px;
+  height: 18px;
+}
+.external-link:hover, .external-link:focus, .external-link:active {
+  cursor: pointer;
+}
+.external-link:hover svg, .external-link:focus svg, .external-link:active svg {
+  fill: var(--primary-color);
+}
+.external-link:focus, .external-link:active {
+  outline: 1px solid var(--primary-color);
+}
+
+/** CONFIRMATION BUTTON */
+.confirm-button-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.25rem;
+}
+
+/*# sourceMappingURL=cm.css.map */

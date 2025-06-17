@@ -1,6 +1,5 @@
 /** @jsx h */
 import { h, JSX } from 'preact';
-import type { HTMLAttributes } from 'preact/compat';
 import type {
   AirgapAPI,
   AirgapAuth,
@@ -14,10 +13,8 @@ import { Collapsed } from './Collapsed';
 import { AcceptAll } from './AcceptAll';
 import { BottomMenu } from './BottomMenu';
 import { CompleteOptions } from './CompleteOptions';
-import { LanguageButton } from './LanguageButton';
 import { LanguageOptions } from './LanguageOptions';
 import { CompleteOptionsInverted } from './CompleteOptionsInverted';
-import { TranscendLogo } from './TranscendLogo';
 import { NoticeAndDoNotSell } from './NoticeAndDoNotSell';
 import { QuickOptions } from './QuickOptions';
 import { OptOutDisclosure } from './OptOutDisclosure';
@@ -38,8 +35,6 @@ import { useIntl } from 'react-intl';
 import { messages } from '../messages';
 import { initialFocusElement } from '../helpers';
 import { ObjByString } from '@transcend-io/type-utils';
-import { createFocusTrap, FocusTrap } from 'focus-trap';
-import tabbable from 'tabbable';
 
 const FOCUSABLE_ELEMENTS = [
   'button',
@@ -100,7 +95,6 @@ export function Main({
     }
   }, [viewState, dialogRef, config.autofocus]);
 
-  const trapRef = useRef<FocusTrap | null>(null);
   const firstFocusableRef = useRef<HTMLElement | null>(null);
   const lastFocusableRef = useRef<HTMLElement | null>(null);
 
@@ -175,8 +169,6 @@ export function Main({
       };
     }
   }, [viewState, handleSetViewState]);
-
-  // console.log('Initial viewState:', firstSelectedViewState);
 
   // Modal open views
   if (!isViewStateClosed(viewState)) {
