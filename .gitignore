@@ -1,6 +1,7 @@
 tsc-build/
 .yarn/
 build/playground.js
+build/translations/
 
 # Secrets
 *.env.secret
