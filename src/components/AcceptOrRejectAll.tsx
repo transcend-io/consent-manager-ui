@@ -58,7 +58,7 @@ export function AcceptOrRejectAll({
       </div>
 
       <div className="column-content">
-        <div className="paragraph-container">
+        <div className="paragraph-container w-60">
           <p
             className="paragraph"
             // eslint-disable-next-line react/no-danger
@@ -69,7 +69,7 @@ export function AcceptOrRejectAll({
               ),
             }} />
         </div>
-        <div className="accept-or-reject-all-button-row">
+        <div className="accept-or-reject-all-button-row w-40">
           <Button
             primaryText={formatMessage(
               messages.acceptAllButtonPrimary,
