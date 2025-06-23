@@ -28,7 +28,8 @@ export function AcceptAllOrMoreChoices({
     event: JSX.TargetedEvent<HTMLButtonElement, MouseEvent>,
   ): void => {
     event.preventDefault();
-    airgap.optIn(event);
+      airgap.optIn(event);
+      console.log('Testing Confirmation: ', airgap.getConsent().purposes);
     handleSetViewState('close');
   };
 
@@ -38,51 +39,53 @@ export function AcceptAllOrMoreChoices({
     | undefined = (
     event: JSX.TargetedEvent<HTMLButtonElement, MouseEvent>,
   ): void => {
-    event.preventDefault();
-    handleSetViewState('CompleteOptions');
+      event.preventDefault();
+      console.log('Testing Confirmation: ', airgap.getConsent().purposes);
+    handleSetViewState('CompleteOptionsToggles');
   };
 
   return (
-    <div className="column-content">
-      <div>
-        <div>
-          <p
-            id="consent-dialog-title"
-            role="heading"
-            className="text-title text-title-left"
-          >
-            {formatMessage(messages.consentTitleAcceptAll, globalUiVariables)}
-          </p>
-        </div>
-        <div>
+    <div className="dialog-container">
+      <div className="dialog-title">
+        <p
+          id="consent-dialog-title"
+          role="heading"
+          className="text-title text-title-left"
+        >
+          {formatMessage(messages.consentTitleAcceptAll, globalUiVariables)}
+        </p>
+      </div>
+      <div className="column-content">
+        <div className="paragraph-container">
           <p
             className="paragraph"
             // eslint-disable-next-line react/no-danger
             dangerouslySetInnerHTML={{
               __html: formatMessage(
                 messages.acceptAllDescription,
-                globalUiVariables,
+                globalUiVariables
               ),
             }}
           />
         </div>
-      </div>
-      <div className="accept-or-reject-all-button-row">
-        <Button
-          primaryText={formatMessage(
-            messages.acceptAllButtonPrimary,
-            globalUiVariables,
-          )}
-          handleClick={handleAcceptAll}
-        />
-        <Button
-          primaryText={formatMessage(
-            messages.moreChoicesButtonPrimary,
-            globalUiVariables,
-          )}
-          handleClick={handleMoreChoices}
-          initialFocus
-        />
+
+        <div className="accept-or-reject-all-button-row">
+          <Button
+            primaryText={formatMessage(
+              messages.acceptAllButtonPrimary,
+              globalUiVariables,
+            )}
+              handleClick={handleAcceptAll}
+              initialFocus
+          />
+          <Button
+            primaryText={formatMessage(
+              messages.moreChoicesButtonPrimary,
+              globalUiVariables,
+            )}
+            handleClick={handleMoreChoices}
+          />
+        </div>
       </div>
     </div>
   );

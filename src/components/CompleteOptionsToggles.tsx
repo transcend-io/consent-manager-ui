@@ -221,7 +221,7 @@ export function CompleteOptionsToggles({
             <Button
               primaryText={formatMessage(completeOptionsMessages.saveButtonPrimary, globalUiVariables)}
               handleClick={handleConfirm}
-              initialFocus={orderedSelections.length === 0}
+              {...(orderedSelections.length === 0 ? { initialFocus: true } : {})}
             />
           </div>
         )}

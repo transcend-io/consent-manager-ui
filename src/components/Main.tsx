@@ -229,7 +229,7 @@ export function Main({
                 fontColor={config.theme.fontColor}
                 globalUiVariables={globalUiVariables}
                 mode={
-                  firstSelectedViewState === 'AcceptOrRejectAll'
+                  (firstSelectedViewState === 'AcceptOrRejectAll' || firstSelectedViewState === 'AcceptAllOrMoreChoices')
                     ? 'confirm'
                     : 'immediate'
                 }
