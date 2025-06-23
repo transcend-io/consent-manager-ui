@@ -76,6 +76,42 @@
   }
 }
 
+.w-25 {
+  width: 25% !important;
+}
+@media (max-width: 740px) {
+  .w-25 {
+    width: 100%;
+  }
+}
+
+.w-40 {
+  width: 40% !important;
+}
+@media (max-width: 740px) {
+  .w-40 {
+    width: 100%;
+  }
+}
+
+.w-60 {
+  width: 60% !important;
+}
+@media (max-width: 740px) {
+  .w-60 {
+    width: 100%;
+  }
+}
+
+.w-75 {
+  width: 75% !important;
+}
+@media (max-width: 740px) {
+  .w-75 {
+    width: 100%;
+  }
+}
+
 .paragraph-container {
   width: 60%;
   margin-right: 10px;

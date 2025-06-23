@@ -97,7 +97,6 @@ export function BottomMenu({
           'PrivacyPolicyNotice',
           'PrivacyPolicyNoticeWithCloseButton',
           'AcceptOrRejectAnalytics',
-          'AcceptAllOrMoreChoices',
           'AcceptOrRejectAllOrMoreChoices',
           'CompleteOptionsInverted',
           'DoNotSellExplainer',
@@ -134,7 +133,7 @@ export function BottomMenu({
                 )}
                 type="button"
                 onClick={() => handleSetViewState(
-                  viewState === 'AcceptOrRejectAll'
+                  (viewState === 'AcceptOrRejectAll' || viewState === 'AcceptAllOrMoreChoices')
                     ? 'CompleteOptionsToggles'
                     : 'CompleteOptions'
                 )}
