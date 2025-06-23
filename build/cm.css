@@ -76,49 +76,13 @@
   }
 }
 
-.w-25 {
-  width: 25% !important;
-}
-@media (max-width: 740px) {
-  .w-25 {
-    width: 100%;
-  }
-}
-
-.w-40 {
-  width: 40% !important;
-}
-@media (max-width: 740px) {
-  .w-40 {
-    width: 100%;
-  }
-}
-
-.w-60 {
-  width: 60% !important;
-}
-@media (max-width: 740px) {
-  .w-60 {
-    width: 100%;
-  }
-}
-
-.w-75 {
-  width: 75% !important;
-}
-@media (max-width: 740px) {
-  .w-75 {
-    width: 100%;
-  }
-}
-
 .paragraph-container {
-  width: 60%;
+  width: 60% !important;
   margin-right: 10px;
 }
 @media (max-width: 740px) {
   .paragraph-container {
-    width: 100%;
+    width: 100% !important;
     margin-right: 0;
     margin-bottom: 8px;
   }
@@ -137,7 +101,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 40%;
+  width: 40% !important;
   margin-left: 10px;
 }
 .accept-or-reject-all-button-row button {
@@ -153,7 +117,7 @@
 }
 @media (max-width: 740px) {
   .accept-or-reject-all-button-row {
-    width: 100%;
+    width: 100% !important;
     flex-direction: row;
     margin-left: 0;
   }
@@ -164,6 +128,47 @@
   }
   .accept-or-reject-all-button-row button:first-child {
     margin-bottom: 8px;
+  }
+}
+
+.accept-or-reject-all-button-row .w-25,
+.paragraph-container .w-25 {
+  width: 25% !important;
+}
+@media (max-width: 740px) {
+  .accept-or-reject-all-button-row .w-25,
+  .paragraph-container .w-25 {
+    width: 100% !important;
+  }
+}
+.accept-or-reject-all-button-row .w-40,
+.paragraph-container .w-40 {
+  width: 40% !important;
+}
+@media (max-width: 740px) {
+  .accept-or-reject-all-button-row .w-40,
+  .paragraph-container .w-40 {
+    width: 100% !important;
+  }
+}
+.accept-or-reject-all-button-row .w-60,
+.paragraph-container .w-60 {
+  width: 60% !important;
+}
+@media (max-width: 740px) {
+  .accept-or-reject-all-button-row .w-60,
+  .paragraph-container .w-60 {
+    width: 100% !important;
+  }
+}
+.accept-or-reject-all-button-row .w-75,
+.paragraph-container .w-75 {
+  width: 75% !important;
+}
+@media (max-width: 740px) {
+  .accept-or-reject-all-button-row .w-75,
+  .paragraph-container .w-75 {
+    width: 100% !important;
   }
 }
 
