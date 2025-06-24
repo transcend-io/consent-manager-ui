@@ -34,7 +34,7 @@ $dark: #162310;
 /** Container that is wrapped around the modal */
 .modal-container {
 	position: fixed;
-	bottom: 2px;
+	bottom: 0;
 	left: 5px;
 	right: 5px;
 	margin: 0 auto;
@@ -44,17 +44,17 @@ $dark: #162310;
 	border: 0.5px solid #d8d8d8;
 	background-color: $light;
 	overflow: auto;
-	padding: 21px;
+	padding: 1.25rem 2rem 0.5rem 2rem;
 	font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir, helvetica neue, helvetica, 'sans-serif';
 	box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
 	backdrop-filter: blur(20px) saturate(5);
 	-webkit-backdrop-filter: blur(20px) saturate(5);
 	animation: fadeIn 150ms;
 	max-height: 90%;
-	max-width: 50%;
+	max-width: 75%;
 	transition: width 150ms, height 150ms;
 
-	@media (max-width: 740px) {
+	@media (max-width: 768px) {
 		max-width: 90%;
 	}
 }
@@ -69,25 +69,26 @@ $dark: #162310;
  *******************/
 
 /** Modal title text styles */
+.dialog-title {
+	margin-bottom: 0.5rem;
+}
+
 .text-title {
 	font-size: 18px;
 	font-weight: 700;
 	color: var(--text-color);
-	margin-bottom: 8px;
+	margin: 0;
 }
-
-
 
 /** Styles applied to the main contents of the consent modal (does not include footer) */
 .column-content {
-	margin: 0 auto;
+	margin: 0.5rem auto;
 	display: flex;
 	justify-content: space-evenly;
 	align-items: center;
 	animation: fadeIn 150ms;
-	padding: 0.5rem 0;
 
-	@media (max-width: 740px) {
+	@media (max-width: 768px) {
 		flex-direction: column;
 	}
 }
@@ -96,10 +97,9 @@ $dark: #162310;
 	width: 60% !important;
 	margin-right: 10px;
 
-	@media (max-width: 740px) {
+	@media (max-width: 768px) {
 		width: 100% !important;
 		margin-right: 0;
-		margin-bottom: 8px;
 	}
 }
 
@@ -107,7 +107,6 @@ $dark: #162310;
 .paragraph {
 	color: var(--text-color);
 	font-size: 12px;
-	padding: 0.25rem;
 	margin: 0;
 }
 
@@ -123,7 +122,7 @@ $dark: #162310;
 		margin: 0 8px;
 	}
 
-	@media (min-width: 741px) and (max-width: 1169px) {
+	@media (min-width: 769px) and (max-width: 1169px) {
 		flex-direction: column;
 
 		button:first-child {
@@ -131,10 +130,11 @@ $dark: #162310;
 		}
 	}
 
-	@media (max-width: 740px) {
+	@media (max-width: 768px) {
 		width: 100% !important;
 		flex-direction: row;
 		margin-left: 0;
+		margin: 0.75rem 0;
 	}
 
 
@@ -147,38 +147,35 @@ $dark: #162310;
 	}
 }
 
-.accept-or-reject-all-button-row,
-.paragraph-container {
-	.w-25 {
-		width: 25% !important;
+.w-25 {
+	width: 25% !important;
 
-		@media (max-width: 740px) {
-			width: 100% !important;
-		}
+	@media (max-width: 768px) {
+		width: 100% !important;
 	}
+}
 
-	.w-40 {
-		width: 40% !important;
+.w-40 {
+	width: 40% !important;
 
-		@media (max-width: 740px) {
-			width: 100% !important;
-		}
+	@media (max-width: 768px) {
+		width: 100% !important;
 	}
+}
 
-	.w-60 {
-		width: 60% !important;
+.w-60 {
+	width: 60% !important;
 
-		@media (max-width: 740px) {
-			width: 100% !important;
-		}
+	@media (max-width: 768px) {
+		width: 100% !important;
 	}
+}
 
-	.w-75 {
-		width: 75% !important;
+.w-75 {
+	width: 75% !important;
 
-		@media (max-width: 740px) {
-			width: 100% !important;
-		}
+	@media (max-width: 768px) {
+		width: 100% !important;
 	}
 }
 
@@ -309,7 +306,7 @@ a {
 	width: 100%;
 	justify-content: center;
 
-	@media (max-width: 740px) {
+	@media (max-width: 768px) {
 		flex-direction: column;
 	}
 }
@@ -511,6 +508,10 @@ a {
 	align-items: center;
 	justify-content: space-evenly;
 	margin-top: 1rem;
+
+	@media (max-width: 768px) {
+		margin-top: 0.25rem;
+	}
 }
 
 /** Styles applied to bottom menu */

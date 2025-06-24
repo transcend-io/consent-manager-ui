@@ -8,7 +8,7 @@ export const messages = defineMessages('ui.src.messages', {
       'The title displayed when asking the user for specific opt out/in preferences.',
   },
   consentTitleAcceptAll: {
-    defaultMessage: 'We use cookies',
+    defaultMessage: 'We use cookies, pixels, and similar technologies',
     description:
       'The title displayed when asking the user to accept all data processing.',
   },
@@ -20,7 +20,7 @@ export const messages = defineMessages('ui.src.messages', {
   acceptAllDescription: {
     defaultMessage:
       // eslint-disable-next-line max-len
-      'By clicking “Accept all”, you agree to the storing of cookies on your device for functional, analytics, and advertising purposes.',
+      'We use these technologies to run the site, improve your experience, and support analytics and marketing. Some of these technologies may allow our third-party partners access to data collected. Essential technologies are always on; others are optional and can be managed below. By clicking “Accept all,” you agree to the use of these optional technologies, including those that enable analytics or marketing and may involve our partners.',
     description:
       'The description displayed when asking the user to accept all data processing.',
   },
@@ -65,7 +65,7 @@ export const messages = defineMessages('ui.src.messages', {
   },
   acceptOrRejectAnalyticsDescription: {
     defaultMessage:
-      'By clicking "Okay", you agree to the usage of your sensitive information for analytics purposes.',
+    'We use these technologies to run the site, improve your experience, and support analytics and marketing. Some of these technologies may allow our third-party partners access to data collected. Essential technologies are always on; others are optional and can be managed below. By clicking “Accept all,” you agree to the use of these optional technologies, including those that enable analytics or marketing and may involve our partners.',
     description:
       'The description displayed for the AcceptOrRejectAnalytics banner.',
   },
@@ -86,7 +86,7 @@ export const messages = defineMessages('ui.src.messages', {
   },
   acceptOrRejectAdvertisingDescription: {
     defaultMessage:
-      'By clicking "Okay", you agree to the usage of your personal information for advertising purposes.',
+      'We use these technologies to run the site, improve your experience, and support analytics and marketing. Some of these technologies may allow our third-party partners access to data collected. Essential technologies are always on; others are optional and can be managed below. By clicking “Accept all,” you agree to the use of these optional technologies, including those that enable analytics or marketing and may involve our partners.',
     description:
       'The description displayed for the AcceptOrRejectAdvertising banner.',
   },

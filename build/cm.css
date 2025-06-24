@@ -36,10 +36,10 @@
   -webkit-backdrop-filter: blur(20px) saturate(5);
   animation: fadeIn 150ms;
   max-height: 90%;
-  max-width: 50%;
+  max-width: 75%;
   transition: width 150ms, height 150ms;
 }
-@media (max-width: 740px) {
+@media (max-width: 768px) {
   .modal-container {
     max-width: 90%;
   }
@@ -70,7 +70,7 @@
   animation: fadeIn 150ms;
   padding: 0.5rem 0;
 }
-@media (max-width: 740px) {
+@media (max-width: 768px) {
   .column-content {
     flex-direction: column;
   }
@@ -80,7 +80,7 @@
   width: 60% !important;
   margin-right: 10px;
 }
-@media (max-width: 740px) {
+@media (max-width: 768px) {
   .paragraph-container {
     width: 100% !important;
     margin-right: 0;
@@ -107,7 +107,7 @@
 .accept-or-reject-all-button-row button {
   margin: 0 8px;
 }
-@media (min-width: 741px) and (max-width: 1169px) {
+@media (min-width: 769px) and (max-width: 1169px) {
   .accept-or-reject-all-button-row {
     flex-direction: column;
   }
@@ -115,7 +115,7 @@
     margin-bottom: 8px;
   }
 }
-@media (max-width: 740px) {
+@media (max-width: 768px) {
   .accept-or-reject-all-button-row {
     width: 100% !important;
     flex-direction: row;
@@ -135,7 +135,7 @@
 .paragraph-container .w-25 {
   width: 25% !important;
 }
-@media (max-width: 740px) {
+@media (max-width: 768px) {
   .accept-or-reject-all-button-row .w-25,
   .paragraph-container .w-25 {
     width: 100% !important;
@@ -145,7 +145,7 @@
 .paragraph-container .w-40 {
   width: 40% !important;
 }
-@media (max-width: 740px) {
+@media (max-width: 768px) {
   .accept-or-reject-all-button-row .w-40,
   .paragraph-container .w-40 {
     width: 100% !important;
@@ -155,7 +155,7 @@
 .paragraph-container .w-60 {
   width: 60% !important;
 }
-@media (max-width: 740px) {
+@media (max-width: 768px) {
   .accept-or-reject-all-button-row .w-60,
   .paragraph-container .w-60 {
     width: 100% !important;
@@ -165,7 +165,7 @@
 .paragraph-container .w-75 {
   width: 75% !important;
 }
-@media (max-width: 740px) {
+@media (max-width: 768px) {
   .accept-or-reject-all-button-row .w-75,
   .paragraph-container .w-75 {
     width: 100% !important;
@@ -282,7 +282,7 @@ a:hover {
   width: 100%;
   justify-content: center;
 }
-@media (max-width: 740px) {
+@media (max-width: 768px) {
   .toggles-container {
     flex-direction: column;
   }
