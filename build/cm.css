@@ -19,7 +19,7 @@
 /** Container that is wrapped around the modal */
 .modal-container {
   position: fixed;
-  bottom: 2px;
+  bottom: 0;
   left: 5px;
   right: 5px;
   margin: 0 auto;
@@ -29,7 +29,7 @@
   border: 0.5px solid #d8d8d8;
   background-color: #efefef;
   overflow: auto;
-  padding: 21px;
+  padding: 1.25rem 2rem 0.5rem 2rem;
   font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir, helvetica neue, helvetica, "sans-serif";
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(20px) saturate(5);
@@ -54,21 +54,24 @@
  * Text Styles
  *******************/
 /** Modal title text styles */
+.dialog-title {
+  margin-bottom: 0.5rem;
+}
+
 .text-title {
   font-size: 18px;
   font-weight: 700;
   color: var(--text-color);
-  margin-bottom: 8px;
+  margin: 0;
 }
 
 /** Styles applied to the main contents of the consent modal (does not include footer) */
 .column-content {
-  margin: 0 auto;
+  margin: 0.5rem auto;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
   animation: fadeIn 150ms;
-  padding: 0.5rem 0;
 }
 @media (max-width: 768px) {
   .column-content {
@@ -84,7 +87,6 @@
   .paragraph-container {
     width: 100% !important;
     margin-right: 0;
-    margin-bottom: 8px;
   }
 }
 
@@ -92,7 +94,6 @@
 .paragraph {
   color: var(--text-color);
   font-size: 12px;
-  padding: 0.25rem;
   margin: 0;
 }
 
@@ -120,6 +121,7 @@
     width: 100% !important;
     flex-direction: row;
     margin-left: 0;
+    margin: 0.75rem 0;
   }
 }
 @media (max-width: 450px) {
@@ -131,43 +133,38 @@
   }
 }
 
-.accept-or-reject-all-button-row .w-25,
-.paragraph-container .w-25 {
+.w-25 {
   width: 25% !important;
 }
 @media (max-width: 768px) {
-  .accept-or-reject-all-button-row .w-25,
-  .paragraph-container .w-25 {
+  .w-25 {
     width: 100% !important;
   }
 }
-.accept-or-reject-all-button-row .w-40,
-.paragraph-container .w-40 {
+
+.w-40 {
   width: 40% !important;
 }
 @media (max-width: 768px) {
-  .accept-or-reject-all-button-row .w-40,
-  .paragraph-container .w-40 {
+  .w-40 {
     width: 100% !important;
   }
 }
-.accept-or-reject-all-button-row .w-60,
-.paragraph-container .w-60 {
+
+.w-60 {
   width: 60% !important;
 }
 @media (max-width: 768px) {
-  .accept-or-reject-all-button-row .w-60,
-  .paragraph-container .w-60 {
+  .w-60 {
     width: 100% !important;
   }
 }
-.accept-or-reject-all-button-row .w-75,
-.paragraph-container .w-75 {
+
+.w-75 {
   width: 75% !important;
 }
 @media (max-width: 768px) {
-  .accept-or-reject-all-button-row .w-75,
-  .paragraph-container .w-75 {
+  .w-75 {
     width: 100% !important;
   }
 }
@@ -461,6 +458,11 @@ a:hover {
   align-items: center;
   justify-content: space-evenly;
   margin-top: 1rem;
+}
+@media (max-width: 768px) {
+  .footer-container {
+    margin-top: 0.25rem;
+  }
 }
 
 /** Styles applied to bottom menu */
