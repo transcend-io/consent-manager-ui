@@ -3,8 +3,8 @@ import type {
   TranscendPolicy,
 } from '@transcend-io/airgap.js-types';
 import type {
-  ConsentManagerLanguageKey,
-  LanguageKey,
+  ConsentManagerSupportedTranslationValue,
+  LocaleValue,
 } from '@transcend-io/internationalization';
 import type { ObjByString } from '@transcend-io/type-utils';
 import { compile } from './compile';
@@ -19,11 +19,11 @@ import { compile } from './compile';
 function getTranslation(
   translations: {
     /** Language of translation */
-    locale: LanguageKey;
+    locale: LocaleValue;
     /** Value of translation */
     value: string;
   }[],
-  locale: LanguageKey,
+  locale: LocaleValue,
 ): string {
   return (
     translations.find((translation) => translation.locale === locale)?.value ||
@@ -45,7 +45,7 @@ function getTranslation(
 export async function getTranscendPolicies(
   input: GetTranscendPolicies,
   cdnLocation: string,
-  activeLocale: ConsentManagerLanguageKey,
+  activeLocale: ConsentManagerSupportedTranslationValue,
   activeVariables: ObjByString,
 ): Promise<TranscendPolicy[]> {
   // The URL to pull the translation from
@@ -90,7 +90,7 @@ export async function getTranscendPolicies(
           /** Translations */
           translations: {
             /** Language of translation */
-            locale: LanguageKey;
+            locale: LocaleValue;
             /** Value of translation */
             value: string;
           }[];
@@ -99,10 +99,6 @@ export async function getTranscendPolicies(
     }): TranscendPolicy => {
       const content =
         getTranslation(policy.versions[0].content.translations, activeLocale) ||
-        getTranslation(
-          policy.versions[0].content.translations,
-          activeLocale.split('-')[0] as LanguageKey,
-        ) ||
         policy.versions[0].content.defaultMessage;
       return {
         id: policy.id,

@@ -7,12 +7,12 @@ import { MOCK_PURPOSES_OPTED_IN } from './constants';
 /** Mock purpose key */
 type MockPurposeKey = keyof typeof MOCK_PURPOSES_OPTED_IN;
 /** Mock purpose value */
-type MockPurpose = typeof MOCK_PURPOSES_OPTED_IN[MockPurposeKey];
+type MockPurpose = (typeof MOCK_PURPOSES_OPTED_IN)[MockPurposeKey];
 
 /** Mock purpose entry tuple */
 type PurposeEntry = [
   keyof typeof MOCK_PURPOSES_OPTED_IN,
-  typeof MOCK_PURPOSES_OPTED_IN[keyof typeof MOCK_PURPOSES_OPTED_IN],
+  (typeof MOCK_PURPOSES_OPTED_IN)[keyof typeof MOCK_PURPOSES_OPTED_IN],
 ];
 
 // Making this a function bc this is reused a lot
