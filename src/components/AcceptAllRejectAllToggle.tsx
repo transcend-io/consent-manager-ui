@@ -119,8 +119,8 @@ export function AcceptAllRejectAllToggle({
                   saving
                     ? messages.saving
                     : consentLocal
-                    ? messages.preferencesSavedOptedIn
-                    : messages.preferencesSaved,
+                      ? messages.preferencesSavedOptedIn
+                      : messages.preferencesSaved,
                   globalUiVariables,
                 )
               : '\u200b'}

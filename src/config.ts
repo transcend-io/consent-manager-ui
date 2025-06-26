@@ -8,11 +8,11 @@ import type {
   ExperienceToInitialViewState,
 } from '@transcend-io/airgap.js-types';
 import { ViewState } from '@transcend-io/airgap.js-types/build/enums/viewState';
-import { CONSENT_MANAGER_SUPPORTED_LANGUAGES } from './i18n';
 import { logger } from './logger';
 import { settings, LOG_LEVELS, extraConfig } from './settings';
 import { jsonParseSafe } from './utils/safe-json-parse';
 import { MergedConsentManagerConfig } from './types';
+import { CONSENT_MANAGER_SUPPORTED_LOCALES } from '@transcend-io/internationalization';
 
 const {
   privacyCenter,
@@ -109,8 +109,8 @@ export function getMergedConfig(): MergedConsentManagerConfig {
     ? config.languages.trim().split(/\s*,\s*/)
     : [];
   const supportedLanguages = !config.languages
-    ? CONSENT_MANAGER_SUPPORTED_LANGUAGES
-    : CONSENT_MANAGER_SUPPORTED_LANGUAGES.filter((lang) =>
+    ? Object.values(CONSENT_MANAGER_SUPPORTED_LOCALES)
+    : Object.values(CONSENT_MANAGER_SUPPORTED_LOCALES).filter((lang) =>
         existingLanguages.includes(lang),
       );
 
