@@ -49,9 +49,10 @@ jobs:
   run-pre-commits:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4.1.7
         with:
           fetch-depth: 100 # need the history to do a changed files check below (source, origin)
+          ref: '${{ github.sha }}'
       - uses: actions/setup-python@v2
 
       # 'Install yarn v2 dependencies'
