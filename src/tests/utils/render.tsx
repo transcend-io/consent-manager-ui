@@ -2,7 +2,7 @@ import { ComponentChild, h } from 'preact';
 import { render, RenderOptions, RenderResult } from '@testing-library/preact';
 import { AirgapProvider } from '../../hooks/useAirgap';
 import { IntlProvider } from 'react-intl';
-import { ConsentManagerLanguageKey } from '@transcend-io/internationalization';
+import { CONSENT_MANAGER_SUPPORTED_LOCALES } from '@transcend-io/internationalization';
 import { AirgapAPI } from '@transcend-io/airgap.js-types';
 import * as prettier from '@prettier/sync';
 import { TestWindow } from './types';
@@ -23,9 +23,9 @@ const wrapper = ({ children }: RenderWrapperProps): ComponentChild => {
   const { messages } = testWindow.JEST_SETUP_VARS;
   return (
     <IntlProvider
-      locale={ConsentManagerLanguageKey.En}
+      locale={CONSENT_MANAGER_SUPPORTED_LOCALES.En}
       messages={messages || {}}
-      defaultLocale={ConsentManagerLanguageKey.En}
+      defaultLocale={CONSENT_MANAGER_SUPPORTED_LOCALES.En}
     >
       {
         (

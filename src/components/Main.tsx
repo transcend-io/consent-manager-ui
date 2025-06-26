@@ -5,7 +5,7 @@ import type {
   ConsentManagerConfig,
   ViewState,
 } from '@transcend-io/airgap.js-types';
-import { ConsentManagerLanguageKey } from '@transcend-io/internationalization';
+import { ConsentManagerSupportedTranslationValue } from '@transcend-io/internationalization';
 import { isResponseViewState, isViewStateClosed } from '../hooks';
 import type { HandleSetViewState } from '../types';
 import { Collapsed } from './Collapsed';
@@ -66,9 +66,11 @@ export function Main({
   /** Updater function for viewState */
   handleSetViewState: HandleSetViewState;
   /** Updater function for language change */
-  handleChangeLanguage: (language: ConsentManagerLanguageKey) => void;
+  handleChangeLanguage: (
+    language: ConsentManagerSupportedTranslationValue,
+  ) => void;
   /** Set of supported languages */
-  supportedLanguages: ConsentManagerLanguageKey[];
+  supportedLanguages: ConsentManagerSupportedTranslationValue[];
 }): JSX.Element {
   const { formatMessage } = useIntl();
   // need to focus the element marked with data-initialFocus when the modal is opened
@@ -237,7 +239,7 @@ export function Main({
               <LanguageOptions
                 handleSetViewState={handleSetViewState}
                 handleChangeLanguage={handleChangeLanguage}
-                supportedLanguages={supportedLanguages}
+                supportedLocales={supportedLanguages}
               />
             )}
           </div>
