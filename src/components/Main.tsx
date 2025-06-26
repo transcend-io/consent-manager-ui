@@ -66,7 +66,9 @@ export function Main({
   /** Updater function for viewState */
   handleSetViewState: HandleSetViewState;
   /** Updater function for language change */
-  handleChangeLanguage: (language: ConsentManagerSupportedTranslationValue) => void;
+  handleChangeLanguage: (
+    language: ConsentManagerSupportedTranslationValue,
+  ) => void;
   /** Set of supported languages */
   supportedLanguages: ConsentManagerSupportedTranslationValue[];
 }): JSX.Element {
@@ -237,7 +239,7 @@ export function Main({
               <LanguageOptions
                 handleSetViewState={handleSetViewState}
                 handleChangeLanguage={handleChangeLanguage}
-                supportedLanguages={supportedLanguages}
+                supportedLocales={supportedLanguages}
               />
             )}
           </div>

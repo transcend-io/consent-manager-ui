@@ -31,7 +31,7 @@ export const getNearestSupportedLanguage = (
   supported: LocaleValue[],
 ): LocaleValue | undefined =>
   supported.find((language) =>
-      preferred.some((preferredLang) => preferredLang.toLowerCase() === language)
+    preferred.some((preferredLang) => preferredLang.toLowerCase() === language),
   );
 
 /**
@@ -46,15 +46,21 @@ export const getNearestSupportedLocale = (
   supported: LocaleValue[],
 ): LocaleValue | undefined => {
   let i;
-  const nearestLocaleIdx = supported.reduce((nearestLocaleIdx, supportedLocale) => {
-    // eslint-disable-next-line no-cond-assign
-    if ((i = preferred.indexOf(supportedLocale)) < nearestLocaleIdx && i > -1) {
-      return i;
-    }
-    return nearestLocaleIdx;
-  }, -1);
+  const nearestLocaleIdx = supported.reduce(
+    (nearestLocaleIdx, supportedLocale) => {
+      if (
+        // eslint-disable-next-line no-cond-assign
+        (i = preferred.indexOf(supportedLocale)) < nearestLocaleIdx &&
+        i > -1
+      ) {
+        return i;
+      }
+      return nearestLocaleIdx;
+    },
+    -1,
+  );
   return nearestLocaleIdx === -1 ? undefined : preferred[nearestLocaleIdx];
-}
+};
 
 /**
  * Picks a default language for the user
@@ -78,10 +84,8 @@ export function pickDefaultLanguage(
     getDuplicativeLocales(lang),
   );
   const nearestExtendedLanguage =
-  getNearestSupportedLocale(
-      preferredLocales,
-      extendedSupportedLanguages,
-    ) || LOCALE_KEY.En;
+    getNearestSupportedLocale(preferredLocales, extendedSupportedLanguages) ||
+    LOCALE_KEY.En;
 
   let nearestTranslation = nearestExtendedLanguage;
   if (!(supportedLocales as string[]).includes(nearestTranslation)) {

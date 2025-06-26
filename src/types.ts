@@ -65,7 +65,9 @@ export type HandleSetAuth = (key: AirgapAuthMap['key']) => void;
 /**
  * Handler for setting user language
  */
-export type HandleSetLanguage = (language: ConsentManagerSupportedTranslationValue) => void;
+export type HandleSetLanguage = (
+  language: ConsentManagerSupportedTranslationValue,
+) => void;
 
 /**
  * Handler for changing UI variables
