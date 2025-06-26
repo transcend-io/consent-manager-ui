@@ -77,10 +77,10 @@ export const LOG_LEVELS = new Set<LogLevel>(
     wildcardLogLevels.includes(logLevelsSetting)
       ? validLogLevels
       : !logLevelsSetting || logLevelsSetting === 'off'
-        ? []
-        : (logLevelsSetting
-            .toLowerCase()
-            .split(COMMA_AND_OR_SPACE_SEPARATED_LIST) as LogLevel[]),
+      ? []
+      : (logLevelsSetting
+          .toLowerCase()
+          .split(COMMA_AND_OR_SPACE_SEPARATED_LIST) as LogLevel[]),
   ),
 );
 
