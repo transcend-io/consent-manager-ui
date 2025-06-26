@@ -56,7 +56,6 @@
       "version": "latest",
       "ppa": "false"
     },
-    "ghcr.io/devcontainers-contrib/features/pre-commit:1": {},
     "ghcr.io/devcontainers/features/node:1": {}
   }
 }
