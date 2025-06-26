@@ -1,7 +1,7 @@
 import { h, JSX } from 'preact';
-import { ConsentManagerLanguageKey } from '@transcend-io/internationalization';
-import { sortSupportedLanguagesByPreference } from '../hooks';
-import { selectableLanguages } from '../i18n';
+import { ConsentManagerSupportedTranslationValue } from '@transcend-io/internationalization';
+import { sortSupportedLocalesByPreference } from '../utils/sort-locales-by-preference';
+import { nativeConsentLocaleNames } from '../i18n';
 import type { HandleSetViewState } from '../types';
 import { MenuItem } from './MenuItem';
 import type { AirgapAuth } from '@transcend-io/airgap.js-types';
@@ -13,14 +13,16 @@ import { useMemo } from 'preact/hooks';
 export function LanguageOptions({
   handleChangeLanguage,
   handleSetViewState,
-  supportedLanguages,
+  supportedLocales,
 }: {
   /** Handler to change the language selection */
-  handleChangeLanguage: (language: ConsentManagerLanguageKey) => void;
+  handleChangeLanguage: (
+    language: ConsentManagerSupportedTranslationValue,
+  ) => void;
   /** Function to change viewState */
   handleSetViewState: HandleSetViewState;
   /** Supported consent manager languages */
-  supportedLanguages: ConsentManagerLanguageKey[];
+  supportedLocales: ConsentManagerSupportedTranslationValue[];
 }): JSX.Element {
   /**
    * Handler for language button click - selects language
@@ -28,7 +30,7 @@ export function LanguageOptions({
    * @param language - The language selected
    */
   function handleClick(
-    language: ConsentManagerLanguageKey,
+    language: ConsentManagerSupportedTranslationValue,
     e: AirgapAuth,
   ): void {
     handleChangeLanguage(language);
@@ -36,21 +38,21 @@ export function LanguageOptions({
   }
 
   // Selectable translations
-  const availableTranslations = useMemo(
-    () => sortSupportedLanguagesByPreference(supportedLanguages),
-    [supportedLanguages],
+  const sortedSupportedLocales = useMemo(
+    () => sortSupportedLocalesByPreference(supportedLocales),
+    [supportedLocales],
   );
 
   return (
     <div className="language-options-container">
-      {availableTranslations.map((language) => (
+      {sortedSupportedLocales.map((language) => (
         <div key={language} className="language-item-container">
           <MenuItem
-            label={selectableLanguages[language] || ''}
+            label={nativeConsentLocaleNames[language] || ''}
             type="button"
             onClick={(e) => handleClick(language, e)}
           >
-            {selectableLanguages[language]}
+            {nativeConsentLocaleNames[language]}
           </MenuItem>
         </div>
       ))}
