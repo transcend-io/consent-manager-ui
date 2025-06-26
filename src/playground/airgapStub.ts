@@ -35,16 +35,16 @@ export const airgapStub: AirgapAPI = {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   getCookiePurposes: () => Promise.resolve({} as any),
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  export: () => ({} as any),
+  export: () => ({}) as any,
   isConsented: () => true,
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  override: () => ({} as any),
+  override: () => ({}) as any,
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  overrideCookies: () => ({} as any),
+  overrideCookies: () => ({}) as any,
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  watch: () => ({} as any),
+  watch: () => ({}) as any,
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  watchCookies: () => ({} as any),
+  watchCookies: () => ({}) as any,
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
   ready: (callback) => callback(airgapStub),
@@ -107,8 +107,8 @@ export const airgapStub: AirgapAPI = {
     regimes?.has('GDPR') || regimes?.has('LGPD')
       ? new Set(['Essential', 'Functional', 'Analytics', 'Advertising'])
       : regimes?.has('CPRA') || regimes?.has('CPA') || regimes?.has('CDPA')
-      ? new Set(['Essential', 'SaleOfInfo'])
-      : new Set(['Essential']),
+        ? new Set(['Essential', 'SaleOfInfo'])
+        : new Set(['Essential']),
   /** Get initialized tracking purposes config */
   getPurposeTypes,
   /** Clear airgap queue & caches. Returns `true` on success. */

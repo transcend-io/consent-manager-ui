@@ -16,7 +16,7 @@ import {
   HandleChangeUiVariables,
 } from './types';
 import { VERSION } from './constants';
-import type { ConsentManagerLanguageKey } from '@transcend-io/internationalization';
+import type { ConsentManagerSupportedTranslationValue } from '@transcend-io/internationalization';
 import { getTranscendPolicies } from './utils/getTranscendPolicies';
 import { ObjByString } from '@transcend-io/type-utils';
 
@@ -26,7 +26,7 @@ interface MakeConsentManagerAPIInput {
   /** Property for the current view state of the consent manager UI */
   viewState: ViewState;
   /** The currently selected language */
-  activeLocale: ConsentManagerLanguageKey;
+  activeLocale: ConsentManagerSupportedTranslationValue;
   /** The current dynamic variables */
   currentVariables: ObjByString;
   /** Method to handle setting auth */
