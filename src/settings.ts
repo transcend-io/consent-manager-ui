@@ -1,5 +1,5 @@
 import type { LogLevel } from '@transcend-io/airgap.js-types';
-import { COMMA_AND_OR_SPACE_SEPARATED_LIST } from './utils';
+import { COMMA_AND_OR_SPACE_SEPARATED_LIST } from './utils/comma-and-or-space-separated-list';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any, no-restricted-globals
 const airgapInit = (self as any)?.airgap;

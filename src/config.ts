@@ -10,7 +10,7 @@ import type {
 import { ViewState } from '@transcend-io/airgap.js-types/build/enums/viewState';
 import { logger } from './logger';
 import { settings, LOG_LEVELS, extraConfig } from './settings';
-import { jsonParseSafe } from './utils';
+import { jsonParseSafe } from './utils/safe-json-parse';
 import { MergedConsentManagerConfig } from './types';
 import { CONSENT_MANAGER_SUPPORTED_LOCALES } from '@transcend-io/internationalization';
 

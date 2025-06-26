@@ -1,6 +1,6 @@
 import { h, JSX } from 'preact';
 import { ConsentManagerSupportedTranslationValue } from '@transcend-io/internationalization';
-import { sortSupportedLocalesByPreference } from '../utils';
+import { sortSupportedLocalesByPreference } from '../utils/sort-locales-by-preference';
 import { nativeConsentLocaleNames } from '../i18n';
 import type { HandleSetViewState } from '../types';
 import { MenuItem } from './MenuItem';

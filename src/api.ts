@@ -17,7 +17,7 @@ import {
 } from './types';
 import { VERSION } from './constants';
 import type { ConsentManagerSupportedTranslationValue } from '@transcend-io/internationalization';
-import { getTranscendPolicies } from './utils';
+import { getTranscendPolicies } from './utils/getTranscendPolicies';
 import { ObjByString } from '@transcend-io/type-utils';
 
 interface MakeConsentManagerAPIInput {

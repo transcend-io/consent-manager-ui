@@ -17,4 +17,4 @@ jobs:
           max_attempts: 3
           retry_on: error
           command: yarn install --immutable
-      - run: yarn jest -u
+      - run: yarn jest

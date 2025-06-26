@@ -8,7 +8,8 @@ import {
   Translations,
 } from '@transcend-io/internationalization';
 import { settings } from '../settings';
-import { getUserLocales, substituteHtml } from '../utils';
+import { getUserLocales } from '../utils/get-user-locales';
+import { substituteHtml } from '../utils/substitute-html';
 import { invertSafe } from '@transcend-io/type-utils';
 
 export const loadedTranslations: Translations = Object.create(null);

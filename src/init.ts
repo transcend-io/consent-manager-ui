@@ -14,7 +14,7 @@ import { injectConsentManagerApp } from './consent-manager';
 import { injectCss } from './css';
 import { logger } from './logger';
 import { LOG_ENABLED, LOG_LEVELS, settings } from './settings';
-import { throwOutside } from './utils';
+import { throwOutside } from './utils/throw-outside';
 import { VERSION } from './constants';
 
 // eslint-disable-next-line no-restricted-globals, @typescript-eslint/no-explicit-any
