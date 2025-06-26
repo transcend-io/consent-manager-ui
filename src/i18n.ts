@@ -13,7 +13,7 @@ export const nativeConsentLocaleNames = Object.fromEntries(
   (Object.entries(NATIVE_LANGUAGE_NAMES) as [LocaleValue, string][]).filter(
     ([key]) =>
       (Object.values(CONSENT_MANAGER_SUPPORTED_LOCALES) as string[]).includes(
-        key
+        key,
       ),
   ),
 ) as Pick<
