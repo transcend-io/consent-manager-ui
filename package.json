@@ -35,6 +35,7 @@
     "build": "ts-node --transpile-only ./build.ts && cp -r ./src/translations ./build/translations && cp ./src/cm.css ./build/",
     "tsc:build": "yarn pnpify tsc --build",
     "clean": "yarn pnpify tsc --build --clean",
+    "format": "yarn prettier --write .",
     "lint": "yarn pnpify eslint src --ext .ts,.tsx",
     "start": "rm -rf build/ &&  yarn build && concurrently 'WATCH=true yarn build' 'yarn live-server --host=localhost --entry-file=./index.html'",
     "start:https": "rm -rf build/ &&  yarn build && concurrently 'WATCH=true yarn build' 'yarn live-server --host=yo.com --https=../main/ssl/index.js --entry-file=./index.html'",
