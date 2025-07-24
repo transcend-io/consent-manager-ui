@@ -47,9 +47,9 @@ export const getNearestSupportedLocale = (
   supported: LocaleValue[],
 ): LocaleValue | undefined => {
   // eslint-disable-next-line no-restricted-syntax
-  for (const supportedLocale of supported) {
-    if (preferred.includes(supportedLocale)) {
-      return supportedLocale;
+  for (const preferredLocale of preferred) {
+    if (supported.includes(preferredLocale)) {
+      return preferredLocale;
     }
   }
   return undefined;
