@@ -46,21 +46,13 @@ export const getNearestSupportedLocale = (
   preferred: LocaleValue[],
   supported: LocaleValue[],
 ): LocaleValue | undefined => {
-  let i;
-  const nearestLocaleIdx = supported.reduce(
-    (nearestLocaleIdx, supportedLocale) => {
-      if (
-        // eslint-disable-next-line no-cond-assign
-        (i = preferred.indexOf(supportedLocale)) < nearestLocaleIdx &&
-        i > -1
-      ) {
-        return i;
-      }
-      return nearestLocaleIdx;
-    },
-    -1,
-  );
-  return nearestLocaleIdx === -1 ? undefined : preferred[nearestLocaleIdx];
+  // eslint-disable-next-line no-restricted-syntax
+  for (const supportedLocale of supported) {
+    if (preferred.includes(supportedLocale)) {
+      return supportedLocale;
+    }
+  }
+  return undefined;
 };
 
 /**
