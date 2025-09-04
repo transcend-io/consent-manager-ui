@@ -462,7 +462,7 @@ export const purposeMessages = defineMessages('purpose.trackingType', {
     description: 'Text for essential purposes in CompleteOptions view state.',
   },
   'Essential.description': {
-    defaultMessage: 'No consent needed.',
+    defaultMessage: 'No consent needed. {htmlEssential}',
     description:
       'Text for essential purposes description in CompleteOptions view state.',
   },
@@ -471,7 +471,7 @@ export const purposeMessages = defineMessages('purpose.trackingType', {
     description: 'Text for functional purposes in CompleteOptions view state.',
   },
   'Functional.description': {
-    defaultMessage: 'Personalization, autofilled forms, etc.',
+    defaultMessage: 'Personalization, autofilled forms, etc. {htmlFunctional}',
     description:
       'Text for functional purposes description in CompleteOptions view state.',
   },
@@ -480,7 +480,7 @@ export const purposeMessages = defineMessages('purpose.trackingType', {
     description: 'Text for analytics purposes in CompleteOptions view state.',
   },
   'Analytics.description': {
-    defaultMessage: 'Help us learn how our site is used and how it performs.',
+    defaultMessage: 'Help us learn how our site is used and how it performs. {htmlAnalytics}',
     description:
       'Text for analytics purposes description in CompleteOptions view state.',
   },
@@ -489,7 +489,7 @@ export const purposeMessages = defineMessages('purpose.trackingType', {
     description: 'Text for advertising purposes in CompleteOptions view state.',
   },
   'Advertising.description': {
-    defaultMessage: 'Helps us and others serve ads relevant to you.',
+    defaultMessage: 'Helps us and others serve ads relevant to you. {htmlAdvertising}',
     description:
       'Text for advertising purposes description in CompleteOptions view state.',
   },
@@ -499,7 +499,7 @@ export const purposeMessages = defineMessages('purpose.trackingType', {
       'Text for sale of information purposes in CompleteOptions view state.',
   },
   'SaleOfInfo.description': {
-    defaultMessage: 'Sale of personal information.',
+    defaultMessage: 'Sale of personal information. {htmlSaleOfInfo}',
     description:
       'Text for advertising purposes description in CompleteOptions view state.',
   },
