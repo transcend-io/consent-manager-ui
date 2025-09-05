@@ -95,6 +95,8 @@
       <div id="policy-content" style="max-width: 100%"></div>
     </div>
     <br />
+    <style id="tracking-table-css"></style>
+
     <script>
       var handleDoNotSell = (event) => {
         transcend.doNotSell(event);
@@ -210,13 +212,218 @@
         // setup the do not sell button
         setupDoNotSellButton();
 
-        transcend
-          .setUiVariables({
-            labelName: 'Marshmalt Records',
-          })
-          .then(() => {
-            setPolicyContent();
-          });
+        // Inject HTML table
+        const PURPOSE_ORDER = [
+          'Essential',
+          'Functional',
+          'Analytics',
+          'Advertising',
+          'SaleOfInfo',
+        ];
+        const PURPOSE_LABEL = {
+          Essential: 'Essential',
+          Functional: 'Functional',
+          Analytics: 'Analytics',
+          Advertising: 'Advertising',
+          SaleOfInfo: 'Sale of Info',
+        };
+
+        /* ---------- Helpers ---------- */
+        function escapeHtml(s) {
+          return String(s ?? '')
+            .replace(/&/g, '&amp;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;')
+            .replace(/"/g, '&quot;');
+        }
+        function humanMaxAge(maxAge) {
+          if (maxAge === null || maxAge === undefined || maxAge === '')
+            return '';
+          const n = Number(maxAge);
+          if (!isFinite(n)) return String(maxAge);
+          if (n <= 0) return 'session';
+          const d = Math.round(n / 86400);
+          if (d >= 2) return `${d} days`;
+          const h = Math.round(n / 3600);
+          if (h >= 1) return `${h} hours`;
+          const m = Math.round(n / 60);
+          if (m >= 1) return `${m} minutes`;
+          return `${n} seconds`;
+        }
+        function collectAllPurposes(services) {
+          const set = new Set();
+          for (const s of services) {
+            (s.cookies || []).forEach((c) =>
+              (c.trackingPurposes || []).forEach((p) => set.add(p)),
+            );
+            (s.dataFlows || []).forEach((d) =>
+              (d.trackingPurposes || []).forEach((p) => set.add(p)),
+            );
+          }
+          const custom = [...set]
+            .filter((p) => !PURPOSE_ORDER.includes(p))
+            .sort((a, b) => a.localeCompare(b));
+          return [...PURPOSE_ORDER.filter((p) => set.has(p)), ...custom];
+        }
+
+        /* ---------- Core: one dropdown per purpose ---------- */
+
+        function renderPurposeDropdown(services, purpose) {
+          const s = {
+            spacer: 'height:8px',
+            card: 'margin-top:6px;background:#fff;border:1px solid #e5e7eb;border-radius:10px;box-shadow:0 1px 2px rgba(15,23,32,.04),0 4px 12px rgba(15,23,32,.06);overflow:hidden',
+            summary:
+              'cursor:pointer;list-style:none;padding:12px 14px;display:flex;align-items:center;gap:10px;background:#f6f7f9;border-bottom:1px solid #e5e7eb;font-weight:600',
+            chev: 'display:inline-block;transition:transform .2s ease;width:1em;text-align:center',
+            meta: 'margin-left:auto;color:#5b6876;font-variant-numeric:tabular-nums;font-weight:500',
+            /* fixed-height scroller; width matches card so the header with counts stays fully visible */
+            scroll:
+              'max-height:220px;overflow-y:auto;overflow-x:auto;background:#fff',
+            /* keep table width to the card (no reflow of the header); allow horizontal scroll if chips overflow */
+            table:
+              'width:100%;table-layout:fixed;border-collapse:collapse;border-spacing:0',
+            td: 'padding:8px 10px;vertical-align:top;border-bottom:1px solid #eef1f4;font-size:13px;white-space:normal;word-break:break-word',
+            th: 'position:sticky;top:0;z-index:1;background:#fbfcfd;text-align:left;font-size:11px;letter-spacing:.02em;text-transform:uppercase;color:#5b6876;padding:8px 10px;border-bottom:1px solid #eef1f4;white-space:nowrap',
+            chip: 'font-size:10px;text-transform:uppercase;letter-spacing:.02em;color:#5b6876;border:1px solid #e5e7eb;border-radius:6px;padding:2px 6px;background:#fff',
+            mono: "font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,'Courier New',monospace",
+            logo: 'width:16px;height:16px;object-fit:contain;border-radius:3px;border:1px solid #e5e7eb;background:#fff;margin-right:8px',
+            stack: 'display:flex;flex-direction:column;gap:6px',
+            rowStack: 'display:flex;flex-direction:column;gap:6px', // stack flows+cookies together
+            kv: 'display:inline-flex;gap:6px;align-items:center',
+            empty: 'color:#5b6876;font-style:italic;white-space:normal',
+          };
+
+          const rows = [];
+          let svcCount = 0,
+            flowCount = 0,
+            cookieCount = 0;
+
+          for (const svc of services) {
+            const flows = (svc.dataFlows || []).filter((d) =>
+              (d.trackingPurposes || []).includes(purpose),
+            );
+            const cookies = (svc.cookies || []).filter((c) =>
+              (c.trackingPurposes || []).includes(purpose),
+            );
+            if (!flows.length && !cookies.length) continue;
+
+            svcCount++;
+            flowCount += flows.length;
+            cookieCount += cookies.length;
+
+            const flowsHtml = flows
+              .map(
+                (f) =>
+                  `<div style="${s.kv}">
+         <span style="${s.chip}">${escapeHtml(f.type)}</span>
+         <span style="${s.mono}">${escapeHtml(f.value)}</span>
+       </div>`,
+              )
+              .join('');
+
+            const cookiesHtml = cookies
+              .map((c) => {
+                const age = humanMaxAge(c.maxAge);
+                return `<div style="${s.kv}">
+        <span style="${s.chip}">Cookie</span>
+        <span style="${s.mono}">${escapeHtml(c.name)}</span>
+        ${age ? `<span style="${s.empty}">(${escapeHtml(age)})</span>` : ''}
+      </div>`;
+              })
+              .join('');
+
+            const trackingCell =
+              flows.length || cookies.length
+                ? `<div style="${s.rowStack}">
+             ${flows.length ? flowsHtml : `<span style="${s.empty}">No data flows</span>`}
+             ${cookies.length ? cookiesHtml : `<span style="${s.empty}">No cookies</span>`}
+           </div>`
+                : `<span style="${s.empty}">None</span>`;
+
+            const serviceCell = `
+      <div style="${s.stack}">
+        ${
+          svc.logoSquare
+            ? `<span style="display:inline-flex;align-items:center">
+                 <img style="${s.logo}" src="${escapeHtml(svc.logoSquare)}" alt="">
+                 ${escapeHtml(svc.title)}
+               </span>`
+            : `<strong>${escapeHtml(svc.title)}</strong>`
+        }
+      </div>`;
+
+            rows.push(`
+      <tr style="${rows.length % 2 ? 'background:#fbfcfd' : ''}">
+        <td style="${s.td};width:45%">${serviceCell}</td>
+        <td style="${s.td};width:55%">${trackingCell}</td>
+      </tr>`);
+          }
+
+          const meta = `${svcCount} services · ${flowCount} data flows · ${cookieCount} cookies`;
+
+          const onClick = `event.preventDefault();(function(s){var d=s.parentNode;var o=!d.open;d.open=o;var c=s.querySelector('[data-chev]');if(c)c.style.transform=o?'rotate(90deg)':'rotate(0deg)';s.setAttribute('aria-expanded',o);})(this)`;
+          const onKey = `if(event.key==='Enter'||event.key===' '){event.preventDefault();${onClick}}`;
+
+          return `
+<div style="${s.spacer}"></div>
+<div style="${s.card}">
+  <details>
+    <summary aria-expanded="false" tabindex="0" onclick="${onClick}" onkeydown="${onKey}" style="${s.summary}">
+      <span data-chev style="${s.chev}">▸</span>
+      <span>View</span>
+      <span style="${s.meta}">${meta}</span>
+    </summary>
+    <div style="${s.scroll}">
+      <table role="table" style="${s.table}" aria-label="${escapeHtml(purpose)} tracking">
+        <thead>
+          <tr>
+            <th scope="col" style="${s.th}; width:40%">Service</th>
+            <th scope="col" style="${s.th}; width:60%">Tracking</th>
+          </tr>
+        </thead>
+        <tbody>
+          ${rows.join('') || `<tr><td style="${s.td}" colspan="2"><span style="${s.empty}">No items for this purpose.</span></td></tr>`}
+        </tbody>
+      </table>
+    </div>
+  </details>
+</div>`;
+        }
+
+        /* ---------- Convenience: build a map { purpose -> html } ---------- */
+        function renderAllPurposeDropdowns(services) {
+          const purposes = collectAllPurposes(services);
+          const map = {};
+          for (const p of purposes) map[p] = renderPurposeDropdown(services, p);
+          return { purposes, sections: map, css: '' };
+        }
+
+        // after you load the data and this script:
+        const mountCss = document.getElementById('tracking-table-css');
+        if (mountCss && !mountCss.dataset.loaded) {
+          mountCss.textContent = '';
+          mountCss.dataset.loaded = '1';
+        }
+
+        airgap.getMetadata().then(({ services }) => {
+          // suppose `DATA` is your big array from the prompt
+          const { purposes, sections } = renderAllPurposeDropdowns(services);
+          console.log(purposes);
+
+          transcend
+            .setUiVariables({
+              labelName: 'Marshmalt Records',
+              htmlEssential: sections['Essential'] || '',
+              htmlFunctional: sections['Functional'] || '',
+              htmlAnalytics: sections['Analytics'] || '',
+              htmlAdvertising: sections['Advertising'] || '',
+              htmlSaleOfInfo: sections['SaleOfInfo'] || '',
+              htmlAiUsage: sections['AiUsage'] || '',
+            })
+            .then(() => {
+              setPolicyContent();
+            });
+        });
 
         // resolve consent from backend
         // uncomment to test backend consent mocked integration
