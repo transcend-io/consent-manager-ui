@@ -51,7 +51,6 @@ export function MenuItem({
         <button
           onClick={onClick as JSX.MouseEventHandler<HTMLButtonElement>}
           className={`bottom-menu-item${classes ? ` ${classes}` : ''}`}
-          aria-label={label}
         >
           {children}
         </button>
@@ -62,8 +61,6 @@ export function MenuItem({
           href={href}
           target="_blank"
           rel="noopener noreferrer"
-          aria-label={label}
-          title={label}
         >
           {children}
         </a>

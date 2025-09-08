@@ -12,7 +12,7 @@
   --black: #12191a;
   --disabled-color: #bbb9ba;
   --dark: #162310;
-  --focus-color: rgb(15.7243243243, 129.7256756757, 27.5175675676);
+  --focus-color: #0C7E18;
 }
 
 /******************* * Modal *******************/
@@ -234,6 +234,7 @@ button:hover {
 
 /** Anchor focus */
 a:focus, a:active {
+  color: var(--focus-color);
   outline: 1px solid var(--primary-color);
 }
 a:hover {
@@ -496,10 +497,10 @@ a:hover {
 }
 .bottom-menu-item:hover, .bottom-menu-item:focus, .bottom-menu-item:active {
   cursor: pointer;
-  color: var(--primary-color);
+  color: var(--focus-color);
 }
 .bottom-menu-item:focus, .bottom-menu-item:active {
-  outline: 1px solid var(--primary-color);
+  outline: 1px solid var(--focus-color);
 }
 
 /*******************

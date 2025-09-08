@@ -4,8 +4,8 @@
 @use 'sass:color';
 
 // Color variables
-$primary-color: #10841c;
-$focus-color: color.adjust($primary-color, $lightness: -0.5%);
+$primary-color: #10841c; // passes 4:5 with $white
+$focus-color: #0C7E18; // passes 4:5 with $light
 $white: #ffffff;
 $light: #efefef;
 $gray: #d8d8d8;
@@ -257,6 +257,7 @@ a {
 
 	&:focus,
 	&:active {
+		color: var(--focus-color);
 		outline: 1px solid var(--primary-color);
 	}
 
@@ -546,12 +547,12 @@ a {
 	&:focus,
 	&:active {
 		cursor: pointer;
-		color: var(--primary-color);
+		color: var(--focus-color);
 	}
 
 	&:focus,
 	&:active {
-		outline: 1px solid var(--primary-color);
+		outline: 1px solid var(--focus-color);
 	}
 }
 
