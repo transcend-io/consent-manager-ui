@@ -106,7 +106,7 @@
         airgap.setConsent(
           event,
           { SaleOfInfo: true },
-          { confirmed: false },
+          { confirmed: false, prompted: false },
         );
         setupDoNotSellButton();
       };

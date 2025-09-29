@@ -129,6 +129,7 @@ export function App({
         {messages ? (
           <Main
             globalUiVariables={{ ...currentVariables, ...htmlTagVariables }}
+            airgap={airgap}
             modalOpenAuth={auth}
             viewState={viewState}
             config={config}
