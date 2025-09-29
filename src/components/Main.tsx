@@ -1,12 +1,11 @@
 import { h, JSX } from 'preact';
 import type {
-  AirgapAPI,
   AirgapAuth,
   ConsentManagerConfig,
   ViewState,
 } from '@transcend-io/airgap.js-types';
 import { ConsentManagerSupportedTranslationValue } from '@transcend-io/internationalization';
-import { isResponseViewState, isViewStateClosed } from '../hooks';
+import { isViewStateClosed } from '../hooks';
 import type { HandleSetViewState } from '../types';
 import { Collapsed } from './Collapsed';
 import { AcceptAll } from './AcceptAll';
@@ -41,7 +40,6 @@ import { ObjByString } from '@transcend-io/type-utils';
  * Presents view states (collapsed, GDPR-mode, CCPA-mode etc)
  */
 export function Main({
-  airgap,
   viewState,
   config,
   firstSelectedViewState,
@@ -53,8 +51,6 @@ export function Main({
 }: {
   /** Global variables for UI view state */
   globalUiVariables: ObjByString;
-  /** airgap.js API */
-  airgap: AirgapAPI;
   /** Configuration for consent UI */
   config: ConsentManagerConfig;
   /** The on click event passed as authentication to airgap. Needed for do-not-sell acknowledgement */
@@ -91,9 +87,6 @@ export function Main({
 
   // Modal open views
   if (!isViewStateClosed(viewState)) {
-    if (!isResponseViewState(viewState) && !airgap.getConsent().prompted) {
-      airgap.setPrompted(true);
-    }
     return (
       <div
         role="region"
