@@ -22,7 +22,7 @@ export const nativeConsentLocaleNames = Object.fromEntries(
     const [languageCode] = localeValue.split('-');
     // Check if this is the only instance of this language code (e.g., ["en-US"], but not ["en-US", "en-GB"])
     if (list.filter(([localeValue]) => localeValue.split('-')[0] === languageCode).length === 1) {
-      return [localeValue, languageName.replace(/\(.+?\)/g, '')];
+      return [localeValue, languageName.replace(/\(.+?\)/g, '').trim()];
     }
     return [localeValue, languageName];
   }),
