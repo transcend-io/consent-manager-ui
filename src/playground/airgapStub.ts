@@ -67,6 +67,7 @@ export const airgapStub: AirgapAPI = {
     }
 
     const purposeTypes = getPurposeTypes();
+    delete purposeTypes.Essential;
     const purposes: Record<string, boolean> = {};
     Object.keys(purposeTypes).forEach((purpose) => {
       purposes[purpose] = true;
