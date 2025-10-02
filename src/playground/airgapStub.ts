@@ -69,6 +69,8 @@ export const airgapStub: AirgapAPI = {
     const purposeTypes = getPurposeTypes();
     const purposes: Record<string, boolean> = {};
     Object.keys(purposeTypes).forEach((purpose) => {
+      // Not included in the response of getConsent()
+      if (purpose === 'Essential') return;
       purposes[purpose] = true;
     });
     return {
