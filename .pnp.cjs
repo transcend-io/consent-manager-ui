@@ -33,9 +33,9 @@ const RAW_RUNTIME_STATE =
           ["@testing-library/jest-dom", "npm:6.4.8"],\
           ["@testing-library/preact", "virtual:c76842a5689228a0ce1b65e064c1f5e0d5b61e442d08b6527a3b1f100ca1f2105e58f5f1435c5a59df3cce3338560737838d99dae36d25b47d20aa50c89d0539#npm:3.2.4"],\
           ["@transcend-io/airgap.js-types", "npm:12.14.0"],\
-          ["@transcend-io/internationalization", "npm:1.7.4"],\
+          ["@transcend-io/internationalization", "npm:2.1.0"],\
           ["@transcend-io/logger", "npm:1.1.0"],\
-          ["@transcend-io/type-utils", "npm:1.5.0"],\
+          ["@transcend-io/type-utils", "npm:1.8.4"],\
           ["@types/jest", "npm:29.5.12"],\
           ["@types/node", "npm:17.0.45"],\
           ["@typescript-eslint/eslint-plugin", "virtual:c76842a5689228a0ce1b65e064c1f5e0d5b61e442d08b6527a3b1f100ca1f2105e58f5f1435c5a59df3cce3338560737838d99dae36d25b47d20aa50c89d0539#npm:5.62.0"],\
@@ -1789,9 +1789,9 @@ const RAW_RUNTIME_STATE =
           ["@testing-library/jest-dom", "npm:6.4.8"],\
           ["@testing-library/preact", "virtual:c76842a5689228a0ce1b65e064c1f5e0d5b61e442d08b6527a3b1f100ca1f2105e58f5f1435c5a59df3cce3338560737838d99dae36d25b47d20aa50c89d0539#npm:3.2.4"],\
           ["@transcend-io/airgap.js-types", "npm:12.14.0"],\
-          ["@transcend-io/internationalization", "npm:1.7.4"],\
+          ["@transcend-io/internationalization", "npm:2.1.0"],\
           ["@transcend-io/logger", "npm:1.1.0"],\
-          ["@transcend-io/type-utils", "npm:1.5.0"],\
+          ["@transcend-io/type-utils", "npm:1.8.4"],\
           ["@types/jest", "npm:29.5.12"],\
           ["@types/node", "npm:17.0.45"],\
           ["@typescript-eslint/eslint-plugin", "virtual:c76842a5689228a0ce1b65e064c1f5e0d5b61e442d08b6527a3b1f100ca1f2105e58f5f1435c5a59df3cce3338560737838d99dae36d25b47d20aa50c89d0539#npm:5.62.0"],\
@@ -1830,10 +1830,10 @@ const RAW_RUNTIME_STATE =
       }]\
     ]],\
     ["@transcend-io/internationalization", [\
-      ["npm:1.7.4", {\
-        "packageLocation": "./.yarn/cache/@transcend-io-internationalization-npm-1.7.4-b8a0fb1dd3-6c98e39d87.zip/node_modules/@transcend-io/internationalization/",\
+      ["npm:2.1.0", {\
+        "packageLocation": "./.yarn/cache/@transcend-io-internationalization-npm-2.1.0-ea22a70c1e-5d1c0824b6.zip/node_modules/@transcend-io/internationalization/",\
         "packageDependencies": [\
-          ["@transcend-io/internationalization", "npm:1.7.4"]\
+          ["@transcend-io/internationalization", "npm:2.1.0"]\
         ],\
         "linkType": "HARD"\
       }]\
@@ -1853,15 +1853,6 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "./.yarn/cache/@transcend-io-type-utils-npm-1.4.2-647270e91e-7da51669d0.zip/node_modules/@transcend-io/type-utils/",\
         "packageDependencies": [\
           ["@transcend-io/type-utils", "npm:1.4.2"],\
-          ["fp-ts", "npm:2.16.9"],\
-          ["io-ts", "virtual:cf70873fba693c45e12eaa2d75c95b8f826f7c6ecae22c907dd641a734cc988a6f014d29b42deaa1743aa40d0580245d37ded40b27610597f1c48d1b1650eed5#npm:2.2.21"]\
-        ],\
-        "linkType": "HARD"\
-      }],\
-      ["npm:1.5.0", {\
-        "packageLocation": "./.yarn/cache/@transcend-io-type-utils-npm-1.5.0-125f1a01fb-5be2810938.zip/node_modules/@transcend-io/type-utils/",\
-        "packageDependencies": [\
-          ["@transcend-io/type-utils", "npm:1.5.0"],\
           ["fp-ts", "npm:2.16.9"],\
           ["io-ts", "virtual:cf70873fba693c45e12eaa2d75c95b8f826f7c6ecae22c907dd641a734cc988a6f014d29b42deaa1743aa40d0580245d37ded40b27610597f1c48d1b1650eed5#npm:2.2.21"]\
         ],\
