@@ -20,8 +20,6 @@ export const INVERTED_TRANSLATE_LOCALE = invertSafe(LOCALE_TRANSLATION_MAP);
 const getDuplicativeLocales = (lang: LocaleValue): LocaleValue[] =>
   INVERTED_TRANSLATE_LOCALE[LOCALE_TRANSLATION_MAP[lang]];
 
-// FIXME
-
 /**
  * Get nearest matching locale from a list of supported locales
  *
