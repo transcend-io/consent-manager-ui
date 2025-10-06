@@ -20,20 +20,7 @@ export const INVERTED_TRANSLATE_LOCALE = invertSafe(LOCALE_TRANSLATION_MAP);
 const getDuplicativeLocales = (lang: LocaleValue): LocaleValue[] =>
   INVERTED_TRANSLATE_LOCALE[LOCALE_TRANSLATION_MAP[lang]];
 
-/**
- * Get nearest matching language from a list of supported languages
- *
- * @param preferred - Sorted language list in order of most preferable to least preferable
- * @param supported - List of supported languages to match from
- * @returns Nearest supported language, sorted by preferred language list
- */
-export const getNearestSupportedLanguage = (
-  preferred: LocaleValue[],
-  supported: LocaleValue[],
-): LocaleValue | undefined =>
-  supported.find((language) =>
-    preferred.some((preferredLang) => preferredLang.toLowerCase() === language),
-  );
+// FIXME
 
 /**
  * Get nearest matching locale from a list of supported locales
