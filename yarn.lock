@@ -1156,9 +1156,9 @@ __metadata:
     "@testing-library/jest-dom": "npm:^6.4.6"
     "@testing-library/preact": "npm:^3.2.4"
     "@transcend-io/airgap.js-types": "npm:^12.14.0"
-    "@transcend-io/internationalization": "npm:^1.7.4"
+    "@transcend-io/internationalization": "npm:^2.1.0"
     "@transcend-io/logger": "npm:^1.1.0"
-    "@transcend-io/type-utils": "npm:^1.5.0"
+    "@transcend-io/type-utils": "npm:^1.8.4"
     "@types/jest": "npm:^29.5.12"
     "@types/node": "npm:^17.0.45"
     "@typescript-eslint/eslint-plugin": "npm:^5.12.1"
@@ -1195,10 +1195,10 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@transcend-io/internationalization@npm:^1.7.4":
-  version: 1.7.4
-  resolution: "@transcend-io/internationalization@npm:1.7.4"
-  checksum: 10/6c98e39d878c558b3282fd9388ea7199d7d7d3f9939bdc702157dec96a226d06d817d6b2f941144af5be4b22a22963db44082788b19fe884336ed13845b8a3cc
+"@transcend-io/internationalization@npm:^2.1.0":
+  version: 2.1.0
+  resolution: "@transcend-io/internationalization@npm:2.1.0"
+  checksum: 10/5d1c0824b6ea17069f4a728020b60faf8656cf2f5cf1ee1b02875f20715ee4229ff32b47cb3a5214d6ac4afd1ff6810b2c475d04ecc29d777f3989747063bffd
   languageName: node
   linkType: hard
 
@@ -1218,16 +1218,6 @@ __metadata:
     fp-ts: "npm:^2.16.1"
     io-ts: "npm:^2.2.21"
   checksum: 10/7da51669d0048e251447f44e6e27e50f7888eef6e51e4fe0d119d764a4894868e86cbac4db8ff77fa60dcc03258279e44b71552cd8fb19b2ee117e9bb56e4b71
-  languageName: node
-  linkType: hard
-
-"@transcend-io/type-utils@npm:^1.5.0":
-  version: 1.5.0
-  resolution: "@transcend-io/type-utils@npm:1.5.0"
-  dependencies:
-    fp-ts: "npm:^2.16.1"
-    io-ts: "npm:^2.2.21"
-  checksum: 10/5be28109388bc9c014f065fdf3a434ac0845d453c8721c3d34b708db6ba7f3202265671df63785a463fd77b9d4c7e1fdb869e79a1572e4a1c3b68ba2dd4501ea
   languageName: node
   linkType: hard
 
