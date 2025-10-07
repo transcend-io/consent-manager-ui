@@ -156,12 +156,16 @@ export function CompleteOptionsToggles({
                   : 'Essential'
               }
             />
-            <p className="paragraph complete-options-toggle-description">
-              {formatMessage(
-                purposeToDescriptionKey.Essential,
-                globalUiVariables,
-              )}
-            </p>
+            <p
+              className="paragraph complete-options-toggle-description"
+              // eslint-disable-next-line react/no-danger
+              dangerouslySetInnerHTML={{
+                __html: formatMessage(
+                  purposeToDescriptionKey.Essential,
+                  globalUiVariables,
+                ),
+              }}
+            />
           </span>
           {orderedSelections.map(([purpose, isChecked], idx) => (
             <span key={purpose}>
@@ -185,12 +189,16 @@ export function CompleteOptionsToggles({
                 }
                 {...(idx === 0 ? { initialFocus: true } : {})}
               />
-              <p className="paragraph complete-options-toggle-description">
-                {formatMessage(
-                  purposeToDescriptionKey[purpose],
-                  globalUiVariables,
-                )}
-              </p>
+              <p
+                className="paragraph complete-options-toggle-description"
+                // eslint-disable-next-line react/no-danger
+                dangerouslySetInnerHTML={{
+                  __html: formatMessage(
+                    purposeToDescriptionKey[purpose],
+                    globalUiVariables,
+                  ),
+                }}
+              />
             </span>
           ))}
           <p className="paragraph" />
