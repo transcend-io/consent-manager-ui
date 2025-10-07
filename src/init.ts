@@ -76,7 +76,7 @@ export const init = async (): Promise<void> => {
       });
     }
 
-    // Wait for airgap to be ready
+    // Wait for airgap to be ready just changing a comment
     const airgap = await airgapPromise;
 
     // Inject the consent manager app and pull out the API methods
