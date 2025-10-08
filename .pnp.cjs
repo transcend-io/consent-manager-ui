@@ -32,8 +32,8 @@ const RAW_RUNTIME_STATE =
           ["@prettier/sync", "virtual:c76842a5689228a0ce1b65e064c1f5e0d5b61e442d08b6527a3b1f100ca1f2105e58f5f1435c5a59df3cce3338560737838d99dae36d25b47d20aa50c89d0539#npm:0.5.2"],\
           ["@testing-library/jest-dom", "npm:6.4.8"],\
           ["@testing-library/preact", "virtual:c76842a5689228a0ce1b65e064c1f5e0d5b61e442d08b6527a3b1f100ca1f2105e58f5f1435c5a59df3cce3338560737838d99dae36d25b47d20aa50c89d0539#npm:3.2.4"],\
-          ["@transcend-io/airgap.js-types", "npm:12.14.0"],\
-          ["@transcend-io/internationalization", "npm:2.1.0"],\
+          ["@transcend-io/airgap.js-types", "npm:12.14.1"],\
+          ["@transcend-io/internationalization", "npm:2.2.0"],\
           ["@transcend-io/logger", "npm:1.1.0"],\
           ["@transcend-io/type-utils", "npm:1.8.4"],\
           ["@types/jest", "npm:29.5.12"],\
@@ -1756,10 +1756,10 @@ const RAW_RUNTIME_STATE =
       }]\
     ]],\
     ["@transcend-io/airgap.js-types", [\
-      ["npm:12.14.0", {\
-        "packageLocation": "./.yarn/cache/@transcend-io-airgap.js-types-npm-12.14.0-395bd8f5e1-ca48d58c47.zip/node_modules/@transcend-io/airgap.js-types/",\
+      ["npm:12.14.1", {\
+        "packageLocation": "./.yarn/cache/@transcend-io-airgap.js-types-npm-12.14.1-dfce6962b2-d55d8f76a3.zip/node_modules/@transcend-io/airgap.js-types/",\
         "packageDependencies": [\
-          ["@transcend-io/airgap.js-types", "npm:12.14.0"],\
+          ["@transcend-io/airgap.js-types", "npm:12.14.1"],\
           ["@transcend-io/type-utils", "npm:1.8.4"],\
           ["fp-ts", "npm:2.16.9"],\
           ["io-ts", "virtual:cf70873fba693c45e12eaa2d75c95b8f826f7c6ecae22c907dd641a734cc988a6f014d29b42deaa1743aa40d0580245d37ded40b27610597f1c48d1b1650eed5#npm:2.2.21"]\
@@ -1788,8 +1788,8 @@ const RAW_RUNTIME_STATE =
           ["@prettier/sync", "virtual:c76842a5689228a0ce1b65e064c1f5e0d5b61e442d08b6527a3b1f100ca1f2105e58f5f1435c5a59df3cce3338560737838d99dae36d25b47d20aa50c89d0539#npm:0.5.2"],\
           ["@testing-library/jest-dom", "npm:6.4.8"],\
           ["@testing-library/preact", "virtual:c76842a5689228a0ce1b65e064c1f5e0d5b61e442d08b6527a3b1f100ca1f2105e58f5f1435c5a59df3cce3338560737838d99dae36d25b47d20aa50c89d0539#npm:3.2.4"],\
-          ["@transcend-io/airgap.js-types", "npm:12.14.0"],\
-          ["@transcend-io/internationalization", "npm:2.1.0"],\
+          ["@transcend-io/airgap.js-types", "npm:12.14.1"],\
+          ["@transcend-io/internationalization", "npm:2.2.0"],\
           ["@transcend-io/logger", "npm:1.1.0"],\
           ["@transcend-io/type-utils", "npm:1.8.4"],\
           ["@types/jest", "npm:29.5.12"],\
@@ -1830,10 +1830,10 @@ const RAW_RUNTIME_STATE =
       }]\
     ]],\
     ["@transcend-io/internationalization", [\
-      ["npm:2.1.0", {\
-        "packageLocation": "./.yarn/cache/@transcend-io-internationalization-npm-2.1.0-ea22a70c1e-5d1c0824b6.zip/node_modules/@transcend-io/internationalization/",\
+      ["npm:2.2.0", {\
+        "packageLocation": "./.yarn/cache/@transcend-io-internationalization-npm-2.2.0-1531a773c1-bf3851a667.zip/node_modules/@transcend-io/internationalization/",\
         "packageDependencies": [\
-          ["@transcend-io/internationalization", "npm:2.1.0"]\
+          ["@transcend-io/internationalization", "npm:2.2.0"]\
         ],\
         "linkType": "HARD"\
       }]\
