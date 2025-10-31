@@ -6,7 +6,7 @@ import { bottomMenuMessages, noticeAndDoNotSellMessages } from '../messages';
 import type { HandleSetViewState } from '../types';
 import { MenuItem } from './MenuItem';
 import { ObjByString } from '@transcend-io/type-utils';
-import { isWebView } from '../utils/isWebView';
+import { settings } from '../settings';
 
 const VIEW_STATE_TO_MESSAGE: { [k in ViewState]: DefinedMessage | undefined } =
   {
@@ -70,7 +70,6 @@ export function BottomMenu({
 }): JSX.Element {
   const { formatMessage } = useIntl();
   const policyMessage = VIEW_STATE_TO_MESSAGE[viewState];
-  const inWebView = isWebView();
 
   return (
     <div className="bottom-menu-container">
@@ -174,8 +173,8 @@ export function BottomMenu({
               )}
               type="a"
               href={secondaryPolicy}
-              target={inWebView ? undefined : "_blank"}
-              rel={inWebView ? undefined : "noopener noreferrer"}
+              target={settings.isMobile ? undefined : "_blank"}
+              rel={settings.isMobile ? undefined : "noopener noreferrer"}
             >
               {formatMessage(
                 bottomMenuMessages.showSecondaryPolicyButton,
@@ -194,8 +193,8 @@ export function BottomMenu({
           )}
           type="a"
           href={privacyPolicy}
-          target={inWebView ? undefined : "_blank"}
-          rel={inWebView ? undefined : "noopener noreferrer"}
+          target={settings.isMobile ? undefined : "_blank"}
+          rel={settings.isMobile ? undefined : "noopener noreferrer"}
         >
           {policyMessage
             ? formatMessage(policyMessage, globalUiVariables)
