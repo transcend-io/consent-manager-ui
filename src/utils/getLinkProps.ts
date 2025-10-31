@@ -11,8 +11,8 @@ interface LinkProps {
  * @param isMobile - whether the environment is mobile
  * @returns link props
  */
-export function getLinkProps(isMobile: boolean): LinkProps {
-    return isMobile
+export function getLinkProps(isMobile: string): LinkProps {
+    return isMobile === 'on'
         ? {}
         : {
             target: '_blank',
