@@ -7,6 +7,7 @@ import type { HandleSetViewState } from '../types';
 import { MenuItem } from './MenuItem';
 import { ObjByString } from '@transcend-io/type-utils';
 import { settings } from '../settings';
+import { getLinkProps } from '../utils/getLinkProps';
 
 const VIEW_STATE_TO_MESSAGE: { [k in ViewState]: DefinedMessage | undefined } =
   {
@@ -173,8 +174,7 @@ export function BottomMenu({
               )}
               type="a"
               href={secondaryPolicy}
-              target={settings.isMobile ? undefined : '_blank'}
-              rel={settings.isMobile ? undefined : 'noopener noreferrer'}
+              {...getLinkProps(settings.isMobile)}
             >
               {formatMessage(
                 bottomMenuMessages.showSecondaryPolicyButton,
@@ -193,8 +193,7 @@ export function BottomMenu({
           )}
           type="a"
           href={privacyPolicy}
-          target={settings.isMobile ? undefined : '_blank'}
-          rel={settings.isMobile ? undefined : 'noopener noreferrer'}
+          {...getLinkProps(settings.isMobile)}
         >
           {policyMessage
             ? formatMessage(policyMessage, globalUiVariables)

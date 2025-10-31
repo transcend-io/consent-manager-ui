@@ -1,4 +1,5 @@
 import { ComponentChild, Fragment, h, JSX } from 'preact';
+import { getLinkProps } from 'src/utils/getLinkProps';
 import { settings } from '../settings';
 
 /**
@@ -61,10 +62,9 @@ export function MenuItem({
         <a
           className="bottom-menu-item"
           href={href}
-          target={settings.isMobile ? undefined : '_blank'}
-          rel={settings.isMobile ? undefined : 'noopener noreferrer'}
           aria-label={label}
           title={label}
+          {...getLinkProps(settings.isMobile)}
         >
           {children}
         </a>

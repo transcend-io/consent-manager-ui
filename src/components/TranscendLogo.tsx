@@ -1,5 +1,6 @@
 /* eslint max-len: 0 */
 import { h, JSX } from 'preact';
+import { getLinkProps } from 'src/utils/getLinkProps';
 import { settings } from '../settings';
 
 /**
@@ -47,10 +48,9 @@ export function TranscendLogo({
     <a
       className="transcend-logo-container"
       href="https://transcend.io/"
-      target={settings.isMobile ? undefined : '_blank'}
-      rel={settings.isMobile ? undefined : 'noopener noreferrer'}
       title="Powered by Transcend"
       aria-label="Powered by Transcend"
+      {...getLinkProps(settings.isMobile)}
     >
       <svg
         className="transcend-logo-svg"
