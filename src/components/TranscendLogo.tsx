@@ -1,5 +1,6 @@
 /* eslint max-len: 0 */
 import { h, JSX } from 'preact';
+import { isWebView } from '../utils/isWebView';
 
 /**
  * The Transcend square logo
@@ -42,12 +43,14 @@ export function TranscendLogo({
   /** Font color */
   fontColor: string;
 }): JSX.Element {
+  const inWebView = isWebView();
+
   return (
     <a
       className="transcend-logo-container"
       href="https://transcend.io/"
-      target="_blank"
-      rel="noopener noreferrer"
+      target={inWebView ? undefined : "_blank"}
+      rel={inWebView ? undefined : "noopener noreferrer"}
       title="Powered by Transcend"
       aria-label="Powered by Transcend"
     >

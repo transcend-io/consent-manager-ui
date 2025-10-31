@@ -1,4 +1,5 @@
 import { ComponentChild, Fragment, h, JSX } from 'preact';
+import { isWebView } from '../utils/isWebView';
 
 /**
  * Props that are always on this element
@@ -44,6 +45,8 @@ export function MenuItem({
   href,
   children,
 }: MenuItemProps): JSX.Element {
+  const inWebView = isWebView();
+
   return (
     <Fragment>
       {type === 'button' && (
@@ -60,8 +63,8 @@ export function MenuItem({
         <a
           className="bottom-menu-item"
           href={href}
-          target="_blank"
-          rel="noopener noreferrer"
+          target={inWebView ? undefined : "_blank"}
+          rel={inWebView ? undefined : "noopener noreferrer"}
           aria-label={label}
           title={label}
         >
