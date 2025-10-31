@@ -1,6 +1,6 @@
 /* eslint max-len: 0 */
 import { h, JSX } from 'preact';
-import { getLinkProps } from 'src/utils/getLinkProps';
+import { getLinkProps } from '../utils/getLinkProps';
 import { settings } from '../settings';
 
 /**
