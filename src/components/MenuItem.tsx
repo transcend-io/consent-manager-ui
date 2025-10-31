@@ -61,8 +61,8 @@ export function MenuItem({
         <a
           className="bottom-menu-item"
           href={href}
-          target={settings.isMobile ? undefined : "_blank"}
-          rel={settings.isMobile ? undefined : "noopener noreferrer"}
+          target={settings.isMobile ? undefined : '_blank'}
+          rel={settings.isMobile ? undefined : 'noopener noreferrer'}
           aria-label={label}
           title={label}
         >

@@ -173,8 +173,8 @@ export function BottomMenu({
               )}
               type="a"
               href={secondaryPolicy}
-              target={settings.isMobile ? undefined : "_blank"}
-              rel={settings.isMobile ? undefined : "noopener noreferrer"}
+              target={settings.isMobile ? undefined : '_blank'}
+              rel={settings.isMobile ? undefined : 'noopener noreferrer'}
             >
               {formatMessage(
                 bottomMenuMessages.showSecondaryPolicyButton,
@@ -193,8 +193,8 @@ export function BottomMenu({
           )}
           type="a"
           href={privacyPolicy}
-          target={settings.isMobile ? undefined : "_blank"}
-          rel={settings.isMobile ? undefined : "noopener noreferrer"}
+          target={settings.isMobile ? undefined : '_blank'}
+          rel={settings.isMobile ? undefined : 'noopener noreferrer'}
         >
           {policyMessage
             ? formatMessage(policyMessage, globalUiVariables)

@@ -47,8 +47,8 @@ export function TranscendLogo({
     <a
       className="transcend-logo-container"
       href="https://transcend.io/"
-      target={settings.isMobile ? undefined : "_blank"}
-      rel={settings.isMobile ? undefined : "noopener noreferrer"}
+      target={settings.isMobile ? undefined : '_blank'}
+      rel={settings.isMobile ? undefined : 'noopener noreferrer'}
       title="Powered by Transcend"
       aria-label="Powered by Transcend"
     >
