@@ -1,8 +1,8 @@
 interface LinkProps {
-    /** Specifies where to open the linked document */
-    target?: string;
-    /** Specifies the relationship between the current document and the linked document */
-    rel?: string;
+  /** Specifies where to open the linked document */
+  target?: string;
+  /** Specifies the relationship between the current document and the linked document */
+  rel?: string;
 }
 
 /**
@@ -12,10 +12,10 @@ interface LinkProps {
  * @returns link props
  */
 export function getLinkProps(isMobile: string): LinkProps {
-    return isMobile === 'on'
-        ? {}
-        : {
-            target: '_blank',
-            rel: 'noopener noreferrer',
-        };
+  return isMobile === 'on'
+    ? {}
+    : {
+        target: '_blank',
+        rel: 'noopener noreferrer',
+      };
 }
