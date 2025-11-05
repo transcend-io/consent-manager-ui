@@ -21,26 +21,6 @@ const getDuplicativeLocales = (lang: LocaleValue): LocaleValue[] =>
   INVERTED_TRANSLATE_LOCALE[LOCALE_TRANSLATION_MAP[lang]];
 
 /**
- * Get nearest matching locale from a list of supported locales
- *
- * @param preferred - Sorted locale list in order of most preferable to least preferable
- * @param supported - List of supported locales to match from
- * @returns Nearest supported locale, sorted by preferred locale list
- */
-export const getNearestSupportedLocale = (
-  preferred: LocaleValue[],
-  supported: LocaleValue[],
-): LocaleValue | undefined => {
-  // eslint-disable-next-line no-restricted-syntax
-  for (const preferredLocale of preferred) {
-    if (supported.includes(preferredLocale)) {
-      return preferredLocale;
-    }
-  }
-  return undefined;
-};
-
-/**
  * Picks a default language for the user
  *
  * @param supportedLocales - Set of supported locales
