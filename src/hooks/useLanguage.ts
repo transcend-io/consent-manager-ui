@@ -14,12 +14,6 @@ import { invertSafe } from '@transcend-io/type-utils';
 
 export const loadedTranslations: Translations = Object.create(null);
 
-/** Mapping of AWS base translation keys to list of Transcend locales that should use them */
-export const INVERTED_TRANSLATE_LOCALE = invertSafe(LOCALE_TRANSLATION_MAP);
-
-const getDuplicativeLocales = (lang: LocaleValue): LocaleValue[] =>
-  INVERTED_TRANSLATE_LOCALE[LOCALE_TRANSLATION_MAP[lang]];
-
 /**
  * Picks a default language for the user
  *
