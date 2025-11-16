@@ -14,32 +14,6 @@ import { invertSafe } from '@transcend-io/type-utils';
 
 export const loadedTranslations: Translations = Object.create(null);
 
-/** Mapping of AWS base translation keys to list of Transcend locales that should use them */
-export const INVERTED_TRANSLATE_LOCALE = invertSafe(LOCALE_TRANSLATION_MAP);
-
-const getDuplicativeLocales = (lang: LocaleValue): LocaleValue[] =>
-  INVERTED_TRANSLATE_LOCALE[LOCALE_TRANSLATION_MAP[lang]];
-
-/**
- * Get nearest matching locale from a list of supported locales
- *
- * @param preferred - Sorted locale list in order of most preferable to least preferable
- * @param supported - List of supported locales to match from
- * @returns Nearest supported locale, sorted by preferred locale list
- */
-export const getNearestSupportedLocale = (
-  preferred: LocaleValue[],
-  supported: LocaleValue[],
-): LocaleValue | undefined => {
-  // eslint-disable-next-line no-restricted-syntax
-  for (const preferredLocale of preferred) {
-    if (supported.includes(preferredLocale)) {
-      return preferredLocale;
-    }
-  }
-  return undefined;
-};
-
 /**
  * Picks a default language for the user
  *
