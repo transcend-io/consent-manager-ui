@@ -11,6 +11,7 @@ import { settings } from '../settings';
 import { getUserLocales } from '../utils/get-user-locales';
 import { substituteHtml } from '../utils/substitute-html';
 import { invertSafe } from '@transcend-io/type-utils';
+import { RTL_LANGS, TRANSCEND_CM_CONTAINER_ID } from '../constants';
 
 export const loadedTranslations: Translations = Object.create(null);
 
@@ -19,6 +20,12 @@ export const INVERTED_TRANSLATE_LOCALE = invertSafe(LOCALE_TRANSLATION_MAP);
 
 const getDuplicativeLocales = (lang: LocaleValue): LocaleValue[] =>
   INVERTED_TRANSLATE_LOCALE[LOCALE_TRANSLATION_MAP[lang]];
+
+export const isRtlLang = (lang: string | undefined | null): boolean => {
+  if (!lang) return false;
+  const base = lang.split('-')[0]; // "ar-AE" -> "ar"
+  return RTL_LANGS.includes(base as (typeof RTL_LANGS)[number]);
+};
 
 /**
  * Get nearest matching locale from a list of supported locales
@@ -94,10 +101,21 @@ export const getTranslations = async (
     if (!response.ok) {
       throw new Error(`Failed to load translations for language ${language}`);
     }
-    return response.json();
+    const data = await response.json();
+    return data;
   })();
 
   return loadedTranslations[language];
+};
+
+const updateHostLangDirAttributes = (language: string): void => {
+  // The CMP host we created in injectConsentManagerApp
+  const host =
+    document.getElementById(TRANSCEND_CM_CONTAINER_ID) ||
+    document.documentElement;
+
+  host.setAttribute('lang', language);
+  host.setAttribute('dir', isRtlLang(language) ? 'rtl' : 'ltr');
 };
 
 /**
@@ -143,6 +161,7 @@ export function useLanguage({
 
   // Load the default translations
   useEffect(() => {
+    updateHostLangDirAttributes(language);
     getTranslations(translationsLocation, language).then((messages) => {
       // Replace raw HTML tags with variables bc raw HTML causes parsing errors
       const { substitutedMessages, tagVariables } = substituteHtml(messages);
@@ -153,14 +172,18 @@ export function useLanguage({
   }, []);
 
   const handleChangeLanguage = useCallback(
-    async (language: ConsentManagerSupportedTranslationValue) => {
-      const newMessages = await getTranslations(translationsLocation, language);
+    async (newLanguage: ConsentManagerSupportedTranslationValue) => {
+      updateHostLangDirAttributes(newLanguage);
+      const newMessages = await getTranslations(
+        translationsLocation,
+        newLanguage,
+      );
 
       // Replace raw HTML tags with variables bc raw HTML causes parsing errors
       const { substitutedMessages, tagVariables } = substituteHtml(newMessages);
       setMessages(substitutedMessages);
       setHtmlTagVariables(tagVariables);
-      setLanguage(language);
+      setLanguage(newLanguage);
     },
     [setLanguage, translationsLocation],
   );

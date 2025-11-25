@@ -12,7 +12,7 @@ import {
   EXTERNALIZE_INLINE_CSS,
   getMergedConfig,
 } from './config';
-import { CSS_RESET } from './constants';
+import { CSS_RESET, TRANSCEND_CM_CONTAINER_ID } from './constants';
 
 // The `transcend` API: methods which we'll create inside Preact and pass back out here via callback
 let consentManagerAPI: ConsentManagerAPI | null = null;
@@ -35,7 +35,7 @@ export const injectConsentManagerApp = async (
     consentManager.style.position = 'fixed'; // so as not to affect position
     // Use the user provided z-index or default to the maximum to make sure we overlap everything
     consentManager.style.zIndex = mergedConfig.config.uiZIndex ?? '2147483647';
-    consentManager.id = 'transcend-consent-manager';
+    consentManager.id = TRANSCEND_CM_CONTAINER_ID;
 
     const attachToDoc = (): void => {
       // Append UI container to doc to activate style.sheet
