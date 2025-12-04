@@ -1,8 +1,11 @@
 import { Fragment, h, JSX } from 'preact';
 import { useState, useEffect, useRef } from 'preact/hooks';
-import Editor, { useMonaco, OnMount } from '@monaco-editor/react';
+import MonacoEditor, { useMonaco, OnMount } from '@monaco-editor/react';
 import type monaco from 'monaco-editor';
 import { toJsonSchema } from '@transcend-io/type-utils';
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const Editor = MonacoEditor as (props: any) => JSX.Element;
 
 interface JsonConfigProps<T> {
   /** The name of this value */
