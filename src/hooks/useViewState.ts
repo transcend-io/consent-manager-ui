@@ -102,7 +102,7 @@ export function useViewState({
         detail: eventDetails,
       }),
     );
-  }, [state, eventTarget])
+  }, [state, eventTarget]);
 
   /**
    * When the viewState is set, update the view state and track previous state + whether the modal has (ever) been dismissed
