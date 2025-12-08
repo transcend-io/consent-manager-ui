@@ -887,7 +887,7 @@ a:focus {
 }
 
 /* Typical text elements */
-:host([dir="rtl"]) h1, :host([dir="rtl"]) h2, :host([dir="rtl"]) h3, :host([dir="rtl"]) p, :host([dir="rtl"]) span, :host([dir="rtl"]) label {
+:host([dir="rtl"]) h1, :host([dir="rtl"]) h2, :host([dir="rtl"]) h3, :host([dir="rtl"]) p, :host([dir="rtl"]) span, :host([dir="rtl"]) label, :host([dir="rtl"]) legend {
   direction: rtl;
   text-align: right;
 }
@@ -906,4 +906,15 @@ a:focus {
 /* If you still want the exact html[lang="ar-AE"] semantics: */
 :host([lang^="ar"]) h1, :host([lang^="ar"]) h2, :host([lang^="ar"]) h3, :host([lang^="ar"]) p {
   direction: rtl;
+}
+
+:host([lang^="ar"]) .modal-container .toggle-input {
+  margin: 0 0 0 16px;
+}
+
+@media (min-width: 640px) {
+  :host([lang^="ar"]) .accept-or-reject-all-button-row button:not(:first-of-type) {
+    margin-left: 0;
+    margin-right: 10px;
+  }
 }
