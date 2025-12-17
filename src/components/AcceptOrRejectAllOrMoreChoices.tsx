@@ -5,6 +5,7 @@ import { useAirgap } from '../hooks';
 import { messages } from '../messages';
 import type { HandleSetViewState } from '../types';
 import { Button } from './Button';
+import { settings } from '../settings';
 
 /**
  * Component showing "accept all" or "reject all" or "more choices"
@@ -50,7 +51,7 @@ export function AcceptOrRejectAllOrMoreChoices({
     event: JSX.TargetedEvent<HTMLButtonElement, MouseEvent>,
   ): void => {
     event.preventDefault();
-    handleSetViewState('CompleteOptions');
+    handleSetViewState(settings?.moreChoicesView ? settings.moreChoicesView : 'CompleteOptions');
   };
 
   return (
