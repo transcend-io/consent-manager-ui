@@ -86,11 +86,6 @@ export function Main({
           initialFocusElement(dialogRef.current);
         }
       }, 0);
-      window.dispatchEvent(
-        new CustomEvent('banner-height', {
-          detail: { height: dialogRef.current.clientHeight },
-        }),
-      );
     }
   }, [viewState, dialogRef, config.autofocus]);
 
