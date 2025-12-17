@@ -108,7 +108,9 @@ export function BottomMenu({
         ].includes(viewState as any) &&
         (['CompleteOptions', 'CompleteOptionsToggles'].includes(viewState) ? (
           !firstSelectedViewState ||
-          ['CompleteOptions', 'CompleteOptionsToggles'].includes(firstSelectedViewState) ? null : (
+          ['CompleteOptions', 'CompleteOptionsToggles'].includes(
+            firstSelectedViewState
+          ) ? null : (
             <div className="bottom-menu-item-container">
               <MenuItem
                 label={formatMessage(
@@ -133,7 +135,13 @@ export function BottomMenu({
                 globalUiVariables,
               )}
               type="button"
-              onClick={() => handleSetViewState(settings?.moreChoicesView ? settings.moreChoicesView : 'CompleteOptions')}
+              onClick={() =>
+                handleSetViewState(
+                  settings?.moreChoicesView
+                    ? settings.moreChoicesView
+                    : 'CompleteOptions'
+                )
+              }
             >
               {formatMessage(
                 bottomMenuMessages.moreChoicesButtonPrimary,

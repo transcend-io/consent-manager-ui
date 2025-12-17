@@ -51,7 +51,9 @@ export function AcceptOrRejectAllOrMoreChoices({
     event: JSX.TargetedEvent<HTMLButtonElement, MouseEvent>,
   ): void => {
     event.preventDefault();
-    handleSetViewState(settings?.moreChoicesView ? settings.moreChoicesView : 'CompleteOptions');
+    handleSetViewState(
+      settings?.moreChoicesView ? settings.moreChoicesView : 'CompleteOptions'
+    );
   };
 
   return (
