@@ -109,7 +109,7 @@ export function BottomMenu({
         (['CompleteOptions', 'CompleteOptionsToggles'].includes(viewState) ? (
           !firstSelectedViewState ||
           ['CompleteOptions', 'CompleteOptionsToggles'].includes(
-            firstSelectedViewState
+            firstSelectedViewState,
           ) ? null : (
             <div className="bottom-menu-item-container">
               <MenuItem
@@ -139,7 +139,7 @@ export function BottomMenu({
                 handleSetViewState(
                   settings?.moreChoicesView
                     ? settings.moreChoicesView
-                    : 'CompleteOptions'
+                    : 'CompleteOptions',
                 )
               }
             >

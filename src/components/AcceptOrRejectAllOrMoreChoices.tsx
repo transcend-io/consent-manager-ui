@@ -52,7 +52,7 @@ export function AcceptOrRejectAllOrMoreChoices({
   ): void => {
     event.preventDefault();
     handleSetViewState(
-      settings?.moreChoicesView ? settings.moreChoicesView : 'CompleteOptions'
+      settings?.moreChoicesView ? settings.moreChoicesView : 'CompleteOptions',
     );
   };
 
