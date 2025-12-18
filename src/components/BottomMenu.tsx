@@ -111,6 +111,8 @@ export function BottomMenu({
           ['CompleteOptions', 'CompleteOptionsToggles'].includes(
             firstSelectedViewState,
           ) ? null : (
+            // if current view is CompleteOptions or CompleteOptionsToggles
+            // and there was a redirect to either of them, show the Simpler Choices button
             <div className="bottom-menu-item-container">
               <MenuItem
                 label={formatMessage(
@@ -128,6 +130,8 @@ export function BottomMenu({
             </div>
           )
         ) : (
+          // if current view is not CompleteOptions or CompleteOptionsToggles
+          // show the More Choices button
           <div className="bottom-menu-item-container">
             <MenuItem
               label={formatMessage(
