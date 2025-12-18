@@ -81,7 +81,10 @@ export type HandleChangePrivacyPolicy = (privacyPolicyLink: string) => void;
 
 export interface MergedConsentManagerConfig {
   /** Merged config */
-  config: ConsentManagerConfig;
+  config: ConsentManagerConfig & {
+    /** Locale enabled by default */
+    locale?: ConsentManagerSupportedTranslationValue;
+  };
   /** Languages split out separately for type-safety and preserving raw value */
   supportedLanguages: ConsentManagerSupportedTranslationValue[];
 }

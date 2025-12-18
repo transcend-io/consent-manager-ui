@@ -880,3 +880,30 @@ a:focus {
     fill: var(--primary-color);
   }
 }
+
+/* RTL layout: apply when the CMP host is rtl */
+:host([dir="rtl"]) {
+  direction: rtl;
+}
+
+/* Typical text elements */
+:host([dir="rtl"]) h1, :host([dir="rtl"]) h2, :host([dir="rtl"]) h3, :host([dir="rtl"]) p, :host([dir="rtl"]) span, :host([dir="rtl"]) label {
+  direction: rtl;
+  text-align: right;
+}
+
+/* Flex row reversal for buttons etc. */
+:host([dir="rtl"]) .cm-row, :host([dir="rtl"]) .cm-buttons {
+  direction: rtl;
+  flex-direction: row-reverse;
+}
+
+/* Optional: swap icon/text order in specific components */
+:host([dir="rtl"]) .cm-icon-left {
+  flex-direction: row-reverse;
+}
+
+/* If you still want the exact html[lang="ar-AE"] semantics: */
+:host([lang^="ar"]) h1, :host([lang^="ar"]) h2, :host([lang^="ar"]) h3, :host([lang^="ar"]) p {
+  direction: rtl;
+}
