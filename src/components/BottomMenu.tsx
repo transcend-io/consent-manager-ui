@@ -102,14 +102,17 @@ export function BottomMenu({
           'AcceptOrRejectAllOrMoreChoices',
           'CompleteOptionsInverted',
           'DoNotSellExplainer',
-          'CompleteOptionsToggles',
           'LanguageOptions',
           'AcceptAllRejectAllToggle',
           // eslint-disable-next-line @typescript-eslint/no-explicit-any
         ].includes(viewState as any) &&
-        (viewState === 'CompleteOptions' ? (
+        (['CompleteOptions', 'CompleteOptionsToggles'].includes(viewState) ? (
           !firstSelectedViewState ||
-          firstSelectedViewState === 'CompleteOptions' ? null : (
+          ['CompleteOptions', 'CompleteOptionsToggles'].includes(
+            firstSelectedViewState,
+          ) ? null : (
+            // if current view is CompleteOptions or CompleteOptionsToggles
+            // and there was a redirect to either of them, show the Simpler Choices button
             <div className="bottom-menu-item-container">
               <MenuItem
                 label={formatMessage(
@@ -127,6 +130,8 @@ export function BottomMenu({
             </div>
           )
         ) : (
+          // if current view is not CompleteOptions or CompleteOptionsToggles
+          // show the More Choices button
           <div className="bottom-menu-item-container">
             <MenuItem
               label={formatMessage(
@@ -134,7 +139,13 @@ export function BottomMenu({
                 globalUiVariables,
               )}
               type="button"
-              onClick={() => handleSetViewState('CompleteOptions')}
+              onClick={() =>
+                handleSetViewState(
+                  settings?.moreChoicesView
+                    ? settings.moreChoicesView
+                    : 'CompleteOptions',
+                )
+              }
             >
               {formatMessage(
                 bottomMenuMessages.moreChoicesButtonPrimary,
