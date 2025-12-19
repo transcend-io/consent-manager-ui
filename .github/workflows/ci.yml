@@ -107,7 +107,7 @@ jobs:
           command: yarn install --immutable
 
       - name: Publish to yarn/npm
-        run: yarn npm publish
+        run: yarn npm publish --provenance true
         env:
           NODE_AUTH_TOKEN: ""
 
