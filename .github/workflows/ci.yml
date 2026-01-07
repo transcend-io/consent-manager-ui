@@ -75,6 +75,10 @@ jobs:
   build-to-npm:
     if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: read
+      packages: write
     needs:
       - run-depcheck
       - build-and-upload-artifacts
@@ -82,18 +86,17 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      - uses: actions/setup-node@v3.1.1
+      - uses: actions/setup-node@v6
         with:
           node-version: '22.19.0'
-      - name: Configure NPM authentication
-        run: |
-          yarn config set npmAlwaysAuth true
-          yarn config set npmAuthToken ${{ secrets.NPM_TOKEN }}
+          registry-url: 'https://registry.npmjs.org'
 
-      # 'Install yarn v2 dependencies'
-      - uses: actions/setup-node@v3.1.1
-        with:
-          node-version: '22.19.0'
+      # See: https://docs.npmjs.com/trusted-publishers
+      # See: https://github.com/actions/setup-node/issues/1445
+      - name: Set npm to version that supports trusted publishers
+        run: npm install -g npm@11.5.1
+        shell: bash
+
       - run: corepack enable
         shell: bash
       - uses: nick-fields/retry@v2
@@ -104,7 +107,9 @@ jobs:
           command: yarn install --immutable
 
       - name: Publish to yarn/npm
-        run: yarn npm publish
+        run: yarn npm publish --provenance
+        env:
+          NODE_AUTH_TOKEN: ''
 
   build-to-github-packages:
     if: github.ref == 'refs/heads/main'
