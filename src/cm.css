@@ -880,3 +880,38 @@ a:focus {
     fill: var(--primary-color);
   }
 }
+
+
+/* === Make the outer banner scroll === */
+.modal-container {
+  /* allow the banner itself to scroll vertically */
+  overflow-y: auto;           /* was: overflow: hidden */
+  max-height: 90vh;           /* use viewport units so it works on mobile too */
+  display: flex;              /* so inner can flex */
+  flex-direction: column;
+  -webkit-overflow-scrolling: touch; /* smooth iOS scroll */
+}
+
+/* let inner content take remaining space and enable scroll if needed */
+.modal-container-inner {
+  /* remove rigid height math so it can flex */
+  height: auto;               /* overrides: height: calc(100% - 38px) */
+  flex: 1 1 auto;
+  min-height: 0;              /* critical for flex children to allow overflow */
+  overflow: visible;          /* outer handles scrolling */
+}
+
+/* if you want the text section (not the whole banner) to scroll instead,
+   swap the overflow to this container */
+.inner-container {
+  overflow: visible;          /* was: overflow-y: auto; -> outer now scrolls */
+}
+
+/* optional: prevent nested scrollers from fighting you */
+.column-content,
+.complete-options-container,
+.toggles-container,
+.language-options-container {
+  max-height: none;
+  overflow: visible;
+}
