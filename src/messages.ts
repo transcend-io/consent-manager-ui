@@ -580,6 +580,57 @@ export const trackingTechnologiesMessages = defineMessages(
       description:
         'Button text to expand tracking technologies dropdown in CompleteOptionsToggles view state.',
     },
+    metaSummary: {
+      defaultMessage:
+        '{serviceCount} services · {dataFlowCount} data flows · {cookieCount} cookies',
+      description:
+        'Summary text showing counts of services, data flows, and cookies for a tracking purpose.',
+    },
+    tableAriaLabel: {
+      defaultMessage: '{purpose} tracking',
+      description:
+        'Accessible label for the tracking technologies table for a specific purpose.',
+    },
+    serviceHeader: {
+      defaultMessage: 'Service',
+      description: 'Table header for the service column.',
+    },
+    trackingHeader: {
+      defaultMessage: 'Tracking',
+      description: 'Table header for the tracking data column.',
+    },
+    noDataFlows: {
+      defaultMessage: 'No data flows',
+      description: 'Text shown when a service has no data flows for a purpose.',
+    },
+    noCookies: {
+      defaultMessage: 'No cookies',
+      description: 'Text shown when a service has no cookies for a purpose.',
+    },
+    cookieChip: {
+      defaultMessage: 'Cookie',
+      description: 'Label chip for cookie tracking items.',
+    },
+    durationSession: {
+      defaultMessage: 'session',
+      description: 'Duration text for session cookies.',
+    },
+    durationDays: {
+      defaultMessage: '{count} days',
+      description: 'Duration text showing number of days.',
+    },
+    durationHours: {
+      defaultMessage: '{count} hours',
+      description: 'Duration text showing number of hours.',
+    },
+    durationMinutes: {
+      defaultMessage: '{count} minutes',
+      description: 'Duration text showing number of minutes.',
+    },
+    durationSeconds: {
+      defaultMessage: '{count} seconds',
+      description: 'Duration text showing number of seconds.',
+    },
   },
 );
 /* eslint-enable max-lines */

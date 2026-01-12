@@ -1,3 +1,4 @@
+/* eslint-disable max-lines */
 import { h, JSX } from 'preact';
 import { useEffect, useMemo, useState } from 'preact/hooks';
 import { useIntl } from 'react-intl';
@@ -69,19 +70,44 @@ const escapeHtml = (s: string | undefined | null): string =>
  * Convert maxAge seconds to human-readable duration
  *
  * @param maxAge - Max age in seconds
+ * @param formatMessage - Intl formatMessage function
  * @returns Human-readable duration string
  */
-const humanMaxAge = (maxAge: number | null | undefined): string => {
-  if (maxAge === null || maxAge === undefined) return '';
+const humanMaxAge = (
+  maxAge: number | null | undefined,
+  formatMessage: ReturnType<typeof useIntl>['formatMessage'],
+): string => {
+  if (maxAge === null || maxAge === undefined) {
+    return '';
+  }
   const n = Number(maxAge);
-  if (!Number.isFinite(n)) return String(maxAge);
-  if (n <= 0) return 'session';
+  if (!Number.isFinite(n)) {
+    return String(maxAge);
+  }
+  if (n <= 0) {
+    return formatMessage(trackingTechnologiesMessages.durationSession);
+  }
   const d = Math.round(n / 86400);
-  if (d >= 2) return `${d} days`;
+  if (d >= 2) {
+    return formatMessage(trackingTechnologiesMessages.durationDays, {
+      count: d,
+    });
+  }
   const h = Math.round(n / 3600);
-  if (h >= 1) return `${h} hours`;
+  if (h >= 1) {
+    return formatMessage(trackingTechnologiesMessages.durationHours, {
+      count: h,
+    });
+  }
   const m = Math.round(n / 60);
-  return m >= 1 ? `${m} minutes` : `${n} seconds`;
+  if (m >= 1) {
+    return formatMessage(trackingTechnologiesMessages.durationMinutes, {
+      count: m,
+    });
+  }
+  return formatMessage(trackingTechnologiesMessages.durationSeconds, {
+    count: n,
+  });
 };
 
 /**
@@ -159,7 +185,11 @@ function PurposeDropdown({
         </span>
         <span>{formatMessage(trackingTechnologiesMessages.viewButton)}</span>
         <span className="tracking-tech-meta">
-          {svcCount} services · {flowCount} data flows · {cookieCount} cookies
+          {formatMessage(trackingTechnologiesMessages.metaSummary, {
+            serviceCount: svcCount,
+            dataFlowCount: flowCount,
+            cookieCount,
+          })}
         </span>
       </div>
       {isOpen && (
@@ -167,7 +197,12 @@ function PurposeDropdown({
           <table
             role="table"
             className="tracking-tech-table"
-            aria-label={`${escapeHtml(purpose)} tracking`}
+            aria-label={formatMessage(
+              trackingTechnologiesMessages.tableAriaLabel,
+              {
+                purpose: escapeHtml(purpose),
+              },
+            )}
           >
             <thead>
               <tr>
@@ -176,14 +211,14 @@ function PurposeDropdown({
                   className="tracking-tech-th"
                   style={{ width: '40%' }}
                 >
-                  Service
+                  {formatMessage(trackingTechnologiesMessages.serviceHeader)}
                 </th>
                 <th
                   scope="col"
                   className="tracking-tech-th"
                   style={{ width: '60%' }}
                 >
-                  Tracking
+                  {formatMessage(trackingTechnologiesMessages.trackingHeader)}
                 </th>
               </tr>
             </thead>
@@ -224,15 +259,21 @@ function PurposeDropdown({
                         ))
                       ) : (
                         <span className="tracking-tech-empty">
-                          No data flows
+                          {formatMessage(
+                            trackingTechnologiesMessages.noDataFlows,
+                          )}
                         </span>
                       )}
                       {cookies.length > 0 ? (
                         cookies.map((c, i) => {
-                          const age = humanMaxAge(c.maxAge);
+                          const age = humanMaxAge(c.maxAge, formatMessage);
                           return (
                             <div key={i} className="tracking-tech-kv">
-                              <span className="tracking-tech-chip">Cookie</span>
+                              <span className="tracking-tech-chip">
+                                {formatMessage(
+                                  trackingTechnologiesMessages.cookieChip,
+                                )}
+                              </span>
                               <span className="tracking-tech-mono">
                                 {escapeHtml(c.name)}
                               </span>
@@ -245,7 +286,11 @@ function PurposeDropdown({
                           );
                         })
                       ) : (
-                        <span className="tracking-tech-empty">No cookies</span>
+                        <span className="tracking-tech-empty">
+                          {formatMessage(
+                            trackingTechnologiesMessages.noCookies,
+                          )}
+                        </span>
                       )}
                     </div>
                   </td>
@@ -287,28 +332,19 @@ export function TrackingTechnologiesTable({
       setLoading(false);
       return;
     }
-    /**
-     * Handle metadata response
-     *
-     * @param metadata - Metadata from airgap
-     */
+    /** @param metadata - Metadata from airgap */
     const handleMetadata = (metadata: MetadataResponse): void => {
       let filteredServices = metadata.services || [];
       if (mode === 'site-only') {
         const currentHost = window.location.hostname;
         filteredServices = filteredServices.filter(
-          (service) =>
-            !service.sites?.length || service.sites.includes(currentHost),
+          (svc) => !svc.sites?.length || svc.sites.includes(currentHost),
         );
       }
       setServices(filteredServices);
       setLoading(false);
     };
-    /**
-     * Handle error
-     *
-     * @param err - Error object
-     */
+    /** @param err - Error object */
     const handleError = (err: Error): void => {
       setError(err.message);
       setLoading(false);
@@ -332,3 +368,4 @@ export function TrackingTechnologiesTable({
 
   return <PurposeDropdown purpose={purpose} services={services} />;
 }
+/* eslint-enable max-lines */
