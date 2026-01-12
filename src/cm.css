@@ -888,20 +888,24 @@ a:focus {
 }
 
 
-/* === Make the content area scroll while keeping footer fixed === */
+/** Make the content area scroll while keeping footer fixed */
 .modal-container {
   max-height: 90vh;
   -webkit-overflow-scrolling: touch;
 }
 
-/* Inner container handles scrolling for the content area */
+/** Inner container handles scrolling for the content area */
 .inner-container {
   overflow-y: auto;
-  max-height: calc(90vh - 100px); /* Account for header and footer */
+  max-height: calc(90vh - 100px);
   -webkit-overflow-scrolling: touch;
 }
 
-/* === Tracking Technologies Table === */
+/*******************
+ * Tracking Technologies Table
+ *******************/
+
+/** Card container for each tracking purpose dropdown */
 .tracking-tech-card {
   margin-top: 6px;
   margin-bottom: 1em;
@@ -912,6 +916,7 @@ a:focus {
   overflow: hidden;
 }
 
+/** Clickable summary header for the dropdown */
 .tracking-tech-summary {
   cursor: pointer;
   list-style: none;
@@ -925,15 +930,18 @@ a:focus {
   font-size: 13px;
 }
 
+/** Summary header hover state */
 .tracking-tech-summary:hover {
   background: #eef0f3;
 }
 
+/** Summary header focus state */
 .tracking-tech-summary:focus {
   outline: 2px solid var(--primary-color);
   outline-offset: -2px;
 }
 
+/** Chevron icon that rotates when dropdown is open */
 .tracking-tech-chevron {
   display: inline-block;
   transition: transform 0.2s ease;
@@ -941,6 +949,7 @@ a:focus {
   text-align: center;
 }
 
+/** Meta text showing service/flow/cookie counts */
 .tracking-tech-meta {
   margin-left: auto;
   color: #5b6876;
@@ -949,6 +958,7 @@ a:focus {
   font-size: 12px;
 }
 
+/** Scrollable container for the table content */
 .tracking-tech-scroll {
   max-height: 220px;
   overflow-y: auto;
@@ -956,6 +966,7 @@ a:focus {
   background: #fff;
 }
 
+/** Table element for services and tracking data */
 .tracking-tech-table {
   width: 100%;
   table-layout: fixed;
@@ -963,6 +974,7 @@ a:focus {
   border-spacing: 0;
 }
 
+/** Table header cells */
 .tracking-tech-th {
   position: sticky;
   top: 0;
@@ -978,6 +990,7 @@ a:focus {
   white-space: nowrap;
 }
 
+/** Table data cells */
 .tracking-tech-td {
   padding: 8px 10px;
   vertical-align: top;
@@ -987,27 +1000,32 @@ a:focus {
   word-break: break-word;
 }
 
+/** Alternating row background for zebra striping */
 .tracking-tech-row-alt {
   background: #fbfcfd;
 }
 
+/** Vertical stack layout for service cell content */
 .tracking-tech-stack {
   display: flex;
   flex-direction: column;
   gap: 6px;
 }
 
+/** Vertical stack layout for tracking data */
 .tracking-tech-row-stack {
   display: flex;
   flex-direction: column;
   gap: 6px;
 }
 
+/** Service name with optional logo */
 .tracking-tech-service-name {
   display: inline-flex;
   align-items: center;
 }
 
+/** Service logo image */
 .tracking-tech-logo {
   width: 16px;
   height: 16px;
@@ -1018,6 +1036,7 @@ a:focus {
   margin-right: 8px;
 }
 
+/** Key-value pair container for data flows and cookies */
 .tracking-tech-kv {
   display: inline-flex;
   gap: 6px;
@@ -1025,6 +1044,7 @@ a:focus {
   flex-wrap: wrap;
 }
 
+/** Type chip label (HOST, PATH, Cookie, etc.) */
 .tracking-tech-chip {
   font-size: 10px;
   text-transform: uppercase;
@@ -1037,12 +1057,14 @@ a:focus {
   white-space: nowrap;
 }
 
+/** Monospace text for data flow values and cookie names */
 .tracking-tech-mono {
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Courier New', monospace;
   font-size: 12px;
   word-break: break-all;
 }
 
+/** Empty/placeholder text styling */
 .tracking-tech-empty {
   color: #5b6876;
   font-style: italic;
