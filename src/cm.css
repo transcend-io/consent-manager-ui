@@ -495,7 +495,6 @@ a:focus {
 /** Container that is wrapped around the modal */
 .modal-container {
   position: fixed;
-  bottom: 10px;
   left: 5px;
   right: 5px;
   margin: 0 auto;
@@ -512,8 +511,12 @@ a:focus {
   backdrop-filter: blur(20px) saturate(5);
   -webkit-backdrop-filter: blur(20px) saturate(5);
   animation: fadeIn 150ms;
-  max-height: 90%;
   transition: width 150ms, height 150ms;
+  max-width: 630px;
+  min-height: 160px;
+  bottom: 22px;
+  max-height: 90vh;
+  -webkit-overflow-scrolling: touch;
 }
 
 /** Inner contents wrapper for modal content */
@@ -866,14 +869,6 @@ a:focus {
     flex-direction: row;
   }
 
-  /** Modal */
-  .modal-container {
-    bottom: 5px;
-    max-width: 630px;
-    min-height: 160px;
-    bottom: 22px;
-  }
-
   /** TranscendLogo */
   .transcend-logo-container {
     width: 64px;
@@ -887,12 +882,6 @@ a:focus {
   }
 }
 
-
-/** Make the content area scroll while keeping footer fixed */
-.modal-container {
-  max-height: 90vh;
-  -webkit-overflow-scrolling: touch;
-}
 
 /** Inner container handles scrolling for the content area */
 .inner-container {
