@@ -667,9 +667,15 @@ a:focus {
   margin-top: 2em;
 }
 
+/** Make span wrappers in toggle interface behave as block for proper stacking */
+.complete-options-toggle-interface > span {
+  display: block;
+  margin-bottom: 0.5em;
+}
+
 /** Styles for complete options toggle description */
 .complete-options-toggle-description {
-  padding-bottom: 2em;
+  padding-bottom: 1em;
 }
 
 /*******************
@@ -882,36 +888,163 @@ a:focus {
 }
 
 
-/* === Make the outer banner scroll === */
+/* === Make the content area scroll while keeping footer fixed === */
 .modal-container {
-  /* allow the banner itself to scroll vertically */
-  overflow-y: auto;           /* was: overflow: hidden */
-  max-height: 90vh;           /* use viewport units so it works on mobile too */
-  display: flex;              /* so inner can flex */
-  flex-direction: column;
-  -webkit-overflow-scrolling: touch; /* smooth iOS scroll */
+  max-height: 90vh;
+  -webkit-overflow-scrolling: touch;
 }
 
-/* let inner content take remaining space and enable scroll if needed */
-.modal-container-inner {
-  /* remove rigid height math so it can flex */
-  height: auto;               /* overrides: height: calc(100% - 38px) */
-  flex: 1 1 auto;
-  min-height: 0;              /* critical for flex children to allow overflow */
-  overflow: visible;          /* outer handles scrolling */
-}
-
-/* if you want the text section (not the whole banner) to scroll instead,
-   swap the overflow to this container */
+/* Inner container handles scrolling for the content area */
 .inner-container {
-  overflow: visible;          /* was: overflow-y: auto; -> outer now scrolls */
+  overflow-y: auto;
+  max-height: calc(90vh - 100px); /* Account for header and footer */
+  -webkit-overflow-scrolling: touch;
 }
 
-/* optional: prevent nested scrollers from fighting you */
-.column-content,
-.complete-options-container,
-.toggles-container,
-.language-options-container {
-  max-height: none;
-  overflow: visible;
+/* === Tracking Technologies Table === */
+.tracking-tech-card {
+  margin-top: 6px;
+  margin-bottom: 1em;
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  box-shadow: 0 1px 2px rgba(15, 23, 32, 0.04), 0 4px 12px rgba(15, 23, 32, 0.06);
+  overflow: hidden;
+}
+
+.tracking-tech-summary {
+  cursor: pointer;
+  list-style: none;
+  padding: 12px 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #f6f7f9;
+  border-bottom: 1px solid #e5e7eb;
+  font-weight: 600;
+  font-size: 13px;
+}
+
+.tracking-tech-summary:hover {
+  background: #eef0f3;
+}
+
+.tracking-tech-summary:focus {
+  outline: 2px solid var(--primary-color);
+  outline-offset: -2px;
+}
+
+.tracking-tech-chevron {
+  display: inline-block;
+  transition: transform 0.2s ease;
+  width: 1em;
+  text-align: center;
+}
+
+.tracking-tech-meta {
+  margin-left: auto;
+  color: #5b6876;
+  font-variant-numeric: tabular-nums;
+  font-weight: 500;
+  font-size: 12px;
+}
+
+.tracking-tech-scroll {
+  max-height: 220px;
+  overflow-y: auto;
+  overflow-x: auto;
+  background: #fff;
+}
+
+.tracking-tech-table {
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+.tracking-tech-th {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background: #fbfcfd;
+  text-align: left;
+  font-size: 11px;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: #5b6876;
+  padding: 8px 10px;
+  border-bottom: 1px solid #eef1f4;
+  white-space: nowrap;
+}
+
+.tracking-tech-td {
+  padding: 8px 10px;
+  vertical-align: top;
+  border-bottom: 1px solid #eef1f4;
+  font-size: 13px;
+  white-space: normal;
+  word-break: break-word;
+}
+
+.tracking-tech-row-alt {
+  background: #fbfcfd;
+}
+
+.tracking-tech-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.tracking-tech-row-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.tracking-tech-service-name {
+  display: inline-flex;
+  align-items: center;
+}
+
+.tracking-tech-logo {
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
+  border-radius: 3px;
+  border: 1px solid #e5e7eb;
+  background: #fff;
+  margin-right: 8px;
+}
+
+.tracking-tech-kv {
+  display: inline-flex;
+  gap: 6px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.tracking-tech-chip {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  color: #5b6876;
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  padding: 2px 6px;
+  background: #fff;
+  white-space: nowrap;
+}
+
+.tracking-tech-mono {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Courier New', monospace;
+  font-size: 12px;
+  word-break: break-all;
+}
+
+.tracking-tech-empty {
+  color: #5b6876;
+  font-style: italic;
+  white-space: normal;
 }

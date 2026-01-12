@@ -462,7 +462,7 @@ export const purposeMessages = defineMessages('purpose.trackingType', {
     description: 'Text for essential purposes in CompleteOptions view state.',
   },
   'Essential.description': {
-    defaultMessage: 'No consent needed. {htmlEssential}',
+    defaultMessage: 'No consent needed.',
     description:
       'Text for essential purposes description in CompleteOptions view state.',
   },
@@ -471,7 +471,7 @@ export const purposeMessages = defineMessages('purpose.trackingType', {
     description: 'Text for functional purposes in CompleteOptions view state.',
   },
   'Functional.description': {
-    defaultMessage: 'Personalization, autofilled forms, etc. {htmlFunctional}',
+    defaultMessage: 'Personalization, autofilled forms, etc.',
     description:
       'Text for functional purposes description in CompleteOptions view state.',
   },
@@ -480,8 +480,7 @@ export const purposeMessages = defineMessages('purpose.trackingType', {
     description: 'Text for analytics purposes in CompleteOptions view state.',
   },
   'Analytics.description': {
-    defaultMessage:
-      'Help us learn how our site is used and how it performs. {htmlAnalytics}',
+    defaultMessage: 'Help us learn how our site is used and how it performs.',
     description:
       'Text for analytics purposes description in CompleteOptions view state.',
   },
@@ -490,8 +489,7 @@ export const purposeMessages = defineMessages('purpose.trackingType', {
     description: 'Text for advertising purposes in CompleteOptions view state.',
   },
   'Advertising.description': {
-    defaultMessage:
-      'Helps us and others serve ads relevant to you. {htmlAdvertising}',
+    defaultMessage: 'Helps us and others serve ads relevant to you.',
     description:
       'Text for advertising purposes description in CompleteOptions view state.',
   },
@@ -501,7 +499,7 @@ export const purposeMessages = defineMessages('purpose.trackingType', {
       'Text for sale of information purposes in CompleteOptions view state.',
   },
   'SaleOfInfo.description': {
-    defaultMessage: 'Sale of personal information. {htmlSaleOfInfo}',
+    defaultMessage: 'Sale of personal information.',
     description:
       'Text for advertising purposes description in CompleteOptions view state.',
   },
@@ -570,6 +568,17 @@ export const completeOptionsInvertedMessages = defineMessages(
       defaultMessage: 'Do Not Sell/Share My Personal Information.',
       description:
         'Text for sale of information purposes in CompleteOptionsInverted view state.',
+    },
+  },
+);
+
+export const trackingTechnologiesMessages = defineMessages(
+  'ui.src.trackingTechnologies',
+  {
+    viewButton: {
+      defaultMessage: 'View',
+      description:
+        'Button text to expand tracking technologies dropdown in CompleteOptionsToggles view state.',
     },
   },
 );

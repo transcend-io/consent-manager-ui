@@ -18,6 +18,7 @@ import {
   ORDER_OF_PURPOSES,
 } from './constants';
 import { Switch } from './Switch';
+import { TrackingTechnologiesTable } from './TrackingTechnologiesTable';
 
 /**
  * Component showing explanatory text before offering a way
@@ -166,6 +167,7 @@ export function CompleteOptionsToggles({
                 ),
               }}
             />
+            <TrackingTechnologiesTable purpose="Essential" />
           </span>
           {orderedSelections.map(([purpose, isChecked], idx) => (
             <span key={purpose}>
@@ -199,6 +201,7 @@ export function CompleteOptionsToggles({
                   ),
                 }}
               />
+              <TrackingTechnologiesTable purpose={purpose} />
             </span>
           ))}
           <p className="paragraph" />

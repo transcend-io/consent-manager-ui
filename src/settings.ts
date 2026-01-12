@@ -89,3 +89,21 @@ export const LOG_LEVELS = new Set<LogLevel>(
  */
 export const LOG_ENABLED: boolean =
   LOG_LEVELS.size > validLogLevels.indexOf(DEFAULT_LOG_LEVEL);
+
+/**
+ * Valid values for the embedded tracking technologies setting
+ */
+export type EmbeddedTrackingTechnologiesMode = 'site-only' | 'all' | false;
+
+/**
+ * Parsed embedded tracking technologies mode from data-show-embedded-tracking-technologies
+ * Valid values: "site-only" | "all" | false (disabled)
+ */
+export const EMBEDDED_TRACKING_TECHNOLOGIES_MODE: EmbeddedTrackingTechnologiesMode =
+  (() => {
+    const value = settings.showEmbeddedTrackingTechnologies;
+    if (value === 'site-only' || value === 'all') {
+      return value;
+    }
+    return false;
+  })();
