@@ -1,4 +1,4 @@
-import { useCallback, useState } from 'preact/hooks';
+import { useCallback, useEffect, useState } from 'preact/hooks';
 import type {
   AirgapAuth,
   DismissedViewState,
@@ -90,6 +90,20 @@ export function useViewState({
     firstSelectedViewState: null,
   });
 
+  useEffect(() => {
+    // Now that the viewState has updated, dispatch an event on the `transcend` API / event target
+    const eventDetails: ViewStateEventDetails = {
+      viewState: state.current,
+      previousViewState: state.previous,
+    };
+    const eventType: TranscendEventType = 'view-state-change';
+    eventTarget.dispatchEvent(
+      new CustomEvent(eventType, {
+        detail: eventDetails,
+      }),
+    );
+  }, [state, eventTarget]);
+
   /**
    * When the viewState is set, update the view state and track previous state + whether the modal has (ever) been dismissed
    *
@@ -167,18 +181,6 @@ export function useViewState({
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [state, setState, initialViewState, dismissedViewState, autofocus],
-  );
-
-  // Now that the viewState has updated, dispatch an event on the `transcend` API / event target
-  const eventDetails: ViewStateEventDetails = {
-    viewState: state.current,
-    previousViewState: state.previous,
-  };
-  const eventType: TranscendEventType = 'view-state-change';
-  eventTarget.dispatchEvent(
-    new CustomEvent(eventType, {
-      detail: eventDetails,
-    }),
   );
 
   return {

@@ -1,0 +1,30 @@
+name: npm_deprecate
+permissions:
+  contents: read
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'version'
+        required: true
+        type: string
+      message:
+        description: 'message'
+        required: true
+        type: string
+
+jobs:
+  npm-deprecate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '22.x'
+          registry-url: 'https://registry.npmjs.org'
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - run: |
+          PACKAGE_NAME=$(node -p "require('./package.json').name")
+          yarn exec npm deprecate "${PACKAGE_NAME}@${{ inputs.version }}" "${{ inputs.message }}"

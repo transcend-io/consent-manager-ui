@@ -1123,14 +1123,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@transcend-io/airgap.js-types@npm:^12.12.2":
-  version: 12.12.2
-  resolution: "@transcend-io/airgap.js-types@npm:12.12.2"
+"@transcend-io/airgap.js-types@npm:^12.14.1":
+  version: 12.14.1
+  resolution: "@transcend-io/airgap.js-types@npm:12.14.1"
   dependencies:
-    "@transcend-io/type-utils": "npm:^1.2.0"
+    "@transcend-io/type-utils": "npm:^1.8.4"
     fp-ts: "npm:^2.16.1"
     io-ts: "npm:^2.2.21"
-  checksum: 10/80cd6ed39f676db0ca1d30f43c35df0ae389962319ff12fb70efe29f5d3c9e2fe055e6d910eae5e4e3a2849d9f29d723ccea303b785649d166cfdab4f4b6ba76
+  checksum: 10/d55d8f76a326fe8c79caf11c4bb9cecf8c33f302adc05eb4c0e1321d0454606a591c4d7bf662c189d6f8d5f0b3248ad7130bbcb9d3998fdf99043c7b89947ca2
   languageName: node
   linkType: hard
 
@@ -1155,10 +1155,10 @@ __metadata:
     "@prettier/sync": "npm:^0.5.2"
     "@testing-library/jest-dom": "npm:^6.4.6"
     "@testing-library/preact": "npm:^3.2.4"
-    "@transcend-io/airgap.js-types": "npm:^12.12.2"
-    "@transcend-io/internationalization": "npm:^1.7.4"
+    "@transcend-io/airgap.js-types": "npm:^12.14.1"
+    "@transcend-io/internationalization": "npm:^2.3.0"
     "@transcend-io/logger": "npm:^1.1.0"
-    "@transcend-io/type-utils": "npm:^1.5.0"
+    "@transcend-io/type-utils": "npm:^1.8.5"
     "@types/jest": "npm:^29.5.12"
     "@types/node": "npm:^17.0.45"
     "@typescript-eslint/eslint-plugin": "npm:^5.12.1"
@@ -1191,14 +1191,14 @@ __metadata:
     ts-jest: "npm:^29.2.3"
     ts-node: "npm:^10.5.0"
     tslib: "npm:^2.4.1"
-    typescript: "npm:^4.7.4"
+    typescript: "npm:~5.3.2"
   languageName: unknown
   linkType: soft
 
-"@transcend-io/internationalization@npm:^1.7.4":
-  version: 1.7.4
-  resolution: "@transcend-io/internationalization@npm:1.7.4"
-  checksum: 10/6c98e39d878c558b3282fd9388ea7199d7d7d3f9939bdc702157dec96a226d06d817d6b2f941144af5be4b22a22963db44082788b19fe884336ed13845b8a3cc
+"@transcend-io/internationalization@npm:^2.3.0":
+  version: 2.3.0
+  resolution: "@transcend-io/internationalization@npm:2.3.0"
+  checksum: 10/3f4b5974c074418dde46d14cdb58c6109a49983c4ea13cbe80f6137ec53262079a9c68ecd5542d5dbe1e11acc4d97b3fdcc3646ae987c392268b75519b842244
   languageName: node
   linkType: hard
 
@@ -1211,7 +1211,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@transcend-io/type-utils@npm:^1.0.5, @transcend-io/type-utils@npm:^1.2.0":
+"@transcend-io/type-utils@npm:^1.0.5":
   version: 1.4.2
   resolution: "@transcend-io/type-utils@npm:1.4.2"
   dependencies:
@@ -1221,13 +1221,23 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@transcend-io/type-utils@npm:^1.5.0":
-  version: 1.5.0
-  resolution: "@transcend-io/type-utils@npm:1.5.0"
+"@transcend-io/type-utils@npm:^1.8.4":
+  version: 1.8.4
+  resolution: "@transcend-io/type-utils@npm:1.8.4"
   dependencies:
     fp-ts: "npm:^2.16.1"
     io-ts: "npm:^2.2.21"
-  checksum: 10/5be28109388bc9c014f065fdf3a434ac0845d453c8721c3d34b708db6ba7f3202265671df63785a463fd77b9d4c7e1fdb869e79a1572e4a1c3b68ba2dd4501ea
+  checksum: 10/aae369fb7702b5ea39073d49cb060f5a22e3da54301a2e3e8228775b2c74c925c5cdd57e8903cb0999c9a2afb57a98049802593776b845b0fe553bb39445d39b
+  languageName: node
+  linkType: hard
+
+"@transcend-io/type-utils@npm:^1.8.5":
+  version: 1.8.5
+  resolution: "@transcend-io/type-utils@npm:1.8.5"
+  dependencies:
+    fp-ts: "npm:^2.16.1"
+    io-ts: "npm:^2.2.21"
+  checksum: 10/9e9b82328e10452df3bd941f835b30b8971e6b64e79587c391a77a792120a2c56166e2ccbc346685786aca2314bdbaf3b408486513d51f584e7a1342f16f0b6d
   languageName: node
   linkType: hard
 
@@ -9182,23 +9192,23 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typescript@npm:^4.7.4":
-  version: 4.9.5
-  resolution: "typescript@npm:4.9.5"
+"typescript@npm:~5.3.2":
+  version: 5.3.3
+  resolution: "typescript@npm:5.3.3"
   bin:
     tsc: bin/tsc
     tsserver: bin/tsserver
-  checksum: 10/458f7220ab11e0fc191514cc41be1707645ec9a8c2d609448a448e18c522cef9646f58728f6811185a4c35613dacdf6c98cf8965c88b3541d0288c47291e4300
+  checksum: 10/6e4e6a14a50c222b3d14d4ea2f729e79f972fa536ac1522b91202a9a65af3605c2928c4a790a4a50aa13694d461c479ba92cedaeb1e7b190aadaa4e4b96b8e18
   languageName: node
   linkType: hard
 
-"typescript@patch:typescript@npm%3A^4.7.4#optional!builtin<compat/typescript>":
-  version: 4.9.5
-  resolution: "typescript@patch:typescript@npm%3A4.9.5#optional!builtin<compat/typescript>::version=4.9.5&hash=289587"
+"typescript@patch:typescript@npm%3A~5.3.2#optional!builtin<compat/typescript>":
+  version: 5.3.3
+  resolution: "typescript@patch:typescript@npm%3A5.3.3#optional!builtin<compat/typescript>::version=5.3.3&hash=e012d7"
   bin:
     tsc: bin/tsc
     tsserver: bin/tsserver
-  checksum: 10/5659316360b5cc2d6f5931b346401fa534107b68b60179cf14970e27978f0936c1d5c46f4b5b8175f8cba0430f522b3ce355b4b724c0ea36ce6c0347fab25afd
+  checksum: 10/c93786fcc9a70718ba1e3819bab56064ead5817004d1b8186f8ca66165f3a2d0100fee91fa64c840dcd45f994ca5d615d8e1f566d39a7470fc1e014dbb4cf15d
   languageName: node
   linkType: hard
 

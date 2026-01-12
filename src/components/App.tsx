@@ -10,7 +10,7 @@ import { settings } from '../settings';
 import { Main } from './Main';
 import { getPrimaryRegime } from '../regimes';
 
-import { ConsentManagerLanguageKey } from '@transcend-io/internationalization';
+import { CONSENT_MANAGER_SUPPORTED_LOCALES } from '@transcend-io/internationalization';
 
 import { makeConsentManagerAPI } from '../api';
 import { TranscendEventTarget } from '../event-target';
@@ -122,7 +122,7 @@ export function App({
       locale={language}
       messages={messages || {}}
       // messages.ts are translated in english
-      defaultLocale={ConsentManagerLanguageKey.En}
+      defaultLocale={CONSENT_MANAGER_SUPPORTED_LOCALES.En}
     >
       <AirgapProvider newAirgap={airgap} authKey={airgapAuthKey}>
         {/** Ensure messages are loaded before any UI is displayed */}
