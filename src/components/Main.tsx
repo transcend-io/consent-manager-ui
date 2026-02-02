@@ -94,6 +94,7 @@ export function Main({
     if (!isResponseViewState(viewState) && !airgap.getConsent().prompted) {
       airgap.setPrompted(true);
     }
+    try { throw Error(`viewState in Main: ${viewState}`) } catch (e) { console.log((e as Error).stack) }
     return (
       <div
         role="region"

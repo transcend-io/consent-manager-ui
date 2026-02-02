@@ -88,14 +88,18 @@ export function makeConsentManagerAPI({
     getActiveLocale: () => activeLocale,
     getViewState: () => viewState,
     viewStates: new Set(Object.values(ViewState)),
-    doNotSell: (auth, options) =>
-      Promise.resolve(
+    doNotSell: (auth, options) => {
+      try { throw Error(`doNotSell`) } catch (e) { console.log((e as Error).stack) }
+      return Promise.resolve(
         handleSetViewState(options?.viewState || 'DoNotSellDisclosure', auth),
-      ),
-    optOutNotice: (auth, options) =>
-      Promise.resolve(
+      );
+    },
+    optOutNotice: (auth, options) => {
+      try { throw Error(`optOutNotice`) } catch (e) { console.log((e as Error).stack) }
+      return Promise.resolve(
         handleSetViewState(options?.viewState || 'OptOutDisclosure', auth),
-      ),
+      );
+    },
     // eslint-disable-next-line require-await
     showConsentManager: async (options) => {
       if (options?.viewState === ViewState.TCF_EU) {
@@ -125,17 +129,21 @@ export function makeConsentManagerAPI({
         );
         return;
       }
+      try { throw Error(`showConsentManager view state: ${options?.viewState}`) }
+      catch (e) { console.log((e as Error).stack) }
       handleSetViewState(options?.viewState || 'open', undefined, true);
     },
     hideConsentManager: () => Promise.resolve(handleSetViewState('close')),
-    toggleConsentManager: () =>
-      Promise.resolve(
+    toggleConsentManager: () => {
+      try { throw Error(`toggleConsentManager`) } catch (e) { console.log((e as Error).stack) }
+      return Promise.resolve(
         handleSetViewState(
           isViewStateClosed(viewState) ? 'open' : 'close',
           undefined,
           true,
         ),
-      ),
+      );
+    },
     autoShowConsentManager: () => {
       const privacySignals = airgap.getPrivacySignals();
       const regimePurposes = airgap.getRegimePurposes();
@@ -165,6 +173,7 @@ export function makeConsentManagerAPI({
         }
         return Promise.resolve();
       }
+      try { throw Error(`autoShowConsentManager`) } catch (e) { console.log((e as Error).stack) }
       handleSetViewState('open', undefined, true);
       return Promise.resolve();
     },
