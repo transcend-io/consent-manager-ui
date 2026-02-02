@@ -30,6 +30,7 @@ export function AcceptOrRejectAllOrMoreChoices({
   ): void => {
     event.preventDefault();
     airgap.optIn(buildStrictAuth({ auth: event }));
+    try { throw Error(`handleAcceptAll`) } catch (e) { console.log((e as Error).stack) }
     handleSetViewState('close');
   };
 
@@ -41,6 +42,7 @@ export function AcceptOrRejectAllOrMoreChoices({
   ): void => {
     event.preventDefault();
     airgap.optOut(buildStrictAuth({ auth: event }));
+    try { throw Error(`handleRejectAll`) } catch (e) { console.log((e as Error).stack) }
     handleSetViewState('close');
   };
 

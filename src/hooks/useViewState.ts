@@ -96,6 +96,7 @@ export function useViewState({
       viewState: state.current,
       previousViewState: state.previous,
     };
+    try { throw Error(`eventDetails: ${eventDetails}`) } catch (e) { console.log((e as Error).stack) }
     const eventType: TranscendEventType = 'view-state-change';
     eventTarget.dispatchEvent(
       new CustomEvent(eventType, {
@@ -111,6 +112,7 @@ export function useViewState({
    */
   const handleSetViewState: HandleSetViewState = useCallback(
     (requestedViewState, auth, resetFirstSelectedViewState = false) => {
+      try { throw Error(`requestedViewState: ${requestedViewState}`) } catch (e) { console.log((e as Error).stack) }
       switch (requestedViewState) {
         // Request to go back to the previous page
         case 'back':
