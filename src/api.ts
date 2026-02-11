@@ -136,7 +136,34 @@ export function makeConsentManagerAPI({
           true,
         ),
       ),
-    autoShowConsentManager: () => {
+    autoShowConsentManager: (options) => {
+      if (options?.viewState === ViewState.TCF_EU) {
+        logger.error(
+          'TCF_EU view state is not valid for this user experience. ' +
+            'Please configure your Regional Experience to use this view state and try again.',
+        );
+        return Promise.reject();
+      }
+      const excludedViewStates: InitialViewState[] = [
+        InitialViewState.TCF_EU, // not valid without TCF experience
+        InitialViewState.Hidden, // not 'open'
+      ];
+      const validViewStates = Object.values(InitialViewState).filter(
+        (state) => !excludedViewStates.includes(state),
+      );
+      if (
+        options?.viewState &&
+        !validViewStates.includes(options.viewState as InitialViewState)
+      ) {
+        logger.error(
+          `${
+            options.viewState
+          } is not a valid view state. Valid view states include ${validViewStates.join(
+            ', ',
+          )}`,
+        );
+        return Promise.reject();
+      }
       const privacySignals = airgap.getPrivacySignals();
       const regimePurposes = airgap.getRegimePurposes();
       const applicablePrivacySignals =
@@ -165,7 +192,7 @@ export function makeConsentManagerAPI({
         }
         return Promise.resolve();
       }
-      handleSetViewState('open', undefined, true);
+      handleSetViewState(options?.viewState || 'open', undefined, true);
       return Promise.resolve();
     },
     version: VERSION,
