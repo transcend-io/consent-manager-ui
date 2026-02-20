@@ -100,18 +100,17 @@ export function BottomMenu({
           'AcceptOrRejectAnalytics',
           'AcceptAllOrMoreChoices',
           'AcceptOrRejectAllOrMoreChoices',
-          'CompleteOptionsInverted',
           'DoNotSellExplainer',
           'LanguageOptions',
           'AcceptAllRejectAllToggle',
           // eslint-disable-next-line @typescript-eslint/no-explicit-any
         ].includes(viewState as any) &&
-        (['CompleteOptions', 'CompleteOptionsToggles'].includes(viewState) ? (
+        (['CompleteOptions', 'CompleteOptionsToggles', 'CompleteOptionsInverted'].includes(viewState) ? (
           !firstSelectedViewState ||
-          ['CompleteOptions', 'CompleteOptionsToggles'].includes(
+          ['CompleteOptions', 'CompleteOptionsToggles', 'CompleteOptionsInverted'].includes(
             firstSelectedViewState,
           ) ? null : (
-            // if current view is CompleteOptions or CompleteOptionsToggles
+            // if current view is CompleteOptions, CompleteOptionsToggles, or CompleteOptionsInverted
             // and there was a redirect to either of them, show the Simpler Choices button
             <div className="bottom-menu-item-container">
               <MenuItem
