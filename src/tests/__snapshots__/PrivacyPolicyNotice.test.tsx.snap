@@ -13,6 +13,7 @@ exports[`PrivacyPolicyNotice matches snapshot 1`] = `
           Our Privacy Policy Has Changed
         </p>
       </div>
+      <span style="display: none"></span>
       <div>
         <p class="paragraph">
           We've updated your privacy policy. Click the link below to learn more

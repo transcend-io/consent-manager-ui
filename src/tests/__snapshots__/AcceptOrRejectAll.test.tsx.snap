@@ -13,6 +13,7 @@ exports[`AcceptOrRejectAll matches snapshot 1`] = `
           We use cookies
         </p>
       </div>
+      <span style="display: none"></span>
       <div>
         <p class="paragraph">
           By clicking “Accept all”, you agree to the storing of cookies on your

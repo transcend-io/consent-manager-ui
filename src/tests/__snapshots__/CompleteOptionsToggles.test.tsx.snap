@@ -36,7 +36,8 @@ exports[`CompleteOptionsToggles matches snapshot 1`] = `
         role="group"
         aria-label="Select consent and close dialog"
       >
-        <span
+        <span style="display: none"></span
+        ><span
           ><label class="switch label"
             ><input
               class="switch switch-checkbox screen-reader"
