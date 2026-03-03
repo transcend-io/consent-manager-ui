@@ -680,6 +680,8 @@ a:focus {
 .gpc-setting {
   display: flex;
   align-items: center;
+  margin: 9px 0;
+  width: 100%;
 }
 
 /** GPC svg styles */

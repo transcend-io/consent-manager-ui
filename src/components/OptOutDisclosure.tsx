@@ -9,6 +9,7 @@ import {
 import type { HandleSetViewState } from '../types';
 import { useAirgap } from '../hooks';
 import { Button } from './Button';
+import { GPCIndicator } from './GPCIndicator';
 import { ObjByString } from '@transcend-io/type-utils';
 
 /**
@@ -68,6 +69,7 @@ export function OptOutDisclosure({
             )}
           </p>
         </div>
+        <GPCIndicator globalUiVariables={globalUiVariables} />
         <div>
           <p
             className="paragraph"

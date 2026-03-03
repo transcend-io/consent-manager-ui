@@ -6,6 +6,7 @@ import { useAirgap } from '../hooks';
 import { messages, quickOptionsMessages } from '../messages';
 import type { HandleSetViewState } from '../types';
 import { Button } from './Button';
+import { GPCIndicator } from './GPCIndicator';
 
 /**
  * The possible quick options
@@ -76,6 +77,7 @@ export function QuickOptions3({
       >
         {formatMessage(messages.consentTitle, globalUiVariables)}
       </p>
+      <GPCIndicator globalUiVariables={globalUiVariables} />
       <div
         className="column-content"
         role="group"

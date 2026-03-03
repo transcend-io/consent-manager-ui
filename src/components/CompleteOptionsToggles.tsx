@@ -17,6 +17,7 @@ import {
   DEFAULT_PURPOSE_TO_MESSAGE_KEY,
   ORDER_OF_PURPOSES,
 } from './constants';
+import { GPCIndicator } from './GPCIndicator';
 import { Switch } from './Switch';
 
 /**
@@ -134,6 +135,7 @@ export function CompleteOptionsToggles({
             globalUiVariables,
           )}
         >
+          <GPCIndicator globalUiVariables={globalUiVariables} />
           <span key="essential">
             <Switch
               id={`Essential-true`}

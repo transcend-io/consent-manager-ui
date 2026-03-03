@@ -5,6 +5,7 @@ import { useAirgap } from '../hooks';
 import { messages } from '../messages';
 import type { HandleSetViewState } from '../types';
 import { Button } from './Button';
+import { GPCIndicator } from './GPCIndicator';
 
 /**
  * Component showing "accept all" or "reject all"
@@ -55,6 +56,7 @@ export function AcceptOrRejectAll({
             {formatMessage(messages.consentTitleAcceptAll, globalUiVariables)}
           </p>
         </div>
+        <GPCIndicator globalUiVariables={globalUiVariables} />
         <div>
           <p
             className="paragraph"

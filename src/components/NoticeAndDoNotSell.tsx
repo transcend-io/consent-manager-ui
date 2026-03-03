@@ -4,6 +4,7 @@ import { messages, noticeAndDoNotSellMessages } from '../messages';
 import type { HandleSetViewState } from '../types';
 import { useAirgap } from '../hooks';
 import { Button } from './Button';
+import { GPCIndicator } from './GPCIndicator';
 import { CONSENT_OPTIONS } from '../constants';
 import { ObjByString } from '@transcend-io/type-utils';
 
@@ -44,6 +45,7 @@ export function NoticeAndDoNotSell({
       >
         {formatMessage(messages.noticeTitle, globalUiVariables)}
       </p>
+      <GPCIndicator globalUiVariables={globalUiVariables} />
       <Button
         primaryText={formatMessage(
           noticeAndDoNotSellMessages.confirmButtonPrimary,
