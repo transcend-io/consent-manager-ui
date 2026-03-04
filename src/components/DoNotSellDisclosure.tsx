@@ -6,6 +6,7 @@ import { noticeAndDoNotSellMessages } from '../messages';
 import type { HandleSetViewState } from '../types';
 import { useAirgap } from '../hooks';
 import { Button } from './Button';
+import { GPCIndicator } from './GPCIndicator';
 import { CONSENT_OPTIONS } from '../constants';
 import { ObjByString } from '@transcend-io/type-utils';
 
@@ -75,6 +76,7 @@ export function DoNotSellDisclosure({
             )}
           </p>
         </div>
+        <GPCIndicator globalUiVariables={globalUiVariables} />
         <div>
           <p
             className="paragraph"

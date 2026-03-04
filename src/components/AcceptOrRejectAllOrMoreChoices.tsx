@@ -5,6 +5,7 @@ import { useAirgap } from '../hooks';
 import { messages } from '../messages';
 import type { HandleSetViewState } from '../types';
 import { Button } from './Button';
+import { GPCIndicator } from './GPCIndicator';
 import { settings } from '../settings';
 
 /**
@@ -81,29 +82,32 @@ export function AcceptOrRejectAllOrMoreChoices({
           />
         </div>
       </div>
-      <div className="accept-or-reject-all-button-row">
-        <Button
-          primaryText={formatMessage(
-            messages.acceptAllButtonPrimary,
-            globalUiVariables,
-          )}
-          handleClick={handleAcceptAll}
-        />
-        <Button
-          primaryText={formatMessage(
-            messages.rejectAllButtonPrimary,
-            globalUiVariables,
-          )}
-          handleClick={handleRejectAll}
-          initialFocus
-        />
-        <Button
-          primaryText={formatMessage(
-            messages.moreChoicesButtonPrimary,
-            globalUiVariables,
-          )}
-          handleClick={handleMoreChoices}
-        />
+      <div>
+        <div className="accept-or-reject-all-button-row">
+          <Button
+            primaryText={formatMessage(
+              messages.acceptAllButtonPrimary,
+              globalUiVariables,
+            )}
+            handleClick={handleAcceptAll}
+          />
+          <Button
+            primaryText={formatMessage(
+              messages.rejectAllButtonPrimary,
+              globalUiVariables,
+            )}
+            handleClick={handleRejectAll}
+            initialFocus
+          />
+          <Button
+            primaryText={formatMessage(
+              messages.moreChoicesButtonPrimary,
+              globalUiVariables,
+            )}
+            handleClick={handleMoreChoices}
+          />
+        </div>
+        <GPCIndicator globalUiVariables={globalUiVariables} />
       </div>
     </div>
   );

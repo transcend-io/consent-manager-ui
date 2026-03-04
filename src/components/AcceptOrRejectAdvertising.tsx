@@ -6,6 +6,7 @@ import { useAirgap } from '../hooks';
 import { messages } from '../messages';
 import type { HandleSetViewState } from '../types';
 import { Button } from './Button';
+import { GPCIndicator } from './GPCIndicator';
 
 /**
  * Component showing "accept" or "reject" for Advertising purpose
@@ -37,6 +38,7 @@ export function AcceptOrRejectAdvertising({
             )}
           </p>
         </div>
+        <GPCIndicator globalUiVariables={globalUiVariables} />
         <div>
           <p
             className="paragraph"

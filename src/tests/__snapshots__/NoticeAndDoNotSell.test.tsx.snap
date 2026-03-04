@@ -10,7 +10,8 @@ exports[`NoticeAndDoNotSell matches snapshot 1`] = `
     >
       This website processes personal data
     </p>
-    <button
+    <span style="display: none"></span
+    ><button
       class="button"
       aria-description="Acknowledge and close dialog."
       data-initialfocus="true"

@@ -13,6 +13,7 @@ exports[`AcceptOrRejectAdvertising matches snapshot 1`] = `
           This website uses advertising
         </p>
       </div>
+      <span style="display: none"></span>
       <div>
         <p class="paragraph">
           By clicking "Okay", you agree to the usage of your personal

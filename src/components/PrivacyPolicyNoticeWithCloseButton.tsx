@@ -6,6 +6,7 @@ import { useAirgap } from '../hooks';
 import { messages } from '../messages';
 import type { HandleSetViewState } from '../types';
 import { CloseButton } from './CloseButton';
+import { GPCIndicator } from './GPCIndicator';
 
 /**
  * Component showing explanatory text when privacy policy has changed
@@ -56,6 +57,7 @@ export function PrivacyPolicyNoticeWithCloseButton({
             )}
           </p>
         </div>
+        <GPCIndicator globalUiVariables={globalUiVariables} />
         <div>
           <p
             className="paragraph"

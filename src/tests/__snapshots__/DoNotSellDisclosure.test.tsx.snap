@@ -13,6 +13,7 @@ exports[`DoNotSellDisclosure matches snapshot 1`] = `
           Your opt-out request has been honored.
         </p>
       </div>
+      <span style="display: none"></span>
       <div>
         <p class="paragraph">
           We've received your request for this device or browser, and we will no

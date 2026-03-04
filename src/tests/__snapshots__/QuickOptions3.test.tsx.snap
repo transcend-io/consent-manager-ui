@@ -10,6 +10,7 @@ exports[`QuickOptions3 matches snapshot 1`] = `
     >
       What can we use data for?
     </p>
+    <span style="display: none"></span>
     <div
       class="column-content"
       role="group"
