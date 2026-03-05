@@ -20,7 +20,7 @@ export function substituteHtml(messages: TranslatedMessages): {
     let placeholderMessage = rawMessage;
     const htmlTags = [...rawMessage.matchAll(/<[^>]+>/g)].flat();
     htmlTags.forEach((tag, idx) => {
-      const uniqKey = key.replaceAll('.', '_');
+      const uniqKey = key.replace(/\./g, '_');
       placeholderMessage = placeholderMessage.replace(
         tag,
         `{tcm_${uniqKey}_tag_match_${idx}}`,
