@@ -166,15 +166,13 @@ export function makeConsentManagerAPI({
       }
       const privacySignals = airgap.getPrivacySignals();
       const regimePurposes = airgap.getRegimePurposes();
-      const isPrivacySignalApplicable = (
-        signal: 'GPC' | 'DNT',
-      ): boolean =>
+      const isPrivacySignalApplicable = (signal: 'GPC' | 'DNT'): boolean =>
         privacySignals.has(signal) &&
-        [...regimePurposes].some(
-          (purpose) =>
-            airgap.getPurposeTypes()[purpose].optOutSignals.includes(signal),
+        [...regimePurposes].some((purpose) =>
+          airgap.getPurposeTypes()[purpose].optOutSignals.includes(signal),
         );
-      const applicablePrivacySignals = isPrivacySignalApplicable('GPC') || isPrivacySignalApplicable('DNT');
+      const applicablePrivacySignals =
+        isPrivacySignalApplicable('GPC') || isPrivacySignalApplicable('DNT');
       const shouldShowNotice = !airgap.getConsent().confirmed;
       if (!shouldShowNotice) {
         if (
