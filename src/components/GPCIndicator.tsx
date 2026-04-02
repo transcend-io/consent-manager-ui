@@ -1,6 +1,5 @@
 import { h, JSX } from 'preact';
 import { useIntl } from 'react-intl';
-import type { AirgapAPI } from '@transcend-io/airgap.js-types';
 import { useAirgap } from '../hooks';
 import { completeOptionsMessages } from '../messages';
 import { ObjByString } from '@transcend-io/type-utils';
