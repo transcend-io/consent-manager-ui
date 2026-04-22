@@ -17,7 +17,7 @@ export function GPCIndicator({
   const { formatMessage } = useIntl();
   const { airgap } = useAirgap();
 
-  // Is Global Privacy Control setting the SaleOfInfo toggle?
+  // Is Global Privacy Control setting a preference toggle?
   const gpcSetThis: boolean = arePrivacySignalsApplicable(airgap, ['GPC']);
 
   // Don't render if GPC is not setting this, or we're not in a relevant territory
