@@ -166,8 +166,10 @@ export function makeConsentManagerAPI({
         return Promise.reject();
       }
       const privacySignals = airgap.getPrivacySignals();
-      const applicablePrivacySignals =
-        arePrivacySignalsApplicable(airgap, ['GPC', 'DNT']);
+      const applicablePrivacySignals = arePrivacySignalsApplicable(airgap, [
+        'GPC',
+        'DNT',
+      ]);
       const shouldShowNotice = !airgap.getConsent().confirmed;
       if (!shouldShowNotice) {
         if (
