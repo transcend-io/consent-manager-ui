@@ -22,8 +22,7 @@ export function GPCIndicator({
   const gpcSetThis: boolean =
     globalPrivacyControl &&
     [...airgap.getRegimePurposes()].some((purpose) =>
-      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-      airgap.getPurposeTypes!()[purpose]!.optOutSignals!.includes!('GPC'),
+      airgap.getPurposeTypes()[purpose]?.optOutSignals?.includes?.('GPC'),
     );
 
   // Don't render if GPC is not setting this, or we're not in a relevant territory
