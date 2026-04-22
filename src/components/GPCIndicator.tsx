@@ -3,7 +3,7 @@ import { useIntl } from 'react-intl';
 import { useAirgap } from '../hooks';
 import { completeOptionsMessages } from '../messages';
 import { ObjByString } from '@transcend-io/type-utils';
-import { arePrivacySignalsApplicable } from 'src/utils/is-privacy-signal-applicable';
+import { arePrivacySignalsApplicable } from 'src/utils/are-privacy-signals-applicable';
 
 /**
  * Indicator that the Global Privacy Control signal is controlling this setting

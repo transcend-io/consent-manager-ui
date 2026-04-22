@@ -19,7 +19,7 @@ import { VERSION } from './constants';
 import type { ConsentManagerSupportedTranslationValue } from '@transcend-io/internationalization';
 import { getTranscendPolicies } from './utils/getTranscendPolicies';
 import { ObjByString } from '@transcend-io/type-utils';
-import { arePrivacySignalsApplicable } from './utils/is-privacy-signal-applicable';
+import { arePrivacySignalsApplicable } from './utils/are-privacy-signals-applicable';
 
 interface MakeConsentManagerAPIInput {
   /** The event target, where events as dispatched */
