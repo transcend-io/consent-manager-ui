@@ -3,6 +3,7 @@ import { useIntl } from 'react-intl';
 import { useAirgap } from '../hooks';
 import { completeOptionsMessages } from '../messages';
 import { ObjByString } from '@transcend-io/type-utils';
+import { arePrivacySignalsApplicable } from 'src/utils/is-privacy-signal-applicable';
 
 /**
  * Indicator that the Global Privacy Control signal is controlling this setting
@@ -17,13 +18,7 @@ export function GPCIndicator({
   const { airgap } = useAirgap();
 
   // Is Global Privacy Control setting the SaleOfInfo toggle?
-  const privacySignals = airgap.getPrivacySignals();
-  const globalPrivacyControl = privacySignals.has('GPC');
-  const gpcSetThis: boolean =
-    globalPrivacyControl &&
-    [...airgap.getRegimePurposes()].some((purpose) =>
-      airgap.getPurposeTypes()[purpose]?.optOutSignals?.includes?.('GPC'),
-    );
+  const gpcSetThis: boolean = arePrivacySignalsApplicable(airgap, ['GPC']);
 
   // Don't render if GPC is not setting this, or we're not in a relevant territory
   if (!gpcSetThis) return <span style={{ display: 'none' }} />;

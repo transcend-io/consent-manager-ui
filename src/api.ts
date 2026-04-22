@@ -1,4 +1,4 @@
-import {
+import type {
   AirgapAPI,
   ConsentManagerAPI,
   ViewState,
@@ -19,6 +19,7 @@ import { VERSION } from './constants';
 import type { ConsentManagerSupportedTranslationValue } from '@transcend-io/internationalization';
 import { getTranscendPolicies } from './utils/getTranscendPolicies';
 import { ObjByString } from '@transcend-io/type-utils';
+import { arePrivacySignalsApplicable } from './utils/is-privacy-signal-applicable';
 
 interface MakeConsentManagerAPIInput {
   /** The event target, where events as dispatched */
@@ -165,16 +166,8 @@ export function makeConsentManagerAPI({
         return Promise.reject();
       }
       const privacySignals = airgap.getPrivacySignals();
-      const regimePurposes = airgap.getRegimePurposes();
-      const consent = airgap.getConsent().purposes;
-      const isPrivacySignalApplicable = (signal: 'GPC' | 'DNT'): boolean =>
-        privacySignals.has(signal) &&
-        [...regimePurposes].some((purpose) =>
-          consent[purpose] === false &&
-          airgap.getPurposeTypes()[purpose]?.optOutSignals?.includes?.(signal),
-        );
       const applicablePrivacySignals =
-        isPrivacySignalApplicable('GPC') || isPrivacySignalApplicable('DNT');
+        arePrivacySignalsApplicable(airgap, ['GPC', 'DNT']);
       const shouldShowNotice = !airgap.getConsent().confirmed;
       if (!shouldShowNotice) {
         if (
