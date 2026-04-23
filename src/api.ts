@@ -19,6 +19,7 @@ import { VERSION } from './constants';
 import type { ConsentManagerSupportedTranslationValue } from '@transcend-io/internationalization';
 import { getTranscendPolicies } from './utils/getTranscendPolicies';
 import { ObjByString } from '@transcend-io/type-utils';
+import { arePrivacySignalsApplicable } from './utils/are-privacy-signals-applicable';
 
 interface MakeConsentManagerAPIInput {
   /** The event target, where events as dispatched */
@@ -165,11 +166,10 @@ export function makeConsentManagerAPI({
         return Promise.reject();
       }
       const privacySignals = airgap.getPrivacySignals();
-      const regimePurposes = airgap.getRegimePurposes();
-      const applicablePrivacySignals =
-        // Prompt was auto-suppressed with DNT+any regime or GPC+regimes with SaleOfInfo
-        (privacySignals.has('DNT') && regimePurposes.size > 0) ||
-        (privacySignals.has('GPC') && regimePurposes.has('SaleOfInfo'));
+      const applicablePrivacySignals = arePrivacySignalsApplicable(airgap, [
+        'GPC',
+        'DNT',
+      ]);
       const shouldShowNotice = !airgap.getConsent().confirmed;
       if (!shouldShowNotice) {
         if (
