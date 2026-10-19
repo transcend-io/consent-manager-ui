@@ -8,6 +8,7 @@ exports[`AcceptOrRejectAllOrMoreChoices matches snapshot 1`] = `
         <p
           id="consent-dialog-title"
           role="heading"
+          aria-level="2"
           class="text-title text-title-left"
         >
           We use cookies

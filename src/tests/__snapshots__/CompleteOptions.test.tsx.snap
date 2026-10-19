@@ -3,10 +3,15 @@
 exports[`CompleteOptions matches snapshot 1`] = `
 "<div>
   <div class="complete-options-container" role="none">
-    <fieldset style="border: 0px">
-      <legend id="consent-dialog-title" class="text-title text-title-center">
+    <fieldset style="border: 0px" aria-labelledby="consent-dialog-title">
+      <p
+        id="consent-dialog-title"
+        role="heading"
+        aria-level="2"
+        class="text-title text-title-center"
+      >
         What can we use data for?
-      </legend>
+      </p>
       <form class="complete-options-form">
         <span style="display: none"></span>
         <div

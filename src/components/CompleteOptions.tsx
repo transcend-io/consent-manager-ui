@@ -79,13 +79,16 @@ export function CompleteOptions({
 
   return (
     <div className="complete-options-container" role="none">
-      <fieldset style={{ border: '0' }}>
-        <legend
+      {/* role="heading" is not allowed on legend; name the fieldset from the title. */}
+      <fieldset style={{ border: '0' }} aria-labelledby="consent-dialog-title">
+        <p
           id="consent-dialog-title"
+          role="heading"
+          aria-level={2}
           className="text-title text-title-center"
         >
           {formatMessage(messages.consentTitle, globalUiVariables)}
-        </legend>
+        </p>
         <form className="complete-options-form">
           <GPCIndicator globalUiVariables={globalUiVariables} />
           {description && description !== '-' ? (

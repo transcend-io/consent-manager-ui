@@ -41,6 +41,7 @@ export function PrivacyPolicyNotice({
           <p
             id="consent-dialog-title"
             role="heading"
+            aria-level={2}
             className="text-title text-title-left"
           >
             {formatMessage(
