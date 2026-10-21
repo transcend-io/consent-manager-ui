@@ -47,7 +47,7 @@
   "updateContentCommand": "",
   // This command is the last of three that finalizes container setup when a dev container is created. It happens after updateContentCommand and once the dev container has been assigned to a user for the first time.
   // Cloud services can use this command to take advantage of user specific secrets and permissions.
-  "postCreateCommand": "pre-commit install && . ${NVM_DIR}/nvm.sh && nvm install && nvm use && corepack enable && yarn install",
+  "postCreateCommand": "pip3 install -r requirements-pre-commit.txt && pre-commit install && . ${NVM_DIR}/nvm.sh && nvm install && nvm use && corepack enable && yarn install",
 
   // Comment out to connect as root instead. More info: https://aka.ms/vscode-remote/containers/non-root.
   "remoteUser": "node",

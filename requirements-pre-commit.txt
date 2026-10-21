@@ -1,0 +1,2 @@
+# Last release before local `language: node` hooks require additional_dependencies (4.6.1+).
+pre-commit==4.6.0

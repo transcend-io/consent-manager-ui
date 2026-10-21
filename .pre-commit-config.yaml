@@ -34,9 +34,7 @@ repos:
       - id: eslint
         name: Eslint
         description: 'Run static code linting'
-        # language: system uses the workspace yarn install (CI installs deps first).
-        # language: node requires package.json or additional_dependencies in pre-commit 4.x.
         entry: yarn lint --fix
-        language: system
+        language: node
         files: \.[jt]sx?$ # *.js, *.jsx, *.ts and *.tsx
         types: [file]
