@@ -5,7 +5,12 @@ exports[`OptOutDisclosure matches snapshot 1`] = `
   <div class="column-content">
     <div>
       <div>
-        <p id="consent-dialog-title" class="text-title text-title-left">
+        <p
+          id="consent-dialog-title"
+          role="heading"
+          aria-level="2"
+          class="text-title text-title-left"
+        >
           Your opt-out request has been honored.
         </p>
       </div>

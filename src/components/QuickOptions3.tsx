@@ -73,6 +73,7 @@ export function QuickOptions3({
       <p
         id="consent-dialog-title"
         role="heading"
+        aria-level={2}
         className="text-title text-title-center"
       >
         {formatMessage(messages.consentTitle, globalUiVariables)}

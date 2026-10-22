@@ -68,9 +68,15 @@ jobs:
           retry_on: error
           command: yarn install --immutable
 
-      - uses: pre-commit/action@v3.0.1
+      - run: python -m pip install -r requirements-pre-commit.txt
+      - uses: actions/cache@v4
         with:
-          extra_args: --source ${{ github.event.pull_request.base.sha || 'HEAD~1' }} --origin ${{ github.event.pull_request.head.sha || 'HEAD' }}
+          path: ~/.cache/pre-commit
+          key: pre-commit-4.6.0|${{ runner.os }}|${{ hashFiles('.pre-commit-config.yaml') }}
+      - run: >-
+          pre-commit run --show-diff-on-failure --color=always
+          --source ${{ github.event.pull_request.base.sha || 'HEAD~1' }}
+          --origin ${{ github.event.pull_request.head.sha || 'HEAD' }}
 
   build-to-npm:
     if: github.ref == 'refs/heads/main'

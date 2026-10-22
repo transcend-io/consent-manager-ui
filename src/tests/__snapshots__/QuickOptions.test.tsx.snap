@@ -7,6 +7,7 @@ exports[`QuickOptions matches snapshot 1`] = `
       id="consent-dialog-title"
       class="text-title text-title-center"
       role="heading"
+      aria-level="2"
     >
       What can we use data for?
     </p>
